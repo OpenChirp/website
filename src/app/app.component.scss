@@ -5,6 +5,7 @@ $button-color: #3498db;
 .splash-page {
     md-toolbar {
         background-color: $toolbar-color;
+        z-index: 999;
         position: fixed;
         top: 0;
         right: 0;
@@ -16,7 +17,6 @@ $button-color: #3498db;
             color: $background-color;
         }
         .login {
-            margin-left: 100px;
             background-color: $button-color;
         }
     }
@@ -70,4 +70,34 @@ $button-color: #3498db;
         }
         color: $background-color;
     }
+}
+
+@media screen and (max-width: 960px) {
+  .splash-page {
+    .picture-section {
+      .picture-section-text {
+        position: relative;;
+        font-size: 18px;
+        width: 100%;
+        padding: 0;
+        top: 40%;
+        left:0;
+        background-color: rgba(0, 0, 0, 0.5);
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+        h1 {
+          padding: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .splash-page {
+    md-toolbar {
+      .title-buttons {
+        display: none;
+      }
+    }
+  }
 }
