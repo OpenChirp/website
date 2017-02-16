@@ -13,13 +13,18 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'splash', component: SplashComponent },
+  { path: '', redirectTo: '/splash', pathMatch: 'full' },
+  { path: 'dashboard', component: DashboardComponent }
   //{ path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    SplashComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
