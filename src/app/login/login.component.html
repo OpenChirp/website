@@ -5,10 +5,10 @@
       <md-card-content>
         <form>
           <md-input-container>
-          <input md-input placeholder="Username" [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
+          <input mdInput placeholder="Username" [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
           </md-input-container>
           <md-input-container>
-            <input md-input placeholder="Password" type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
+            <input mdInput placeholder="Password" type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
           </md-input-container>
           <p class="error">{{error}}</p>
           <button md-button type="submit" (click)="login()">Login</button>
