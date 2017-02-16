@@ -1,0 +1,53 @@
+$toolbar-color: rgba(52, 73, 94, 0.8);
+$background-color: #efefef;
+$button-color: #3498db;
+
+.splash-page {
+    .picture-section {
+        height: 100vh;
+        margin: 0;
+        background-image: url("../../assets/images/background.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        color: $background-color;
+        .picture-section-text {
+            position: absolute;
+            font-size: 25px;
+            width: 760px;
+            top: 45%;
+            left: 10%;
+            padding-left: 30px;
+            padding-right: 30px;
+            background-color: rgba(0, 0, 0, 0.5);
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+        }
+        .overlay {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: rgba(255, 230, 230, 0.4);
+        }
+    }
+}
+
+@media screen and (max-width: 960px) {
+  .splash-page {
+    .picture-section {
+      .picture-section-text {
+        position: relative;;
+        font-size: 18px;
+        width: 100%;
+        padding: 0;
+        top: 40%;
+        left:0;
+        background-color: rgba(0, 0, 0, 0.5);
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+        h1 {
+          padding: 10px;
+        }
+      }
+    }
+  }
+}
