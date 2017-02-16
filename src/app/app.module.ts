@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes, Router } from '@angular/router';
-import { MaterialModule } from '@angular/material';
+import { MaterialModule, MdInputModule } from '@angular/material';
 import 'hammerjs';
 
 import { AppComponent } from './app.component';
@@ -31,6 +31,7 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     MaterialModule.forRoot(),
+    MdInputModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

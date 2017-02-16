@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MdInputModule } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,5 +9,25 @@ import { Component } from '@angular/core';
 })
 
 export class LoginComponent {
-  title = 'OpenChirp';
+  username: string;
+  password: string;
+  error: string;
+
+  constructor(private router: Router) {
+    this.username = "";
+    this.password = "";
+    this.error = "";
+  }
+  
+  login() {
+    if (this.username != "") {
+      if (this.password == this.username) {
+        this.router.navigate(['/dashboard']);
+        console.log("Logging in...");
+      }
+      else {
+        this.error = "WRONG PASSWORD";
+      }
+    }
+  }
 }
