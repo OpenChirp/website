@@ -33,9 +33,10 @@ const appRoutes: Routes = [
     HttpModule,
     MaterialModule.forRoot(),
     MdInputModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
