@@ -10,13 +10,13 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SplashComponent } from './splash/splash.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PageNotFoundComponent } from './404/pagenotfound.component';
 
 const appRoutes: Routes = [
+  { path: '', component: SplashComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'splash', component: SplashComponent },
-  { path: '', redirectTo: '/splash', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent }
-  //{ path: '**', component: PageNotFoundComponent }
+  { path: 'dashboard', component: DashboardComponent },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
@@ -24,7 +24,8 @@ const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
     SplashComponent,
-    DashboardComponent
+    DashboardComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
