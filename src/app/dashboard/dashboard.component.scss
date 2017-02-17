@@ -1,0 +1,26 @@
+$dashboard-toolbar-color: #424242;
+$background-color: #efefef;
+$side-nav-color: #2c3e50;
+.dashboard {
+    md-toolbar {
+        background-color: $dashboard-toolbar-color;
+        color: $background-color;
+        position: fixed;
+        top:0;
+        left: 0;
+        z-index: 999;
+        .toolbar-content {
+            text-align: right;
+            width: 100%;
+        }
+    }
+    .sidenav {
+        position: fixed;
+        width: 240px;
+        height: 100vh;
+        background-color: $side-nav-color;
+        top:0;
+        left: 0;
+        z-index: 998;
+    }
+}

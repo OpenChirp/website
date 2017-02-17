@@ -10,4 +10,9 @@ import { Http, Request, Response } from '@angular/http';
 
 export class DashboardComponent {
   title = 'OpenChirp';
+  username = "John Doe";
+  constructor() {
+    document.getElementById("splash-nav").style.display = "none";
+    document.getElementById("splash-footer").style.display = "none";
+  }
 }
