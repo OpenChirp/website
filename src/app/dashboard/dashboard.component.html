@@ -2,10 +2,9 @@
     <md-toolbar>
         {{title}} Dashboard
         <div class="toolbar-content">
-            {{username}}
         </div>
     </md-toolbar>
     <div class="sidenav">
-        
+        <p *ngIf="location">{{location.name}}</p>
     </div>
 </div>

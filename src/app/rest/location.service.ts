@@ -3,13 +3,18 @@ import { Http, Response }          from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-//import { Hero } from './hero';
+import { Location } from './location';
 @Injectable()
 export class LocationService {
   private locationUrl = 'http://iot.andrew.cmu.edu:10010/api/location';  // URL to web API
   constructor (private http: Http) {}
-  getRootLocation (): Observable<Response[]> {
+  getRootLocation (): Observable<Location> {
     return this.http.get(this.locationUrl)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+  getLocationById(id: string): Observable<Location>{
+    return this.http.get(this.locationUrl + "/" + id)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
