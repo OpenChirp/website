@@ -38,6 +38,10 @@ $footer-height: $footer-height-bottom + $footer-height-top;
     .login {
       background-color: $button-color;
     }
+    .logo-section {
+      text-decoration: none;
+      color: $background-color;
+    }
   }
 
   .footer {
