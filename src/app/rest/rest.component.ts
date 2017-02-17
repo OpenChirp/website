@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import { Http, Request, Response } from '@angular/http';
-import {HttpClient, RESTClient, Client, GET, PUT, POST, DELETE, Headers, Path, Body, Query, Produces, MediaType} from 'angular-rest';
+import {HttpClient, RestClient, Client, GET, PUT, POST, DELETE, Headers, Path, Body, Query, Produces, MediaType} from '@maxxton/angular-rest';
 
 @Injectable()
 @Client({
-    serviceId: 'rest-service',
-    baseUrl: 'http://localhost:4200/api',
+    serviceId: 'location-service',
+    baseUrl: 'http://iot.andrew.cmu.edu:10010/api/',
     headers: {
         'content-type': 'application/json'
     }
 })
 
-export class restClient extends RestClient {
+export class LocationClient extends RestClient {
 
     constructor(http:Http){
         super(<HttpClient>http);
@@ -28,24 +28,24 @@ export class restClient extends RestClient {
         return res;
     }
 
-    @Get("")
+    @Get("/location")
     @Produces(MediaType.JSON)
-    public getEntries( @Query("page") page:number, @Query("size", {default: 20}) size?:number, @Query("sort") sort?: string): Observable<Entry[]> { return null; };
+    public getRootLocation()): Observable<Response> { return null; };
 
-    @Get("")
-    @Map(resp => new Entry(resp.json()))
-    public getEntryById( @Path("id") id: number): Observable<Entry>{ return null; };
+    @Get("/location/{id}")
+    @Map(resp => resp.json())
+    public getLocationById( @Path("id") id: number): Observable<Response>{ return null; };
 
-    @Post("")
+    @Post("/location/{id}")
     @Headers({
         'content-type': 'application/json'
     })
-    public postTodo( @Body entry: Entry): Observable<Response> { return null; };
+    public postLocation( @Body location: string): Observable<Response> { return null; };
 
-    @Put("")
-    public putEntryById( @Path("id") id: string, @Body todo: Entry): Observable<Response> { return null; };
+    @Put("/location/{id}")
+    public updateLocation( @Path("id") id: string, @Body location: string): Observable<Response> { return null; };
 
-    @Delete("")
-    public deleteEntryById( @Path("id") id: string): Observable<Response> { return null; };
+    @Delete("/location/{id}")
+    public deleteLocationById( @Path("id") id: string): Observable<Response> { return null; };
 
 }
