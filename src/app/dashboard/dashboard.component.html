@@ -2,9 +2,14 @@
     <md-toolbar>
         {{title}} Dashboard
         <div class="toolbar-content">
+            {{username}}
         </div>
     </md-toolbar>
     <div class="sidenav">
-        <p *ngIf="location">{{location.name}}</p>
+     <!--   <section *ngIf="loaded">-->
+            <button (click)="getChildren(location.children)" *ngFor="let location of locations">{{location.name}}</button>
+            <button *ngFor="let child of childLocations | async">{{child?.name}}</button>
+     <!--   </section> -->
+        
     </div>
 </div>

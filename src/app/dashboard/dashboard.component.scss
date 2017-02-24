@@ -1,6 +1,8 @@
 $dashboard-toolbar-color: #424242;
 $background-color: #efefef;
 $side-nav-color: #2c3e50;
+$side-nav-width: 240px;
+
 .dashboard {
     md-toolbar {
         background-color: $dashboard-toolbar-color;
@@ -16,13 +18,28 @@ $side-nav-color: #2c3e50;
     }
     .sidenav {
         position: fixed;
-        width: 240px;
+        width: $side-nav-width;
         height: 100vh;
         background-color: $side-nav-color;
         top:0;
         left: 0;
         z-index: 998;
-        padding-top: 100px;
+        padding-top: 80px;
         color: $background-color;
+        button {
+            width: $side-nav-width;
+            height: 40px;
+            border-left: 0;
+            border-right: 0;
+            border-top: solid 1px #607d8b;
+            border-bottom: solid 1px #607d8b;
+            background-color: $side-nav-color;
+            color: $background-color;
+            outline: none;
+            box-shadow: none;
+        }
+        button:hover {
+            background-color: #607d8b;
+        }
     }
 }
