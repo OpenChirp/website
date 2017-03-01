@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { MaterialModule, MdInputModule } from '@angular/material';
 import 'hammerjs';
@@ -11,6 +11,8 @@ import { LoginComponent } from './login/login.component';
 import { SplashComponent } from './splash/splash.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PageNotFoundComponent } from './404/pagenotfound.component';
+
+import { LocationService } from './rest/location.service';
 
 const appRoutes: Routes = [
   { path: '', component: SplashComponent },
@@ -31,11 +33,14 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    JsonpModule,
     MaterialModule.forRoot(),
     MdInputModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
   ],
-  providers: [],
+  providers: [
+    LocationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

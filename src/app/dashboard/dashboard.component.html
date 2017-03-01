@@ -1,3 +1,12 @@
 <div class="dashboard">
-  
+  <md-toolbar>
+    {{title}} Dashboard
+    <div class="toolbar-content">
+      {{username}}
+    </div>
+  </md-toolbar>
+  <div class="sidenav">
+    <button (click)="getChildren(rootLocation.children)" *ngIf="rootLocation">{{rootLocation.name}}</button>
+    <button *ngFor="let child of firstLevelChildren" (click)="getChildren(child.children)">{{child.name}}</button>
+  </div>
 </div>
