@@ -8,24 +8,28 @@ import { Location } from './location';
 @Injectable()
 
 export class LocationService {
-  private locationUrl = 'http://iot.andrew.cmu.edu:10010/api/location';  // URL to web API
-  
+  // TODO: get from config.json
+  private locationUrl = 'http://openchirp.andrew.cmu.edu:10010/api/location';
+
   constructor (private http: Http) {
 
   }
   
+  // Gets the root location
   getRootLocation (): Observable<Location> {
     return this.http.get(this.locationUrl)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
 
+  // Gets location specified by id
   getLocationById(id: string): Observable<Location> {
     return this.http.get(this.locationUrl + "/" + id)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
 
+  // Gets array of locations when given an array of ids
   getChildrenLocations(children: Array<string>): Array<Observable<Location>> {
     var self = this;
     var childLocations = children.map(function(x) {
@@ -33,6 +37,7 @@ export class LocationService {
     });
     return childLocations;
   }
+
 
   private extractData(res: Response) {
     let body = res.json();

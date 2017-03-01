@@ -1,15 +1,11 @@
 <div class="dashboard">
-    <md-toolbar>
-        {{title}} Dashboard
-        <div class="toolbar-content">
-            {{username}}
-        </div>
-    </md-toolbar>
-    <div class="sidenav">
-     <!--   <section *ngIf="loaded">-->
-            <button (click)="getChildren(location.children)" *ngFor="let location of locations">{{location.name}}</button>
-            <button *ngFor="let child of childLocations | async">{{child?.name}}</button>
-     <!--   </section> -->
-        
+  <md-toolbar>
+    {{title}} Dashboard
+    <div class="toolbar-content">
+      {{username}}
     </div>
+  </md-toolbar>
+  <div class="sidenav">
+    <button (click)="getChildren(rootLocation.children)" *ngIf="rootLocation">{{rootLocation.name}}</button>
+  </div>
 </div>
