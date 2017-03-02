@@ -4,7 +4,7 @@ import { Http, Request, Response } from '@angular/http';
 import { LocationService } from '../rest/location.service';
 import { Location } from '../rest/location';
 import { Observable } from 'rxjs/Observable';
-import { TreeNode } from '../tree/tree.component';
+import { TreeNodeComponent } from '../tree/tree.component';
 
 @Component({
   selector: 'app-dashboard',
