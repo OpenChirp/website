@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import { Location } from './location';
+import { Device } from './device';
 
 @Injectable()
 
@@ -34,6 +35,13 @@ export class LocationService {
     this.http.delete(this.locationUrl + "/" + id)
              .map(this.extractData)
              .catch(this.handleError);
+  }
+
+  // Get device by location id
+  getDeviceByLocationId(id: string): Observable<Array<Device>> {
+    return this.http.get(this.locationUrl + "/" + id + "/devices")
+                    .map(this.extractData)
+                    .catch(this.handleError);
   }
 
   private extractData(res: Response) {
