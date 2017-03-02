@@ -32,4 +32,8 @@ export class TreeNodeComponent {
         );
     }
   }
+
+  clearChildren() {
+    this.childLocations = [];
+  }
 }
