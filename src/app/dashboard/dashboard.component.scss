@@ -37,9 +37,16 @@ $side-nav-width: 240px;
             color: $background-color;
             outline: none;
             box-shadow: none;
+            text-align: left;
         }
         button:hover {
             background-color: #607d8b;
         }
+    }
+    .main-content {
+        background-color: $background-color;
+        margin-left: $side-nav-width;
+        margin-top: 64px;
+        padding: 20px;
     }
 }

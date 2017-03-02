@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { SplashComponent } from './splash/splash.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PageNotFoundComponent } from './404/pagenotfound.component';
+import { TreeNodeComponent } from './tree/tree.component';
 
 import { LocationService } from './rest/location.service';
 
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
     LoginComponent,
     SplashComponent,
     DashboardComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    TreeNodeComponent
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,7 @@ export class LocationService {
   private locationUrl = 'http://openchirp.andrew.cmu.edu:10010/api/location';
 
   constructor (private http: Http) {
-
+    
   }
   
   // Gets the root location
@@ -29,15 +29,12 @@ export class LocationService {
                     .catch(this.handleError);
   }
 
-  // Gets array of locations when given an array of ids
-  getChildrenLocations(children: Array<string>): Array<Observable<Location>> {
-    var self = this;
-    var childLocations = children.map(function(x) {
-      return self.http.get(self.locationUrl + "/" + x).map(self.extractData).catch(self.handleError);
-    });
-    return childLocations;
+  // Delete location
+  deleteLocationById(id: string) {
+    this.http.delete(this.locationUrl + "/" + id)
+             .map(this.extractData)
+             .catch(this.handleError);
   }
-
 
   private extractData(res: Response) {
     let body = res.json();
