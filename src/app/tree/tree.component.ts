@@ -10,19 +10,26 @@ import { Location } from '../rest/location';
 
 export class TreeNodeComponent {
   @Input() currentLocation: Location;
-  children: Array<Location> = [];
+  childLocations: Array<Location> = [];
+  errorMesssage: string;
+
   constructor(private locationService: LocationService) {
       
   }
 
   ngOnInit() {
-    console.log(this.currentLocation);
+    
   }
 
   getChildren(children: Array<string>) {
-    this.children = [];
+    this.childLocations = [];
     for (var i = 0; i < children.length; i++) {
-      
+      this.locationService
+        .getLocationById(children[i])
+        .subscribe(
+          result => this.childLocations.push(new Location(result.name, result.children)),
+          error => this.errorMesssage = error
+        );
     }
   }
 }
