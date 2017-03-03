@@ -1,19 +1,27 @@
 <div class="dashboard">
+
+  <!-- Top Toolbar -->
   <md-toolbar>
     {{title}} Dashboard
     <div class="toolbar-content">
       {{username}}
     </div>
   </md-toolbar>
-  <div class="sidenav">
 
+  <!-- Side Navigation bar -->
+  <div class="sidenav">
     <div *ngIf="rootLocation">
       <tree-node [currentLocation]="rootLocation"></tree-node>
     </div>
-    
   </div>
+
+  <!-- Dashboard main view -->
   <div class="main-content">
-    <h1>Dashboard Content</h1>
-    
+    <div class="main-content-wrapper">
+      <md-card>
+        Devices
+      </md-card>
+    </div>
   </div>
+
 </div>

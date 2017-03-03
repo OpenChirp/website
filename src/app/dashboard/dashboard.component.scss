@@ -26,27 +26,20 @@ $side-nav-width: 240px;
         z-index: 998;
         padding-top: 80px;
         color: $background-color;
-        button {
-            width: $side-nav-width;
-            height: 40px;
-            border-left: 0;
-            border-right: 0;
-            border-top: solid 1px #607d8b;
-            border-bottom: solid 1px #607d8b;
-            background-color: $side-nav-color;
-            color: $background-color;
-            outline: none;
-            box-shadow: none;
-            text-align: left;
-        }
-        button:hover {
-            background-color: #607d8b;
-        }
     }
     .main-content {
         background-color: $background-color;
-        margin-left: $side-nav-width;
-        margin-top: 64px;
-        padding: 20px;
+        margin:0;
+        h1 {
+            margin: 0;
+        }
+        .main-content-wrapper {
+            padding-top: 80px;
+            padding-left: $side-nav-width + 15px;
+            padding-right: 15px;
+            md-card {
+                background-color: white;
+            }
+        }
     }
 }
