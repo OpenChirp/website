@@ -40,7 +40,6 @@ export class TreeNodeComponent {
           this.devices.push(device);
         }
         this.change.emit(this.devices);
-        console.log(this.devices);
       },
       error => this.errorMesssage = error
     );
