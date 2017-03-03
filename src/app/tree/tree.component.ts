@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { LocationService } from '../rest/location.service';
-import { Location } from '../rest/location';
-import { Device } from '../rest/device';
+import { LocationService } from '../resources/location.service';
+import { Location } from '../resources/location';
+import { Device } from '../resources/device';
 
 @Component({
   selector: 'tree-node',

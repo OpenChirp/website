@@ -27,6 +27,9 @@ $side-nav-width: 240px;
       float: right;
       transition-duration: 0.3s;
     }
+    p {
+      margin: 0;
+    }
   }
   .name:hover {
     color: #607d8b;

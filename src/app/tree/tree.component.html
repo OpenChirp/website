@@ -1,6 +1,6 @@
 <div class="tree-node" *ngIf="currentLocation">
     <div class="button">
-        <div class="name" (click)="getChildren(currentLocation)">{{ currentLocation.name }}</div>
+        <div class="name" (click)="getChildren(currentLocation)"><p>{{ currentLocation.name }}</p></div>
         <div class="close" (click)="clearChildren()" *ngIf="childLocations.length">-</div>
     </div>
     <div class="child" *ngFor="let child of childLocations">

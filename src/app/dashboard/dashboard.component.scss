@@ -50,15 +50,20 @@ $side-nav-width: 240px;
             float: left;
             color: #909090;
           }
+          p {
+            margin: 0;
+          }
         }
         .devices {
           height: 40px;
           line-height: 40px;
           div {
             color: #606060;
-            font-weight: bold;
             width: 50%;
             float: left;
+          }
+          p {
+            margin: 0;
           }
         }
       }

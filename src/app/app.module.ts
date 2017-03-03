@@ -6,6 +6,7 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import { MaterialModule, MdInputModule } from '@angular/material';
 import 'hammerjs';
 
+// Components
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SplashComponent } from './splash/splash.component';
@@ -13,7 +14,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PageNotFoundComponent } from './404/pagenotfound.component';
 import { TreeNodeComponent } from './tree/tree.component';
 
-import { LocationService } from './rest/location.service';
+// Services
+import { LocationService } from './resources/location.service';
 
 const appRoutes: Routes = [
   { path: '', component: SplashComponent },
