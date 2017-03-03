@@ -11,16 +11,31 @@
   <!-- Side Navigation bar -->
   <div class="sidenav">
     <div *ngIf="rootLocation">
-      <tree-node [currentLocation]="rootLocation"></tree-node>
+      <tree-node 
+        [currentLocation]="rootLocation"
+        (change)="deviceList($event)"></tree-node>
     </div>
   </div>
 
   <!-- Dashboard main view -->
   <div class="main-content">
     <div class="main-content-wrapper">
+
+      <!-- TODO: move to separate component -->
       <md-card>
-        Devices
+        <h2>Devices</h2>
+        <div class="table-header">
+          <div>Device Name</div>
+          <div>Device Type</div>
+        </div>
+        <hr>
+        <div *ngFor="let device of devices" class="devices">
+          <div>{{ device.name }}</div>
+          <div>{{ device.type }}</div>
+          <hr>
+        </div>
       </md-card>
+
     </div>
   </div>
 

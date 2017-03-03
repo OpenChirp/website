@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { LocationService } from '../rest/location.service';
 import { Location } from '../rest/location';
 import { Device } from '../rest/device';
@@ -11,6 +11,7 @@ import { Device } from '../rest/device';
 
 export class TreeNodeComponent {
   @Input() currentLocation: Location;
+  @Output() change: EventEmitter<Array<Device>> = new EventEmitter<Array<Device>>();
   childLocations: Array<Location> = [];
   errorMesssage: string;
   devices: Array<Device> = [];
@@ -22,7 +23,6 @@ export class TreeNodeComponent {
   getChildren(curLocation: Location) {
     let children = curLocation.children;
     if (this.childLocations.length == 0) {
-      this.childLocations = [];
       for (var i = 0; i < children.length; i++) {
         this.locationService
           .getLocationById(children[i])
@@ -32,19 +32,29 @@ export class TreeNodeComponent {
           );
       }
     }
+    this.devices = [];
     this.locationService.getDeviceByLocationId(curLocation._id).subscribe(
       result => {
         for (var i = 0; i < result.length; i++) {
           var device = result[i];
           this.devices.push(device);
         }
+        this.change.emit(this.devices);
+        console.log(this.devices);
       },
       error => this.errorMesssage = error
     );
+  
   }
 
   clearChildren() {
     this.childLocations = [];
     this.devices = [];
+    this.change.emit(this.devices);
+  }
+
+  deviceList(event) {
+    this.devices = event;
+    this.change.emit(this.devices);
   }
 }

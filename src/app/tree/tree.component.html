@@ -4,6 +4,6 @@
         <div class="close" (click)="clearChildren()" *ngIf="childLocations.length">-</div>
     </div>
     <div class="child" *ngFor="let child of childLocations">
-        <tree-node [currentLocation]="child"></tree-node>
+        <tree-node [currentLocation]="child" (change)="deviceList($event)"></tree-node>
     </div>
 </div>
