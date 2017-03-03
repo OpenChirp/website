@@ -5,11 +5,9 @@ $side-nav-width: 240px;
 
 .tree-node {
   .button {
-    width: $side-nav-width - 30px;
     height: 40px;
     border-left: 0;
     border-right: 0;
-    border-top: solid 1px #607d8b;
     border-bottom: solid 1px #607d8b;
     background-color: $side-nav-color;
     color: $background-color;
@@ -22,14 +20,25 @@ $side-nav-width: 240px;
     .name {
       width: 120px;
       float:left;
+      transition-duration: 0.3s;
     }
     .close {
       width: 20px;
       float: right;
+      transition-duration: 0.3s;
     }
   }
-  .button:hover {
-    background-color: #607d8b;
+  .name:hover {
+    color: #607d8b;
     cursor: pointer;
+    transition-duration: 0.5s;
+  }
+  .close:hover {
+    color: #607d8b;
+    cursor: pointer;
+    transition-duration: 0.5s;
+  }
+  .child {
+    padding-left: 15px;
   }
 }
