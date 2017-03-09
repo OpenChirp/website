@@ -2,6 +2,7 @@
     <div class="button">
         <div class="name" (click)="getChildren(currentLocation)"><p>{{ currentLocation.name }}</p></div>
         <div class="close" (click)="clearChildren()" *ngIf="childLocations.length">-</div>
+        <div class="add" (click)="addLocation(currentLocation)">+</div>
     </div>
     <div class="child" *ngFor="let child of childLocations">
         <tree-node [currentLocation]="child" (change)="deviceList($event)"></tree-node>

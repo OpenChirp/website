@@ -27,6 +27,11 @@ $side-nav-width: 240px;
       float: right;
       transition-duration: 0.3s;
     }
+    .add {
+      width: 20px;
+      float: right;
+      transition-duration: 0.3s;
+    }
     p {
       margin: 0;
     }
@@ -37,6 +42,11 @@ $side-nav-width: 240px;
     transition-duration: 0.5s;
   }
   .close:hover {
+    color: #607d8b;
+    cursor: pointer;
+    transition-duration: 0.5s;
+  }
+  .add:hover {
     color: #607d8b;
     cursor: pointer;
     transition-duration: 0.5s;
