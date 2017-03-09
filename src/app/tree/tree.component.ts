@@ -18,6 +18,7 @@ export class TreeNodeComponent {
   childLocations: Array<Location> = [];
   errorMesssage: string;
   devices: Array<Device> = [];
+  showChildren: boolean = false;
 
   constructor(private locationService: LocationService, public dialog: MdDialog) {
     
@@ -53,6 +54,17 @@ export class TreeNodeComponent {
     this.childLocations = [];
     this.devices = [];
     this.change.emit(this.devices);
+  }
+  
+  toggleChildren(curLocation: Location) {
+    if (this.showChildren) {
+      this.clearChildren();
+      this.showChildren = false;
+    }
+    else {
+      this.getChildren(curLocation);
+      this.showChildren = true;
+    }
   }
 
   deviceList(event) {
