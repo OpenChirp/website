@@ -37,6 +37,13 @@ export class LocationService {
              .catch(this.handleError);
   }
 
+  // Add location
+  addLocationByParentId(id: string, body: any) {
+    this.http.post(this.locationUrl + "/" + id, body)
+             .map(this.extractData)
+             .catch(this.handleError);
+  }
+
   // Get device by location id
   getDeviceByLocationId(id: string): Observable<Array<Device>> {
     return this.http.get(this.locationUrl + "/" + id + "/devices")

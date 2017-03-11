@@ -37,36 +37,6 @@ $side-nav-width: 240px;
       padding-top: 80px;
       padding-left: $side-nav-width + 15px;
       padding-right: 15px;
-      md-card {
-        background-color: white;
-        hr {
-          margin: 0;
-        }
-        .table-header {
-          height: 40px;
-          line-height: 40px;
-          div {
-            width: 50%;
-            float: left;
-            color: #909090;
-          }
-          p {
-            margin: 0;
-          }
-        }
-        .devices {
-          height: 40px;
-          line-height: 40px;
-          div {
-            color: #606060;
-            width: 50%;
-            float: left;
-          }
-          p {
-            margin: 0;
-          }
-        }
-      }
     }
   }
 }

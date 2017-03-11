@@ -1,6 +1,6 @@
 <div class="dashboard">
 
-  <!-- Top Toolbar -->
+  <!-- Dashboard Top Toolbar -->
   <md-toolbar>
     {{title}} Dashboard
     <div class="toolbar-content">
@@ -8,7 +8,7 @@
     </div>
   </md-toolbar>
 
-  <!-- Side Navigation bar -->
+  <!-- Dashboard Side Navigation bar -->
   <div class="sidenav">
     <div *ngIf="rootLocation">
       <tree-node 
@@ -17,24 +17,12 @@
     </div>
   </div>
 
-  <!-- Dashboard main view -->
+  <!-- Dashboard Main View -->
   <div class="main-content">
     <div class="main-content-wrapper">
 
-      <!-- TODO: move to separate component -->
-      <md-card>
-        <h2>Devices</h2>
-        <div class="table-header">
-          <div><p>Device Name</p></div>
-          <div><p>Device Type</p></div>
-        </div>
-        <hr>
-        <div *ngFor="let device of devices" class="devices">
-          <div><p>{{ device.name }}</p></div>
-          <div><p>{{ device.type }}</p></div>
-          <hr>
-        </div>
-      </md-card>
+      <!-- Device List Component -->
+      <device-list [devices]="devices"></device-list>
 
     </div>
   </div>

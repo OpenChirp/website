@@ -13,7 +13,7 @@ import { SplashComponent } from './splash/splash.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PageNotFoundComponent } from './404/pagenotfound.component';
 import { TreeNodeComponent } from './tree/tree.component';
-
+import { DeviceListComponent } from './devices/devicelist.component';
 import { NewLocationComponent } from './tree/newlocation.component';
 
 // Services
@@ -34,6 +34,7 @@ const appRoutes: Routes = [
     DashboardComponent,
     PageNotFoundComponent,
     TreeNodeComponent,
+    DeviceListComponent,
     NewLocationComponent
   ],
   imports: [

@@ -2,9 +2,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { LocationService } from '../resources/location.service';
 import { Location } from '../resources/location';
 import { Device } from '../resources/device';
-import { MdDialog } from '@angular/material';
-
-import { NewLocationComponent } from './newlocation.component';
 
 @Component({
   selector: 'tree-node',
@@ -20,7 +17,7 @@ export class TreeNodeComponent {
   devices: Array<Device> = [];
   showChildren: boolean = false;
 
-  constructor(private locationService: LocationService, public dialog: MdDialog) {
+  constructor(private locationService: LocationService) {
     
   }
 
@@ -74,6 +71,5 @@ export class TreeNodeComponent {
 
   addLocation(location: Location) {
     console.log(location._id);
-    this.dialog.open(NewLocationComponent);
   }
 }
