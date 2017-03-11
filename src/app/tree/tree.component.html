@@ -4,6 +4,6 @@
         <div class="add" (click)="addLocation(currentLocation)">+</div>
     </div>
     <div class="child" *ngFor="let child of childLocations">
-        <tree-node [currentLocation]="child" (change)="deviceList($event)"></tree-node>
+        <tree-node [currentLocation]="child" (change)="deviceList($event)" (newLocationParent)="newLocation($event)"></tree-node>
     </div>
 </div>

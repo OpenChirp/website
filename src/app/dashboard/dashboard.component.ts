@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
   rootLocation: Location = null;
   errorMessage: string;
   devices: Array<Device> = [];
+  newLocationParent: Location = null;
 
   constructor(private locationService: LocationService) {
     document.getElementById("splash-nav").style.display = "none";
@@ -37,4 +38,7 @@ export class DashboardComponent implements OnInit {
     this.devices = event;
   }
 
+  newLocation(event) {
+    this.newLocationParent = event;
+  }
 }

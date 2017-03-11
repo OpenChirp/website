@@ -13,7 +13,8 @@
     <div *ngIf="rootLocation">
       <tree-node 
         [currentLocation]="rootLocation"
-        (change)="deviceList($event)"></tree-node>
+        (change)="deviceList($event)"
+        (newLocationParent)="newLocation($event)"></tree-node>
     </div>
   </div>
 
@@ -23,6 +24,9 @@
 
       <!-- Device List Component -->
       <device-list [devices]="devices"></device-list>
+
+      <!-- New Location -->
+      <new-location [parent]="newLocationParent"></new-location>
 
     </div>
   </div>

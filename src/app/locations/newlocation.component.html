@@ -1,0 +1,28 @@
+<div class="new-location">
+  <md-card *ngIf="parent">
+    <h2>Create New Location for {{ parent.name }}</h2>
+    <hr>
+    <form>
+      <md-input-container>
+        <input mdInput 
+               placeholder="Location Name" 
+               [(ngModel)]="name" 
+               [ngModelOptions]="{standalone: true}">
+      </md-input-container>
+      <md-input-container>
+        <input mdInput 
+               placeholder="Type" 
+               [(ngModel)]="name" 
+               [ngModelOptions]="{standalone: true}">
+      </md-input-container>
+      <md-select placeholder="Type">
+        <md-option *ngFor="let t of types" [value]="t.value">
+          {{ t.viewValue }}
+        </md-option>
+      </md-select>
+      <br>
+      <button md-button type="submit">Add Location</button>
+      <button md-button type="submit" (click)="cancel()">Cancel</button>
+    </form>
+  </md-card>
+</div>

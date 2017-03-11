@@ -12,6 +12,8 @@ import { Device } from '../resources/device';
 export class TreeNodeComponent {
   @Input() currentLocation: Location;
   @Output() change: EventEmitter<Array<Device>> = new EventEmitter<Array<Device>>();
+  @Output() newLocationParent: EventEmitter<Location> = new EventEmitter<Location>();
+
   childLocations: Array<Location> = [];
   errorMesssage: string;
   devices: Array<Device> = [];
@@ -69,7 +71,12 @@ export class TreeNodeComponent {
     this.change.emit(this.devices);
   }
 
+  newLocation(event) {
+    this.newLocationParent.emit(event);
+  }
+
   addLocation(location: Location) {
     console.log(location._id);
+    this.newLocationParent.emit(location);
   }
 }
