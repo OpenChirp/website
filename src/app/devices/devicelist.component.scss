@@ -1,0 +1,34 @@
+.device-list {
+  md-card {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: white;
+    hr {
+      margin: 0;
+    }
+    .table-header {
+      height: 40px;
+      line-height: 40px;
+      div {
+        width: 50%;
+        float: left;
+        color: #909090;
+      }
+      p {
+        margin: 0;
+      }
+    }
+    .devices {
+      height: 40px;
+      line-height: 40px;
+      div {
+        color: #606060;
+        width: 50%;
+        float: left;
+      }
+      p {
+        margin: 0;
+      }
+    }
+  }
+}

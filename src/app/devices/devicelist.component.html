@@ -1,0 +1,17 @@
+<div class="device-list" *ngIf="devices.length != 0">
+
+  <md-card>
+    <h2>Devices</h2>
+    <div class="table-header">
+      <div><p>Device Name</p></div>
+      <div><p>Device Type</p></div>
+    </div>
+    <hr>
+    <div *ngFor="let device of devices" class="devices">
+      <div><p>{{ device.name }}</p></div>
+      <div><p>{{ device.type }}</p></div>
+      <hr>
+    </div>
+  </md-card>
+
+</div>

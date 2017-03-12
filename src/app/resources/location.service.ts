@@ -32,7 +32,14 @@ export class LocationService {
 
   // Delete location
   deleteLocationById(id: string) {
-    this.http.delete(this.locationUrl + "/" + id)
+    return this.http.delete(this.locationUrl + "/" + id)
+             .map(this.extractData)
+             .catch(this.handleError);
+  }
+
+  // Add location
+  addLocationByParentId(id: string, body: any) {
+    return this.http.post(this.locationUrl + "/" + id, body)
              .map(this.extractData)
              .catch(this.handleError);
   }

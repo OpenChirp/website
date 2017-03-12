@@ -12,12 +12,15 @@ import { Device } from '../resources/device';
 export class TreeNodeComponent {
   @Input() currentLocation: Location;
   @Output() change: EventEmitter<Array<Device>> = new EventEmitter<Array<Device>>();
+  @Output() newLocationParent: EventEmitter<Location> = new EventEmitter<Location>();
+
   childLocations: Array<Location> = [];
   errorMesssage: string;
   devices: Array<Device> = [];
+  showChildren: boolean = false;
 
   constructor(private locationService: LocationService) {
-      
+    
   }
 
   getChildren(curLocation: Location) {
@@ -51,9 +54,28 @@ export class TreeNodeComponent {
     this.devices = [];
     this.change.emit(this.devices);
   }
+  
+  toggleChildren(curLocation: Location) {
+    if (this.showChildren) {
+      this.clearChildren();
+      this.showChildren = false;
+    }
+    else {
+      this.getChildren(curLocation);
+      this.showChildren = true;
+    }
+  }
 
   deviceList(event) {
     this.devices = event;
     this.change.emit(this.devices);
+  }
+
+  newLocation(event) {
+    this.newLocationParent.emit(event);
+  }
+
+  addLocation(location: Location) {
+    this.newLocationParent.emit(location);
   }
 }

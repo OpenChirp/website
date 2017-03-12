@@ -23,7 +23,6 @@ export class LoginComponent {
     if (this.username != "") {
       if (this.password == this.username) {
         this.router.navigate(['/dashboard']);
-        console.log("Logging in...");
       }
       else {
         this.error = "WRONG PASSWORD";

@@ -13,6 +13,8 @@ import { SplashComponent } from './splash/splash.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PageNotFoundComponent } from './404/pagenotfound.component';
 import { TreeNodeComponent } from './tree/tree.component';
+import { DeviceListComponent } from './devices/devicelist.component';
+import { NewLocationComponent } from './locations/newlocation.component';
 
 // Services
 import { LocationService } from './resources/location.service';
@@ -31,7 +33,9 @@ const appRoutes: Routes = [
     SplashComponent,
     DashboardComponent,
     PageNotFoundComponent,
-    TreeNodeComponent
+    TreeNodeComponent,
+    DeviceListComponent,
+    NewLocationComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +48,9 @@ const appRoutes: Routes = [
   ],
   providers: [
     LocationService
+  ],
+  entryComponents: [
+    NewLocationComponent
   ],
   bootstrap: [AppComponent]
 })
