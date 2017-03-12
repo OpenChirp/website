@@ -76,7 +76,6 @@ export class TreeNodeComponent {
   }
 
   addLocation(location: Location) {
-    console.log(location._id);
     this.newLocationParent.emit(location);
   }
 }
