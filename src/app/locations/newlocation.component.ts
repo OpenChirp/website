@@ -28,11 +28,14 @@ export class NewLocationComponent {
           "type": this.type,
           "children": this.children
         };
-        console.log(body);
         this.locationService
           .addLocationByParentId(this.parent._id, body)
           .subscribe(
-            result => console.log(result),
+            result => {
+              this.parent = null;
+              this.name = "";
+              this.type = "";
+            },
             error => this.errorMessage = error
           );
       }
@@ -47,6 +50,8 @@ export class NewLocationComponent {
   }
 
   cancel() {
+    this.name = "";
+    this.type = "";
     this.parent = null;
   }
 }

@@ -25,15 +25,14 @@ export class TreeNodeComponent {
 
   getChildren(curLocation: Location) {
     let children = curLocation.children;
-    if (this.childLocations.length == 0) {
-      for (var i = 0; i < children.length; i++) {
-        this.locationService
-          .getLocationById(children[i])
-          .subscribe(
-            result => this.childLocations.push(result),
-            error => this.errorMesssage = error
-          );
-      }
+    this.childLocations = [];
+    for (var i = 0; i < children.length; i++) {
+      this.locationService
+        .getLocationById(children[i])
+        .subscribe(
+          result => this.childLocations.push(result),
+          error => this.errorMesssage = error
+        );
     }
     this.devices = [];
     this.locationService.getDeviceByLocationId(curLocation._id).subscribe(
@@ -77,5 +76,16 @@ export class TreeNodeComponent {
 
   addLocation(location: Location) {
     this.newLocationParent.emit(location);
+  }
+
+  deleteLocation(location: Location) {
+    if (location.children.length == 0) {
+      this.locationService
+        .deleteLocationById(location._id)
+        .subscribe(
+          result => console.log(result),
+          error => console.log(error)
+        );
+    }
   }
 }
