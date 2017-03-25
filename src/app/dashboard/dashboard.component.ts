@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
     this.locationService
       .getRootLocation()
       .subscribe(
-        result => this.rootLocation = (result[0]), 
+        result => this.rootLocation = (result[0]),
         error => this.errorMessage = error
       );
   }
