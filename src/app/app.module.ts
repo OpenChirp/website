@@ -8,6 +8,7 @@ import 'hammerjs';
 
 // Components
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { SplashComponent } from './splash/splash.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -19,13 +20,6 @@ import { DeviceComponent } from './devices/device.component';
 
 // Services
 import { LocationService } from './resources/location.service';
-
-const appRoutes: Routes = [
-  { path: '', component: SplashComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: '**', component: PageNotFoundComponent }
-];
 
 @NgModule({
   declarations: [
@@ -46,7 +40,7 @@ const appRoutes: Routes = [
     JsonpModule,
     MaterialModule.forRoot(),
     MdInputModule,
-    RouterModule.forRoot(appRoutes),
+    AppRoutingModule
   ],
   providers: [
     LocationService

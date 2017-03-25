@@ -19,5 +19,5 @@ const dashboardRoutes: Routes = [
 })
 
 export class DashboardRoutingModule {
-
+  
 }
