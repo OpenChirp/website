@@ -20,8 +20,6 @@ export class DashboardComponent implements OnInit {
   newLocationParent: Location = null;
 
   constructor(private locationService: LocationService) {
-    document.getElementById("splash-nav").style.display = "none";
-    document.getElementById("splash-footer").style.display = "none";
     this.rootLocation = null;
   }
 

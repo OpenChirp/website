@@ -17,7 +17,7 @@ const appRoutes: Routes = [
     component: DashboardComponent,
     children: [
       {
-        path: 'device',
+        path: 'device/:id',
         component: DeviceComponent
       },
       {
