@@ -9,7 +9,6 @@ import 'hammerjs';
 // Components
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { LoginComponent } from './login/login.component';
 import { SplashComponent } from './splash/splash.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PageNotFoundComponent } from './404/pagenotfound.component';
@@ -24,7 +23,6 @@ import { LocationService } from './resources/location.service';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     SplashComponent,
     DashboardComponent,
     PageNotFoundComponent, 
