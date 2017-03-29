@@ -1,5 +1,37 @@
 <div class="device-info">
   <md-card *ngIf="device">
     <h2>Device Information for {{ device.name }}</h2>
+    <md-tab-group>
+      <md-tab label="Properties">
+        <div class="tab-content">
+          <p>
+            Name, type, enabled, pubsub.protocal, pubsub.endpoint, meta.
+            (Display as input, with update button)
+          </p>
+        </div>
+      </md-tab>
+      <md-tab label="Transducers">
+        <div class="tab-content">
+          <p>
+            name, unit, isActuable, properties.
+            (add, delete, update)
+          </p>
+        </div>
+      </md-tab>
+      <md-tab label="Commands">
+        <div class="tab-content">
+          <p>
+            To be implemented.
+          </p>
+        </div>
+      </md-tab>
+      <md-tab label="Services">
+        <div class="tab-content">
+          <p>
+            Add, update, delete.
+          </p>
+        </div>
+      </md-tab>
+    </md-tab-group>
   </md-card>
 </div>
