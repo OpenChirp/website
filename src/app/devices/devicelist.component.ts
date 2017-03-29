@@ -24,32 +24,12 @@ export class DeviceListComponent {
 
   ngOnInit() {
     this.locationId = this.route.snapshot.params['id'];
-    this.route.params.switchMap((params: Params) => params['id']).subscribe((lid: string) => console.log(lid));
-    
-    if (!this.isValidId(this.locationId)) {
-      this.router.navigate(['/dashboard']);
-    }
-    else {
-      this.getDevices(this.locationId);
-    }
-
-  }
-
-  // Check if location id is valid, and if there exist devices for the location
-  isValidId(id: string) {
-    return true;
-  }
-
-  getDevices(location_id: string) {
-    this.devices = [];
-    this.locationService.getDeviceByLocationId(location_id).subscribe(
-      result => {
-        for (var i = 0; i < result.length; i++) {
-          this.devices.push(result[i]);
-        }
-      },
-      error => this.errorMessage = error
-    );
+    this.route.params
+      .switchMap((params: Params) => this.locationService.getDeviceByLocationId(params['id']))
+      .subscribe(
+        result => this.devices = result,
+        error => this.router.navigate(['/dashboard'])
+      );
   }
 
 }

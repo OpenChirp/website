@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 
 import { LocationService } from '../resources/location.service';
 import { Location } from '../resources/location';
-import { Device } from '../resources/device';
 
 @Component({
   selector: 'tree-node',
@@ -13,12 +12,10 @@ import { Device } from '../resources/device';
 
 export class TreeNodeComponent {
   @Input() currentLocation: Location;
-  @Output() change: EventEmitter<Array<Device>> = new EventEmitter<Array<Device>>();
   @Output() newLocationParent: EventEmitter<Location> = new EventEmitter<Location>();
 
   childLocations: Array<Location> = [];
   errorMesssage: string;
-  devices: Array<Device> = [];
   showChildren: boolean = false;
 
   constructor(private locationService: LocationService, private router: Router) {
@@ -38,23 +35,8 @@ export class TreeNodeComponent {
     }
   }
 
-  getDevices(curLocation: Location) {
-    this.devices = [];
-    this.locationService.getDeviceByLocationId(curLocation._id).subscribe(
-      result => {
-        for (var i = 0; i < result.length; i++) {
-          this.devices.push(result[i]);
-        }
-        this.change.emit(this.devices);
-      },
-      error => this.errorMesssage = error
-    );
-  }
-
   clearChildren() {
     this.childLocations = [];
-    this.devices = [];
-    this.change.emit(this.devices);
   }
   
   toggleChildren(curLocation: Location) {
@@ -66,14 +48,7 @@ export class TreeNodeComponent {
       this.getChildren(curLocation);
       this.showChildren = true;
     }
-    this.getDevices(curLocation); // To delete
-
     this.router.navigate(['/dashboard/devices/', curLocation._id]);
-  }
-
-  deviceList(event) {
-    this.devices = event;
-    this.change.emit(this.devices);
   }
 
   newLocation(event) {
