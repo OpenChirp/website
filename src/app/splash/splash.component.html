@@ -1,33 +1,67 @@
 <div class="splash-page">
-  <div class="picture-section">
-    <div class="overlay">
 
-      <div class="picture-section-text">
-        <h1>{{title}} makes small inexpensive low-power sensors.</h1>
+  <!-- Toolbar -->
+  <md-toolbar id="splash-nav">
+    <a routerLink="/" class="logo-section"><span>{{title}}</span></a>
+    <span class="spacer"></span>
+    <div class="title-buttons">
+      <a md-button routerLink="/" routerLinkActive="active">About</a>
+      <a md-button routerLink="/" routerLinkActive="active">Contact</a>
+      <a md-raised-button class="login" routerLink="/dashboard" routerLinkActive="active">Login</a>
+    </div>
+  </md-toolbar>
+
+  <!-- Page content -->
+  <div class="page-wrap">
+    <!-- Splash Page Section -->
+    <div class="picture-section">
+      <div class="overlay">
+        <div class="picture-section-text">
+          <h1>{{title}} makes small inexpensive low-power sensors.</h1>
+        </div>
+      </div>
+    </div>
+
+    <!--About Section-->
+    <div class="about-section">
+      <div class="wrapper">
+        <a name="about"></a>
+        <h1>About {{title}}</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec lacinia nisl.
+          Vivamus lobortis nibh nunc, vitae efficitur tellus finibus eu. Etiam nec ultrices mi.
+          Cras imperdiet nisl a erat mattis blandit. In lorem odio, congue ut vestibulum id,
+          volutpat sed tellus. Proin volutpat semper ultricies. Maecenas scelerisque tellus
+          non neque ornare, quis cursus dui placerat.
+        </p>
+        <p>
+          Sed vel malesuada augue. Cras lorem libero, hendrerit in dignissim vel, pellentesque
+          in tortor. Aliquam id arcu dignissim arcu placerat convallis eget eu magna. Etiam
+          vel odio id velit porttitor commodo. Cras eget purus sit amet ante ultrices tincidunt.
+          Duis enim quam, accumsan quis metus tempus, porta suscipit sem. Suspendisse interdum
+          tellus non erat maximus, vitae posuere tortor dictum. Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Fusce elit metus, semper sit amet fringilla sed,
+          auctor eget ante. Quisque ac diam vitae ante imperdiet luctus sit amet id dolor.
+        </p>
       </div>
     </div>
   </div>
-  <!--About Section-->
-  <div class="about-section">
-    <div class="wrapper">
-      <a name="about"></a>
-       <h1>About {{title}}</h1>
-       <p>
-         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec lacinia nisl.
-         Vivamus lobortis nibh nunc, vitae efficitur tellus finibus eu. Etiam nec ultrices mi.
-         Cras imperdiet nisl a erat mattis blandit. In lorem odio, congue ut vestibulum id,
-         volutpat sed tellus. Proin volutpat semper ultricies. Maecenas scelerisque tellus
-         non neque ornare, quis cursus dui placerat.
-       </p>
-       <p>
-         Sed vel malesuada augue. Cras lorem libero, hendrerit in dignissim vel, pellentesque
-         in tortor. Aliquam id arcu dignissim arcu placerat convallis eget eu magna. Etiam
-         vel odio id velit porttitor commodo. Cras eget purus sit amet ante ultrices tincidunt.
-         Duis enim quam, accumsan quis metus tempus, porta suscipit sem. Suspendisse interdum
-         tellus non erat maximus, vitae posuere tortor dictum. Lorem ipsum dolor sit amet,
-         consectetur adipiscing elit. Fusce elit metus, semper sit amet fringilla sed,
-         auctor eget ante. Quisque ac diam vitae ante imperdiet luctus sit amet id dolor.
-       </p>
+
+  <!--Footer-->
+  <div class="footer" id="splash-footer">
+    <div class="footer-top">
+      <div class="wrapper">
+        <a name="contact"></a>
+        <h2>Contact us</h2>
+        <p>Email: john_doe@openchirp.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="wrapper">
+        <p>&copy; 2017 OpenChirp</p>
+      </div>
     </div>
   </div>
+
+
 </div>

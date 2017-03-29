@@ -3,6 +3,7 @@ export class Device {
     properties: string;
     type: string;
     enabled: boolean;
+    _id: string;
 
     constructor(name: string, properties: string, type: string, enabled: boolean) {
         this.name = name;

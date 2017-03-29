@@ -1,4 +1,4 @@
-<div class="device-list" *ngIf="devices.length != 0">
+<div class="device-list" >
 
   <md-card>
     <h2>Devices</h2>
@@ -7,11 +7,10 @@
       <div><p>Device Type</p></div>
     </div>
     <hr>
-    <div *ngFor="let device of devices" class="devices">
+    <div *ngFor="let device of devices" class="devices" (click)="gotoDevice(device._id)">
       <div><p>{{ device.name }}</p></div>
-      <div><p>{{ device.type }}</p></div>
-      <hr>
+      <div><p>{{ device.type || "NONE" }}</p></div>
     </div>
   </md-card>
-
+  
 </div>

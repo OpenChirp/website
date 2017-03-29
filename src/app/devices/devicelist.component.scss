@@ -21,6 +21,8 @@
     .devices {
       height: 40px;
       line-height: 40px;
+      cursor: pointer;
+      border-bottom: solid 1px #606060;
       div {
         color: #606060;
         width: 50%;
@@ -29,6 +31,9 @@
       p {
         margin: 0;
       }
+    }
+    .devices:hover {
+      background-color: #efefef;
     }
   }
 }

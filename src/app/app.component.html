@@ -1,34 +1,6 @@
 <div class="root-page">
 
-  <!-- Toolbar -->
-  <md-toolbar id="splash-nav">
-    <a routerLink="/" class="logo-section"><span>{{title}}</span></a>
-    <span class="spacer"></span>
-    <div class="title-buttons">
-      <a md-button routerLink="/" routerLinkActive="active">About</a>
-      <a md-button routerLink="/" routerLinkActive="active">Contact</a>
-      <a md-raised-button class="login" routerLink="/login" routerLinkActive="active">Login</a>
-    </div>
-  </md-toolbar>
-
   <!-- Router -->
-  <div class="page-wrap">
-    <router-outlet></router-outlet>
-  </div>
+  <router-outlet></router-outlet>
 
-  <!--Footer-->
-  <div class="footer" id="splash-footer">
-    <div class="footer-top">
-      <div class="wrapper">
-        <a name="contact"></a>
-        <h2>Contact us</h2>
-        <p>Email: john_doe@openchirp.com</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="wrapper">
-        <p>&copy; 2017 OpenChirp</p>
-      </div>
-    </div>
-  </div>
 </div>

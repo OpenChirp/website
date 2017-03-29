@@ -10,13 +10,14 @@
                [(ngModel)]="name" 
                [ngModelOptions]="{standalone: true}">
       </md-input-container>
+      <br>
       <md-input-container>
         <input mdInput 
                placeholder="Type" 
                [(ngModel)]="type" 
                [ngModelOptions]="{standalone: true}">
       </md-input-container>
-      <br>
+      <br><br>
       <button md-button type="submit" (click)="add()">Add Location</button>
       <button md-button (click)="cancel()">Cancel</button>
     </form>
