@@ -1,7 +1,7 @@
 <div class="device-list" >
 
-  <md-card>
-    <h2>Devices</h2>
+  <md-card *ngIf="location">
+    <h2>Devices of {{ location.name }}</h2>
     <div class="table-header">
       <div><p>Device Name</p></div>
       <div><p>Device Type</p></div>

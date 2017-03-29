@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { LocationService } from '../resources/location.service';
@@ -47,11 +47,25 @@ export class TreeNodeComponent {
       this.getChildren(curLocation);
       this.showChildren = true;
     }
-    this.router.navigate(['/dashboard/devices/', curLocation._id]);
+    this.toDevices(curLocation._id);
   }
 
   addLocation(location: Location) {
     this.router.navigate(['/dashboard/newlocation', location._id]);
+  }
+
+  toDevices(location_id: string) {
+    this.locationService.getDeviceByLocationId(location_id).subscribe(
+      result =>  {
+        if (result.length != 0) {
+          this.router.navigate(['/dashboard/devices/', location_id]);
+        }
+        else {
+          this.router.navigate(['/dashboard']);
+        }
+      },
+      error => this.errorMesssage = error
+    )
   }
 
   deleteLocation(location: Location) {
