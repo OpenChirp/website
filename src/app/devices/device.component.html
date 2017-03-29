@@ -4,10 +4,16 @@
     <md-tab-group>
       <md-tab label="Properties">
         <div class="tab-content">
-          <p>
-            Name, type, enabled, pubsub.protocal, pubsub.endpoint, meta.
-            (Display as input, with update button)
-          </p>
+          <p>Name: {{ device.name }}</p>
+          <hr>
+          <p>Type: {{ device.type }}</p>
+          <hr>
+          <p>Enabled: {{ device.enabled }}</p>
+          <hr>
+          <p>Protocol: {{ device.pubsub.protocol }}</p>
+          <hr>
+          <p>Endpoint: {{ device.pubsub.endpoint }}</p>
+          <hr>
         </div>
       </md-tab>
       <md-tab label="Transducers">

@@ -12,7 +12,7 @@ import { DeviceListComponent } from './devices/devicelist.component';
 const appRoutes: Routes = [
   { path: '', component: SplashComponent },
   { 
-    path: 'dashboard', 
+    path: 'home', 
     component: DashboardComponent,
     children: [
       {

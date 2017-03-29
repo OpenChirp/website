@@ -16,14 +16,14 @@ export class DeviceComponent {
   errorMessage: string = "";
 
   constructor(private route: ActivatedRoute, private router: Router, private deviceService: DeviceService) {
-    
+
   }
 
   ngOnInit() {
     this.route.params
       .switchMap((params: Params) => this.deviceService.getDeviceById(params['id']))
       .subscribe(
-        result => this.device = result, 
+        result => this.device = result,
         error => this.errorMessage = error
       );
   }
