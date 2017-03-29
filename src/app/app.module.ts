@@ -19,6 +19,7 @@ import { DeviceComponent } from './devices/device.component';
 
 // Services
 import { LocationService } from './resources/location.service';
+import { DeviceService } from './resources/device.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { LocationService } from './resources/location.service';
     AppRoutingModule
   ],
   providers: [
-    LocationService
+    LocationService,
+    DeviceService
   ],
   entryComponents: [
     NewLocationComponent

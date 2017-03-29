@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
@@ -33,6 +33,10 @@ export class DeviceListComponent {
         },
         error => this.router.navigate(['/dashboard'])
       );
+  }
+
+  gotoDevice(id: string) {
+    this.router.navigate(['/dashboard/device/', id]);
   }
 
 }

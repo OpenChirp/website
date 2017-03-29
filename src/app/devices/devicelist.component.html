@@ -7,10 +7,9 @@
       <div><p>Device Type</p></div>
     </div>
     <hr>
-    <div *ngFor="let device of devices" class="devices">
+    <div *ngFor="let device of devices" class="devices" (click)="gotoDevice(device._id)">
       <div><p>{{ device.name }}</p></div>
       <div><p>{{ device.type || "NONE" }}</p></div>
-      <hr>
     </div>
   </md-card>
   
