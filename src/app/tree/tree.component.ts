@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { LocationService } from '../resources/location.service';
 import { Location } from '../resources/location';
 import { Device } from '../resources/device';
@@ -19,7 +21,7 @@ export class TreeNodeComponent {
   devices: Array<Device> = [];
   showChildren: boolean = false;
 
-  constructor(private locationService: LocationService) {
+  constructor(private locationService: LocationService, private router: Router) {
     
   }
 
@@ -34,18 +36,19 @@ export class TreeNodeComponent {
           error => this.errorMesssage = error
         );
     }
+  }
+
+  getDevices(curLocation: Location) {
     this.devices = [];
     this.locationService.getDeviceByLocationId(curLocation._id).subscribe(
       result => {
         for (var i = 0; i < result.length; i++) {
-          var device = result[i];
-          this.devices.push(device);
+          this.devices.push(result[i]);
         }
         this.change.emit(this.devices);
       },
       error => this.errorMesssage = error
     );
-  
   }
 
   clearChildren() {
@@ -63,6 +66,9 @@ export class TreeNodeComponent {
       this.getChildren(curLocation);
       this.showChildren = true;
     }
+    this.getDevices(curLocation); // To delete
+
+    this.router.navigate(['/dashboard/devices/', curLocation._id]);
   }
 
   deviceList(event) {

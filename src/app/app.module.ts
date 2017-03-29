@@ -25,7 +25,7 @@ import { LocationService } from './resources/location.service';
     AppComponent,
     SplashComponent,
     DashboardComponent,
-    PageNotFoundComponent, 
+    PageNotFoundComponent,
     TreeNodeComponent,
     DeviceListComponent,
     DeviceComponent,
