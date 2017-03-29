@@ -16,6 +16,7 @@ import { LocationService } from '../resources/location.service';
 export class DeviceListComponent {
   devices: Array<Device> = [];
   errorMessage = "";
+  location: Location = null;
 
   constructor(private route: ActivatedRoute, private router: Router, private locationService: LocationService) {
 
@@ -32,6 +33,12 @@ export class DeviceListComponent {
           }
         },
         error => this.router.navigate(['/dashboard'])
+      );
+    this.route.params
+      .switchMap((params: Params) => this.locationService.getLocationById(params['id']))
+      .subscribe(
+        result => this.location = result,
+        error => this.errorMessage = error
       );
   }
 
