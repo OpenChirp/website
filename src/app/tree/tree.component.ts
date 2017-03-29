@@ -12,7 +12,6 @@ import { Location } from '../resources/location';
 
 export class TreeNodeComponent {
   @Input() currentLocation: Location;
-  @Output() newLocationParent: EventEmitter<Location> = new EventEmitter<Location>();
 
   childLocations: Array<Location> = [];
   errorMesssage: string;
@@ -51,12 +50,8 @@ export class TreeNodeComponent {
     this.router.navigate(['/dashboard/devices/', curLocation._id]);
   }
 
-  newLocation(event) {
-    this.newLocationParent.emit(event);
-  }
-
   addLocation(location: Location) {
-    this.newLocationParent.emit(location);
+    this.router.navigate(['/dashboard/newlocation', location._id]);
   }
 
   deleteLocation(location: Location) {

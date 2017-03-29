@@ -15,7 +15,6 @@ import { LocationService } from '../resources/location.service';
 
 export class DeviceListComponent {
   devices: Array<Device> = [];
-  locationId = "";
   errorMessage = "";
 
   constructor(private route: ActivatedRoute, private router: Router, private locationService: LocationService) {
@@ -23,11 +22,15 @@ export class DeviceListComponent {
   }
 
   ngOnInit() {
-    this.locationId = this.route.snapshot.params['id'];
     this.route.params
       .switchMap((params: Params) => this.locationService.getDeviceByLocationId(params['id']))
       .subscribe(
-        result => this.devices = result,
+        result => {
+          this.devices = result;
+          if (this.devices.length == 0) {
+            this.router.navigate(['/dashboard']);
+          }
+        },
         error => this.router.navigate(['/dashboard'])
       );
   }

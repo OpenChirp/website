@@ -1,6 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { Location } from '../resources/location';
 import { MdInputModule } from '@angular/material';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import 'rxjs/add/operator/switchMap';
+
 import { LocationService } from '../resources/location.service';
 
 @Component({
@@ -10,14 +13,27 @@ import { LocationService } from '../resources/location.service';
 })
 
 export class NewLocationComponent {
-  @Input() parent: Location = null;
+  parent: Location = null;
   name: string = "";
   type: string = "";
   children: Array<string> = [];
   errorMessage: string = "";
+  private sub: any;
 
-  constructor(private locationService: LocationService) {
+  constructor(private locationService: LocationService, private route: ActivatedRoute, private router: Router) {
 
+  }
+
+  ngOnInit() {
+    this.route.params
+      .switchMap((params: Params) => this.locationService.getLocationById(params['id']))
+      .subscribe(
+        result => this.parent = result,
+        error => {
+          this.errorMessage = error;
+          this.router.navigate(['/dashboard']);
+        }
+      );
   }
 
   add() {
@@ -46,12 +62,10 @@ export class NewLocationComponent {
     else {
       this.errorMessage = "Name and type cannot be empty.";
     }
-
+    this.router.navigate(['/dashboard']);
   }
 
   cancel() {
-    this.name = "";
-    this.type = "";
-    this.parent = null;
+    this.router.navigate(['/dashboard']);
   }
 }
