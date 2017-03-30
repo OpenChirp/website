@@ -40,10 +40,14 @@
       </md-tab>
       <md-tab label="Transducers">
         <div class="tab-content">
-          <p>
-            name, unit, isActuable, properties.
-            (add, delete, update)
-          </p>
+          <div class="table-header">
+            <div><p>Name</p></div>
+            <div><p>Unit</p></div>
+          </div>
+          <div *ngFor="let transducer of device.transducers" class="transducers">
+            <div><p>{{ transducer.name }}</p></div>
+            <div><p>{{ transducer.unit }}</p></div>
+          </div>
         </div>
       </md-tab>
       <md-tab label="Commands">
