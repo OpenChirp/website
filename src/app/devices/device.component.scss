@@ -1,5 +1,14 @@
+@import '../constants';
+
 .device-info {
   md-card {
     background-color: white;
+  }
+  form {
+    md-input-container {
+      input {
+        width: 350px;
+      }
+    }
   }
 }

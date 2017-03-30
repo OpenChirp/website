@@ -4,16 +4,38 @@
     <md-tab-group>
       <md-tab label="Properties">
         <div class="tab-content">
-          <p>Name: {{ device.name }}</p>
-          <hr>
-          <p>Type: {{ device.type }}</p>
-          <hr>
-          <p>Enabled: {{ device.enabled }}</p>
-          <hr>
-          <p>Protocol: {{ device.pubsub.protocol }}</p>
-          <hr>
-          <p>Endpoint: {{ device.pubsub.endpoint }}</p>
-          <hr>
+          <form>
+            <md-input-container>
+              <input mdInput placeholder="Name" [(ngModel)]="device.name" name="device-name">
+            </md-input-container>
+            <br>
+            <div>
+              <p>Type (optional)</p>
+              <input type="radio" name="device-type" value="LORA" [(ngModel)]="device.type"> LORA
+              <input type="radio" name="device-type" value="TWIST" [(ngModel)]="device.type"> TWIST
+              <input type="radio" name="device-type" value="FIREFLY" [(ngModel)]="device.type"> FIREFLY
+              <input type="radio" name="device-type" value="BOSCH_XDK" [(ngModel)]="device.type">BOSCH_XDK        
+            </div>
+            <br>
+            <div>
+              <p>Enabled</p>
+              <input type="radio" name="device-enabled" [value]="true" [(ngModel)]="device.enabled">True
+              <input type="radio" name="device-enabled" [value]="false" [(ngModel)]="device.enabled">False
+            </div>
+            <br>
+            <md-input-container>
+              <input mdInput placeholder="Protocol" [(ngModel)]="device.pubsub.protocol" name="device-protocol">
+            </md-input-container>
+            <br>
+            <md-input-container>
+              <input mdInput placeholder="Endpoint" [(ngModel)]="device.pubsub.endpoint" name="device-endpoint">
+            </md-input-container>
+            <br>
+            <p class="error-message">{{ errorMessage }}</p>
+            <p class="success-message">{{ successMessage }}</p>
+            <button md-raised-button (click)="updateDevice()">Update</button>
+          </form>
+          
         </div>
       </md-tab>
       <md-tab label="Transducers">

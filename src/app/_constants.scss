@@ -4,3 +4,11 @@ $button-color: #3498db;
 $footer-height-top: 240px;
 $footer-height-bottom: 60px;
 $footer-height: $footer-height-bottom + $footer-height-top;
+
+.error-message {
+    color: red;
+}
+
+.success-message {
+    color: green;
+}
