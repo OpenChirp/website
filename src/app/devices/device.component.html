@@ -23,13 +23,8 @@
               <input type="radio" name="device-enabled" [value]="false" [(ngModel)]="device.enabled">False
             </div>
             <br>
-            <md-input-container>
-              <input mdInput placeholder="Protocol" [(ngModel)]="device.pubsub.protocol" name="device-protocol">
-            </md-input-container>
-            <br>
-            <md-input-container>
-              <input mdInput placeholder="Endpoint" [(ngModel)]="device.pubsub.endpoint" name="device-endpoint">
-            </md-input-container>
+            <p>Protocol: {{ device.pubsub.protocol }}</p>
+            <p>Endpoint: {{ device.pubsub.endpoint }}</p>
             <br>
             <p class="error-message">{{ errorMessage }}</p>
             <p class="success-message">{{ successMessage }}</p>
