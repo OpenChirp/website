@@ -51,17 +51,17 @@ export class TreeNodeComponent {
   }
 
   addLocation(location: Location) {
-    this.router.navigate(['/dashboard/newlocation', location._id]);
+    this.router.navigate(['/home/newlocation', location._id]);
   }
 
   toDevices(location_id: string) {
     this.locationService.getDeviceByLocationId(location_id).subscribe(
       result =>  {
         if (result.length != 0) {
-          this.router.navigate(['/dashboard/devices/', location_id]);
+          this.router.navigate(['/home/devices/', location_id]);
         }
         else {
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/home']);
         }
       },
       error => this.errorMesssage = error

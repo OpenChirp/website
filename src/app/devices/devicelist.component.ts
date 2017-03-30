@@ -29,10 +29,10 @@ export class DeviceListComponent {
         result => {
           this.devices = result;
           if (this.devices.length == 0) {
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/home']);
           }
         },
-        error => this.router.navigate(['/dashboard'])
+        error => this.router.navigate(['/home'])
       );
     this.route.params
       .switchMap((params: Params) => this.locationService.getLocationById(params['id']))
@@ -43,7 +43,7 @@ export class DeviceListComponent {
   }
 
   gotoDevice(id: string) {
-    this.router.navigate(['/dashboard/device/', id]);
+    this.router.navigate(['/home/device/', id]);
   }
 
 }

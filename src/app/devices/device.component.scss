@@ -1,5 +1,40 @@
+@import '../constants';
+
 .device-info {
   md-card {
     background-color: white;
+  }
+  form {
+    md-input-container {
+      input {
+        width: 350px;
+      }
+    }
+  }
+
+  .table-header {
+    height: 40px;
+    line-height: 40px;
+    div {
+      width: 50%;
+      float: left;
+      color: #909090;
+    }
+    p {
+      margin: 0;
+    }
+  }
+  .transducers {
+    height: 40px;
+    line-height: 40px;
+    border-bottom: solid 1px #606060;
+    div {
+      color: #606060;
+      width: 50%;
+      float: left;
+    }
+    p {
+      margin: 0;
+    }
   }
 }

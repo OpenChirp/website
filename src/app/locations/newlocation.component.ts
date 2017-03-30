@@ -31,7 +31,7 @@ export class NewLocationComponent {
         result => this.parent = result,
         error => {
           this.errorMessage = error;
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/home']);
         }
       );
   }
@@ -62,10 +62,10 @@ export class NewLocationComponent {
     else {
       this.errorMessage = "Name and type cannot be empty.";
     }
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/home']);
   }
 
   cancel() {
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/home']);
   }
 }

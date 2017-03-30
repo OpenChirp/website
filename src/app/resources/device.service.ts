@@ -22,6 +22,13 @@ export class DeviceService {
                     .catch(this.handleError);
   }
 
+  // Update Device
+  updateDeviceById(device_id: string, body: any) {
+    return this.http.put(this.locationUrl + device_id, body)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
   private extractData(res: Response) {
     let body = res.json();
     return body || { };
