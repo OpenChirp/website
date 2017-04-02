@@ -22,8 +22,11 @@ $row-height: 50px;
   .table-header {
     height: $row-height;
     line-height: $row-height;
+    hr {
+      margin: 0;
+    }
     div {
-      width: 50%;
+      width: 33%;
       float: left;
       color: #909090;
     }
@@ -37,7 +40,7 @@ $row-height: 50px;
     border-bottom: solid 1px #909090;
     div {
       color: #606060;
-      width: 50%;
+      width: 33%;
       float: left;
     }
     p {

@@ -36,11 +36,14 @@
           <div class="table-header">
             <div><p>Name</p></div>
             <div><p>Unit</p></div>
+            <div><p>Actuable</p></div>
+            <br>
             <hr>
           </div>
           <div *ngFor="let transducer of device.transducers" class="transducers">
             <div><p>{{ transducer.name }}</p></div>
             <div><p>{{ transducer.unit }}</p></div>
+            <div><p>{{ transducer.is_actuable }}</p></div>
           </div>
         </div>
       </md-tab>
