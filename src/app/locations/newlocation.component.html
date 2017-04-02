@@ -3,7 +3,6 @@
     <h2>Create New Location for {{ parent.name }}</h2>
     <hr>
     <form>
-      <p class="error">{{ errorMessage }}</p>
       <md-input-container>
         <input mdInput 
                placeholder="Location Name" 
@@ -11,15 +10,14 @@
                [ngModelOptions]="{standalone: true}">
       </md-input-container>
       <br>
-      <md-input-container>
-        <input mdInput 
-               placeholder="Type" 
-               [(ngModel)]="type" 
-               [ngModelOptions]="{standalone: true}">
-      </md-input-container>
+      <md-select placeholder="Location Type" [(ngModel)]="type" name="location-type">
+        <md-option *ngFor="let locationType of locationTypes" [value]="locationType">
+          {{ locationType }}
+        </md-option>
+      </md-select>
       <br><br>
-      <button md-button type="submit" (click)="add()">Add Location</button>
-      <button md-button (click)="cancel()">Cancel</button>
+      <button md-raised-button type="submit" (click)="add()">Add Location</button>
+      <button md-raised-button (click)="cancel()">Cancel</button>
     </form>
   </md-card>
 </div>

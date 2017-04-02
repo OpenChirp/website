@@ -1,8 +1,15 @@
 @import '../constants';
+$row-height: 50px;
+
 
 .device-info {
   md-card {
     background-color: white;
+    md-tab-group {
+      .tab-content {
+        margin: 15px;
+      }
+    }
   }
   form {
     md-input-container {
@@ -13,8 +20,8 @@
   }
 
   .table-header {
-    height: 40px;
-    line-height: 40px;
+    height: $row-height;
+    line-height: $row-height;
     div {
       width: 50%;
       float: left;
@@ -25,9 +32,15 @@
     }
   }
   .transducers {
-    height: 40px;
-    line-height: 40px;
-    border-bottom: solid 1px #606060;
+    height: $row-height;
+    line-height: $row-height;
+    border-bottom: solid 1px #909090;
+    .tab-content {
+      hr {
+        color: #909090;
+        margin: 0;
+      }
+    }
     div {
       color: #606060;
       width: 50%;
