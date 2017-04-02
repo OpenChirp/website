@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { MdSnackBar } from '@angular/material';
 import 'rxjs/add/operator/switchMap';
 
 import { Device } from '../resources/device';
@@ -15,8 +16,9 @@ export class DeviceComponent {
   device: Device = null;
   errorMessage: string = "";
   successMessage: string="";
+  deviceTypes: Array<string> = ["LORA", "TWIST", "FIREFLY", "BOSCH_XDK"];
 
-  constructor(private route: ActivatedRoute, private router: Router, private deviceService: DeviceService) {
+  constructor(private route: ActivatedRoute, private router: Router, private deviceService: DeviceService, public snackBar: MdSnackBar) {
 
   }
 
@@ -33,10 +35,18 @@ export class DeviceComponent {
     this.deviceService.updateDeviceById(this.device._id, this.device).subscribe(
       result => {
         this.successMessage = "Updated!";
+        this.snackBar.open("Device: " + this.device.name, this.successMessage, {duration: 2000});
         this.router.navigate(['/home/device/', this.device._id]);
       },
-      error => this.errorMessage = error
+      error => {
+        this.errorMessage = error;
+        this.snackBar.open("Device: " + this.device.name, this.errorMessage, {duration: 2000});
+      }
     );
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {duration: 2000});
   }
 
 }

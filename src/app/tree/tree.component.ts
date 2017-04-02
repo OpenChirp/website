@@ -73,7 +73,10 @@ export class TreeNodeComponent {
       this.locationService
         .deleteLocationById(location._id)
         .subscribe(
-          result => console.log(result),
+          result => {
+            console.log(result);
+            
+          },
           error => console.log(error)
         );
     }
