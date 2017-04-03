@@ -29,6 +29,12 @@ export class DeviceService {
                     .catch(this.handleError);
   }
 
+  executeCommand(device_id: string, command_id: string) {
+    return this.http.post(this.locationUrl + device_id + "/command/" + command_id, {})
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
   private extractData(res: Response) {
     let body = res.json();
     return body || { };

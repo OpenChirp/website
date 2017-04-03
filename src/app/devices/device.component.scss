@@ -19,7 +19,7 @@ $row-height: 50px;
     }
   }
 
-  .table-header {
+  .table-header-transducer {
     height: $row-height;
     line-height: $row-height;
     hr {
@@ -34,13 +34,41 @@ $row-height: 50px;
       margin: 0;
     }
   }
-  .transducers {
+  .table-header-device {
+    height: $row-height;
+    line-height: $row-height;
+    hr {
+      margin: 0;
+    }
+    div {
+      width: 50%;
+      float: left;
+      color: #909090;
+    }
+    p {
+      margin: 0;
+    }
+  }
+  .transducer {
     height: $row-height;
     line-height: $row-height;
     border-bottom: solid 1px #909090;
     div {
       color: #606060;
       width: 33%;
+      float: left;
+    }
+    p {
+      margin: 0;
+    }
+  }
+  .device {
+    height: $row-height;
+    line-height: $row-height;
+    border-bottom: solid 1px #909090;
+    div {
+      color: #606060;
+      width: 50%;
       float: left;
     }
     p {

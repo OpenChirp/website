@@ -45,8 +45,15 @@ export class DeviceComponent {
     );
   }
 
-  openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {duration: 2000});
+  execute(command: any) {
+    this.deviceService.executeCommand(this.device._id, command._id).subscribe(
+      result => {
+        this.snackBar.open("Successfully Executed!", command.name, { duration: 2000 });
+      },
+      error => {
+        this.snackBar.open(error, command.name, { duration: 2000 });
+      }
+    );
   }
 
 }
