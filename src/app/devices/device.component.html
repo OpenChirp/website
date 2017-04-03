@@ -2,6 +2,8 @@
   <md-card *ngIf="device">
     <h2>Device Information for {{ device.name }}</h2>
     <md-tab-group>
+
+      <!-- Properties Tab -->
       <md-tab label="Properties">
         <div class="tab-content">
           <form>
@@ -27,29 +29,44 @@
             <p>Endpoint: {{ device.pubsub.endpoint }}</p>
             <button md-raised-button (click)="updateDevice()">Update</button>
           </form>
-          
         </div>
       </md-tab>
-      <md-tab label="transducers">
+
+      <!-- Transducers Tab -->
+      <md-tab label="Transducers">
         <div class="tab-content">
-          <div class="table-header">
+          <div class="table-header-transducer">
             <div><p>Name</p></div>
             <div><p>Unit</p></div>
+            <div><p>Actuable</p></div>
+            <br>
             <hr>
           </div>
-          <div *ngFor="let transducer of device.transducers" class="transducers">
+          <div *ngFor="let transducer of device.transducers" class="transducer">
             <div><p>{{ transducer.name }}</p></div>
             <div><p>{{ transducer.unit }}</p></div>
+            <div><p>{{ transducer.is_actuable }}</p></div>
           </div>
         </div>
       </md-tab>
+
+      <!-- Commands Tab -->
       <md-tab label="Commands">
         <div class="tab-content">
-          <p>
-            To be implemented.
-          </p>
+          <div class="table-header-device">
+            <div><p>Command</p></div>
+            <div><p>Execute</p></div>
+            <br>
+            <hr>
+          </div>
+          <div *ngFor="let command of device.commands" class="device">
+            <div><p>{{ command.name }}</p></div>
+            <div><button md-raised-button (click)="execute(command)">Execute</button></div>
+          </div>
         </div>
       </md-tab>
+
+      <!-- Services Tab -->
       <md-tab label="Services">
         <div class="tab-content">
           <p>
@@ -57,6 +74,7 @@
           </p>
         </div>
       </md-tab>
+
     </md-tab-group>
   </md-card>
 </div>
