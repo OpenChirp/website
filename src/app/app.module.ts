@@ -16,6 +16,7 @@ import { TreeNodeComponent } from './tree/tree.component';
 import { DeviceListComponent } from './devices/devicelist.component';
 import { NewLocationComponent } from './locations/newlocation.component';
 import { DeviceComponent } from './devices/device.component'; 
+import { DashboardMainComponent } from './dashboard/dashboard-main.component';
 
 // Services
 import { LocationService } from './resources/location.service';
@@ -26,6 +27,7 @@ import { DeviceService } from './resources/device.service';
     AppComponent,
     SplashComponent,
     DashboardComponent,
+    DashboardMainComponent,
     PageNotFoundComponent,
     TreeNodeComponent,
     DeviceListComponent,

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { SplashComponent } from './splash/splash.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardMainComponent } from './dashboard/dashboard-main.component';
 import { PageNotFoundComponent } from './404/pagenotfound.component';
 import { NewLocationComponent } from './locations/newlocation.component';
 
@@ -15,6 +16,10 @@ const appRoutes: Routes = [
     path: 'home', 
     component: DashboardComponent,
     children: [
+      {
+        path: '',
+        component: DashboardMainComponent
+      },
       {
         path: 'device/:id',
         component: DeviceComponent
