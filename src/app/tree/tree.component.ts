@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { MdDialog, MdDialogRef, MdSnackBar } from '@angular/material';
 
 import { LocationService } from '../resources/location.service';
 import { Location } from '../resources/location';
@@ -17,7 +18,7 @@ export class TreeNodeComponent {
   errorMesssage: string;
   showChildren: boolean = false;
 
-  constructor(private locationService: LocationService, private router: Router) {
+  constructor(private locationService: LocationService, private router: Router, public dialog: MdDialog, public snackBar: MdSnackBar) {
     
   }
 
@@ -69,16 +70,34 @@ export class TreeNodeComponent {
   }
 
   deleteLocation(location: Location) {
-    if (location.children.length == 0) {
-      this.locationService
-        .deleteLocationById(location._id)
-        .subscribe(
-          result => {
-            console.log(result);
-            
-          },
-          error => console.log(error)
-        );
-    }
+    let dialogRef = this.dialog.open(DeleteLocationDialog);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.locationService
+          .deleteLocationById(location._id)
+          .subscribe(
+            res => {
+              this.snackBar.open("Delete location success!", location.name, { duration: 2000 });
+            },
+            err => {
+              this.snackBar.open(err, location.name, { duration: 2000 });
+            }
+          )
+      }
+    });
+  }
+}
+
+@Component({
+  selector: 'delete-location-dialog',
+  template: `
+    <h2>Confirmation of Deletion</h2>
+    <button md-raised-button (click)="dialogRef.close(true)">Delete</button>
+    <button md-raised-button (click)="dialogRef.close(false)">Cancel</button>
+  `
+})
+export class DeleteLocationDialog {
+  constructor(public dialogRef: MdDialogRef<DeleteLocationDialog>) {
+
   }
 }
