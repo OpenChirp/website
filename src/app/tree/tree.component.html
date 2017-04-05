@@ -1,16 +1,8 @@
 <div class="tree-node" *ngIf="currentLocation">
   <div class="button">
-    <div class="name" (click)="toggleChildren(currentLocation)">
-      <p>{{ currentLocation.name }}</p>
-    </div>
-    
-    <div class="add" (click)="deleteLocation(currentLocation)" *ngIf="currentLocation.children.length == 0">
-      <p>x</p>
-    </div>
-
-    <div class="add" (click)="addLocation(currentLocation)">
-      <p>+</p>
-    </div>
+    <p class="name" (click)="toggleChildren(currentLocation)">{{ currentLocation.name }}</p>
+    <md-icon (click)="deleteLocation(currentLocation)" *ngIf="currentLocation.children.length == 0">delete</md-icon>
+    <md-icon (click)="addLocation(currentLocation)">add</md-icon>
   </div>
   <div class="child" *ngFor="let child of childLocations">
     <tree-node [currentLocation]="child"></tree-node>

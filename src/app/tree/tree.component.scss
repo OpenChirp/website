@@ -2,52 +2,41 @@ $dashboard-toolbar-color: #424242;
 $background-color: #efefef;
 $side-nav-color: #2c3e50;
 $side-nav-width: 240px;
+$button-height: 40px;
+$hover-color: #607d8b;
 
 .tree-node {
   .button {
-    height: 40px;
+    height: $button-height;
     border-left: 0;
     border-right: 0;
-    border-bottom: solid 1px #607d8b;
+    border-bottom: solid 1px $hover-color;
     background-color: $side-nav-color;
     color: $background-color;
     outline: none;
     box-shadow: none;
     text-align: left;
-    line-height: 40px;
+    line-height: $button-height;
     padding-right: 15px;
     padding-left: 15px;
-    .name {
-      width: 120px;
-      float:left;
+    md-icon {
+      float: right;
+      line-height: $button-height;
+      cursor: pointer;
       transition-duration: 0.3s;
     }
-    .close {
-      width: 20px;
-      float: right;
-      transition-duration: 0.3s;
-    }
-    .add {
-      width: 20px;
-      float: right;
+    md-icon:hover {
+      color: $hover-color;
       transition-duration: 0.3s;
     }
     p {
+      float:left;
+      transition-duration: 0.3s;
       margin: 0;
     }
   }
   .name:hover {
-    color: #607d8b;
-    cursor: pointer;
-    transition-duration: 0.5s;
-  }
-  .close:hover {
-    color: #607d8b;
-    cursor: pointer;
-    transition-duration: 0.5s;
-  }
-  .add:hover {
-    color: #607d8b;
+    color: $hover-color;
     cursor: pointer;
     transition-duration: 0.5s;
   }
