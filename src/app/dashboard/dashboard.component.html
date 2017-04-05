@@ -2,30 +2,27 @@
 
   <!-- Dashboard Top Toolbar -->
   <md-toolbar>
-    {{title}}
+    <md-icon (click)="sidenav.toggle()">menu</md-icon>
+    <p>{{title}}</p>
     <div class="toolbar-content">
       {{username}}
     </div>
   </md-toolbar>
 
-  <!-- Dashboard Side Navigation bar -->
-  <div class="sidenav">
-    <div *ngIf="rootLocation">
-      <tree-node 
-        [currentLocation]="rootLocation"
-        (change)="deviceList($event)"
-        (newLocationParent)="newLocation($event)"></tree-node>
-    </div>
-  </div>
-
-  <!-- Dashboard Main View -->
-  <div class="main-content">
-    <div class="main-content-wrapper">
-
+  <md-sidenav-container>
+    <md-sidenav #sidenav mode="side" opened="true">
+      <!-- sidenav content -->
+      <div *ngIf="rootLocation">
+        <tree-node 
+          [currentLocation]="rootLocation"
+          (change)="deviceList($event)"
+          (newLocationParent)="newLocation($event)"></tree-node>
+      </div>
+    </md-sidenav>
+    <div class="page-content">
       <!-- Child Router -->
       <router-outlet></router-outlet>
-
     </div>
-  </div>
+  </md-sidenav-container>
 
 </div>
