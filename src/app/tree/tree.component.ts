@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { MdDialog, MdDialogRef, MdSnackBar } from '@angular/material';
 
@@ -13,6 +13,7 @@ import { Location } from '../resources/location';
 
 export class TreeNodeComponent {
   @Input() currentLocation: Location;
+  @Output() onDelete = new EventEmitter<boolean>();
 
   childLocations: Array<Location> = [];
   errorMesssage: string;
@@ -69,6 +70,10 @@ export class TreeNodeComponent {
     )
   }
 
+  deleteable() {
+    return this.currentLocation.children.length == 0;
+  }
+
   deleteLocation(location: Location) {
     let dialogRef = this.dialog.open(DeleteLocationDialog);
     dialogRef.afterClosed().subscribe(result => {
@@ -78,6 +83,7 @@ export class TreeNodeComponent {
           .subscribe(
             res => {
               this.snackBar.open("Delete location success!", location.name, { duration: 2000 });
+              this.onDelete.emit(true);
             },
             err => {
               this.snackBar.open(err, location.name, { duration: 2000 });
@@ -85,6 +91,14 @@ export class TreeNodeComponent {
           )
       }
     });
+  }
+
+  onDeleteChild(deleted: boolean) {
+    if (deleted) {
+      this.clearChildren();
+      this.getChildren(this.currentLocation);
+      this.showChildren = true;
+    }
   }
 }
 
