@@ -1,12 +1,18 @@
 <div class="splash-page">
 
   <!-- Toolbar -->
-  <md-toolbar id="splash-nav">
-    <a routerLink="/" class="logo-section"><span>{{title}}</span></a>
+  <md-toolbar [ngClass]="{'foo': !isScrolled, 'foobar': isScrolled}">
+    <a routerLink="/">
+      <div class="logo-section">
+        <span class="logo-text">{{title}}</span>
+      </div>
+    </a>
     <span class="spacer"></span>
     <div class="title-buttons">
-      <a md-button routerLink="/" routerLinkActive="active">About</a>
-      <a md-button routerLink="/" routerLinkActive="active">Contact</a>
+      <a md-button routerLink="/" fragment="about-section" routerLinkActive="active">About</a>
+      <a md-button routerLink="/" routerLinkActive="active">How It Works</a>
+      <a md-button routerLink="/" routerLinkActive="active">Technology</a>
+      <a md-button routerLink="/" routerLinkActive="active">Gallery</a>
       <a md-raised-button class="login" routerLink="/home" routerLinkActive="active">Login</a>
     </div>
     <div class="title-buttons-phone">
@@ -18,53 +24,86 @@
   <div class="page-wrap">
     <!-- Splash Page Section -->
     <div class="picture-section">
-      <div class="overlay">
-        <div class="picture-section-text">
-          <h1>{{title}} makes small inexpensive low-power sensors.</h1>
-        </div>
+      <div class="picture-section-text">
+        <h3>Next Generation <br> Low-Power Long-Range IoT</h3>
       </div>
     </div>
 
     <!--About Section-->
     <div class="about-section">
       <div class="wrapper">
-        <a name="about"></a>
-        <h1>About {{title}}</h1>
+        <!--<a name="about"></a>-->
+        <div class="section-text-line">
+          <h4 class="about-text">About</h4>
+        </div>
+        <h1>What is OpenChirp?</h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec lacinia nisl.
-          Vivamus lobortis nibh nunc, vitae efficitur tellus finibus eu. Etiam nec ultrices mi.
-          Cras imperdiet nisl a erat mattis blandit. In lorem odio, congue ut vestibulum id,
-          volutpat sed tellus. Proin volutpat semper ultricies. Maecenas scelerisque tellus
-          non neque ornare, quis cursus dui placerat.
-        </p>
-        <p>
-          Sed vel malesuada augue. Cras lorem libero, hendrerit in dignissim vel, pellentesque
-          in tortor. Aliquam id arcu dignissim arcu placerat convallis eget eu magna. Etiam
-          vel odio id velit porttitor commodo. Cras eget purus sit amet ante ultrices tincidunt.
-          Duis enim quam, accumsan quis metus tempus, porta suscipit sem. Suspendisse interdum
-          tellus non erat maximus, vitae posuere tortor dictum. Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Fusce elit metus, semper sit amet fringilla sed,
-          auctor eget ante. Quisque ac diam vitae ante imperdiet luctus sit amet id dolor.
+          Management layer on top of LoRaWAN that provides data <br>
+          context, storage, visualization, and access control. <br>
+          This is a web portal for registration, visualization, and sharing. <br>
+          LoRaWAN Network at CMU spanning most of Pittsburgh.
         </p>
       </div>
     </div>
-  </div>
 
-  <!--Footer-->
-  <div class="footer" id="splash-footer">
-    <div class="footer-top">
-      <div class="wrapper">
-        <a name="contact"></a>
-        <h2>Contact us</h2>
-        <p>Email: john_doe@openchirp.com</p>
+    <div class="flex-container">
+      <div class="flex-item">
+        <div class="iot-project"></div>
+        <p>
+          <strong>Your IoT Project</strong>
+        </p>
+        <p>
+          Contract-free, Secure, <br>
+          Battery Operated, Wireless <br>
+          Networking for your<br>
+          IoT project
+        </p>
+      </div>
+      <div class="flex-item">
+        <div class="community-driven"></div>
+        <p>
+          <strong> Community-driven </strong>
+        </p>
+        <p>
+          Create an open <br>
+          community-driven <br>
+          Network
+        </p>
+      </div>
+      <div class="flex-item">
+        <div class="empowering"></div>
+        <p><strong>Empowering All</strong></p>
+        <p>
+          Empower researchers, <br>
+          hobbyists, and citizen <br>
+          scientists
+        </p>
       </div>
     </div>
-    <div class="footer-bottom">
+
+    <!--How it Works-->
+    <div class="how-it-works">
       <div class="wrapper">
-        <p>&copy; 2017 OpenChirp</p>
+        <!--<div class="section-text-line">-->
+          <h4 align="right" class="how-text line">How It Works</h4>
+        <!--</div>-->
+      </div>
+      <div class="how-it-works-pic">
+        <div class="overlay">
+          <p>testing</p>
+        </div>
       </div>
     </div>
+
+
+
+    <!--Footer-->
+    <div class="footer" id="splash-footer">
+      <div class="wrapper">
+        <p>OpenChirp &copy; Copyright 2017</p>
+      </div>
+    </div>
+
+
   </div>
-
-
 </div>
