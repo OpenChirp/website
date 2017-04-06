@@ -1,3 +1,5 @@
+$row-height: 50px;
+
 .device-list {
   md-card {
     background-color: white;
@@ -5,8 +7,8 @@
       margin: 0;
     }
     .table-header {
-      height: 40px;
-      line-height: 40px;
+      height: $row-height;
+      line-height: $row-height;
       div {
         width: 50%;
         float: left;
@@ -17,8 +19,8 @@
       }
     }
     .devices {
-      height: 40px;
-      line-height: 40px;
+      height: $row-height;
+      line-height: $row-height;
       cursor: pointer;
       border-bottom: solid 1px #606060;
       div {

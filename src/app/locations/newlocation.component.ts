@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Location } from '../resources/location';
-import { MdInputModule } from '@angular/material';
+import { MdInputModule, MdSnackBar } from '@angular/material';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
@@ -18,9 +18,10 @@ export class NewLocationComponent {
   type: string = "";
   children: Array<string> = [];
   errorMessage: string = "";
+  locationTypes: Array<string> = ["INDOOR", "BUILDING"];
   private sub: any;
 
-  constructor(private locationService: LocationService, private route: ActivatedRoute, private router: Router) {
+  constructor(private locationService: LocationService, private route: ActivatedRoute, private router: Router, public snackBar: MdSnackBar) {
 
   }
 
@@ -38,31 +39,28 @@ export class NewLocationComponent {
 
   add() {
     if (this.name != "" && this.type != "") {
-      if (this.type == "BUILDING" || this.type == "INDOOR") {
-        var body = {
-          "name": this.name,
-          "type": this.type,
-          "children": this.children
-        };
-        this.locationService
-          .addLocationByParentId(this.parent._id, body)
-          .subscribe(
-            result => {
-              this.parent = null;
-              this.name = "";
-              this.type = "";
-            },
-            error => this.errorMessage = error
-          );
-      }
-      else {
-        this.errorMessage = "Type has to be INDOOR or BUILDING";
-      }
+      var body = {
+        "name": this.name,
+        "type": this.type,
+        "children": this.children
+      };
+      this.locationService
+        .addLocationByParentId(this.parent._id, body)
+        .subscribe(
+          result => {
+            this.snackBar.open("Add location: " + this.name, "SUCCESS", { duration: 2000 });
+            this.parent = null;
+          },
+          error => {
+            this.errorMessage = error;
+            this.snackBar.open(this.errorMessage, "ERROR", { duration: 2000 });
+          }
+        );
     }
     else {
       this.errorMessage = "Name and type cannot be empty.";
+      this.snackBar.open(this.errorMessage, "ERROR", { duration: 2000 });
     }
-    this.router.navigate(['/home']);
   }
 
   cancel() {

@@ -2,11 +2,25 @@ $dashboard-toolbar-color: #424242;
 $background-color: #efefef;
 $side-nav-color: #2c3e50;
 $side-nav-width: 240px;
+$toolbar-height: 64px;
 
 .dashboard {
+  height: 100%;
+
+  md-sidenav-container {
+    padding-top: $toolbar-height;
+    height: 100%;
+    md-sidenav {
+      width: $side-nav-width;
+      background-color: $side-nav-color;
+      padding-top: $toolbar-height;
+    }
+  }
+
   md-toolbar {
     background-color: $dashboard-toolbar-color;
     color: $background-color;
+    display: block;
     position: fixed;
     top:0;
     left: 0;
@@ -15,28 +29,19 @@ $side-nav-width: 240px;
       text-align: right;
       width: 100%;
     }
-  }
-  .sidenav {
-    position: fixed;
-    width: $side-nav-width;
-    height: 100vh;
-    background-color: $side-nav-color;
-    top:0;
-    left: 0;
-    z-index: 998;
-    padding-top: 80px;
-    color: $background-color;
-  }
-  .main-content {
-    background-color: $background-color;
-    margin:0;
-    h1 {
-        margin: 0;
+    md-icon {
+      margin-right: 10px;
+      cursor: pointer;
+      transition-duration: 0.3s;
     }
-    .main-content-wrapper {
-      padding-top: 80px;
-      padding-left: $side-nav-width + 15px;
-      padding-right: 15px;
+    md-icon:hover {
+      color: #909090;
+      transition-duration: 0.3s;
     }
   }
+
+  .page-content {
+    padding: 15px;
+  }
+
 }

@@ -1,8 +1,15 @@
 @import '../constants';
+$row-height: 50px;
+
 
 .device-info {
   md-card {
     background-color: white;
+    md-tab-group {
+      .tab-content {
+        margin: 15px;
+      }
+    }
   }
   form {
     md-input-container {
@@ -12,9 +19,27 @@
     }
   }
 
-  .table-header {
-    height: 40px;
-    line-height: 40px;
+  .table-header-transducer {
+    height: $row-height;
+    line-height: $row-height;
+    hr {
+      margin: 0;
+    }
+    div {
+      width: 33%;
+      float: left;
+      color: #909090;
+    }
+    p {
+      margin: 0;
+    }
+  }
+  .table-header-device {
+    height: $row-height;
+    line-height: $row-height;
+    hr {
+      margin: 0;
+    }
     div {
       width: 50%;
       float: left;
@@ -24,10 +49,23 @@
       margin: 0;
     }
   }
-  .transducers {
-    height: 40px;
-    line-height: 40px;
-    border-bottom: solid 1px #606060;
+  .transducer {
+    height: $row-height;
+    line-height: $row-height;
+    border-bottom: solid 1px #909090;
+    div {
+      color: #606060;
+      width: 33%;
+      float: left;
+    }
+    p {
+      margin: 0;
+    }
+  }
+  .device {
+    height: $row-height;
+    line-height: $row-height;
+    border-bottom: solid 1px #909090;
     div {
       color: #606060;
       width: 50%;

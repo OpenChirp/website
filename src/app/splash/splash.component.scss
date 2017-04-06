@@ -54,6 +54,9 @@
       content: url("../../assets/images/logo-square.png");
       width: 50%;
     }
+    .title-buttons-phone {
+      display: none;
+    }
   }
 
   .picture-section {
@@ -68,6 +71,7 @@
       position: absolute;
       font-size: 25px;
       width: 760px;
+<<<<<<< HEAD
       top: 25%;
       padding-left: 30px;
       padding-right: 30px;
@@ -99,6 +103,24 @@
       text-decoration: overline;
       width: 100px;
       border-top: 2px solid $text-color;
+
+      top: 40%;
+      left: 10%;
+      padding-left: 30px;
+      padding-right: 30px;
+      background-color: rgba(0, 0, 0, 0.5);
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+
+      h1 {
+        margin: 0;
+        padding: 25px;
+      }
+    }
+    .overlay {
+      height: 100%;
+      margin: 0;
+      padding: 30px;
+      background-color: rgba(255, 230, 230, 0.4);
     }
   }
 
@@ -182,9 +204,15 @@
 }
 
 @media screen and (max-width: 450px) {
-  md-toolbar {
-    .title-buttons {
-      display: none;
+  .splash-page {
+    md-toolbar {
+      .title-buttons {
+        display: none;
+      }
+      .title-buttons-phone {
+        display: block;
+      }
     }
   }
+
 }

@@ -1,6 +1,6 @@
 # OpenChirp Website
 
-This website is built using Angular 2.
+This website is built using Angular and Angular Material. It includes the splash page of OpenChirp, as well as the dashboard page.
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
@@ -24,4 +24,4 @@ Before running the tests make sure you are serving the app via `ng serve`.
 
 ## Deploying to GitHub Pages
 
-Run `ng github-pages:deploy` to deploy to GitHub Pages.
+Run `npm i -g angular-cli-ghpages` to install `angular-cli-ghpages`, then run `ng build --prod --base-href "https://USERNAME.github.io/REPOSITORY/"`, followed by `sudo ngh`. This will build the Angular app, and deploy to the gh-pages branch.
