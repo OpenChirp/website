@@ -12,8 +12,8 @@ import { DeviceListComponent } from './devices/devicelist.component';
 
 const appRoutes: Routes = [
   { path: '', component: SplashComponent },
-  { 
-    path: 'home', 
+  {
+    path: 'home',
     component: DashboardComponent,
     children: [
       {
@@ -25,21 +25,22 @@ const appRoutes: Routes = [
         component: DeviceComponent
       },
       {
-        path: 'devices/:id', 
+        path: 'devices/:id',
         component: DeviceListComponent
       },
       {
         path: 'newlocation/:id',
         component: NewLocationComponent
       }
-    ] 
+    ]
   },
   { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(appRoutes, { useHash: true })
+    RouterModule.forRoot(appRoutes, { })
+    // RouterModule.forRoot(appRoutes, { useHash: true })
   ],
   exports: [
     RouterModule

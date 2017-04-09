@@ -28,5 +28,3 @@ export class SplashComponent implements OnInit {
     }
   }
 }
-
-// this._router.navigate( ['/somepath', id ], {fragment: 'test'});
