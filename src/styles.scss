@@ -7,6 +7,15 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+@font-face {
+  font-family: Avenir-Heavy;
+  src: url("assets/fonts/avenir-heavy.ttf") format("truetype");
+}
+@font-face {
+  font-family: Avenir-Med;
+  src: url("assets/fonts/avenir-med.ttf") format("truetype");
+}
+
 html, body {
   height: 100%;
 }
@@ -16,18 +25,18 @@ body {
     background-color: #ffffff;
 }
 h1 {
-  color: #000080;
-  font-family: "Arial", sans-serif;
+  color: #444444;
+  font-family: "Avenir-Med", sans-serif;
   text-align: center;
 }
 h3 {
   color: #898787;
-  font-family: "Arial", sans-serif;
+  font-family: "Avenir-Heavy", sans-serif;
   text-align: center;
 }
 h4 {
-  color: #000080;
-  font-family: "Arial", sans-serif;
+  color: #3A7193;
+  font-family: "Avenir-Heavy", sans-serif;
   font-variant: all-small-caps;
   margin: 0;
   padding: 0;

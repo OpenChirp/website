@@ -10,7 +10,7 @@
     <span class="spacer"></span>
     <div class="title-buttons">
       <a href="#about" md-button>About</a>
-      <a md-button routerLink="/" routerLinkActive="active">How It Works</a>
+      <a href="#howitworks" md-button>How It Works</a>
       <a md-button routerLink="" routerLinkActive="active">Technology</a>
       <a md-button routerLink="" routerLinkActive="active">Gallery</a>
       <a md-raised-button class="login" routerLink="/home" routerLinkActive="active">Login</a>
@@ -30,21 +30,23 @@
     </div>
 
     <!--About Section-->
-    <div id="about">
+    <div id="about"></div>
     <div class="about-section">
       <div class="wrapper">
         <div class="section-text-line">
           <h4 class="about-text">About</h4>
         </div>
         <h1>What is OpenChirp?</h1>
-        <p>
-          Management layer on top of LoRaWAN that provides data <br>
-          context, storage, visualization, and access control. <br>
-          This is a web portal for registration, visualization, and sharing. <br>
-          LoRaWAN Network at CMU spanning most of Pittsburgh.
-        </p>
+        <div class="what-is-text">
+          <p align="center">
+            Management layer on top of LoRaWAN that provides data <br>
+            context, storage, visualization, and access control. <br>
+            This is a web portal for registration, visualization, and sharing. <br>
+            LoRaWAN Network at CMU spanning most of Pittsburgh.
+          </p>
+        </div>
       </div>
-    </div></div>
+    </div>
 
     <div class="flex-container">
       <div class="flex-item">
@@ -82,7 +84,7 @@
     </div>
 
     <!--How it Works-->
-    <a name="#howitworks"></a>
+    <div id="howitworks"></div>
     <div class="how-it-works">
       <div class="wrapper">
         <!--<div class="section-text-line">-->
@@ -96,6 +98,9 @@
       </div>
     </div>
 
+    <!--Technology-->
+
+    <!--Gallery-->
 
 
     <!--Footer-->

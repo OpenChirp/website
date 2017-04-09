@@ -33,6 +33,7 @@
     right: 0;
     color: #444444;
     text-align: right;
+    font-family: "Avenir-Heavy", sans-serif;
     font-variant: all-small-caps;
     margin: 0;
     transition: color .5s ease-out;
@@ -47,7 +48,7 @@
     }
     .logo-text {
       color: black;
-      font-family: "Arial", sans-serif;
+      font-family: "Avenir-Heavy", sans-serif;
     }
     .logo-section {
       color: #ffffff;
@@ -70,6 +71,7 @@
     .picture-section-text {
       position: absolute;
       font-size: 25px;
+      font-family: "Avenir-Med", sans-serif;
       width: 760px;
       top: 25%;
       padding-left: 30px;
@@ -94,15 +96,22 @@
 
     h4 {
       color: $text-color;
-      font-family: "Arial", sans-serif;
+      font-family: "Avenir-Heavy", sans-serif;
       font-variant: all-small-caps;
+    }
+  }
+
+  .what-is-text {
+    p {
+      color: #444444;
+      font-family: "Avenir-Med", sans-serif;
     }
   }
 
   .how-text {
     color: $text-color;
     background-color: transparent;
-    font-family: "Arial", sans-serif;
+    font-family: "Avenir-Heavy", sans-serif;
     font-variant: all-small-caps;
     margin-top: 10px;
     margin-right: 25px;
@@ -166,7 +175,7 @@
       content: url("../../assets/images/empowering icon.png");
     }
     p {
-      font-family: "Arial", sans-serif;
+      font-family: "Avenir-Med", sans-serif;
       text-align: center;
       color: #898787;
     }
