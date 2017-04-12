@@ -1,5 +1,5 @@
 import {Component, HostListener, Inject, OnInit} from '@angular/core';
-import { DOCUMENT } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/platform-browser'; 
 
 @Component({
   selector: 'app-splash',
@@ -12,7 +12,7 @@ export class SplashComponent implements OnInit {
   isScrolled = false;
   delta = 100;
 
-  constructor(@Inject(DOCUMENT) private doc: Document) {}
+  constructor(@Inject(DOCUMENT) private doc: any) {}
 
   ngOnInit() {}
 
