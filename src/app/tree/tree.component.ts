@@ -82,11 +82,11 @@ export class TreeNodeComponent {
           .deleteLocationById(location._id)
           .subscribe(
             res => {
-              this.snackBar.open("Delete location success!", location.name, { duration: 2000 });
+              this.snackBar.open(res.message, location.name, { duration: 2000 });
               this.onDelete.emit(true);
             },
             err => {
-              this.snackBar.open(err, location.name, { duration: 2000 });
+              this.snackBar.open(err.message, location.name, { duration: 2000 });
             }
           )
       }
