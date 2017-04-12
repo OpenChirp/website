@@ -52,8 +52,7 @@ export class NewLocationComponent {
             this.parent = null;
           },
           error => {
-            this.errorMessage = error;
-            this.snackBar.open(this.errorMessage, "ERROR", { duration: 2000 });
+            this.snackBar.open(error.message, this.name, { duration: 2000 });
           }
         );
     }

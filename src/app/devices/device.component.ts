@@ -27,7 +27,7 @@ export class DeviceComponent {
       .switchMap((params: Params) => this.deviceService.getDeviceById(params['id']))
       .subscribe(
         result => this.device = result,
-        error => this.errorMessage = error
+        error => this.errorMessage = error.message
       );
   }
 
@@ -35,12 +35,11 @@ export class DeviceComponent {
     this.deviceService.updateDeviceById(this.device._id, this.device).subscribe(
       result => {
         this.successMessage = "Updated!";
-        this.snackBar.open("Device: " + this.device.name, this.successMessage, {duration: 2000});
+        this.snackBar.open(this.successMessage, this.device.name, {duration: 2000});
         this.router.navigate(['/home/device/', this.device._id]);
       },
       error => {
-        this.errorMessage = error;
-        this.snackBar.open("Device: " + this.device.name, this.errorMessage, {duration: 2000});
+        this.snackBar.open(error.message, this.device.name, {duration: 2000});
       }
     );
   }
