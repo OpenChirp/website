@@ -85,13 +85,13 @@
   .section-text-line {
     text-decoration: overline;
     text-align: right;
-    width: 100px;
-    border-top: 2px solid $text-color;
+    width: 125px;
+    border-top: 3px solid $text-color;
   }
 
   .about-text {
     margin-top: 10px;
-    margin-right: 30px;
+    margin-right: 40px;
     background-color: transparent;
 
     h4 {
@@ -118,8 +118,8 @@
 
     .line {
       text-decoration: overline;
-      width: 100px;
-      border-top: 2px solid $text-color;
+      width: 150px;
+      border-top: 4px solid $text-color;
 
       top: 40%;
       left: 10%;
@@ -148,13 +148,10 @@
     background-position: center;
     background-size: 100% 100%;
     background-repeat: no-repeat;
-
   }
 
   .flex-container {
     width: 100%;
-    //padding: 0;
-    //margin: 0;
 
     display: inline-flex;
     align-items: center;
@@ -182,6 +179,112 @@
     strong {
       color: #444444;
     }
+  }
+
+  .tech-text {
+    margin-top: 10px;
+    margin-left: 25px;
+    background-color: transparent;
+
+    h4 {
+      color: $text-color;
+      font-family: "Avenir-Heavy", sans-serif;
+      font-variant: all-small-caps;
+      background-color: transparent;
+    }
+  }
+
+  .feat-container {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-wrap: wrap;
+  }
+
+  .feat-text {
+    p {
+      font-family: "Avenir-Heavy", sans-serif;
+      color: #444444;
+    }
+  }
+
+  .protobuf-icon {
+    padding: 5px;
+    margin: 50px 20px 50px 70px;
+
+    content: url("../../assets/images/protobuf-icon.png");
+  }
+
+  .cloud-icon {
+    padding: 5px;
+    margin: 50px 20px 50px 70px;
+
+    content: url("../../assets/images/cloud-icon.png");
+  }
+
+  .open-icon {
+    padding: 5px;
+    margin: 50px 20px 50px 70px;
+
+    content: url("../../assets/images/open-icon.png");
+  }
+
+  .rest-icon {
+    padding: 5px;
+    margin: 50px 20px 50px 50px;
+
+    content: url("../../assets/images/rest-icon.png");
+  }
+
+  .battery-icon {
+    padding: 5px;
+    margin: 50px 20px 50px 50px;
+
+    content: url("../../assets/images/battery-icon.png");
+  }
+
+  .intelligent-icon {
+    padding: 5px;
+    margin: 50px 20px 50px 50px;
+
+    content: url("../../assets/images/intelligent-icon.png");
+  }
+
+  .gallery-pic {
+    height: 100vh;
+    margin: 0;
+    background-image: url("../../assets/images/gallery-bg.png");
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+    .gallery-text {
+      position: absolute;
+      font-family: "Avenir-Heavy", sans-serif;
+      margin: 10% 10% 5% 65%;
+    }
+
+    button {
+      outline-color: $text-color;
+    }
+    .gallery-button {
+      background-color:  rgb(234,240,242);
+      font-family: "Avenir-Heavy", sans-serif;
+      font-variant: all-small-caps;
+      color: $black-text;
+      margin: 10% 35% 5% 35%;
+    }
+  }
+
+  .cmu-pic {
+    height: 100vh;
+    margin: 0;
+    background-image: url("../../assets/images/CMU.png");
+    background-position: center;
+    //background-size: 100% 100%;
+    background-repeat: no-repeat;
   }
 
   .footer {

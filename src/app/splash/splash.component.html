@@ -11,8 +11,8 @@
     <div class="title-buttons">
       <a href="#about" md-button>About</a>
       <a href="#howitworks" md-button>How It Works</a>
-      <a md-button routerLink="" routerLinkActive="active">Technology</a>
-      <a md-button routerLink="" routerLinkActive="active">Gallery</a>
+      <a href="#technology" md-button>Technology</a>
+      <a href="#gallery" md-button>Gallery</a>
       <a md-raised-button class="login" routerLink="/home" routerLinkActive="active">Login</a>
     </div>
     <div class="title-buttons-phone">
@@ -86,21 +86,75 @@
     <!--How it Works-->
     <div id="howitworks"></div>
     <div class="how-it-works">
+      <h4 align="right" class="how-text line">How It Works</h4>
+      <div class="how-it-works-pic"></div>
+    </div>
+
+    <!--Technology-->
+    <div id="technology"></div>
+    <div class="features">
       <div class="wrapper">
-        <!--<div class="section-text-line">-->
-          <h4 align="right" class="how-text line">How It Works</h4>
-        <!--</div>-->
+        <div class="section-text-line"></div>
+        <div class="tech-text">
+          <h4>Technology</h4>
+        </div>
       </div>
-      <div class="how-it-works-pic">
-        <div class="overlay">
-          <p>testing</p>
+        <h1 align="center">Features</h1>
+    </div>
+
+    <div class="feat-container">
+      <div class="protobuf-icon"></div>
+      <span class="feat-text">
+        <p>ProtoBuf serialization from <br>
+          end-device to cloud</p>
+      </span>
+
+      <div class="cloud-icon"></div>
+      <div class="feat-text">
+        <p>MQTT for scalable real-time<br>
+           publish subscribe</p>
+      </div>
+
+      <div class="open-icon"></div>
+      <div class="feat-text">
+        <p>Openly available gateway<br>
+           architecture</p>
+      </div>
+
+      <div class="rest-icon"></div>
+      <span class="feat-text">
+        <p>ReST interface for configuration<br>
+           and management</p>
+      </span>
+
+      <div class="battery-icon"></div>
+      <div class="feat-text">
+        <p>10 Year Battery-Life</p>
+      </div>
+
+      <div class="intelligent-icon"></div>
+      <div class="feat-text">
+        <p>Intelligent network<br>
+          management</p>
+      </div>
+    </div>
+
+    <!--Gallery-->
+    <div id="gallery"></div>
+    <div class="gallery-section">
+      <div class="gallery-pic">
+        <div class="gallery-text">
+          <h1>Take a Look at Some<br>
+              Behind the Scenes</h1>
+          <a md-button class="gallery-button">Gallery</a>
         </div>
       </div>
     </div>
 
-    <!--Technology-->
-
-    <!--Gallery-->
+    <!--Logos CMU/CyLab-->
+    <div class="cmu">
+      <div class="cmu-pic"></div>
+    </div>
 
 
     <!--Footer-->
