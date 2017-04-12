@@ -18,10 +18,10 @@
   .spacer {
     flex: 1 1 auto;
   }
-  .foo {
+  .pre-scroll {
     background-color: $toolbar-color;
   }
-  .foobar{
+  .post-scroll {
     background-color: $scrolled-bar-color;
   }
 
@@ -82,22 +82,35 @@
     }
   }
 
-  .section-text-line {
+  .section-text-line-left {
     text-decoration: overline;
-    text-align: right;
+    text-align: center;
     width: 125px;
     border-top: 3px solid $text-color;
-  }
-
-  .about-text {
-    margin-top: 10px;
-    margin-right: 40px;
-    background-color: transparent;
 
     h4 {
       color: $text-color;
       font-family: "Avenir-Heavy", sans-serif;
       font-variant: all-small-caps;
+      background-color: transparent;
+    }
+  }
+
+  .section-text-line-right {
+    text-decoration: overline;
+    position: absolute;
+
+    margin: 0 15% 30% 88%;
+
+    text-align: center;
+    width: 125px;
+    border-top: 3px solid $text-color;
+
+    h4 {
+      color: $text-color;
+      font-family: "Avenir-Heavy", sans-serif;
+      font-variant: all-small-caps;
+      background-color: transparent;
     }
   }
 
@@ -108,39 +121,6 @@
     }
   }
 
-  .how-text {
-    color: $text-color;
-    background-color: transparent;
-    font-family: "Avenir-Heavy", sans-serif;
-    font-variant: all-small-caps;
-    margin-top: 10px;
-    margin-right: 25px;
-
-    .line {
-      text-decoration: overline;
-      width: 150px;
-      border-top: 4px solid $text-color;
-
-      top: 40%;
-      left: 10%;
-      padding-left: 30px;
-      padding-right: 30px;
-      background-color: rgba(0, 0, 0, 0.5);
-      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-
-      h4 {
-        margin: 0;
-        padding: 25px;
-      }
-    }
-    .overlay {
-      height: 100%;
-      margin: 0;
-      padding: 30px;
-      background-color: rgba(255, 230, 230, 0.4);
-    }
-  }
-
   .how-it-works-pic {
     height: 100vh;
     margin: 0;
@@ -148,6 +128,31 @@
     background-position: center;
     background-size: 100% 100%;
     background-repeat: no-repeat;
+  }
+
+  .col-container {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+  }
+
+  .step1 {
+    content: url("../../assets/images/1.png");
+  }
+  .step2 {
+    content: url("../../assets/images/1.png");
+  }
+  .step3 {
+    content: url("../../assets/images/1.png");
+  }
+  .step4 {
+    content: url("../../assets/images/1.png");
+  }
+  .step5 {
+    content: url("../../assets/images/1.png");
   }
 
   .flex-container {
@@ -252,6 +257,19 @@
     content: url("../../assets/images/intelligent-icon.png");
   }
 
+  .gallery-title {
+    margin-top: 10px;
+    margin-right: 25px;
+    background-color: transparent;
+
+    h4 {
+      color: $text-color;
+      font-family: "Avenir-Heavy", sans-serif;
+      font-variant: all-small-caps;
+      background-color: transparent;
+    }
+  }
+
   .gallery-pic {
     height: 100vh;
     margin: 0;
@@ -283,7 +301,6 @@
     margin: 0;
     background-image: url("../../assets/images/CMU.png");
     background-position: center;
-    //background-size: 100% 100%;
     background-repeat: no-repeat;
   }
 
