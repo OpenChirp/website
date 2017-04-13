@@ -6,9 +6,10 @@ $row-height: 50px;
   md-card {
     background-color: white;
     md-tab-group {
-      .tab-content {
-        margin: 15px;
-      }
+      padding: 15px;
+    }
+    .tab-content {
+      padding: 15px;
     }
   }
   form {
@@ -26,7 +27,7 @@ $row-height: 50px;
       margin: 0;
     }
     div {
-      width: 33%;
+      width: 25%;
       float: left;
       color: #909090;
     }
@@ -34,14 +35,14 @@ $row-height: 50px;
       margin: 0;
     }
   }
-  .table-header-device {
+  .table-header-command {
     height: $row-height;
     line-height: $row-height;
     hr {
       margin: 0;
     }
     div {
-      width: 50%;
+      width: 25%;
       float: left;
       color: #909090;
     }
@@ -55,20 +56,20 @@ $row-height: 50px;
     border-bottom: solid 1px #909090;
     div {
       color: #606060;
-      width: 33%;
+      width: 25%;
       float: left;
     }
     p {
       margin: 0;
     }
   }
-  .device {
+  .command {
     height: $row-height;
     line-height: $row-height;
     border-bottom: solid 1px #909090;
     div {
       color: #606060;
-      width: 50%;
+      width: 25%;
       float: left;
     }
     p {

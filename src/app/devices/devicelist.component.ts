@@ -38,7 +38,7 @@ export class DeviceListComponent {
       .switchMap((params: Params) => this.locationService.getLocationById(params['id']))
       .subscribe(
         result => this.location = result,
-        error => this.errorMessage = error
+        error => this.errorMessage = error.message
       );
   }
 

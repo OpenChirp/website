@@ -3,6 +3,7 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/throw';
 import { Device } from './device';
 
 @Injectable()
@@ -29,8 +30,37 @@ export class DeviceService {
                     .catch(this.handleError);
   }
 
+  // Execute Command
   executeCommand(device_id: string, command_id: string) {
     return this.http.post(this.locationUrl + device_id + "/command/" + command_id, {})
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  // Add Command
+  addCommand(device_id: string, body: any) {
+    return this.http.post(this.locationUrl + device_id + "/command", body)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  // Delete Command
+  deleteCommand(device_id: string, command_id: string) {
+    return this.http.delete(this.locationUrl + device_id + "/command/" + command_id)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  // Add New Transducer
+  addTransducer(device_id: string, body: any) {
+    return this.http.post(this.locationUrl + device_id + "/transducer", body)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  // Delete Transducer
+  deleteTransducer(device_id: string, transducer_id: string) {
+    return this.http.delete(this.locationUrl + device_id + "/transducer/" + transducer_id)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
@@ -41,16 +71,24 @@ export class DeviceService {
   }
 
   private handleError (error: Response | any) {
-    // In a real world app, we might use a remote logging infrastructure
     let errMsg: string;
+    let err: any;
     if (error instanceof Response) {
       const body = error.json() || '';
-      const err = body.error || JSON.stringify(body);
-      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+      err = body.error || JSON.stringify(body);
+      errMsg = `${error.status} - ${err.message || ''} ${err}`;
     } else {
       errMsg = error.message ? error.message : error.toString();
+      err = error;
     }
     console.error(errMsg);
-    return Observable.throw(errMsg);
+    if (err.message) {
+      return Observable.throw(err);
+    }
+    else {
+      return Observable.throw({
+        message: error.statusText
+      });
+    }
   }
 }
