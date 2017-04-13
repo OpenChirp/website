@@ -46,14 +46,16 @@
     .login {
       background-color: $button-color;
     }
-    .logo-text {
-      color: black;
-      font-family: "Avenir-Heavy", sans-serif;
-    }
     .logo-section {
       color: #ffffff;
       content: url("../../assets/images/logo-square.png");
       width: 50%;
+      .logo-text {
+        h3 {
+          color: $black-text;
+          font-family: "Avenir-Heavy", sans-serif;
+        }
+      }
     }
     .title-buttons-phone {
       display: none;
@@ -337,13 +339,13 @@
     margin: 0;
     background-image: url("../../assets/images/gallery-bg.png");
     background-position: center;
-    background-size: 100% 100%;
+    background-size: 100% 80%;
     background-repeat: no-repeat;
 
     .gallery-text {
       position: absolute;
       font-family: "Avenir-Heavy", sans-serif;
-      margin: 10% 10% 5% 65%;
+      margin: 15% 10% 5% 65%;
     }
 
     button {
