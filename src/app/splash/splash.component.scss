@@ -205,24 +205,23 @@
   .flex-container {
     width: 100%;
 
-    display: inline-flex;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-around;
+  }
+
+  .whatis-col {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
   }
 
-  .flex-item {
-    padding: 5px;
-    margin: 50px;
-
-    .iot-project {
-      content: url("../../assets/images/IoT icon.png");
-    }
-    .community-driven {
-      content: url("../../assets/images/community icon.png");
-    }
-    .empowering {
-      content: url("../../assets/images/empowering icon.png");
-    }
+  .whatis-text{
+    margin: 0 10px 15px 0;
     p {
       font-family: "Avenir-Med", sans-serif;
       text-align: center;
@@ -231,6 +230,22 @@
     strong {
       color: #444444;
     }
+  }
+
+  .iot-project {
+    padding: 5px;
+    margin: 0 10px 15px 0;
+    content: url("../../assets/images/IoT icon.png");
+  }
+  .community-driven {
+    padding: 5px;
+    margin: 0 10px 15px 0;
+    content: url("../../assets/images/community icon.png");
+  }
+  .empowering {
+    padding: 5px;
+    margin: 0 10px 15px 0;
+    content: url("../../assets/images/empowering icon.png");
   }
 
   .tech-text {
