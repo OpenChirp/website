@@ -23,6 +23,11 @@ export class DeviceComponent {
   t_unit: string = "";
   t_actuable: boolean = false;
 
+  // New Command
+  c_name: string = "";
+  c_value: string = "";
+  c_transducer: any = null;
+
   constructor(private route: ActivatedRoute, private router: Router, private deviceService: DeviceService, public snackBar: MdSnackBar) {
 
   }
@@ -65,7 +70,7 @@ export class DeviceComponent {
   }
 
   newTransducer() {
-    if (this.t_name != "" || this.t_unit != "") {
+    if (this.t_name != "" && this.t_unit != "") {
       var body = {
         name: this.t_name,
         unit: this.t_unit,
@@ -97,6 +102,43 @@ export class DeviceComponent {
       },
       error => {
         this.snackBar.open(error.message, t_name, { duration: 2000 });
+      }
+    );
+  }
+
+  newCommand() {
+    if (this.c_name && this.c_value && this.c_transducer) {
+      var body = {
+        name: this.c_name,
+        transducer_id: this.c_transducer._id,
+        value: this.c_value
+      };
+      this.deviceService.addCommand(this.device._id, body).subscribe(
+        result => {
+          this.snackBar.open("Command Added!", this.c_name, { duration: 2000 });
+          this.c_name = "";
+          this.c_transducer = null;
+          this.c_value = "";
+          this.getDevice();
+        },
+        error => {
+          this.snackBar.open(error.message, this.c_name, { duration: 2000 });
+        }
+      );
+    }
+    else {
+      this.snackBar.open("Name/Value/Transducer cannot be empty!", "ERROR", { duration: 2000 });
+    }
+  }
+
+  deleteCommand(c_id: string, c_name: string) {
+    this.deviceService.deleteCommand(this.device._id, c_id).subscribe(
+      result => {
+        this.snackBar.open("Command Deleted!", c_name, { duration: 2000 });
+        this.getDevice();
+      },
+      error => {
+        this.snackBar.open(error.message, c_name, { duration: 2000 });
       }
     );
   }
