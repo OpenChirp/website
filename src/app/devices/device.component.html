@@ -73,15 +73,41 @@
       <!-- Commands Tab -->
       <md-tab label="Commands">
         <div class="tab-content">
-          <div class="table-header-device">
+          <div class="table-header-command">
             <div><p>Command</p></div>
+            <div><p>Value</p></div>
             <div><p>Execute</p></div>
+            <div><p>Add/Delete</p></div>
             <br>
             <hr>
           </div>
-          <div *ngFor="let command of device.commands" class="device">
+          <div *ngFor="let command of device.commands" class="command">
             <div><p>{{ command.name }}</p></div>
+            <div><p>{{ command.value }}</p></div>
             <div><button md-raised-button (click)="execute(command)">Execute</button></div>
+            <div><button md-raised-button (click)="deleteCommand(command._id, command.name)" color="warn">Delete</button></div>
+          </div>
+          <div class="command">
+            <div>
+              <md-input-container>
+                <input mdInput placeholder="Name" [(ngModel)]="c_name">
+              </md-input-container>
+            </div>
+            <div>
+              <md-input-container>
+                <input mdInput placeholder="Value" [(ngModel)]="c_value">
+              </md-input-container>
+            </div>
+            <div>
+              <md-select placeholder="Transducer" [(ngModel)]="c_transducer" name="transducer">
+                <md-option *ngFor="let transducer of device.transducers" [value]="transducer">
+                  {{ transducer.name }}
+                </md-option>
+              </md-select>
+            </div>
+            <div>
+              <button md-raised-button (click)="newCommand()">Add</button>
+            </div>
           </div>
         </div>
       </md-tab>

@@ -37,6 +37,20 @@ export class DeviceService {
                     .catch(this.handleError);
   }
 
+  // Add Command
+  addCommand(device_id: string, body: any) {
+    return this.http.post(this.locationUrl + device_id + "/command", body)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  // Delete Command
+  deleteCommand(device_id: string, command_id: string) {
+    return this.http.delete(this.locationUrl + device_id + "/command/" + command_id)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
   // Add New Transducer
   addTransducer(device_id: string, body: any) {
     return this.http.post(this.locationUrl + device_id + "/transducer", body)
