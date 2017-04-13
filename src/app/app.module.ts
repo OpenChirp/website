@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
@@ -42,6 +43,7 @@ import { DeviceService } from './resources/device.service';
     JsonpModule,
     MaterialModule.forRoot(),
     MdInputModule,
+    BrowserAnimationsModule,
     AppRoutingModule
   ],
   providers: [
