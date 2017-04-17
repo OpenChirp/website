@@ -2,30 +2,31 @@
 
 .splash-page {
 
+  h1 {
+    color: $black-text;
+    font-family: "Avenir-Med", sans-serif;
+    text-align: center;
+  }
+  h3 {
+    color: #898787;
+    font-family: "Avenir-Heavy", sans-serif;
+    text-align: center;
+  }
+  h4 {
+    color: #3A7193;
+    font-family: "Avenir-Heavy", sans-serif;
+    font-variant: all-small-caps;
+    margin: 0;
+    padding: 0;
+    background-color: #efefef;
+  }
+
   .page-wrap {
     min-height: 100%;
     /* equal to footer height */
     margin-bottom: -$footer-height;
   }
   background-color: #ffffff;
-  h1 {
-    color: #000080;
-    font-family: "Arial", sans-serif;
-    text-align: center;
-  }
-  h3 {
-    color: #000080;
-    font-family: "Arial", sans-serif;
-    text-align: center;
-  }
-  h4 {
-    color: #000080;
-    font-family: "Arial", sans-serif;
-    font-variant: all-small-caps;
-    margin: 0;
-    padding: 0;
-    background-color: #efefef;
-  }
 
   .spacer {
     flex: 1 1 auto;
@@ -242,6 +243,7 @@
       color: #898787;
     }
     strong {
+      font-family: "Avenir-Heavy", sans-serif;
       color: #444444;
     }
   }
