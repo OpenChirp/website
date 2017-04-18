@@ -21,12 +21,8 @@ export class SplashComponent implements OnInit {
     const number = this.doc.body.scrollTop;
     if (number > this.delta) {
       this.isScrolled = true;
-      console.log(this.isScrolled);
     } else if (this.isScrolled && number < 10) {
       this.isScrolled = false;
-      console.log(this.isScrolled);
     }
   }
 }
-
-// this._router.navigate( ['/somepath', id ], {fragment: 'test'});

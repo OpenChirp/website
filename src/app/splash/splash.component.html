@@ -1,18 +1,20 @@
 <div class="splash-page">
 
   <!-- Toolbar -->
-  <md-toolbar [ngClass]="{'foo': !isScrolled, 'foobar': isScrolled}">
+  <md-toolbar [ngClass]="{'pre-scroll': !isScrolled, 'post-scroll': isScrolled}">
     <a routerLink="/">
       <div class="logo-section">
-        <span class="logo-text">{{title}}</span>
+        <span class="logo-text">
+          <h3>{{title}}</h3>
+        </span>
       </div>
     </a>
     <span class="spacer"></span>
     <div class="title-buttons">
-      <a md-button routerLink="/" fragment="about-section" routerLinkActive="active">About</a>
-      <a md-button routerLink="/" routerLinkActive="active">How It Works</a>
-      <a md-button routerLink="/" routerLinkActive="active">Technology</a>
-      <a md-button routerLink="/" routerLinkActive="active">Gallery</a>
+      <a href="#about" md-button>About</a>
+      <a href="#howitworks" md-button>How It Works</a>
+      <a href="#technology" md-button>Technology</a>
+      <a href="#gallery" md-button>Gallery</a>
       <a md-raised-button class="login" routerLink="/home" routerLinkActive="active">Login</a>
     </div>
     <div class="title-buttons-phone">
@@ -30,71 +32,193 @@
     </div>
 
     <!--About Section-->
+    <div id="about"></div>
     <div class="about-section">
       <div class="wrapper">
-        <!--<a name="about"></a>-->
-        <div class="section-text-line">
-          <h4 class="about-text">About</h4>
+        <div class="section-text-line-left">
+          <h4>About</h4>
         </div>
         <h1>What is OpenChirp?</h1>
-        <p>
-          Management layer on top of LoRaWAN that provides data <br>
-          context, storage, visualization, and access control. <br>
-          This is a web portal for registration, visualization, and sharing. <br>
-          LoRaWAN Network at CMU spanning most of Pittsburgh.
-        </p>
+        <div class="what-is-text">
+          <p align="center">
+            Management layer on top of LoRaWAN that provides data <br>
+            context, storage, visualization, and access control. <br>
+            This is a web portal for registration, visualization, and sharing. <br>
+            LoRaWAN Network at CMU spanning most of Pittsburgh.
+          </p>
+        </div>
       </div>
     </div>
 
     <div class="flex-container">
-      <div class="flex-item">
+      <div class="whatis-col">
         <div class="iot-project"></div>
-        <p>
-          <strong>Your IoT Project</strong>
-        </p>
-        <p>
-          Contract-free, Secure, <br>
-          Battery Operated, Wireless <br>
-          Networking for your<br>
-          IoT project
-        </p>
+        <div class="whatis-text">
+          <p>
+            <strong>Your IoT Project</strong>
+          </p>
+          <p>
+            Contract-free, Secure, <br>
+            Battery Operated, Wireless <br>
+            Networking for your<br>
+            IoT project
+          </p>
+        </div>
       </div>
-      <div class="flex-item">
+
+      <div class="whatis-col">
         <div class="community-driven"></div>
-        <p>
-          <strong> Community-driven </strong>
-        </p>
-        <p>
-          Create an open <br>
-          community-driven <br>
-          Network
-        </p>
+        <div class="whatis-text">
+          <p>
+            <strong> Community-driven </strong>
+          </p>
+          <p>
+            Create an open <br>
+            community-driven <br>
+            Network
+          </p>
+        </div>
       </div>
-      <div class="flex-item">
+
+      <div class="whatis-col">
         <div class="empowering"></div>
-        <p><strong>Empowering All</strong></p>
-        <p>
-          Empower researchers, <br>
-          hobbyists, and citizen <br>
-          scientists
-        </p>
-      </div>
+        <div class="whatis-text">
+          <p><strong>Empowering All</strong></p>
+          <p>
+            Empower researchers, <br>
+            hobbyists, and citizen <br>
+            scientists
+          </p>
+        </div>
+        </div>
     </div>
 
     <!--How it Works-->
+    <div id="howitworks"></div>
     <div class="how-it-works">
-      <div class="wrapper">
-        <!--<div class="section-text-line">-->
-          <h4 align="right" class="how-text line">How It Works</h4>
-        <!--</div>-->
+      <div class="section-text-line-right">
+        <h4>How it Works</h4>
       </div>
       <div class="how-it-works-pic">
-        <div class="overlay">
-          <p>testing</p>
+        <div class="col-container">
+          <h1>5 Easy Steps</h1>
+
+          <div class="row-container">
+            <div class="step1"></div>
+            <div class="step-text">
+              <p>
+                DEVICE<br>
+                Get a LoRaWAN compatible device</p>
+            </div>
+          </div>
+
+          <div class="row-container">
+            <div class="step2"></div>
+            <div class="step-text">
+              <p>
+                REGISTER<br>
+                Register it to OpenChirp's network</p>
+            </div>
+          </div>
+
+          <div class="row-container">
+            <div class="step3"></div>
+            <div class="step-text">
+              <p>
+                CHIRP<br>
+                Start Chirping</p>
+            </div>
+          </div>
+
+          <div class="row-container">
+            <div class="step4"></div>
+            <div class="step-text">
+              <p>
+                BUILD<br>
+                Build an app using our open API</p>
+            </div>
+          </div>
+
+          <div class="row-container">
+            <div class="step5"></div>
+            <div class="step-text">
+              <p>
+                ReST<br>
+                We take care of the ReST</p>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
 
+    <!--Technology-->
+    <div id="technology"></div>
+    <div class="features">
+      <div class="wrapper">
+        <div class="section-text-line-left">
+          <h4>Technology</h4>
+        </div>
+      </div>
+        <h1 align="center">Features</h1>
+    </div>
+
+    <div class="feat-container">
+      <div class="protobuf-icon"></div>
+      <span class="feat-text">
+        <p>ProtoBuf serialization from <br>
+          end-device to cloud</p>
+      </span>
+
+      <div class="cloud-icon"></div>
+      <div class="feat-text">
+        <p>MQTT for scalable real-time<br>
+           publish subscribe</p>
+      </div>
+
+      <div class="open-icon"></div>
+      <div class="feat-text">
+        <p>Openly available gateway<br>
+           architecture</p>
+      </div>
+
+      <div class="rest-icon"></div>
+      <span class="feat-text">
+        <p>ReST interface for configuration<br>
+           and management</p>
+      </span>
+
+      <div class="battery-icon"></div>
+      <div class="feat-text">
+        <p>10 Year Battery-Life</p>
+      </div>
+
+      <div class="intelligent-icon"></div>
+      <div class="feat-text">
+        <p>Intelligent network<br>
+          management</p>
+      </div>
+    </div>
+
+    <!--Gallery-->
+    <div id="gallery"></div>
+    <div class="gallery-section">
+      <div class="section-text-line-right">
+        <h4>Gallery</h4>
+      </div>
+      <div class="gallery-pic">
+        <div class="gallery-text">
+          <h1>Take a Look at Some<br>
+              Behind the Scenes</h1>
+          <a md-button class="gallery-button">Gallery</a>
+        </div>
+      </div>
+    </div>
+
+    <!--Logos CMU/CyLab-->
+    <div class="cmu">
+      <div class="cmu-pic"></div>
+    </div>
 
 
     <!--Footer-->

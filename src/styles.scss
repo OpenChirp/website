@@ -7,6 +7,15 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+@font-face {
+  font-family: Avenir-Heavy;
+  src: url("assets/fonts/avenir-heavy.ttf") format("truetype");
+}
+@font-face {
+  font-family: Avenir-Med;
+  src: url("assets/fonts/avenir-med.ttf") format("truetype");
+}
+
 html, body {
   height: 100%;
 }
