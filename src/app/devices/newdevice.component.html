@@ -1,0 +1,23 @@
+<div class="new-device">
+  <md-card *ngIf="location">
+    <h2>Create New Device for {{ location.name }}</h2>
+    <hr>
+    <form>
+      <md-input-container>
+        <input mdInput 
+               placeholder="Device Name" 
+               [(ngModel)]="name" 
+               [ngModelOptions]="{standalone: true}">
+      </md-input-container>
+      <br>
+      <md-select placeholder="Location Type" [(ngModel)]="type" name="location-type">
+        <md-option *ngFor="let locationType of locationTypes" [value]="locationType">
+          {{ locationType }}
+        </md-option>
+      </md-select>
+      <br><br>
+      <button md-raised-button type="submit" (click)="add()">Add Device</button>
+      <button md-raised-button (click)="cancel()">Cancel</button>
+    </form>
+  </md-card>
+</div>

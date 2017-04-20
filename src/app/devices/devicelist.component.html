@@ -1,7 +1,11 @@
 <div class="device-list" >
 
   <md-card *ngIf="location">
-    <h2>Devices of {{ location.name }}</h2>
+    <div class="card-header">
+      <h2>Devices of {{ location.name }}</h2>
+      <button md-raised-button (click)="newDevice()">New Device</button>
+    </div>
+    <br>
     <div class="table-header">
       <div><p>Device Name</p></div>
       <div><p>Device Type</p></div>
@@ -10,6 +14,9 @@
     <div *ngFor="let device of devices" class="devices" (click)="gotoDevice(device._id)">
       <div><p>{{ device.name }}</p></div>
       <div><p>{{ device.type || "NONE" }}</p></div>
+    </div>
+    <div *ngIf="devices.length == 0">
+      <p>Currently no devices to display.</p>
     </div>
   </md-card>
   

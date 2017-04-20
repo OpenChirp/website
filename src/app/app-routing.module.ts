@@ -9,6 +9,7 @@ import { NewLocationComponent } from './locations/newlocation.component';
 
 import { DeviceComponent } from './devices/device.component';
 import { DeviceListComponent } from './devices/devicelist.component';
+import { NewDeviceComponent } from './devices/newdevice.component';
 
 const appRoutes: Routes = [
   { path: '', component: SplashComponent },
@@ -21,16 +22,20 @@ const appRoutes: Routes = [
         component: DashboardMainComponent
       },
       {
-        path: 'device/:id',
+        path: 'device/:id',       // Device ID
         component: DeviceComponent
       },
       {
-        path: 'devices/:id',
+        path: 'devices/:id',      // Location ID
         component: DeviceListComponent
       },
       {
-        path: 'newlocation/:id',
+        path: 'newlocation/:id',  // Parent Location ID
         component: NewLocationComponent
+      },
+      {
+        path: 'newdevice/:id',    // Location ID
+        component: NewDeviceComponent
       }
     ]
   },

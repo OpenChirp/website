@@ -3,6 +3,16 @@ $row-height: 50px;
 .device-list {
   md-card {
     background-color: white;
+    .card-header {
+      h2 {
+        margin: 0;
+        float: left;
+      }
+      button {
+        float: right;
+      }
+      margin-bottom: 20px;
+    }
     hr {
       margin: 0;
     }

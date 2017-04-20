@@ -3,6 +3,8 @@ $background-color: #efefef;
 $side-nav-color: #2c3e50;
 $side-nav-width: 240px;
 $toolbar-height: 64px;
+$button-height: 40px;
+$hover-color: #607d8b;
 
 .dashboard {
   height: 100%;
@@ -14,6 +16,35 @@ $toolbar-height: 64px;
       width: $side-nav-width;
       background-color: $side-nav-color;
       padding-top: $toolbar-height;
+      .sidenav-button {
+        a {
+          display: block;
+          height: $button-height;
+          width: $side-nav-width;
+          text-decoration: none;
+          color: $background-color;
+          padding-left: 15px;
+          border-bottom: solid 1px $hover-color;
+          transition-duration: 0.3s;
+          padding: 0;
+          p {
+            float: left;
+            line-height: $button-height;
+            padding: 0;
+            margin: 0;
+            margin-left: 15px;
+          }
+          md-icon {
+            float: right;
+            line-height: $button-height;
+            margin-right: 15px;
+          }
+        }
+        a:hover {
+          background-color: $hover-color;
+          transition-duration: 0.3s;
+        }
+      }
     }
   }
 
