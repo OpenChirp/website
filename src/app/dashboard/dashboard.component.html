@@ -12,6 +12,12 @@
   <md-sidenav-container>
     <md-sidenav #sidenav mode="side" opened="true">
       <!-- sidenav content -->
+      <!-- Dashboard Button -->
+      <div class="sidenav-button">
+        <a routerLink="/home"><p>Dashboard</p><md-icon>home</md-icon></a>
+      </div>
+
+      <!-- Location Tree -->
       <div *ngIf="rootLocation">
         <tree-node 
           [currentLocation]="rootLocation"

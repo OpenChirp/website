@@ -11,6 +11,7 @@ import { Device } from './device';
 export class DeviceService {
   // TODO: get from config.json
   private locationUrl = 'http://openchirp.andrew.cmu.edu:10010/api/device/';
+  private apiLocation = 'http://openchirp.andrew.cmu.edu:10010/api/';
 
   constructor (private http: Http) {
     
@@ -61,6 +62,20 @@ export class DeviceService {
   // Delete Transducer
   deleteTransducer(device_id: string, transducer_id: string) {
     return this.http.delete(this.locationUrl + device_id + "/transducer/" + transducer_id)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  // Device Templates
+  deviceTemplates() {
+    return this.http.get(this.apiLocation + "devicetemplate")
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  // Add Device
+  addDevice(body : any) {
+    return this.http.post(this.locationUrl, body)
                     .map(this.extractData)
                     .catch(this.handleError);
   }

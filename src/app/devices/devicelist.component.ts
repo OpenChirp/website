@@ -28,9 +28,6 @@ export class DeviceListComponent {
       .subscribe(
         result => {
           this.devices = result;
-          if (this.devices.length == 0) {
-            this.router.navigate(['/home']);
-          }
         },
         error => this.router.navigate(['/home'])
       );
@@ -44,6 +41,12 @@ export class DeviceListComponent {
 
   gotoDevice(id: string) {
     this.router.navigate(['/home/device/', id]);
+  }
+
+  newDevice() {
+    if (this.location != null) {
+      this.router.navigate(['/home/newdevice', this.location._id]);
+    }
   }
 
 }
