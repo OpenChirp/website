@@ -376,7 +376,7 @@ $primary-color: #34495e;
 }
 .mat-checkbox-checked.mat-accent .mat-checkbox-background,
 .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
-    background-color: #ffc107
+    background-color: $primary-color;
 }
 .mat-checkbox-checked.mat-warn .mat-checkbox-background,
 .mat-checkbox-indeterminate.mat-warn .mat-checkbox-background {
@@ -393,7 +393,7 @@ $primary-color: #34495e;
     background-color: rgba(50, 58, 183, .26)
 }
 .mat-checkbox:not(.mat-checkbox-disabled).mat-accent .mat-checkbox-ripple .mat-ripple-element {
-    background-color: rgba(255, 215, 64, .26)
+    background-color: rgba(20, 24, 86, .26)
 }
 .mat-checkbox:not(.mat-checkbox-disabled).mat-warn .mat-checkbox-ripple .mat-ripple-element {
     background-color: rgba(244, 67, 54, .26)
