@@ -16,6 +16,7 @@ export class NewDeviceComponent {
   name: string = "";
   enabled: boolean = true;
   deviceTypes: Array<string> = ["LORA", "TWIST", "FIREFLY", "BOSCH_XDK"];
+  selectedType: string = "";
   useTemplate: boolean = false;
   templates: Array<Object> = [];
   templateid = "";
@@ -42,17 +43,24 @@ export class NewDeviceComponent {
   add() {
     if (this.name != "") {
       var body : any = {};
-      body.name = this.name;
-      body.enabled = this.enabled;
+      body["name"] = this.name;
+      body["enabled"] = this.enabled;
+      if (this.location) {
+        body["location_id"] = this.location._id;
+      }
       if (this.deviceTypes) {
-        body.type = this.deviceTypes
+        body["type"] = this.selectedType;
       }
       if (this.useTemplate && this.templateid != "") {
-        body.template_id = this.templateid;
+        body["template_id"] = this.templateid;
       }
       this.deviceService.addDevice(body).subscribe(
-        result => this.snackBar.open("Add Device Sucess!", this.name, { duration: 2000 }),
-        error => this.snackBar.open(error.message, this.name, { duration: 2000 })
+        result => {
+          this.snackBar.open("Add Device Sucess!", this.name, { duration: 2000 });
+        },
+        error => {
+          this.snackBar.open(error.message, this.name, { duration: 2000 });
+        }
       );
     }
     else {
