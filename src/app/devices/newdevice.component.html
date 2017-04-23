@@ -1,6 +1,7 @@
 <div class="new-device">
-  <md-card *ngIf="location">
-    <h2>Create New Device for {{ location.name }}</h2>
+  <md-card>
+    <h2 *ngIf="location">Create New Device for {{ location.name }}</h2>
+    <h2 *ngIf="template">Create New Device from template {{ template.name }}</h2>
     <hr>
     <form>
       <md-checkbox [(ngModel)]="useTemplate" name="use-template">Use Template</md-checkbox>

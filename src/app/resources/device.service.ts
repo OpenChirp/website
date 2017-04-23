@@ -73,6 +73,13 @@ export class DeviceService {
                     .catch(this.handleError);
   }
 
+  // Device Template by ID
+  deviceTemplate(id: string) {
+    return this.http.get(this.apiLocation + "devicetemplate/" + id)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
   // Add Device
   addDevice(body : any) {
     return this.http.post(this.locationUrl, body)

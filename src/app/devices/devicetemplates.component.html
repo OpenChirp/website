@@ -5,16 +5,16 @@
     </div>
     <br>
     <div class="table-header">
-      <div><p>Device Name</p></div>
-      <div><p>Device Type</p></div>
+      <div><p>Template Name</p></div>
+      <div><p>Template Description</p></div>
     </div>
     <hr>
-    <div *ngFor="let device of devices" class="devices" (click)="gotoDevice(device._id)">
-      <div><p>{{ device.name }}</p></div>
-      <div><p>{{ device.type || "NONE" }}</p></div>
+    <div *ngFor="let template of templates" class="templates" (click)="gotoTemplate(template._id)">
+      <div><p>{{ template.name }}</p></div>
+      <div><p>{{ template.description }}</p></div>
     </div>
-    <div *ngIf="devices.length == 0">
-      <p>Currently no devices to display.</p>
+    <div *ngIf="templates.length == 0">
+      <p>Currently no templates to display.</p>
     </div>
   </md-card>
 </div>

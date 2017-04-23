@@ -45,7 +45,7 @@ export class DeviceListComponent {
 
   newDevice() {
     if (this.location != null) {
-      this.router.navigate(['/home/newdevice', this.location._id]);
+      this.router.navigate(['/home/newdevice', { location_id: this.location._id }]);
     }
   }
 
