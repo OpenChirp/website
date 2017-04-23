@@ -1,6 +1,11 @@
 <div class="device-info">
   <md-card *ngIf="device">
-    <h2>Device Information for {{ device.name }}</h2>
+    <div class="card-header">
+      <h2>Device Information for {{ device.name }}</h2>
+      <button md-raised-button (click)="saveTemplate()">Save as Template</button>
+      <button md-raised-button (click)="deleteDevice()" color="warn">Delete</button>
+    </div>
+    <hr>
     <md-tab-group>
 
       <!-- Properties Tab -->

@@ -73,9 +73,30 @@ export class DeviceService {
                     .catch(this.handleError);
   }
 
+  // Device Template by ID
+  deviceTemplate(id: string) {
+    return this.http.get(this.apiLocation + "devicetemplate/" + id)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
   // Add Device
   addDevice(body : any) {
     return this.http.post(this.locationUrl, body)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  // Delete Device
+  deleteDevice(id: string) {
+    return this.http.delete(this.locationUrl + id)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  // Save Device as Template
+  saveTemplate(body: any) {
+    return this.http.post(this.apiLocation, body)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
