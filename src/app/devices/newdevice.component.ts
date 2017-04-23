@@ -51,7 +51,7 @@ export class NewDeviceComponent {
         .subscribe(result => this.location = result);
     }
     // From Device Template
-    else if (tem) {
+    if (tem) {
       this.route.params
         .switchMap((params: Params) => this.deviceService.deviceTemplate(params['template_id']))
         .subscribe(result => {
@@ -60,7 +60,7 @@ export class NewDeviceComponent {
           this.useTemplate = true;
         });
     }
-    else {
+    if (!tem && !loc) {
       this.router.navigate(['/home']);
     }
   }
@@ -79,7 +79,6 @@ export class NewDeviceComponent {
       }
       if (this.useTemplate) {
         if (this.templateid != "") {
-          console.log(this.templateid);
           body["template_id"] = this.templateid;
         }
         else {

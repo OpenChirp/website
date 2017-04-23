@@ -11,6 +11,18 @@ $row-height: 50px;
     .tab-content {
       padding: 15px;
     }
+    .card-header {
+      h2 {
+        margin: 0;
+        float: left;
+      }
+      button {
+        float: right;
+        margin-right: 10px;
+        margin-left: 10px;
+      }
+      margin-bottom: 60px;
+    }
   }
   form {
     md-input-container {
