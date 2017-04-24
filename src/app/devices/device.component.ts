@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { MdSnackBar } from '@angular/material';
+import { MdSnackBar, MdMenuModule } from '@angular/material';
 import 'rxjs/add/operator/switchMap';
 
 import { Device } from '../resources/device';

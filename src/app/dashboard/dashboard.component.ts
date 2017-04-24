@@ -13,7 +13,7 @@ import { TreeNodeComponent } from '../tree/tree.component';
 
 export class DashboardComponent implements OnInit {
   title = 'OpenChirp';
-  username = "John Doe";
+  username = 'John Doe';
   rootLocation: Location = null;
   errorMessage: string;
   devices: Array<Device> = [];
