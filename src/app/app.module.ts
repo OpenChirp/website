@@ -17,7 +17,6 @@ import { TreeNodeComponent, DeleteLocationDialog } from './tree/tree.component';
 import { DeviceListComponent } from './devices/devicelist.component';
 import { NewLocationComponent } from './locations/newlocation.component';
 import { DeviceComponent } from './devices/device.component';
-import { DeviceComponent } from './devices/device.component';
 import { NewDeviceComponent } from './devices/newdevice.component';
 import { DashboardMainComponent } from './dashboard/dashboard-main.component';
 import { DeviceTemplatesComponent } from './devices/devicetemplates.component';
@@ -26,7 +25,6 @@ import { DeviceTemplateComponent } from './devices/devicetemplate.component';
 // Services
 import { LocationService } from './resources/location.service';
 import { DeviceService } from './resources/device.service';
-import { DashboardToolbarComponent } from './dashboard-toolbar/dashboard-toolbar.component';
 
 @NgModule({
   declarations: [
