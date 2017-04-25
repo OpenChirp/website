@@ -1,0 +1,20 @@
+<div class="device-templates">
+  <md-card>
+    <div class="card-header">
+      <h2>Devices Templates</h2>
+    </div>
+    <br>
+    <div class="table-header">
+      <div><p>Template Name</p></div>
+      <div><p>Template Description</p></div>
+    </div>
+    <hr>
+    <div *ngFor="let template of templates" class="templates" (click)="gotoTemplate(template._id)">
+      <div><p>{{ template.name }}</p></div>
+      <div><p>{{ template.description }}</p></div>
+    </div>
+    <div *ngIf="templates.length == 0">
+      <p>Currently no templates to display.</p>
+    </div>
+  </md-card>
+</div>

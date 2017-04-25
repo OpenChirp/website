@@ -1,0 +1,17 @@
+.device-template {
+  md-card {
+    .card-header {
+      h2 {
+        margin: 0;
+        float: left;
+      }
+      button {
+        float: right;
+      }
+      margin-bottom: 60px;
+    }
+    hr {
+      margin: 0;
+    }
+  }
+}

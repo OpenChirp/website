@@ -1,6 +1,6 @@
 $row-height: 50px;
 
-.device-list {
+.device-templates {
   md-card {
     background-color: white;
     .card-header {
@@ -28,7 +28,7 @@ $row-height: 50px;
         margin: 0;
       }
     }
-    .devices {
+    .templates {
       height: $row-height;
       line-height: $row-height;
       cursor: pointer;
@@ -42,7 +42,7 @@ $row-height: 50px;
         margin: 0;
       }
     }
-    .devices:hover {
+    .templates:hover {
       background-color: #efefef;
     }
   }

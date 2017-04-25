@@ -59,12 +59,7 @@ export class TreeNodeComponent {
   toDevices(location_id: string) {
     this.locationService.getDeviceByLocationId(location_id).subscribe(
       result =>  {
-        if (result.length != 0) {
-          this.router.navigate(['/home/devices/', location_id]);
-        }
-        else {
-          this.router.navigate(['/home']);
-        }
+        this.router.navigate(['/home/devices/', location_id]);
       },
       error => this.errorMesssage = error
     )

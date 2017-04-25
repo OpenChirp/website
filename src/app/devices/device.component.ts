@@ -36,6 +36,12 @@ export class DeviceComponent {
     this.getDevice();
   }
 
+  saveTemplate() {
+    if (this.device) {
+      this.snackBar.open("Not Yet Implemented.", this.device.name, {duration: 2000});
+    }
+  }
+
   getDevice() {
     this.route.params
       .switchMap((params: Params) => this.deviceService.getDeviceById(params['id']))
@@ -43,6 +49,18 @@ export class DeviceComponent {
         result => this.device = result,
         error => this.errorMessage = error.message
       );
+  }
+
+  deleteDevice() {
+    if (this.device) {
+      this.deviceService.deleteDevice(this.device._id).subscribe(
+        result => {
+          this.snackBar.open("Successfully Deleted!", this.device.name, {duration: 2000});
+          this.router.navigate(['/home']);
+        },
+        error => this.snackBar.open(error.message, this.device.name, {duration: 2000})
+      );
+    }
   }
 
   updateDevice() {

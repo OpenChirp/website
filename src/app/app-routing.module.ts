@@ -6,9 +6,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardMainComponent } from './dashboard/dashboard-main.component';
 import { PageNotFoundComponent } from './404/pagenotfound.component';
 import { NewLocationComponent } from './locations/newlocation.component';
-
+import { DeviceTemplatesComponent } from './devices/devicetemplates.component';
 import { DeviceComponent } from './devices/device.component';
 import { DeviceListComponent } from './devices/devicelist.component';
+import { NewDeviceComponent } from './devices/newdevice.component';
+import { DeviceTemplateComponent } from './devices/devicetemplate.component';
 
 const appRoutes: Routes = [
   { path: '', component: SplashComponent },
@@ -21,16 +23,28 @@ const appRoutes: Routes = [
         component: DashboardMainComponent
       },
       {
-        path: 'device/:id',
+        path: 'device/:id',       // Device ID
         component: DeviceComponent
       },
       {
-        path: 'devices/:id',
+        path: 'devices/:id',      // Location ID
         component: DeviceListComponent
       },
       {
-        path: 'newlocation/:id',
+        path: 'newlocation/:id',  // Parent Location ID
         component: NewLocationComponent
+      },
+      {
+        path: 'newdevice',
+        component: NewDeviceComponent
+      },
+      {
+        path: 'devicetemplates',
+        component: DeviceTemplatesComponent
+      },
+      {
+        path: 'devicetemplate/:id',
+        component: DeviceTemplateComponent
       }
     ]
   },
