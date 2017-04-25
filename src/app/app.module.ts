@@ -16,12 +16,13 @@ import { PageNotFoundComponent } from './404/pagenotfound.component';
 import { TreeNodeComponent, DeleteLocationDialog } from './tree/tree.component';
 import { DeviceListComponent } from './devices/devicelist.component';
 import { NewLocationComponent } from './locations/newlocation.component';
-import { DeviceComponent } from './devices/device.component'; 
+import { DeviceComponent } from './devices/device.component';
 import { DashboardMainComponent } from './dashboard/dashboard-main.component';
 
 // Services
 import { LocationService } from './resources/location.service';
 import { DeviceService } from './resources/device.service';
+import { DashboardToolbarComponent } from './dashboard-toolbar/dashboard-toolbar.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { DeviceService } from './resources/device.service';
     DeviceListComponent,
     DeviceComponent,
     NewLocationComponent,
-    DeleteLocationDialog
+    DeleteLocationDialog,
   ],
   imports: [
     BrowserModule,
