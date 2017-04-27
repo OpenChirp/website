@@ -1,5 +1,4 @@
 <div class="splash-page">
-
   <!-- Toolbar -->
   <md-toolbar [ngClass]="{'pre-scroll': !isScrolled, 'post-scroll': isScrolled}">
     <a routerLink="/">
@@ -21,7 +20,6 @@
       <a md-raised-button class="login" routerLink="/home" routerLinkActive="active">Login</a>
     </div>
   </md-toolbar>
-
   <!-- Page content -->
   <div class="page-wrap">
     <!-- Splash Page Section -->
@@ -30,7 +28,6 @@
         <h3>Next Generation <br> Low-Power Long-Range IoT</h3>
       </div>
     </div>
-
     <!--About Section-->
     <div id="about"></div>
     <div class="about-section">
@@ -49,50 +46,48 @@
         </div>
       </div>
     </div>
-
-    <div class="flex-container">
-      <div class="whatis-col">
-        <div class="iot-project"></div>
-        <div class="whatis-text">
-          <p>
-            <strong>Your IoT Project</strong>
-          </p>
-          <p>
-            Contract-free, Secure, <br>
-            Battery Operated, Wireless <br>
-            Networking for your<br>
-            IoT project
-          </p>
+    <div class="wrapper">
+      <div class="flex-container">
+        <div class="whatis-col">
+          <div class="iot-project"></div>
+          <div class="whatis-text">
+            <p>
+              <strong>Your IoT Project</strong>
+            </p>
+            <p>
+              Contract-free, Secure, <br>
+              Battery Operated, Wireless <br>
+              Networking for your<br>
+              IoT project
+            </p>
+          </div>
+        </div>
+        <div class="whatis-col">
+          <div class="community-driven"></div>
+          <div class="whatis-text">
+            <p>
+              <strong> Community-driven </strong>
+            </p>
+            <p>
+              Create an open <br>
+              community-driven <br>
+              Network
+            </p>
+          </div>
+        </div>
+        <div class="whatis-col">
+          <div class="empowering"></div>
+          <div class="whatis-text">
+            <p><strong>Empowering All</strong></p>
+            <p>
+              Empower researchers, <br>
+              hobbyists, and citizen <br>
+              scientists
+            </p>
+          </div>
         </div>
       </div>
-
-      <div class="whatis-col">
-        <div class="community-driven"></div>
-        <div class="whatis-text">
-          <p>
-            <strong> Community-driven </strong>
-          </p>
-          <p>
-            Create an open <br>
-            community-driven <br>
-            Network
-          </p>
-        </div>
-      </div>
-
-      <div class="whatis-col">
-        <div class="empowering"></div>
-        <div class="whatis-text">
-          <p><strong>Empowering All</strong></p>
-          <p>
-            Empower researchers, <br>
-            hobbyists, and citizen <br>
-            scientists
-          </p>
-        </div>
-        </div>
     </div>
-
     <!--How it Works-->
     <div id="howitworks"></div>
     <div class="how-it-works">
@@ -100,58 +95,58 @@
         <h4>How it Works</h4>
       </div>
       <div class="how-it-works-pic">
-        <div class="col-container">
-          <h1>5 Easy Steps</h1>
-
-          <div class="row-container">
-            <div class="step1"></div>
-            <div class="step-text">
-              <p>
-                DEVICE<br>
-                Get a LoRaWAN compatible device</p>
+        <div class="wrapper">
+          <div class="col-container">
+            <h1>5 Easy Steps</h1>
+            <div class="row-container">
+              <div class="step1"></div>
+              <div class="step-text">
+                <p>
+                  DEVICE<br>
+                  Get a LoRaWAN compatible device
+                </p>
+              </div>
+            </div>
+            <div class="row-container">
+              <div class="step2"></div>
+              <div class="step-text">
+                <p>
+                  REGISTER<br>
+                  Register it to OpenChirp's network
+                </p>
+              </div>
+            </div>
+            <div class="row-container">
+              <div class="step3"></div>
+              <div class="step-text">
+                <p>
+                  CHIRP<br>
+                  Start Chirping
+                </p>
+              </div>
+            </div>
+            <div class="row-container">
+              <div class="step4"></div>
+              <div class="step-text">
+                <p>
+                  BUILD<br>
+                  Build an app using our open API
+                </p>
+              </div>
+            </div>
+            <div class="row-container">
+              <div class="step5"></div>
+              <div class="step-text">
+                <p>
+                  ReST<br>
+                  We take care of the ReST
+                </p>
+              </div>
             </div>
           </div>
-
-          <div class="row-container">
-            <div class="step2"></div>
-            <div class="step-text">
-              <p>
-                REGISTER<br>
-                Register it to OpenChirp's network</p>
-            </div>
-          </div>
-
-          <div class="row-container">
-            <div class="step3"></div>
-            <div class="step-text">
-              <p>
-                CHIRP<br>
-                Start Chirping</p>
-            </div>
-          </div>
-
-          <div class="row-container">
-            <div class="step4"></div>
-            <div class="step-text">
-              <p>
-                BUILD<br>
-                Build an app using our open API</p>
-            </div>
-          </div>
-
-          <div class="row-container">
-            <div class="step5"></div>
-            <div class="step-text">
-              <p>
-                ReST<br>
-                We take care of the ReST</p>
-            </div>
-          </div>
-
         </div>
       </div>
     </div>
-
     <!--Technology-->
     <div id="technology"></div>
     <div class="features">
@@ -159,47 +154,45 @@
         <div class="section-text-line-left">
           <h4>Technology</h4>
         </div>
-      </div>
         <h1 align="center">Features</h1>
+        <div class="feat-container">
+          <div class="protobuf-icon"></div>
+          <span class="feat-text">
+            <p>ProtoBuf serialization from <br>
+              end-device to cloud
+            </p>
+          </span>
+          <div class="cloud-icon"></div>
+          <div class="feat-text">
+            <p>MQTT for scalable real-time<br>
+              publish subscribe
+            </p>
+          </div>
+          <div class="open-icon"></div>
+          <div class="feat-text">
+            <p>Openly available gateway<br>
+              architecture
+            </p>
+          </div>
+          <div class="rest-icon"></div>
+          <span class="feat-text">
+            <p>ReST interface for configuration<br>
+              and management
+            </p>
+          </span>
+          <div class="battery-icon"></div>
+          <div class="feat-text">
+            <p>10 Year Battery-Life</p>
+          </div>
+          <div class="intelligent-icon"></div>
+          <div class="feat-text">
+            <p>Intelligent network<br>
+              management
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="feat-container">
-      <div class="protobuf-icon"></div>
-      <span class="feat-text">
-        <p>ProtoBuf serialization from <br>
-          end-device to cloud</p>
-      </span>
-
-      <div class="cloud-icon"></div>
-      <div class="feat-text">
-        <p>MQTT for scalable real-time<br>
-           publish subscribe</p>
-      </div>
-
-      <div class="open-icon"></div>
-      <div class="feat-text">
-        <p>Openly available gateway<br>
-           architecture</p>
-      </div>
-
-      <div class="rest-icon"></div>
-      <span class="feat-text">
-        <p>ReST interface for configuration<br>
-           and management</p>
-      </span>
-
-      <div class="battery-icon"></div>
-      <div class="feat-text">
-        <p>10 Year Battery-Life</p>
-      </div>
-
-      <div class="intelligent-icon"></div>
-      <div class="feat-text">
-        <p>Intelligent network<br>
-          management</p>
-      </div>
-    </div>
-
     <!--Gallery-->
     <div id="gallery"></div>
     <div class="gallery-section">
@@ -209,25 +202,21 @@
       <div class="gallery-pic">
         <div class="gallery-text">
           <h1>Take a Look at Some<br>
-              Behind the Scenes</h1>
+            Behind the Scenes
+          </h1>
           <a md-button class="gallery-button">Gallery</a>
         </div>
       </div>
     </div>
-
     <!--Logos CMU/CyLab-->
     <div class="cmu">
       <div class="cmu-pic"></div>
     </div>
-
-
     <!--Footer-->
     <div class="footer" id="splash-footer">
       <div class="wrapper">
         <p>OpenChirp &copy; Copyright 2017</p>
       </div>
     </div>
-
-
   </div>
 </div>
