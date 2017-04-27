@@ -2,8 +2,9 @@
 
   <md-toolbar>
     <md-icon (click)="sidenav.toggle()">menu</md-icon>
-    <p>{{title}}</p>
+    <!--<p>{{title}}</p>-->
     <div class="toolbar-content">
+      <div class="logo"></div>
       <button md-button>{{username}}</button>
 
       <!-- Uncomment the code below (and delete previous line) for drop down menu-->
@@ -25,15 +26,15 @@
       <div class="sidenav-button">
         <a routerLink="/home"><p>Dashboard</p><md-icon>home</md-icon></a>
         <a routerLink="/home/devicetemplates"><p>Device Templates</p><md-icon>description</md-icon></a>
+        <!-- Location Tree -->
+        <div *ngIf="rootLocation">
+          <tree-node
+            [currentLocation]="rootLocation"
+            (change)="deviceList($event)"
+            (newLocationParent)="newLocation($event)"></tree-node>
+        </div>
       </div>
 
-      <!-- Location Tree -->
-      <div *ngIf="rootLocation">
-        <tree-node
-          [currentLocation]="rootLocation"
-          (change)="deviceList($event)"
-          (newLocationParent)="newLocation($event)"></tree-node>
-      </div>
     </md-sidenav>
     <div class="page-content">
       <!-- Child Router -->

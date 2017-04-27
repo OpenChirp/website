@@ -1,9 +1,11 @@
-$dashboard-toolbar-color: #424242;
-$background-color: #efefef;
-$side-nav-color: #2c3e50;
+$dashboard-toolbar-color: #e4f2fb;
+$background-color: #aad1e2;
+$side-nav-color: #f9f9f9;
 $side-nav-width: 240px;
 $button-height: 40px;
-$hover-color: #607d8b;
+$hover-color: #ffffff;
+$icon-hover-color: #3a7193;
+$text-color: #303132;
 
 .tree-node {
   .button {
@@ -12,7 +14,6 @@ $hover-color: #607d8b;
     border-right: 0;
     border-bottom: solid 1px $hover-color;
     background-color: $side-nav-color;
-    color: $background-color;
     outline: none;
     box-shadow: none;
     text-align: left;
@@ -24,23 +25,36 @@ $hover-color: #607d8b;
       line-height: $button-height;
       cursor: pointer;
       transition-duration: 0.3s;
+      color: $text-color;
     }
     md-icon:hover {
-      color: $hover-color;
+      color: $icon-hover-color;
       transition-duration: 0.3s;
     }
     p {
       float:left;
       transition-duration: 0.3s;
       margin: 0;
+      color: $text-color;
+    }
+    p:focus {
+      color: $icon-hover-color;
     }
   }
-  .name:hover {
-    color: $hover-color;
+  .button:focus{
+    background-color: $hover-color;
+    border-left: solid 10px $background-color;
+    transition-duration: 0.1s;
+  }
+  .button:hover {
+    background-color: $hover-color;
     cursor: pointer;
-    transition-duration: 0.5s;
+    transition-duration: 0.3s;
   }
   .child {
     padding-left: 15px;
+  }
+  .child:hover {
+    color: $hover-color;
   }
 }
