@@ -37,9 +37,7 @@ export class DeviceComponent {
   }
 
   saveTemplate() {
-    if (this.device) {
-      this.snackBar.open("Not Yet Implemented.", this.device.name, {duration: 2000});
-    }
+    this.router.navigate(['/home/newtemplate/', this.device._id]);
   }
 
   getDevice() {

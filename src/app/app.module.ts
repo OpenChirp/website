@@ -21,6 +21,7 @@ import { NewDeviceComponent } from './devices/newdevice.component';
 import { DashboardMainComponent } from './dashboard/dashboard-main.component';
 import { DeviceTemplatesComponent } from './devices/devicetemplates.component';
 import { DeviceTemplateComponent } from './devices/devicetemplate.component';
+import { NewTemplateComponent } from './devices/newtemplate.component';
 
 // Services
 import { LocationService } from './resources/location.service';
@@ -41,6 +42,7 @@ import { DeviceService } from './resources/device.service';
     DeleteLocationDialog,
     DeviceTemplatesComponent,
     DeviceTemplateComponent,
+    NewTemplateComponent,
     DeleteLocationDialog
   ],
   imports: [

@@ -96,7 +96,8 @@ export class DeviceService {
 
   // Save Device as Template
   saveTemplate(body: any) {
-    return this.http.post(this.apiLocation, body)
+    console.log(body);
+    return this.http.post(this.apiLocation + "devicetemplate", body)
                     .map(this.extractData)
                     .catch(this.handleError);
   }

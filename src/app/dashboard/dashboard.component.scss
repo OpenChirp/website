@@ -64,19 +64,15 @@ $icon-color: #3a7193;
     .toolbar-content {
       text-align: right;
       width: 100%;
-      align-content: center;
+
+      line-height: 60px;
+      button {
+        color: #3a7193;
+      }
       .logo {
         content: url("../../assets/images/logo-square.png");
-        position: fixed;
-        width: 5%;
-        top: 0;
-      }
-      button {
-        text-align: right;
-        color: $icon-color;
-        display: inline-block;
-        margin: 0;
-        padding-top: 0;
+        width: 60px;
+        float: left;
       }
     }
     md-icon {
