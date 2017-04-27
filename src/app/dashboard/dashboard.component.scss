@@ -1,6 +1,6 @@
 $dashboard-toolbar-color: #aad1e2;
 $background-color: #ffffff;
-$side-nav-color: #e3e3e3;
+$side-nav-color: #dbe2e4;
 $side-nav-width: 240px;
 $toolbar-height: 64px;
 $button-height: 40px;
@@ -14,6 +14,7 @@ $icon-color: #3a7193;
   md-sidenav-container {
     padding-top: $toolbar-height;
     height: 100%;
+    background-color: #ffffff;
     md-sidenav {
       width: $side-nav-width;
       background-color: $side-nav-color;
@@ -89,6 +90,7 @@ $icon-color: #3a7193;
 
   .page-content {
     padding: 15px;
+    background-color: #ffffff;
   }
 
 }

@@ -3,12 +3,14 @@ $device-color: #3a7193;
 $black-text: #303132;
 
 .device-list {
+  background-color: #ffffff;
   p {
     font-family: "Avenir-Med", sans-serif;
     color: $black-text;
   }
   md-card {
-    background-color: white;
+    background-color: #ffffff;
+    box-shadow: none;
     .card-header {
       h2 {
         margin: 0;
