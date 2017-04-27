@@ -1,25 +1,34 @@
 @import '../constants';
 $row-height: 50px;
-
+$black-text: #303132;
 
 .device-info {
+  p {
+    font-family: "Avenir-Med", sans-serif;
+  }
   md-card {
     background-color: white;
     md-tab-group {
       padding: 15px;
+      font-family: "Avenir-Med", sans-serif;
+      color: $black-text;
     }
     .tab-content {
       padding: 15px;
+      font-family: "Avenir-Med", sans-serif;
     }
     .card-header {
       h2 {
         margin: 0;
         float: left;
+        font-family: "Avenir-Heavy", sans-serif;
+        color: $black-text;
       }
       button {
         float: right;
         margin-right: 10px;
         margin-left: 10px;
+        font-family: "Avenir-Med", sans-serif;
       }
       margin-bottom: 60px;
     }
@@ -28,6 +37,7 @@ $row-height: 50px;
     md-input-container {
       input {
         width: 350px;
+        font-family: "Avenir-Med", sans-serif;
       }
     }
   }
@@ -45,6 +55,8 @@ $row-height: 50px;
     }
     p {
       margin: 0;
+      font-family: "Avenir-Med", sans-serif;
+      color: $black-text;
     }
   }
   .table-header-command {
@@ -60,6 +72,8 @@ $row-height: 50px;
     }
     p {
       margin: 0;
+      font-family: "Avenir-Med", sans-serif;
+      color: $black-text;
     }
   }
   .transducer {
@@ -73,6 +87,8 @@ $row-height: 50px;
     }
     p {
       margin: 0;
+      font-family: "Avenir-Med", sans-serif;
+      color: $black-text;
     }
   }
   .command {
@@ -86,6 +102,8 @@ $row-height: 50px;
     }
     p {
       margin: 0;
+      font-family: "Avenir-Med", sans-serif;
+      color: $black-text;
     }
   }
 }

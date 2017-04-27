@@ -1,12 +1,12 @@
-$dashboard-toolbar-color: #e4f2fb;
-$background-color: #e4e4e4;
-$side-nav-color: #f9f9f9;
+$dashboard-toolbar-color: #aad1e2;
+$background-color: #ffffff;
+$side-nav-color: #dbe2e4;
 $side-nav-width: 240px;
 $toolbar-height: 64px;
 $button-height: 40px;
 $hover-color: #ffffff;
 $text-color: #303132;
-$icon-color: #8ab9d6;
+$icon-color: #3a7193;
 
 .dashboard {
   height: 100%;
@@ -14,6 +14,7 @@ $icon-color: #8ab9d6;
   md-sidenav-container {
     padding-top: $toolbar-height;
     height: 100%;
+    background-color: #ffffff;
     md-sidenav {
       width: $side-nav-width;
       background-color: $side-nav-color;
@@ -35,6 +36,7 @@ $icon-color: #8ab9d6;
             padding: 0;
             margin: 0;
             margin-left: 15px;
+            font-family: "Avenir-Med", sans-serif;
             color: $text-color;
           }
           md-icon {
@@ -81,13 +83,14 @@ $icon-color: #8ab9d6;
       color: $icon-color;
     }
     md-icon:hover {
-      color: #3a7193;
+      color: #8ab9d6;
       transition-duration: 0.3s;
     }
   }
 
   .page-content {
     padding: 15px;
+    background-color: #ffffff;
   }
 
 }
