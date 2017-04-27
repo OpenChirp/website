@@ -1,4 +1,10 @@
+$black-text: #303132;
+
 .new-location {
+  h2 {
+    font-family: "Avenir-Heavy", sans-serif;
+    color: $black-text;
+  }
   md-card {
     background-color: white;
     .error {
