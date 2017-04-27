@@ -1,5 +1,5 @@
 <div class="tree-node" *ngIf="currentLocation">
-  <div class="button">
+  <div class="button" tabindex="1">
     <p class="name" (click)="toggleChildren(currentLocation)">{{ currentLocation.name }}</p>
     <md-icon (click)="deleteLocation(currentLocation)" *ngIf="deleteable()">delete</md-icon>
     <md-icon (click)="addLocation(currentLocation)">add</md-icon>

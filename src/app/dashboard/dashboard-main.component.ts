@@ -2,11 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'dashboard-main',
-  template: `
-    <md-card>
-      <h1>Welcome to the Dashboard!</h1>
-    </md-card>
-  `
+  templateUrl: './dashboard-main.component.html',
+  styleUrls: ['./dashboard-main.component.scss']
 })
 
 export class DashboardMainComponent {
