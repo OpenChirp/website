@@ -62,11 +62,14 @@ $text-color: #303132;
     .toolbar-content {
       text-align: right;
       width: 100%;
+      line-height: 60px;
+      button {
+        color: #3a7193;
+      }
       .logo {
         content: url("../../assets/images/logo-square.png");
-        width: 5%;
-        margin: 0;
-        padding-top: 35px;
+        width: 60px;
+        float: left;
       }
     }
     md-icon {

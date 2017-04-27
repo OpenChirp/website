@@ -1,0 +1,21 @@
+<div class="new-template">
+  <md-card>
+    <h2 *ngIf="device">Create New Template from device {{ device.name }} </h2>
+    <hr>
+    <form>
+      <md-input-container>
+        <input mdInput 
+              placeholder="Template Name" 
+              [(ngModel)]="name" 
+              [ngModelOptions]="{standalone: true}">
+      </md-input-container>
+      <br>
+      <md-input-container>
+        <textarea mdInput placeholder="Description" [(ngModel)]="description" name="description"></textarea>
+      </md-input-container>
+      <br><br>
+      <button md-raised-button type="submit" (click)="add()">Add Template</button>
+      <button md-raised-button (click)="cancel()">Cancel</button>
+    </form>
+  </md-card>
+</div>
