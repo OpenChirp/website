@@ -1,9 +1,13 @@
+$black-text: #303132;
+
 .device-template {
   md-card {
     .card-header {
       h2 {
         margin: 0;
         float: left;
+        font-family: "Avenir-Heavy", sans-serif;
+        color: $black-text;
       }
       button {
         float: right;
@@ -13,5 +17,14 @@
     hr {
       margin: 0;
     }
+  }
+  h4 {
+    font-family: "Avenir-Med", sans-serif;
+    color: $black-text;
+    font-variant: all-small-caps;
+  }
+  p {
+    font-family: "Avenir-Med", sans-serif;
+    color: $black-text;
   }
 }

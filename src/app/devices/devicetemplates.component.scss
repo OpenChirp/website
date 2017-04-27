@@ -1,12 +1,19 @@
 $row-height: 50px;
+$black-text: #303132;
 
 .device-templates {
+  p {
+    font-family: "Avenir-Med", sans-serif;
+    color: $black-text;
+  }
   md-card {
     background-color: white;
     .card-header {
       h2 {
         margin: 0;
         float: left;
+        font-family: "Avenir-Heavy", sans-serif;
+        color: $black-text;
       }
       button {
         float: right;
@@ -26,6 +33,9 @@ $row-height: 50px;
       }
       p {
         margin: 0;
+        font-family: "Avenir-Med", sans-serif;
+        font-variant: all-small-caps;
+        color: $black-text;
       }
     }
     .templates {
@@ -40,6 +50,8 @@ $row-height: 50px;
       }
       p {
         margin: 0;
+        font-family: "Avenir-Med", sans-serif;
+        color: $black-text;
       }
     }
     .templates:hover {
