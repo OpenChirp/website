@@ -6,6 +6,7 @@ $toolbar-height: 64px;
 $button-height: 40px;
 $hover-color: #ffffff;
 $text-color: #303132;
+$icon-color: #8ab9d6;
 
 .dashboard {
   height: 100%;
@@ -62,6 +63,7 @@ $text-color: #303132;
     .toolbar-content {
       text-align: right;
       width: 100%;
+
       line-height: 60px;
       button {
         color: #3a7193;
@@ -76,7 +78,7 @@ $text-color: #303132;
       margin-right: 10px;
       cursor: pointer;
       transition-duration: 0.3s;
-      color: #8ab9d6;
+      color: $icon-color;
     }
     md-icon:hover {
       color: #3a7193;
