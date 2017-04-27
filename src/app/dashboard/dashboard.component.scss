@@ -6,6 +6,7 @@ $toolbar-height: 64px;
 $button-height: 40px;
 $hover-color: #ffffff;
 $text-color: #303132;
+$icon-color: #8ab9d6;
 
 .dashboard {
   height: 100%;
@@ -62,18 +63,26 @@ $text-color: #303132;
     .toolbar-content {
       text-align: right;
       width: 100%;
+      align-content: center;
       .logo {
         content: url("../../assets/images/logo-square.png");
+        position: fixed;
         width: 5%;
+        top: 0;
+      }
+      button {
+        text-align: right;
+        color: $icon-color;
+        display: inline-block;
         margin: 0;
-        padding-top: 35px;
+        padding-top: 0;
       }
     }
     md-icon {
       margin-right: 10px;
       cursor: pointer;
       transition-duration: 0.3s;
-      color: #8ab9d6;
+      color: $icon-color;
     }
     md-icon:hover {
       color: #3a7193;
