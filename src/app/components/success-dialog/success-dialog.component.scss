@@ -19,8 +19,9 @@ $black-text: #303132;
   }
 
   md-icon {
-    align-self: center !important;
+    //align-self: center !important;
     position: relative;
+    padding-left: 55px !important;
     color: green;
   }
 }

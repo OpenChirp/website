@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-success-dialog',
   template: `
     <div class="success">
-      <md-icon>check_circle</md-icon>
+      <md-icon align="center">check_circle</md-icon>
       <h3 md-dialog-title> Success </h3>
       <p>
         {{ message }}

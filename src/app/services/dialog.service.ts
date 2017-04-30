@@ -1,6 +1,5 @@
 import { Observable } from 'rxjs/Rx';
-import { SuccessDialogComponent } from '../components/success-dialog/success-dialog.component';
-import { MdDialogRef, MdDialog, MdDialogConfig } from '@angular/material';
+import { MdDialogRef, MdDialog } from '@angular/material';
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -8,10 +7,16 @@ export class DialogService {
 
   constructor(private dialog: MdDialog) { }
 
-  public success(message: string): Observable<boolean> {
-    let dialogRef: MdDialogRef<SuccessDialogComponent>;
+  /**
+   * Opens a success/fail dialog
+   * @param d       dialog component
+   * @param message corresponding message
+   * @returns {Observable<any>}
+   */
+  public dialogPopup(d, message: string): Observable<boolean> {
+    let dialogRef: MdDialogRef<any>;
 
-    dialogRef = this.dialog.open(SuccessDialogComponent);
+    dialogRef = this.dialog.open(d);
     dialogRef.componentInstance.message = message;
 
     return dialogRef.afterClosed();
