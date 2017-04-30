@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { MdInputModule, MdSnackBar } from '@angular/material';
+import { MdInputModule, MdSnackBar, MdDialog } from '@angular/material';
+import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { DeviceService } from '../../services/device.service';
@@ -15,7 +16,9 @@ export class NewTemplateComponent {
   description: string = "";
   device: Device = null;
 
-  constructor(private deviceService: DeviceService, private route: ActivatedRoute, private router: Router, public snackBar: MdSnackBar) {
+  constructor(private deviceService: DeviceService, private route: ActivatedRoute,
+              private router: Router,
+              public snackBar: MdSnackBar, public dialog: MdDialog) {
 
   }
 
@@ -39,7 +42,8 @@ export class NewTemplateComponent {
       this.deviceService.saveTemplate(body).subscribe(
         result => {
           console.log(result);
-          this.snackBar.open("Save Template Success!", this.name, { duration: 2000 }).afterDismissed().subscribe(
+          // this.snackBar.open("Save Template Success!", this.name, { duration: 2000 }).afterDismissed().subscribe(
+          this.dialog.open(SuccessDialogComponent).afterClosed().subscribe(
             result => this.router.navigate(['/home/devicetemplate/'])
           );
         },

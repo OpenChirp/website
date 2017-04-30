@@ -1,11 +1,17 @@
+$black-text: #303132;
 .new-device {
   md-card {
     h2 {
       display: inline;
+      font-family: "Avenir-Med", sans-serif;
+      color: $black-text;
     }
     hr {
       margin-top: 30px;
       margin-bottom: 30px;
     }
+  }
+  md-snackbar {
+
   }
 }

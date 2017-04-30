@@ -1,0 +1,27 @@
+$black-text: #303132;
+
+.success {
+  padding: 25px;
+  margin: 0;
+  border: 4px solid green;
+
+  h3 {
+    font-family: "Avenir-Heavy", sans-serif;
+    color: green;
+    text-align: center;
+  }
+
+  p {
+    padding: 0;
+    margin: 0;
+    font-family: "Avenir-Med", sans-serif;
+    color: $black-text;
+  }
+
+  md-icon {
+    //align-self: center !important;
+    position: relative;
+    padding-left: 55px !important;
+    color: green;
+  }
+}

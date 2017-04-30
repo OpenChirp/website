@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { MdInputModule, MdSnackBar } from '@angular/material';
+import { MdInputModule, MdSnackBar, MdDialog } from '@angular/material';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { Location } from '../../models/location';
 import { LocationService } from '../../services/location.service';
 import { DeviceService } from '../../services/device.service';
+import { DialogService } from '../../services/dialog.service';
+import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 
 @Component({
   selector: 'new-device',
@@ -22,7 +24,10 @@ export class NewDeviceComponent {
   template: any = null;
   templateid = "";
 
-  constructor(private deviceService: DeviceService, private locationService: LocationService, private route: ActivatedRoute, private router: Router, public snackBar: MdSnackBar) {
+  constructor(private deviceService: DeviceService, private locationService: LocationService,
+              private route: ActivatedRoute, private router: Router,
+              public snackBar: MdSnackBar,
+              private dialogService: DialogService) {
 
   }
 
@@ -89,7 +94,10 @@ export class NewDeviceComponent {
       if (valid) {
         this.deviceService.addDevice(body).subscribe(
           result => {
-            this.snackBar.open("Add Device Sucess!", this.name, { duration: 2000 }).afterDismissed().subscribe(
+            // this.snackBar.open("Add Device Sucess!", this.name, { duration: 2000 }).afterDismissed().subscribe(
+            this.dialogService
+              .dialogPopup(SuccessDialogComponent, 'Add Device Success!')
+              .subscribe(
               res => this.router.navigate(['/home/device/', result._id]),
               err => this.router.navigate(['/home'])
             );
@@ -103,7 +111,7 @@ export class NewDeviceComponent {
     else {
       this.snackBar.open("Name cannot be empty!", "ERROR", { duration: 2000 });
     }
-  
+
   }
 
   cancel() {

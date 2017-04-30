@@ -22,10 +22,12 @@ import { DashboardMainComponent } from './components/dashboard/dashboard-main.co
 import { DeviceTemplatesComponent } from './components/devices/devicetemplates.component';
 import { DeviceTemplateComponent } from './components/devices/devicetemplate.component';
 import { NewTemplateComponent } from './components/devices/newtemplate.component';
+import { SuccessDialogComponent } from './components/success-dialog/success-dialog.component';
 
 // Services
 import { LocationService } from './services/location.service';
 import { DeviceService } from './services/device.service';
+import { DialogService } from './services/dialog.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { DeviceService } from './services/device.service';
     DeviceTemplatesComponent,
     DeviceTemplateComponent,
     NewTemplateComponent,
-    DeleteLocationDialog
+    DeleteLocationDialog,
+    SuccessDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -57,10 +60,12 @@ import { DeviceService } from './services/device.service';
   ],
   providers: [
     LocationService,
-    DeviceService
+    DeviceService,
+    DialogService
   ],
   entryComponents: [
-    DeleteLocationDialog
+    DeleteLocationDialog,
+    SuccessDialogComponent
   ],
   bootstrap: [AppComponent]
 })
