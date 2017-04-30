@@ -1,4 +1,5 @@
-@import '../constants';
+@import '../../constants';
+$image_url: '../../../assets/images';
 
 .splash-page {
 
@@ -61,8 +62,8 @@
     }
     .logo-section {
       color: #ffffff;
-      content: url("../../assets/images/logo-square.png");
-      width: 50%;
+      content: url($image_url+"/logo_with_text.png");
+      width: 100%;
       .logo-text {
         h3 {
           color: $black-text;
@@ -79,7 +80,7 @@
     height: 100vh;
     margin: 0;
     padding: 0;
-    background-image: url("../../assets/images/background.png");
+    background-image: url($image_url + "/background.png");
     background-position: center;
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -139,7 +140,7 @@
   .how-it-works-pic {
     height: 100vh;
     margin: 0;
-    background-image: url("../../assets/images/howitworks.png");
+    background-image: url($image_url+"/howitworks.png");
     background-position: center;
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -192,27 +193,27 @@
   .step1 {
     padding: 5px;
     margin: 10px 25px 5px 20px;
-    content: url("../../assets/images/1.png");
+    content: url($image_url+ "/1.png");
   }
   .step2 {
     padding: 5px;
     margin: 10px 25px 5px 20px;
-    content: url("../../assets/images/2.png");
+    content: url($image_url + "/2.png");
   }
   .step3 {
     padding: 5px;
     margin: 10px 25px 5px 20px;
-    content: url("../../assets/images/3.png");
+    content: url($image_url + "/3.png");
   }
   .step4 {
     padding: 5px;
     margin: 10px 25px 5px 20px;
-    content: url("../../assets/images/4.png");
+    content: url($image_url + "/4.png");
   }
   .step5 {
     padding: 5px;
     margin: 10px 25px 5px 20px;
-    content: url("../../assets/images/5.png");
+    content: url($image_url + "/5.png");
   }
 
   .flex-container {
@@ -249,17 +250,17 @@
   .iot-project {
     padding: 5px;
     margin: 0 10px 15px 0;
-    content: url("../../assets/images/IoT icon.png");
+    content: url($image_url+ "/IoT icon.png");
   }
   .community-driven {
     padding: 5px;
     margin: 0 10px 15px 0;
-    content: url("../../assets/images/community icon.png");
+    content: url($image_url+ "/community icon.png");
   }
   .empowering {
     padding: 5px;
     margin: 0 10px 15px 0;
-    content: url("../../assets/images/empowering icon.png");
+    content: url($image_url+ "/empowering icon.png");
   }
 
   .tech-text {
@@ -295,42 +296,42 @@
     padding: 5px;
     margin: 50px 20px 50px 70px;
 
-    content: url("../../assets/images/protobuf-icon.png");
+    content: url($image_url +"/protobuf-icon.png");
   }
 
   .cloud-icon {
     padding: 5px;
     margin: 50px 20px 50px 70px;
 
-    content: url("../../assets/images/cloud-icon.png");
+    content: url($image_url+ "/cloud-icon.png");
   }
 
   .open-icon {
     padding: 5px;
     margin: 50px 20px 50px 70px;
 
-    content: url("../../assets/images/open-icon.png");
+    content: url($image_url + "/open-icon.png");
   }
 
   .rest-icon {
     padding: 5px;
     margin: 50px 20px 50px 50px;
 
-    content: url("../../assets/images/rest-icon.png");
+    content: url($image_url + "/rest-icon.png");
   }
 
   .battery-icon {
     padding: 5px;
     margin: 50px 20px 50px 50px;
 
-    content: url("../../assets/images/battery-icon.png");
+    content: url($image_url + "/battery-icon.png");
   }
 
   .intelligent-icon {
     padding: 5px;
     margin: 50px 20px 50px 50px;
 
-    content: url("../../assets/images/intelligent-icon.png");
+    content: url($image_url + "/intelligent-icon.png");
   }
 
   .gallery-title {
@@ -349,7 +350,7 @@
   .gallery-pic {
     height: 100vh;
     margin: 0;
-    background-image: url("../../assets/images/gallery-bg.png");
+    background-image: url($image_url + "/gallery-bg.png");
     background-position: center;
     background-size: 100% 80%;
     background-repeat: no-repeat;
@@ -375,7 +376,7 @@
   .cmu-pic {
     height: 100vh;
     margin: 0;
-    background-image: url("../../assets/images/CMU.png");
+    background-image: url($image_url +"/CMU.png");
     background-position: center;
     background-repeat: no-repeat;
   }

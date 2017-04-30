@@ -10,24 +10,24 @@ import 'hammerjs';
 // Components
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { SplashComponent } from './splash/splash.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { PageNotFoundComponent } from './404/pagenotfound.component';
-import { TreeNodeComponent, DeleteLocationDialog } from './tree/tree.component';
-import { DeviceListComponent } from './devices/devicelist.component';
-import { NewLocationComponent } from './locations/newlocation.component';
-import { DeviceComponent } from './devices/device.component';
-import { NewDeviceComponent } from './devices/newdevice.component';
-import { DashboardMainComponent } from './dashboard/dashboard-main.component';
-import { DeviceTemplatesComponent } from './devices/devicetemplates.component';
-import { DeviceTemplateComponent } from './devices/devicetemplate.component';
-import { NewTemplateComponent } from './devices/newtemplate.component';
-import { SuccessDialogComponent } from './success-dialog/success-dialog.component';
+import { SplashComponent } from './components/splash/splash.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { PageNotFoundComponent } from './components/404/pagenotfound.component';
+import { TreeNodeComponent, DeleteLocationDialog } from './components/locationtree/tree.component';
+import { DeviceListComponent } from './components/devices/devicelist.component';
+import { NewLocationComponent } from './components/locations/newlocation.component';
+import { DeviceComponent } from './components/devices/device.component';
+import { NewDeviceComponent } from './components/devices/newdevice.component';
+import { DashboardMainComponent } from './components/dashboard/dashboard-main.component';
+import { DeviceTemplatesComponent } from './components/devices/devicetemplates.component';
+import { DeviceTemplateComponent } from './components/devices/devicetemplate.component';
+import { NewTemplateComponent } from './components/devices/newtemplate.component';
+import { SuccessDialogComponent } from './components/success-dialog/success-dialog.component';
 
 // Services
-import { LocationService } from './resources/location.service';
-import { DeviceService } from './resources/device.service';
-import { DialogService } from './resources/dialog.service';
+import { LocationService } from './services/location.service';
+import { DeviceService } from './services/device.service';
+import { DialogService } from './services/dialog.service';
 
 @NgModule({
   declarations: [

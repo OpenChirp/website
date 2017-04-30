@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
-import { Device } from '../resources/device';
-import { Location } from '../resources/location';
-import { LocationService } from '../resources/location.service';
+import { Device } from '../../models/device';
+import { Location } from '../../models/location';
+import { LocationService } from '../../services/location.service';
 
 
 @Component({

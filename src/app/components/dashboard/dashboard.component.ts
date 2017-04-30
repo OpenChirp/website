@@ -1,9 +1,9 @@
 
 import { Component, OnInit } from '@angular/core';
-import { LocationService } from '../resources/location.service';
-import { Location } from '../resources/location';
-import { Device } from '../resources/device';
-import { TreeNodeComponent } from '../tree/tree.component';
+import { LocationService } from '../../services/location.service';
+import { Location } from '../../models/location';
+import { Device } from '../../models/device';
+import { TreeNodeComponent } from '../locationtree/tree.component';
 
 @Component({
   selector: 'app-dashboard',

@@ -2,8 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { MdDialog, MdDialogRef, MdSnackBar } from '@angular/material';
 
-import { LocationService } from '../resources/location.service';
-import { Location } from '../resources/location';
+import { LocationService } from '../../services/location.service';
+import { Location } from '../../models/location';
 
 @Component({
   selector: 'tree-node',

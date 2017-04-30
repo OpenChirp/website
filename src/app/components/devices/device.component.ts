@@ -3,8 +3,8 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { MdSnackBar, MdMenuModule } from '@angular/material';
 import 'rxjs/add/operator/switchMap';
 
-import { Device } from '../resources/device';
-import { DeviceService } from '../resources/device.service';
+import { Device } from '../../models/device';
+import { DeviceService } from '../../services/device.service';
 
 @Component({
   selector: 'device-info',

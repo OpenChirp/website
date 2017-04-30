@@ -3,8 +3,8 @@ import { MdInputModule, MdSnackBar, MdDialog } from '@angular/material';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
-import { DeviceService } from '../resources/device.service';
-import { Device } from '../resources/device';
+import { DeviceService } from '../../services/device.service';
+import { Device } from '../../models/device';
 
 @Component({
   selector: 'new-template',

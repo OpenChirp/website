@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { MdInputModule, MdSnackBar, MdDialog } from '@angular/material';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
-import { Location } from '../resources/location';
-import { LocationService } from '../resources/location.service';
-import { DeviceService } from '../resources/device.service';
-import { DialogService } from '../resources/dialog.service';
+import { Location } from '../../models/location';
+import { LocationService } from '../../services/location.service';
+import { DeviceService } from '../../services/device.service';
+import { DialogService } from '../../services/dialog.service';
 
 @Component({
   selector: 'new-device',
