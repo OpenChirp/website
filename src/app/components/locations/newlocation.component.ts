@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { Location } from '../resources/location';
+import { Location } from '../../models/location';
 import { MdInputModule, MdSnackBar } from '@angular/material';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
-import { LocationService } from '../resources/location.service';
+import { LocationService } from '../../services/location.service';
 
 @Component({
   selector: 'new-location',

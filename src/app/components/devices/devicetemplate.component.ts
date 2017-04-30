@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
-import { DeviceService } from '../resources/device.service';
+import { DeviceService } from '../../services/device.service';
 
 @Component({
   selector: 'device-template',

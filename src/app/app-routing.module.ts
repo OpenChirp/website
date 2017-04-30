@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SplashComponent } from './splash/splash.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { DashboardMainComponent } from './dashboard/dashboard-main.component';
-import { PageNotFoundComponent } from './404/pagenotfound.component';
-import { NewLocationComponent } from './locations/newlocation.component';
-import { DeviceTemplatesComponent } from './devices/devicetemplates.component';
-import { DeviceComponent } from './devices/device.component';
-import { DeviceListComponent } from './devices/devicelist.component';
-import { NewDeviceComponent } from './devices/newdevice.component';
-import { DeviceTemplateComponent } from './devices/devicetemplate.component';
-import { NewTemplateComponent } from './devices/newtemplate.component';
+import { SplashComponent } from './components/splash/splash.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardMainComponent } from './components/dashboard/dashboard-main.component';
+import { PageNotFoundComponent } from './components/404/pagenotfound.component';
+import { NewLocationComponent } from './components/locations/newlocation.component';
+import { DeviceTemplatesComponent } from './components/devices/devicetemplates.component';
+import { DeviceComponent } from './components//devices/device.component';
+import { DeviceListComponent } from './components/devices/devicelist.component';
+import { NewDeviceComponent } from './components/devices/newdevice.component';
+import { DeviceTemplateComponent } from './components/devices/devicetemplate.component';
+import { NewTemplateComponent } from './components/devices/newtemplate.component';
 
 const appRoutes: Routes = [
   { path: '', component: SplashComponent },

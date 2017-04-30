@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DeviceService } from '../resources/device.service';
+import { DeviceService } from '../../services/device.service';
 import { Router } from '@angular/router';
 
 @Component({

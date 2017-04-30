@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { MdInputModule, MdSnackBar } from '@angular/material';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
-import { DeviceService } from '../resources/device.service';
-import { Device } from '../resources/device';
+import { DeviceService } from '../../services/device.service';
+import { Device } from '../../models/device';
 
 @Component({
   selector: 'new-template',
