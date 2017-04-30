@@ -23,6 +23,7 @@ import { DeviceTemplatesComponent } from './components/devices/devicetemplates.c
 import { DeviceTemplateComponent } from './components/devices/devicetemplate.component';
 import { NewTemplateComponent } from './components/devices/newtemplate.component';
 import { SuccessDialogComponent } from './components/success-dialog/success-dialog.component';
+import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
 
 // Services
 import { LocationService } from './services/location.service';
@@ -46,7 +47,8 @@ import { DialogService } from './services/dialog.service';
     DeviceTemplateComponent,
     NewTemplateComponent,
     DeleteLocationDialog,
-    SuccessDialogComponent
+    SuccessDialogComponent,
+    ErrorDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +67,8 @@ import { DialogService } from './services/dialog.service';
   ],
   entryComponents: [
     DeleteLocationDialog,
-    SuccessDialogComponent
+    SuccessDialogComponent,
+    ErrorDialogComponent
   ],
   bootstrap: [AppComponent]
 })
