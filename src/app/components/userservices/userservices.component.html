@@ -1,0 +1,21 @@
+<div class="user-services" >
+  <md-card>
+    <div class="card-header">
+      <h2>My Services</h2>
+    </div>
+    <br>
+    <div class="table-header">
+      <div><p>Service Name</p></div>
+      <div><p>Service Description</p></div>
+    </div>
+    <hr>
+    <div *ngFor="let service of services" class="services" (click)="gotoService(service._id)">
+      <div><p>{{ service.name }}</p></div>
+      <div><p>{{ service.description }}</p></div>
+    </div>
+    <div *ngIf="services.length == 0">
+      <p>Currently no services to display.</p>
+    </div>
+  </md-card>
+  
+</div>

@@ -26,6 +26,8 @@ import { SuccessDialogComponent } from './components/success-dialog/success-dial
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
 import { UserDevicesComponent } from './components/devices/userdevices.component';
 import { UserLocationsComponent } from './components/locations/userlocations.component';
+import { UserServicesComponent } from './components/userservices/userservices.component';
+import { UserServiceComponent } from './components/userservices/userservice.component';
 
 // Services
 import { LocationService } from './services/location.service';
@@ -53,6 +55,8 @@ import { UserService } from './services/user.service';
     SuccessDialogComponent,
     UserDevicesComponent,
     UserLocationsComponent,
+    UserServicesComponent,
+    UserServiceComponent,
     ErrorDialogComponent
   ],
   imports: [

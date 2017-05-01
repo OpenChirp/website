@@ -7,6 +7,7 @@ import { Device } from '../models/device';
 export class UserService {
 
   private locationUrl = 'http://openchirp.andrew.cmu.edu:10010/api/user/';
+  private apiLocationUrl = 'http://openchirp.andrew.cmu.edu:10010/api/';
 
   constructor(private http: Http) { }
 
@@ -22,6 +23,12 @@ export class UserService {
 
   getServices(search: string) {
     return this.http.get(this.locationUrl + "myservices?name=" + search)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  getServiceByID(id: string) {
+    return this.http.get(this.apiLocationUrl + "service/" + id)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
