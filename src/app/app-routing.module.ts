@@ -12,6 +12,10 @@ import { DeviceListComponent } from './components/devices/devicelist.component';
 import { NewDeviceComponent } from './components/devices/newdevice.component';
 import { DeviceTemplateComponent } from './components/devices/devicetemplate.component';
 import { NewTemplateComponent } from './components/devices/newtemplate.component';
+import { UserDevicesComponent } from './components/devices/userdevices.component';
+import { UserLocationsComponent } from './components/locations/userlocations.component';
+import { UserServicesComponent } from './components/userservices/userservices.component';
+import { UserServiceComponent } from './components/userservices/userservice.component';
 
 const appRoutes: Routes = [
   { path: '', component: SplashComponent },
@@ -50,6 +54,22 @@ const appRoutes: Routes = [
       {
         path: 'newtemplate/:id',    // Device ID
         component: NewTemplateComponent
+      },
+      {
+        path: 'mydevices',
+        component: UserDevicesComponent
+      },
+      {
+        path: 'mylocations',
+        component: UserLocationsComponent
+      },
+      {
+        path: 'myservices',
+        component: UserServicesComponent
+      },
+      {
+        path: 'service/:id',      // Service ID
+        component: UserServiceComponent
       }
     ]
   },

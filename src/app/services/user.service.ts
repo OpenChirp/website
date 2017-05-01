@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { Device } from '../models/device';
 
 @Injectable()
 export class UserService {
 
-  private locationUrl = 'http://openchirp.andrew.cmu.edu:10010/api/user';
+  private locationUrl = 'http://openchirp.andrew.cmu.edu:10010/api/user/';
+  private apiLocationUrl = 'http://openchirp.andrew.cmu.edu:10010/api/';
 
   constructor(private http: Http) { }
 
@@ -19,6 +21,30 @@ export class UserService {
       .catch(this.handleError);
   }
 
+  getServices(search: string) {
+    return this.http.get(this.locationUrl + "myservices?name=" + search)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  getServiceByID(id: string) {
+    return this.http.get(this.apiLocationUrl + "service/" + id)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  getDevices(search: string) {
+    return this.http.get(this.locationUrl + "mydevices?name=" + search)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+    
+  getLocations(search: string) {
+    return this.http.get(this.locationUrl + "mylocations?name=" + search)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+  
   private extractData(res: Response) {
     const body = res.json();
     return body || { };
