@@ -4,6 +4,9 @@ import { MdInputModule, MdSnackBar } from '@angular/material';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
+import { DialogService } from '../../services/dialog.service';
+import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
+import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 import { LocationService } from '../../services/location.service';
 
 @Component({
@@ -21,7 +24,10 @@ export class NewLocationComponent {
   locationTypes: Array<string> = ["INDOOR", "BUILDING"];
   private sub: any;
 
-  constructor(private locationService: LocationService, private route: ActivatedRoute, private router: Router, public snackBar: MdSnackBar) {
+  constructor(private locationService: LocationService, private route: ActivatedRoute,
+              private router: Router,
+              public snackBar: MdSnackBar,
+              public dialogService: DialogService) {
 
   }
 
@@ -48,7 +54,8 @@ export class NewLocationComponent {
         .addLocationByParentId(this.parent._id, body)
         .subscribe(
           result => {
-            this.snackBar.open("Add location: " + this.name, "SUCCESS", { duration: 2000 });
+            this.dialogService
+              .dialogPopup(SuccessDialogComponent, 'Added location: ' + this.name);
             this.parent = null;
           },
           error => {
@@ -57,8 +64,9 @@ export class NewLocationComponent {
         );
     }
     else {
-      this.errorMessage = "Name and type cannot be empty.";
-      this.snackBar.open(this.errorMessage, "ERROR", { duration: 2000 });
+      this.errorMessage = 'Name and type cannot be empty.';
+      this.dialogService
+        .dialogPopup(ErrorDialogComponent, this.errorMessage);
     }
   }
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MdInputModule, MdSnackBar, MdDialog } from '@angular/material';
+import { MdInputModule, MdSnackBar } from '@angular/material';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { Location } from '../../models/location';
@@ -7,6 +7,7 @@ import { LocationService } from '../../services/location.service';
 import { DeviceService } from '../../services/device.service';
 import { DialogService } from '../../services/dialog.service';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
+import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 
 @Component({
   selector: 'new-device',
@@ -94,7 +95,6 @@ export class NewDeviceComponent {
       if (valid) {
         this.deviceService.addDevice(body).subscribe(
           result => {
-            // this.snackBar.open("Add Device Sucess!", this.name, { duration: 2000 }).afterDismissed().subscribe(
             this.dialogService
               .dialogPopup(SuccessDialogComponent, 'Add Device Success!')
               .subscribe(
@@ -103,13 +103,15 @@ export class NewDeviceComponent {
             );
           },
           error => {
-            this.snackBar.open(error.message, this.name, { duration: 2000 });
+            // this.snackBar.open(error.message, this.name, { duration: 2000 });
+            this.dialogService
+              .dialogPopup(ErrorDialogComponent, error.message + ': ' + this.name);
           }
         );
       }
-    }
-    else {
-      this.snackBar.open("Name cannot be empty!", "ERROR", { duration: 2000 });
+    } else {
+      this.dialogService
+        .dialogPopup(ErrorDialogComponent, 'Name cannot be empty!');
     }
 
   }

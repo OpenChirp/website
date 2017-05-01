@@ -4,6 +4,9 @@ import { MdDialog, MdDialogRef, MdSnackBar } from '@angular/material';
 
 import { LocationService } from '../../services/location.service';
 import { Location } from '../../models/location';
+import { DialogService } from '../../services/dialog.service';
+import {SuccessDialogComponent} from "../success-dialog/success-dialog.component";
+import {ErrorDialogComponent} from "../error-dialog/error-dialog.component";
 
 @Component({
   selector: 'tree-node',
@@ -19,8 +22,12 @@ export class TreeNodeComponent {
   errorMesssage: string;
   showChildren: boolean = false;
 
-  constructor(private locationService: LocationService, private router: Router, public dialog: MdDialog, public snackBar: MdSnackBar) {
-    
+  constructor(private locationService: LocationService,
+              private router: Router,
+              public dialog: MdDialog,
+              public snackBar: MdSnackBar,
+              private dialogService: DialogService) {
+
   }
 
   getChildren(curLocation: Location) {
@@ -39,7 +46,7 @@ export class TreeNodeComponent {
   clearChildren() {
     this.childLocations = [];
   }
-  
+
   toggleChildren(curLocation: Location) {
     if (this.showChildren) {
       this.clearChildren();
@@ -77,11 +84,13 @@ export class TreeNodeComponent {
           .deleteLocationById(location._id)
           .subscribe(
             res => {
-              this.snackBar.open(res.message, location.name, { duration: 2000 });
+              this.dialogService
+                .dialogPopup(SuccessDialogComponent, res.message + ': ' + location.name);
               this.onDelete.emit(true);
             },
             err => {
-              this.snackBar.open(err.message, location.name, { duration: 2000 });
+              this.dialogService
+                .dialogPopup(ErrorDialogComponent, err.message + ': ' + location.name);
             }
           )
       }
