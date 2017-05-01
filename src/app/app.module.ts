@@ -25,6 +25,7 @@ import { NewTemplateComponent } from './components/devices/newtemplate.component
 import { SuccessDialogComponent } from './components/success-dialog/success-dialog.component';
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
 import { UserDevicesComponent } from './components/devices/userdevices.component';
+import { UserLocationsComponent } from './components/locations/userlocations.component';
 
 // Services
 import { LocationService } from './services/location.service';
@@ -51,6 +52,7 @@ import { UserService } from './services/user.service';
     DeleteLocationDialog,
     SuccessDialogComponent,
     UserDevicesComponent,
+    UserLocationsComponent,
     ErrorDialogComponent
   ],
   imports: [

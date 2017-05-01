@@ -13,6 +13,7 @@ import { NewDeviceComponent } from './components/devices/newdevice.component';
 import { DeviceTemplateComponent } from './components/devices/devicetemplate.component';
 import { NewTemplateComponent } from './components/devices/newtemplate.component';
 import { UserDevicesComponent } from './components/devices/userdevices.component';
+import { UserLocationsComponent } from './components/locations/userlocations.component';
 
 const appRoutes: Routes = [
   { path: '', component: SplashComponent },
@@ -55,6 +56,10 @@ const appRoutes: Routes = [
       {
         path: 'mydevices',
         component: UserDevicesComponent
+      },
+      {
+        path: 'mylocations',
+        component: UserLocationsComponent
       }
     ]
   },
