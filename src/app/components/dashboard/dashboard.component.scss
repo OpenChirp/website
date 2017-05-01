@@ -68,13 +68,17 @@ $icon-color: #3a7193;
 
       line-height: 60px;
       button {
-        color: #3a7193;
+        color: $icon-color;
       }
       .logo {
         content: url("../../../assets/images/logo-square.png");
         width: 60px;
         float: left;
       }
+      .logo-text {
+        float : left;  
+        color: $icon-color;  
+        }
     }
     md-icon {
       margin-right: 10px;

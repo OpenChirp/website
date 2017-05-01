@@ -2,10 +2,10 @@
 
   <md-toolbar>
     <md-icon (click)="sidenav.toggle()">menu</md-icon>
-    <!--<p>{{title}}</p>-->
+    
     <div class="toolbar-content">
       <div class="logo"></div>
-
+      <div class="logo-text">{{title}} </div>
       <!-- Uncomment the code below (and delete previous line) for drop down menu-->
       <button md-button [mdMenuTriggerFor]="menu">{{username}}</button>
       <md-menu #menu="mdMenu">
