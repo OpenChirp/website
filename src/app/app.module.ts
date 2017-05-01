@@ -24,11 +24,13 @@ import { DeviceTemplateComponent } from './components/devices/devicetemplate.com
 import { NewTemplateComponent } from './components/devices/newtemplate.component';
 import { SuccessDialogComponent } from './components/success-dialog/success-dialog.component';
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
+import { UserDevicesComponent } from './components/devices/userdevices.component';
 
 // Services
 import { LocationService } from './services/location.service';
 import { DeviceService } from './services/device.service';
 import { DialogService } from './services/dialog.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { DialogService } from './services/dialog.service';
     NewTemplateComponent,
     DeleteLocationDialog,
     SuccessDialogComponent,
+    UserDevicesComponent,
     ErrorDialogComponent
   ],
   imports: [
@@ -63,7 +66,8 @@ import { DialogService } from './services/dialog.service';
   providers: [
     LocationService,
     DeviceService,
-    DialogService
+    DialogService,
+    UserService
   ],
   entryComponents: [
     DeleteLocationDialog,

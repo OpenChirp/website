@@ -12,6 +12,7 @@ import { DeviceListComponent } from './components/devices/devicelist.component';
 import { NewDeviceComponent } from './components/devices/newdevice.component';
 import { DeviceTemplateComponent } from './components/devices/devicetemplate.component';
 import { NewTemplateComponent } from './components/devices/newtemplate.component';
+import { UserDevicesComponent } from './components/devices/userdevices.component';
 
 const appRoutes: Routes = [
   { path: '', component: SplashComponent },
@@ -50,6 +51,10 @@ const appRoutes: Routes = [
       {
         path: 'newtemplate/:id',    // Device ID
         component: NewTemplateComponent
+      },
+      {
+        path: 'mydevices',
+        component: UserDevicesComponent
       }
     ]
   },

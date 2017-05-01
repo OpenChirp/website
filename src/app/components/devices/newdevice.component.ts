@@ -66,9 +66,6 @@ export class NewDeviceComponent {
           this.useTemplate = true;
         });
     }
-    if (!tem && !loc) {
-      this.router.navigate(['/home']);
-    }
   }
 
   add() {
@@ -113,7 +110,6 @@ export class NewDeviceComponent {
       this.dialogService
         .dialogPopup(ErrorDialogComponent, 'Name cannot be empty!');
     }
-
   }
 
   cancel() {
