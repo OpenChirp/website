@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable} from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
@@ -8,15 +9,23 @@ import { Location } from '../models/location';
 import { Device } from '../models/device';
 
 @Injectable()
-
 export class LocationService {
   // TODO: get from config.json
   private locationUrl = 'http://openchirp.andrew.cmu.edu:10010/api/location';
+   // Observable source
+  private _notifierSource = new Subject<string>();
+
+ // Observable stream
+  notifier$ = this._notifierSource.asObservable();
 
   constructor (private http: Http) {
-    
+     
   }
   
+  notifyParent (parentId: string) {
+    this._notifierSource.next(parentId);
+  }
+
   // Gets the root location
   getRootLocation (): Observable<Location> {
     return this.http.get(this.locationUrl)
@@ -40,6 +49,7 @@ export class LocationService {
 
   // Add location
   addLocationByParentId(id: string, body: any) {
+    
     return this.http.post(this.locationUrl + "/" + id, body)
              .map(this.extractData)
              .catch(this.handleError);

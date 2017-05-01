@@ -56,7 +56,9 @@ export class NewLocationComponent {
           result => {
             this.dialogService
               .dialogPopup(SuccessDialogComponent, 'Added location: ' + this.name);
+            this.locationService.notifyParent(this.parent._id);
             this.parent = null;
+
           },
           error => {
             this.snackBar.open(error.message, this.name, { duration: 2000 });
