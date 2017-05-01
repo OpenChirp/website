@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-error-dialog',
   template: `
-    <div class="error">
+    <div class="error" align="center">
       <md-icon>report_problem</md-icon>
       <h3 md-dialog-title> Error </h3>
       <p>

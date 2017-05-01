@@ -7,7 +7,7 @@ import { LocationService } from '../../services/location.service';
 import { DeviceService } from '../../services/device.service';
 import { DialogService } from '../../services/dialog.service';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
-import {ErrorDialogComponent} from "../error-dialog/error-dialog.component";
+import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 
 @Component({
   selector: 'new-device',
@@ -95,7 +95,6 @@ export class NewDeviceComponent {
       if (valid) {
         this.deviceService.addDevice(body).subscribe(
           result => {
-            // this.snackBar.open("Add Device Sucess!", this.name, { duration: 2000 }).afterDismissed().subscribe(
             this.dialogService
               .dialogPopup(SuccessDialogComponent, 'Add Device Success!')
               .subscribe(

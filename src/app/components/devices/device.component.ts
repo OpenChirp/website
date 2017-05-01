@@ -5,6 +5,9 @@ import 'rxjs/add/operator/switchMap';
 
 import { Device } from '../../models/device';
 import { DeviceService } from '../../services/device.service';
+import { DialogService } from '../../services/dialog.service';
+import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
+import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 
 @Component({
   selector: 'device-info',
@@ -28,7 +31,11 @@ export class DeviceComponent {
   c_value: string = "";
   c_transducer: any = null;
 
-  constructor(private route: ActivatedRoute, private router: Router, private deviceService: DeviceService, public snackBar: MdSnackBar) {
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private deviceService: DeviceService,
+              public snackBar: MdSnackBar,
+              private dialogService: DialogService) {
 
   }
 
@@ -53,10 +60,12 @@ export class DeviceComponent {
     if (this.device) {
       this.deviceService.deleteDevice(this.device._id).subscribe(
         result => {
-          this.snackBar.open("Successfully Deleted!", this.device.name, {duration: 2000});
+          this.dialogService
+            .dialogPopup(SuccessDialogComponent, 'Deleted: ' + this.device.name);
           this.router.navigate(['/home']);
         },
-        error => this.snackBar.open(error.message, this.device.name, {duration: 2000})
+        error => this.dialogService
+                  .dialogPopup(ErrorDialogComponent, error.message + ': ' + this.device.name)
       );
     }
   }
@@ -64,12 +73,14 @@ export class DeviceComponent {
   updateDevice() {
     this.deviceService.updateDeviceById(this.device._id, this.device).subscribe(
       result => {
-        this.successMessage = "Updated!";
-        this.snackBar.open(this.successMessage, this.device.name, {duration: 2000});
+        this.successMessage = 'Updated: ';
+        this.dialogService
+          .dialogPopup(SuccessDialogComponent, this.successMessage + this.device.name);
         this.router.navigate(['/home/device/', this.device._id]);
       },
       error => {
-        this.snackBar.open(error.message, this.device.name, {duration: 2000});
+        this.dialogService
+          .dialogPopup(ErrorDialogComponent, error.message + ': ' + this.device.name);
       }
     );
   }
@@ -77,10 +88,12 @@ export class DeviceComponent {
   execute(command: any) {
     this.deviceService.executeCommand(this.device._id, command._id).subscribe(
       result => {
-        this.snackBar.open("Successfully Executed!", command.name, { duration: 2000 });
+        this.dialogService
+          .dialogPopup(SuccessDialogComponent, 'Executed: ' + command.name);
       },
       error => {
-        this.snackBar.open(error.message, command.name, { duration: 2000 });
+        this.dialogService
+          .dialogPopup(ErrorDialogComponent, error.message + ': ' + command.name);
       }
     );
   }
@@ -94,30 +107,34 @@ export class DeviceComponent {
       };
       this.deviceService.addTransducer(this.device._id, body).subscribe(
         result => {
-          this.snackBar.open("New transducer added!", this.t_name, { duration: 2000 });
+          this.dialogService
+            .dialogPopup(SuccessDialogComponent, 'New transducer added: ' + this.t_name);
           this.t_name = "";
           this.t_unit = "";
           this.t_actuable = false;
           this.getDevice();
         },
         error => {
-          this.snackBar.open(error.message, this.t_name, { duration: 2000 });
+          this.dialogService
+            .dialogPopup(ErrorDialogComponent, error.message + ': ' + this.t_name);
         }
       );
-    }
-    else {
-      this.snackBar.open("Name / Unit cannot be empty!", "ERROR", { duration: 2000 });
+    } else {
+      this.dialogService
+        .dialogPopup(ErrorDialogComponent, 'Name/Unit cannot be empty!');
     }
   }
 
   deleteTransducer(t_id: string, t_name: string) {
     this.deviceService.deleteTransducer(this.device._id, t_id).subscribe(
       result => {
-        this.snackBar.open("Transducer Deleted!", t_name, { duration: 2000 });
+        this.dialogService
+          .dialogPopup(SuccessDialogComponent, 'Transducer deleted: ' + t_name);
         this.getDevice();
       },
       error => {
-        this.snackBar.open(error.message, t_name, { duration: 2000 });
+        this.dialogService
+          .dialogPopup(ErrorDialogComponent, error.message + ': ' + t_name);
       }
     );
   }
@@ -131,30 +148,34 @@ export class DeviceComponent {
       };
       this.deviceService.addCommand(this.device._id, body).subscribe(
         result => {
-          this.snackBar.open("Command Added!", this.c_name, { duration: 2000 });
+          this.dialogService
+            .dialogPopup(SuccessDialogComponent, 'Command Added: ' + this.c_name);
           this.c_name = "";
           this.c_transducer = null;
           this.c_value = "";
           this.getDevice();
         },
         error => {
-          this.snackBar.open(error.message, this.c_name, { duration: 2000 });
+          this.dialogService
+            .dialogPopup(ErrorDialogComponent, error.message + ': ' + this.c_name);
         }
       );
-    }
-    else {
-      this.snackBar.open("Name/Value/Transducer cannot be empty!", "ERROR", { duration: 2000 });
+    } else {
+      this.dialogService
+        .dialogPopup(ErrorDialogComponent, 'Name/Value/Transducer cannot be empty!');
     }
   }
 
   deleteCommand(c_id: string, c_name: string) {
     this.deviceService.deleteCommand(this.device._id, c_id).subscribe(
       result => {
-        this.snackBar.open("Command Deleted!", c_name, { duration: 2000 });
+        this.dialogService
+          .dialogPopup(SuccessDialogComponent, 'Command Deleted: ' + c_name);
         this.getDevice();
       },
       error => {
-        this.snackBar.open(error.message, c_name, { duration: 2000 });
+        this.dialogService
+          .dialogPopup(ErrorDialogComponent, error.message + ': ' + c_name);
       }
     );
   }
