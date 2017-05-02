@@ -27,6 +27,7 @@ export class DeviceComponent {
   t_name: string = "";
   t_unit: string = "";
   t_actuable: boolean = false;
+  t_publishPayload: string = "";
 
   // New Command
   c_name: string = "";
@@ -134,6 +135,20 @@ export class DeviceComponent {
       this.dialogService
         .dialogPopup(ErrorDialogComponent, 'Name/Unit cannot be empty!');
     }
+  }
+   publishToTransducer(t_id: string, t_name: string) {
+       
+    this.deviceService.publishToTransducer(this.device._id, t_id, this.t_publishPayload).subscribe(
+      result => {
+        this.dialogService
+          .dialogPopup(SuccessDialogComponent, 'Published to : ' + t_name);
+        this.getDevice();
+      },
+      error => {
+        this.dialogService
+          .dialogPopup(ErrorDialogComponent, error.message + ': ' + t_name);
+      }
+    );
   }
 
   deleteTransducer(t_id: string, t_name: string) {
