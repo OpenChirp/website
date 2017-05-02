@@ -25,6 +25,7 @@ $black-text: #303132;
   }
   md-card {
     background-color: white;
+    box-shadow: none;
     md-tab-group {
       padding: 15px;
       font-family: "Avenir-Med", sans-serif;
@@ -93,6 +94,23 @@ $black-text: #303132;
       color: $black-text;
     }
   }
+  .table-header-service {
+    height: $row-height;
+    line-height: $row-height;
+    hr {
+      margin: 0;
+    }
+    div {
+      width: 50%;
+      float: left;
+      color: #909090;
+    }
+    p {
+      margin: 0;
+      font-family: "Avenir-Med", sans-serif;
+      color: $black-text;
+    }
+  }
   .transducer {
     height: $row-height;
     line-height: $row-height;
@@ -122,5 +140,24 @@ $black-text: #303132;
       font-family: "Avenir-Med", sans-serif;
       color: $black-text;
     }
+  }
+  .service {
+    height: $row-height;
+    line-height: $row-height;
+    border-bottom: solid 1px #909090;
+    div {
+      color: #606060;
+      width: 50%;
+      float: left;
+    }
+    p {
+      margin: 0;
+      font-family: "Avenir-Med", sans-serif;
+      color: $black-text;
+    }
+  }
+  .service:hover {
+    background-color: #e3e3e3;
+    cursor: pointer;
   }
 }

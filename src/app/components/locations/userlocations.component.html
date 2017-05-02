@@ -1,0 +1,20 @@
+<div class="user-locations" >
+  <md-card>
+    <div class="card-header">
+      <h2>My Locations</h2>
+    </div>
+    <br>
+    <div class="table-header">
+      <div><p>Location Name</p></div>
+      <div><p>Location Type</p></div>
+    </div>
+    <hr>
+    <div *ngFor="let location of locations" class="locations" (click)="gotoDevices(location._id)">
+      <div><p>{{ location.name }}</p></div>
+      <div><p>{{ location.type || "NONE" }}</p></div>
+    </div>
+    <div *ngIf="locations.length == 0">
+      <p>Currently no locations to display.</p>
+    </div>
+  </md-card>
+</div>

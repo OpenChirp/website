@@ -2,16 +2,16 @@
 
   <md-toolbar>
     <md-icon (click)="sidenav.toggle()">menu</md-icon>
-    <!--<p>{{title}}</p>-->
+    
     <div class="toolbar-content">
       <div class="logo"></div>
-
+      <div class="logo-text">{{title}} </div>
       <!-- Uncomment the code below (and delete previous line) for drop down menu-->
       <button md-button [mdMenuTriggerFor]="menu">{{username}}</button>
       <md-menu #menu="mdMenu">
-        <button md-menu-item>My Devices</button>
-        <button md-menu-item>My Services</button>
-        <button md-menu-item>My Locations</button>
+        <a md-menu-item routerLink="/home/mydevices">My Devices</a>
+        <a md-menu-item routerLink="/home/myservices">My Services</a>
+        <a md-menu-item routerLink="/home/mylocations">My Locations</a>
         <a button md-menu-item routerLink="/" routerLinkActive="active">Logout</a>
       </md-menu>
 

@@ -24,12 +24,17 @@ import { DeviceTemplateComponent } from './components/devices/devicetemplate.com
 import { NewTemplateComponent } from './components/devices/newtemplate.component';
 import { SuccessDialogComponent } from './components/success-dialog/success-dialog.component';
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
+import { UserDevicesComponent } from './components/devices/userdevices.component';
+import { UserLocationsComponent } from './components/locations/userlocations.component';
+import { UserServicesComponent } from './components/userservices/userservices.component';
+import { UserServiceComponent } from './components/userservices/userservice.component';
 
 // Services
 import { LocationService } from './services/location.service';
 import { DeviceService } from './services/device.service';
 import { DialogService } from './services/dialog.service';
 import { ErrorSnackbarComponent } from './components/error-snackbar/error-snackbar.component';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +55,12 @@ import { ErrorSnackbarComponent } from './components/error-snackbar/error-snackb
     DeleteLocationDialog,
     SuccessDialogComponent,
     ErrorDialogComponent,
-    ErrorSnackbarComponent
+    ErrorSnackbarComponent,
+    UserDevicesComponent,
+    UserLocationsComponent,
+    UserServicesComponent,
+    UserServiceComponent,
+    ErrorDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +75,8 @@ import { ErrorSnackbarComponent } from './components/error-snackbar/error-snackb
   providers: [
     LocationService,
     DeviceService,
-    DialogService
+    DialogService,
+    UserService
   ],
   entryComponents: [
     DeleteLocationDialog,

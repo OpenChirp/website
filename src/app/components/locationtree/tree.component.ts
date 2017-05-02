@@ -2,11 +2,13 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { MdDialog, MdDialogRef, MdSnackBar } from '@angular/material';
 
+import { Subscription } from 'rxjs/Subscription';
+
 import { LocationService } from '../../services/location.service';
 import { Location } from '../../models/location';
 import { DialogService } from '../../services/dialog.service';
-import {SuccessDialogComponent} from "../success-dialog/success-dialog.component";
-import {ErrorDialogComponent} from "../error-dialog/error-dialog.component";
+import { SuccessDialogComponent } from "../success-dialog/success-dialog.component";
+import { ErrorDialogComponent } from "../error-dialog/error-dialog.component";
 
 @Component({
   selector: 'tree-node',
@@ -21,7 +23,7 @@ export class TreeNodeComponent {
   childLocations: Array<Location> = [];
   errorMesssage: string;
   showChildren: boolean = false;
-
+  subscription:Subscription;
   constructor(private locationService: LocationService,
               private router: Router,
               public dialog: MdDialog,
@@ -29,9 +31,30 @@ export class TreeNodeComponent {
               private dialogService: DialogService) {
 
   }
+  ngOnInit() {
+    this.subscription = this.locationService.notifier$
+       .subscribe(result => {
+         if (this.currentLocation._id == result){
+             this.onCreateChild();
+         }
+       })
+  }
+  ngOnDestroy() {
+    // prevent memory leak when component is destroyed
+    this.subscription.unsubscribe();
+  }
+  reloadChildren(){
+     this.locationService
+        .getLocationById(this.currentLocation._id)
+        .subscribe(
+          result => { 
+                this.currentLocation = result ;
+                this.getChildren() }),
+          error => this.errorMesssage = error
+  }
 
-  getChildren(curLocation: Location) {
-    let children = curLocation.children;
+  getChildren() {
+    let children = this.currentLocation.children;
     this.childLocations = [];
     for (var i = 0; i < children.length; i++) {
       this.locationService
@@ -53,7 +76,7 @@ export class TreeNodeComponent {
       this.showChildren = false;
     }
     else {
-      this.getChildren(curLocation);
+      this.getChildren();
       this.showChildren = true;
     }
     this.toDevices(curLocation._id);
@@ -100,9 +123,16 @@ export class TreeNodeComponent {
   onDeleteChild(deleted: boolean) {
     if (deleted) {
       this.clearChildren();
-      this.getChildren(this.currentLocation);
+      this.reloadChildren();
       this.showChildren = true;
     }
+  }
+
+   onCreateChild() {    
+      this.clearChildren();
+      this.reloadChildren();      
+      this.showChildren = true;
+    
   }
 }
 

@@ -6,6 +6,7 @@ $black-text: #303132;
     color: $black-text;
   }
   md-card {
+    box-shadow: none;
     background-color: white;
     .error {
       color: #ff0000;

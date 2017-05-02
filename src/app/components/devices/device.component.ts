@@ -8,6 +8,7 @@ import { DeviceService } from '../../services/device.service';
 import { DialogService } from '../../services/dialog.service';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'device-info',
@@ -20,6 +21,7 @@ export class DeviceComponent {
   errorMessage: string = "";
   successMessage: string = "";
   deviceTypes: Array<string> = ["LORA", "TWIST", "FIREFLY", "BOSCH_XDK"];
+  services: Array<Object> = [];
 
   // New Transducer
   t_name: string = "";
@@ -35,7 +37,8 @@ export class DeviceComponent {
               private router: Router,
               private deviceService: DeviceService,
               public snackBar: MdSnackBar,
-              private dialogService: DialogService) {
+              private dialogService: DialogService,
+              private userService: UserService) {
 
   }
 
@@ -51,8 +54,16 @@ export class DeviceComponent {
     this.route.params
       .switchMap((params: Params) => this.deviceService.getDeviceById(params['id']))
       .subscribe(
-        result => this.device = result,
-        error => this.errorMessage = error.message
+        result => {
+          this.device = result;
+          var serviceIds = this.device.linked_services.map((x: any) => x.service_id);
+          for (var i = 0; i < serviceIds.length; i++) {
+            this.userService.getServiceByID(serviceIds[i]).subscribe(
+              res => this.services.push(res)
+            );
+          }
+        },
+        error => this.router.navigate(['/home'])
       );
   }
 
@@ -178,6 +189,10 @@ export class DeviceComponent {
           .dialogPopup(ErrorDialogComponent, error.message + ': ' + c_name);
       }
     );
+  }
+
+  toService(id: string) {
+    this.router.navigate(['/home/service/', id]);
   }
 
 }
