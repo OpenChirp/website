@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { MdSnackBar, MdMenuModule } from '@angular/material';
+import { MdSnackBar, MdMenuModule, MdSnackBarConfig } from '@angular/material';
 import 'rxjs/add/operator/switchMap';
 
 import { Device } from '../../models/device';
@@ -13,7 +13,8 @@ import { UserService } from '../../services/user.service';
 @Component({
   selector: 'device-info',
   templateUrl: './device.component.html',
-  styleUrls: ['./device.component.scss']
+  styleUrls: ['./device.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class DeviceComponent {
@@ -32,6 +33,9 @@ export class DeviceComponent {
   c_name: string = "";
   c_value: string = "";
   c_transducer: any = null;
+
+  // Configs for snackbar notifications
+  successConfig = new MdSnackBarConfig();
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -68,11 +72,13 @@ export class DeviceComponent {
   }
 
   deleteDevice() {
+    this.successConfig.duration = 3000;
+    this.successConfig.extraClasses = ['success'];
+
     if (this.device) {
       this.deviceService.deleteDevice(this.device._id).subscribe(
         result => {
-          this.dialogService
-            .dialogPopup(SuccessDialogComponent, 'Deleted: ' + this.device.name);
+          this.snackBar.open('Successfully Deleted!', this.device.name, this.successConfig);
           this.router.navigate(['/home']);
         },
         error => this.dialogService
@@ -82,11 +88,13 @@ export class DeviceComponent {
   }
 
   updateDevice() {
+    this.successConfig.duration = 3000;
+    this.successConfig.extraClasses = ['success'];
+
     this.deviceService.updateDeviceById(this.device._id, this.device).subscribe(
       result => {
         this.successMessage = 'Updated: ';
-        this.dialogService
-          .dialogPopup(SuccessDialogComponent, this.successMessage + this.device.name);
+        this.snackBar.open(this.successMessage, this.device.name, this.successConfig);
         this.router.navigate(['/home/device/', this.device._id]);
       },
       error => {
@@ -97,10 +105,12 @@ export class DeviceComponent {
   }
 
   execute(command: any) {
+    this.successConfig.duration = 3000;
+    this.successConfig.extraClasses = ['success'];
+
     this.deviceService.executeCommand(this.device._id, command._id).subscribe(
       result => {
-        this.dialogService
-          .dialogPopup(SuccessDialogComponent, 'Executed: ' + command.name);
+        this.snackBar.open('Executed: ', command.name, this.successConfig);
       },
       error => {
         this.dialogService
@@ -110,6 +120,9 @@ export class DeviceComponent {
   }
 
   newTransducer() {
+    this.successConfig.duration = 3000;
+    this.successConfig.extraClasses = ['success'];
+
     if (this.t_name != "" && this.t_unit != "") {
       var body = {
         name: this.t_name,
@@ -118,8 +131,7 @@ export class DeviceComponent {
       };
       this.deviceService.addTransducer(this.device._id, body).subscribe(
         result => {
-          this.dialogService
-            .dialogPopup(SuccessDialogComponent, 'New transducer added: ' + this.t_name);
+          this.snackBar.open('New Transducer added: ', this.t_name, this.successConfig);
           this.t_name = "";
           this.t_unit = "";
           this.t_actuable = false;
@@ -137,10 +149,12 @@ export class DeviceComponent {
   }
 
   deleteTransducer(t_id: string, t_name: string) {
+    this.successConfig.duration = 3000;
+    this.successConfig.extraClasses = ['success'];
+
     this.deviceService.deleteTransducer(this.device._id, t_id).subscribe(
       result => {
-        this.dialogService
-          .dialogPopup(SuccessDialogComponent, 'Transducer deleted: ' + t_name);
+        this.snackBar.open('Transducer Deleted: ', t_name, this.successConfig);
         this.getDevice();
       },
       error => {
@@ -151,6 +165,9 @@ export class DeviceComponent {
   }
 
   newCommand() {
+    this.successConfig.duration = 3000;
+    this.successConfig.extraClasses = ['success'];
+
     if (this.c_name && this.c_value && this.c_transducer) {
       var body = {
         name: this.c_name,
@@ -159,8 +176,7 @@ export class DeviceComponent {
       };
       this.deviceService.addCommand(this.device._id, body).subscribe(
         result => {
-          this.dialogService
-            .dialogPopup(SuccessDialogComponent, 'Command Added: ' + this.c_name);
+          this.snackBar.open('Command Added: ', this.c_name, this.successConfig);
           this.c_name = "";
           this.c_transducer = null;
           this.c_value = "";
@@ -178,10 +194,12 @@ export class DeviceComponent {
   }
 
   deleteCommand(c_id: string, c_name: string) {
+    this.successConfig.duration = 3000;
+    this.successConfig.extraClasses = ['success'];
+
     this.deviceService.deleteCommand(this.device._id, c_id).subscribe(
       result => {
-        this.dialogService
-          .dialogPopup(SuccessDialogComponent, 'Command Deleted: ' + c_name);
+        this.snackBar.open('Command Deleted: ', c_name, this.successConfig);
         this.getDevice();
       },
       error => {

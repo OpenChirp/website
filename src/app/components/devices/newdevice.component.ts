@@ -27,6 +27,12 @@ export class NewDeviceComponent {
   template: any = null;
   templateid = "";
 
+  // Configs for snackbar notifications
+  // errorConfig = new MdSnackBarConfig();
+  // errorConfig.duration = 3000;
+  // errorConfig.extraClasses = ['error'];
+  successConfig = new MdSnackBarConfig();
+
   constructor(private deviceService: DeviceService, private locationService: LocationService,
               private route: ActivatedRoute, private router: Router,
               public snackBar: MdSnackBar, public errorSnackbar: MdSnackBar,
@@ -71,9 +77,8 @@ export class NewDeviceComponent {
   }
 
   add() {
-    const errorConfig = new MdSnackBarConfig();
-    errorConfig.duration = 3000;
-    errorConfig.extraClasses = ['error'];
+    this.successConfig.duration = 3000;
+    this.successConfig.extraClasses = ['success'];
 
     if (this.name != "") {
       var valid = true;
@@ -98,27 +103,27 @@ export class NewDeviceComponent {
       if (valid) {
         this.deviceService.addDevice(body).subscribe(
           result => {
-            this.dialogService
-              .dialogPopup(SuccessDialogComponent, 'Add Device Success!')
+            this.snackBar.open('Add Device Success!', this.name, this.successConfig)
+              .afterDismissed()
               .subscribe(
               res => this.router.navigate(['/home/device/', result._id]),
               err => this.router.navigate(['/home'])
             );
           },
           error => {
-            this.snackBar.open(error.message, this.name, errorConfig);
-            // this.dialogService
-            //   .dialogPopup(ErrorDialogComponent, error.message + ': ' + this.name);
+            // this.snackBar.open(error.message, this.name, errorConfig);
+            this.dialogService
+              .dialogPopup(ErrorDialogComponent, error.message + ': ' + this.name);
           }
         );
       }
     } else {
-      this.snackBar.open('Name cannot be empty!', 'ERROR', errorConfig);
+      // this.snackBar.open('Name cannot be empty!', 'ERROR', errorConfig);
       // this.errorSnackbar.openFromComponent(
       //   ErrorSnackbarComponent, { duration: 2000 }
       // );
-      // this.dialogService
-      //   .dialogPopup(ErrorDialogComponent, 'Name cannot be empty!');
+      this.dialogService
+        .dialogPopup(ErrorDialogComponent, 'Name cannot be empty!');
     }
   }
 
