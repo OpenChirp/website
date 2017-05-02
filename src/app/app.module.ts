@@ -29,6 +29,7 @@ import { ErrorDialogComponent } from './components/error-dialog/error-dialog.com
 import { LocationService } from './services/location.service';
 import { DeviceService } from './services/device.service';
 import { DialogService } from './services/dialog.service';
+import { ErrorSnackbarComponent } from './components/error-snackbar/error-snackbar.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { DialogService } from './services/dialog.service';
     NewTemplateComponent,
     DeleteLocationDialog,
     SuccessDialogComponent,
-    ErrorDialogComponent
+    ErrorDialogComponent,
+    ErrorSnackbarComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +70,8 @@ import { DialogService } from './services/dialog.service';
   entryComponents: [
     DeleteLocationDialog,
     SuccessDialogComponent,
-    ErrorDialogComponent
+    ErrorDialogComponent,
+    ErrorSnackbarComponent
   ],
   bootstrap: [AppComponent]
 })

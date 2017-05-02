@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { MdInputModule, MdSnackBar } from '@angular/material';
+import {Component, ViewEncapsulation} from '@angular/core';
+import { MdInputModule, MdSnackBar, MdSnackBarConfig } from '@angular/material';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { Location } from '../../models/location';
@@ -8,11 +8,13 @@ import { DeviceService } from '../../services/device.service';
 import { DialogService } from '../../services/dialog.service';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
+import { ErrorSnackbarComponent } from '../error-snackbar/error-snackbar.component';
 
 @Component({
   selector: 'new-device',
   templateUrl: './newdevice.component.html',
-  styleUrls: ['./newdevice.component.scss']
+  styleUrls: ['./newdevice.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class NewDeviceComponent {
   location: Location = null;
@@ -27,7 +29,7 @@ export class NewDeviceComponent {
 
   constructor(private deviceService: DeviceService, private locationService: LocationService,
               private route: ActivatedRoute, private router: Router,
-              public snackBar: MdSnackBar,
+              public snackBar: MdSnackBar, public errorSnackbar: MdSnackBar,
               private dialogService: DialogService) {
 
   }
@@ -72,6 +74,10 @@ export class NewDeviceComponent {
   }
 
   add() {
+    const errorConfig = new MdSnackBarConfig();
+    errorConfig.duration = 3000;
+    errorConfig.extraClasses = ['error'];
+
     if (this.name != "") {
       var valid = true;
       var body : any = {};
@@ -103,15 +109,19 @@ export class NewDeviceComponent {
             );
           },
           error => {
-            // this.snackBar.open(error.message, this.name, { duration: 2000 });
-            this.dialogService
-              .dialogPopup(ErrorDialogComponent, error.message + ': ' + this.name);
+            this.snackBar.open(error.message, this.name, errorConfig);
+            // this.dialogService
+            //   .dialogPopup(ErrorDialogComponent, error.message + ': ' + this.name);
           }
         );
       }
     } else {
-      this.dialogService
-        .dialogPopup(ErrorDialogComponent, 'Name cannot be empty!');
+      this.snackBar.open('Name cannot be empty!', 'ERROR', errorConfig);
+      // this.errorSnackbar.openFromComponent(
+      //   ErrorSnackbarComponent, { duration: 2000 }
+      // );
+      // this.dialogService
+      //   .dialogPopup(ErrorDialogComponent, 'Name cannot be empty!');
     }
 
   }

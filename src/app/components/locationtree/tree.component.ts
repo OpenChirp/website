@@ -92,7 +92,7 @@ export class TreeNodeComponent {
               this.dialogService
                 .dialogPopup(ErrorDialogComponent, err.message + ': ' + location.name);
             }
-          )
+          );
       }
     });
   }
