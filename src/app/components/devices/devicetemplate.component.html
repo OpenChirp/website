@@ -2,7 +2,9 @@
     <md-card *ngIf="template">
       <div class="card-header">
         <h2>Device Template {{ template.name }}</h2>
-        <button md-raised-button (click)="newDevice()">New Device</button>
+        <div class="new-template">
+          <button md-raised-button (click)="newDevice()">New Device</button>
+        </div>
       </div>
       <hr>
       <h4>Description</h4>
