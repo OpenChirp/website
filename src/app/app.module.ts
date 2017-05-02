@@ -28,6 +28,7 @@ import { UserDevicesComponent } from './components/devices/userdevices.component
 import { UserLocationsComponent } from './components/locations/userlocations.component';
 import { UserServicesComponent } from './components/userservices/userservices.component';
 import { UserServiceComponent } from './components/userservices/userservice.component';
+import { ErrorSnackbarComponent } from './components/error-snackbar/error-snackbar.component';
 
 // Services
 import { LocationService } from './services/location.service';
@@ -53,6 +54,8 @@ import { UserService } from './services/user.service';
     NewTemplateComponent,
     DeleteLocationDialog,
     SuccessDialogComponent,
+    ErrorDialogComponent,
+    ErrorSnackbarComponent,
     UserDevicesComponent,
     UserLocationsComponent,
     UserServicesComponent,
@@ -78,7 +81,8 @@ import { UserService } from './services/user.service';
   entryComponents: [
     DeleteLocationDialog,
     SuccessDialogComponent,
-    ErrorDialogComponent
+    ErrorDialogComponent,
+    ErrorSnackbarComponent
   ],
   bootstrap: [AppComponent]
 })

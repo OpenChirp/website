@@ -2,8 +2,12 @@
   <md-card *ngIf="device">
     <div class="card-header">
       <h2>Device Information for {{ device.name }}</h2>
-      <button md-raised-button (click)="saveTemplate()">Save as Template</button>
-      <button md-raised-button (click)="deleteDevice()" color="warn">Delete</button>
+      <div class="save-template">
+        <button md-raised-button (click)="saveTemplate()">Save as Template</button>
+      </div>
+      <div class="delete">
+        <button md-raised-button (click)="deleteDevice()">Delete</button>
+      </div>
     </div>
     <hr>
     <md-tab-group>
@@ -44,7 +48,8 @@
             <div><p>Name</p></div>
             <div><p>Unit</p></div>
             <div><p>Actuable</p></div>
-            <div><p>Add / Delete</p></div>
+            <!--<div><p>Add/Delete</p></div>-->
+            <div><p>Edit</p></div>
             <br>
             <hr>
           </div>
@@ -52,7 +57,10 @@
             <div><p>{{ transducer.name }}</p></div>
             <div><p>{{ transducer.unit }}</p></div>
             <div><p>{{ transducer.is_actuable }}</p></div>
-            <div><button md-raised-button color="warn" (click)="deleteTransducer(transducer._id, transducer.name)">Delete</button></div>
+            <!--<div><button md-raised-button color="warn" (click)="deleteTransducer(transducer._id, transducer.name)">Delete</button></div>-->
+            <div><button md-icon-button (click)="deleteTransducer(transducer._id, transducer.name)">
+              <md-icon >clear</md-icon>
+            </button></div>
           </div>
           <div class="transducer">
             <div>
@@ -69,7 +77,10 @@
               <md-slide-toggle [(ngModel)]="t_actuable">{{ t_actuable }}</md-slide-toggle>
             </div>
             <div>
-              <button md-raised-button (click)="newTransducer()">Add</button>
+              <!--<button md-raised-button (click)="newTransducer()">Add</button>-->
+              <div><button md-icon-button (click)="newTransducer()">
+                <md-icon>add</md-icon>
+              </button></div>
             </div>
           </div>
         </div>
@@ -82,7 +93,8 @@
             <div><p>Command</p></div>
             <div><p>Value</p></div>
             <div><p>Execute</p></div>
-            <div><p>Add/Delete</p></div>
+            <!--<div><p>Add/Delete</p></div>-->
+            <div><p>Edit</p></div>
             <br>
             <hr>
           </div>
@@ -90,7 +102,10 @@
             <div><p>{{ command.name }}</p></div>
             <div><p>{{ command.value }}</p></div>
             <div><button md-raised-button (click)="execute(command)">Execute</button></div>
-            <div><button md-raised-button (click)="deleteCommand(command._id, command.name)" color="warn">Delete</button></div>
+            <!--<div><button md-raised-button (click)="deleteCommand(command._id, command.name)" color="warn">Delete</button></div>-->
+            <div><button md-icon-button (click)="deleteCommand(command._id, command.name)">
+              <md-icon >clear</md-icon>
+            </button></div>
           </div>
           <div class="command">
             <div>
@@ -111,7 +126,10 @@
               </md-select>
             </div>
             <div>
-              <button md-raised-button (click)="newCommand()">Add</button>
+              <!--<button md-raised-button (click)="newCommand()">Add</button>-->
+              <div><button md-icon-button (click)="newCommand()">
+                <md-icon>add</md-icon>
+              </button></div>
             </div>
           </div>
         </div>

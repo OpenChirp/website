@@ -38,13 +38,13 @@ export class UserService {
                     .map(this.extractData)
                     .catch(this.handleError);
   }
-    
+
   getLocations(search: string) {
     return this.http.get(this.locationUrl + "mylocations?name=" + search)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
-  
+
   private extractData(res: Response) {
     const body = res.json();
     return body || { };

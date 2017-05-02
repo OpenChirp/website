@@ -3,6 +3,23 @@ $row-height: 50px;
 $black-text: #303132;
 
 .device-info {
+  .delete {
+    font-family: "Avenir-Med", sans-serif;
+    color: red;
+    .button {
+      background-color: white;
+      //outline: 2px red !important;
+      box-shadow: none;
+    }
+  }
+  .save-template {
+    font-family: "Avenir-Med", sans-serif;
+    color: #8ab9d6;
+    .button {
+      background-color: white;
+      box-shadow: none;
+    }
+  }
   p {
     font-family: "Avenir-Med", sans-serif;
   }
