@@ -62,10 +62,11 @@ export class NewLocationComponent {
               .dialogPopup(SuccessDialogComponent, 'Added location: ' + this.name);
             this.locationService.notifyParent(this.parent._id);
             this.parent = null;
-
+            this.name = "";
+            this.type = "";
           },
           error => {
-            this.snackBar.open(error.message, this.name, { duration: 2000 });
+            this.dialogService.dialogPopup(ErrorDialogComponent, this.errorMessage);
           }
         );
     }
