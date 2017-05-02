@@ -4,6 +4,13 @@ $black-text: #303132;
 
 .device-list {
   background-color: #ffffff;
+  .new-device {
+    font-family: "Avenir-Med", sans-serif;
+    color: #8ab9d6;
+    .button {
+      background-color: white;
+    }
+  }
   p {
     font-family: "Avenir-Med", sans-serif;
     color: $black-text;
