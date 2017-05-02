@@ -48,19 +48,32 @@
             <div><p>Name</p></div>
             <div><p>Unit</p></div>
             <div><p>Actuable</p></div>
-            <!--<div><p>Add/Delete</p></div>-->
-            <div><p>Edit</p></div>
+            <div><p>Value</p></div>
+            <div><p>Timestamp</p></div>            
+            <div><p>Actions</p></div>
             <br>
             <hr>
           </div>
           <div *ngFor="let transducer of device.transducers" class="transducer">
             <div><p>{{ transducer.name }}</p></div>
-            <div><p>{{ transducer.unit }}</p></div>
+            <div><p>{{ transducer.unit ? transducer.unit : "-"}}</p></div>
             <div><p>{{ transducer.is_actuable }}</p></div>
+            <div><p>{{ transducer.value ? transducer.value : "-" }}</p></div>
+            <div><p>{{ transducer.timestamp ? transducer.timestamp : "-" }}</p></div>
             <!--<div><button md-raised-button color="warn" (click)="deleteTransducer(transducer._id, transducer.name)">Delete</button></div>-->
-            <div><button md-icon-button (click)="deleteTransducer(transducer._id, transducer.name)">
+            <div><p>
+            <!--<button md-button [mdMenuTriggerFor]="menu">Actions</button>
+      <md-menu #menu="mdMenu">
+        <a md-menu-item routerLink="">Get Data</a>
+       <a *ngIf ="transducer.is_actuable" button md-menu-item (click)="publishToTransducer(transducer._id, transducer.name)">Publish</a>
+        <a button md-menu-item (click)="deleteTransducer(transducer._id, transducer.name)">Delete</a>
+      </md-menu>-->
+
+
+            <button md-icon-button color="warn" (click)="deleteTransducer(transducer._id, transducer.name)">
               <md-icon >clear</md-icon>
-            </button></div>
+            </button>
+            </p></div>
           </div>
           <div class="transducer">
             <div>
@@ -75,6 +88,8 @@
             </div>
             <div>
               <md-slide-toggle [(ngModel)]="t_actuable">{{ t_actuable }}</md-slide-toggle>
+            </div>
+            <div><p></p>
             </div>
             <div>
               <!--<button md-raised-button (click)="newTransducer()">Add</button>-->
@@ -94,7 +109,7 @@
             <div><p>Value</p></div>
             <div><p>Execute</p></div>
             <!--<div><p>Add/Delete</p></div>-->
-            <div><p>Edit</p></div>
+            <div><p>Actions</p></div>
             <br>
             <hr>
           </div>

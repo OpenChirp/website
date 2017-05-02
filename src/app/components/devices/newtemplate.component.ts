@@ -44,7 +44,7 @@ export class NewTemplateComponent {
           console.log(result);
           // this.snackBar.open("Save Template Success!", this.name, { duration: 2000 }).afterDismissed().subscribe(
           this.dialog.open(SuccessDialogComponent).afterClosed().subscribe(
-            result => this.router.navigate(['/home/devicetemplate/'])
+            result => this.router.navigate(['/home/devicetemplates/'])
           );
         },
         error => this.snackBar.open(error.message, this.name, { duration: 2000 })

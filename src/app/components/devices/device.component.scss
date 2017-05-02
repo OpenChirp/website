@@ -14,7 +14,7 @@ $black-text: #303132;
   }
   .save-template {
     font-family: "Avenir-Med", sans-serif;
-    color: #8ab9d6;
+    color: $black-text;
     .button {
       background-color: white;
       box-shadow: none;
@@ -68,7 +68,7 @@ $black-text: #303132;
       margin: 0;
     }
     div {
-      width: 25%;
+      width: 16%;
       float: left;
       color: #909090;
     }
@@ -118,7 +118,7 @@ $black-text: #303132;
     border-bottom: solid 1px #909090;
     div {
       color: #606060;
-      width: 25%;
+      width: 16%;
       float: left;
     }
     p {
