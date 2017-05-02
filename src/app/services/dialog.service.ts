@@ -18,7 +18,9 @@ export class DialogService {
 
     dialogRef = this.dialog.open(d);
     dialogRef.componentInstance.message = message;
-
+    setTimeout(() => {
+      dialogRef.close();
+    }, 700);
     return dialogRef.afterClosed();
   }
 
