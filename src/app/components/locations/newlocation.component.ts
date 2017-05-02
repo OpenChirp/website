@@ -28,10 +28,14 @@ export class NewLocationComponent {
               private router: Router,
               public snackBar: MdSnackBar,
               public dialogService: DialogService) {
+    this.name = "";
+    this.type = "";
 
   }
 
   ngOnInit() {
+    this.name = "";
+    this.type = "";
     this.route.params
       .switchMap((params: Params) => this.locationService.getLocationById(params['id']))
       .subscribe(
