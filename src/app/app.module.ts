@@ -28,12 +28,12 @@ import { UserDevicesComponent } from './components/devices/userdevices.component
 import { UserLocationsComponent } from './components/locations/userlocations.component';
 import { UserServicesComponent } from './components/userservices/userservices.component';
 import { UserServiceComponent } from './components/userservices/userservice.component';
+import { ErrorSnackbarComponent } from './components/error-snackbar/error-snackbar.component';
 
 // Services
 import { LocationService } from './services/location.service';
 import { DeviceService } from './services/device.service';
 import { DialogService } from './services/dialog.service';
-import { ErrorSnackbarComponent } from './components/error-snackbar/error-snackbar.component';
 import { UserService } from './services/user.service';
 
 @NgModule({
