@@ -58,6 +58,12 @@ export class DeviceService {
                     .map(this.extractData)
                     .catch(this.handleError);
   }
+  // Publish To Transducer
+  publishToTransducer(device_id: string, transducer_id:string, body: any) {
+    return this.http.post(this.locationUrl + device_id + "/transducer/"+ transducer_id, body)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
 
   // Delete Transducer
   deleteTransducer(device_id: string, transducer_id: string) {
