@@ -28,10 +28,14 @@ export class NewLocationComponent {
               private router: Router,
               public snackBar: MdSnackBar,
               public dialogService: DialogService) {
+    this.name = "";
+    this.type = "";
 
   }
 
   ngOnInit() {
+    this.name = "";
+    this.type = "";
     this.route.params
       .switchMap((params: Params) => this.locationService.getLocationById(params['id']))
       .subscribe(
@@ -58,10 +62,11 @@ export class NewLocationComponent {
               .dialogPopup(SuccessDialogComponent, 'Added location: ' + this.name);
             this.locationService.notifyParent(this.parent._id);
             this.parent = null;
-
+            this.name = "";
+            this.type = "";
           },
           error => {
-            this.snackBar.open(error.message, this.name, { duration: 2000 });
+            this.dialogService.dialogPopup(ErrorDialogComponent, this.errorMessage);
           }
         );
     }

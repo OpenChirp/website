@@ -36,6 +36,8 @@ import { DeviceService } from './services/device.service';
 import { DialogService } from './services/dialog.service';
 import { UserService } from './services/user.service';
 
+import { Configuration } from './config';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,7 +78,8 @@ import { UserService } from './services/user.service';
     LocationService,
     DeviceService,
     DialogService,
-    UserService
+    UserService,
+    Configuration
   ],
   entryComponents: [
     DeleteLocationDialog,
