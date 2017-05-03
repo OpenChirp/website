@@ -8,26 +8,26 @@ import { Configuration } from '../config';
 export class UserService {
 
   private apiUrl: string;
-  private locationUrl: string;
+  private userUrl: string;
 
 
   constructor(private http: Http, private config: Configuration) { 
     this.apiUrl = config.api_url;
-    this.locationUrl = this.apiUrl + "user/";
+    this.userUrl = this.apiUrl + "user/";
   }
 
   /**
    * Gets user information
    * @returns {Observable<R|T>}
    */
-  private getUser() {
-    return this.http.get(this.locationUrl)
+  getUser() {
+    return this.http.get(this.userUrl, { withCredentials: true })
       .map(this.extractData)
       .catch(this.handleError);
   }
 
   getServices(search: string) {
-    return this.http.get(this.locationUrl + "myservices?name=" + search)
+    return this.http.get(this.userUrl + "myservices?name=" + search)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
@@ -39,13 +39,13 @@ export class UserService {
   }
 
   getDevices(search: string) {
-    return this.http.get(this.locationUrl + "mydevices?name=" + search)
+    return this.http.get(this.userUrl + "mydevices?name=" + search)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
 
   getLocations(search: string) {
-    return this.http.get(this.locationUrl + "mylocations?name=" + search)
+    return this.http.get(this.userUrl + "mylocations?name=" + search)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
