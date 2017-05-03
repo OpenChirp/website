@@ -6,9 +6,10 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { LocationService } from '../../services/location.service';
 import { Location } from '../../models/location';
-import { DialogService } from '../../services/dialog.service';
-import { SuccessDialogComponent } from "../success-dialog/success-dialog.component";
-import { ErrorDialogComponent } from "../error-dialog/error-dialog.component";
+import { SuccessDialogService } from '../../services/success-dialog.service';
+import { ErrorDialogService } from '../../services/error-dialog.service';
+import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
+import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 
 @Component({
   selector: 'tree-node',
@@ -23,21 +24,22 @@ export class TreeNodeComponent {
   childLocations: Array<Location> = [];
   errorMesssage: string;
   showChildren: boolean = false;
-  subscription:Subscription;
+  subscription: Subscription;
   constructor(private locationService: LocationService,
               private router: Router,
               public dialog: MdDialog,
               public snackBar: MdSnackBar,
-              private dialogService: DialogService) {
+              private successDialogService: SuccessDialogService,
+              private errorDialogService: ErrorDialogService) {
 
   }
   ngOnInit() {
     this.subscription = this.locationService.notifier$
        .subscribe(result => {
-         if (this.currentLocation._id == result){
+         if (this.currentLocation._id === result) {
              this.onCreateChild();
          }
-       })
+       });
   }
   ngOnDestroy() {
     // prevent memory leak when component is destroyed
@@ -47,7 +49,7 @@ export class TreeNodeComponent {
      this.locationService
         .getLocationById(this.currentLocation._id)
         .subscribe(
-          result => { 
+          result => {
                 this.currentLocation = result ;
                 this.getChildren() }),
           error => this.errorMesssage = error
@@ -107,12 +109,12 @@ export class TreeNodeComponent {
           .deleteLocationById(location._id)
           .subscribe(
             res => {
-              this.dialogService
+              this.successDialogService
                 .dialogPopup(SuccessDialogComponent, res.message + ': ' + location.name);
               this.onDelete.emit(true);
             },
             err => {
-              this.dialogService
+              this.errorDialogService
                 .dialogPopup(ErrorDialogComponent, err.message + ': ' + location.name);
             }
           );
@@ -128,11 +130,11 @@ export class TreeNodeComponent {
     }
   }
 
-   onCreateChild() {    
+   onCreateChild() {
       this.clearChildren();
-      this.reloadChildren();      
+      this.reloadChildren();
       this.showChildren = true;
-    
+
   }
 }
 

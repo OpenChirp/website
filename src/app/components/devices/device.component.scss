@@ -161,13 +161,5 @@ $black-text: #303132;
     background-color: #e3e3e3;
     cursor: pointer;
   }
-  .success {
-    animation: success 5000ms infinite;
-  }
-
-  @keyframes success {
-    0% { background: green; }
-    100% { background: green; }
-  }
 }
 
