@@ -1,6 +1,7 @@
 @import '../../constants';
 $row-height: 50px;
 $black-text: #303132;
+$blue-text: #8ab9d6;
 
 .device-info {
   .delete {
@@ -14,7 +15,7 @@ $black-text: #303132;
   }
   .save-template {
     font-family: "Avenir-Med", sans-serif;
-    color: #8ab9d6;
+    color: $blue-text;
     .button {
       background-color: white;
       box-shadow: none;
