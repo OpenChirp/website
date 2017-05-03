@@ -5,10 +5,10 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Location } from '../../models/location';
 import { LocationService } from '../../services/location.service';
 import { DeviceService } from '../../services/device.service';
-import { DialogService } from '../../services/dialog.service';
+import { SuccessDialogService } from '../../services/success-dialog.service';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
-import { ErrorSnackbarComponent } from '../error-snackbar/error-snackbar.component';
+import { ErrorDialogService } from '../../services/error-dialog.service';
 
 @Component({
   selector: 'new-device',
@@ -29,8 +29,9 @@ export class NewDeviceComponent {
 
   constructor(private deviceService: DeviceService, private locationService: LocationService,
               private route: ActivatedRoute, private router: Router,
-              public snackBar: MdSnackBar, public errorSnackbar: MdSnackBar,
-              private dialogService: DialogService) {
+              public snackBar: MdSnackBar,
+              private successDialogService: SuccessDialogService,
+              private errorDialogService: ErrorDialogService) {
 
   }
 
@@ -71,10 +72,6 @@ export class NewDeviceComponent {
   }
 
   add() {
-    const errorConfig = new MdSnackBarConfig();
-    errorConfig.duration = 3000;
-    errorConfig.extraClasses = ['error'];
-
     if (this.name != "") {
       var valid = true;
       var body : any = {};
@@ -98,27 +95,23 @@ export class NewDeviceComponent {
       if (valid) {
         this.deviceService.addDevice(body).subscribe(
           result => {
-            this.dialogService
-              .dialogPopup(SuccessDialogComponent, 'Add Device Success!')
+            this.successDialogService
+              .dialogPopup(SuccessDialogComponent, 'Add Device Success: ' + this.name)
               .subscribe(
               res => this.router.navigate(['/home/device/', result._id]),
               err => this.router.navigate(['/home'])
             );
           },
           error => {
-            this.snackBar.open(error.message, this.name, errorConfig);
-            // this.dialogService
-            //   .dialogPopup(ErrorDialogComponent, error.message + ': ' + this.name);
+            // this.snackBar.open(error.message, this.name, errorConfig);
+            this.errorDialogService
+              .dialogPopup(ErrorDialogComponent, error.message + ': ' + this.name);
           }
         );
       }
     } else {
-      this.snackBar.open('Name cannot be empty!', 'ERROR', errorConfig);
-      // this.errorSnackbar.openFromComponent(
-      //   ErrorSnackbarComponent, { duration: 2000 }
-      // );
-      // this.dialogService
-      //   .dialogPopup(ErrorDialogComponent, 'Name cannot be empty!');
+      this.errorDialogService
+        .dialogPopup(ErrorDialogComponent, 'Name cannot be empty!');
     }
   }
 
