@@ -36,6 +36,8 @@ import { SuccessDialogService } from './services/success-dialog.service';
 import { UserService } from './services/user.service';
 import { ErrorDialogService } from './services/error-dialog.service';
 
+import { Configuration } from './config';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,6 +79,7 @@ import { ErrorDialogService } from './services/error-dialog.service';
     SuccessDialogService,
     ErrorDialogService,
     UserService,
+    Configuration
   ],
   entryComponents: [
     DeleteLocationDialog,

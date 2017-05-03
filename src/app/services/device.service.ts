@@ -5,16 +5,17 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 import { Device } from '../models/device';
+import { Configuration } from '../config'; 
 
 @Injectable()
 
 export class DeviceService {
-  // TODO: get from config.json
-  private locationUrl = 'http://openchirp.andrew.cmu.edu:10010/api/device/';
-  private apiLocation = 'http://openchirp.andrew.cmu.edu:10010/api/';
+  private apiUrl: string;
+  private locationUrl: string;
 
-  constructor (private http: Http) {
-    
+  constructor (private http: Http, config: Configuration) {
+    this.apiUrl = config.api_url;
+    this.locationUrl = this.apiUrl + "device/";
   }
   
   // Gets the root location
@@ -74,14 +75,14 @@ export class DeviceService {
 
   // Device Templates
   deviceTemplates() {
-    return this.http.get(this.apiLocation + "devicetemplate")
+    return this.http.get(this.apiUrl + "devicetemplate")
                     .map(this.extractData)
                     .catch(this.handleError);
   }
 
   // Device Template by ID
   deviceTemplate(id: string) {
-    return this.http.get(this.apiLocation + "devicetemplate/" + id)
+    return this.http.get(this.apiUrl + "devicetemplate/" + id)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
@@ -103,7 +104,7 @@ export class DeviceService {
   // Save Device as Template
   saveTemplate(body: any) {
     console.log(body);
-    return this.http.post(this.apiLocation + "devicetemplate", body)
+    return this.http.post(this.apiUrl + "devicetemplate", body)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
