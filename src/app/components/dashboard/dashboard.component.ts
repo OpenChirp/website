@@ -1,9 +1,11 @@
 
 import { Component, OnInit } from '@angular/core';
 import { LocationService } from '../../services/location.service';
+import { UserService } from '../../services/user.service';
 import { Location } from '../../models/location';
 import { Device } from '../../models/device';
 import { TreeNodeComponent } from '../locationtree/tree.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,17 +21,21 @@ export class DashboardComponent implements OnInit {
   devices: Array<Device> = [];
   newLocationParent: Location = null;
 
-  constructor(private locationService: LocationService) {
+  constructor(private locationService: LocationService, private userService: UserService, private router: Router) {
     this.rootLocation = null;
   }
 
   ngOnInit() {
-    this.locationService
-      .getRootLocation()
-      .subscribe(
-        result => this.rootLocation = (result[0]),
-        error => this.errorMessage = error.message
-      );
+    this.userService.getUser().subscribe(
+      result => {
+        this.username = result.name || result.email || "";
+        this.locationService.getRootLocation().subscribe(
+          res => this.rootLocation = (result[0]),
+          err => this.errorMessage = err.message
+        );
+      },
+      error => this.router.navigate(['/'])
+    );
   }
 
   deviceList(event) {
