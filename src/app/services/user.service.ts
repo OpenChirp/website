@@ -2,14 +2,19 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Device } from '../models/device';
+import { Configuration } from '../config';
 
 @Injectable()
 export class UserService {
 
-  private locationUrl = 'http://openchirp.andrew.cmu.edu:10010/api/user/';
-  private apiLocationUrl = 'http://openchirp.andrew.cmu.edu:10010/api/';
+  private apiUrl: string;
+  private locationUrl: string;
 
-  constructor(private http: Http) { }
+
+  constructor(private http: Http, private config: Configuration) { 
+    this.apiUrl = config.api_url;
+    this.locationUrl = this.apiUrl + "user/";
+  }
 
   /**
    * Gets user information
@@ -28,7 +33,7 @@ export class UserService {
   }
 
   getServiceByID(id: string) {
-    return this.http.get(this.apiLocationUrl + "service/" + id)
+    return this.http.get(this.apiUrl + "service/" + id)
                     .map(this.extractData)
                     .catch(this.handleError);
   }

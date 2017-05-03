@@ -7,19 +7,22 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 import { Location } from '../models/location';
 import { Device } from '../models/device';
+import { Configuration } from '../config';
 
 @Injectable()
 export class LocationService {
-  // TODO: get from config.json
-  private locationUrl = 'http://openchirp.andrew.cmu.edu:10010/api/location';
-   // Observable source
+  private apiUrl: string;
+  private locationUrl: string;
+
+  // Observable source
   private _notifierSource = new Subject<string>();
 
- // Observable stream
+  // Observable stream
   notifier$ = this._notifierSource.asObservable();
 
-  constructor (private http: Http) {
-     
+  constructor (private http: Http, private config: Configuration) {
+    this.apiUrl = config.api_url;
+    this.locationUrl = this.apiUrl + "location/";
   }
   
   notifyParent (parentId: string) {
@@ -35,14 +38,14 @@ export class LocationService {
 
   // Gets location specified by id
   getLocationById(id: string): Observable<Location> {
-    return this.http.get(this.locationUrl + "/" + id)
+    return this.http.get(this.locationUrl + id)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
 
   // Delete location
   deleteLocationById(id: string) {
-    return this.http.delete(this.locationUrl + "/" + id)
+    return this.http.delete(this.locationUrl + id)
              .map(this.extractData)
              .catch(this.handleError);
   }
@@ -50,14 +53,14 @@ export class LocationService {
   // Add location
   addLocationByParentId(id: string, body: any) {
     
-    return this.http.post(this.locationUrl + "/" + id, body)
+    return this.http.post(this.locationUrl + id, body)
              .map(this.extractData)
              .catch(this.handleError);
   }
 
   // Get device by location id
   getDeviceByLocationId(id: string): Observable<Array<Device>> {
-    return this.http.get(this.locationUrl + "/" + id + "/devices")
+    return this.http.get(this.locationUrl + id + "/devices")
                     .map(this.extractData)
                     .catch(this.handleError);
   }
