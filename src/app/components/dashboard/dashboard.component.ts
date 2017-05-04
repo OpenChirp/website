@@ -22,9 +22,11 @@ export class DashboardComponent implements OnInit {
   errorMessage: string;
   devices: Array<Device> = [];
   newLocationParent: Location = null;
+  logout_url : string;
 
-  constructor(private locationService: LocationService, private userService: UserService, private router: Router) {
+  constructor(private locationService: LocationService, private config: Configuration, private userService: UserService, private router: Router) {
     this.rootLocation = null;
+    this.logout_url = config.logout_url;
   }
 
   ngOnInit() {
