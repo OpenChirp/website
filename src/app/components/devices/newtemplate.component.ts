@@ -5,6 +5,9 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { DeviceService } from '../../services/device.service';
 import { Device } from '../../models/device';
+import { ErrorDialogService } from '../../services/error-dialog.service';
+import { SuccessDialogService } from '../../services/success-dialog.service';
+import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 
 @Component({
   selector: 'new-template',
@@ -18,6 +21,8 @@ export class NewTemplateComponent {
 
   constructor(private deviceService: DeviceService, private route: ActivatedRoute,
               private router: Router,
+              private successDialogService: SuccessDialogService,
+              private errorDialogService: ErrorDialogService,
               public snackBar: MdSnackBar, public dialog: MdDialog) {
 
   }
@@ -41,13 +46,17 @@ export class NewTemplateComponent {
 
       this.deviceService.saveTemplate(body).subscribe(
         result => {
-          console.log(result);
+          
           // this.snackBar.open("Save Template Success!", this.name, { duration: 2000 }).afterDismissed().subscribe(
-          this.dialog.open(SuccessDialogComponent).afterClosed().subscribe(
+          this.successDialogService.dialogPopup(SuccessDialogComponent, "Template Created "+this.name).subscribe(
             result => this.router.navigate(['/home/devicetemplates/'])
           );
         },
-        error => this.snackBar.open(error.message, this.name, { duration: 2000 })
+        error => {
+            // this.snackBar.open(error.message, this.name, errorConfig);
+            this.errorDialogService
+              .dialogPopup(ErrorDialogComponent, error.message + ': ' + this.name);
+          }
       );
 
     }
