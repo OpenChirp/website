@@ -1,6 +1,13 @@
 $black-text: #303132;
 
 .device-template {
+  .new-template {
+    font-family: "Avenir-Med", sans-serif;
+    color: #8ab9d6;
+    .button {
+      background-color: white;
+    }
+  }
   md-card {
     box-shadow: none;
     .card-header {

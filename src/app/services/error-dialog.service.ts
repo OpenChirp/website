@@ -1,14 +1,14 @@
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import { MdDialogRef, MdDialog } from '@angular/material';
-import { Injectable } from '@angular/core';
 
 @Injectable()
-export class DialogService {
+export class ErrorDialogService {
 
   constructor(private dialog: MdDialog) { }
 
   /**
-   * Opens a success/fail dialog
+   * Opens a fail dialog
    * @param d       dialog component
    * @param message corresponding message
    * @returns {Observable<any>}
@@ -20,7 +20,7 @@ export class DialogService {
     dialogRef.componentInstance.message = message;
     setTimeout(() => {
       dialogRef.close();
-    }, 700);
+    }, 1000);
     return dialogRef.afterClosed();
   }
 
