@@ -28,14 +28,10 @@ export class NewLocationComponent {
   constructor(private locationService: LocationService, private route: ActivatedRoute,
               private router: Router,
               public snackBar: MdSnackBar,
-<<<<<<< HEAD
               public successDialogService: SuccessDialogService,
               public errorDialogService: ErrorDialogService) {
-=======
-              public dialogService: DialogService) {
     this.name = "";
     this.type = "";
->>>>>>> 40d4760f1770d1ba9746aa1390008c39deaaee16
 
   }
 
@@ -72,12 +68,8 @@ export class NewLocationComponent {
             this.type = "";
           },
           error => {
-<<<<<<< HEAD
             this.errorDialogService
               .dialogPopup(ErrorDialogComponent, error.message + ': ' + this.name);
-=======
-            this.dialogService.dialogPopup(ErrorDialogComponent, this.errorMessage);
->>>>>>> 40d4760f1770d1ba9746aa1390008c39deaaee16
           }
         );
     }
