@@ -19,13 +19,18 @@ export class DeviceService {
     this.requestOptions.withCredentials = true;
   }
   
-  // Gets the root location
+
   getDeviceById(device_id: string): Observable<Device> {
     return this.http.get(this.locationUrl + device_id, this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
-
+  
+  getDeviceTransducers(device_id: string) {
+    return this.http.get(this.locationUrl + device_id+"/transducer", this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
   // Update Device
   updateDeviceById(device_id: string, body: any) {
     return this.http.put(this.locationUrl + device_id, body, this.requestOptions)
