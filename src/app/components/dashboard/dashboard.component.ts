@@ -7,6 +7,7 @@ import { Device } from '../../models/device';
 import { TreeNodeComponent } from '../locationtree/tree.component';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { Configuration } from '../../config';
 
 @Component({
   selector: 'app-dashboard',
