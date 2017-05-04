@@ -6,6 +6,7 @@ import { Location } from '../../models/location';
 import { Device } from '../../models/device';
 import { TreeNodeComponent } from '../locationtree/tree.component';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-dashboard',
@@ -30,14 +31,14 @@ export class DashboardComponent implements OnInit {
       result => {
         this.username = result.name || result.email || "";
         this.locationService.getRootLocation().subscribe(
-          res => this.rootLocation = (result[0]),
+          res => this.rootLocation = (res[0]),
           err => this.errorMessage = err.message
         );
       },
       error => this.router.navigate(['/'])
     );
   }
-
+ 
   deviceList(event) {
     this.devices = event;
   }
