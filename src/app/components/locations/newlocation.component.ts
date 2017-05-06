@@ -27,6 +27,7 @@ export class NewLocationComponent {
 
   constructor(private locationService: LocationService, private route: ActivatedRoute,
               private router: Router,
+              public snackBar: MdSnackBar,
               public successDialogService: SuccessDialogService,
               public errorDialogService: ErrorDialogService) {
     this.name = "";

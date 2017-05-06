@@ -12,7 +12,7 @@
         <a md-menu-item routerLink="/home/mydevices">My Devices</a>
         <a md-menu-item routerLink="/home/myservices">My Services</a>
         <a md-menu-item routerLink="/home/mylocations">My Locations</a>
-        <a button md-menu-item routerLink="/" routerLinkActive="active">Logout</a>
+        <a button md-menu-item [href]="logout_url" routerLinkActive="active">Logout</a>
       </md-menu>
 
     </div>
