@@ -41,7 +41,7 @@ export class DashboardComponent implements OnInit {
       error => this.router.navigate(['/'])
     );
   }
- 
+
   deviceList(event) {
     this.devices = event;
   }

@@ -62,7 +62,7 @@ $image_url: '../../../assets/images';
     }
     .logo-section {
       color: #ffffff;
-      content: url($image_url+"/logo_with_text.png");
+      content: url($image_url + "/logo_with_text.png");
       width: 100%;
       .logo-text {
         h3 {
@@ -140,7 +140,7 @@ $image_url: '../../../assets/images';
   .how-it-works-pic {
     height: 100vh;
     margin: 0;
-    background-image: url($image_url+"/howitworks.png");
+    background-image: url($image_url + "/HowItWorks.svg");
     background-position: center;
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -160,7 +160,7 @@ $image_url: '../../../assets/images';
     h1 {
       color: $black-text;
       font-family: "Avenir-Heavy", sans-serif;
-      margin: 10% 63% 2% 0;
+      margin: 5% 63% 2% 0;
     }
   }
 
@@ -193,7 +193,7 @@ $image_url: '../../../assets/images';
   .step1 {
     padding: 5px;
     margin: 10px 25px 5px 20px;
-    content: url($image_url+ "/1.png");
+    content: url($image_url + "/1.png");
   }
   .step2 {
     padding: 5px;
@@ -214,6 +214,11 @@ $image_url: '../../../assets/images';
     padding: 5px;
     margin: 10px 25px 5px 20px;
     content: url($image_url + "/5.png");
+  }
+  .step6 {
+    padding: 5px;
+    margin: 10px 25px 5px 20px;
+    content: url($image_url + "/6.png");
   }
 
   .flex-container {
@@ -250,17 +255,17 @@ $image_url: '../../../assets/images';
   .iot-project {
     padding: 5px;
     margin: 0 10px 15px 0;
-    content: url($image_url+ "/IoT icon.png");
+    content: url($image_url + "/IoT icon.png");
   }
   .community-driven {
     padding: 5px;
     margin: 0 10px 15px 0;
-    content: url($image_url+ "/community icon.png");
+    content: url($image_url + "/community icon.png");
   }
   .empowering {
     padding: 5px;
     margin: 0 10px 15px 0;
-    content: url($image_url+ "/empowering icon.png");
+    content: url($image_url + "/empowering icon.png");
   }
 
   .tech-text {
@@ -285,6 +290,13 @@ $image_url: '../../../assets/images';
     flex-wrap: wrap;
   }
 
+  .feat-intro-text {
+    p {
+      font-family: "Avenir-Med", sans-serif;
+      color: $black-text;
+    }
+  }
+
   .feat-text {
     p {
       font-family: "Avenir-Heavy", sans-serif;
@@ -303,7 +315,7 @@ $image_url: '../../../assets/images';
     padding: 5px;
     margin: 50px 20px 50px 70px;
 
-    content: url($image_url+ "/cloud-icon.png");
+    content: url($image_url + "/cloud-icon.png");
   }
 
   .open-icon {
