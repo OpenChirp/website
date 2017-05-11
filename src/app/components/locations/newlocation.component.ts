@@ -72,8 +72,7 @@ export class NewLocationComponent {
               .dialogPopup(ErrorDialogComponent, error.message + ': ' + this.name);
           }
         );
-    }
-    else {
+    } else {
       this.errorMessage = 'Name and type cannot be empty.';
       this.errorDialogService
         .dialogPopup(ErrorDialogComponent, this.errorMessage);
