@@ -361,14 +361,14 @@ $image_url: '../../../assets/images';
 
   .gallery-section{
     .gallery-wrapper {
-      width: 25%;
-      height: 25%;
-      margin-left: 10%;
+      width: 40%;
+      margin-top: 20%;
     }
     .gallery-text {
       position: relative;
       font-family: "Avenir-Heavy", sans-serif;
-      margin: 55% 10% 35% 65%;
+      //margin: 55% 10% 35% 65%;
+      margin-right: 20%;
     }
   }
 

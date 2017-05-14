@@ -202,14 +202,29 @@
         <h4>Gallery</h4>
       </div>
       <!--<div class="gallery-pic">-->
-      <div class="gallery-wrapper">
-        <app-gallery></app-gallery>
-      </div>
-      <span class="gallery-text">
-        <h1>Take a Look at Some<br>
-          Behind the Scenes
-        </h1>
-      </span>
+      <md-grid-list cols="2" rowHeight="2:1">
+        <md-grid-tile>
+          <div class="gallery-wrapper">
+            <app-gallery></app-gallery>
+          </div>
+        </md-grid-tile>
+        <md-grid-tile>
+          <div class="gallery-text">
+            <h1>
+              Take a Look at Some <br>
+              Behind the Scenes
+            </h1>
+          </div>
+        </md-grid-tile>
+      </md-grid-list>
+      <!--<div class="gallery-wrapper">-->
+        <!--<app-gallery></app-gallery>-->
+      <!--</div>-->
+      <!--<span class="gallery-text">-->
+        <!--<h1>Take a Look at Some<br>-->
+          <!--Behind the Scenes-->
+        <!--</h1>-->
+      <!--</span>-->
       <!--</div>-->
     </div>
     <!--Logos CMU/CyLab-->

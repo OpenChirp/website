@@ -8,20 +8,20 @@
     max-width: 100%;
   }
 
-  h4{
-    font-family: "Avenir-Med", sans-serif;
-    margin-bottom: 0;
-    font-size: 0.5em;
-    padding: 0.5em 0.5em 1em 0.5em;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    text-align: center;
-    color: #fff;
-    background-color: rgba(0,0,0,0.75);
-    text-transform: uppercase;
-  }
+  //h4{
+  //  font-family: "Avenir-Med", sans-serif;
+  //  margin-bottom: 0;
+  //  font-size: 0.5em;
+  //  padding: 0.5em 0.5em 1em 0.5em;
+  //  position: absolute;
+  //  right: 0;
+  //  bottom: 0;
+  //  left: 0;
+  //  text-align: center;
+  //  color: #fff;
+  //  background-color: rgba(0,0,0,0.75);
+  //  text-transform: uppercase;
+  //}
 }
 
 .slides {
@@ -31,9 +31,9 @@
   overflow: hidden; /* Clear floats */
 
   /* Slide effect Animations*/
-  -moz-animation: carousel 30s infinite;
-  -webkit-animation: carousel 30s infinite;
-  animation: carousel 30s infinite;
+  -moz-animation: carousel 60s infinite;
+  -webkit-animation: carousel 60s infinite;
+  animation: carousel 60s infinite;
 
   li {
     position: relative;
