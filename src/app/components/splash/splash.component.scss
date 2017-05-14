@@ -362,7 +362,6 @@ $image_url: '../../../assets/images';
   }
 
   .gallery-title {
-    margin-top: 10px;
     margin-right: 25px;
     background-color: transparent;
 
@@ -375,6 +374,7 @@ $image_url: '../../../assets/images';
   }
 
   .gallery-section{
+    margin-bottom: 5%;
     .gallery-wrapper {
       width: 40%;
       margin-top: 20%;
@@ -382,6 +382,7 @@ $image_url: '../../../assets/images';
     .gallery-text {
       position: relative;
       font-family: "Avenir-Heavy", sans-serif;
+      margin-top: 5%;
       //margin: 55% 10% 35% 65%;
       margin-right: 20%;
     }
@@ -407,12 +408,22 @@ $image_url: '../../../assets/images';
     //}
   //}
 
-  .cmu-pic {
-    height: 100vh;
-    margin: 0;
-    background-image: url($image_url +"/CMU.png");
-    background-position: center;
-    background-repeat: no-repeat;
+  //.cmu-pic {
+  //  height: 100vh;
+  //  margin: 0;
+  //  background-image: url($image_url +"/CMU.png");
+  //  background-position: center;
+  //  background-repeat: no-repeat;
+  //}
+
+  .ece-logo {
+    content: url($image_url + '/ece-logo.png');
+    width: 50%;
+  }
+
+  .cylab-logo {
+    content: url($image_url + '/cylab-logo.png');
+    width: 40%;
   }
 
   .footer {
