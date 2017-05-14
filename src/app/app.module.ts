@@ -28,6 +28,7 @@ import { UserDevicesComponent } from './components/devices/userdevices.component
 import { UserLocationsComponent } from './components/locations/userlocations.component';
 import { UserServicesComponent } from './components/userservices/userservices.component';
 import { UserServiceComponent } from './components/userservices/userservice.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
 
 // Services
 import { LocationService } from './services/location.service';
@@ -61,7 +62,8 @@ import { Configuration } from './config';
     UserLocationsComponent,
     UserServicesComponent,
     UserServiceComponent,
-    ErrorDialogComponent
+    ErrorDialogComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,
