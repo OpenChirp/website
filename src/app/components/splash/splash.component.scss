@@ -80,7 +80,7 @@ $image_url: '../../../assets/images';
     height: 100vh;
     margin: 0;
     padding: 0;
-    background-image: url($image_url + "/background.png");
+    background: url($image_url + "/background.png");
     background-position: center;
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -138,11 +138,15 @@ $image_url: '../../../assets/images';
   }
 
   .how-it-works-pic {
-    height: 100vh;
+    //height: 100vh;
     margin: 0;
+<<<<<<< HEAD
+    background: url($image_url + "/HowItWorks.svg");
+=======
     background-image: url($image_url+"/howitworks.png");
+>>>>>>> bc7fbc417075ee128d2cbf1722477229c0065155
     background-position: center;
-    background-size: 100% 100%;
+    background-size: cover;
     background-repeat: no-repeat;
 
   }
@@ -173,7 +177,8 @@ $image_url: '../../../assets/images';
   }
 
   .step-text {
-    text-align: left;
+    //text-align: left;
+    //margin: 0 0 0 6%;
     margin: 0 50% 0 0;
 
     h4 {
@@ -189,8 +194,13 @@ $image_url: '../../../assets/images';
     }
   }
 
+  //.how-wrapper {
+  //  float: left;
+  //}
 
   .step1 {
+    //display: block;
+    //padding: 20px;
     padding: 5px;
     margin: 10px 25px 5px 20px;
     content: url($image_url+ "/1.png");
@@ -198,9 +208,13 @@ $image_url: '../../../assets/images';
   .step2 {
     padding: 5px;
     margin: 10px 25px 5px 20px;
+    //display: block;
+    //padding: 20px;
     content: url($image_url + "/2.png");
   }
   .step3 {
+    //display: block;
+    //padding: 20px;
     padding: 5px;
     margin: 10px 25px 5px 20px;
     content: url($image_url + "/3.png");
@@ -208,8 +222,45 @@ $image_url: '../../../assets/images';
   .step4 {
     padding: 5px;
     margin: 10px 25px 5px 20px;
+    //display: block;
+    //padding: 20px;
     content: url($image_url + "/4.png");
   }
+<<<<<<< HEAD
+  //.step5 {
+  //  padding: 5px;
+  //  margin: 10px 25px 5px 20px;
+  //  content: url($image_url + "/5.png");
+  //}
+  //.step6 {
+  //  padding: 5px;
+  //  margin: 10px 25px 5px 20px;
+  //  content: url($image_url + "/6.png");
+  //}
+
+  //.flex-container {
+  //  width: 100%;
+  //
+  //  display: flex;
+  //  flex-direction: row;
+  //  align-items: baseline;
+  //  justify-content: space-around;
+  //}
+
+  //.whatis-col {
+  //  height: 100%;
+  //
+  //  display: flex;
+  //  flex-direction: column;
+  //  align-items: center;
+  //  justify-content: center;
+  //}
+
+  .whatis-wrapper {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+=======
   .step5 {
     padding: 5px;
     margin: 10px 25px 5px 20px;
@@ -232,10 +283,11 @@ $image_url: '../../../assets/images';
     flex-direction: column;
     align-items: center;
     justify-content: center;
+>>>>>>> bc7fbc417075ee128d2cbf1722477229c0065155
   }
 
   .whatis-text{
-    margin: 0 10px 15px 0;
+    display: block;
     p {
       font-family: "Avenir-Med", sans-serif;
       text-align: center;
@@ -248,6 +300,18 @@ $image_url: '../../../assets/images';
   }
 
   .iot-project {
+<<<<<<< HEAD
+    margin-left: 30%;
+    content: url($image_url + "/IoT icon.png");
+  }
+  .community-driven {
+    margin-left: 30%;
+    content: url($image_url + "/community icon.png");
+  }
+  .empowering {
+    margin-left: 30%;
+    content: url($image_url + "/empowering icon.png");
+=======
     padding: 5px;
     margin: 0 10px 15px 0;
     content: url($image_url+ "/IoT icon.png");
@@ -261,6 +325,7 @@ $image_url: '../../../assets/images';
     padding: 5px;
     margin: 0 10px 15px 0;
     content: url($image_url+ "/empowering icon.png");
+>>>>>>> bc7fbc417075ee128d2cbf1722477229c0065155
   }
 
   .tech-text {
@@ -335,7 +400,6 @@ $image_url: '../../../assets/images';
   }
 
   .gallery-title {
-    margin-top: 10px;
     margin-right: 25px;
     background-color: transparent;
 
@@ -347,38 +411,57 @@ $image_url: '../../../assets/images';
     }
   }
 
-  .gallery-pic {
-    height: 100vh;
-    margin: 0;
-    background-image: url($image_url + "/gallery-bg.png");
-    background-position: center;
-    background-size: 100% 80%;
-    background-repeat: no-repeat;
-
+  .gallery-section{
+    margin-bottom: 5%;
+    .gallery-wrapper {
+      width: 40%;
+      margin-top: 20%;
+    }
     .gallery-text {
-      position: absolute;
+      position: relative;
       font-family: "Avenir-Heavy", sans-serif;
-      margin: 15% 10% 5% 65%;
-    }
-
-    button {
-      outline-color: $text-color;
-    }
-    .gallery-button {
-      background-color:  rgb(234,240,242);
-      font-family: "Avenir-Heavy", sans-serif;
-      font-variant: all-small-caps;
-      color: $black-text;
-      margin: 10% 35% 5% 35%;
+      margin-top: 5%;
+      //margin: 55% 10% 35% 65%;
+      margin-right: 20%;
     }
   }
 
-  .cmu-pic {
-    height: 100vh;
-    margin: 0;
-    background-image: url($image_url +"/CMU.png");
-    background-position: center;
-    background-repeat: no-repeat;
+  //.gallery-pic {
+  //  height: 100vh;
+  //  margin: 0;
+  //  background-image: url($image_url + "/gallery-bg.png");
+  //  background-position: center;
+  //  background-size: 100% 80%;
+  //  background-repeat: no-repeat;
+
+    //button {
+    //  outline-color: $text-color;
+    //}
+    //.gallery-button {
+    //  background-color:  rgb(234,240,242);
+    //  font-family: "Avenir-Heavy", sans-serif;
+    //  font-variant: all-small-caps;
+    //  color: $black-text;
+    //  margin: 10% 35% 5% 35%;
+    //}
+  //}
+
+  //.cmu-pic {
+  //  height: 100vh;
+  //  margin: 0;
+  //  background-image: url($image_url +"/CMU.png");
+  //  background-position: center;
+  //  background-repeat: no-repeat;
+  //}
+
+  .ece-logo {
+    content: url($image_url + '/ece-logo.png');
+    width: 50%;
+  }
+
+  .cylab-logo {
+    content: url($image_url + '/cylab-logo.png');
+    width: 40%;
   }
 
   .footer {
@@ -391,7 +474,7 @@ $image_url: '../../../assets/images';
         margin: 0;
         padding-left: 15px;
         padding-right: 15px;
-        font-family: "Arial", sans-serif;
+        font-family: "Avenir-Med", sans-serif;
         text-align: center;
         color: #ffffff;
       }

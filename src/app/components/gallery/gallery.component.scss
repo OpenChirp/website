@@ -1,0 +1,62 @@
+.carousel {
+  overflow: hidden;
+  width: 100%;
+
+  img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  //h4{
+  //  font-family: "Avenir-Med", sans-serif;
+  //  margin-bottom: 0;
+  //  font-size: 0.5em;
+  //  padding: 0.5em 0.5em 1em 0.5em;
+  //  position: absolute;
+  //  right: 0;
+  //  bottom: 0;
+  //  left: 0;
+  //  text-align: center;
+  //  color: #fff;
+  //  background-color: rgba(0,0,0,0.75);
+  //  text-transform: uppercase;
+  //}
+}
+
+.slides {
+  list-style: none;
+  position: relative;
+  width: 1200%; /* Number of panes * 100% */
+  overflow: hidden; /* Clear floats */
+
+  /* Slide effect Animations*/
+  -moz-animation: carousel 60s infinite;
+  -webkit-animation: carousel 60s infinite;
+  animation: carousel 60s infinite;
+
+  li {
+    position: relative;
+    float: left;
+    width: 8.3%; /* 100 / number of panes */
+  }
+}
+
+@keyframes carousel{
+  0%    { left:-15%; }
+  11%   { left:-15%; }
+  12.5% { left:-115%; }
+  23.5% { left:-115%; }
+  25%   { left:-215%; }
+  36%   { left:-215%; }
+  37.5% { left:-315%; }
+  50%   { left:-415%; }
+  61%   { left:-415%; }
+  62.5% { left:-315%; }
+  73.5% { left:-315%; }
+  75%   { left:-215%; }
+  86%   { left:-215%; }
+  87.5% { left:-115%; }
+  98.5% { left:-115%; }
+  100%  { left:-15%; }
+}
