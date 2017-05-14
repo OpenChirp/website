@@ -80,7 +80,7 @@ $image_url: '../../../assets/images';
     height: 100vh;
     margin: 0;
     padding: 0;
-    background-image: url($image_url + "/background.png");
+    background: url($image_url + "/background.png");
     background-position: center;
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -138,11 +138,11 @@ $image_url: '../../../assets/images';
   }
 
   .how-it-works-pic {
-    height: 100vh;
+    //height: 100vh;
     margin: 0;
-    background-image: url($image_url + "/HowItWorks.svg");
+    background: url($image_url + "/HowItWorks.svg");
     background-position: center;
-    background-size: 100% 100%;
+    background-size: cover;
     background-repeat: no-repeat;
 
   }
@@ -210,16 +210,16 @@ $image_url: '../../../assets/images';
     margin: 10px 25px 5px 20px;
     content: url($image_url + "/4.png");
   }
-  .step5 {
-    padding: 5px;
-    margin: 10px 25px 5px 20px;
-    content: url($image_url + "/5.png");
-  }
-  .step6 {
-    padding: 5px;
-    margin: 10px 25px 5px 20px;
-    content: url($image_url + "/6.png");
-  }
+  //.step5 {
+  //  padding: 5px;
+  //  margin: 10px 25px 5px 20px;
+  //  content: url($image_url + "/5.png");
+  //}
+  //.step6 {
+  //  padding: 5px;
+  //  margin: 10px 25px 5px 20px;
+  //  content: url($image_url + "/6.png");
+  //}
 
   .flex-container {
     width: 100%;
@@ -359,31 +359,38 @@ $image_url: '../../../assets/images';
     }
   }
 
-  .gallery-pic {
-    height: 100vh;
-    margin: 0;
-    background-image: url($image_url + "/gallery-bg.png");
-    background-position: center;
-    background-size: 100% 80%;
-    background-repeat: no-repeat;
-
+  .gallery-section{
+    .gallery-wrapper {
+      width: 25%;
+      height: 25%;
+      margin-left: 10%;
+    }
     .gallery-text {
-      position: absolute;
+      position: relative;
       font-family: "Avenir-Heavy", sans-serif;
-      margin: 15% 10% 5% 65%;
-    }
-
-    button {
-      outline-color: $text-color;
-    }
-    .gallery-button {
-      background-color:  rgb(234,240,242);
-      font-family: "Avenir-Heavy", sans-serif;
-      font-variant: all-small-caps;
-      color: $black-text;
-      margin: 10% 35% 5% 35%;
+      margin: 55% 10% 35% 65%;
     }
   }
+
+  //.gallery-pic {
+  //  height: 100vh;
+  //  margin: 0;
+  //  background-image: url($image_url + "/gallery-bg.png");
+  //  background-position: center;
+  //  background-size: 100% 80%;
+  //  background-repeat: no-repeat;
+
+    //button {
+    //  outline-color: $text-color;
+    //}
+    //.gallery-button {
+    //  background-color:  rgb(234,240,242);
+    //  font-family: "Avenir-Heavy", sans-serif;
+    //  font-variant: all-small-caps;
+    //  color: $black-text;
+    //  margin: 10% 35% 5% 35%;
+    //}
+  //}
 
   .cmu-pic {
     height: 100vh;

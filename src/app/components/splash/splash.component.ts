@@ -2,6 +2,7 @@ import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 import { Configuration } from '../../config';
 import { UserService } from '../../services/user.service';
+import { GalleryComponent } from '../gallery/gallery.component';
 
 @Component({
   selector: 'app-splash',

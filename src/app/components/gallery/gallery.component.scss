@@ -11,8 +11,8 @@
   h4{
     font-family: "Avenir-Med", sans-serif;
     margin-bottom: 0;
-    font-size: 1em;
-    padding: 1.5em 0.5em 1.5em 0.5em;
+    font-size: 0.5em;
+    padding: 0.5em 0.5em 1em 0.5em;
     position: absolute;
     right: 0;
     bottom: 0;
@@ -27,7 +27,7 @@
 .slides {
   list-style: none;
   position: relative;
-  width: 500%; /* Number of panes * 100% */
+  width: 1200%; /* Number of panes * 100% */
   overflow: hidden; /* Clear floats */
 
   /* Slide effect Animations*/
@@ -38,26 +38,25 @@
   li {
     position: relative;
     float: left;
-    width: 20%; /* 100 / number of panes */
+    width: 8.3%; /* 100 / number of panes */
   }
 }
 
 @keyframes carousel{
-  0%    { left:-5%; }
-  11%   { left:-5%; }
-  12.5% { left:-105%; }
-  23.5% { left:-105%; }
-  25%   { left:-205%; }
-  36%   { left:-205%; }
-  37.5% { left:-305%; }
-  48.5% { left:-305%; }
-  50%   { left:-405%; }
-  61%   { left:-405%; }
-  62.5% { left:-305%; }
-  73.5% { left:-305%; }
-  75%   { left:-205%; }
-  86%   { left:-205%; }
-  87.5% { left:-105%; }
-  98.5% { left:-105%; }
-  100%  { left:-5%; }
+  0%    { left:-10%; }
+  11%   { left:-10%; }
+  12.5% { left:-110%; }
+  23.5% { left:-110%; }
+  25%   { left:-210%; }
+  36%   { left:-210%; }
+  37.5% { left:-310%; }
+  50%   { left:-411%; }
+  61%   { left:-411%; }
+  62.5% { left:-311%; }
+  73.5% { left:-311%; }
+  75%   { left:-211%; }
+  86%   { left:-211%; }
+  87.5% { left:-111%; }
+  98.5% { left:-111%; }
+  100%  { left:-11%; }
 }
