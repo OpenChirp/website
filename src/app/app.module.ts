@@ -37,7 +37,6 @@ import { UserService } from './services/user.service';
 import { ErrorDialogService } from './services/error-dialog.service';
 
 import { Configuration } from './config';
-import { GalleryComponent } from './components/gallery/gallery.component';
 
 @NgModule({
   declarations: [
@@ -62,8 +61,7 @@ import { GalleryComponent } from './components/gallery/gallery.component';
     UserLocationsComponent,
     UserServicesComponent,
     UserServiceComponent,
-    ErrorDialogComponent,
-    GalleryComponent
+    ErrorDialogComponent
   ],
   imports: [
     BrowserModule,
