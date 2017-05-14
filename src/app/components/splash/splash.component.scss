@@ -62,7 +62,7 @@ $image_url: '../../../assets/images';
     }
     .logo-section {
       color: #ffffff;
-      content: url($image_url+"/logo_with_text.png");
+      content: url($image_url + "/logo_with_text.png");
       width: 100%;
       .logo-text {
         h3 {
@@ -140,11 +140,7 @@ $image_url: '../../../assets/images';
   .how-it-works-pic {
     //height: 100vh;
     margin: 0;
-<<<<<<< HEAD
     background: url($image_url + "/HowItWorks.svg");
-=======
-    background-image: url($image_url+"/howitworks.png");
->>>>>>> bc7fbc417075ee128d2cbf1722477229c0065155
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -203,7 +199,7 @@ $image_url: '../../../assets/images';
     //padding: 20px;
     padding: 5px;
     margin: 10px 25px 5px 20px;
-    content: url($image_url+ "/1.png");
+    content: url($image_url + "/1.png");
   }
   .step2 {
     padding: 5px;
@@ -226,7 +222,6 @@ $image_url: '../../../assets/images';
     //padding: 20px;
     content: url($image_url + "/4.png");
   }
-<<<<<<< HEAD
   //.step5 {
   //  padding: 5px;
   //  margin: 10px 25px 5px 20px;
@@ -236,15 +231,6 @@ $image_url: '../../../assets/images';
   //  padding: 5px;
   //  margin: 10px 25px 5px 20px;
   //  content: url($image_url + "/6.png");
-  //}
-
-  //.flex-container {
-  //  width: 100%;
-  //
-  //  display: flex;
-  //  flex-direction: row;
-  //  align-items: baseline;
-  //  justify-content: space-around;
   //}
 
   //.whatis-col {
@@ -260,11 +246,6 @@ $image_url: '../../../assets/images';
     vertical-align: top;
     display: inline-block;
     text-align: center;
-=======
-  .step5 {
-    padding: 5px;
-    margin: 10px 25px 5px 20px;
-    content: url($image_url + "/5.png");
   }
 
   .flex-container {
@@ -276,17 +257,7 @@ $image_url: '../../../assets/images';
     justify-content: space-around;
   }
 
-  .whatis-col {
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
->>>>>>> bc7fbc417075ee128d2cbf1722477229c0065155
-  }
-
-  .whatis-text{
+  .whatis-text {
     display: block;
     p {
       font-family: "Avenir-Med", sans-serif;
@@ -299,140 +270,132 @@ $image_url: '../../../assets/images';
     }
   }
 
-  .iot-project {
-<<<<<<< HEAD
-    margin-left: 30%;
-    content: url($image_url + "/IoT icon.png");
-  }
-  .community-driven {
-    margin-left: 30%;
-    content: url($image_url + "/community icon.png");
-  }
-  .empowering {
-    margin-left: 30%;
-    content: url($image_url + "/empowering icon.png");
-=======
-    padding: 5px;
-    margin: 0 10px 15px 0;
-    content: url($image_url+ "/IoT icon.png");
-  }
-  .community-driven {
-    padding: 5px;
-    margin: 0 10px 15px 0;
-    content: url($image_url+ "/community icon.png");
-  }
-  .empowering {
-    padding: 5px;
-    margin: 0 10px 15px 0;
-    content: url($image_url+ "/empowering icon.png");
->>>>>>> bc7fbc417075ee128d2cbf1722477229c0065155
-  }
+    .iot-project {
+      margin-left: 30%;
+      content: url($image_url + "/IoT icon.png");
+    }
+    .community-driven {
+      margin-left: 30%;
+      content: url($image_url + "/community icon.png");
+    }
+    .empowering {
+      margin-left: 30%;
+      content: url($image_url + "/empowering icon.png");
+      //padding: 5px;
+      //margin: 0 10px 15px 0;
+    }
+    //
+    //.community-driven {
+    //  padding: 5px;
+    //  margin: 0 10px 15px 0;
+    //  content: url($image_url + "/community icon.png");
+    //}
 
-  .tech-text {
-    margin-top: 10px;
-    margin-left: 25px;
-    background-color: transparent;
-
-    h4 {
-      color: $text-color;
-      font-family: "Avenir-Heavy", sans-serif;
-      font-variant: all-small-caps;
+    .tech-text {
+      margin-top: 10px;
+      margin-left: 25px;
       background-color: transparent;
+
+      h4 {
+        color: $text-color;
+        font-family: "Avenir-Heavy", sans-serif;
+        font-variant: all-small-caps;
+        background-color: transparent;
+      }
     }
-  }
 
-  .feat-container {
-    width: 90%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    .feat-container {
+      width: 90%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-    flex-wrap: wrap;
-  }
-
-  .feat-text {
-    p {
-      font-family: "Avenir-Heavy", sans-serif;
-      color: #444444;
+      flex-wrap: wrap;
     }
-  }
 
-  .protobuf-icon {
-    padding: 5px;
-    margin: 50px 20px 50px 70px;
+    .feat-text {
+      p {
+        font-family: "Avenir-Heavy", sans-serif;
+        color: #444444;
+      }
+    }
 
-    content: url($image_url +"/protobuf-icon.png");
-  }
+    .protobuf-icon {
+      padding: 5px;
+      margin: 50px 20px 50px 70px;
 
-  .cloud-icon {
-    padding: 5px;
-    margin: 50px 20px 50px 70px;
+      content: url($image_url +"/protobuf-icon.png");
+    }
 
-    content: url($image_url+ "/cloud-icon.png");
-  }
+    .cloud-icon {
+      padding: 5px;
+      margin: 50px 20px 50px 70px;
 
-  .open-icon {
-    padding: 5px;
-    margin: 50px 20px 50px 70px;
+      content: url($image_url + "/cloud-icon.png");
+    }
 
-    content: url($image_url + "/open-icon.png");
-  }
+    .open-icon {
+      padding: 5px;
+      margin: 50px 20px 50px 70px;
 
-  .rest-icon {
-    padding: 5px;
-    margin: 50px 20px 50px 50px;
+      content: url($image_url + "/open-icon.png");
+    }
 
-    content: url($image_url + "/rest-icon.png");
-  }
+    .rest-icon {
+      padding: 5px;
+      margin: 50px 20px 50px 50px;
 
-  .battery-icon {
-    padding: 5px;
-    margin: 50px 20px 50px 50px;
+      content: url($image_url + "/rest-icon.png");
+    }
 
-    content: url($image_url + "/battery-icon.png");
-  }
+    .battery-icon {
+      padding: 5px;
+      margin: 50px 20px 50px 50px;
 
-  .intelligent-icon {
-    padding: 5px;
-    margin: 50px 20px 50px 50px;
+      content: url($image_url + "/battery-icon.png");
+    }
 
-    content: url($image_url + "/intelligent-icon.png");
-  }
+    .intelligent-icon {
+      padding: 5px;
+      margin: 50px 20px 50px 50px;
 
-  .gallery-title {
-    margin-right: 25px;
-    background-color: transparent;
+      content: url($image_url + "/intelligent-icon.png");
+    }
 
-    h4 {
-      color: $text-color;
-      font-family: "Avenir-Heavy", sans-serif;
-      font-variant: all-small-caps;
+    .gallery-title {
+      margin-right: 25px;
       background-color: transparent;
-    }
-  }
 
-  .gallery-section{
-    margin-bottom: 5%;
-    .gallery-wrapper {
-      width: 40%;
-      margin-top: 20%;
+      h4 {
+        color: $text-color;
+        font-family: "Avenir-Heavy", sans-serif;
+        font-variant: all-small-caps;
+        background-color: transparent;
+      }
     }
-    .gallery-text {
-      position: relative;
-      font-family: "Avenir-Heavy", sans-serif;
-      margin-top: 5%;
-      //margin: 55% 10% 35% 65%;
-      margin-right: 20%;
-    }
-  }
 
-  //.gallery-pic {
-  //  height: 100vh;
-  //  margin: 0;
-  //  background-image: url($image_url + "/gallery-bg.png");
-  //  background-position: center;
-  //  background-size: 100% 80%;
-  //  background-repeat: no-repeat;
+    .gallery-section {
+      margin-bottom: 5%;
+      .gallery-wrapper {
+        width: 40%;
+        margin-top: 20%;
+      }
+      .gallery-text {
+        position: relative;
+        font-family: "Avenir-Heavy", sans-serif;
+        margin-top: 5%;
+        //margin: 55% 10% 35% 65%;
+        margin-right: 20%;
+      }
+    }
+
+    //.gallery-pic {
+    //  height: 100vh;
+    //  margin: 0;
+    //  background-image: url($image_url + "/gallery-bg.png");
+    //  background-position: center;
+    //  background-size: 100% 80%;
+    //  background-repeat: no-repeat;
 
     //button {
     //  outline-color: $text-color;
@@ -444,75 +407,75 @@ $image_url: '../../../assets/images';
     //  color: $black-text;
     //  margin: 10% 35% 5% 35%;
     //}
-  //}
+    //}
 
-  //.cmu-pic {
-  //  height: 100vh;
-  //  margin: 0;
-  //  background-image: url($image_url +"/CMU.png");
-  //  background-position: center;
-  //  background-repeat: no-repeat;
-  //}
+    //.cmu-pic {
+    //  height: 100vh;
+    //  margin: 0;
+    //  background-image: url($image_url +"/CMU.png");
+    //  background-position: center;
+    //  background-repeat: no-repeat;
+    //}
 
-  .ece-logo {
-    content: url($image_url + '/ece-logo.png');
-    width: 50%;
-  }
+    .ece-logo {
+      content: url($image_url + '/ece-logo.png');
+      width: 50%;
+    }
 
-  .cylab-logo {
-    content: url($image_url + '/cylab-logo.png');
-    width: 40%;
-  }
+    .cylab-logo {
+      content: url($image_url + '/cylab-logo.png');
+      width: 40%;
+    }
 
-  .footer {
-    height: $footer-height-bottom;
-    background-color: rgba(52, 73, 94, 1.0);
-    .wrapper {
-      padding: 0;
-      p {
-        line-height: $footer-height-bottom;
-        margin: 0;
-        padding-left: 15px;
-        padding-right: 15px;
-        font-family: "Avenir-Med", sans-serif;
-        text-align: center;
-        color: #ffffff;
+    .footer {
+      height: $footer-height-bottom;
+      background-color: rgba(52, 73, 94, 1.0);
+      .wrapper {
+        padding: 0;
+        p {
+          line-height: $footer-height-bottom;
+          margin: 0;
+          padding-left: 15px;
+          padding-right: 15px;
+          font-family: "Avenir-Med", sans-serif;
+          text-align: center;
+          color: #ffffff;
+        }
       }
     }
-  }
-  color: $background-color;
-}
+    color: $background-color;
 
-@media screen and (max-width: 960px) {
-  .splash-page {
-    .picture-section {
-      .picture-section-text {
-        position: relative;;
-        font-size: 18px;
-        width: 100%;
-        padding: 0;
-        top: 40%;
-        left:0;
-        background-color: rgba(0, 0, 0, 0.5);
-        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-        h1 {
-          padding: 10px;
+  @media screen and (max-width: 960px) {
+    .splash-page {
+      .picture-section {
+        .picture-section-text {
+          position: relative;;
+          font-size: 18px;
+          width: 100%;
+          padding: 0;
+          top: 40%;
+          left: 0;
+          background-color: rgba(0, 0, 0, 0.5);
+          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+          h1 {
+            padding: 10px;
+          }
         }
       }
     }
   }
-}
 
-@media screen and (max-width: 450px) {
-  .splash-page {
-    md-toolbar {
-      .title-buttons {
-        display: none;
-      }
-      .title-buttons-phone {
-        display: block;
+  @media screen and (max-width: 450px) {
+    .splash-page {
+      md-toolbar {
+        .title-buttons {
+          display: none;
+        }
+        .title-buttons-phone {
+          display: block;
+        }
       }
     }
-  }
 
+  }
 }
