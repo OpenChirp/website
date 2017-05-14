@@ -173,7 +173,8 @@ $image_url: '../../../assets/images';
   }
 
   .step-text {
-    text-align: left;
+    //text-align: left;
+    //margin: 0 0 0 6%;
     margin: 0 50% 0 0;
 
     h4 {
@@ -189,8 +190,13 @@ $image_url: '../../../assets/images';
     }
   }
 
+  //.how-wrapper {
+  //  float: left;
+  //}
 
   .step1 {
+    //display: block;
+    //padding: 20px;
     padding: 5px;
     margin: 10px 25px 5px 20px;
     content: url($image_url + "/1.png");
@@ -198,9 +204,13 @@ $image_url: '../../../assets/images';
   .step2 {
     padding: 5px;
     margin: 10px 25px 5px 20px;
+    //display: block;
+    //padding: 20px;
     content: url($image_url + "/2.png");
   }
   .step3 {
+    //display: block;
+    //padding: 20px;
     padding: 5px;
     margin: 10px 25px 5px 20px;
     content: url($image_url + "/3.png");
@@ -208,6 +218,8 @@ $image_url: '../../../assets/images';
   .step4 {
     padding: 5px;
     margin: 10px 25px 5px 20px;
+    //display: block;
+    //padding: 20px;
     content: url($image_url + "/4.png");
   }
   //.step5 {
@@ -221,26 +233,32 @@ $image_url: '../../../assets/images';
   //  content: url($image_url + "/6.png");
   //}
 
-  .flex-container {
-    width: 100%;
+  //.flex-container {
+  //  width: 100%;
+  //
+  //  display: flex;
+  //  flex-direction: row;
+  //  align-items: baseline;
+  //  justify-content: space-around;
+  //}
 
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    justify-content: space-around;
-  }
+  //.whatis-col {
+  //  height: 100%;
+  //
+  //  display: flex;
+  //  flex-direction: column;
+  //  align-items: center;
+  //  justify-content: center;
+  //}
 
-  .whatis-col {
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  .whatis-wrapper {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
   }
 
   .whatis-text{
-    margin: 0 10px 15px 0;
+    display: block;
     p {
       font-family: "Avenir-Med", sans-serif;
       text-align: center;
@@ -253,18 +271,15 @@ $image_url: '../../../assets/images';
   }
 
   .iot-project {
-    padding: 5px;
-    margin: 0 10px 15px 0;
+    margin-left: 30%;
     content: url($image_url + "/IoT icon.png");
   }
   .community-driven {
-    padding: 5px;
-    margin: 0 10px 15px 0;
+    margin-left: 30%;
     content: url($image_url + "/community icon.png");
   }
   .empowering {
-    padding: 5px;
-    margin: 0 10px 15px 0;
+    margin-left: 30%;
     content: url($image_url + "/empowering icon.png");
   }
 
