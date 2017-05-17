@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { MaterialModule, MdInputModule } from '@angular/material';
+import { MdDataTableModule } from 'ng2-md-datatable';
+
 import 'hammerjs';
 
 // Components
@@ -81,6 +83,7 @@ import { Configuration } from './config';
     MaterialModule,
     MdInputModule,
     BrowserAnimationsModule,
+    MdDataTableModule,
     AppRoutingModule
   ],
   providers: [

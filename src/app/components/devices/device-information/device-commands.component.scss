@@ -1,40 +1,5 @@
-@import '../../../constants';
-$row-height: 50px;
-$black-text: #303132;
-$blue-text: #8ab9d6;
-
 .device-commands {
-  .table-header {
-    height: $row-height;
-    line-height: $row-height;
-    hr {
-      margin: 0;
-    }
-    div {
-      width: 25%;
-      float: left;
-      color: #909090;
-    }
-    p {
-      margin: 0;
-      font-family: "Avenir-Med", sans-serif;
-      color: $black-text;
-    }
-  }
-
-  .table-row {
-    height: $row-height;
-    line-height: $row-height;
+  ng2-md-datatable-header {
     border-bottom: solid 1px #909090;
-    div {
-      color: #606060;
-      width: 25%;
-      float: left;
-    }
-    p {
-      margin: 0;
-      font-family: "Avenir-Med", sans-serif;
-      color: $black-text;
-    }
   }
 }
