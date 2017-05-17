@@ -1,0 +1,52 @@
+<div class="device-transducers">
+  <!-- Header Row -->
+  <div class="table-header">
+    <div><p>Name</p></div>
+    <div><p>Unit</p></div>
+    <div><p>Actuable</p></div>
+    <div><p>Value</p></div>
+    <div><p>Timestamp</p></div>            
+    <div><p>Actions</p></div>
+    <br>
+    <hr>
+  </div>
+
+  <!-- Item Rows -->
+  <div *ngFor="let transducer of device.transducers" class="table-row">
+    <div><p>{{ transducer.name }}</p></div>
+    <div><p>{{ transducer.unit ? transducer.unit : "-"}}</p></div>
+    <div><p>{{ transducer.is_actuable }}</p></div>
+    <div><p>{{ transducer.value ? transducer.value : "-" }}</p></div>
+    <div><p>{{ transducer.timestamp ? transducer.timestamp : "-" }}</p></div>
+    <div>
+      <button md-icon-button color="warn" (click)="deleteTransducer(transducer._id, transducer.name)">
+        <md-icon >clear</md-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- New Transducer Row -->
+  <div class="table-row">
+    <div>
+      <md-input-container>
+        <input mdInput placeholder="Name" [(ngModel)]="name">
+      </md-input-container>
+    </div>
+    <div>
+      <md-input-container>
+        <input mdInput placeholder="Unit" [(ngModel)]="unit">
+      </md-input-container>
+    </div>
+    <div>
+      <md-slide-toggle [(ngModel)]="actuable">{{ actuable }}</md-slide-toggle>
+    </div>
+    <div><p>-</p></div>
+    <div><p>-</p></div>
+    <div>
+      <button md-icon-button (click)="newTransducer()">
+        <md-icon>add</md-icon>
+      </button>
+    </div>
+  </div>
+
+</div>

@@ -62,40 +62,6 @@ $blue-text: #8ab9d6;
     }
   }
 
-  .table-header-transducer {
-    height: $row-height;
-    line-height: $row-height;
-    hr {
-      margin: 0;
-    }
-    div {
-      width: 16%;
-      float: left;
-      color: #909090;
-    }
-    p {
-      margin: 0;
-      font-family: "Avenir-Med", sans-serif;
-      color: $black-text;
-    }
-  }
-  .table-header-command {
-    height: $row-height;
-    line-height: $row-height;
-    hr {
-      margin: 0;
-    }
-    div {
-      width: 25%;
-      float: left;
-      color: #909090;
-    }
-    p {
-      margin: 0;
-      font-family: "Avenir-Med", sans-serif;
-      color: $black-text;
-    }
-  }
   .table-header-service {
     height: $row-height;
     line-height: $row-height;
@@ -113,36 +79,7 @@ $blue-text: #8ab9d6;
       color: $black-text;
     }
   }
-  .transducer {
-    height: $row-height;
-    line-height: $row-height;
-    border-bottom: solid 1px #909090;
-    div {
-      color: #606060;
-      width: 16%;
-      float: left;
-    }
-    p {
-      margin: 0;
-      font-family: "Avenir-Med", sans-serif;
-      color: $black-text;
-    }
-  }
-  .command {
-    height: $row-height;
-    line-height: $row-height;
-    border-bottom: solid 1px #909090;
-    div {
-      color: #606060;
-      width: 25%;
-      float: left;
-    }
-    p {
-      margin: 0;
-      font-family: "Avenir-Med", sans-serif;
-      color: $black-text;
-    }
-  }
+
   .service {
     height: $row-height;
     line-height: $row-height;
@@ -163,4 +100,3 @@ $blue-text: #8ab9d6;
     cursor: pointer;
   }
 }
-
