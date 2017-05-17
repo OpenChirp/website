@@ -29,6 +29,10 @@ import { UserLocationsComponent } from './components/locations/userlocations.com
 import { UserServicesComponent } from './components/userservices/userservices.component';
 import { UserServiceComponent } from './components/userservices/userservice.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
+import { DevicePropertiesComponent } from './components/devices/device-information/device-properties.component';
+import { DeviceTransducersComponent } from './components/devices/device-information/device-transducers.component';
+import { DeviceCommandsComponent } from './components/devices/device-information/device-commands.component';
+import { DeviceServicesComponent } from './components/devices/device-information/device-services.component';
 
 // Services
 import { LocationService } from './services/location.service';
@@ -63,6 +67,10 @@ import { Configuration } from './config';
     UserServicesComponent,
     UserServiceComponent,
     ErrorDialogComponent,
+    DevicePropertiesComponent,
+    DeviceTransducersComponent,
+    DeviceCommandsComponent,
+    DeviceServicesComponent,
     GalleryComponent
   ],
   imports: [
@@ -70,7 +78,7 @@ import { Configuration } from './config';
     FormsModule,
     HttpModule,
     JsonpModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
     MdInputModule,
     BrowserAnimationsModule,
     AppRoutingModule

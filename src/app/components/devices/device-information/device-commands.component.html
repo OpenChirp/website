@@ -1,0 +1,51 @@
+<div class="device-commands" *ngIf="device">
+
+  <!-- Table Head -->
+  <div class="table-header">
+    <div><p>Command</p></div>
+    <div><p>Value</p></div>
+    <div><p>Execute</p></div>
+    <div><p>Actions</p></div>
+    <br>
+    <hr>
+  </div>
+
+  <!-- Table Rows -->
+  <div *ngFor="let command of device.commands" class="table-row">
+    <div><p>{{ command.name }}</p></div>
+    <div><p>{{ command.value }}</p></div>
+    <div><button md-raised-button (click)="execute(command)">Execute</button></div>
+    <div>
+      <button md-icon-button (click)="deleteCommand(command._id, command.name)">
+        <md-icon >clear</md-icon>
+      </button>
+    </div>
+  </div>
+
+  <!--New Command Row-->
+  <div class="table-row">
+    <div>
+      <md-input-container>
+        <input mdInput placeholder="Name" [(ngModel)]="name">
+      </md-input-container>
+    </div>
+    <div>
+      <md-input-container>
+        <input mdInput placeholder="Value" [(ngModel)]="value">
+      </md-input-container>
+    </div>
+    <div>
+      <md-select placeholder="Transducer" [(ngModel)]="transducer" name="transducer">
+        <md-option *ngFor="let transducer of device.transducers" [value]="transducer">
+          {{ transducer.name }}
+        </md-option>
+      </md-select>
+    </div>
+    <div>
+      <div><button md-icon-button (click)="newCommand()">
+        <md-icon>add</md-icon>
+      </button></div>
+    </div>
+  </div>
+
+</div>

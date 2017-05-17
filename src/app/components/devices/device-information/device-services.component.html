@@ -1,0 +1,21 @@
+<div class="device-services" *ngIf="services">
+
+  <!-- Table Header -->
+  <div class="table-header-service">
+    <div><p>Name</p></div>
+    <div><p>Description</p></div>
+    <br>
+    <hr>
+  </div>
+
+  <!-- Table Row -->
+  <div *ngFor="let service of services" class="service" (click)="toService(service._id)">
+    <div><p>{{ service.name }}</p></div>
+    <div><p>{{ service.description }}</p></div>
+  </div>
+
+  <!-- Table Empty Message -->
+  <div *ngIf="services.length == 0">
+    <p>There are currently no linked services.</p>
+  </div>
+</div>

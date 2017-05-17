@@ -15,157 +15,28 @@
       <!-- Properties Tab -->
       <md-tab label="Properties">
         <div class="tab-content">
-          <form>
-            <div>
-              <md-input-container>
-                <input mdInput placeholder="Name" [(ngModel)]="device.name" name="device-name">
-              </md-input-container>
-            </div>
-            <br>
-            <div>
-              <md-select placeholder="Device Type" [(ngModel)]="device.type" name="device-type">
-                <md-option *ngFor="let deviceType of deviceTypes" [value]="deviceType">
-                  {{ deviceType }}
-                </md-option>
-              </md-select>
-            </div>
-            <br>
-            <div>
-              <p>Enabled</p>
-              <md-slide-toggle [(ngModel)]="device.enabled" name="device-enabled">True</md-slide-toggle>
-            </div>
-            <p>Protocol: {{ device.pubsub.protocol }}</p>
-            <p>Endpoint: {{ device.pubsub.endpoint }}</p>
-            <button md-raised-button (click)="updateDevice()">Update</button>
-          </form>
+          <device-properties [device]="device"></device-properties>
         </div>
       </md-tab>
 
       <!-- Transducers Tab -->
       <md-tab label="Transducers">
         <div class="tab-content">
-          <div class="table-header-transducer">
-            <div><p>Name</p></div>
-            <div><p>Unit</p></div>
-            <div><p>Actuable</p></div>
-            <div><p>Value</p></div>
-            <div><p>Timestamp</p></div>            
-            <div><p>Actions</p></div>
-            <br>
-            <hr>
-          </div>
-          <div *ngFor="let transducer of device.transducers" class="transducer">
-            <div><p>{{ transducer.name }}</p></div>
-            <div><p>{{ transducer.unit ? transducer.unit : "-"}}</p></div>
-            <div><p>{{ transducer.is_actuable }}</p></div>
-            <div><p>{{ transducer.value ? transducer.value : "-" }}</p></div>
-            <div><p>{{ transducer.timestamp ? transducer.timestamp : "-" }}</p></div>
-            <!--<div><button md-raised-button color="warn" (click)="deleteTransducer(transducer._id, transducer.name)">Delete</button></div>-->
-            
-            <!--<button md-button [mdMenuTriggerFor]="menu">Actions</button>
-      <md-menu #menu="mdMenu">
-        <a md-menu-item routerLink="">Get Data</a>
-       <a *ngIf ="transducer.is_actuable" button md-menu-item (click)="publishToTransducer(transducer._id, transducer.name)">Publish</a>
-        <a button md-menu-item (click)="deleteTransducer(transducer._id, transducer.name)">Delete</a>
-      </md-menu>-->
-
-        <div><p>
-            <button md-icon-button color="warn" (click)="deleteTransducer(transducer._id, transducer.name)">
-              <md-icon >clear</md-icon>
-            </button>
-            </p></div>
-          </div>
-          <div class="transducer">
-            <div>
-              <md-input-container>
-                <input mdInput placeholder="Name" [(ngModel)]="t_name">
-              </md-input-container>
-            </div>
-            <div>
-              <md-input-container>
-                <input mdInput placeholder="Unit" [(ngModel)]="t_unit">
-              </md-input-container>
-            </div>
-            <div>
-              <md-slide-toggle [(ngModel)]="t_actuable">{{ t_actuable }}</md-slide-toggle>
-            </div>
-            <div><p></p>
-            </div>
-            <div>
-              <!--<button md-raised-button (click)="newTransducer()">Add</button>-->
-              <div><button md-icon-button (click)="newTransducer()">
-                <md-icon>add</md-icon>
-              </button></div>
-            </div>
-          </div>
+          <device-transducers [device]="device" (updateDevice)="getDevice($event)"></device-transducers>
         </div>
       </md-tab>
 
       <!-- Commands Tab -->
       <md-tab label="Commands">
         <div class="tab-content">
-          <div class="table-header-command">
-            <div><p>Command</p></div>
-            <div><p>Value</p></div>
-            <div><p>Execute</p></div>
-            <!--<div><p>Add/Delete</p></div>-->
-            <div><p>Actions</p></div>
-            <br>
-            <hr>
-          </div>
-          <div *ngFor="let command of device.commands" class="command">
-            <div><p>{{ command.name }}</p></div>
-            <div><p>{{ command.value }}</p></div>
-            <div><button md-raised-button (click)="execute(command)">Execute</button></div>
-            <!--<div><button md-raised-button (click)="deleteCommand(command._id, command.name)" color="warn">Delete</button></div>-->
-            <div><button md-icon-button (click)="deleteCommand(command._id, command.name)">
-              <md-icon >clear</md-icon>
-            </button></div>
-          </div>
-          <div class="command">
-            <div>
-              <md-input-container>
-                <input mdInput placeholder="Name" [(ngModel)]="c_name">
-              </md-input-container>
-            </div>
-            <div>
-              <md-input-container>
-                <input mdInput placeholder="Value" [(ngModel)]="c_value">
-              </md-input-container>
-            </div>
-            <div>
-              <md-select placeholder="Transducer" [(ngModel)]="c_transducer" name="transducer">
-                <md-option *ngFor="let transducer of device.transducers" [value]="transducer">
-                  {{ transducer.name }}
-                </md-option>
-              </md-select>
-            </div>
-            <div>
-              <!--<button md-raised-button (click)="newCommand()">Add</button>-->
-              <div><button md-icon-button (click)="newCommand()">
-                <md-icon>add</md-icon>
-              </button></div>
-            </div>
-          </div>
+          <device-commands [device]="device" (updateDevice)="getDevice($event)"></device-commands>
         </div>
       </md-tab>
 
       <!-- Services Tab -->
       <md-tab label="Services">
         <div class="tab-content">
-          <div class="table-header-service">
-            <div><p>Name</p></div>
-            <div><p>Description</p></div>
-            <br>
-            <hr>
-          </div>
-          <div *ngFor="let service of services" class="service" (click)="toService(service._id)">
-            <div><p>{{ service.name }}</p></div>
-            <div><p>{{ service.description }}</p></div>
-          </div>
-          <div *ngIf="services.length == 0">
-            <p>There are currently no linked services.</p>
-          </div>
+          <device-services [services]="services"></device-services>
         </div>
       </md-tab>
 
