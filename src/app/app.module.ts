@@ -35,6 +35,7 @@ import { DevicePropertiesComponent } from './components/devices/device-informati
 import { DeviceTransducersComponent } from './components/devices/device-information/device-transducers.component';
 import { DeviceCommandsComponent } from './components/devices/device-information/device-commands.component';
 import { DeviceServicesComponent } from './components/devices/device-information/device-services.component';
+import { SelectTemplateComponent } from './components/devices/select-template.component';
 
 // Services
 import { LocationService } from './services/location.service';
@@ -73,6 +74,7 @@ import { Configuration } from './config';
     DeviceTransducersComponent,
     DeviceCommandsComponent,
     DeviceServicesComponent,
+    SelectTemplateComponent,
     GalleryComponent
   ],
   imports: [
@@ -98,6 +100,7 @@ import { Configuration } from './config';
     DeleteLocationDialog,
     SuccessDialogComponent,
     ErrorDialogComponent,
+    SelectTemplateComponent
   ],
   bootstrap: [AppComponent]
 })
