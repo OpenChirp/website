@@ -22,7 +22,7 @@ export class NewLocationComponent {
   type: string = "";
   children: Array<string> = [];
   errorMessage: string = "";
-  locationTypes: Array<string> = ["INDOOR", "BUILDING"];
+  locationTypes: Array<string> = ["INDOOR", "BUILDING","OUTDOOR"];
   private sub: any;
 
   constructor(private locationService: LocationService, private route: ActivatedRoute,

@@ -21,7 +21,7 @@ export class NewDeviceComponent {
   location: Location = null;
   name: string = "";
   enabled: boolean = true;
-  deviceTypes: Array<string> = ["LORA", "TWIST", "FIREFLY", "BOSCH_XDK"];
+  //deviceTypes: Array<string> = ["LORA", "TWIST", "FIREFLY", "BOSCH_XDK"];
   selectedType: string = "";
   useTemplate: boolean = false;
   templates: Array<Object> = [];
@@ -82,9 +82,9 @@ export class NewDeviceComponent {
       if (this.location) {
         body["location_id"] = this.location._id;
       }
-      if (this.deviceTypes) {
+      /*if (this.deviceTypes) {
         body["type"] = this.selectedType;
-      }
+      }*/
       if (this.useTemplate) {
         if (this.templateid != "") {
           body["template_id"] = this.templateid;
