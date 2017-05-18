@@ -1,6 +1,6 @@
-import {Component, ViewEncapsulation} from '@angular/core';
-import { MdInputModule, MdSnackBar, MdSnackBarConfig } from '@angular/material';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { MdDialog } from '@angular/material';
 
 import { Location } from '../../models/location';
 import { LocationService } from '../../services/location.service';
@@ -9,6 +9,7 @@ import { SuccessDialogService } from '../../services/success-dialog.service';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 import { ErrorDialogService } from '../../services/error-dialog.service';
+import { SelectTemplateComponent } from './select-template.component';
 
 @Component({
   selector: 'new-device',
@@ -27,11 +28,12 @@ export class NewDeviceComponent {
   template: any = null;
   templateid = "";
 
-  constructor(private deviceService: DeviceService, private locationService: LocationService,
+  constructor(private deviceService: DeviceService, 
+              private locationService: LocationService,
               private route: ActivatedRoute, private router: Router,
-              public snackBar: MdSnackBar,
               private successDialogService: SuccessDialogService,
-              private errorDialogService: ErrorDialogService) {
+              private errorDialogService: ErrorDialogService,
+              public dialog: MdDialog) {
 
   }
 
@@ -89,7 +91,7 @@ export class NewDeviceComponent {
         }
         else {
           valid = false;
-          this.snackBar.open("Select Template!", this.name, { duration: 2000 });
+          this.errorDialogService.dialogPopup(ErrorDialogComponent, 'Select a Template!');
         }
       }
       if (valid) {
@@ -103,7 +105,6 @@ export class NewDeviceComponent {
             );
           },
           error => {
-            // this.snackBar.open(error.message, this.name, errorConfig);
             this.errorDialogService
               .dialogPopup(ErrorDialogComponent, error.message + ': ' + this.name);
           }
@@ -117,5 +118,15 @@ export class NewDeviceComponent {
 
   cancel() {
     this.router.navigate(['/home']);
+  }
+
+  selectTemplate() {
+    var dialogRef = this.dialog.open(SelectTemplateComponent, { width: '700px', height: '700px' });
+    dialogRef.afterClosed().subscribe(
+      result => {
+        this.template = result;
+        this.templateid = this.template._id;
+      }
+    );
   }
 }

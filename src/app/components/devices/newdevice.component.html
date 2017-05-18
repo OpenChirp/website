@@ -9,11 +9,7 @@
       <br><br>
       <!-- With Template -->
       <div *ngIf="useTemplate">
-        <md-select placeholder="Select Template" [(ngModel)]="templateid" name="template">
-          <md-option *ngFor="let template of templates" [value]="template.id">
-            {{ template.name }}
-          </md-option>
-        </md-select>
+        <button md-raised-button (click)="selectTemplate()">{{ template ? template.name : "Select Template" }}</button>
       </div>
       <!-- Without Template -->
       <div>
