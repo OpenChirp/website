@@ -1,5 +1,4 @@
 import {Component, ViewEncapsulation} from '@angular/core';
-import { MdInputModule, MdSnackBar, MdSnackBarConfig } from '@angular/material';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { Location } from '../../models/location';
@@ -29,7 +28,6 @@ export class NewDeviceComponent {
 
   constructor(private deviceService: DeviceService, private locationService: LocationService,
               private route: ActivatedRoute, private router: Router,
-              public snackBar: MdSnackBar,
               private successDialogService: SuccessDialogService,
               private errorDialogService: ErrorDialogService) {
 
@@ -89,7 +87,7 @@ export class NewDeviceComponent {
         }
         else {
           valid = false;
-          this.snackBar.open("Select Template!", this.name, { duration: 2000 });
+          this.errorDialogService.dialogPopup(ErrorDialogComponent, 'Select a Template!');
         }
       }
       if (valid) {
@@ -103,7 +101,6 @@ export class NewDeviceComponent {
             );
           },
           error => {
-            // this.snackBar.open(error.message, this.name, errorConfig);
             this.errorDialogService
               .dialogPopup(ErrorDialogComponent, error.message + ': ' + this.name);
           }
