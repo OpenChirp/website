@@ -20,6 +20,7 @@
     </div>
     <p>Protocol: {{ device.pubsub.protocol }}</p>
     <p>Endpoint: {{ device.pubsub.endpoint }}</p>
+    <p>Owner : {{ device.owner.name || device.owner.email }}</p>
     <button md-raised-button (click)="updateDevice()">Update</button>
   </form>
 </div>
