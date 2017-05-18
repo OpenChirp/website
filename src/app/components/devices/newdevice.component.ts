@@ -124,8 +124,10 @@ export class NewDeviceComponent {
     var dialogRef = this.dialog.open(SelectTemplateComponent, { width: '700px', height: '700px' });
     dialogRef.afterClosed().subscribe(
       result => {
-        this.template = result;
-        this.templateid = this.template._id;
+        if(result) {
+          this.template = result;
+          this.templateid = this.template._id;
+        }
       }
     );
   }
