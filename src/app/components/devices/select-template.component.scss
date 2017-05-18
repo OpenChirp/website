@@ -11,4 +11,17 @@
   ng2-md-datatable-row:hover {
     background-color: #e3e3e3;
   }
+  .search {
+    h2 {
+      float: left;
+    }
+    md-input-container {
+      float: right;
+    }
+    md-icon {
+      float: right;
+      color: #909090;
+      line-height: 55px;
+    }
+  }
 }
