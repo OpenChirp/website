@@ -1,0 +1,14 @@
+.select-template {
+  padding: 15px;
+  ng2-md-datatable-header {
+    border-bottom: solid 1px #303030;
+  }
+  ng2-md-datatable-row {
+    border-bottom: solid 1px #303030;
+    transition-duration: 0.3s;
+    cursor: pointer;
+  }
+  ng2-md-datatable-row:hover {
+    background-color: #e3e3e3;
+  }
+}
