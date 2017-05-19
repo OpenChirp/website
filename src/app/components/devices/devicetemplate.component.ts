@@ -3,6 +3,12 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import { DeviceService } from '../../services/device.service';
 
+import { SuccessDialogService } from '../../services/success-dialog.service';
+import { ErrorDialogService } from '../../services/error-dialog.service';
+import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
+import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
+
+
 @Component({
   selector: 'device-template',
   templateUrl: './devicetemplate.component.html',
@@ -11,7 +17,11 @@ import { DeviceService } from '../../services/device.service';
 
 export class DeviceTemplateComponent {
   template: any = null;
-  constructor(private route: ActivatedRoute, private deviceService: DeviceService, private router: Router) {
+  constructor(private route: ActivatedRoute, 
+              private deviceService: DeviceService, 
+              private router: Router,
+              private successDialogService: SuccessDialogService, 
+              private errorDialogService: ErrorDialogService) {
 
   }
 
@@ -32,6 +42,18 @@ export class DeviceTemplateComponent {
   
   newDevice() {
     this.router.navigate(['/home/newdevice', { template_id: this.template._id }]);
+  }
+
+  deleteTemplate() {
+    this.deviceService.deleteTemplate(this.template._id).subscribe(
+      result => { 
+        this.successDialogService.dialogPopup(SuccessDialogComponent, "Successfully deleted " + this.template.name);
+        this.router.navigate(['/home/devicetemplates']);
+      },
+      error => {
+        this.errorDialogService.dialogPopup(ErrorDialogComponent, error.message);
+      }
+    );
   }
 
 }
