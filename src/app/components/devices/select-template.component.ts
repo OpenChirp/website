@@ -36,11 +36,12 @@ export class SelectTemplateComponent {
           var template_name: string = x.name;
           var name_match = template_name.toLowerCase().includes(this.searchTerm.toLowerCase());
           if (name_match) return true;
-
-          var template_description: string = x.description;
-          var description_match = template_description.toLowerCase().includes(this.searchTerm.toLowerCase());
-          if (description_match) return true;
-
+          
+          if(x.description){
+            var template_description: string = x.description;
+            var description_match = template_description.toLowerCase().includes(this.searchTerm.toLowerCase());
+            if (description_match) return true;
+          }
           if (x.owner.name) {
             var template_owner: string = x.owner.name;
             var owner_match = template_owner.toLowerCase().includes(this.searchTerm.toLowerCase());
