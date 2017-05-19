@@ -25,7 +25,20 @@ export class DeviceTransducersComponent {
   constructor(private deviceService: DeviceService, private successDialogService: SuccessDialogService, private errorDialogService: ErrorDialogService) {
 
   }
+   ngOnInit() {
+    this.getTransducers();
 
+  }
+
+  getTransducers() {
+    console.log("Loading transducers");
+    this.deviceService.getDeviceTransducers(this.device._id).subscribe(
+      out => {
+         this.device.transducers = out;
+      });
+    
+  }  
+     
   newTransducer() {
     if (this.name != "" && this.unit != "") {
       var body = {
