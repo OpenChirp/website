@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import {MdDialog, MdDialogRef} from '@angular/material';
 import 'rxjs/add/operator/switchMap';
 
 import { Device } from '../../models/device';
@@ -7,6 +8,7 @@ import { DeviceService } from '../../services/device.service';
 import { SuccessDialogService } from '../../services/success-dialog.service';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
+import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.component';
 import { UserService } from '../../services/user.service';
 import { ErrorDialogService } from '../../services/error-dialog.service';
 
@@ -28,7 +30,8 @@ export class DeviceComponent {
               private deviceService: DeviceService,
               private successDialogService: SuccessDialogService,
               private errorDialogService: ErrorDialogService,
-              private userService: UserService) {
+              private userService: UserService,
+              public dialog: MdDialog) {
 
   }
 
@@ -60,16 +63,25 @@ export class DeviceComponent {
 
   deleteDevice() {
     if (this.device) {
-      this.deviceService.deleteDevice(this.device._id).subscribe(
+      let dialogRef = this.dialog.open(ConfirmationDialogComponent);
+      dialogRef.componentInstance.dialogText = "Delete Device " + this.device.name + "?";
+      dialogRef.componentInstance.confirmText = "Delete";
+      dialogRef.afterClosed().subscribe(
         result => {
-          this.successDialogService
-            .dialogPopup(SuccessDialogComponent, 'Successfully deleted: ' + this.device.name);
-          this.router.navigate(['/home']);
-        },
-        error => this.errorDialogService
-                  .dialogPopup(ErrorDialogComponent, error.message + ': ' + this.device.name)
-      );
-    }
-  }
+          if (result) {
+            this.deviceService.deleteDevice(this.device._id).subscribe(
+              result => {
+                this.successDialogService
+                  .dialogPopup(SuccessDialogComponent, 'Successfully deleted: ' + this.device.name);
+                this.router.navigate(['/home/mydevices']);
+              },
+              error => this.errorDialogService
+                        .dialogPopup(ErrorDialogComponent, error.message + ': ' + this.device.name)
+            ); // End Delete Device Subscribe
+          } // End if
+        } // End result
+      ); // End subscribe
+    } // End if device
+  } // End function
 
 }

@@ -15,7 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SplashComponent } from './components/splash/splash.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './components/404/pagenotfound.component';
-import { TreeNodeComponent, DeleteLocationDialog } from './components/locationtree/tree.component';
+import { TreeNodeComponent } from './components/locationtree/tree.component';
 import { DeviceListComponent } from './components/devices/devicelist.component';
 import { LocationComponent } from './components/locations/location.component';
 import { DeviceComponent } from './components/devices/device.component';
@@ -36,6 +36,7 @@ import { DeviceTransducersComponent } from './components/devices/device-informat
 import { DeviceCommandsComponent } from './components/devices/device-information/device-commands.component';
 import { DeviceServicesComponent } from './components/devices/device-information/device-services.component';
 import { SelectTemplateComponent } from './components/devices/select-template.component';
+import { ConfirmationDialogComponent } from './components/dialogs/confirmation-dialog.component';
 
 // Services
 import { LocationService } from './services/location.service';
@@ -58,11 +59,9 @@ import { Configuration } from './config';
     DeviceComponent,
     NewDeviceComponent,
     LocationComponent,
-    DeleteLocationDialog,
     DeviceTemplatesComponent,
     DeviceTemplateComponent,
     NewTemplateComponent,
-    DeleteLocationDialog,
     SuccessDialogComponent,
     ErrorDialogComponent,
     UserDevicesComponent,
@@ -75,6 +74,7 @@ import { Configuration } from './config';
     DeviceCommandsComponent,
     DeviceServicesComponent,
     SelectTemplateComponent,
+    ConfirmationDialogComponent,
     GalleryComponent
   ],
   imports: [
@@ -97,10 +97,10 @@ import { Configuration } from './config';
     Configuration
   ],
   entryComponents: [
-    DeleteLocationDialog,
     SuccessDialogComponent,
     ErrorDialogComponent,
-    SelectTemplateComponent
+    SelectTemplateComponent,
+    ConfirmationDialogComponent
   ],
   bootstrap: [AppComponent]
 })

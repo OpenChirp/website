@@ -10,6 +10,7 @@ import { SuccessDialogService } from '../../services/success-dialog.service';
 import { ErrorDialogService } from '../../services/error-dialog.service';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
+import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.component';
 
 @Component({
   selector: 'tree-node',
@@ -107,7 +108,9 @@ export class TreeNodeComponent {
   }
 
   deleteLocation(location: Location) {
-    let dialogRef = this.dialog.open(DeleteLocationDialog);
+    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    dialogRef.componentInstance.confirmText = "Delete";
+    dialogRef.componentInstance.dialogText = "Delete Location " + location.name + "?";
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.locationService
@@ -151,19 +154,5 @@ export class TreeNodeComponent {
     else {
       return name;
     }
-  }
-}
-
-@Component({
-  selector: 'delete-location-dialog',
-  template: `
-    <h2>Confirmation of Deletion</h2>
-    <button md-raised-button (click)="dialogRef.close(true)">Delete</button>
-    <button md-raised-button (click)="dialogRef.close(false)">Cancel</button>
-  `
-})
-export class DeleteLocationDialog {
-  constructor(public dialogRef: MdDialogRef<DeleteLocationDialog>) {
-
   }
 }

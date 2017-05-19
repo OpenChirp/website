@@ -7,6 +7,8 @@ import { SuccessDialogService } from '../../services/success-dialog.service';
 import { ErrorDialogService } from '../../services/error-dialog.service';
 import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
+import { MdDialog } from '@angular/material';
+import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.component';
 
 
 @Component({
@@ -21,7 +23,8 @@ export class DeviceTemplateComponent {
               private deviceService: DeviceService, 
               private router: Router,
               private successDialogService: SuccessDialogService, 
-              private errorDialogService: ErrorDialogService) {
+              private errorDialogService: ErrorDialogService,
+              public dialog: MdDialog) {
 
   }
 
@@ -45,13 +48,22 @@ export class DeviceTemplateComponent {
   }
 
   deleteTemplate() {
-    this.deviceService.deleteTemplate(this.template._id).subscribe(
-      result => { 
-        this.successDialogService.dialogPopup(SuccessDialogComponent, "Successfully deleted " + this.template.name);
-        this.router.navigate(['/home/devicetemplates']);
-      },
-      error => {
-        this.errorDialogService.dialogPopup(ErrorDialogComponent, error.message);
+    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    dialogRef.componentInstance.dialogText = "Delete Template " + this.template.name + "?";
+    dialogRef.componentInstance.confirmText = "Delete";
+    dialogRef.afterClosed().subscribe(
+      result => {
+        if (result) {
+          this.deviceService.deleteTemplate(this.template._id).subscribe(
+            result => { 
+              this.successDialogService.dialogPopup(SuccessDialogComponent, "Successfully deleted " + this.template.name);
+              this.router.navigate(['/home/devicetemplates']);
+            },
+            error => {
+              this.errorDialogService.dialogPopup(ErrorDialogComponent, error.message);
+            }
+          );
+        }
       }
     );
   }
