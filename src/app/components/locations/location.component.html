@@ -1,6 +1,7 @@
-<div class="new-location">
-  <md-card *ngIf="parent">
-    <h2>Create New Location for {{ parent.name }}</h2>
+<div class="location">
+  <md-card>
+    <h2 *ngIf="parent">Create New Location for {{ parent.name }}</h2>
+    <h2 *ngIf="location">Update Location {{ location.name }}</h2>
     <hr>
     <form>
       <md-input-container>
@@ -16,7 +17,8 @@
         </md-option>
       </md-select>
       <br><br>
-      <button md-raised-button type="submit" (click)="add()">Add Location</button>
+      <button md-raised-button type="submit" (click)="add()" *ngIf="parent">Add Location</button>
+      <button md-raised-button type="submit" (click)="update()" *ngIf="location">Update Location</button>
       <button md-raised-button (click)="cancel()">Cancel</button>
     </form>
   </md-card>

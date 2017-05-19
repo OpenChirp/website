@@ -5,7 +5,7 @@ import { SplashComponent } from './components/splash/splash.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DashboardMainComponent } from './components/dashboard/dashboard-main.component';
 import { PageNotFoundComponent } from './components/404/pagenotfound.component';
-import { NewLocationComponent } from './components/locations/newlocation.component';
+import { LocationComponent } from './components/locations/location.component';
 import { DeviceTemplatesComponent } from './components/devices/devicetemplates.component';
 import { DeviceComponent } from './components//devices/device.component';
 import { DeviceListComponent } from './components/devices/devicelist.component';
@@ -36,8 +36,8 @@ const appRoutes: Routes = [
         component: DeviceListComponent
       },
       {
-        path: 'newlocation/:id',  // Parent Location ID
-        component: NewLocationComponent
+        path: 'location',
+        component: LocationComponent
       },
       {
         path: 'newdevice',

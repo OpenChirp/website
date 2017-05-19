@@ -45,6 +45,7 @@ export class TreeNodeComponent {
     // prevent memory leak when component is destroyed
     this.subscription.unsubscribe();
   }
+
   reloadChildren(){
      this.locationService
         .getLocationById(this.currentLocation._id)
@@ -85,7 +86,11 @@ export class TreeNodeComponent {
   }
 
   addLocation(location: Location) {
-    this.router.navigate(['/home/newlocation', location._id]);
+    this.router.navigate(['/home/location', { parent_id: location._id }]);
+  }
+
+  updateLocation(location: Location) {
+    this.router.navigate(['/home/location', { location_id: location._id }]);
   }
 
   toDevices(location_id: string) {
@@ -130,11 +135,22 @@ export class TreeNodeComponent {
     }
   }
 
-   onCreateChild() {
+  onCreateChild() {
       this.clearChildren();
       this.reloadChildren();
       this.showChildren = true;
+  }
 
+  getLocationName(name: string) {
+    if (name == "root") {
+      return "Location Tree";
+    }
+    else if (name.length > 11) {
+      return name.substr(0, 11) + "...";
+    }
+    else {
+      return name;
+    }
   }
 }
 
