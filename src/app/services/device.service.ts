@@ -93,6 +93,13 @@ export class DeviceService {
                     .catch(this.handleError);
   }
 
+  // Delete Device Template by ID
+  deleteTemplate(id: string) {
+    return this.http.delete(this.apiUrl + "devicetemplate/" + id, this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
   // Add Device
   addDevice(body : any) {
     return this.http.post(this.locationUrl, body, this.requestOptions)
