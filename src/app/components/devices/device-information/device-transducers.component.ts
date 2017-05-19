@@ -6,7 +6,8 @@ import { SuccessDialogService } from '../../../services/success-dialog.service';
 import { ErrorDialogService } from '../../../services/error-dialog.service';
 import { SuccessDialogComponent } from '../../success-dialog/success-dialog.component';
 import { ErrorDialogComponent } from '../../error-dialog/error-dialog.component';
-
+import { MdDialog } from '@angular/material';
+import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.component';
 
 @Component({
   selector: 'device-transducers',
@@ -22,7 +23,10 @@ export class DeviceTransducersComponent {
   actuable: boolean = false;
   publishPayload: string = "";
 
-  constructor(private deviceService: DeviceService, private successDialogService: SuccessDialogService, private errorDialogService: ErrorDialogService) {
+  constructor(private deviceService: DeviceService, 
+              private successDialogService: SuccessDialogService, 
+              private errorDialogService: ErrorDialogService,
+              public dialog: MdDialog) {
 
   }
 
@@ -54,15 +58,24 @@ export class DeviceTransducersComponent {
   }
 
   deleteTransducer(id: string, name: string) {
-    this.deviceService.deleteTransducer(this.device._id, id).subscribe(
-      result => {
-        this.successDialogService
-          .dialogPopup(SuccessDialogComponent, 'Transducer Deleted: ' + name);
-        this.updateDevice.emit(true);
-      },
-      error => {
-        this.errorDialogService
-          .dialogPopup(ErrorDialogComponent, error.message + ': ' + name);
+    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    dialogRef.componentInstance.confirmText = "Delete";
+    dialogRef.componentInstance.dialogText = "Delte Transducer " + name + "?";
+    dialogRef.afterClosed().subscribe(
+      result =>  {
+        if (result) {
+          this.deviceService.deleteTransducer(this.device._id, id).subscribe(
+            result => {
+              this.successDialogService
+                .dialogPopup(SuccessDialogComponent, 'Transducer Deleted: ' + name);
+              this.updateDevice.emit(true);
+            },
+            error => {
+              this.errorDialogService
+                .dialogPopup(ErrorDialogComponent, error.message + ': ' + name);
+            }
+          );
+        }
       }
     );
   }

@@ -5,6 +5,8 @@ import { SuccessDialogService } from '../../../services/success-dialog.service';
 import { ErrorDialogComponent } from '../../error-dialog/error-dialog.component';
 import { SuccessDialogComponent } from '../../success-dialog/success-dialog.component';
 import { DeviceService } from '../../../services/device.service';
+import { MdDialog } from '@angular/material';
+import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.component';
 
 @Component({
   selector: 'device-commands',
@@ -19,7 +21,10 @@ export class DeviceCommandsComponent {
   value: string = "";
   transducer: any = null;
   
-  constructor(private deviceService: DeviceService, private successDialogService: SuccessDialogService, private errorDialogService: ErrorDialogService) {
+  constructor(private deviceService: DeviceService, 
+              private successDialogService: SuccessDialogService, 
+              private errorDialogService: ErrorDialogService,
+              public dialog: MdDialog) {
 
   }
 
@@ -51,15 +56,24 @@ export class DeviceCommandsComponent {
   }
 
   deleteCommand(id: string, name: string) {
-    this.deviceService.deleteCommand(this.device._id, id).subscribe(
+    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    dialogRef.componentInstance.dialogText = "Delete Command " + name + "?";
+    dialogRef.componentInstance.confirmText = "Delete";
+    dialogRef.afterClosed().subscribe(
       result => {
-        this.successDialogService
-          .dialogPopup(SuccessDialogComponent, 'Command Deleted: ' + name);
-        this.updateDevice.emit(true);
-      },
-      error => {
-        this.errorDialogService
-          .dialogPopup(ErrorDialogComponent, error.message + ': ' + name);
+        if (result) {
+          this.deviceService.deleteCommand(this.device._id, id).subscribe(
+            result => {
+              this.successDialogService
+                .dialogPopup(SuccessDialogComponent, 'Command Deleted: ' + name);
+              this.updateDevice.emit(true);
+            },
+            error => {
+              this.errorDialogService
+                .dialogPopup(ErrorDialogComponent, error.message + ': ' + name);
+            }
+          );
+        }
       }
     );
   }
