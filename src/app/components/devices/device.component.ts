@@ -70,8 +70,8 @@ export class DeviceComponent {
             .dialogPopup(SuccessDialogComponent, 'Successfully deleted: ' + this.device.name);
           this.router.navigate(['/home']);
         },
-        error => this.successDialogService
-                  .dialogPopup(SuccessDialogComponent, error.message + ': ' + this.device.name)
+        error => this.errorDialogService
+                  .dialogPopup(ErrorDialogComponent, error.message + ': ' + this.device.name)
       );
     }
   }

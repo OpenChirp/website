@@ -19,17 +19,18 @@
                 [(ngModel)]="name" 
                 [ngModelOptions]="{standalone: true}">
         </md-input-container>
-        <br>
+        <!--<br>
         <br>
         <md-select placeholder="Device Type" [(ngModel)]="selectedType" name="device-type">
           <md-option *ngFor="let deviceType of deviceTypes" [value]="deviceType">
             {{ deviceType }}
           </md-option>
         </md-select>
-        <br><br>
+        <br><br>-->
         <div>
-          <p>Enabled</p>
+          <p>Enabled
           <md-slide-toggle [(ngModel)]="enabled" name="device-enabled">{{ enabled }}</md-slide-toggle>
+          </p>
         </div>
       </div>
       <br><br>

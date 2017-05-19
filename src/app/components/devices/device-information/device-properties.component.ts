@@ -17,7 +17,7 @@ import { SuccessDialogComponent } from '../../success-dialog/success-dialog.comp
 
 export class DevicePropertiesComponent {
   @Input() device: Device;
-  deviceTypes: Array<string> = ["LORA", "TWIST", "FIREFLY", "BOSCH_XDK"];
+  //deviceTypes: Array<string> = ["LORA", "TWIST", "FIREFLY", "BOSCH_XDK"];
 
   constructor(private deviceService: DeviceService, private router: Router, private successDialogService: SuccessDialogService, private errorDialogService: ErrorDialogService) {
 
