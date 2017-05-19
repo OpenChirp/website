@@ -86,11 +86,11 @@ export class TreeNodeComponent {
   }
 
   addLocation(location: Location) {
-    this.router.navigate(['/home/newlocation', location._id]);
+    this.router.navigate(['/home/location', { parent_id: location._id }]);
   }
 
   updateLocation(location: Location) {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home/location', { location_id: location._id }]);
   }
 
   toDevices(location_id: string) {

@@ -29,6 +29,7 @@ export class DeviceTemplateComponent {
         error => this.router.navigate(['/home'])
       );
   }
+  
   newDevice() {
     this.router.navigate(['/home/newdevice', { template_id: this.template._id }]);
   }
