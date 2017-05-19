@@ -29,7 +29,20 @@ export class DeviceTransducersComponent {
               public dialog: MdDialog) {
 
   }
+   ngOnInit() {
+    this.getTransducers();
 
+  }
+
+  getTransducers() {
+    console.log("Loading transducers");
+    this.deviceService.getDeviceTransducers(this.device._id).subscribe(
+      out => {
+         this.device.transducers = out;
+      });
+    
+  }  
+     
   newTransducer() {
     if (this.name != "" && this.unit != "") {
       var body = {
