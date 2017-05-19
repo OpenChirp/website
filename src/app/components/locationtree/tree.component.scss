@@ -26,6 +26,7 @@ $text-color: #303132;
       cursor: pointer;
       transition-duration: 0.3s;
       color: $text-color;
+      display: none;
     }
     md-icon:hover {
       color: $icon-hover-color;
@@ -52,6 +53,9 @@ $text-color: #303132;
     background-color: $hover-color;
     cursor: pointer;
     transition-duration: 0.3s;
+  }
+  .button:hover md-icon {
+    display: block;
   }
   .child {
     padding-left: 15px;

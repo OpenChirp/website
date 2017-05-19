@@ -17,7 +17,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './components/404/pagenotfound.component';
 import { TreeNodeComponent, DeleteLocationDialog } from './components/locationtree/tree.component';
 import { DeviceListComponent } from './components/devices/devicelist.component';
-import { NewLocationComponent } from './components/locations/newlocation.component';
+import { LocationComponent } from './components/locations/location.component';
 import { DeviceComponent } from './components/devices/device.component';
 import { NewDeviceComponent } from './components/devices/newdevice.component';
 import { DashboardMainComponent } from './components/dashboard/dashboard-main.component';
@@ -57,7 +57,7 @@ import { Configuration } from './config';
     DeviceListComponent,
     DeviceComponent,
     NewDeviceComponent,
-    NewLocationComponent,
+    LocationComponent,
     DeleteLocationDialog,
     DeviceTemplatesComponent,
     DeviceTemplateComponent,
