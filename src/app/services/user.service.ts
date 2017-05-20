@@ -49,7 +49,23 @@ export class UserService {
                     .map(this.extractData)
                     .catch(this.handleError);
   }
+   getShortcuts() {
+    return this.http.get(this.userUrl + "shortcuts" , this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+  
+  createCommandShort(body: any) {
+    return this.http.post(this.userUrl + "shortcut", body, this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
 
+  deleteCommandShort(id: string) {
+    return this.http.delete(this.userUrl + "shortcut/"+id,  this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
   private extractData(res: Response) {
     const body = res.json();
     return body || { };

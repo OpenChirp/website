@@ -6,8 +6,9 @@
     <ng2-md-datatable-header>
       <ng2-md-datatable-column><p>Command</p></ng2-md-datatable-column>
       <ng2-md-datatable-column><p>Value</p></ng2-md-datatable-column>
-      <ng2-md-datatable-column><p>Execute</p></ng2-md-datatable-column>
-      <ng2-md-datatable-column><p>Actions</p></ng2-md-datatable-column>
+      <ng2-md-datatable-column><p></p></ng2-md-datatable-column>
+      <ng2-md-datatable-column><p></p></ng2-md-datatable-column>
+      <ng2-md-datatable-column><p>Delete</p></ng2-md-datatable-column>
     </ng2-md-datatable-header>
 
     <!-- Table Body -->
@@ -18,6 +19,7 @@
         <td><p>{{ command.name }}</p></td>
         <td><p>{{ command.value }}</p></td>
         <td><button md-raised-button (click)="execute(command)">Execute</button></td>
+        <td><button md-raised-button (click)="createShortcut(command)">Add Shortcut</button></td>
         <td>
           <button md-icon-button (click)="deleteCommand(command._id, command.name)">
             <md-icon >clear</md-icon>
@@ -44,6 +46,7 @@
             </md-option>
           </md-select>
         </td>
+         <td><p>-</p></td>
         <td>
           <button md-icon-button (click)="newCommand()">
             <md-icon>add</md-icon>

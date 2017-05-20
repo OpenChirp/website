@@ -4,8 +4,8 @@
       <md-input-container>
         <input mdInput placeholder="Name" [(ngModel)]="device.name" name="device-name">
       </md-input-container>
-    </div>
-    <br>
+    
+    
     <!--<div>
       <md-select placeholder="Device Type" [(ngModel)]="device.type" name="device-type">
         <md-option *ngFor="let deviceType of deviceTypes" [value]="deviceType">
@@ -14,14 +14,16 @@
       </md-select>
     </div>
     <br>-->
-    <div>
+    
       <p>Enabled :
       <md-slide-toggle [(ngModel)]="device.enabled" name="device-enabled">True</md-slide-toggle>
       </p>
     </div>
+    
     <p>Protocol : {{ device.pubsub.protocol }}</p>
     <p>Endpoint : {{ device.pubsub.endpoint }}</p>
     <p>Owner : {{ device.owner.name || device.owner.email }}</p>
+    <p></p>
     <button md-raised-button (click)="updateDevice()">Update</button>
   </form>
 </div>

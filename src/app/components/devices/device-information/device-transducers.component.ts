@@ -35,7 +35,6 @@ export class DeviceTransducersComponent {
   }
 
   getTransducers() {
-    console.log("Loading transducers");
     this.deviceService.getDeviceTransducers(this.device._id).subscribe(
       out => {
          this.device.transducers = out;

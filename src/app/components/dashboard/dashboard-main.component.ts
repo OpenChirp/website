@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { DeviceService } from '../../services/device.service';
+import { UserService } from '../../services/user.service';
+import { ErrorDialogService } from '../../services/error-dialog.service';
+import { SuccessDialogService } from '../../services/success-dialog.service';
+import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
+import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 
 @Component({
   selector: 'dashboard-main',
@@ -7,7 +13,35 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class DashboardMainComponent {
-  constructor() {
+	shortcuts: Array<Object> = [];
+  constructor(private deviceService: DeviceService, 
+              private userService: UserService,
+              private successDialogService: SuccessDialogService, 
+              private errorDialogService: ErrorDialogService) {
 
   }
+   ngOnInit() {
+    this.getShortcuts();
+
+  }
+   getShortcuts() {
+    this.userService.getShortcuts().subscribe(
+      out => {
+         this.shortcuts = out;
+      });    
+  }  
+
+execute(shortcut: any) {
+    this.deviceService.executeCommand(shortcut.device_id, shortcut.command_id).subscribe(
+      result => {
+        this.successDialogService
+          .dialogPopup(SuccessDialogComponent, 'Executed: ' + shortcut.name);
+      },
+      error => {
+        this.errorDialogService
+          .dialogPopup(ErrorDialogComponent, error.message + ': ' + shortcut.name);
+      }
+    );
+  }
+
 }

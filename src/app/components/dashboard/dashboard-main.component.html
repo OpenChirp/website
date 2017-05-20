@@ -1,4 +1,35 @@
 <div class="dashboard-main">
-  <!-- Commenting out picture till we fix resolution and remove text
-  <div class="welcome-picture"></div>-->
+
+
+
+<md-card >
+<div class="card-header">
+      <h3>Shortcuts
+  
+    
+          </h3>
+          </div>
+    
+    
+ 
+ 
+  <md-card-content>
+ 
+    <md-list>
+      <!-- Item Row -->
+      <md-list-item *ngFor="let shortcut of shortcuts">
+        <div><p>{{ shortcut.name }}</p></div>
+         <div><p><button md-raised-button (click)="execute(shortcut)">Execute</button></p></div>
+      </md-list-item>
+    </md-list>
+  
+  </md-card-content>
+
+</md-card>
+
+
+    	
+
 </div>
+
+  

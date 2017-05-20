@@ -5,6 +5,7 @@ import { SuccessDialogService } from '../../../services/success-dialog.service';
 import { ErrorDialogComponent } from '../../error-dialog/error-dialog.component';
 import { SuccessDialogComponent } from '../../success-dialog/success-dialog.component';
 import { DeviceService } from '../../../services/device.service';
+import { UserService } from '../../../services/user.service';
 import { MdDialog } from '@angular/material';
 import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.component';
 
@@ -22,6 +23,7 @@ export class DeviceCommandsComponent {
   transducer: any = null;
   
   constructor(private deviceService: DeviceService, 
+              private userService: UserService,
               private successDialogService: SuccessDialogService, 
               private errorDialogService: ErrorDialogService,
               public dialog: MdDialog) {
@@ -77,7 +79,32 @@ export class DeviceCommandsComponent {
       }
     );
   }
-
+ createShortcut(command : any){
+   // if (this.name != "") {
+      var body = {
+        "name": command.name,
+        "device_id": this.device._id,
+        "command_id":command._id
+      };
+      this.userService
+        .createCommandShort(body)
+        .subscribe(
+          result => {
+            this.successDialogService
+                .dialogPopup(SuccessDialogComponent, 'Shortcut created ' + this.name);
+              
+          },
+          error => {
+             this.errorDialogService
+              .dialogPopup(ErrorDialogComponent, error.message );
+          }
+         );
+   /* }else {
+      let errorMessage = 'Name  cannot be empty.';
+      this.errorDialogService
+        .dialogPopup(ErrorDialogComponent, errorMessage);
+    }*/
+ }
   execute(command: any) {
     this.deviceService.executeCommand(this.device._id, command._id).subscribe(
       result => {
