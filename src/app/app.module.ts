@@ -37,6 +37,7 @@ import { DeviceCommandsComponent } from './components/devices/device-information
 import { DeviceServicesComponent } from './components/devices/device-information/device-services.component';
 import { SelectTemplateComponent } from './components/devices/select-template.component';
 import { ConfirmationDialogComponent } from './components/dialogs/confirmation-dialog.component';
+import { PropertiesComponent } from './components/dialogs/properties.component';
 
 // Services
 import { LocationService } from './services/location.service';
@@ -75,6 +76,7 @@ import { Configuration } from './config';
     DeviceServicesComponent,
     SelectTemplateComponent,
     ConfirmationDialogComponent,
+    PropertiesComponent,
     GalleryComponent
   ],
   imports: [
@@ -100,6 +102,7 @@ import { Configuration } from './config';
     SuccessDialogComponent,
     ErrorDialogComponent,
     SelectTemplateComponent,
+    PropertiesComponent,
     ConfirmationDialogComponent
   ],
   bootstrap: [AppComponent]
