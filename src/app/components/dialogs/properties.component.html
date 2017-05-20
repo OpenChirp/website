@@ -1,0 +1,43 @@
+<div class="properties">
+  <h2>Properties of {{ source }}</h2>
+  <ng2-md-datatable>
+    <ng2-md-datatable-header>
+      <ng2-md-datatable-column>Key</ng2-md-datatable-column>
+      <ng2-md-datatable-column>Value</ng2-md-datatable-column>
+      <ng2-md-datatable-column>Actions</ng2-md-datatable-column>
+    </ng2-md-datatable-header>
+    <tbody>
+      <ng2-md-datatable-row *ngFor="let property of transformed; let i = index">
+        <td><p>{{ property.key }}</p></td>
+        <td>
+          <p *ngIf="!property.edit">{{ property.value }}</p>
+          <md-input-container *ngIf="property.edit">
+            <input mdInput [(ngModel)]="property.value">
+          </md-input-container>
+        </td>
+        <td>
+          <md-icon *ngIf="property.edit" (click)="edited(i)">check</md-icon>
+          <md-icon *ngIf="!property.edit" (click)="edit(i)">edit</md-icon>
+          <md-icon (click)="remove(i)">delete</md-icon>
+        </td>
+      </ng2-md-datatable-row>
+      <ng2-md-datatable-row>
+        <td>
+          <md-input-container>
+            <input mdInput placeholder="Key" [(ngModel)]="newKey">
+          </md-input-container>
+        </td>
+        <td>
+          <md-input-container>
+            <input mdInput placeholder="Value" [(ngModel)]="newValue">
+          </md-input-container>
+        </td>
+        <td><md-icon (click)="add()">add</md-icon></td>
+      </ng2-md-datatable-row>
+    </tbody>
+    </ng2-md-datatable>
+    <div class="buttons">
+      <button md-raised-button (click)="save()">Save</button>
+      <button md-raised-button (click)="cancel()">Cancel</button>
+    </div>  
+</div>
