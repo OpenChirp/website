@@ -20,18 +20,19 @@ export class DashboardMainComponent {
               private errorDialogService: ErrorDialogService) {
 
   }
-   ngOnInit() {
+  
+  ngOnInit() {
     this.getShortcuts();
-
   }
-   getShortcuts() {
+
+  getShortcuts() {
     this.userService.getShortcuts().subscribe(
       out => {
          this.shortcuts = out;
       });    
   }  
 
-execute(shortcut: any) {
+  execute(shortcut: any) {
     this.deviceService.executeCommand(shortcut.device_id, shortcut.command_id).subscribe(
       result => {
         this.successDialogService

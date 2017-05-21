@@ -3,25 +3,12 @@ $blue-text: #8ab9d6;
 .dashboard-main {
   display: flex;
   flex-flow: column nowrap;
-  
-  .welcome-picture {
-    height: 80vh;
-    margin: 0;
-    padding: 0;
-    background-image: url("../../../assets/images/dashboard/background-welcome.png");
-    background-position: center;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-color: #ffffff;
-  }
- md-card {
-  margin: 10px;
-  width : 400px;
-
-     .card-header {
-         background-color: #dbe2e4;
+  md-card {
+    margin: 10px;
+    width : 400px;
+    .card-header {
+      background-color: #dbe2e4;
       h3 {
-
         margin: 0;
         float: left;
         font-family: "Avenir-Heavy", sans-serif;
@@ -35,7 +22,5 @@ $blue-text: #8ab9d6;
       }
       margin-bottom: 60px;
     }
-    }
-  
-   
+  }
 }
