@@ -10,7 +10,9 @@
         </div>
       </div>
       <hr>
-      <h4>Description</h4>
+      <h3>Description</h3>
       <p>{{ template.description }}</p>
+       <h3>Owner</h3>
+      <p>{{ template.owner.name || template.owner.email }}</p>
     </md-card>
 </div>

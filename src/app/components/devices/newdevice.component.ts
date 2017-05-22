@@ -9,7 +9,7 @@ import { SuccessDialogService } from '../../services/success-dialog.service';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 import { ErrorDialogService } from '../../services/error-dialog.service';
-import { SelectTemplateComponent } from './select-template.component';
+import { SelectTemplateComponent } from '../device-templates/select-template.component';
 
 @Component({
   selector: 'new-device',

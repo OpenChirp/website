@@ -6,33 +6,33 @@
       <md-card-content>
         <ng2-md-datatable>
           <ng2-md-datatable-header>
+            <ng2-md-datatable-column></ng2-md-datatable-column>
             <ng2-md-datatable-column>Command</ng2-md-datatable-column>
-            <ng2-md-datatable-column>Action</ng2-md-datatable-column>
           </ng2-md-datatable-header>
           <tbody>
-            <ng2-md-datatable-row *ngFor="let shortcut of shortcuts">
-              <td><p>{{ shortcut.name }}</p></td>
+            <ng2-md-datatable-row *ngFor="let shortcut of shortcuts">             
               <td>
                 <button md-raised-button (click)="execute(shortcut)">Execute</button>      
               </td>
+               <td><p>{{ shortcut.name }}</p></td>
             </ng2-md-datatable-row>
           </tbody>
         </ng2-md-datatable>
       </md-card-content>
     </md-card>
 
-    <md-card>
-      <md-card-title>Card 2</md-card-title>
-      <md-card-content>
+   <md-card>
+      <md-card-title>Favorites</md-card-title>
+     <!-- <md-card-content>
         <p>
           This is the content of card 2.
         </p>
         <img md-card-image src="http://placekitten.com/g/400/200">
-      </md-card-content>
+      </md-card-content>-->
     </md-card>
 
-    <md-card>
-      <md-card-title>Card 3</md-card-title>
+   <!-- <md-card>
+     <md-card-title>Card 3</md-card-title>
       <md-card-content>
         <p>
           This is the content of card 3.
@@ -48,7 +48,7 @@
       <md-card-content>
         <p>Odd.</p>
       </md-card-content>
-    </md-card>
+    </md-card>-->
   </div>
 </div>
 

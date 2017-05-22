@@ -21,9 +21,9 @@ import { LocationComponent } from './components/locations/location.component';
 import { DeviceComponent } from './components/devices/device.component';
 import { NewDeviceComponent } from './components/devices/newdevice.component';
 import { DashboardMainComponent } from './components/dashboard/dashboard-main.component';
-import { DeviceTemplatesComponent } from './components/devices/devicetemplates.component';
-import { DeviceTemplateComponent } from './components/devices/devicetemplate.component';
-import { NewTemplateComponent } from './components/devices/newtemplate.component';
+import { DeviceTemplatesComponent } from './components/device-templates/devicetemplates.component';
+import { DeviceTemplateComponent } from './components/device-templates/devicetemplate.component';
+import { NewTemplateComponent } from './components/device-templates/newtemplate.component';
 import { SuccessDialogComponent } from './components/success-dialog/success-dialog.component';
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
 import { UserDevicesComponent } from './components/devices/userdevices.component';
@@ -35,7 +35,7 @@ import { DevicePropertiesComponent } from './components/devices/device-informati
 import { DeviceTransducersComponent } from './components/devices/device-information/device-transducers.component';
 import { DeviceCommandsComponent } from './components/devices/device-information/device-commands.component';
 import { DeviceServicesComponent } from './components/devices/device-information/device-services.component';
-import { SelectTemplateComponent } from './components/devices/select-template.component';
+import { SelectTemplateComponent } from './components/device-templates/select-template.component';
 import { ConfirmationDialogComponent } from './components/dialogs/confirmation-dialog.component';
 import { PropertiesComponent } from './components/dialogs/properties.component';
 
