@@ -24,7 +24,7 @@ export class UserDevicesComponent {
   }
 
   ngOnInit() {
-    this.userService.getDevices("").subscribe(
+    this.userService.getMyDevices("").subscribe(
       result => this.devices = result,
       error => this.router.navigate(['/home'])
     );

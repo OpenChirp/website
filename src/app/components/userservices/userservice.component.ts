@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
-import { UserService } from '../../services/user.service';
+import { InfraService } from '../../services/infraservice';
 
 @Component({
   selector: 'user-service',
@@ -11,7 +11,7 @@ import { UserService } from '../../services/user.service';
 
 export class UserServiceComponent {
   service: any = null;
-  constructor(private route: ActivatedRoute, private userService: UserService, private router: Router) {
+  constructor(private route: ActivatedRoute, private infraService: InfraService, private router: Router) {
 
   }
 
@@ -21,7 +21,7 @@ export class UserServiceComponent {
 
   getService() {
     this.route.params
-      .switchMap((params: Params) => this.userService.getServiceByID(params['id']))
+      .switchMap((params: Params) => this.infraService.getServiceByID(params['id']))
       .subscribe(
         result => this.service = result,
         error => this.router.navigate(['/home'])

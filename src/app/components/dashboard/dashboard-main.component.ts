@@ -34,7 +34,7 @@ export class DashboardMainComponent {
   }
 
   getShortcuts() {
-    this.userService.getShortcuts().subscribe(
+    this.userService.getMyShortcuts().subscribe(
       out => {
          this.shortcuts = out;
       });    
