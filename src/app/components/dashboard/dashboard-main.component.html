@@ -1,18 +1,55 @@
 <div class="dashboard-main">
-<md-card >
-	<div class="card-header">
-      <h3>Shortcuts </h3>
-   </div>
-  <md-card-content>
-    <md-list>
-      <!-- Item Row -->
-      <md-list-item *ngFor="let shortcut of shortcuts">
-        <div><p>{{ shortcut.name }}</p></div>
-         <div><p><button md-raised-button (click)="execute(shortcut)">Execute</button></p></div>
-      </md-list-item>
-    </md-list>  
-  </md-card-content>
-</md-card>
+  
+  <div class="card-container">
+    <md-card>
+      <md-card-title>Shortcuts</md-card-title>
+      <md-card-content>
+        <ng2-md-datatable>
+          <ng2-md-datatable-header>
+            <ng2-md-datatable-column>Command</ng2-md-datatable-column>
+            <ng2-md-datatable-column>Action</ng2-md-datatable-column>
+          </ng2-md-datatable-header>
+          <tbody>
+            <ng2-md-datatable-row *ngFor="let shortcut of shortcuts">
+              <td><p>{{ shortcut.name }}</p></td>
+              <td>
+                <button md-raised-button (click)="execute(shortcut)">Execute</button>      
+              </td>
+            </ng2-md-datatable-row>
+          </tbody>
+        </ng2-md-datatable>
+      </md-card-content>
+    </md-card>
+
+    <md-card>
+      <md-card-title>Card 2</md-card-title>
+      <md-card-content>
+        <p>
+          This is the content of card 2.
+        </p>
+        <img md-card-image src="http://placekitten.com/g/400/200">
+      </md-card-content>
+    </md-card>
+
+    <md-card>
+      <md-card-title>Card 3</md-card-title>
+      <md-card-content>
+        <p>
+          This is the content of card 3.
+        </p>
+      </md-card-content>
+      <md-card-actions>
+        <button md-raised-button color="warn">Help</button>
+      </md-card-actions>
+    </md-card>
+
+    <md-card>
+      <md-card-title>Card 4</md-card-title>
+      <md-card-content>
+        <p>Odd.</p>
+      </md-card-content>
+    </md-card>
+  </div>
 </div>
 
   

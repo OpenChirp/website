@@ -1,41 +1,22 @@
 $black-text: #303132;
 $blue-text: #8ab9d6;
 .dashboard-main {
-  display: flex;
-  flex-flow: column nowrap;
-  
-  .welcome-picture {
-    height: 80vh;
-    margin: 0;
-    padding: 0;
-    background-image: url("../../../assets/images/dashboard/background-welcome.png");
-    background-position: center;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-color: #ffffff;
+  md-card {
+    width: 40%;
+    min-width: 400px;
+    margin: 10px;
   }
- md-card {
-  margin: 10px;
-  width : 400px;
-
-     .card-header {
-         background-color: #dbe2e4;
-      h3 {
-
-        margin: 0;
-        float: left;
-        font-family: "Avenir-Heavy", sans-serif;
-        color: $black-text;
-      }
-      button {
-        float: right;
-        margin-right: 10px;
-        margin-left: 10px;
-        font-family: "Avenir-Med", sans-serif;
-      }
-      margin-bottom: 60px;
-    }
-    }
-  
-   
+  ng2-md-datatable-header {
+    font-weight: bold;
+    border-bottom: solid 1px #303030;
+  }
+  ng2-md-datatable-row {
+    border-bottom: solid 1px #303030;
+  }
+  .card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
