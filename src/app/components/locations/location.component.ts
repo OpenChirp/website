@@ -6,8 +6,6 @@ import 'rxjs/add/operator/switchMap';
 
 import { SuccessDialogService } from '../../services/success-dialog.service';
 import { ErrorDialogService } from '../../services/error-dialog.service';
-import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
-import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 import { LocationService } from '../../services/location.service';
 
 @Component({
@@ -50,7 +48,7 @@ export class LocationComponent {
             }
           },
           error => {
-            this.errorDialogService.dialogPopup(ErrorDialogComponent, error.message);
+            this.errorDialogService.dialogPopup(error.message);
             this.router.navigate(['/home']);
           }
         );
@@ -64,7 +62,7 @@ export class LocationComponent {
             this.type = "";
           },
           error => {
-            this.errorDialogService.dialogPopup(ErrorDialogComponent, error.message);
+            this.errorDialogService.dialogPopup(error.message);
             this.router.navigate(['/home']);
           }
         );
@@ -87,7 +85,7 @@ export class LocationComponent {
         .subscribe(
           result => {
             this.successDialogService
-              .dialogPopup(SuccessDialogComponent, 'Added location: ' + this.name);
+              .dialogPopup('Added location: ' + this.name);
             this.locationService.notifyParent(this.parent._id);
             this.parent = null;
             this.name = "";
@@ -96,14 +94,14 @@ export class LocationComponent {
           },
           error => {
             this.errorDialogService
-              .dialogPopup(ErrorDialogComponent, error.message + ': ' + this.name);
+              .dialogPopup(error.message + ': ' + this.name);
           }
         );
     }
     else {
       this.errorMessage = 'Name and type cannot be empty.';
       this.errorDialogService
-        .dialogPopup(ErrorDialogComponent, this.errorMessage);
+        .dialogPopup(this.errorMessage);
     }
   }
 
@@ -118,7 +116,7 @@ export class LocationComponent {
         .subscribe(
           result => {
             this.successDialogService
-              .dialogPopup(SuccessDialogComponent, 'Updated location: ' + this.name);
+              .dialogPopup('Updated location: ' + this.name);
             this.locationService.notifyParent(this.location._id);
             this.location = null;
             this.name = "";
@@ -127,14 +125,14 @@ export class LocationComponent {
           },
           error => {
             this.errorDialogService
-              .dialogPopup(ErrorDialogComponent, error.message + ': ' + this.name);
+              .dialogPopup(error.message + ': ' + this.name);
           }
         );
     }
     else {
       this.errorMessage = 'Name and type cannot be empty.';
       this.errorDialogService
-        .dialogPopup(ErrorDialogComponent, this.errorMessage);
+        .dialogPopup(this.errorMessage);
     }
   }
 

@@ -5,8 +5,6 @@ import { DeviceService } from '../../services/device.service';
 
 import { SuccessDialogService } from '../../services/success-dialog.service';
 import { ErrorDialogService } from '../../services/error-dialog.service';
-import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
-import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 import { MdDialog } from '@angular/material';
 import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.component';
 
@@ -56,11 +54,11 @@ export class DeviceTemplateComponent {
         if (result) {
           this.deviceService.deleteTemplate(this.template._id).subscribe(
             result => { 
-              this.successDialogService.dialogPopup(SuccessDialogComponent, "Successfully deleted " + this.template.name);
+              this.successDialogService.dialogPopup("Successfully deleted " + this.template.name);
               this.router.navigate(['/home/devicetemplates']);
             },
             error => {
-              this.errorDialogService.dialogPopup(ErrorDialogComponent, error.message);
+              this.errorDialogService.dialogPopup(error.message);
             }
           );
         }

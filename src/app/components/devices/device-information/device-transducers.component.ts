@@ -4,8 +4,6 @@ import { DeviceService } from '../../../services/device.service';
 import { Device } from '../../../models/device';
 import { SuccessDialogService } from '../../../services/success-dialog.service';
 import { ErrorDialogService } from '../../../services/error-dialog.service';
-import { SuccessDialogComponent } from '../../success-dialog/success-dialog.component';
-import { ErrorDialogComponent } from '../../error-dialog/error-dialog.component';
 import { MdDialog } from '@angular/material';
 import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.component';
 
@@ -52,7 +50,7 @@ export class DeviceTransducersComponent {
       this.deviceService.addTransducer(this.device._id, body).subscribe(
         result => {
           this.successDialogService
-            .dialogPopup(SuccessDialogComponent, 'New Transducer Added: ' + this.name);
+            .dialogPopup('New Transducer Added: ' + this.name);
           this.name = "";
           this.unit = "";
           this.actuable = false;
@@ -60,12 +58,12 @@ export class DeviceTransducersComponent {
         },
         error => {
           this.errorDialogService
-            .dialogPopup(ErrorDialogComponent, error.message + ': ' + this.name);
+            .dialogPopup(error.message + ': ' + this.name);
         }
       );
     } else {
       this.errorDialogService
-        .dialogPopup(ErrorDialogComponent, 'Name/Unit cannot be empty!');
+        .dialogPopup('Name/Unit cannot be empty!');
     }
   }
 
@@ -79,12 +77,12 @@ export class DeviceTransducersComponent {
           this.deviceService.deleteTransducer(this.device._id, id).subscribe(
             result => {
               this.successDialogService
-                .dialogPopup(SuccessDialogComponent, 'Transducer Deleted: ' + name);
+                .dialogPopup('Transducer Deleted: ' + name);
               this.updateDevice.emit(true);
             },
             error => {
               this.errorDialogService
-                .dialogPopup(ErrorDialogComponent, error.message + ': ' + name);
+                .dialogPopup(error.message + ': ' + name);
             }
           );
         }
@@ -96,12 +94,12 @@ export class DeviceTransducersComponent {
     this.deviceService.publishToTransducer(this.device._id, t_id, this.publishPayload).subscribe(
       result => {
         this.successDialogService
-          .dialogPopup(SuccessDialogComponent, 'Published to : ' + t_name);
+          .dialogPopup('Published to : ' + t_name);
         this.updateDevice.emit(true);
       },
       error => {
         this.errorDialogService
-          .dialogPopup(ErrorDialogComponent, error.message + ': ' + t_name);
+          .dialogPopup(error.message + ': ' + t_name);
       }
     );
   }

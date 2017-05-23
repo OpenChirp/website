@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { MdDialogRef } from '@angular/material';
 
 import { ErrorDialogService } from '../../services/error-dialog.service';
-import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 
 @Component({
   selector: 'properties',
@@ -37,7 +36,7 @@ export class PropertiesComponent {
 
   add() {
     if (this.newProperties.hasOwnProperty(this.newKey)) {
-      this.errorDialogService.dialogPopup(ErrorDialogComponent, "Key Already Exists!");
+      this.errorDialogService.dialogPopup("Key Already Exists!");
     }
     else {
       this.transformed.push({ key: this.newKey, value: this.newValue, edit: false });

@@ -2,8 +2,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Device } from '../../../models/device';
 import { ErrorDialogService } from '../../../services/error-dialog.service';
 import { SuccessDialogService } from '../../../services/success-dialog.service';
-import { ErrorDialogComponent } from '../../error-dialog/error-dialog.component';
-import { SuccessDialogComponent } from '../../success-dialog/success-dialog.component';
 import { DeviceService } from '../../../services/device.service';
 import { UserService } from '../../../services/user.service';
 import { MdDialog } from '@angular/material';
@@ -40,7 +38,7 @@ export class DeviceCommandsComponent {
       this.deviceService.addCommand(this.device._id, body).subscribe(
         result => {
           this.successDialogService
-            .dialogPopup(SuccessDialogComponent, 'Command Added: ' + this.name);
+            .dialogPopup('Command Added: ' + this.name);
           this.name = "";
           this.transducer = null;
           this.value = "";
@@ -48,12 +46,12 @@ export class DeviceCommandsComponent {
         },
         error => {
           this.errorDialogService
-            .dialogPopup(ErrorDialogComponent, error.message + ': ' + this.name);
+            .dialogPopup(error.message + ': ' + this.name);
         }
       );
     } else {
       this.errorDialogService
-        .dialogPopup(ErrorDialogComponent, 'Name/Value/Transducer cannot be empty!');
+        .dialogPopup('Name/Value/Transducer cannot be empty!');
     }
   }
 
@@ -67,12 +65,12 @@ export class DeviceCommandsComponent {
           this.deviceService.deleteCommand(this.device._id, id).subscribe(
             result => {
               this.successDialogService
-                .dialogPopup(SuccessDialogComponent, 'Command Deleted: ' + name);
+                .dialogPopup('Command Deleted: ' + name);
               this.updateDevice.emit(true);
             },
             error => {
               this.errorDialogService
-                .dialogPopup(ErrorDialogComponent, error.message + ': ' + name);
+                .dialogPopup(error.message + ': ' + name);
             }
           );
         }
@@ -91,12 +89,12 @@ export class DeviceCommandsComponent {
         .subscribe(
           result => {
             this.successDialogService
-                .dialogPopup(SuccessDialogComponent, 'Shortcut created ' + this.name);
+                .dialogPopup('Shortcut created ' + this.name);
               
           },
           error => {
              this.errorDialogService
-              .dialogPopup(ErrorDialogComponent, error.message );
+              .dialogPopup(error.message );
           }
          );
    /* }else {
@@ -109,11 +107,11 @@ export class DeviceCommandsComponent {
     this.deviceService.executeCommand(this.device._id, command._id).subscribe(
       result => {
         this.successDialogService
-          .dialogPopup(SuccessDialogComponent, 'Executed: ' + command.name);
+          .dialogPopup('Executed: ' + command.name);
       },
       error => {
         this.errorDialogService
-          .dialogPopup(ErrorDialogComponent, error.message + ': ' + command.name);
+          .dialogPopup(error.message + ': ' + command.name);
       }
     );
   }

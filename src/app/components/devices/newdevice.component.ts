@@ -6,8 +6,6 @@ import { Location } from '../../models/location';
 import { LocationService } from '../../services/location.service';
 import { DeviceService } from '../../services/device.service';
 import { SuccessDialogService } from '../../services/success-dialog.service';
-import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
-import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 import { ErrorDialogService } from '../../services/error-dialog.service';
 import { SelectTemplateComponent } from '../device-templates/select-template.component';
 
@@ -91,14 +89,14 @@ export class NewDeviceComponent {
         }
         else {
           valid = false;
-          this.errorDialogService.dialogPopup(ErrorDialogComponent, 'Select a Template!');
+          this.errorDialogService.dialogPopup('Select a Template!');
         }
       }
       if (valid) {
         this.deviceService.addDevice(body).subscribe(
           result => {
             this.successDialogService
-              .dialogPopup(SuccessDialogComponent, 'Add Device Success: ' + this.name)
+              .dialogPopup('Add Device Success: ' + this.name)
               .subscribe(
               res => this.router.navigate(['/home/device/', result._id]),
               err => this.router.navigate(['/home'])
@@ -106,13 +104,13 @@ export class NewDeviceComponent {
           },
           error => {
             this.errorDialogService
-              .dialogPopup(ErrorDialogComponent, error.message + ': ' + this.name);
+              .dialogPopup(error.message + ': ' + this.name);
           }
         );
       }
     } else {
       this.errorDialogService
-        .dialogPopup(ErrorDialogComponent, 'Name cannot be empty!');
+        .dialogPopup('Name cannot be empty!');
     }
   }
 

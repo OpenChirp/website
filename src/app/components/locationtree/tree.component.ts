@@ -8,8 +8,6 @@ import { LocationService } from '../../services/location.service';
 import { Location } from '../../models/location';
 import { SuccessDialogService } from '../../services/success-dialog.service';
 import { ErrorDialogService } from '../../services/error-dialog.service';
-import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
-import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.component';
 
 @Component({
@@ -118,12 +116,12 @@ export class TreeNodeComponent {
           .subscribe(
             res => {
               this.successDialogService
-                .dialogPopup(SuccessDialogComponent, res.message + ': ' + location.name);
+                .dialogPopup(res.message + ': ' + location.name);
               this.onDelete.emit(true);
             },
             err => {
               this.errorDialogService
-                .dialogPopup(ErrorDialogComponent, err.message + ': ' + location.name);
+                .dialogPopup(err.message + ': ' + location.name);
             }
           );
       }
