@@ -9,12 +9,12 @@
     <br>
     <div class="table-header">
       <div><p>Device Name</p></div>
-      <div><p>Device Type</p></div>
+     <!-- <div><p>Device Type</p></div>-->
     </div>
     <hr>
     <div *ngFor="let device of devices" class="devices" (click)="gotoDevice(device._id)">
       <div><p>{{ device.name }}</p></div>
-      <div><p>{{ device.type || "NONE" }}</p></div>
+     <!-- <div><p>{{ device.type || "NONE" }}</p></div>-->
     </div>
     <div *ngIf="devices.length == 0">
       <p>Currently no devices to display.</p>

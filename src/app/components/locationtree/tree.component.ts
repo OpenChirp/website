@@ -149,7 +149,7 @@ export class TreeNodeComponent {
       return "Location Tree";
     }
     else if (name.length > 11) {
-      return name.substr(0, 11) + "...";
+      return name.substr(0, 9) + "..";
     }
     else {
       return name;

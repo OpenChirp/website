@@ -49,15 +49,13 @@ export class DeviceComponent {
       .subscribe(
         result => {
           this.device = result;
-          console.log(this.device);
-          console.log(this.device.properties);
           //TODO: Fix the hackish code below
           var serviceIds = this.device.linked_services.map((x: any) => x.service_id);          
-              for (var i = 0; i < serviceIds.length; i++) {
-                this.userService.getServiceByID(serviceIds[i]).subscribe(
+              /*for (var i = 0; i < serviceIds.length; i++) {
+                this.infraService.getServiceByID(serviceIds[i]).subscribe(
                   res => this.services.push(res)
               );
-            }     
+            } */    
         },
         error => this.router.navigate(['/home'])
       );

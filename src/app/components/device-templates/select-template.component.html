@@ -1,0 +1,33 @@
+<div class="select-template">
+  
+  <div class="search">
+    <h2>Select a Template</h2>
+    <md-input-container>
+      <input mdInput placeholder="Search" [(ngModel)]="searchTerm" name="search">
+    </md-input-container>
+    <md-icon>search</md-icon>
+  </div>
+  <div>
+    <ng2-md-datatable>
+
+      <!-- Table Header-->
+      <ng2-md-datatable-header>
+        <ng2-md-datatable-column><p>Name</p></ng2-md-datatable-column>
+        <ng2-md-datatable-column><p>Description</p></ng2-md-datatable-column>
+        <ng2-md-datatable-column><p>Owner</p></ng2-md-datatable-column>
+      </ng2-md-datatable-header>
+
+      <!-- Table Body -->
+      <tbody>
+
+        <!-- Item Row -->
+        <ng2-md-datatable-row *ngFor="let template of filtered()" (click)="select(template)">
+          <td><p>{{ template.name }}</p></td>
+          <td><p>{{ template.description }}</p></td>
+          <td><p>{{ template.owner.name || template.owner.email }}</p></td>
+        </ng2-md-datatable-row>
+
+      </tbody>
+    </ng2-md-datatable>
+  </div>
+</div>

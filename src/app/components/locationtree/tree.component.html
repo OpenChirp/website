@@ -1,13 +1,14 @@
 <div class="tree-node" *ngIf="currentLocation">
   <div class="button" tabindex="1">
-    <p class="name" (click)="toggleChildren(currentLocation)" mdTooltip="{{currentLocation.name}}" mdTooltipPosition="above">
+    <p class="name" (click)="toggleChildren(currentLocation)">
+   <!-- <p class="name" (click)="toggleChildren(currentLocation)" mdTooltip="{{currentLocation.name}}" mdTooltipPosition="above">-->
       {{ getLocationName(currentLocation.name) }}
     </p>
     <md-icon [mdMenuTriggerFor]="menu">more_horiz</md-icon>
-    <md-menu #menu="mdMenu">
-      <button md-menu-item (click)="deleteLocation(currentLocation)" *ngIf="deleteable()">Delete</button>
+    <md-menu #menu="mdMenu">     
       <button md-menu-item (click)="addLocation(currentLocation)">New Location</button>
       <button md-menu-item (click)="updateLocation(currentLocation)">Update</button>
+      <button md-menu-item (click)="deleteLocation(currentLocation)" *ngIf="deleteable()">Delete</button>
     </md-menu>
   </div>
   <div class="child" *ngFor="let child of childLocations">

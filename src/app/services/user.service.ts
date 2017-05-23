@@ -26,30 +26,27 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  getServices(search: string) {
+  getMyServices(search: string) {
     return this.http.get(this.userUrl + "myservices?name=" + search, this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
 
-  getServiceByID(id: string) {
-    return this.http.get(this.apiUrl + "service/" + id, this.requestOptions)
-                    .map(this.extractData)
-                    .catch(this.handleError);
-  }
+ 
 
-  getDevices(search: string) {
+  getMyDevices(search: string) {
     return this.http.get(this.userUrl + "mydevices?name=" + search, this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
 
-  getLocations(search: string) {
+  getMyLocations(search: string) {
     return this.http.get(this.userUrl + "mylocations?name=" + search, this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
-   getShortcuts() {
+  
+  getMyShortcuts() {
     return this.http.get(this.userUrl + "shortcuts" , this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
