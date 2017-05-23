@@ -3,8 +3,6 @@ import { DeviceService } from '../../services/device.service';
 import { UserService } from '../../services/user.service';
 import { ErrorDialogService } from '../../services/error-dialog.service';
 import { SuccessDialogService } from '../../services/success-dialog.service';
-import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
-import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 
 @Component({
   selector: 'dashboard-main',
@@ -44,11 +42,11 @@ export class DashboardMainComponent {
     this.deviceService.executeCommand(shortcut.device_id, shortcut.command_id).subscribe(
       result => {
         this.successDialogService
-          .dialogPopup(SuccessDialogComponent, 'Executed: ' + shortcut.name);
+          .dialogPopup('Executed: ' + shortcut.name);
       },
       error => {
         this.errorDialogService
-          .dialogPopup(ErrorDialogComponent, error.message + ': ' + shortcut.name);
+          .dialogPopup(error.message + ': ' + shortcut.name);
       }
     );
   }

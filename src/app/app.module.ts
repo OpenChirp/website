@@ -24,8 +24,8 @@ import { DashboardMainComponent } from './components/dashboard/dashboard-main.co
 import { DeviceTemplatesComponent } from './components/device-templates/devicetemplates.component';
 import { DeviceTemplateComponent } from './components/device-templates/devicetemplate.component';
 import { NewTemplateComponent } from './components/device-templates/newtemplate.component';
-import { SuccessDialogComponent } from './components/success-dialog/success-dialog.component';
-import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
+import { SuccessDialogComponent } from './components/dialogs/success-dialog.component';
+import { ErrorDialogComponent } from './components/dialogs/error-dialog.component';
 import { UserDevicesComponent } from './components/devices/userdevices.component';
 import { UserLocationsComponent } from './components/locations/userlocations.component';
 import { UserServicesComponent } from './components/userservices/userservices.component';

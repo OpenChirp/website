@@ -6,9 +6,6 @@ import { Device } from '../../../models/device';
 import { DeviceService } from '../../../services/device.service';
 import { ErrorDialogService } from '../../../services/error-dialog.service';
 import { SuccessDialogService } from '../../../services/success-dialog.service';
-
-import { ErrorDialogComponent } from '../../error-dialog/error-dialog.component';
-import { SuccessDialogComponent } from '../../success-dialog/success-dialog.component';
 import { PropertiesComponent } from '../../dialogs/properties.component';
 
 @Component({
@@ -33,11 +30,11 @@ export class DevicePropertiesComponent {
     this.deviceService.updateDeviceById(this.device._id, this.device).subscribe(
       result => {
         this.successDialogService
-          .dialogPopup(SuccessDialogComponent, "Updated: " + this.device.name);
+          .dialogPopup("Updated: " + this.device.name);
       },
       error => {
         this.errorDialogService
-          .dialogPopup(ErrorDialogComponent, error.message + ': ' + this.device.name);
+          .dialogPopup(error.message + ': ' + this.device.name);
       }
     );
   }
@@ -52,8 +49,8 @@ export class DevicePropertiesComponent {
           var newDevice = this.device;
           newDevice.properties = result;
           this.deviceService.updateDeviceById(this.device._id, newDevice).subscribe(
-            res => this.successDialogService.dialogPopup(SuccessDialogComponent, "Updated Device: " + this.device.name),
-            err => this.errorDialogService.dialogPopup(ErrorDialogComponent, err.message)
+            res => this.successDialogService.dialogPopup("Updated Device: " + this.device.name),
+            err => this.errorDialogService.dialogPopup(err.message)
           );
         }
       }

@@ -6,8 +6,6 @@ import 'rxjs/add/operator/switchMap';
 import { Device } from '../../models/device';
 import { DeviceService } from '../../services/device.service';
 import { SuccessDialogService } from '../../services/success-dialog.service';
-import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
-import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.component';
 import { UserService } from '../../services/user.service';
 import { ErrorDialogService } from '../../services/error-dialog.service';
@@ -72,11 +70,11 @@ export class DeviceComponent {
             this.deviceService.deleteDevice(this.device._id).subscribe(
               result => {
                 this.successDialogService
-                  .dialogPopup(SuccessDialogComponent, 'Successfully deleted: ' + this.device.name);
+                  .dialogPopup('Successfully deleted: ' + this.device.name);
                 this.router.navigate(['/home/mydevices']);
               },
               error => this.errorDialogService
-                        .dialogPopup(ErrorDialogComponent, error.message + ': ' + this.device.name)
+                        .dialogPopup(error.message + ': ' + this.device.name)
             ); // End Delete Device Subscribe
           } // End if
         } // End result
