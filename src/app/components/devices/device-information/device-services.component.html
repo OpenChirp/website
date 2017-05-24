@@ -17,9 +17,14 @@
     <!-- Table Body -->
     <tbody>
       <!-- Item Row -->
-      <ng2-md-datatable-row *ngFor="let service of services" (click)="toService(service._id)">
+      <ng2-md-datatable-row *ngFor="let service of services">
         <td><p>{{ service.name }}</p></td>
         <td><p>{{ service.description }}</p></td>
+          <td>
+          <button md-icon-button color="warn" (click)="removeServiceLink(service._id, service.name)">
+            <md-icon >clear</md-icon>
+          </button>
+        </td>
       </ng2-md-datatable-row>
     </tbody>
   </ng2-md-datatable>

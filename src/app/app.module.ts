@@ -42,6 +42,7 @@ import { ListInfraServicesComponent } from './components/infraservices/list.infr
 import { ConfigRequiredComponent } from './components/infraservices/config.required.component';
 import { NewInfraServiceComponent } from './components/infraservices/new.infraservice.component'; 
 import { SelectServiceComponent } from './components/infraservices/select-service.component';
+import { InputConfigComponent } from './components/dialogs/input-config.component';
 
 // Services
 import { LocationService } from './services/location.service';
@@ -85,7 +86,8 @@ import { Configuration } from './config';
     ListInfraServicesComponent,
     ConfigRequiredComponent,
     NewInfraServiceComponent,
-    SelectServiceComponent
+    SelectServiceComponent,
+    InputConfigComponent
   ],
   imports: [
     BrowserModule,
@@ -111,11 +113,12 @@ import { Configuration } from './config';
   entryComponents: [
     SuccessDialogComponent,
     ErrorDialogComponent,
+    ConfirmationDialogComponent,
     SelectTemplateComponent,
     SelectServiceComponent,
-    PropertiesComponent,
-    ConfirmationDialogComponent,
-    ConfigRequiredComponent
+    PropertiesComponent,  
+    ConfigRequiredComponent,
+    InputConfigComponent
   ],
   bootstrap: [AppComponent]
 })

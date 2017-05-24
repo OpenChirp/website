@@ -6,8 +6,10 @@ import { InfraService } from '../../../services/infraservice';
 import { SuccessDialogService } from '../../../services/success-dialog.service';
 import { ErrorDialogService } from '../../../services/error-dialog.service';
 import { MdDialog } from '@angular/material';
+import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.component';
 
 import { SelectServiceComponent } from '../../infraservices/select-service.component';
+import { InputConfigComponent } from '../../dialogs/input-config.component';
 
 @Component({
 	selector: 'device-services',
@@ -48,22 +50,62 @@ export class DeviceServicesComponent {
 		}     
 	} 
 
+	reloadServices(){
+		this.services = [];
+		this.getLinkedServices();
+	}
+	
 	toService(id: string) {
 		this.router.navigate(['/home/service/', id]);
 	}
 
+
 	linkService(newLink: any){
-		this.deviceService.linkService(this.device._id, newLink._id, newLink.config).subscribe(
+		let configRequired = newLink.config_required;
+		let dialogRef = this.dialog.open(InputConfigComponent, { width: '600px' });
+		dialogRef.componentInstance.configRequired = configRequired;
+		dialogRef.componentInstance.source = newLink.name;
+		dialogRef.afterClosed().subscribe(
 			result => {
-				this.successDialogService
-				.dialogPopup("Linked service: " + newLink.name);
-			},
-			error => {
-				this.errorDialogService
-				.dialogPopup(error.message + ': ' + newLink.name);
+				if(result) {
+					this.deviceService.linkService(this.device._id, newLink._id, result).subscribe(
+						result => {
+							this.successDialogService
+							.dialogPopup("Linked service: " + newLink.name);
+							this.services.push(newLink);
+						},
+						error => {
+							this.errorDialogService
+							.dialogPopup(error.message + ': ' + newLink.name);
+						}
+						);
+				}
 			}
 			);
 	}
+	removeServiceLink(service_id: string, name: string) {
+	    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
+	    dialogRef.componentInstance.dialogText = "Remove link to service:" + name + "?";
+	    dialogRef.componentInstance.confirmText = "Remove";
+	    dialogRef.afterClosed().subscribe(
+	      result => {
+	        if (result) {
+	          this.deviceService.deleteServiceLink(this.device._id, service_id).subscribe(
+	            result => {
+	              this.successDialogService
+	                .dialogPopup('Link to service :' + name +" removed");
+	              this.reloadServices();
+	            },
+	            error => {
+	              this.errorDialogService
+	                .dialogPopup(error.message + ': ' + name);
+	              this.reloadServices();
+	            }
+	          );
+	        }
+	      }
+	    );
+    }
 
 	selectService() {
 		var dialogRef = this.dialog.open(SelectServiceComponent, { width: '800px', height: '700px' });

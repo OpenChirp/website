@@ -113,7 +113,7 @@ export class DeviceService {
                     .catch(this.handleError);
   }
   // Delete Service Link
-  deleteServiceLink(device_id: string, service_id: string, body : any) {
+  deleteServiceLink(device_id: string, service_id: string) {
     return this.http.delete(this.deviceUrl+ device_id + "/service/"+service_id , this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
@@ -134,7 +134,6 @@ export class DeviceService {
 
   // Save Device as Template
   saveTemplate(body: any) {
-    console.log(body);
     return this.http.post(this.apiUrl + "devicetemplate", body, this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
