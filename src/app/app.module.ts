@@ -41,6 +41,7 @@ import { PropertiesComponent } from './components/dialogs/properties.component';
 import { ListInfraServicesComponent } from './components/infraservices/list.infraservices.component';
 import { ConfigRequiredComponent } from './components/infraservices/config.required.component';
 import { NewInfraServiceComponent } from './components/infraservices/new.infraservice.component'; 
+import { SelectServiceComponent } from './components/infraservices/select-service.component';
 
 // Services
 import { LocationService } from './services/location.service';
@@ -83,7 +84,8 @@ import { Configuration } from './config';
     GalleryComponent,
     ListInfraServicesComponent,
     ConfigRequiredComponent,
-    NewInfraServiceComponent
+    NewInfraServiceComponent,
+    SelectServiceComponent
   ],
   imports: [
     BrowserModule,
@@ -110,6 +112,7 @@ import { Configuration } from './config';
     SuccessDialogComponent,
     ErrorDialogComponent,
     SelectTemplateComponent,
+    SelectServiceComponent,
     PropertiesComponent,
     ConfirmationDialogComponent,
     ConfigRequiredComponent

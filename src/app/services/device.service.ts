@@ -11,70 +11,70 @@ import { Configuration } from '../config';
 
 export class DeviceService {
   private apiUrl: string;
-  private locationUrl: string;
+  private deviceUrl: string;
 
   constructor (private http: Http, config: Configuration, private requestOptions: RequestOptions) {
     this.apiUrl = config.api_url;
-    this.locationUrl = this.apiUrl + "device/";
+    this.deviceUrl = this.apiUrl + "device/";
     this.requestOptions.withCredentials = true;
   }
   
 
   getDeviceById(device_id: string): Observable<Device> {
-    return this.http.get(this.locationUrl + device_id, this.requestOptions)
+    return this.http.get(this.deviceUrl + device_id, this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
   
   getDeviceTransducers(device_id: string) {
-    return this.http.get(this.locationUrl + device_id+"/transducer", this.requestOptions)
+    return this.http.get(this.deviceUrl + device_id+"/transducer", this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
   // Update Device
   updateDeviceById(device_id: string, body: any) {
-    return this.http.put(this.locationUrl + device_id, body, this.requestOptions)
+    return this.http.put(this.deviceUrl + device_id, body, this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
 
   // Execute Command
   executeCommand(device_id: string, command_id: string) {
-    return this.http.post(this.locationUrl + device_id + "/command/" + command_id, {}, this.requestOptions)
+    return this.http.post(this.deviceUrl + device_id + "/command/" + command_id, {}, this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
 
   // Add Command
   addCommand(device_id: string, body: any) {
-    return this.http.post(this.locationUrl + device_id + "/command", body, this.requestOptions)
+    return this.http.post(this.deviceUrl + device_id + "/command", body, this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
 
   // Delete Command
   deleteCommand(device_id: string, command_id: string) {
-    return this.http.delete(this.locationUrl + device_id + "/command/" + command_id, this.requestOptions)
+    return this.http.delete(this.deviceUrl + device_id + "/command/" + command_id, this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
 
   // Add New Transducer
   addTransducer(device_id: string, body: any) {
-    return this.http.post(this.locationUrl + device_id + "/transducer", body, this.requestOptions)
+    return this.http.post(this.deviceUrl + device_id + "/transducer", body, this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
   // Publish To Transducer
   publishToTransducer(device_id: string, transducer_id:string, body: any) {
-    return this.http.post(this.locationUrl + device_id + "/transducer/"+ transducer_id, body, this.requestOptions)
+    return this.http.post(this.deviceUrl + device_id + "/transducer/"+ transducer_id, body, this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
 
   // Delete Transducer
   deleteTransducer(device_id: string, transducer_id: string) {
-    return this.http.delete(this.locationUrl + device_id + "/transducer/" + transducer_id, this.requestOptions)
+    return this.http.delete(this.deviceUrl + device_id + "/transducer/" + transducer_id, this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
@@ -100,16 +100,34 @@ export class DeviceService {
                     .catch(this.handleError);
   }
 
+ // Link Service
+  linkService(device_id: string, service_id: string, body : any) {
+    return this.http.post(this.deviceUrl+ device_id + "/service/"+service_id , body, this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+ // Update Service Link
+  updateServiceLink(device_id: string, service_id: string, body : any) {
+    return this.http.put(this.deviceUrl+ device_id + "/service/"+service_id , body, this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+  // Delete Service Link
+  deleteServiceLink(device_id: string, service_id: string, body : any) {
+    return this.http.delete(this.deviceUrl+ device_id + "/service/"+service_id , this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
   // Add Device
   addDevice(body : any) {
-    return this.http.post(this.locationUrl, body, this.requestOptions)
+    return this.http.post(this.deviceUrl, body, this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
 
   // Delete Device
   deleteDevice(id: string) {
-    return this.http.delete(this.locationUrl + id, this.requestOptions)
+    return this.http.delete(this.deviceUrl + id, this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
   }

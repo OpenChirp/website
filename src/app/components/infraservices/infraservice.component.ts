@@ -33,7 +33,7 @@ export class InfraServiceComponent {
     this.route.params
     .switchMap((params: Params) => this.infraService.getServiceByID(params['id']))
     .subscribe(
-      result => {console.log(result); this.service = result},
+      result => this.service = result,
       error => this.router.navigate(['/home/services'])
       );
   }

@@ -1,5 +1,12 @@
 <div class="device-services" *ngIf="services">
 
+<div class="tab-header">
+      
+      <div class="link-service">
+        <button md-raised-button (click)="selectService()">Link Service</button>
+      </div>
+  </div>
+  <div *ngIf="services.length > 0">
   <ng2-md-datatable>
     <!-- Table Header-->
     <ng2-md-datatable-header>
@@ -16,5 +23,8 @@
       </ng2-md-datatable-row>
     </tbody>
   </ng2-md-datatable>
-
+  </div>
+ <div *ngIf="services.length == 0">
+      <p>No linked services </p>
+    </div>
 </div>

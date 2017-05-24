@@ -1,11 +1,34 @@
+$black-text: #303132;
+
 .device-services {
-  ng2-md-datatable-header {
-    border-bottom: solid 1px #909090;
-  }
-  ng2-md-datatable-row {
-    cursor: pointer;
-  }
-  ng2-md-datatable-row:hover {
-    background-color: #e3e3e3;
-  }
+	ng2-md-datatable-header {
+		border-bottom: solid 1px #909090;
+	}
+	ng2-md-datatable-row {
+		cursor: pointer;
+	}
+	ng2-md-datatable-row:hover {
+		background-color: #e3e3e3;
+	}
+	.tab-header {
+		h4 {
+			margin: 0;
+			float: left;
+			font-family: "Avenir-Heavy", sans-serif;
+			color: $black-text;
+		}
+		.link-service {
+			font-family: "Avenir-Med", sans-serif;
+			color: $black-text;
+			.button {
+				margin-left: 5px;
+				margin-right: 5px;
+				background-color: white;
+			}
+		}
+		button {
+			float: right;
+		}
+		margin-bottom: 20px;
+	}
 }

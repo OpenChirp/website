@@ -3,19 +3,26 @@
     <div class="card-header">
       <h2>Services</h2>
       <div class="new-service">
-          <button md-raised-button (click)="newService()">New Service</button>
-        </div>
+        <button md-raised-button (click)="newService()">New Service</button>
+      </div>
     </div>
     <br>
-    <div class="table-header">
-      <div><p>Service Name</p></div>
-      <div><p>Service Description</p></div>
-    </div>
-    <hr>
-    <div *ngFor="let service of services" class="services" (click)="gotoService(service._id)">
-      <div><p>{{ service.name }}</p></div>
-      <div><p>{{ service.description }}</p></div>
-    </div>
+    <ng2-md-datatable>
+      <!-- Table Header-->
+      <ng2-md-datatable-header>
+        <ng2-md-datatable-column><p>Name</p></ng2-md-datatable-column>
+        <ng2-md-datatable-column><p>Description</p></ng2-md-datatable-column>
+      </ng2-md-datatable-header>
+
+      <!-- Table Body -->
+      <tbody>
+        <!-- Item Row -->
+        <ng2-md-datatable-row *ngFor="let service of services"  (click)="gotoService(service._id)">
+          <td><p>{{ service.name }}</p></td>
+          <td><p>{{ service.description }}</p></td>
+        </ng2-md-datatable-row>
+      </tbody>
+    </ng2-md-datatable>
     <div *ngIf="services.length == 0">
       <p>Currently no services to display.</p>
     </div>

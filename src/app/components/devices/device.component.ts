@@ -21,7 +21,6 @@ export class DeviceComponent {
   device: Device = null;
   errorMessage: string = "";
   successMessage: string = "";
-  services: Array<Object> = [];
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -46,14 +45,6 @@ export class DeviceComponent {
       .subscribe(
         result => {
           this.device = result;
-          
-          // Moved the logic to device-services component         
-         /* var serviceIds = this.device.linked_services.map((x: any) => x.service_id);          
-              for (var i = 0; i < serviceIds.length; i++) {
-                this.infraService.getServiceByID(serviceIds[i]).subscribe(
-                  res => this.services.push(res)
-              );
-            } */    
         },
         error => this.router.navigate(['/home'])
       );
