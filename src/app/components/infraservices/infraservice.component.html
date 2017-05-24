@@ -1,0 +1,31 @@
+<div class="infra-service">
+    <md-card *ngIf="service">    
+      <div class="card-header">
+      	 <h2 > {{ service.name }}</h2>
+         <div class="delete">
+         	<button md-raised-button (click)="deleteService()">Delete</button>
+      	 </div>
+      </div>
+       <hr> 
+      <form>   
+      	  <p><md-input-container>
+	        <input mdInput placeholder="Name" [(ngModel)]="service.name" name="service-name">
+	      </md-input-container></p>    
+	      <p><md-input-container>
+	        <input mdInput placeholder="Description" [(ngModel)]="service.description" name="service-description">
+	      </md-input-container></p>
+	  	 <p><button md-raised-button (click)="updateService()">Update</button></p>
+	      <p>Protocol : {{ service.pubsub.protocol }}</p>
+		  <p>Endpoint : {{ service.pubsub.endpoint }}</p>
+		  <p>Owner : {{ service.owner.name || service.owner.email }}</p>
+		  <p></p>
+		 
+		  <button md-raised-button (click)="viewProperties()">Properties
+		  </button>
+		  <button md-raised-button (click)="viewConfigRequired()">Device Config Required
+		  </button>
+	  </form>
+	</md-card>
+
+</div>
+

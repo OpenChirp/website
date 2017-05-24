@@ -1,0 +1,19 @@
+<div class="infra-service">
+    <md-card>    
+      <div class="card-header">
+      	 <h2 >  Create new service</h2>         
+      </div>
+       <hr> 
+      <form>   
+      	  <p><md-input-container>
+	        <input mdInput placeholder="Name" [(ngModel)]="name" name="service-name">
+	      </md-input-container></p>    
+	      <p><md-input-container>
+	        <input mdInput placeholder="Description" [(ngModel)]="description" name="service-description">
+	      </md-input-container></p>
+	  	 <p><button md-raised-button (click)="add()">Save </button></p>	     
+	  </form>
+	</md-card>
+
+</div>
+

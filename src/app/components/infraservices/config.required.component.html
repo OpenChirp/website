@@ -1,0 +1,45 @@
+<div class="properties">
+  <h2>Device Config required by {{ source }}</h2>
+  <ng2-md-datatable>
+    <ng2-md-datatable-header>
+      <ng2-md-datatable-column>Key Name</ng2-md-datatable-column>
+      <ng2-md-datatable-column>Key Description</ng2-md-datatable-column>
+       <ng2-md-datatable-column>Required</ng2-md-datatable-column>
+      <ng2-md-datatable-column>Actions</ng2-md-datatable-column>
+    </ng2-md-datatable-header>
+    <tbody>
+      <ng2-md-datatable-row *ngFor="let config of transformed; let i = index">
+        <td><p>{{ config.keyName }}</p></td>
+        <td>
+          <p>{{ config.keyDescription }}</p>
+        </td>
+         <td>
+          <p>{{ config.keyRequired }}</p>
+        </td>
+        <td>        
+          <md-icon (click)="remove(i)">delete</md-icon>
+        </td>
+      </ng2-md-datatable-row>
+      <ng2-md-datatable-row>
+        <td>
+          <md-input-container>
+            <input mdInput placeholder="Key Name" [(ngModel)]="newKeyName">
+          </md-input-container>
+        </td>
+        <td>
+          <md-input-container>
+            <input mdInput placeholder="Key Description" [(ngModel)]="newKeyDescription">
+          </md-input-container>
+        </td>
+        <td>
+            <md-checkbox placeholder="Key Required" [(ngModel)]="newKeyRequired"></md-checkbox>         
+        </td>
+        <td><md-icon (click)="add()">add</md-icon></td>
+      </ng2-md-datatable-row>
+    </tbody>
+    </ng2-md-datatable>
+    <div class="buttons">
+      <button md-raised-button (click)="save()">Save</button>
+      <button md-raised-button (click)="cancel()">Cancel</button>
+    </div>  
+</div>

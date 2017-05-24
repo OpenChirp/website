@@ -70,7 +70,7 @@ export class DeviceTransducersComponent {
   deleteTransducer(id: string, name: string) {
     let dialogRef = this.dialog.open(ConfirmationDialogComponent);
     dialogRef.componentInstance.confirmText = "Delete";
-    dialogRef.componentInstance.dialogText = "Delte Transducer " + name + "?";
+    dialogRef.componentInstance.dialogText = "Delete Transducer " + name + "?";
     dialogRef.afterClosed().subscribe(
       result =>  {
         if (result) {

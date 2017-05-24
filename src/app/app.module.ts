@@ -29,7 +29,7 @@ import { ErrorDialogComponent } from './components/dialogs/error-dialog.componen
 import { UserDevicesComponent } from './components/devices/userdevices.component';
 import { UserLocationsComponent } from './components/locations/userlocations.component';
 import { UserServicesComponent } from './components/userservices/userservices.component';
-import { UserServiceComponent } from './components/userservices/userservice.component';
+import { InfraServiceComponent } from './components/infraservices/infraservice.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { DevicePropertiesComponent } from './components/devices/device-information/device-properties.component';
 import { DeviceTransducersComponent } from './components/devices/device-information/device-transducers.component';
@@ -38,6 +38,9 @@ import { DeviceServicesComponent } from './components/devices/device-information
 import { SelectTemplateComponent } from './components/device-templates/select-template.component';
 import { ConfirmationDialogComponent } from './components/dialogs/confirmation-dialog.component';
 import { PropertiesComponent } from './components/dialogs/properties.component';
+import { ListInfraServicesComponent } from './components/infraservices/list.infraservices.component';
+import { ConfigRequiredComponent } from './components/infraservices/config.required.component';
+import { NewInfraServiceComponent } from './components/infraservices/new.infraservice.component'; 
 
 // Services
 import { LocationService } from './services/location.service';
@@ -45,7 +48,7 @@ import { DeviceService } from './services/device.service';
 import { SuccessDialogService } from './services/success-dialog.service';
 import { UserService } from './services/user.service';
 import { ErrorDialogService } from './services/error-dialog.service';
-
+import { InfraService } from './services/infraservice';
 import { Configuration } from './config';
 
 @NgModule({
@@ -68,7 +71,7 @@ import { Configuration } from './config';
     UserDevicesComponent,
     UserLocationsComponent,
     UserServicesComponent,
-    UserServiceComponent,
+    InfraServiceComponent,
     ErrorDialogComponent,
     DevicePropertiesComponent,
     DeviceTransducersComponent,
@@ -77,7 +80,10 @@ import { Configuration } from './config';
     SelectTemplateComponent,
     ConfirmationDialogComponent,
     PropertiesComponent,
-    GalleryComponent
+    GalleryComponent,
+    ListInfraServicesComponent,
+    ConfigRequiredComponent,
+    NewInfraServiceComponent
   ],
   imports: [
     BrowserModule,
@@ -97,6 +103,7 @@ import { Configuration } from './config';
     SuccessDialogService,
     ErrorDialogService,
     UserService,
+    InfraService,
     Configuration
   ],
   entryComponents: [
@@ -104,7 +111,8 @@ import { Configuration } from './config';
     ErrorDialogComponent,
     SelectTemplateComponent,
     PropertiesComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    ConfigRequiredComponent
   ],
   bootstrap: [AppComponent]
 })
