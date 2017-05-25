@@ -36,7 +36,7 @@
       <!-- Services Tab -->
       <md-tab label="Services">
         <div class="tab-content">
-          <device-services [device]="device"></device-services>
+          <device-services [device]="device" (updateDevice)="getDevice($event)"></device-services>
         </div>
       </md-tab>
 

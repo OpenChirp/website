@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Router , ActivatedRoute} from '@angular/router';
 import { Device } from '../../../models/device';
 import { DeviceService } from '../../../services/device.service';
@@ -19,7 +19,9 @@ import { InputConfigComponent } from '../../dialogs/input-config.component';
 
 export class DeviceServicesComponent {
 	@Input() device: Device;
-	services: Array<Object> = []
+	@Output() updateDevice: EventEmitter<boolean> = new EventEmitter();
+	linkedServices : Array<any> = [];
+	services: Array<any> = [];
 	
 	constructor(private route: ActivatedRoute,
 		private router: Router, 
@@ -36,76 +38,119 @@ export class DeviceServicesComponent {
 	}
 	
 	getLinkedServices() {
-		var serviceIds = this.device.linked_services.map((x: any) => x.service_id);          
-		for (var i = 0; i < serviceIds.length; i++) {
-			this.infraService.getServiceByID(serviceIds[i]).subscribe(
+		 this.linkedServices = this.device.linked_services;  
+		 
+		//console.log(serviceIds);        
+		for (var i = 0; i < this.linkedServices.length; i++) {
+			this.infraService.getServiceByID(this.linkedServices[i].service_id).subscribe(
 				result => {
-					this.services.push(result);
+					var service = Object();
+					service._id = result._id;
+					service.name = result.name;
+					service.description = result.description;
+					//service.config = this.linkedServices[i].config;
+					this.services.push(service);
 
 				}, 
 				error => {
-					console.log(error.message);
+					var service = Object();
+					service._id = this.linkedServices[i].service_id;
+					service.name = "Service not found";
+					service.config = this.linkedServices[i].config;
+					this.services.push(service);
 				}
 				);
 		}     
 	} 
 
-	reloadServices(){
-		this.services = [];
-		this.getLinkedServices();
-	}
+	
 	
 	toService(id: string) {
 		this.router.navigate(['/home/service/', id]);
 	}
 
+	invokeLinkServiceApi(device_id: string, service: any, config: any){
+		this.deviceService.linkService(this.device._id, service._id, config).subscribe(
+			result => {
+				this.successDialogService
+				.dialogPopup("Linked service: " + service.name);
+				this.updateDevice.emit(true);
+				var newService = Object();
+				newService._id = service._id;
+				newService.name = service.name;
+				newService.description = service.description;
+				newService.config = config;
+				this.services.push(newService);
+			},
+			error => {
+				this.errorDialogService
+				.dialogPopup(error.message + ': ' + service.name);
+			}
+			);
+	}
 
 	linkService(newLink: any){
 		let configRequired = newLink.config_required;
-		let dialogRef = this.dialog.open(InputConfigComponent, { width: '600px' });
-		dialogRef.componentInstance.configRequired = configRequired;
-		dialogRef.componentInstance.source = newLink.name;
+		if(configRequired && configRequired.length > 0){
+			let dialogRef = this.dialog.open(InputConfigComponent, { width: '600px' });
+			dialogRef.componentInstance.configRequired = configRequired;
+			dialogRef.componentInstance.source = newLink.name;
+			dialogRef.afterClosed().subscribe(
+				result => {
+					if(result){
+						this.invokeLinkServiceApi(this.device._id, newLink, result);					
+
+					}
+				}
+				);
+		}else{
+			this.invokeLinkServiceApi(this.device._id, newLink, []
+				);
+		}
+	}
+	/*
+    updateServiceLink(){
+    	let dialogRef = this.dialog.open(InputConfigComponent, { width: '600px' });
+			dialogRef.componentInstance.configRequired = configRequired;
+			dialogRef.componentInstance.source = newLink.name;
+			dialogRef.afterClosed().subscribe(
+				result => {
+					if(result){
+						this.invokeLinkServiceApi(this.device._id, newLink, result);					
+
+					}
+				}
+				);
+    }*/
+
+	removeServiceLink(service_id: string, name: string) {
+		let dialogRef = this.dialog.open(ConfirmationDialogComponent);
+		dialogRef.componentInstance.dialogText = "Remove link to service : " + name + "?";
+		dialogRef.componentInstance.confirmText = "Remove";
 		dialogRef.afterClosed().subscribe(
 			result => {
-				if(result) {
-					this.deviceService.linkService(this.device._id, newLink._id, result).subscribe(
+				if (result) {
+					this.deviceService.deleteServiceLink(this.device._id, service_id).subscribe(
 						result => {
 							this.successDialogService
-							.dialogPopup("Linked service: " + newLink.name);
-							this.services.push(newLink);
+							.dialogPopup('Link to service :' + name +" removed");
+							this.updateDevice.emit(true);
+							for(let i =0; i < this.services.length ; i ++){
+								if(this.services[i]._id == service_id){
+									this.services.splice(i, 1);
+								}
+							}
 						},
 						error => {
 							this.errorDialogService
-							.dialogPopup(error.message + ': ' + newLink.name);
+							.dialogPopup(error.message + ': ' + name);
+							this.updateDevice.emit(true);
 						}
 						);
 				}
 			}
 			);
 	}
-	removeServiceLink(service_id: string, name: string) {
-	    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
-	    dialogRef.componentInstance.dialogText = "Remove link to service:" + name + "?";
-	    dialogRef.componentInstance.confirmText = "Remove";
-	    dialogRef.afterClosed().subscribe(
-	      result => {
-	        if (result) {
-	          this.deviceService.deleteServiceLink(this.device._id, service_id).subscribe(
-	            result => {
-	              this.successDialogService
-	                .dialogPopup('Link to service :' + name +" removed");
-	              this.reloadServices();
-	            },
-	            error => {
-	              this.errorDialogService
-	                .dialogPopup(error.message + ': ' + name);
-	              this.reloadServices();
-	            }
-	          );
-	        }
-	      }
-	    );
-    }
 
 	selectService() {
 		var dialogRef = this.dialog.open(SelectServiceComponent, { width: '800px', height: '700px' });

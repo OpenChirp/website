@@ -4,7 +4,7 @@
     font-weight: bold;
   }
   ng2-md-datatable-row {
-    border-bottom: solid 1px #303030;
+   //border-top: solid 1px #303030;
     td {
       vertical-align: middle;
     }
@@ -16,7 +16,10 @@
     md-icon:hover {
       color: #303030;
     }
-  }    
+  }  
+   .description{
+    min-width : 100%
+   } 
   p {
     font-family: "Avenir-Med", sans-serif;
   }

@@ -7,9 +7,9 @@
       
         <td> {{config.key_name}} : </td>
         <td>
-          <md-input-container>
-            <input mdInput [(ngModel)]="config.value">
-            <md-hint align="end" aria-live="polite">{{ config.key_description}}</md-hint>
+          <md-input-container class="description">
+            <textarea mdInput [(ngModel)]="config.value"></textarea>
+            <md-hint>{{ config.key_description}}</md-hint>
           </md-input-container>
         </td>
       </ng2-md-datatable-row>

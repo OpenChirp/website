@@ -31,7 +31,7 @@ export class DeviceTransducersComponent {
     this.getTransducers();
 
   }
-
+ 
   getTransducers() {
     this.deviceService.getDeviceTransducers(this.device._id).subscribe(
       out => {
@@ -95,7 +95,6 @@ export class DeviceTransducersComponent {
       result => {
         this.successDialogService
           .dialogPopup('Published to : ' + t_name);
-        this.updateDevice.emit(true);
       },
       error => {
         this.errorDialogService
