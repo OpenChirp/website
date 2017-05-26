@@ -35,6 +35,7 @@ import { DevicePropertiesComponent } from './components/devices/device-informati
 import { DeviceTransducersComponent } from './components/devices/device-information/device-transducers.component';
 import { DeviceCommandsComponent } from './components/devices/device-information/device-commands.component';
 import { DeviceServicesComponent } from './components/devices/device-information/device-services.component';
+import { DeviceVisualizationComponent } from './components/devices/device-information/device-visualization.component';
 import { SelectTemplateComponent } from './components/device-templates/select-template.component';
 import { ConfirmationDialogComponent } from './components/dialogs/confirmation-dialog.component';
 import { PropertiesComponent } from './components/dialogs/properties.component';
@@ -43,6 +44,7 @@ import { ConfigRequiredComponent } from './components/infraservices/config.requi
 import { NewInfraServiceComponent } from './components/infraservices/new.infraservice.component'; 
 import { SelectServiceComponent } from './components/infraservices/select-service.component';
 import { InputConfigComponent } from './components/dialogs/input-config.component';
+
 
 // Services
 import { LocationService } from './services/location.service';
@@ -79,6 +81,7 @@ import { Configuration } from './config';
     DeviceTransducersComponent,
     DeviceCommandsComponent,
     DeviceServicesComponent,
+    DeviceVisualizationComponent,
     SelectTemplateComponent,
     ConfirmationDialogComponent,
     PropertiesComponent,
@@ -88,6 +91,7 @@ import { Configuration } from './config';
     NewInfraServiceComponent,
     SelectServiceComponent,
     InputConfigComponent
+    
   ],
   imports: [
     BrowserModule,

@@ -12,13 +12,18 @@ import { Configuration } from '../config';
 export class DeviceService {
   private apiUrl: string;
   private deviceUrl: string;
+  private grafanaUrl: string;
 
   constructor (private http: Http, config: Configuration, private requestOptions: RequestOptions) {
     this.apiUrl = config.api_url;
     this.deviceUrl = this.apiUrl + "device/";
+    this.grafanaUrl = config.grafana_url;
     this.requestOptions.withCredentials = true;
   }
   
+  getGrafanaUrl (){
+    return this.grafanaUrl;
+  }
 
   getDeviceById(device_id: string): Observable<Device> {
     return this.http.get(this.deviceUrl + device_id, this.requestOptions)
