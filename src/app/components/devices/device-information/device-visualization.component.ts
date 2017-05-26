@@ -14,7 +14,7 @@ export class DeviceVisualizationComponent {
   @Input() device: Device;
   @Output() updateDevice: EventEmitter<boolean> = new EventEmitter();
   
-  frameURLs: Array<SafeUrl> = []
+  frameURL: SafeUrl = []
    
 constructor(private deviceService: DeviceService,  private sanitizer: DomSanitizer) {
 
@@ -23,12 +23,8 @@ constructor(private deviceService: DeviceService,  private sanitizer: DomSanitiz
  ngOnInit() {
    let grafana_url = this.deviceService.getGrafanaUrl();
    let transducerNames = this.device.transducers.map(function(val:any) { return val.name ;});
-   for(let i = 0; i < transducerNames.length; i++){
-     let url = grafana_url +"dashboard/script/transducer.js?device="+this.device._id+"&transducer="+transducerNames[i]+"&theme=light&kiosk=true";
-      this.frameURLs.push( this.sanitizer.bypassSecurityTrustResourceUrl(url));
-   }
-
-
+  let url = grafana_url +"dashboard/script/transducer.js?device="+this.device._id+"&transducers="+transducerNames.join()+"&theme=light&kiosk=true";
+  this.frameURL = this.sanitizer.bypassSecurityTrustResourceUrl(url);
 
   }
 }
