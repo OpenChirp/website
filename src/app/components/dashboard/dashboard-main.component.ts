@@ -38,11 +38,26 @@ export class DashboardMainComponent {
       });    
   }  
 
+ deleteShortcut(shortcut: any) {
+    this.userService.deleteShortcut(shortcut._id).subscribe(
+      result => {
+        this.successDialogService
+          .dialogPopup('Done: ' + shortcut.name);
+        this.getShortcuts();
+      },
+      error => {
+        this.errorDialogService
+          .dialogPopup(error.message + ': ' + shortcut.name);
+      }
+      );
+        
+  }  
   execute(shortcut: any) {
     this.deviceService.executeCommand(shortcut.device_id, shortcut.command_id).subscribe(
       result => {
         this.successDialogService
           .dialogPopup('Executed: ' + shortcut.name);
+
       },
       error => {
         this.errorDialogService

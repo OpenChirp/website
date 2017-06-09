@@ -58,7 +58,7 @@ export class UserService {
                     .catch(this.handleError);
   }
 
-  deleteCommandShort(id: string) {
+  deleteShortcut(id: string) {
     return this.http.delete(this.userUrl + "shortcut/"+id,  this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);

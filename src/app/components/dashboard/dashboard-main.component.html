@@ -1,27 +1,34 @@
 <div class="dashboard-main">
-  
+
   <div class="card-container">
     <md-card>
       <md-card-title>Shortcuts</md-card-title>
+
       <md-card-content>
-        <ng2-md-datatable>
+        <ng2-md-datatable *ngIf = "shortcuts?.length > 0">
           <ng2-md-datatable-header>
             <ng2-md-datatable-column></ng2-md-datatable-column>
             <ng2-md-datatable-column>Command</ng2-md-datatable-column>
+            <ng2-md-datatable-column></ng2-md-datatable-column>
           </ng2-md-datatable-header>
           <tbody>
             <ng2-md-datatable-row *ngFor="let shortcut of shortcuts">             
               <td>
-                <button md-raised-button (click)="execute(shortcut)">Execute</button>      
+                <button md-raised-button (click)="execute(shortcut)">Execute</button>  
               </td>
-               <td><p>{{ shortcut.name }}</p></td>
+              <td><p>{{ shortcut.name }}</p></td>
+              <td>
+                <button md-icon-button color="warn" (click)="deleteShortcut(shortcut)">
+                  <md-icon >clear</md-icon>
+                </button>
+              </td>
             </ng2-md-datatable-row>
           </tbody>
         </ng2-md-datatable>
       </md-card-content>
     </md-card>
 
-   <md-card>
+    <md-card>
       <md-card-title>Favorites</md-card-title>
      <!-- <md-card-content>
         <p>
@@ -52,4 +59,4 @@
   </div>
 </div>
 
-  
+
