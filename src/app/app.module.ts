@@ -44,6 +44,7 @@ import { ConfigRequiredComponent } from './components/infraservices/config.requi
 import { NewInfraServiceComponent } from './components/infraservices/new.infraservice.component'; 
 import { SelectServiceComponent } from './components/infraservices/select-service.component';
 import { InputConfigComponent } from './components/dialogs/input-config.component';
+import { GroupComponent } from './components/groups/group.component';
 
 
 // Services
@@ -53,6 +54,7 @@ import { SuccessDialogService } from './services/success-dialog.service';
 import { UserService } from './services/user.service';
 import { ErrorDialogService } from './services/error-dialog.service';
 import { InfraService } from './services/infraservice';
+import { GroupService } from './services/group.service';
 import { Configuration } from './config';
 
 @NgModule({
@@ -90,7 +92,8 @@ import { Configuration } from './config';
     ConfigRequiredComponent,
     NewInfraServiceComponent,
     SelectServiceComponent,
-    InputConfigComponent
+    InputConfigComponent,
+    GroupComponent
     
   ],
   imports: [
@@ -112,6 +115,7 @@ import { Configuration } from './config';
     ErrorDialogService,
     UserService,
     InfraService,
+    GroupService,
     Configuration
   ],
   entryComponents: [
