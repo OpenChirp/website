@@ -4,6 +4,7 @@ import { MdDialog, MdDialogRef } from '@angular/material';
 import { SuccessDialogService } from '../../services/success-dialog.service';
 import { ErrorDialogService } from '../../services/error-dialog.service';
 import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.component';
+import { NewGroupComponent } from './newgroup.component';
 import { UserService } from '../../services/user.service';
 import { GroupService } from '../../services/group.service';
 
@@ -39,16 +40,22 @@ export class GroupComponent {
         .dialogPopup(error.message );
       });
   }
+
  createGroup(){
-    this.groupService.getAllGroups("").subscribe(
+    let dialogRef = this.dialog.open(NewGroupComponent, { width: '600px' });
+    dialogRef.afterClosed().subscribe(
       result => {
-        this.groups = result;
-      },
-      error => {
-        this.errorDialogService
-        .dialogPopup(error.message );
-      });
+        if(result) {          
+          this.groupService.createGroup(result).subscribe(
+            res => this.successDialogService.dialogPopup("Group Created " + result.name),
+            err => this.errorDialogService.dialogPopup(err.message)
+          );
+        }
+      }
+    );
   }
+  
+
   deleteGroup(group: any){
     let dialogRef = this.dialog.open(ConfirmationDialogComponent);
     dialogRef.componentInstance.dialogText = "Delete Group " + group.name + "?";

@@ -46,6 +46,7 @@ import { SelectServiceComponent } from './components/infraservices/select-servic
 import { InputConfigComponent } from './components/dialogs/input-config.component';
 import { GroupComponent } from './components/groups/group.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { NewGroupComponent } from './components/groups/newgroup.component';
 
 // Services
 import { LocationService } from './services/location.service';
@@ -94,8 +95,8 @@ import { Configuration } from './config';
     SelectServiceComponent,
     InputConfigComponent,
     GroupComponent,
-    AdminComponent
-    
+    AdminComponent,
+    NewGroupComponent 
   ],
   imports: [
     BrowserModule,
@@ -127,7 +128,8 @@ import { Configuration } from './config';
     SelectServiceComponent,
     PropertiesComponent,  
     ConfigRequiredComponent,
-    InputConfigComponent
+    InputConfigComponent,
+    NewGroupComponent
   ],
   bootstrap: [AppComponent]
 })
