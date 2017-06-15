@@ -14,14 +14,46 @@ export class GroupService {
     this.groupUrl = this.apiUrl + "group/";
     this.requestOptions.withCredentials = true;
   }
- 
 
-  getAllGroups(){
-  	return this.http.get(this.groupUrl, this.requestOptions)
-      .map(this.extractData)
-      .catch(this.handleError);
+
+  getAllGroups(search:string){
+  	return this.http.get(this.groupUrl+"?name" + search, this.requestOptions)
+    .map(this.extractData)
+    .catch(this.handleError);
+  }
+
+
+  createGroup( body: any) {
+    return this.http.post(this.groupUrl, body, this.requestOptions)
+    .map(this.extractData)
+    .catch(this.handleError);
+  }
+
+  getMembersOfGroup( groupdId: string){
+    return this.http.get(this.groupUrl + groupdId + "/members", this.requestOptions)
+    .map(this.extractData)
+    .catch(this.handleError);
   }
   
+  addUserToGroup(groupId: string, body: any){
+    return this.http.post(this.groupUrl + groupId +"/member", body, this.requestOptions)
+    .map(this.extractData)
+    .catch(this.handleError);   
+  }
+
+  removeUserFromGroup(groupId: string, body:any){
+    return this.http.put(this.groupUrl + groupId +"/member", body, this.requestOptions)
+    .map(this.extractData)
+    .catch(this.handleError); 
+  }
+
+  // Delete group
+  deleteGroup(id: string) {
+    return this.http.delete(this.groupUrl + id, this.requestOptions)
+    .map(this.extractData)
+    .catch(this.handleError);
+  }
+
   private extractData(res: Response) {
     const body = res.json();
     return body || { };

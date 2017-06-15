@@ -18,6 +18,7 @@ import { UserServicesComponent } from './components/userservices/userservices.co
 import { InfraServiceComponent } from './components/infraservices/infraservice.component';
 import { ListInfraServicesComponent} from './components/infraservices/list.infraservices.component';
 import { NewInfraServiceComponent } from './components/infraservices/new.infraservice.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 const appRoutes: Routes = [
   { path: '', component: SplashComponent },
@@ -28,6 +29,10 @@ const appRoutes: Routes = [
       {
         path: '',
         component: DashboardMainComponent
+      },
+      {
+        path: 'admin',
+        component: AdminComponent
       },
       {
         path: 'device/:id',       // Device ID

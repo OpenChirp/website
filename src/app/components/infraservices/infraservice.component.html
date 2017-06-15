@@ -12,7 +12,7 @@
 	        <input mdInput placeholder="Name" [(ngModel)]="service.name" name="service-name">
 	      </md-input-container></p>    
 	      <p><md-input-container>
-	        <input mdInput placeholder="Description" [(ngModel)]="service.description" name="service-description">
+	        <textarea mdInput placeholder="Description" [(ngModel)]="service.description" name="service-description"></textarea>
 	      </md-input-container></p>
 	  	 <p><button md-raised-button (click)="updateService()">Update</button></p>
 	      <p>Protocol : {{ service.pubsub.protocol }}</p>

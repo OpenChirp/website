@@ -18,7 +18,7 @@
       <ng2-md-datatable-row *ngFor="let command of device.commands">
         <td><p>{{ command.name }}</p></td>
         <td><p>{{ command.value }}</p></td>
-        <td><button md-raised-button (click)="execute(command)">Execute</button></td>
+        <td><button md-raised-button (click)="execute(command)">Run</button></td>
         <td><button md-raised-button (click)="createShortcut(command)">Add Shortcut</button></td>
         <td>
           <button md-icon-button (click)="deleteCommand(command._id, command.name)">

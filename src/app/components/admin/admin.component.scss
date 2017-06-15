@@ -1,0 +1,30 @@
+$row-height: 50px;
+$black-text: #303132;
+$blue-text: #8ab9d6;
+md-card {
+    background-color: white;
+    md-tab-group {
+      padding: 15px;
+      font-family: "Avenir-Med", sans-serif;
+      color: $black-text;
+    }
+    .tab-content {
+      padding: 15px;
+      font-family: "Avenir-Med", sans-serif;
+    }
+    .card-header {
+      h2 {
+        margin: 0;
+        float: left;
+        font-family: "Avenir-Heavy", sans-serif;
+        color: $black-text;
+      }
+      button {
+        float: right;
+        margin-right: 10px;
+        margin-left: 10px;
+        font-family: "Avenir-Med", sans-serif;
+      }
+      margin-bottom: 60px;
+    }
+  }

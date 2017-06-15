@@ -45,7 +45,7 @@ import { NewInfraServiceComponent } from './components/infraservices/new.infrase
 import { SelectServiceComponent } from './components/infraservices/select-service.component';
 import { InputConfigComponent } from './components/dialogs/input-config.component';
 import { GroupComponent } from './components/groups/group.component';
-
+import { AdminComponent } from './components/admin/admin.component';
 
 // Services
 import { LocationService } from './services/location.service';
@@ -93,7 +93,8 @@ import { Configuration } from './config';
     NewInfraServiceComponent,
     SelectServiceComponent,
     InputConfigComponent,
-    GroupComponent
+    GroupComponent,
+    AdminComponent
     
   ],
   imports: [
