@@ -81,8 +81,9 @@ $image_url: '../../../assets/images';
     margin: 0;
     padding: 0;
     background: url($image_url + "/background.png");
-    background-position: center;
-    background-size: 100% 100%;
+    background-position: center bottom;
+    //background-size: 100% 100%;
+    background-size: cover;
     background-repeat: no-repeat;
     .picture-section-text {
       position: absolute;
@@ -90,8 +91,8 @@ $image_url: '../../../assets/images';
       font-family: "Avenir-Med", sans-serif;
       width: 760px;
       top: 25%;
-      padding-left: 30px;
-      padding-right: 30px;
+      padding-left: 0px;
+      padding-right: 0px;
     }
     h3 {
       color: $text-color;
