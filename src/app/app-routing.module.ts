@@ -19,6 +19,7 @@ import { InfraServiceComponent } from './components/infraservices/infraservice.c
 import { ListInfraServicesComponent} from './components/infraservices/list.infraservices.component';
 import { NewInfraServiceComponent } from './components/infraservices/new.infraservice.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { GroupMembersComponent } from './components/groups/groupmembers.component';
 
 const appRoutes: Routes = [
   { path: '', component: SplashComponent },
@@ -85,6 +86,10 @@ const appRoutes: Routes = [
        {
         path: 'newservice',      
         component: NewInfraServiceComponent
+      },
+      {
+        path: 'group/:id',
+        component: GroupMembersComponent
       }
     ]
   },

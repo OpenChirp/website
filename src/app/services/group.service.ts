@@ -22,6 +22,12 @@ export class GroupService {
     .catch(this.handleError);
   }
 
+  getGroupById(groupId:string){
+    return this.http.get(this.groupUrl+ groupId, this.requestOptions)
+    .map(this.extractData)
+    .catch(this.handleError);
+  }
+
 
   createGroup( body: any) {
     return this.http.post(this.groupUrl, body, this.requestOptions)
@@ -35,13 +41,15 @@ export class GroupService {
     .catch(this.handleError);
   }
   
-  addUserToGroup(groupId: string, body: any){
+  addUserToGroup(groupId: string, userId: string){
+    var body = { "user_id" : userId };
     return this.http.post(this.groupUrl + groupId +"/member", body, this.requestOptions)
     .map(this.extractData)
     .catch(this.handleError);   
   }
 
-  removeUserFromGroup(groupId: string, body:any){
+  removeUserFromGroup(groupId: string, userId: string){
+    var body = { "user_id" : userId };
     return this.http.put(this.groupUrl + groupId +"/member", body, this.requestOptions)
     .map(this.extractData)
     .catch(this.handleError); 

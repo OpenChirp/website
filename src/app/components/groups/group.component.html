@@ -20,8 +20,8 @@
       <ng2-md-datatable-row *ngFor="let group of groups">
         <td><p>{{ group.name }}</p></td>
           <td>
-          <button md-raised-button (click)="addMember(group)">
-            Add Member
+          <button md-raised-button (click)="toGroup(group)">
+            Members
           </button>
           <td>
           <button md-icon-button color="warn" (click)="deleteGroup(group)">

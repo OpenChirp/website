@@ -41,13 +41,20 @@ export class GroupComponent {
       });
   }
 
+ toGroup(group: any) {
+    this.router.navigate(['/home/group',  group._id ]);
+ }
+ 
  createGroup(){
     let dialogRef = this.dialog.open(NewGroupComponent, { width: '600px' });
     dialogRef.afterClosed().subscribe(
       result => {
         if(result) {          
           this.groupService.createGroup(result).subscribe(
-            res => this.successDialogService.dialogPopup("Group Created " + result.name),
+            res => {
+                this.getAllGroups();
+                this.successDialogService.dialogPopup("Group Created " + result.name);               
+            },
             err => this.errorDialogService.dialogPopup(err.message)
           );
         }
@@ -65,6 +72,7 @@ export class GroupComponent {
         if (result) {
           this.groupService.deleteGroup(group._id).subscribe(
             result => {
+              this.getAllGroups();
               this.successDialogService
               .dialogPopup('Successfully deleted: ' + group.name);
             },

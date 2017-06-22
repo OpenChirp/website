@@ -1,0 +1,54 @@
+<div class="group-members">
+ 
+ <div class="tab-header">
+      
+  <h2> Edit group {{ group.name }} </h2>
+    <hr>
+  </div>
+  <div *ngIf="members.length > 0">
+  <ng2-md-datatable>
+    <!-- Table Header-->
+   <ng2-md-datatable-header>
+      <ng2-md-datatable-column><p>Members</p></ng2-md-datatable-column>
+  
+    </ng2-md-datatable-header>
+
+    <!-- Table Body -->
+    <tbody>
+     <!-- New Member Row -->
+     <ng2-md-datatable-row>
+        <td>
+          <md-input-container>
+            <input mdInput placeholder="email" [mdAutocomplete]="auto" [(ngModel)]="newMember">
+          </md-input-container>
+
+          <md-autocomplete #auto="mdAutocomplete">
+             <md-option *ngFor="let email of userEmails" [value]="user">
+                {{ email }}
+             </md-option>
+          </md-autocomplete>
+         </td>
+         <td>
+          <button md-icon-button (click)="addUser(newMember)">
+            <md-icon>add</md-icon>
+          </button>
+        </td>
+      </ng2-md-datatable-row>
+       
+      <!-- Item Row -->
+      <ng2-md-datatable-row *ngFor="let member of members">
+        <td><p>{{ member.name || member.email }}</p></td>
+         <td>
+          <button md-icon-button color="warn" (click)="deleteMember(member)">
+            <md-icon >clear</md-icon>
+          </button>
+        </td>
+      </ng2-md-datatable-row>
+    </tbody>
+  </ng2-md-datatable>
+  </div>
+ <div *ngIf="members.length == 0">
+      <p>No members found </p>
+  </div>
+
+</div>

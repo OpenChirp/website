@@ -47,6 +47,7 @@ import { InputConfigComponent } from './components/dialogs/input-config.componen
 import { GroupComponent } from './components/groups/group.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { NewGroupComponent } from './components/groups/newgroup.component';
+import { GroupMembersComponent } from './components/groups/groupmembers.component';
 
 // Services
 import { LocationService } from './services/location.service';
@@ -96,7 +97,8 @@ import { Configuration } from './config';
     InputConfigComponent,
     GroupComponent,
     AdminComponent,
-    NewGroupComponent 
+    NewGroupComponent,
+    GroupMembersComponent
   ],
   imports: [
     BrowserModule,

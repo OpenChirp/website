@@ -25,6 +25,12 @@ export class UserService {
       .catch(this.handleError);
   }
 
+  getAllUsers() {
+    return this.http.get(this.userUrl+"/all", this.requestOptions)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+  
   getMyServices(search: string) {
     return this.http.get(this.userUrl + "myservices?name=" + search, this.requestOptions)
                     .map(this.extractData)

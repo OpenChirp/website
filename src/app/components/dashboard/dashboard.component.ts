@@ -18,6 +18,8 @@ import { Configuration } from '../../config';
 export class DashboardComponent implements OnInit {
   title = 'OpenChirp';
   username = 'John Doe';
+  userGroups : Array<string> = [];
+  isAdmin = false;
   rootLocation: Location = null;
   errorMessage: string;
   devices: Array<Device> = [];
@@ -33,6 +35,11 @@ export class DashboardComponent implements OnInit {
     this.userService.getUser().subscribe(
       result => {
         this.username = result.name || result.email || "";
+        this.userGroups = result.groups.map(function(val:any) { return val.name ;});
+        if(this.userGroups.indexOf("admin") > -1 ){
+          this.isAdmin = true;
+        }
+
         this.locationService.getRootLocation().subscribe(
           res => this.rootLocation = (res[0]),
           err => this.errorMessage = err.message
