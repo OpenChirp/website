@@ -19,12 +19,12 @@
      <ng2-md-datatable-row>
         <td>
           <md-input-container>
-            <input mdInput placeholder="email" [mdAutocomplete]="auto" [(ngModel)]="newMember">
+            <input mdInput placeholder="Email" [mdAutocomplete]="auto" [(ngModel)]="newMember">
           </md-input-container>
 
-          <md-autocomplete #auto="mdAutocomplete">
-             <md-option *ngFor="let email of userEmails" [value]="user">
-                {{ email }}
+          <md-autocomplete #auto="mdAutocomplete" [displayWith]="displayEmail">
+             <md-option *ngFor="let user of users" [value]="user">
+                {{ user.email }}
              </md-option>
           </md-autocomplete>
          </td>
@@ -39,7 +39,7 @@
       <ng2-md-datatable-row *ngFor="let member of members">
         <td><p>{{ member.name || member.email }}</p></td>
          <td>
-          <button md-icon-button color="warn" (click)="deleteMember(member)">
+          <button md-icon-button color="warn" (click)="removeUser(member)">
             <md-icon >clear</md-icon>
           </button>
         </td>

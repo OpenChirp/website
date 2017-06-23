@@ -71,31 +71,30 @@ export class GroupMembersComponent {
         .dialogPopup(error.message);
       });
   }
+   displayEmail(user: any): string {
+      return user ? user.email : user;
+   }
 
-  addUser(newEmail:string){
-    for(let i = 0; i< this.users.length;i++){
-      if(this.users[i].email == newEmail){
-        var newUser = this.users[i];
-      }
-    }            
-    this.groupService.addUserToGroup(this.group._id, newUser._id).subscribe(
-      res => this.successDialogService.dialogPopup("User added " + newUser.email),
+  addUser(user:any){
+            
+    this.groupService.addUserToGroup(this.group._id, user._id).subscribe(
+      res => this.successDialogService.dialogPopup("User added : " +user.email ),
       err => this.errorDialogService.dialogPopup(err.message)
       );       
   }
   
 
-  deleteMember(member: any){
+  removeUser(user: any){
     let dialogRef = this.dialog.open(ConfirmationDialogComponent);
-    dialogRef.componentInstance.dialogText = "Delete Member " + member.email + "?";
+    dialogRef.componentInstance.dialogText = "Delete Member " + user.email + "?";
     dialogRef.componentInstance.confirmText = "Delete";
     dialogRef.afterClosed().subscribe(
       result => {
         if (result) {
-          this.groupService.removeUserFromGroup(this.group._id, member._id).subscribe(
+          this.groupService.removeUserFromGroup(this.group._id, user._id).subscribe(
             result => {
               this.successDialogService
-              .dialogPopup('Successfully deleted: ' + member.email);
+              .dialogPopup('Successfully deleted: ' + user.email);
             },
             error => this.errorDialogService
             .dialogPopup(error.message )
