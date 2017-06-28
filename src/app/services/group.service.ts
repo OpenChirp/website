@@ -41,8 +41,8 @@ export class GroupService {
     .catch(this.handleError);
   }
   
-  addUserToGroup(groupId: string, userId: string){
-    var body = { "user_id" : userId };
+  addUserToGroup(groupId: string, userId: string, write_access: boolean){
+    var body = { "user_id" : userId, "write_access": write_access };
     return this.http.post(this.groupUrl + groupId +"/member", body, this.requestOptions)
     .map(this.extractData)
     .catch(this.handleError);   

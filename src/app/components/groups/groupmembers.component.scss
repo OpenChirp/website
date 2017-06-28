@@ -13,14 +13,14 @@ $black-text: #303132;
 		background-color: #e3e3e3;
 	}
 	
-	.card-header {
+	.tab-header {
       h2 {
         margin: 0;
         float: left;
         font-family: "Avenir-Heavy", sans-serif;
         color: $black-text;
       }
-      .add-user {
+      /*.add-user {
         font-family: "Avenir-Med", sans-serif;
         color: $black-text;
         .button {
@@ -28,7 +28,7 @@ $black-text: #303132;
           margin-right: 5px;
           background-color: white;
         }
-      }
+      }*/
       button {
         float: right;
       }
