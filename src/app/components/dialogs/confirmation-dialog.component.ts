@@ -9,6 +9,7 @@ import { MdDialogRef } from '@angular/material';
 
 export class ConfirmationDialogComponent {
   dialogText: string = "";
+  dialogWarning: string = "";
   confirmText: string = "";
   
   constructor(public dialog: MdDialogRef<ConfirmationDialogComponent>) {

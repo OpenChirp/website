@@ -58,6 +58,7 @@ import { ErrorDialogService } from './services/error-dialog.service';
 import { InfraService } from './services/infraservice';
 import { GroupService } from './services/group.service';
 import { Configuration } from './config';
+import { GlobalDataService } from './services/global.data.service';
 
 @NgModule({
   declarations: [
@@ -121,7 +122,8 @@ import { Configuration } from './config';
     UserService,
     InfraService,
     GroupService,
-    Configuration
+    Configuration,
+    GlobalDataService
   ],
   entryComponents: [
     SuccessDialogComponent,

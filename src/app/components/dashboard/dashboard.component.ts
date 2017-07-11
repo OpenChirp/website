@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocationService } from '../../services/location.service';
 import { UserService } from '../../services/user.service';
+import { GlobalDataService } from '../../services/global.data.service';
 import { Location } from '../../models/location';
 import { Device } from '../../models/device';
 import { TreeNodeComponent } from '../locationtree/tree.component';
@@ -26,7 +27,7 @@ export class DashboardComponent implements OnInit {
   newLocationParent: Location = null;
   logout_url : string;
 
-  constructor(private locationService: LocationService, private config: Configuration, private userService: UserService, private router: Router) {
+  constructor(private globalDataService: GlobalDataService, private locationService: LocationService, private config: Configuration, private userService: UserService, private router: Router) {
     this.rootLocation = null;
     this.logout_url = config.logout_url;
   }
@@ -39,7 +40,7 @@ export class DashboardComponent implements OnInit {
         if(this.userGroups.indexOf("admin") > -1 ){
           this.isAdmin = true;
         }
-
+        this.globalDataService.setData(result._id, this.isAdmin);
         this.locationService.getRootLocation().subscribe(
           res => this.rootLocation = (res[0]),
           err => this.errorMessage = err.message

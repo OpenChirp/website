@@ -15,7 +15,7 @@
       <!-- Properties Tab -->
       <md-tab label="Properties">
         <div class="tab-content">
-          <device-properties [device]="device"></device-properties>
+          <device-properties [device]="device" [acl]="acl" (updateDevice)="getDevice($event)"></device-properties>
         </div>
       </md-tab>
 

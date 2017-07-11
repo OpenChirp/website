@@ -5,6 +5,7 @@ import 'rxjs/add/operator/switchMap';
 
 import { Device } from '../../models/device';
 import { DeviceService } from '../../services/device.service';
+import { GlobalDataService } from '../../services/global.data.service';
 import { SuccessDialogService } from '../../services/success-dialog.service';
 import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.component';
 import { UserService } from '../../services/user.service';
@@ -19,6 +20,7 @@ import { ErrorDialogService } from '../../services/error-dialog.service';
 
 export class DeviceComponent {
   device: Device = null;
+  acl :any = {};
   errorMessage: string = "";
   successMessage: string = "";
 
@@ -28,6 +30,7 @@ export class DeviceComponent {
               private successDialogService: SuccessDialogService,
               private errorDialogService: ErrorDialogService,
               private userService: UserService,
+              private globalDataService:GlobalDataService,
               public dialog: MdDialog) {
   }
 
@@ -45,6 +48,14 @@ export class DeviceComponent {
       .subscribe(
         result => {
           this.device = result;
+          let ownerId = this.device.owner._id;
+          let loggedInUserId = this.globalDataService.userid;
+          if(String(ownerId) === String(loggedInUserId)){
+            this.acl.isOwner = true;
+          }
+          else{
+            this.acl.isOwner = false;
+          }
         },
         error => this.router.navigate(['/home'])
       );

@@ -6,6 +6,7 @@ export class Device {
     _id: string;
     linked_services: Array<Object>;
     transducers : Array<Object>;
+    owner: any;
 
     constructor(name: string,
                 properties: string,

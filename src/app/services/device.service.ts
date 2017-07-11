@@ -123,6 +123,24 @@ export class DeviceService {
                     .map(this.extractData)
                     .catch(this.handleError);
   }
+  // Create device token
+  createToken(device_id: string) {
+    return this.http.post(this.deviceUrl+ device_id + "/token" , this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+  // Re-Create device token
+  recreateToken(device_id: string) {
+    return this.http.put(this.deviceUrl+ device_id + "/token" , this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+    // Delete Device Token
+  deleteToken(device_id: string) {
+    return this.http.delete(this.deviceUrl+ device_id + "/token" , this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
   // Add Device
   addDevice(body : any) {
     return this.http.post(this.deviceUrl, body, this.requestOptions)

@@ -25,4 +25,12 @@ export class SuccessDialogService {
     return dialogRef.afterClosed();
   }
 
+   public dialogPopupNoAutoClose(message: string, tip : string): Observable<boolean> {
+    let dialogRef: MdDialogRef<any>;
+
+    dialogRef = this.dialog.open(SuccessDialogComponent);
+    dialogRef.componentInstance.message = message;
+    dialogRef.componentInstance.tip = tip;
+    return dialogRef.afterClosed();
+  }
 }

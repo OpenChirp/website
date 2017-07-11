@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
       <h3 md-dialog-title> Success </h3>
       <p>
         {{ message }}
+        <br>
+        {{ tip }}
       </p>
     </div>
   `,
@@ -15,7 +17,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuccessDialogComponent implements OnInit {
   public message: string;
-
+  public tip :string;
   constructor() { }
 
   ngOnInit() {
