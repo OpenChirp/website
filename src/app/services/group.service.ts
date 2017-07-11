@@ -41,6 +41,12 @@ export class GroupService {
     .catch(this.handleError);
   }
   
+  getUsersNotInGroup( groupdId: string){
+    return this.http.get(this.groupUrl + groupdId + "/notmembers", this.requestOptions)
+    .map(this.extractData)
+    .catch(this.handleError);
+  }
+  
   addUserToGroup(groupId: string, userId: string, write_access: boolean){
     var body = { "user_id" : userId, "write_access": write_access };
     return this.http.post(this.groupUrl + groupId +"/member", body, this.requestOptions)

@@ -40,8 +40,7 @@ export class GroupMembersComponent {
   }
 
   ngOnInit() {
-
-    this.getAllUsers();
+  
     this.loadGroup();
     this.memberForm = new FormGroup({
         user: new FormControl('', [<any>Validators.required]),
@@ -50,31 +49,17 @@ export class GroupMembersComponent {
     this.filteredUsers = this.memberForm.controls['user'].valueChanges
          .startWith(null)
          .map(user => user && typeof user === 'object' ? user.email : user)
-         .map(email => email ? this.filter(email) : this.users.slice());
-
-    
-    
+         .map(email => email ? this.filter(email) : this.users.slice());   
   }
-
   
-  getAllUsers(){
-    this.userService.getAllUsers().subscribe(
-      result => {
-        this.users = result;
-        //this.userEmails = this.users.map(function(val:any) { return val.email ;});
-      },
-      error => {
-        this.errorDialogService
-        .dialogPopup(error.message);
-      });
-  }
-
  filter(email: string)   {
      return this.users.filter(user => new RegExp(`^${email}`, 'gi').test(user.email)); 
   }
+  
   displayEmail(user: any): string {
       return user ? user.email : user;
    }
+
   loadGroup(){
     this.route.params
     .switchMap((params: Params) => this.groupService.getGroupById(params['id']))
@@ -82,6 +67,7 @@ export class GroupMembersComponent {
       result => {
         this.group = result;
         this.getMembersOfGroup();
+        this.getAllNonMembers();
       },
       error => this.router.navigate(['/home'])
       );
@@ -96,9 +82,20 @@ export class GroupMembersComponent {
         this.errorDialogService
         .dialogPopup(error.message);
       });
+  }  
+  
+  getAllNonMembers(){
+     this.groupService.getUsersNotInGroup(this.group._id).subscribe(
+      result => {
+        this.users = result;
+        //this.userEmails = this.users.map(function(val:any) { return val.email ;});
+      },
+      error => {
+        this.errorDialogService
+        .dialogPopup(error.message);
+      });
   }
   
-
   addUser(value: any){
      var user = value.user;
      var write_access = value.write_access;
