@@ -3,6 +3,7 @@ $black-text: #303132;
 .group {
 	ng2-md-datatable-header {
 		border-bottom: solid 1px #909090;
+		font-weight:bold;
 	}
 	ng2-md-datatable-row {
 		cursor: pointer;
@@ -12,8 +13,8 @@ $black-text: #303132;
 	ng2-md-datatable-row:hover {
 		background-color: #e3e3e3;
 	}
-	.tab-header {
-		h4 {
+	.card-header {
+		h2 {
 			margin: 0;
 			float: left;
 			font-family: "Avenir-Heavy", sans-serif;

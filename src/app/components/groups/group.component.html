@@ -1,39 +1,41 @@
 <div class="group">
- 
- <div class="tab-header">
-      
-      <div class="new-group">
-        <button md-raised-button (click)="createGroup()">New Group</button>
-      </div>
+ <md-card>
+   <div class="card-header">
+     
+     <div class="new-group">
+      <button md-raised-button (click)="createGroup()">New Group</button>
+    </div>
   </div>
+  <br>
   <div *ngIf="groups.length > 0">
-  <ng2-md-datatable>
-    <!-- Table Header-->
-   <!-- <ng2-md-datatable-header>
-      <ng2-md-datatable-column><p>Name</p></ng2-md-datatable-column>
-  
-    </ng2-md-datatable-header>-->
+    <ng2-md-datatable>
+      <!-- Table Header-->
+   <ng2-md-datatable-header>
+      <ng2-md-datatable-column><p>Group Name</p></ng2-md-datatable-column>
+      <ng2-md-datatable-column><p>Members</p></ng2-md-datatable-column>
+      <ng2-md-datatable-column><p>Actions</p></ng2-md-datatable-column>
+    </ng2-md-datatable-header>
 
     <!-- Table Body -->
     <tbody>
       <!-- Item Row -->
       <ng2-md-datatable-row *ngFor="let group of groups">
         <td><p>{{ group.name }}</p></td>
-          <td>
+        <td>
           <button md-raised-button (click)="toGroup(group)">
             Members
           </button>
           <td>
-          <button md-icon-button color="warn" (click)="deleteGroup(group)">
-            <md-icon >clear</md-icon>
-          </button>
-        </td>
-      </ng2-md-datatable-row>
-    </tbody>
-  </ng2-md-datatable>
+            <button md-icon-button color="warn" (click)="deleteGroup(group)">
+              <md-icon >clear</md-icon>
+            </button>
+          </td>
+        </ng2-md-datatable-row>
+      </tbody>
+    </ng2-md-datatable>
   </div>
- <div *ngIf="groups.length == 0">
-      <p>No groups found </p>
+  <div *ngIf="groups.length == 0">
+    <p>No groups found </p>
   </div>
-
+</md-card>
 </div>

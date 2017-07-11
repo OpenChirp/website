@@ -10,7 +10,7 @@
       <button md-button [mdMenuTriggerFor]="menu">{{username}}</button>
       <md-menu #menu="mdMenu">
         <a md-menu-item routerLink="/home/mydevices">My Devices</a>
-      <!--  <a md-menu-item routerLink="/home/mygroups">My Groups</a>-->
+        <a md-menu-item routerLink="/home/mygroups">My Groups</a>
         <a md-menu-item routerLink="/home/mylocations">My Locations</a>  
         <a md-menu-item routerLink="/home/myservices">My Services</a>    
         <a button md-menu-item [href]="logout_url" routerLinkActive="active">Logout</a>

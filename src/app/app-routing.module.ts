@@ -15,6 +15,7 @@ import { NewTemplateComponent } from './components/device-templates/newtemplate.
 import { UserDevicesComponent } from './components/devices/userdevices.component';
 import { UserLocationsComponent } from './components/locations/userlocations.component';
 import { UserServicesComponent } from './components/userservices/userservices.component';
+import { UserGroupsComponent } from './components/groups/usergroups.component';
 import { InfraServiceComponent } from './components/infraservices/infraservice.component';
 import { ListInfraServicesComponent} from './components/infraservices/list.infraservices.component';
 import { NewInfraServiceComponent } from './components/infraservices/new.infraservice.component';
@@ -74,6 +75,10 @@ const appRoutes: Routes = [
       {
         path: 'myservices',
         component: UserServicesComponent
+      },
+      {
+        path: 'mygroups',
+        component: UserGroupsComponent
       },
       {
         path: 'service/:id',      // Service ID

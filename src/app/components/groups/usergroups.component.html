@@ -1,0 +1,34 @@
+<div class="user-groups" >
+  <md-card>
+    <div class="card-header">
+      <h2>My Groups</h2>
+      <div class="new-group">
+        <button md-raised-button (click)="createGroup()">New Group</button>
+      </div>
+    </div>
+    <br>
+    <div *ngIf="groups.length > 0">
+      <ng2-md-datatable>
+        <!-- Table Header-->
+        <ng2-md-datatable-header>
+          <ng2-md-datatable-column><p>Group Name</p></ng2-md-datatable-column>
+          <ng2-md-datatable-column><p>Write Access</p></ng2-md-datatable-column>
+          <ng2-md-datatable-column><p>Actions</p></ng2-md-datatable-column>
+        </ng2-md-datatable-header>
+
+        <!-- Table Body -->
+        <tbody>
+          <ng2-md-datatable-row *ngFor="let group of groups">
+            <td><p><a class="group-name" (click)="gotoGroup(group.group_id)">{{ group.name }}</a></p></td>
+            <td><p>{{ group.write_access }}</p></td>
+            <td><p><button md-raised-button (click)="leaveGroup(group)"> Leave Group 
+            </button></p></td>
+          </ng2-md-datatable-row>
+        </tbody>
+      </ng2-md-datatable>
+    </div>
+    <div *ngIf="groups.length == 0">
+      <p>No group memberships found.</p>
+    </div>    
+  </md-card>
+</div>

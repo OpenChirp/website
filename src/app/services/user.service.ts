@@ -68,6 +68,13 @@ export class UserService {
                     .map(this.extractData)
                     .catch(this.handleError);
   }
+
+  leaveGroup(groupId: string) {
+    return this.http.delete(this.userUrl + "group/"+groupId,  this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+  
   private extractData(res: Response) {
     const body = res.json();
     return body || { };
