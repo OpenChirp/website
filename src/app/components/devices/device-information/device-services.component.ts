@@ -92,7 +92,7 @@ export class DeviceServicesComponent {
 	linkService(newLink: any){
 		let configRequired = newLink.config_required;
 		if(configRequired && configRequired.length > 0){
-			let dialogRef = this.dialog.open(InputConfigComponent, { width: '600px' });
+			let dialogRef = this.dialog.open(InputConfigComponent, { width: '900px' });
 			dialogRef.componentInstance.configRequired = configRequired;
 			dialogRef.componentInstance.source = newLink.name;
 			dialogRef.afterClosed().subscribe(

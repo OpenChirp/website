@@ -45,6 +45,24 @@ export class InfraService {
     .map(this.extractData)
     .catch(this.handleError);
   }
+    // Create service token
+  createToken(service_id: string) {
+    return this.http.post(this.serviceUrl+ service_id + "/token" , this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+  // Re-Create service token
+  recreateToken(service_id: string) {
+    return this.http.put(this.serviceUrl+ service_id + "/token" , this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+    // Delete Service Token
+  deleteToken(service_id: string) {
+    return this.http.delete(this.serviceUrl+ service_id + "/token" , this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
   
   private extractData(res: Response) {
     const body = res.json();

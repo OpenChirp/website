@@ -6,7 +6,7 @@
         <td> {{config.key_name}} : </td>
         <td>
           <md-input-container class="description">
-            <textarea mdInput [(ngModel)]="config.value"></textarea>
+            <textarea placeholder="{{ config.key_example }}" mdInput [(ngModel)]="config.value"></textarea>
             <md-hint>{{ config.key_description}}</md-hint>
           </md-input-container>
         </td>

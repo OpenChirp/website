@@ -4,6 +4,7 @@
     <ng2-md-datatable-header>
       <ng2-md-datatable-column>Key Name</ng2-md-datatable-column>
       <ng2-md-datatable-column>Key Description</ng2-md-datatable-column>
+      <ng2-md-datatable-column>Key Example</ng2-md-datatable-column>
        <ng2-md-datatable-column>Required</ng2-md-datatable-column>
       <ng2-md-datatable-column>Actions</ng2-md-datatable-column>
     </ng2-md-datatable-header>
@@ -12,6 +13,9 @@
         <td><p>{{ config.keyName }}</p></td>
         <td>
           <p>{{ config.keyDescription }}</p>
+        </td>
+         <td>
+          <p>{{ config.keyExample }}</p>
         </td>
          <td>
           <p>{{ config.keyRequired }}</p>
@@ -28,7 +32,12 @@
         </td>
         <td>
           <md-input-container>
-            <input mdInput placeholder="Key Description" [(ngModel)]="newKeyDescription">
+            <textarea mdInput placeholder="Key Description" [(ngModel)]="newKeyDescription"></textarea>
+          </md-input-container>
+        </td>
+        <td>
+          <md-input-container>
+            <input mdInput placeholder="Key Example" [(ngModel)]="newKeyExample">
           </md-input-container>
         </td>
         <td>

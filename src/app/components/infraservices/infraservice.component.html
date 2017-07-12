@@ -19,11 +19,20 @@
 		  <p>Endpoint : {{ service.pubsub.endpoint }}</p>
 		  <p>Owner : {{ service.owner.name || service.owner.email }}</p>
 		  <p></p>
-		 
-		  <button md-raised-button (click)="viewProperties()">Properties
+		 <button md-raised-button (click)="viewConfigRequired()">Device Config Required
 		  </button>
-		  <button md-raised-button (click)="viewConfigRequired()">Device Config Required
-		  </button>
+
+		 <div *ngIf ="acl.isOwner">
+		 	   <button md-raised-button (click)="viewProperties()">Properties
+		 		</button>
+		     <div *ngIf="service.token">
+		        <button md-raised-button (click)="recreateServiceToken()">Re-Generate Token</button>  
+		        <button md-raised-button (click)="deleteServiceToken()">Delete Token</button>
+		     </div>
+		      <div *ngIf="!service.token">
+		        <button md-raised-button (click)="createServiceToken()">Generate Token</button>
+		     </div>
+	     </div>		  
 	  </form>
 	</md-card>
 
