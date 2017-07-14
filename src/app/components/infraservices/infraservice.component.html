@@ -14,17 +14,20 @@
 	      <p><md-input-container>
 	        <textarea mdInput placeholder="Description" [(ngModel)]="service.description" name="service-description"></textarea>
 	      </md-input-container></p>
-	  	 <p><button md-raised-button (click)="updateService()">Update</button></p>
+	  	 <p><button md-raised-button (click)="updateService()">Update</button>
+	  	 <button md-raised-button (click)="viewProperties()">Properties</button></p>
+	  	 <div><p><button md-raised-button (click)="viewConfigRequired()">Device Config Required
+		  </button> </p></div>
+	  	 <p>Owner : {{ service.owner.name || service.owner.email }}</p>
+		  <p></p>
+		 
+		 <hr>
+		 <h3>PubSub:</h3>
 	      <p>Protocol : {{ service.pubsub.protocol }}</p>
 		  <p>Endpoint : {{ service.pubsub.endpoint }}</p>
-		  <p>Owner : {{ service.owner.name || service.owner.email }}</p>
-		  <p></p>
-		 <button md-raised-button (click)="viewConfigRequired()">Device Config Required
-		  </button>
-
+		
 		 <div *ngIf ="acl.isOwner">
-		 	   <button md-raised-button (click)="viewProperties()">Properties
-		 		</button>
+		 	   
 		     <div *ngIf="service.token">
 		        <button md-raised-button (click)="recreateServiceToken()">Re-Generate Token</button>  
 		        <button md-raised-button (click)="deleteServiceToken()">Delete Token</button>

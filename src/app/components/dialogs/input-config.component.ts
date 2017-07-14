@@ -19,14 +19,12 @@ export class InputConfigComponent {
 
 
   constructor(public dialog: MdDialogRef<InputConfigComponent>, private errorDialogService: ErrorDialogService) {
-
   }
 
   save() {
     for(let i = 0; i < this.configRequired.length; i++ ){
       this.newConfig.push({ key: this.configRequired[i].key_name , value: this.configRequired[i].value});
-    }
-    console.log(this.newConfig)
+    }  
     this.dialog.close(this.newConfig);
   }
 

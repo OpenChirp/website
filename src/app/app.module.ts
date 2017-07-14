@@ -49,6 +49,8 @@ import { AdminComponent } from './components/admin/admin.component';
 import { NewGroupComponent } from './components/groups/newgroup.component';
 import { GroupMembersComponent } from './components/groups/groupmembers.component';
 import { UserGroupsComponent } from './components/groups/usergroups.component';
+import { UpdateConfigComponent } from './components/dialogs/update-config.component';
+
 // Services
 import { LocationService } from './services/location.service';
 import { DeviceService } from './services/device.service';
@@ -100,7 +102,8 @@ import { GlobalDataService } from './services/global.data.service';
     AdminComponent,
     NewGroupComponent,
     GroupMembersComponent,
-    UserGroupsComponent
+    UserGroupsComponent,
+    UpdateConfigComponent
   ],
   imports: [
     BrowserModule,
@@ -135,7 +138,8 @@ import { GlobalDataService } from './services/global.data.service';
     PropertiesComponent,  
     ConfigRequiredComponent,
     InputConfigComponent,
-    NewGroupComponent
+    NewGroupComponent,
+    UpdateConfigComponent
   ],
   bootstrap: [AppComponent]
 })
