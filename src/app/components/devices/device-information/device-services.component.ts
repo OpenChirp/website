@@ -23,6 +23,7 @@ export class DeviceServicesComponent {
 	@Input() device: Device;
 	@Output() updateDevice: EventEmitter<boolean> = new EventEmitter();
 	linkedServices : Array<any> = [];
+	links:any = {};
 	services: Array<any> = [];
 	
 	constructor(private route: ActivatedRoute,
@@ -42,14 +43,16 @@ export class DeviceServicesComponent {
 		this.linkedServices = this.device.linked_services;  
 		for (var i = 0; i < this.linkedServices.length; i++) {
 			var serviceId = this.linkedServices[i].service_id;
-			var config = this.linkedServices[i].config;
+			this.links[serviceId] = this.linkedServices[i].config;
 			this.infraService.getServiceByID(serviceId).subscribe(
 				result => {
 					var service = Object();
-					service._id = serviceId;
+					service._id = result._id;
 					service.name = result.name;
 					service.description = result.description;
-					service.config = config;
+					service.config = this.links[service._id];
+					console.log(service._id);
+					console.log(service.config);
 					this.services.push(service);
 				});
 		}     

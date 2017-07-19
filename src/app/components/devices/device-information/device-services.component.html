@@ -18,19 +18,19 @@
     <tbody>
       <!-- Item Row -->
       <ng2-md-datatable-row *ngFor="let service of services">
-        <td><p>{{ service.name }}</p></td>
-        <td><p><button md-raised-button (click)="viewConfig(service)">
-           View Config
-          </button></p></td>
-          <td>
+        <ng2-md-datatable-column><p>{{ service.name }}</p></ng2-md-datatable-column>
+        <ng2-md-datatable-column><p><button md-raised-button (click)="viewConfig(service)">
+           View/Update Config
+          </button></p></ng2-md-datatable-column>
+          <ng2-md-datatable-column>
           <button md-icon-button color="warn" (click)="removeServiceLink(service._id, service.name)">
             <md-icon >clear</md-icon>
           </button>
-        </td>
+        </ng2-md-datatable-column>
       </ng2-md-datatable-row>
     </tbody>
   </ng2-md-datatable>
-  </div>
+</div>
  <div *ngIf="services.length == 0">
       <p>No linked services </p>
     </div>
