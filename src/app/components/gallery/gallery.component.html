@@ -1,3 +1,13 @@
+ 
+<div class='gclass'>
+<carousel class='text-center'>
+  <slide *ngFor="let pic of pics">
+    <img class= 'm_class' src="{{ pic.url }}" alt="">
+  </slide>
+</carousel>
+</div>
+
+<!-- Old Code
 <div class="carousel">
   <ul class="slides">
     <li *ngFor="let pic of pics">
@@ -5,3 +15,4 @@
     </li>
   </ul>
 </div>
+ -->
