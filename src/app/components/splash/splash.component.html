@@ -1,404 +1,282 @@
 <div class="splash-page">
-  <!-- Toolbar -->
-  <md-toolbar [ngClass]="{'pre-scroll': !isScrolled, 'post-scroll': isScrolled}">
-    <a routerLink="/">
-      <div class="logo-section">
-        <span class="logo-text">
-          <h3>{{title}}</h3>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <title>OpendChirp</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typescript/2.0.2/typescript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/zone.js/0.6.23/zone.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.38/system.js"></script>
+
+  <script src="systemjs.config.js"></script>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.light_blue-blue.min.css" />
+
+  <!--start of lmd layout-->
+  <mdl-layout mdl-layout-fixed-header mdl-layout-header-seamed>
+
+    <!--layout header header-->
+    <mdl-layout-header class="custom-header">
+      <!--mdl-layout-header-transparent-->
+      <mdl-layout-header-row>
+        <span class="openchirp-title mdl-layout-title">
+            <img class="openchirp-logo-image" src="assets/images/logo_with_text.png">
         </span>
-      </div>
-    </a>
-    <span class="spacer"></span>
-    <div class="title-buttons">
-      <a href="#about" md-button>About</a>
-      <a href="#howitworks" md-button>How It Works</a>
-      <a href="#technology" md-button>Technology</a>
-      <a href="#gallery" md-button>Gallery</a>
-      <a href="https://openchirp.github.io/api_doc" md-button>Docs</a>
-      <a md-raised-button class="login" [href]="login_url" routerLinkActive="active" *ngIf="!logged_in">Login</a>
-      <a md-raised-button class="login" routerLink="/home" routerLinkActive="active" *ngIf="logged_in">Home</a>
-    </div>
-    <div class="title-buttons-phone">
-      <a md-raised-button class="login" [href]="login_url" routerLinkActive="active" *ngIf="!logged_in">Login</a>
-      <a md-raised-button class="login" routerLink="/home" routerLinkActive="active" *ngIf="logged_in">Home</a>
-    </div>
-  </md-toolbar>
-  <!-- Page content -->
-  <div class="page-wrap">
-    <!-- Splash Page Section -->
-    <div class="picture-section">
-      <div class="picture-section-text">
-        <h3>Low-Power and Community-Driven <br> Wireless Connectivity for IoT</h3>
-      </div>
-    </div>
-    <!--About Section-->
-    <div id="about"></div>
-    <div class="about-section">
-      <div class="wrapper">
-        <div class="section-text-line-left">
-          <h4>About</h4>
-        </div>
-        <md-grid-list cols="1" rowHeight="8:1">
-          <md-grid-tile>
-            <h1>What is OpenChirp?</h1>
-          </md-grid-tile>
-          <md-grid-tile>
-            <div class="what-is-text">
-              <p>
-                OpenChirp is a management layer on top of LoRaWAN that provides <br>
-                data context, storage, visualization, and access control over the web. <br>
-                OpenChirp is currently powering a LoRaWAN Network at CMU that <br>
-                also spans most of the City of Pittsburgh. You can expand the OpenChirp <br>
-                network by using our software to connect your own LoRa base station.
-              </p>
-            </div>
-          </md-grid-tile>
-        </md-grid-list>
-        <!--<div class="what-is-text">-->
-        <!--<p align="center">-->
-        <!--Management layer on top of LoRaWAN that provides data <br>-->
-        <!--context, storage, visualization, and access control. <br>-->
-        <!--This is a web portal for registration, visualization, and sharing. <br>-->
-        <!--LoRaWAN Network at CMU spanning most of Pittsburgh.-->
-        <!--</p>-->
-        <!--</div>-->
-      </div>
-    </div>
-    <md-grid-list cols="3" rowHeight="4:3">
-      <md-grid-tile>
-        <div class="whatis-wrapper">
-          <!--<div class="iot-project" align="center"></div>-->
-          <!--<div class="wrapper">-->
-          <!--<div class="flex-container">-->
-          <!--<div class="whatis-col">-->
-          <div class="iot-project"></div>
-          <div class="whatis-text">
-            <p>
-              <strong>Your IoT Project</strong>
-            </p>
-            <p>
-              Contract-free, Secure, <br>
-              Battery Operated, Wireless <br>
-              Networking for your<br>
-              IoT project
-            </p>
-          </div>
-        </div>
-      </md-grid-tile>
-      <md-grid-tile>
-        <div class="whatis-wrapper">
-          <div class="community-driven"></div>
-          <div class="whatis-text">
-            <p>
-              <strong> Community-driven </strong>
-            </p>
-            <p>
-              Create an open <br>
-              community-driven <br>
-              Network
-            </p>
-          </div>
-        </div>
-      </md-grid-tile>
-      <md-grid-tile>
-        <div class="whatis-wrapper">
-          <div class="empowering"></div>
-          <div class="whatis-text">
-            <p><strong>Empowering All</strong></p>
-            <p>
-              Empower researchers, <br>
-              hobbyists, and citizen <br>
-              scientists
-            </p>
-          </div>
-        </div>
-      </md-grid-tile>
-    </md-grid-list>
+        <mdl-layout-spacer></mdl-layout-spacer>
+        <!-- Navigation. We hide it in small screens. -->
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="https://openchirp.github.io/api_doc">Docs</a>
+          <a class="mdl-button mdl-js-button" href="http://openchirp.andrew.cmu.edu:7000/auth/google/" routerLinkActive="active" *ngIf="!logged_in">Login</a>
+          <a class="mdl-button mdl-js-button" routerLink="/home" routerLinkActive="active" *ngIf="logged_in">Home</a>
+        </nav>
+      </mdl-layout-header-row>
+    </mdl-layout-header>
+    <!--end of layour header-->
 
-    <!--<div class="wrapper">-->
-    <!--<div class="flex-container">-->
-    <!--<div class="whatis-col">-->
-    <!--<div class="iot-project"></div>-->
-    <!--<div class="whatis-text">-->
-    <!--<p>-->
-    <!--<strong>Your IoT Project</strong>-->
-    <!--</p>-->
-    <!--<p>-->
-    <!--Contract-free, Secure, <br>-->
-    <!--Battery Operated, Wireless <br>-->
-    <!--Networking for your<br>-->
-    <!--IoT project-->
-    <!--</p>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="whatis-col">-->
-    <!--<div class="community-driven"></div>-->
-    <!--<div class="whatis-text">-->
-    <!--<p>-->
-    <!--<strong> Community-driven </strong>-->
-    <!--</p>-->
-    <!--<p>-->
-    <!--Create an open <br>-->
-    <!--community-driven <br>-->
-    <!--Network-->
-    <!--</p>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="whatis-col">-->
-    <!--<div class="empowering"></div>-->
-    <!--<div class="whatis-text">-->
-    <!--<p><strong>Empowering All</strong></p>-->
-    <!--<p>-->
-    <!--Empower researchers, <br>-->
-    <!--hobbyists, and citizen <br>-->
-    <!--scientists-->
-    <!--</p>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
+    <!--drawer-->
+    <mdl-layout-drawer>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="#about">About</a>
+        <a class="mdl-navigation__link" href="#how">How it Works</a>
+        <a class="mdl-navigation__link" href="#technology">Technology</a>
+        <a class="mdl-navigation__link" href="#gallery">Gallery</a>
+        <a class="mdl-navigation__link" href="https://openchirp.github.io/api_doc">Docs</a>
+      </nav>
+    </mdl-layout-drawer>
+    <!--drawer end-->
 
-    <!--How it Works-->
-    <div id="howitworks"></div>
-    <div class="how-it-works">
-      <div class="section-text-line-right">
-        <h4>How it Works</h4>
+    <mdl-layout-content>
+      <!--Content Goes Here-->
+
+      <!-- Main Background Image and Text -->
+      <div class="openchirp-intro-section mdl-typography--text-center">
+        <div class="logo-font openchirp-slogan">Low-Power and Community-Driven</div>
+        <div class="logo-font openchirp-sub-slogan">Wireless Connectivity for IoT</div>
       </div>
-      <div class="how-it-works-pic" align="left">
-        <!--<md-grid-list cols="1" rowHeight="100px">-->
-          <!--<md-grid-tile>-->
-            <!--<div class="how-wrapper">-->
-              <!--<div class="step1"></div>-->
-            <!--</div>-->
-            <!--<div class="step-text">-->
-              <!--<p>-->
-                <!--Get a LoRaWAN compatible device-->
-              <!--</p>-->
-            <!--</div>-->
-          <!--</md-grid-tile>-->
-          <!--<md-grid-tile>-->
-            <!--<div class="how-wrapper">-->
-              <!--<div class="step2"></div>-->
-            <!--</div>-->
-            <!--<div class="step-text">-->
-              <!--<p>-->
-                <!--Log into OpenChirp with your Google account-->
-              <!--</p>-->
-            <!--</div>-->
-          <!--</md-grid-tile>-->
-          <!--<md-grid-tile>-->
-            <!--<div class="how-wrapper">-->
-              <!--<div class="step3"></div>-->
-            <!--</div>-->
-            <!--<div class="step-text">-->
-              <!--<p>-->
-                <!--Register your device-->
-              <!--</p>-->
-            <!--</div>-->
-          <!--</md-grid-tile>-->
-          <!--<md-grid-tile>-->
-            <!--<div class="how-wrapper">-->
-              <!--<div class="step4"></div>-->
-            <!--</div>-->
-            <!--<div class="step-text">-->
-              <!--<p>-->
-                <!--Start collecting data-->
-              <!--</p>-->
-            <!--</div>-->
-          <!--</md-grid-tile>-->
-        <!--</md-grid-list>-->
 
-        <div class="wrapper">
-          <div class="col-container">
-            <h1>How It Works</h1>
-            <div class="row-container">
-              <div class="step1"></div>
-              <div class="step-text">
-                <p>
-                  Get a LoRaWAN compatible device
-                </p>
-              </div>
+      <!-- ABOUT Section -->
+      <div class="openchirp-regular-section">
+        <a name="about"></a>
+        <div class="openchirp-section-name mdl-typography--font-light">
+          ABOUT
+        </div>
+        <div class="openchirp-section-title mdl-typography--display-1-color-contrast ">
+          What is OpenChirp?
+          <p></p>
+          <p></p>
+          <p class="mdl-typography--subhead-color-contrast mdl-typography--font-light">
+            OpenChirp is a management layer on top of LoRaWAN that provides data context, storage, visualization, and access control
+            over the web. OpenChirp is currently powering a LoRaWAN Network at CMU that also spans most of the City of Pittsburgh.
+            You can expand the OpenChirp network by using our software to connect your own LoRa base station.
+          </p>
+        </div>
+
+        <div class="openchirp-card-container mdl-grid">
+
+          <div class="openchirp-card mdl-card">
+            <div class="mdl-card__media">
+              <img src="assets/images/about-iot.png" width="71px" height="72px">
             </div>
-            <div class="row-container">
-              <div class="step2"></div>
-              <div class="step-text">
-                <p>
-                  Log into OpenChirp with your Google account
-                </p>
-              </div>
+            <div class="mdl-card__title">
+              <h2 class="mdl-card__title-text">Your IoT Project</h2>
             </div>
-            <div class="row-container">
-              <div class="step3"></div>
-              <div class="step-text">
-                <p>
-                  Register your device
-                </p>
-              </div>
+            <div class="mdl-card__supporting-text">
+              <span class="mdl-typography--subhead mdl-typography--font-light">Contract-free, Secure, Battery Operated, Wireless  Networking for your IoT project</span>
             </div>
-            <div class="row-container">
-              <div class="step4"></div>
-              <div class="step-text">
-                <p>
-                  Start collecting data
-                </p>
-              </div>
+          </div>
+
+          <div class="openchirp-card mdl-card">
+            <div class="mdl-card__media">
+              <img src="assets/images/about-community.png" width="54px" height="57px">
+            </div>
+            <div class="mdl-card__title">
+              <h2 class="mdl-card__title-text">Community-driven</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+              <span class="mdl-typography--subhead mdl-typography--font-light">Create an open community-driven Network</span>
+            </div>
+          </div>
+
+          <div class="openchirp-card mdl-card">
+            <div class="mdl-card__media">
+              <img src="assets/images/about-empowering.png" width="43px" height="46px">
+            </div>
+            <div class="mdl-card__title">
+              <h2 class="mdl-card__title-text">Empowering All</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+              <span class="mdl-typography--subhead mdl-typography--font-light">Empower researchers, hobbyists, and citizen scientists</span>
             </div>
           </div>
         </div>
-
-        <!--<div class="wrapper">-->
-        <!--<div class="col-container">-->
-        <!--<h1>5 Easy Steps</h1>-->
-        <!--<div class="row-container">-->
-        <!--<div class="step1"></div>-->
-        <!--<div class="step-text">-->
-        <!--<p>-->
-        <!--DEVICE<br>-->
-        <!--Get a LoRaWAN compatible device-->
-        <!--</p>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div class="row-container">-->
-        <!--<div class="step2"></div>-->
-        <!--<div class="step-text">-->
-        <!--<p>-->
-        <!--REGISTER<br>-->
-        <!--Register it to OpenChirp's network-->
-        <!--</p>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div class="row-container">-->
-        <!--<div class="step3"></div>-->
-        <!--<div class="step-text">-->
-        <!--<p>-->
-        <!--CHIRP<br>-->
-        <!--Start Chirping-->
-        <!--</p>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div class="row-container">-->
-        <!--<div class="step4"></div>-->
-        <!--<div class="step-text">-->
-        <!--<p>-->
-        <!--BUILD<br>-->
-        <!--Build an app using our open API-->
-        <!--</p>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div class="row-container">-->
-        <!--<div class="step5"></div>-->
-        <!--<div class="step-text">-->
-        <!--<p>-->
-        <!--REST<br>-->
-        <!--We take care of the REST-->
-        <!--</p>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
-
-        <!--</div>-->
       </div>
-    </div>
 
-    <!--Technology-->
-    <div id="technology"></div>
-    <div class="features">
-      <div class="wrapper">
-        <div class="section-text-line-left">
-          <h4>Technology</h4>
+
+      <!-- HOW Section -->
+      <div class="openchirp-how-section">
+        <a name="how"></a>
+        <div class="openchirp-section-name mdl-typography--font-light">
+          HOW
         </div>
-        <h1 align="center">Features</h1>
-        <div class="feat-container">
-          <div class="protobuf-icon"></div>
-          <span class="feat-text">
-            <p>ProtoBuf serialization from <br>
-              end-device to cloud
-            </p>
-          </span>
-          <div class="cloud-icon"></div>
-          <div class="feat-text">
-            <p>MQTT for scalable real-time<br>
-              publish subscribe
-            </p>
+        <div class="openchirp-section-title mdl-typography--display-1-color-contrast">How it Works</div>
+        <ul class="demo-list-icon mdl-list">
+          <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content ">
+                  <img src="assets/images/1.png" width="41px" height="41px" class="openchirp-numbereditem">Get a LoRaWAN compatible device
+                </span>
+          </li>
+          <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                  <img src="assets/images/2.png" width="41px" height="41px" class="openchirp-numbereditem">Log into OpenChirp with your<br/> Google account
+                </span>
+          </li>
+          <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                  <img src="assets/images/3.png" width="41px" height="41px" class="openchirp-numbereditem">Register your device
+                </span>
+          </li>
+          <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                  <img src="assets/images/4.png" width="41px" height="41px" class="openchirp-numbereditem">Start collecting data
+                </span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Tecnology Section -->
+      <div class="openchirp-regular-section">
+        <a name="technology"></a>
+        <div class="openchirp-section-name mdl-typography--font-light">
+          TECHNOLOGY
+        </div>
+        <div class="openchirp-card-container mdl-grid">
+          <div class="openchirp-card-tech mdl-card">
+            <div class="mdl-card__media">
+              <img src="assets/images/protobuf-icon.png" width="52px" height="52px">
+            </div>
+            <div class="mdl-card__supporting-text">
+              <span class="mdl-typography--subhead mdl-typography--font-light">ProtoBuf serialization from
+                  end-device to cloud</span>
+            </div>
           </div>
-          <div class="open-icon"></div>
-          <div class="feat-text">
-            <p>Openly available gateway<br>
-              architecture
-            </p>
+          <div class="openchirp-card-tech mdl-card">
+            <div class="mdl-card__media">
+              <img src="assets/images/cloud-icon.png" width="52px" height="52px">
+            </div>
+            <div class="mdl-card__supporting-text">
+              <span class="mdl-typography--subhead mdl-typography--font-light">MQTT for scalable real-time
+                  publish subscribe</span>
+            </div>
           </div>
-          <div class="rest-icon"></div>
-          <span class="feat-text">
-            <p>REST interface for configuration<br>
-              and management
-            </p>
-          </span>
-          <div class="battery-icon"></div>
-          <div class="feat-text">
-            <p>10 Year Battery-Life</p>
+          <div class="openchirp-card-tech mdl-card">
+            <div class="mdl-card__media">
+              <img src="assets/images/open-icon.png" width="52px" height="52px">
+            </div>
+            <div class="mdl-card__supporting-text">
+              <span class="mdl-typography--subhead mdl-typography--font-light">Openly available gateway
+                  architecture</span>
+            </div>
           </div>
-          <div class="intelligent-icon"></div>
-          <div class="feat-text">
-            <p>Intelligent network<br>
-              management
-            </p>
+          <div class="openchirp-card-tech mdl-card">
+            <div class="mdl-card__media">
+              <img src="assets/images/rest-icon.png" width="52px" height="52px">
+            </div>
+            <div class="mdl-card__supporting-text">
+              <span class="mdl-typography--subhead mdl-typography--font-light">REST interface for configuration
+                  and management</span>
+            </div>
+          </div>
+          <div class="openchirp-card-tech mdl-card">
+            <div class="mdl-card__media">
+              <img src="assets/images/battery-icon.png" width="52px" height="52px">
+            </div>
+            <div class="mdl-card__supporting-text">
+              <span class="mdl-typography--subhead mdl-typography--font-light">10 Year Battery-Life</span>
+            </div>
+          </div>
+          <div class="openchirp-card-tech mdl-card">
+            <div class="mdl-card__media">
+              <img src="assets/images/intelligent-icon.png" width="52px" height="52px">
+            </div>
+            <div class="mdl-card__supporting-text">
+              <span class="mdl-typography--subhead mdl-typography--font-light">Intelligent network
+                  management</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <!--Gallery-->
-    <div id="gallery"></div>
-    <div class="gallery-section">
-      <div class="section-text-line-right">
-        <h4>Gallery</h4>
-      </div>
-      <!--<div class="gallery-pic">-->
-      <md-grid-list cols="2" rowHeight="2:1">
-        <md-grid-tile>
-          <div class="gallery-wrapper">
-            <app-gallery></app-gallery>
+
+      <!-- Gallery Section -->
+      <div class="openchirp-regular-section">
+        <a name="gallery"></a>
+        <div class="openchirp-section-name mdl-typography--font-light">
+          GALLERY
+        </div>
+        <div class="openchirp-card-container mdl-grid">
+          <div class="openchirp-card-photo mdl-card">
+            <div class="mdl-card__media">
+              <img src="assets/images/gallery/9.jpg" border="0">
+            </div>
           </div>
-        </md-grid-tile>
-        <md-grid-tile>
-          <div class="gallery-text">
-            <h1>
-              Take a Look at Some <br>
-              Behind the Scenes
-            </h1>
+          <div class="openchirp-card-photo mdl-card">
+            <div class="mdl-card__media">
+              <img src="assets/images/gallery/11.jpg" border="0">
+            </div>
           </div>
-        </md-grid-tile>
-      </md-grid-list>
-      <!--<div class="gallery-wrapper">-->
-      <!--<app-gallery></app-gallery>-->
-      <!--</div>-->
-      <!--<span class="gallery-text">-->
-      <!--<h1>Take a Look at Some<br>-->
-      <!--Behind the Scenes-->
-      <!--</h1>-->
-      <!--</span>-->
-      <!--</div>-->
-    </div>
-    <!--Logos CMU/CyLab-->
-    <div class="cmu">
-      <!--<div class="cmu-pic"></div>-->
-      <br>
-      <md-grid-list cols="4" rowHeight="3:1">
-        <md-grid-tile></md-grid-tile>
-        <md-grid-tile>
-          <div class="ece-logo"></div>
-        </md-grid-tile>
-        <md-grid-tile>
-          <div class="cylab-logo"></div>
-        </md-grid-tile>
-        <md-grid-tile></md-grid-tile>
-      </md-grid-list>
-    </div>
-    <!--Footer-->
-    <div class="footer" id="splash-footer">
-      <div class="wrapper">
-        <p>OpenChirp &copy; Copyright 2017</p>
+          <div class="openchirp-card-photo mdl-card">
+            <div class="mdl-card__media">
+              <img src="assets/images/gallery/4.jpg" border="0">
+            </div>
+          </div>
+          <div class="openchirp-card-photo mdl-card">
+            <div class="mdl-card__media">
+              <img src="assets/images/gallery/5.jpg" border="0">
+            </div>
+          </div>
+          <div class="openchirp-card-photo mdl-card">
+            <div class="mdl-card__media">
+              <img src="assets/images/gallery/6.jpg" border="0">
+            </div>
+          </div>
+          <div class="openchirp-card-photo mdl-card">
+            <div class="mdl-card__media">
+              <img src="assets/images/gallery/8.jpg" border="0">
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+
+      <!--Footer-->
+      <footer class="openchirp-footer mdl-mega-footer">
+        <div class="mdl-mega-footer--middle-section">
+
+          <div class="openchirp-card-container mdl-grid openchirp-footer-cards">
+
+            <div class="mdl-layout-spacer"></div>
+            <a href="https://www.cylab.cmu.edu/"><img src="assets/images/cylab-logo.png" height="66px"></a>
+            <div class="mdl-layout-spacer"></div>
+            <a href="https://www.ece.cmu.edu/"><img src="assets/images/ece-logo.png" height="66px"></a>
+            <div class="mdl-layout-spacer"></div>
+
+          </div>
+
+          <div class="mdl-mega-footer--bottom-section">
+            <p class="mdl-typography--font-light">OpenChirp © Copyright 2017</p>
+          </div>
+
+        </div>
+
+
+      </footer>
+      <!--Footer Ends Here-->
+
+
+
+    </mdl-layout-content>
+    <!--Content Ends Here-->
+
+  </mdl-layout>
+  <!--end of mld layout-->
+
 </div>
