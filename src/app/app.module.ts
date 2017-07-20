@@ -9,6 +9,9 @@ import { MdDataTableModule } from 'ng2-md-datatable';
 
 import 'hammerjs';
 
+// Bootstrap
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+
 // Components
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -107,6 +110,7 @@ import { GlobalDataService } from './services/global.data.service';
   ],
   imports: [
     BrowserModule,
+    CarouselModule.forRoot(), //carousel bootstrap
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
