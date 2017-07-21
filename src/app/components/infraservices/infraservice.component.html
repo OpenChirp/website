@@ -7,15 +7,16 @@
       	 </div>
       </div>
        <hr> 
-      <form>   
+      <form>   		  	
       	  <p><md-input-container>
 	        <input mdInput placeholder="Name" [(ngModel)]="service.name" name="service-name">
 	      </md-input-container></p>    
 	      <p><md-input-container>
 	        <textarea mdInput placeholder="Description" [(ngModel)]="service.description" name="service-description"></textarea>
 	      </md-input-container></p>
-	  	 <p><button md-raised-button (click)="updateService()">Update</button>
-	  	 <button md-raised-button (click)="viewProperties()">Properties</button></p>
+
+	 		<p> <button md-raised-button (click)="updateService()">Update</button>
+			 <button md-raised-button (click)="viewProperties()">Edit Custom Properties</button></p>
 	  	 <div><p><button md-raised-button (click)="viewConfigRequired()">Device Config Required
 		  </button> </p></div>
 	  	 <p>Owner : {{ service.owner.name || service.owner.email }}</p>
