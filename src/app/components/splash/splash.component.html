@@ -27,7 +27,7 @@
         <!-- Navigation. We hide it in small screens. -->
         <nav class="mdl-navigation">
           <a class="mdl-navigation__link" href="https://openchirp.github.io/api_doc">Docs</a>
-          <a class="mdl-button mdl-js-button" href="http://openchirp.andrew.cmu.edu:7000/auth/google/" routerLinkActive="active" *ngIf="!logged_in">Login</a>
+          <a class="mdl-button mdl-js-button" [href]="login_url" routerLinkActive="active" *ngIf="!logged_in">Login</a>
           <a class="mdl-button mdl-js-button" routerLink="/home" routerLinkActive="active" *ngIf="logged_in">Home</a>
         </nav>
       </mdl-layout-header-row>
