@@ -1,482 +1,381 @@
 @import '../../constants';
 $image_url: '../../../assets/images';
 
-.splash-page {
+body {
+  margin: 0;
+}
 
-  h1 {
-    color: $black-text;
-    font-family: "Avenir-Med", sans-serif;
-    text-align: center;
-  }
-  h3 {
-    color: #898787;
-    font-family: "Avenir-Heavy", sans-serif;
-    text-align: center;
-  }
-  h4 {
-    color: #3A7193;
-    font-family: "Avenir-Heavy", sans-serif;
-    font-variant: all-small-caps;
-    margin: 0;
-    padding: 0;
-    background-color: #efefef;
-  }
 
-  .page-wrap {
-    min-height: 100%;
-    /* equal to footer height */
-    margin-bottom: -$footer-height;
-  }
-  background-color: #ffffff;
+mdl-layout-header.custom-header {
+  background: #8ab9d6;
+}
 
-  .spacer {
-    flex: 1 1 auto;
-  }
-  .pre-scroll {
-    background-color: $toolbar-color;
-  }
-  .post-scroll {
-    background-color: $scrolled-bar-color;
-  }
 
-  md-toolbar {
-    background-color: $toolbar-color;
-    z-index: 999;
-    position: fixed;
-    top: 0;
-    right: 0;
-    color: #444444;
-    text-align: right;
-    font-family: "Avenir-Heavy", sans-serif;
-    font-variant: all-small-caps;
-    margin: 0;
-    transition: color .5s ease-out;
+/* Disable ugly boxes around images in IE10 */
+a img{
+  border: 0px;
+}
 
-    button {
-      //background-color: rgba(0, 0, 0, 0);
-      outline-color: $background-color;
-      //color: $background-color;
-    }
-    .login {
-      background-color: $button-color;
-    }
-    .logo-section {
-      color: #ffffff;
-      content: url($image_url + "/logo_with_text.png");
-      width: 100%;
-      .logo-text {
-        h3 {
-          color: $black-text;
-          font-family: "Avenir-Heavy", sans-serif;
-        }
-      }
-    }
-    .title-buttons-phone {
-      display: none;
-    }
+
+.openchirp-header {
+  z-index: 50;
+  margin: 0 !important;
+  background: #000;  
+}
+
+.mdl-layout-header {
+  background: #f00;
+}
+
+.openchirp-mobile-title {
+  display: none !important;
+}
+
+.openchirp-logo-image {
+  height: 50px;
+  width: 196px;
+}
+
+.openchirp-header {
+  overflow: visible;
+  background-color: white;
+}
+
+  .openchirp-header .material-icons {
+    color: #767777 !important;
   }
 
-  .picture-section {
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    background: url($image_url + "/background.png");
-    background-position: center bottom;
-    //background-size: 100% 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    .picture-section-text {
-      position: absolute;
-      font-size: 25px;
-      font-family: "Avenir-Med", sans-serif;
-      width: 760px;
-      top: 25%;
-      padding-left: 0px;
-      padding-right: 0px;
-    }
-    h3 {
-      color: $text-color;
-    }
+  .openchirp-header .mdl-layout__drawer-button {
+    background: transparent;
+    //color: #767777;
+    color: #ff0000;
   }
 
-  .section-text-line-left {
-    text-decoration: overline;
-    text-align: center;
-    width: 125px;
-    border-top: 3px solid $text-color;
-
-    h4 {
-      color: $text-color;
-      font-family: "Avenir-Heavy", sans-serif;
-      font-variant: all-small-caps;
-      background-color: transparent;
-    }
+  .openchirp-header .mdl-navigation__link {
+    //color: #757575;
+    color: #ff0000;
+    font-weight: 700;
+    font-size: 14px;
   }
 
-  .section-text-line-right {
-    text-decoration: overline;
-    position: absolute;
-
-    margin: 0 15% 30% 88%;
-
-    text-align: center;
-    width: 125px;
-    border-top: 3px solid $text-color;
-
-    h4 {
-      color: $text-color;
-      font-family: "Avenir-Heavy", sans-serif;
-      font-variant: all-small-caps;
-      background-color: transparent;
-    }
+  .openchirp-navigation-container {
+    /* Simple hack to make the overflow happen to the left instead... */
+    direction: rtl;
+    -webkit-order: 1;
+        -ms-flex-order: 1;
+            order: 1;
+    width: 500px;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .what-is-text {
-    p {
-      color: #444444;
-      font-family: "Avenir-Med", sans-serif;
-    }
+  .openchirp-navigation {
+    /* ... and now make sure the content is actually LTR */
+    direction: ltr;
+    -webkit-justify-content: flex-end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    width: 800px;
   }
 
-  .how-it-works-pic {
-    //height: 100vh;
-    margin: 0;
-    background: url($image_url + "/HowItWorks.svg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-
-  }
-
-  .col-container {
-    height: 100%;
-
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: left;
-    text-align: left;
-
-    h1 {
-      color: $black-text;
-      font-family: "Avenir-Heavy", sans-serif;
-      margin: 10% 63% 2% 0;
-    }
-  }
-
-  .row-container {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-  }
-
-  .step-text {
-    //text-align: left;
-    //margin: 0 0 0 6%;
-    margin: 0 50% 0 0;
-
-    h4 {
-      font-family: "Avenir-Heavy", sans-serif;
-      color: $black-text;
-      font-variant: all-small-caps;
-    }
-
-    p {
-      font-family: "Avenir-Heavy", sans-serif;
-      color: $black-text;
-      size: 8px;
-    }
-  }
-
-  //.how-wrapper {
-  //  float: left;
-  //}
-
-  .step1 {
-    //display: block;
-    //padding: 20px;
-    padding: 5px;
-    margin: 10px 25px 5px 20px;
-    content: url($image_url + "/1.png");
-  }
-  .step2 {
-    padding: 5px;
-    margin: 10px 25px 5px 20px;
-    //display: block;
-    //padding: 20px;
-    content: url($image_url + "/2.png");
-  }
-  .step3 {
-    //display: block;
-    //padding: 20px;
-    padding: 5px;
-    margin: 10px 25px 5px 20px;
-    content: url($image_url + "/3.png");
-  }
-  .step4 {
-    padding: 5px;
-    margin: 10px 25px 5px 20px;
-    //display: block;
-    //padding: 20px;
-    content: url($image_url + "/4.png");
-  }
-  //.step5 {
-  //  padding: 5px;
-  //  margin: 10px 25px 5px 20px;
-  //  content: url($image_url + "/5.png");
-  //}
-  //.step6 {
-  //  padding: 5px;
-  //  margin: 10px 25px 5px 20px;
-  //  content: url($image_url + "/6.png");
-  //}
-
-  //.whatis-col {
-  //  height: 100%;
-  //
-  //  display: flex;
-  //  flex-direction: column;
-  //  align-items: center;
-  //  justify-content: center;
-  //}
-
-  .whatis-wrapper {
-    vertical-align: top;
+  .openchirp-navigation .mdl-navigation__link {
     display: inline-block;
+    height: 60px;
+    line-height: 68px;
+    background-color: transparent !important;
+    border-bottom: 4px solid transparent;
+  }
+
+    .openchirp-navigation .mdl-navigation__link:hover {
+      border-bottom: 4px solid #007fa5;
+    }
+
+
+.openchirp-drawer {
+  border-right: none;
+}
+
+  .openchirp-drawer-separator {
+    height: 1px;
+    background-color: #dcdcdc;
+    margin: 8px 0;
+  }
+
+  .openchirp-drawer .mdl-navigation__link.mdl-navigation__link {
+    font-size: 14px;
+    color: #757575;
+  }
+
+  .openchirp-drawer span.mdl-navigation__link.mdl-navigation__link {
+    // color: #8bc34a;
+    color: #ff0000;
+  }
+
+  .openchirp-drawer .mdl-layout-title {
+    position: relative;
+    //background: #6ab344;
+    height: 160px;
+  }
+
+    .openchirp-drawer .openchirp-logo-image {
+      position: absolute;
+      bottom: 16px;
+    }
+
+.openchirp-intro-section {
+  position: relative;
+  height: 100vh;
+  width: 100vw;  
+  background-color: #f3f3f3;
+  //background-color: #ff0000;
+  background: url($image_url+'/background.png') center 100% no-repeat;
+  background-size: cover;
+}
+
+
+.openchirp-layout-header {
+  background-color: #ff0000;
+}
+
+.mdl-typography--display-1-color-contrast {
+    opacity: 1.0;
+}
+.mdl-typography--subhead-color-contrast {
+  opacity: 1.0;
+}
+
+
+.logo-font {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  line-height: 1;
+  // color: #767777;
+  color: #444444;
+  font-weight: 500;
+}
+
+.openchirp-slogan {
+  font-size: 50px;
+  padding-top: 160px;
+}
+
+.openchirp-sub-slogan {
+  font-size: 50px;
+  padding-top: 24px;
+}
+
+.openchirp-link {
+  text-decoration: none;
+  color: #8bc34a !important;
+}
+
+  .openchirp-link:hover {
+    color: #7cb342 !important;
+  }
+
+  .openchirp-link .material-icons {
+    position: relative;
+    top: -1px;
+    vertical-align: middle;
+  }
+
+.openchirp-alt-link {
+  text-decoration: none;
+  color: #ff0000 !important;
+  font-size: 16px;
+}
+
+  .openchirp-alt-link:hover {
+    // color: #00bfa5 !important;
+    color: #ff0000 !important;
+    
+  }
+
+  .openchirp-alt-link .material-icons {
+    position: relative;
+    top: 6px;
+  }
+
+.openchirp-how-section {
+  //padding: 80px 0;
+  max-width: 1044px;
+  min-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  background: url($image_url + '/how-background.png') bottom right no-repeat;
+}
+
+.openchirp-how-section > .openchirp-section-title {
+    margin-left: 12px;
+    padding-bottom: 24px;
+    text-align: left;
+}
+
+.openchirp-numbereditem {
+  vertical-align: middle;
+  margin-right: 20px;
+}
+
+.openchirp-how-section .openchirp-section-name {
+    position: relative;
+    top: -70px;
+    border-bottom: 2px solid #007fa5;
+    text-decoration: none;
     text-align: center;
+    width:120px;
+}
+
+
+
+.openchirp-regular-section {
+  padding: 80px 0;
+  max-width: 1044px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.openchirp-regular-section > .openchirp-section-title {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;    
+}
+
+.openchirp-regular-section .openchirp-section-name {
+    position: relative;
+    top: -70px;
+    border-bottom: 2px solid #007fa5;
+    text-decoration: none;
+    text-align: center;
+    width:120px;
+}
+
+.openchirp-card-tech.mdl-card {
+  width: 250px;
+}
+
+.openchirp-card-tech > .mdl-card__media {
+    margin-left: auto;
+    margin-right: auto;
+    height: 55px;    
+}
+
+.openchirp-card-tech > .mdl-card__supporting-text {
+    text-align: center;
+}
+
+
+.openchirp-card.mdl-card {
+  width: 300px;
+  height: 300px;
+}
+
+.openchirp-card > .mdl-card__media {
+    margin-left: auto;
+    margin-right: auto;
+    height: 80px;    
+}
+.openchirp-card > .mdl-card__title {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.openchirp-card > .mdl-card__supporting-text {
+    text-align: center;
+}
+
+.openchirp-card-container {
+  justify-content: center;
+}
+
+  .openchirp-card-container .mdl-card__media {
+    overflow: hidden;
+    background: transparent;
   }
 
-  .flex-container {
-    width: 100%;
+    .openchirp-card-container .mdl-card__media img {
+      width: 100%;
+      
+    }
 
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    justify-content: space-around;
+  .openchirp-card-container .mdl-card__title {
+    background: transparent;
+    height: auto;
   }
 
-  .whatis-text {
-    display: block;
-    p {
-      font-family: "Avenir-Med", sans-serif;
-      text-align: center;
-      color: #898787;
-    }
-    strong {
-      font-family: "Avenir-Heavy", sans-serif;
-      color: #444444;
-    }
+  .openchirp-card-container .mdl-card__title-text {
+    color: black;
+    height: auto;
   }
 
-    .iot-project {
-      margin-left: 30%;
-      content: url($image_url + "/IoT icon.png");
-    }
-    .community-driven {
-      margin-left: 30%;
-      content: url($image_url + "/community icon.png");
-    }
-    .empowering {
-      margin-left: 30%;
-      content: url($image_url + "/empowering icon.png");
-      //padding: 5px;
-      //margin: 0 10px 15px 0;
-    }
-    //
-    //.community-driven {
-    //  padding: 5px;
-    //  margin: 0 10px 15px 0;
-    //  content: url($image_url + "/community icon.png");
-    //}
-
-    .tech-text {
-      margin-top: 10px;
-      margin-left: 25px;
-      background-color: transparent;
-
-      h4 {
-        color: $text-color;
-        font-family: "Avenir-Heavy", sans-serif;
-        font-variant: all-small-caps;
-        background-color: transparent;
-      }
-    }
-
-    .feat-container {
-      width: 90%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      flex-wrap: wrap;
-    }
-
-    .feat-text {
-      p {
-        font-family: "Avenir-Heavy", sans-serif;
-        color: #444444;
-      }
-    }
-
-    .protobuf-icon {
-      padding: 5px;
-      margin: 50px 20px 50px 70px;
-
-      content: url($image_url +"/protobuf-icon.png");
-    }
-
-    .cloud-icon {
-      padding: 5px;
-      margin: 50px 20px 50px 70px;
-
-      content: url($image_url + "/cloud-icon.png");
-    }
-
-    .open-icon {
-      padding: 5px;
-      margin: 50px 20px 50px 70px;
-
-      content: url($image_url + "/open-icon.png");
-    }
-
-    .rest-icon {
-      padding: 5px;
-      margin: 50px 20px 50px 50px;
-
-      content: url($image_url + "/rest-icon.png");
-    }
-
-    .battery-icon {
-      padding: 5px;
-      margin: 50px 20px 50px 50px;
-
-      content: url($image_url + "/battery-icon.png");
-    }
-
-    .intelligent-icon {
-      padding: 5px;
-      margin: 50px 20px 50px 50px;
-
-      content: url($image_url + "/intelligent-icon.png");
-    }
-
-    .gallery-title {
-      margin-right: 25px;
-      background-color: transparent;
-
-      h4 {
-        color: $text-color;
-        font-family: "Avenir-Heavy", sans-serif;
-        font-variant: all-small-caps;
-        background-color: transparent;
-      }
-    }
-
-    .gallery-section {
-      margin-bottom: 5%;
-      .gallery-wrapper {
-        width: 40%;
-        margin-top: 20%;
-      }
-      .gallery-text {
-        position: relative;
-        font-family: "Avenir-Heavy", sans-serif;
-        margin-top: 5%;
-        //margin: 55% 10% 35% 65%;
-        margin-right: 20%;
-      }
-    }
-
-    //.gallery-pic {
-    //  height: 100vh;
-    //  margin: 0;
-    //  background-image: url($image_url + "/gallery-bg.png");
-    //  background-position: center;
-    //  background-size: 100% 80%;
-    //  background-repeat: no-repeat;
-
-    //button {
-    //  outline-color: $text-color;
-    //}
-    //.gallery-button {
-    //  background-color:  rgb(234,240,242);
-    //  font-family: "Avenir-Heavy", sans-serif;
-    //  font-variant: all-small-caps;
-    //  color: $black-text;
-    //  margin: 10% 35% 5% 35%;
-    //}
-    //}
-
-    //.cmu-pic {
-    //  height: 100vh;
-    //  margin: 0;
-    //  background-image: url($image_url +"/CMU.png");
-    //  background-position: center;
-    //  background-repeat: no-repeat;
-    //}
-
-    .ece-logo {
-      content: url($image_url + '/ece-logo.png');
-      width: 50%;
-    }
-
-    .cylab-logo {
-      content: url($image_url + '/cylab-logo.png');
-      width: 40%;
-    }
-
-    .footer {
-      height: $footer-height-bottom;
-      background-color: rgba(52, 73, 94, 1.0);
-      .wrapper {
-        padding: 0;
-        p {
-          line-height: $footer-height-bottom;
-          margin: 0;
-          padding-left: 15px;
-          padding-right: 15px;
-          font-family: "Avenir-Med", sans-serif;
-          text-align: center;
-          color: #ffffff;
-        }
-      }
-    }
-    color: $background-color;
-
-  @media screen and (max-width: 960px) {
-    .splash-page {
-      .picture-section {
-        .picture-section-text {
-          position: relative;;
-          font-size: 18px;
-          width: 100%;
-          padding: 0;
-          top: 40%;
-          left: 0;
-          background-color: rgba(0, 0, 0, 0.5);
-          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-          h1 {
-            padding: 10px;
-          }
-        }
-      }
-    }
+  .openchirp-card-container .mdl-card__supporting-text {
+    height: auto;
+    color: black;
+    padding-bottom: 56px;
   }
 
-  @media screen and (max-width: 450px) {
-    .splash-page {
-      md-toolbar {
-        .title-buttons {
-          display: none;
-        }
-        .title-buttons-phone {
-          display: block;
-        }
-      }
-    }
-
+  .openchirp-card-container .mdl-card__actions {
+    position: absolute;
+    bottom: 0;
   }
+
+  .openchirp-card-container .mdl-card__actions a {
+    border-top: none;
+    font-size: 16px;
+  }
+
+.openchirp-footer {
+  background-color: #fafafa;
+  text-align: center; 
+}
+
+
+.openchirp-link-menu:hover {
+  cursor: pointer;
+}
+
+
+.openchirp-footer-cards {
+  background-color: transparent;
+}
+
+.openchirp-footer-card {
+  background-color: #0000ff;
+}
+
+
+/**** Mobile layout ****/
+@media (max-width: 900px) {
+  .openchirp-navigation-container {
+    display: none;
+  }
+
+  .openchirp-title {
+    display: none !important;
+  }
+
+  .openchirp-mobile-title {
+    display: block !important;
+    position: absolute;
+    left: calc(50% - 70px);
+    top: 12px;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .openchirp-slogan {
+    font-size: 26px;
+    margin: 0 16px;
+    padding-top: 24px;
+  }
+
+  .openchirp-sub-slogan {
+    font-size: 26px;
+    margin: 0 16px;
+    padding-top: 8px;
+  }
+
+  .openchirp-footer .mdl-mega-footer--bottom-section {
+    display: none;
+  }
+
+
+
 }

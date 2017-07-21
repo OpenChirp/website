@@ -6,6 +6,7 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { MaterialModule, MdInputModule, MdCardModule } from '@angular/material';
 import { MdDataTableModule } from 'ng2-md-datatable';
+import { MdlModule } from '@angular-mdl/core'
 
 import 'hammerjs';
 
@@ -116,7 +117,8 @@ import { GlobalDataService } from './services/global.data.service';
     MdCardModule,
     BrowserAnimationsModule,
     MdDataTableModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MdlModule
   ],
   providers: [
     LocationService,
