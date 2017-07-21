@@ -7,8 +7,7 @@
       <ng2-md-datatable-column><p>Command</p></ng2-md-datatable-column>
       <ng2-md-datatable-column><p>Value</p></ng2-md-datatable-column>
       <ng2-md-datatable-column><p></p></ng2-md-datatable-column>
-      <ng2-md-datatable-column><p></p></ng2-md-datatable-column>
-      <ng2-md-datatable-column><p>Delete</p></ng2-md-datatable-column>
+      <ng2-md-datatable-column><p>Actions</p></ng2-md-datatable-column>
     </ng2-md-datatable-header>
 
     <!-- Table Body -->
@@ -19,11 +18,14 @@
         <td><p>{{ command.name }}</p></td>
         <td><p>{{ command.value }}</p></td>
         <td><button md-raised-button (click)="execute(command)">Run</button></td>
-        <td><button md-raised-button (click)="createShortcut(command)">Add Shortcut</button></td>
         <td>
-          <button md-icon-button (click)="deleteCommand(command._id, command.name)">
-            <md-icon >clear</md-icon>
-          </button>
+           <md-icon [mdMenuTriggerFor]="menu">more_horiz</md-icon>
+           <md-menu #menu="mdMenu">                 
+              <button md-menu-item (click)="createShortcut(command)">Add Shortcut</button>
+              <button md-menu-item (click)="publicLink(command)">Create Public Link</button>
+              <button md-menu-item (click)="deleteCommand(command._id, command.name)">Delete</button>
+        </md-menu>
+        
         </td>
       </ng2-md-datatable-row>
 
@@ -46,7 +48,6 @@
             </md-option>
           </md-select>
         </td>
-         <td><p>-</p></td>
         <td>
           <button md-icon-button (click)="newCommand()">
             <md-icon>add</md-icon>
