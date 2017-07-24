@@ -42,7 +42,7 @@ export class DashboardMainComponent {
     this.userService.deleteShortcut(shortcut._id).subscribe(
       result => {
         this.successDialogService
-          .dialogPopup('Done: ' + shortcut.name);
+          .dialogPopup('Deleted : ' + shortcut.name);
         this.getShortcuts();
       },
       error => {

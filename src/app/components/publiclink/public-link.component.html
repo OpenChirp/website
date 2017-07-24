@@ -1,0 +1,19 @@
+<div class="publiclink">
+  <h2>Public link for command: {{ command.name }}</h2>
+  <md-card>
+      <div class ="link" *ngIf="link">
+      {{ link }}       
+      </div>
+      <div *ngIf="!link">
+
+        No public link found.
+          <div class="createLink">
+            <button md-raised-button (click)="createPublicLink()">Create Public Link</button>
+          </div>
+      
+      </div>
+      <div class="buttons">
+        <button md-raised-button (click)="close()">Close</button>
+      </div>  
+    </md-card>
+</div>

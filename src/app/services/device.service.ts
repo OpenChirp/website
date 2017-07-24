@@ -67,13 +67,13 @@ export class DeviceService {
   // Create Public Link
   createPublicLink(device_id: string, command_id: string) {
     var body = {};
-    return this.http.post(this.deviceUrl + device_id + "/command"+ command_id +"/publiclink", body, this.requestOptions)
+    return this.http.post(this.deviceUrl + device_id + "/command/"+ command_id +"/publiclink", body, this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
- // Create Public Link
+ // Get Public Link
   getPublicLink(device_id: string, command_id: string) {    
-    return this.http.get(this.deviceUrl + device_id + "/command"+ command_id +"/publiclink",  this.requestOptions)
+    return this.http.get(this.deviceUrl + device_id + "/command/"+ command_id +"/publiclink",  this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
   }

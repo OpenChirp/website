@@ -51,8 +51,6 @@ export class DeviceServicesComponent {
 					service.name = result.name;
 					service.description = result.description;
 					service.config = this.links[service._id];
-					console.log(service._id);
-					console.log(service.config);
 					this.services.push(service);
 				});
 		}     

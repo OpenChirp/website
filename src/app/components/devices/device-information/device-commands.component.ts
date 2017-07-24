@@ -6,6 +6,8 @@ import { DeviceService } from '../../../services/device.service';
 import { UserService } from '../../../services/user.service';
 import { MdDialog } from '@angular/material';
 import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.component';
+import { PublicLinkComponent } from '../../publiclink/public-link.component';
+import { Configuration } from '../../../config';
 
 @Component({
   selector: 'device-commands',
@@ -19,13 +21,17 @@ export class DeviceCommandsComponent {
   name: string = "";
   value: string = "";
   transducer: any = null;
-  
+  baseUrl: string;
+
   constructor(private deviceService: DeviceService, 
               private userService: UserService,
               private successDialogService: SuccessDialogService, 
               private errorDialogService: ErrorDialogService,
-              public dialog: MdDialog) {
+              public dialog: MdDialog,
+              private config: Configuration
+              ) {
 
+    this.baseUrl = config.base_url;
   }
 
   newCommand() {
@@ -78,17 +84,26 @@ export class DeviceCommandsComponent {
 
   publicLink(command: any) {
     this.deviceService.getPublicLink(this.device._id, command._id).subscribe(
-        result => {
-          //TODO
-           /*let dialogRef = this.dialog.open(ConfirmationDialogComponent);
-           dialogRef.componentInstance.dialogText = "Delete Command " + name + "?";
-           dialogRef.componentInstance.confirmText = "Delete";*/
-          },
-        error => {
-             this.errorDialogService
-                .dialogPopup(error.message);
-        });
+      result => {      
+        let dialogRef = this.dialog.open(PublicLinkComponent, { width: '800px' });
+        dialogRef.componentInstance.device = this.device;
+        dialogRef.componentInstance.command = command;
+        dialogRef.componentInstance.link = this.baseUrl+ result;
+        dialogRef.componentInstance.baseUrl = this.baseUrl; 
+      },
+      error => {
+        if(error.status == 404){
+          let dialogRef = this.dialog.open(PublicLinkComponent, { width: '800px' });
+          dialogRef.componentInstance.device = this.device;
+          dialogRef.componentInstance.command = command;
+          dialogRef.componentInstance.baseUrl = this.baseUrl; 
+        }else{
+          this.errorDialogService
+          .dialogPopup(error.message);
+        }
+      });
   }
+
  createShortcut(command : any){
    // if (this.name != "") {
       var body = {

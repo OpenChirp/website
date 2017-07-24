@@ -22,7 +22,7 @@
            <md-icon [mdMenuTriggerFor]="menu">more_horiz</md-icon>
            <md-menu #menu="mdMenu">                 
               <button md-menu-item (click)="createShortcut(command)">Add Shortcut</button>
-              <button md-menu-item (click)="publicLink(command)">Create Public Link</button>
+              <button md-menu-item (click)="publicLink(command)">Get Public Link</button>
               <button md-menu-item (click)="deleteCommand(command._id, command.name)">Delete</button>
         </md-menu>
         
