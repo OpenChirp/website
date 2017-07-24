@@ -64,6 +64,20 @@ export class DeviceService {
                     .catch(this.handleError);
   }
 
+  // Create Public Link
+  createPublicLink(device_id: string, command_id: string) {
+    var body = {};
+    return this.http.post(this.deviceUrl + device_id + "/command"+ command_id +"/publiclink", body, this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+ // Create Public Link
+  getPublicLink(device_id: string, command_id: string) {    
+    return this.http.get(this.deviceUrl + device_id + "/command"+ command_id +"/publiclink",  this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
   // Add New Transducer
   addTransducer(device_id: string, body: any) {
     return this.http.post(this.deviceUrl + device_id + "/transducer", body, this.requestOptions)

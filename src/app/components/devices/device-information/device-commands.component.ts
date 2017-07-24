@@ -71,11 +71,23 @@ export class DeviceCommandsComponent {
             error => {
               this.errorDialogService
                 .dialogPopup(error.message + ': ' + name);
-            }
-          );
+            });
         }
-      }
-    );
+      });
+  }
+
+  publicLink(command: any) {
+    this.deviceService.getPublicLink(this.device._id, command._id).subscribe(
+        result => {
+          //TODO
+           /*let dialogRef = this.dialog.open(ConfirmationDialogComponent);
+           dialogRef.componentInstance.dialogText = "Delete Command " + name + "?";
+           dialogRef.componentInstance.confirmText = "Delete";*/
+          },
+        error => {
+             this.errorDialogService
+                .dialogPopup(error.message);
+        });
   }
  createShortcut(command : any){
    // if (this.name != "") {
