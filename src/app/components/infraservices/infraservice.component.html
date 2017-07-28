@@ -22,13 +22,16 @@
 	  	 <p>Owner : {{ service.owner.name || service.owner.email }}</p>
 		  <p></p>
 		 
+		  <hr>
+		 <h3>Status:</h3>
+		  <p>Last Message : {{ service.status ? service.status.message : "-" }}</p>
+		  <p>Timestamp : {{ service.status ? (service.status.timestamp | date : "short" ) : "-" }}</p>
 		 <hr>
 		 <h3>PubSub:</h3>
 	      <p>Protocol : {{ service.pubsub.protocol }}</p>
 		  <p>Endpoint : {{ service.pubsub.endpoint }}</p>
 		
-		 <div *ngIf ="acl.isOwner">
-		 	   
+		 <div *ngIf ="acl.isOwner">		 	   
 		     <div *ngIf="service.token">
 		        <button md-raised-button (click)="recreateServiceToken()">Re-Generate Token</button>  
 		        <button md-raised-button (click)="deleteServiceToken()">Delete Token</button>

@@ -12,6 +12,9 @@
     <ng2-md-datatable-header>
       <ng2-md-datatable-column><p>Name</p></ng2-md-datatable-column>
       <ng2-md-datatable-column><p>Config</p></ng2-md-datatable-column>
+      <ng2-md-datatable-column><p>Last Status</p></ng2-md-datatable-column>
+      <ng2-md-datatable-column><p>Timestamp</p></ng2-md-datatable-column>
+      <ng2-md-datatable-column><p>Delete</p></ng2-md-datatable-column>
     </ng2-md-datatable-header>
 
     <!-- Table Body -->
@@ -22,6 +25,8 @@
         <ng2-md-datatable-column><p><button md-raised-button (click)="viewConfig(service)">
            View/Update Config
           </button></p></ng2-md-datatable-column>
+          <ng2-md-datatable-column><p>{{ service.status ? service.status.message : "-" }}</p></ng2-md-datatable-column>
+          <ng2-md-datatable-column><p>{{ service.status ? (service.status.timestamp | date : "short" ) : "-" }}</p></ng2-md-datatable-column>
           <ng2-md-datatable-column>
           <button md-icon-button color="warn" (click)="removeServiceLink(service._id, service.name)">
             <md-icon >clear</md-icon>
