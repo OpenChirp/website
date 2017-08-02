@@ -176,6 +176,27 @@ export class DeviceService {
                     .catch(this.handleError);
   }
 
+   // Create ACL
+  createAcl(device_id: string, entity_id: string, body: any) {
+    return this.http.post(this.deviceUrl+ device_id + "/acl/"+entity_id, body, this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  // Update ACL
+  updateAcl(device_id: string, entity_id: string, body: any) {
+    return this.http.put(this.deviceUrl+ device_id + "/acl/"+entity_id, body, this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  // Delete ACL
+  deleteAcl(device_id: string, entity_id: string, body: any) {
+    return this.http.delete(this.deviceUrl+ device_id + "/acl/"+entity_id, this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
   private extractData(res: Response) {
     let body = res.json();
     return body || { };

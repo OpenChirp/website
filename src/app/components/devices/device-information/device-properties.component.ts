@@ -117,4 +117,7 @@ export class DevicePropertiesComponent {
       }
       );
   }
+
+
+
 }
