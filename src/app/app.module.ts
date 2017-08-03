@@ -52,6 +52,8 @@ import { GroupMembersComponent } from './components/groups/groupmembers.componen
 import { UserGroupsComponent } from './components/groups/usergroups.component';
 import { UpdateConfigComponent } from './components/dialogs/update-config.component';
 import { PublicLinkComponent } from './components/publiclink/public-link.component';
+import { DeviceAclComponent } from './components/devices/device-information/device-acl.component';
+
 // Services
 import { LocationService } from './services/location.service';
 import { DeviceService } from './services/device.service';
@@ -105,7 +107,8 @@ import { GlobalDataService } from './services/global.data.service';
     GroupMembersComponent,
     UserGroupsComponent,
     UpdateConfigComponent,
-    PublicLinkComponent
+    PublicLinkComponent,
+    DeviceAclComponent
   ],
   imports: [
     BrowserModule,
