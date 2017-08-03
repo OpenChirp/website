@@ -47,12 +47,14 @@
         </div>
       </md-tab>
 
-       <!-- Access Control Tab -->
-      <md-tab label="Access Control">
-        <div class="tab-content">
-          <device-acl [device]="device" (updateDevice)="getDevice($event)"></device-acl>
+       <div *ngIf ="acl.writeAccess">
+           <!-- Security Tab -->
+          <md-tab label="Security">
+            <div class="tab-content">
+              <device-acl [device]="device" (updateDevice)="getDevice($event)"></device-acl>
+            </div>
+          </md-tab>
         </div>
-      </md-tab>
     </md-tab-group>
   </md-card>
 </div>

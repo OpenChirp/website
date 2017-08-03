@@ -50,11 +50,15 @@ export class DeviceComponent {
           this.device = result;
           let ownerId = this.device.owner._id;
           let loggedInUserId = this.globalDataService.userid;
+          let isAdmin = this.globalDataService.isAdmin;
           if(String(ownerId) === String(loggedInUserId)){
             this.acl.isOwner = true;
           }
           else{
             this.acl.isOwner = false;
+          }
+          if(this.acl.isOwner || isAdmin){
+            this.acl.writeAccess = true;
           }
         },
         error => this.router.navigate(['/home'])

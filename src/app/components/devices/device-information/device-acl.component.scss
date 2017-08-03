@@ -3,16 +3,29 @@
     border-bottom: solid 1px #303030;
     font-weight: bold;
   }
-    md-icon {
-      float: center;
-      line-height: 40px;
-      cursor: pointer;
-      transition-duration: 0.3s;
-      color: #303132;
-     
-    }
-   md-icon:hover {
-      color: #3a7193;
-      transition-duration: 0.3s;
-    }
+    ng2-md-datatable-row {   
+      border-top: solid 1px #e3e3e3;
+      border-bottom: solid 1px #e3e3e3;
+  }
+
+   .group-name{
+     cursor: pointer;
+     display: block;
+     width: 100%;
+     height:100%
+ }
+   md-card {
+    width: 80%;
+    min-width: 400px;
+    margin: 10px;
+    border:solid 1px #e3e3e3;
+    box-shadow: none;
+  }
+   .card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
 }

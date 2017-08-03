@@ -175,7 +175,18 @@ export class DeviceService {
                     .map(this.extractData)
                     .catch(this.handleError);
   }
-
+  // Get All User's ACL
+  getUsersAcl(device_id: string) {    
+    return this.http.get(this.deviceUrl + device_id + "/acl/users",  this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+  // Get All User's ACL
+  getGroupsAcl(device_id: string) {    
+    return this.http.get(this.deviceUrl + device_id + "/acl/groups",  this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
    // Create ACL
   createAcl(device_id: string, entity_id: string, body: any) {
     return this.http.post(this.deviceUrl+ device_id + "/acl/"+entity_id, body, this.requestOptions)
@@ -191,7 +202,7 @@ export class DeviceService {
   }
 
   // Delete ACL
-  deleteAcl(device_id: string, entity_id: string, body: any) {
+  deleteAcl(device_id: string, entity_id: string) {
     return this.http.delete(this.deviceUrl+ device_id + "/acl/"+entity_id, this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);

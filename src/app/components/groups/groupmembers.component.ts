@@ -26,7 +26,6 @@ export class GroupMembersComponent {
   group: any = {};
   users: Array<any> = [];
   filteredUsers: any;
- // userEmails : Array<string> = [];
   members: Array<any> = [];
   
   constructor(private route: ActivatedRoute, 

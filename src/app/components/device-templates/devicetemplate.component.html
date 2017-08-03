@@ -14,5 +14,7 @@
       <p>{{ template.description }}</p>
        <h3>Owner</h3>
       <p>{{ template.owner.name || template.owner.email }}</p>
+      <h3> Created </h3>
+      <p> {{ template.created_at | date :"short" }}</p>
     </md-card>
 </div>

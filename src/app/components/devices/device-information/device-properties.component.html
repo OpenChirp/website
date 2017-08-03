@@ -19,22 +19,16 @@
       <md-slide-toggle [(ngModel)]="device.enabled" name="device-enabled">True</md-slide-toggle>
       </p>
     <button md-raised-button (click)="updateDeviceMeta()">Update</button>  
-    <button md-raised-button (click)="viewProperties()">View Properties</button>
+    <button md-raised-button (click)="viewProperties()">Edit Custom Properties</button>
      <p></p>
     </div>
    <hr>
     <p>Protocol : {{ device.pubsub.protocol }}</p>
     <p>Endpoint : {{ device.pubsub.endpoint }}</p>
     <p>Owner : {{ device.owner.name || device.owner.email }}</p>
+    <p>Created at: {{ device.created_at | date :"short" }}</p>
+    <p>Last Updated: {{ device.updated_at | date :"short" }}</p>
     <p></p>
-   <div *ngIf ="acl.isOwner">
-     <div *ngIf="device.token">
-        <button md-raised-button (click)="recreateDeviceToken()">Re-Generate Token</button>  
-        <button md-raised-button (click)="deleteDeviceToken()">Delete Token</button>
-     </div>
-      <div *ngIf="!device.token">
-        <button md-raised-button (click)="createDeviceToken()">Generate Token</button>
-     </div>
-    </div>
+  
   </form>
 </div>
