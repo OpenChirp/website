@@ -14,7 +14,11 @@
 	      <p><md-input-container>
 	        <textarea mdInput placeholder="Description" [(ngModel)]="service.description" name="service-description"></textarea>
 	      </md-input-container></p>
-
+	      	<p>Device Permission: <md-radio-group [(ngModel)]="service.device_permission" name="service-device-permission">
+	      	  		<md-radio-button value="0">Read</md-radio-button>
+					<md-radio-button value="1">Execute</md-radio-button>
+					<md-radio-button value="2">Write</md-radio-button>
+			</md-radio-group></p>
 	 		<p> <button md-raised-button (click)="updateService()">Update</button>
 			 <button md-raised-button (click)="viewProperties()">Edit Custom Properties</button></p>
 	  	 <div><p><button md-raised-button (click)="viewConfigRequired()">Device Config Required

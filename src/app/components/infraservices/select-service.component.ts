@@ -29,6 +29,16 @@ export class SelectServiceComponent {
     this.dialogRef.close(service);
   }
 
+  getPermissionName(perm: number){
+    if(perm == 0){
+      return "Read";
+    }else if(perm == 1){
+      return "Execute";
+    }else if(perm == 2){
+      return "Write";
+    }
+  }
+
   filtered() {
     if (this.searchTerm != "") {
       return this.services.filter((x) => {
