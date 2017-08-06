@@ -53,6 +53,7 @@ import { UserGroupsComponent } from './components/groups/usergroups.component';
 import { UpdateConfigComponent } from './components/dialogs/update-config.component';
 import { PublicLinkComponent } from './components/publiclink/public-link.component';
 import { DeviceAclComponent } from './components/devices/device-information/device-acl.component';
+import { StatsComponent } from './components/admin/stats/stats.component';
 
 // Services
 import { LocationService } from './services/location.service';
@@ -64,6 +65,7 @@ import { InfraService } from './services/infraservice';
 import { GroupService } from './services/group.service';
 import { Configuration } from './config';
 import { GlobalDataService } from './services/global.data.service';
+import { AdminService } from './services/admin.service';
 
 @NgModule({
   declarations: [
@@ -108,7 +110,8 @@ import { GlobalDataService } from './services/global.data.service';
     UserGroupsComponent,
     UpdateConfigComponent,
     PublicLinkComponent,
-    DeviceAclComponent
+    DeviceAclComponent,
+    StatsComponent
   ],
   imports: [
     BrowserModule,
@@ -133,7 +136,8 @@ import { GlobalDataService } from './services/global.data.service';
     InfraService,
     GroupService,
     Configuration,
-    GlobalDataService
+    GlobalDataService,
+    AdminService
   ],
   entryComponents: [
     SuccessDialogComponent,

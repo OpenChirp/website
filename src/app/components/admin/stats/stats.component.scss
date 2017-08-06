@@ -1,0 +1,26 @@
+$black-text: #303132;
+
+.stats {
+	background-color: white;
+	ng2-md-datatable-header {
+		border-bottom: solid 1px #909090;
+		font-weight:bold;
+	}
+	ng2-md-datatable-row {
+		border-top: solid 1px #e3e3e3;
+		border-bottom: solid 1px #e3e3e3;
+	}
+
+	.card-header {
+		h2 {
+			margin: 0;
+			float: left;
+			font-family: "Avenir-Heavy", sans-serif;
+			color: $black-text;
+		}	
+		button {
+			float: right;
+		}
+		margin-bottom: 20px;
+	}
+}

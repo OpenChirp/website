@@ -1,0 +1,64 @@
+<div class="stats">
+ <md-card>
+   <div class="card-header">
+     <h2> Number of entries : </h2>   
+  </div>
+  <br>
+  <div *ngIf="stats">
+    <ng2-md-datatable>
+      <!-- Table Header-->
+   <ng2-md-datatable-header>
+      <ng2-md-datatable-column><p>Document</p></ng2-md-datatable-column>
+      <ng2-md-datatable-column><p>Count</p></ng2-md-datatable-column>
+    </ng2-md-datatable-header>
+
+    <!-- Table Body -->
+    <tbody>
+      <!-- Item Row -->
+        <ng2-md-datatable-row>
+            <ng2-md-datatable-column> Device </ng2-md-datatable-column>
+            <ng2-md-datatable-column>{{ stats.device}} </ng2-md-datatable-column>
+        </ng2-md-datatable-row>
+
+        <ng2-md-datatable-row>
+            <ng2-md-datatable-column> Device Template</ng2-md-datatable-column>
+            <ng2-md-datatable-column>{{ stats.devicetemplate}} </ng2-md-datatable-column>
+        </ng2-md-datatable-row>
+
+         <ng2-md-datatable-row>
+            <ng2-md-datatable-column> Service </ng2-md-datatable-column>
+            <ng2-md-datatable-column>{{ stats.service }} </ng2-md-datatable-column>
+        </ng2-md-datatable-row>
+      
+
+        <ng2-md-datatable-row>
+            <ng2-md-datatable-column> Location </ng2-md-datatable-column>
+            <ng2-md-datatable-column>{{ stats.location}} </ng2-md-datatable-column>
+        </ng2-md-datatable-row>
+
+          <ng2-md-datatable-row>
+            <ng2-md-datatable-column> Group </ng2-md-datatable-column>
+            <ng2-md-datatable-column>{{ stats.group }} </ng2-md-datatable-column>
+        </ng2-md-datatable-row>
+
+        <ng2-md-datatable-row>
+            <ng2-md-datatable-column> User </ng2-md-datatable-column>
+            <ng2-md-datatable-column>{{ stats.user }} </ng2-md-datatable-column>
+        </ng2-md-datatable-row>
+
+        <ng2-md-datatable-row>
+            <ng2-md-datatable-column> Thing Credential </ng2-md-datatable-column>
+            <ng2-md-datatable-column>{{ stats.thingcredential }} </ng2-md-datatable-column>
+        </ng2-md-datatable-row>
+
+        <ng2-md-datatable-row>
+            <ng2-md-datatable-column> Public Link </ng2-md-datatable-column>
+            <ng2-md-datatable-column>{{ stats.publiclink}} </ng2-md-datatable-column>
+        </ng2-md-datatable-row>
+        
+      </tbody>
+    </ng2-md-datatable>
+  </div>
+ 
+</md-card>
+</div>
