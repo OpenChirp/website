@@ -26,7 +26,7 @@
         <mdl-layout-spacer></mdl-layout-spacer>
         <!-- Navigation. We hide it in small screens. -->
         <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="https://openchirp.github.io/api_doc">Docs</a>
+          <a class="mdl-navigation__link" href="https://github.com/OpenChirp/docs/wiki">Get Started</a>
           <a class="mdl-button mdl-js-button" [href]="login_url" routerLinkActive="active" *ngIf="!logged_in">Login</a>
           <a class="mdl-button mdl-js-button" routerLink="/home" routerLinkActive="active" *ngIf="logged_in">Home</a>
         </nav>
@@ -41,7 +41,7 @@
         <a class="mdl-navigation__link" href="#how">How it Works</a>
         <a class="mdl-navigation__link" href="#technology">Technology</a>
         <a class="mdl-navigation__link" href="#gallery">Gallery</a>
-        <a class="mdl-navigation__link" href="https://openchirp.github.io/api_doc">Docs</a>
+        <a class="mdl-navigation__link" href="https://github.com/OpenChirp/docs/wiki">Get Started</a>
       </nav>
     </mdl-layout-drawer>
     <!--drawer end-->
@@ -61,14 +61,13 @@
         <div class="openchirp-section-name mdl-typography--font-light">
           ABOUT
         </div>
-        <div class="openchirp-section-title mdl-typography--display-1-color-contrast ">
-          What is OpenChirp?
+        <div class="openchirp-section-title mdl-typography--display-1-color-contrast ">What is OpenChirp?
           <p></p>
           <p></p>
           <p class="mdl-typography--subhead-color-contrast mdl-typography--font-light">
-            OpenChirp is a management layer on top of LoRaWAN that provides data context, storage, visualization, and access control
-            over the web. OpenChirp is currently powering a LoRaWAN Network at CMU that also spans most of the City of Pittsburgh.
-            You can expand the OpenChirp network by using our software to connect your own LoRa base station.
+            OpenChirp is a management framework for Low-Power Wide-Area Networks (LP-WAN) that provides data context, storage, visualization, and access control over the web.
+            OpenChirp is currently powering a LoRaWAN Network at Carnegie Mellon University that also spans large portions of the City of Pittsburgh.
+            You can expand the OpenChirp network by using our software to connect your own LP-WAN base stations.
           </p>
         </div>
 
@@ -94,7 +93,7 @@
               <h2 class="mdl-card__title-text">Community-driven</h2>
             </div>
             <div class="mdl-card__supporting-text">
-              <span class="mdl-typography--subhead mdl-typography--font-light">Create an open community-driven Network</span>
+              <span class="mdl-typography--subhead mdl-typography--font-light">Help to create an open community-driven network</span>
             </div>
           </div>
 
@@ -150,60 +149,85 @@
         <div class="openchirp-section-name mdl-typography--font-light">
           TECHNOLOGY
         </div>
+        
         <div class="openchirp-card-container mdl-grid">
-          <div class="openchirp-card-tech mdl-card">
-            <div class="mdl-card__media">
-              <img src="assets/images/protobuf-icon.png" width="52px" height="52px">
-            </div>
-            <div class="mdl-card__supporting-text">
-              <span class="mdl-typography--subhead mdl-typography--font-light">ProtoBuf serialization from
-                  end-device to cloud</span>
-            </div>
-          </div>
+
           <div class="openchirp-card-tech mdl-card">
             <div class="mdl-card__media">
               <img src="assets/images/cloud-icon.png" width="52px" height="52px">
             </div>
             <div class="mdl-card__supporting-text">
-              <span class="mdl-typography--subhead mdl-typography--font-light">MQTT for scalable real-time
-                  publish subscribe</span>
+              <span class="mdl-typography--subhead mdl-typography--font-light">MQTT for scalable real-time<br>publish subscribe</span>
             </div>
           </div>
-          <div class="openchirp-card-tech mdl-card">
-            <div class="mdl-card__media">
-              <img src="assets/images/open-icon.png" width="52px" height="52px">
-            </div>
-            <div class="mdl-card__supporting-text">
-              <span class="mdl-typography--subhead mdl-typography--font-light">Openly available gateway
-                  architecture</span>
-            </div>
-          </div>
+
           <div class="openchirp-card-tech mdl-card">
             <div class="mdl-card__media">
               <img src="assets/images/rest-icon.png" width="52px" height="52px">
             </div>
             <div class="mdl-card__supporting-text">
-              <span class="mdl-typography--subhead mdl-typography--font-light">REST interface for configuration
-                  and management</span>
+              <span class="mdl-typography--subhead mdl-typography--font-light">REST interface for<br>configuration and<br>management</span>
             </div>
           </div>
+
+
           <div class="openchirp-card-tech mdl-card">
             <div class="mdl-card__media">
-              <img src="assets/images/battery-icon.png" width="52px" height="52px">
+              <img src="assets/images/db-icon.png" width="52px" height="52px">
             </div>
             <div class="mdl-card__supporting-text">
-              <span class="mdl-typography--subhead mdl-typography--font-light">10 Year Battery-Life</span>
+              <span class="mdl-typography--subhead mdl-typography--font-light">Time series data storage<br>and visualization</span>
             </div>
           </div>
+
+
           <div class="openchirp-card-tech mdl-card">
             <div class="mdl-card__media">
               <img src="assets/images/intelligent-icon.png" width="52px" height="52px">
             </div>
             <div class="mdl-card__supporting-text">
-              <span class="mdl-typography--subhead mdl-typography--font-light">Intelligent network
-                  management</span>
+              <span class="mdl-typography--subhead mdl-typography--font-light">Intelligent LP-WAN<br>nework management</span>
             </div>
           </div>
+
+
+          <div class="openchirp-card-tech mdl-card">
+            <div class="mdl-card__media">
+              <img src="assets/images/open-icon.png" width="52px" height="52px">
+            </div>
+            <div class="mdl-card__supporting-text">
+              <span class="mdl-typography--subhead mdl-typography--font-light">Connect your own gateway<br>to expand the network</span>
+            </div>
+          </div>
+
+          <div class="openchirp-card-tech mdl-card">
+            <div class="mdl-card__media">
+              <img src="assets/images/protobuf-icon.png" width="52px" height="52px">
+            </div>
+            <div class="mdl-card__supporting-text">
+              <span class="mdl-typography--subhead mdl-typography--font-light">ProtoBuf serialization from<br>end-device to cloud</span>
+            </div>
+          </div>
+
+          <div class="openchirp-card-tech mdl-card">
+            <div class="mdl-card__media">
+              <img src="assets/images/battery-icon.png" width="52px" height="52px">
+            </div>
+            <div class="mdl-card__supporting-text">
+              <span class="mdl-typography--subhead mdl-typography--font-light">Energy-efficient client<br>firmware for your end-device</span>
+            </div>
+          </div>
+          
+          <div class="openchirp-card-tech mdl-card">
+            <div class="mdl-card__media">
+              <img src="assets/images/lock-icon.png" width="52px" height="52px">
+            </div>
+            <div class="mdl-card__supporting-text">
+              <span class="mdl-typography--subhead mdl-typography--font-light">Device, user and API tokens<br>with access control</span>
+            </div>
+          </div>
+
+
         </div>
       </div>
 
@@ -247,6 +271,31 @@
         </div>
       </div>
 
+
+    <!--Get Involved-->
+      <div class="openchirp-regular-section get-involved">
+        <a name="get_involved"></a>
+        <div class="openchirp-section-name mdl-typography--font-light">GET INVOLVED</div>
+
+        <ul class="demo-list-icon mdl-list">
+          <li class="mdl-list__item">
+
+            <span class="mdl-list__item-primary-content">
+                  <img src="assets/images/1.png" width="41px" height="41px" class="openchirp-numbereditem">
+                  <span class="openchirp-numbereditem" font-size="16px">Contact us at <a href="mailto:openchirp@gmail.com">openchirp@gmail.com</a></span>
+            </span>
+
+          </li>
+          <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                  <img src="assets/images/2.png" width="41px" height="41px" class="openchirp-numbereditem">
+                  <span class="openchirp-numbereditem" font-size="16px">Visit our <a href="https://github.com/OpenChirp"> GitHub page</a></span>
+            </span>
+          </li>
+        </ul>
+      </div>
+
+
       <!--Footer-->
       <footer class="openchirp-footer mdl-mega-footer">
         <div class="mdl-mega-footer--middle-section">
@@ -254,9 +303,21 @@
           <div class="openchirp-card-container mdl-grid openchirp-footer-cards">
 
             <div class="mdl-layout-spacer"></div>
-            <a href="https://www.cylab.cmu.edu/"><img src="assets/images/cylab-logo.png" height="66px"></a>
+            
+            <a href="http://www.bosch.us/content/language1/html/rtc.htm"><img src="assets/images/bosch-logo.svg" height="55px"></a>
+            
             <div class="mdl-layout-spacer"></div>
-            <a href="https://www.ece.cmu.edu/"><img src="assets/images/ece-logo.png" height="66px"></a>
+            
+            <a href="https://www.cylab.cmu.edu/"><img src="assets/images/cylab-logo.svg" height="55x"></a>
+
+            <div class="mdl-layout-spacer"></div>
+            
+            <a href="https://www.ece.cmu.edu/"><img src="assets/images/ece-logo.svg" height="55px"></a>
+            
+            <div class="mdl-layout-spacer"></div>
+
+            <a href="http://wise.ece.cmu.edu/"><img src="assets/images/wiselab-logo.svg" height="55px" ></a>
+            
             <div class="mdl-layout-spacer"></div>
 
           </div>
