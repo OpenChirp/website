@@ -1,24 +1,15 @@
+
 $black-text: #303132;
 
-.user-services {
+.user-profile {
   background-color: #ffffff;
   p {
     font-family: "Avenir-Med", sans-serif;
     color: $black-text;
   }
   md-card {
-    box-shadow: none;
-    ng2-md-datatable-header {
-      border-bottom: solid 1px #909090;
-      font-weight:bold;
-    }
-    ng2-md-datatable-row {
-      border-top: solid 1px #e3e3e3;
-      border-bottom: solid 1px #e3e3e3;
-    }
-    ng2-md-datatable-row:hover {
-      background-color: #e3e3e3;
-    }
+    background-color: #ffffff;
+   
     .card-header {
       h2 {
         margin: 0;
@@ -26,13 +17,14 @@ $black-text: #303132;
         font-family: "Avenir-Heavy", sans-serif;
         color: $black-text;
       }
-
+      button {
+        float: right;
+      }
       margin-bottom: 20px;
     }
     hr {
       margin: 0;
     }
-
-
+    
   }
 }

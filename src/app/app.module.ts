@@ -54,6 +54,7 @@ import { UpdateConfigComponent } from './components/dialogs/update-config.compon
 import { PublicLinkComponent } from './components/publiclink/public-link.component';
 import { DeviceAclComponent } from './components/devices/device-information/device-acl.component';
 import { StatsComponent } from './components/admin/stats/stats.component';
+import { UserProfileComponent } from './components/userprofile/userprofile.component';
 
 // Services
 import { LocationService } from './services/location.service';
@@ -111,7 +112,8 @@ import { AdminService } from './services/admin.service';
     UpdateConfigComponent,
     PublicLinkComponent,
     DeviceAclComponent,
-    StatsComponent
+    StatsComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
