@@ -1,122 +1,124 @@
 <div class="device-acl" *ngIf="device">
- <div class="card-container">
+	<div class="card-container">
 
-	<md-card>
-      <md-card-title>Token</md-card-title>	
-      <md-card-content>
-	       <div *ngIf="device.token">
-	        <button md-raised-button (click)="recreateDeviceToken()">Re-Generate Token</button>  
-	        <button md-raised-button (click)="deleteDeviceToken()">Delete Token</button>
-	     </div>
-	      <div *ngIf="!device.token">
-	        <button md-raised-button (click)="createDeviceToken()">Generate Token</button>
-	     </div>
-	   </md-card-content>
-	</md-card>	
+		<md-card>
+			<md-card-title>Device Token</md-card-title>	
+			<md-card-content>
+				<div *ngIf="device.token">
+					<button md-raised-button (click)="recreateDeviceToken()">Re-Generate Token</button>  
+					<button md-raised-button (click)="deleteDeviceToken()">Delete Token</button>
+				</div>
+				<div *ngIf="!device.token">
+					<button md-raised-button (click)="createDeviceToken()">Generate Token</button>
+				</div>
+			</md-card-content>
+		</md-card>	
 
-    <md-card>
-      <md-card-title>Groups</md-card-title>	
-      <md-card-content>
-	   	<ng2-md-datatable>
-			<!-- Table Header-->
-			<ng2-md-datatable-header>
-				<ng2-md-datatable-column><p>Group</p></ng2-md-datatable-column>
-				<ng2-md-datatable-column><p>Permission</p></ng2-md-datatable-column>
-				<ng2-md-datatable-column><p>Actions</p></ng2-md-datatable-column>
-			</ng2-md-datatable-header>
+		<md-card>
+			<md-card-title>Groups</md-card-title>	
+			<md-card-content>
+				<ng2-md-datatable>
+					<!-- Table Header-->
+					<ng2-md-datatable-header>
+						<ng2-md-datatable-column><p>Group</p></ng2-md-datatable-column>
+						<ng2-md-datatable-column><p>Permission</p></ng2-md-datatable-column>
+						<ng2-md-datatable-column><p>Actions</p></ng2-md-datatable-column>
+					</ng2-md-datatable-header>
 
-			<!-- Table Body -->
-			<tbody>
-				<!-- Table Body -->
-				<tbody>
-				
+					<!-- Table Body -->
+					<tbody>
+
 						<!-- New Member Row -->
 						<ng2-md-datatable-row>
 							<ng2-md-datatable-column><p>
-								 <md-select placeholder="Group" [(ngModel)]="newGroup" name="group">
-				            <md-option *ngFor="let group of allGroups" [value]="group">
-				              {{ group.name }}
-				            </md-option>
-				          </md-select>
-							</p></ng2-md-datatable-column>
-							<ng2-md-datatable-column><p>
-
-							<md-radio-group [(ngModel)]="newPerm" >
-								  <md-radio-button value="1">Execute</md-radio-button>
-								  <md-radio-button value="2">Write</md-radio-button>
-							</md-radio-group>
-								
-							</p> </ng2-md-datatable-column>
-							<ng2-md-datatable-column><p>
-								 <button md-icon-button (click)="addGroupAcl()">
-						            <md-icon>add</md-icon>
-						          </button>
-							</p></ng2-md-datatable-column>
-						</ng2-md-datatable-row>
-				
-				<!-- Item Row -->
-					<ng2-md-datatable-row *ngFor="let deviceGroup of deviceGroups">
-						<ng2-md-datatable-column><p><a class="group-name" (click)="gotoGroup(deviceGroup.entity_id._id)">{{ deviceGroup.entity_id.name  }}</a></p></ng2-md-datatable-column>
-						<ng2-md-datatable-column><p>{{ deviceGroup.perm == 2 ? "Write" : "Execute" }}</p></ng2-md-datatable-column>
-						<ng2-md-datatable-column>
-							<button md-icon-button color="warn" (click)="removeGroupAcl(deviceGroup.entity_id)">
-								<md-icon >clear</md-icon>
-							</button>
-						</ng2-md-datatable-column>
-					</ng2-md-datatable-row>
-						
-					<div *ngIf="deviceGroups.length == 0">
-						<p>No groups granted access.</p>
-					</div>								
-					</tbody>
-				</ng2-md-datatable>
-		</md-card-content>
-	</md-card>	
-
-	<md-card>
-      <md-card-title>Users</md-card-title>
-      <md-card-content>
-			<ng2-md-datatable>
-				<!-- Table Header-->
-				<ng2-md-datatable-header>
-					<ng2-md-datatable-column><p>User</p></ng2-md-datatable-column>
-					<ng2-md-datatable-column><p>Permission</p></ng2-md-datatable-column>
-					<ng2-md-datatable-column><p>Actions</p></ng2-md-datatable-column>
-				</ng2-md-datatable-header>
-
-				<!-- Table Body -->
-				<tbody>
-				
-						<!-- New Member Row -->
-						<ng2-md-datatable-row>
-							<form [formGroup]="memberForm" (ngSubmit)="addUserAcl(memberForm.value)">
-							<ng2-md-datatable-column><p>
-								<md-input-container>
-									<input mdInput placeholder="Email" [mdAutocomplete]="auto" class="form-control"  formControlName ="user">
-								</md-input-container>
-
-								<md-autocomplete #auto="mdAutocomplete" [displayWith]="displayEmail">
-									<md-option *ngFor="let user of filteredUsers | async" [value]="user">
-										{{ user.email }}
+								<md-select placeholder="Group" [(ngModel)]="newGroup" name="group">
+									<md-option *ngFor="let group of allGroups" [value]="group">
+										{{ group.name }}
 									</md-option>
-								</md-autocomplete>
+								</md-select>
 							</p></ng2-md-datatable-column>
 							<ng2-md-datatable-column><p>
 
-							<md-radio-group class="form-control" formControlName="perm">
-								  <md-radio-button value="1">Execute</md-radio-button>
-								  <md-radio-button value="2">Write</md-radio-button>
-							</md-radio-group>
+								<md-radio-group [(ngModel)]="newPerm" >
+									<md-radio-button value="1">Execute</md-radio-button>
+									<md-radio-button value="2">Write</md-radio-button>
+								</md-radio-group>
 								
 							</p> </ng2-md-datatable-column>
 							<ng2-md-datatable-column><p>
-								<button md-icon-button type="submit">
+								<button md-icon-button (click)="addGroupAcl()">
 									<md-icon>add</md-icon>
 								</button>
 							</p></ng2-md-datatable-column>
-							</form>	
 						</ng2-md-datatable-row>
-									
+
+						<!-- Item Row -->
+						<ng2-md-datatable-row *ngFor="let deviceGroup of deviceGroups">
+							<ng2-md-datatable-column><p><a class="group-name" (click)="gotoGroup(deviceGroup.entity_id._id)">{{ deviceGroup.entity_id.name  }}</a></p></ng2-md-datatable-column>
+							<ng2-md-datatable-column><p>{{ deviceGroup.perm == 2 ? "Write" : "Execute" }}</p></ng2-md-datatable-column>
+							<ng2-md-datatable-column>
+								<button md-icon-button color="warn" (click)="removeGroupAcl(deviceGroup.entity_id)">
+									<md-icon >clear</md-icon>
+								</button>
+							</ng2-md-datatable-column>
+						</ng2-md-datatable-row>
+						
+						<div *ngIf="deviceGroups.length == 0">
+							<p>No groups granted access.</p>
+						</div>								
+					</tbody>
+				</ng2-md-datatable>
+			</md-card-content>
+		</md-card>	
+
+		<md-card>
+			<md-card-title>Users</md-card-title>
+			<md-card-content>
+				<ng2-md-datatable>
+
+					<!-- Table Header-->
+					<ng2-md-datatable-header>
+						<ng2-md-datatable-column><p>User</p></ng2-md-datatable-column>
+						<ng2-md-datatable-column><p>Permission</p></ng2-md-datatable-column>
+						<ng2-md-datatable-column><p>Actions</p></ng2-md-datatable-column>
+					</ng2-md-datatable-header>
+
+					<!-- Table Body -->
+					<tbody>
+						<form [formGroup]="memberForm" (ngSubmit)="addUserAcl(memberForm.value)">
+							<!-- New Member Row -->
+							<ng2-md-datatable-row>
+
+								<ng2-md-datatable-column><p>
+									<md-input-container>
+										<input mdInput placeholder="Email" [mdAutocomplete]="auto" class="form-control"  formControlName ="user">
+									</md-input-container>
+
+									<md-autocomplete #auto="mdAutocomplete" [displayWith]="displayEmail">
+										<md-option *ngFor="let user of filteredUsers | async" [value]="user">
+											{{ user.email }}
+										</md-option>
+									</md-autocomplete>
+								</p></ng2-md-datatable-column>
+								<ng2-md-datatable-column><p>
+
+									<md-radio-group class="form-control" formControlName="perm">
+										<md-radio-button value="1">Execute</md-radio-button>
+										<md-radio-button value="2">Write</md-radio-button>
+									</md-radio-group>
+
+								</p> </ng2-md-datatable-column>
+								<ng2-md-datatable-column><p>
+									<button md-icon-button type="submit">
+										<md-icon>add</md-icon>
+									</button>
+								</p></ng2-md-datatable-column>
+
+							</ng2-md-datatable-row>
+						</form>
+
+
+
 						<!-- Item Row -->
 						<ng2-md-datatable-row *ngFor="let deviceUser of deviceUsers">
 							<ng2-md-datatable-column><p>{{ deviceUser.entity_id.name || deviceUser.entity_id.email }}</p></ng2-md-datatable-column>
@@ -127,13 +129,16 @@
 								</button>
 							</ng2-md-datatable-column>
 						</ng2-md-datatable-row>
-					<!--</div>-->
-					<div *ngIf="deviceUsers.length == 0">
-						<p>No users granted access.</p>
-					</div>								
-				</tbody>
-			</ng2-md-datatable>
-		</md-card-content>
-	</md-card>
-</div>
+						<!--</div>-->
+						<div *ngIf="deviceUsers.length == 0">
+							<p>No users granted access.</p>
+						</div>								
+					</tbody>
+
+
+
+				</ng2-md-datatable>
+			</md-card-content>
+		</md-card>
 	</div>
+</div>
