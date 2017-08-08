@@ -9,7 +9,9 @@ $black-text: #303132;
   }
   md-card {
     background-color: #ffffff;
-   
+    .userid{
+        min-width : 300px
+   } 
     .card-header {
       h2 {
         margin: 0;

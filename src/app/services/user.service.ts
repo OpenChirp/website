@@ -25,8 +25,34 @@ export class UserService {
       .catch(this.handleError);
   }
 
+  updateUser(body: any) {
+    return this.http.put(this.userUrl , body, this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+  
+ // Get user token
+  getToken() {
+    return this.http.get(this.userUrl + "token" , this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+ // Create user token
+  createToken() {
+    return this.http.post(this.userUrl + "token" , this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+ 
+    // Delete user Token
+  deleteToken() {
+    return this.http.delete(this.userUrl + "token" , this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
   getAllUsers() {
-    return this.http.get(this.userUrl+"/all", this.requestOptions)
+    return this.http.get(this.userUrl+"all", this.requestOptions)
       .map(this.extractData)
       .catch(this.handleError);
   }

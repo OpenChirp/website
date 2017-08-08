@@ -1,10 +1,36 @@
-<div class="user-services" >
+<div class="user-profile" >
   <md-card>
     <div class="card-header">
       <h2>My Profile</h2>
     </div>
-    <br>
 
+    <br>
+    <form *ngIf="user">
+      <div>
+        <md-input-container>
+          <input mdInput placeholder="Name" [(ngModel)]="user.name" name="user-name">
+        </md-input-container>
+        <p> <md-input-container class="userid">
+          <input mdInput placeholder="User Id" [(ngModel)]="user.userid" name="user-userid">
+          <md-hint>Updates to userid won't reflect in token. To use the new userid for auth, generate a new token.</md-hint>
+          </md-input-container>
+          </p>
+          <br>
+          <p></p>
+           <p>Email : {{ user.email}}</p>
+          <button md-raised-button (click)="updateUser()">Update</button>  
+       </div>
+      <br>
+     </form>
+     <hr>
+      <h3>User Token :</h3>
+      <div *ngIf="token">
+          <button md-raised-button (click)="deleteUserToken()">Delete Token</button>
+      </div>
+      <div *ngIf="!token">
+          <button md-raised-button (click)="createUserToken()">Generate Token</button>
+      </div>
+    
   </md-card>
   
 </div>
