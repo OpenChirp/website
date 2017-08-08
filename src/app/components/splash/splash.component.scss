@@ -333,6 +333,8 @@ a img{
 .openchirp-footer {
     background-color: #fafafa;
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .openchirp-link-menu:hover {
@@ -341,6 +343,8 @@ a img{
 
 .openchirp-footer-cards {
     background-color: transparent;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .openchirp-footer-card {
@@ -378,7 +382,7 @@ a img{
         margin: 0 16px;
         padding-top: 8px;
     }
-    .openchirp-footer .mdl-mega-footer--bottom-section {
-        display: none;
-    }
+    // .openchirp-footer .mdl-mega-footer--bottom-section {
+        // display: none;
+    // }
 }
