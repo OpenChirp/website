@@ -26,6 +26,7 @@
         <mdl-layout-spacer></mdl-layout-spacer>
         <!-- Navigation. We hide it in small screens. -->
         <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="http://community.openchirp.io/">Community</a>
           <a class="mdl-navigation__link" href="https://github.com/OpenChirp/docs/wiki">Get Started</a>
           <a class="mdl-button mdl-js-button" [href]="login_url" routerLinkActive="active" *ngIf="!logged_in">Login</a>
           <a class="mdl-button mdl-js-button" routerLink="/home" routerLinkActive="active" *ngIf="logged_in">Home</a>
@@ -41,6 +42,7 @@
         <a class="mdl-navigation__link" href="#how">How it Works</a>
         <a class="mdl-navigation__link" href="#technology">Technology</a>
         <a class="mdl-navigation__link" href="#gallery">Gallery</a>
+        <a class="mdl-navigation__link" href="http://community.openchirp.io/">Community</a>
         <a class="mdl-navigation__link" href="https://github.com/OpenChirp/docs/wiki">Get Started</a>
       </nav>
     </mdl-layout-drawer>
@@ -282,14 +284,19 @@
 
             <span class="mdl-list__item-primary-content">
                   <img src="assets/images/1.png" width="41px" height="41px" class="openchirp-numbereditem">
-                  <span class="openchirp-numbereditem" font-size="16px">Contact us at <a href="mailto:openchirp@gmail.com">openchirp@gmail.com</a></span>
+                  <span class="openchirp-numbereditem" font-size="16px">Contact us at <a href="mailto:info@openchirp.io">info@openchirp.io</a></span>
             </span>
-
           </li>
           <li class="mdl-list__item">
             <span class="mdl-list__item-primary-content">
                   <img src="assets/images/2.png" width="41px" height="41px" class="openchirp-numbereditem">
                   <span class="openchirp-numbereditem" font-size="16px">Visit our <a href="https://github.com/OpenChirp"> GitHub page</a></span>
+            </span>
+          </li>
+          <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content">
+                  <img src="assets/images/3.png" width="41px" height="41px" class="openchirp-numbereditem">
+                  <span class="openchirp-numbereditem" font-size="16px">Ask questions on our <a href="http://community.openchirp.io"> community Forum</a></span>
             </span>
           </li>
         </ul>
