@@ -1,5 +1,10 @@
 <div class="device-transducers">
 
+  <p>
+    <button md-raised-button (click)="getTransducers()">
+        <md-icon> sync </md-icon> {{ lastUpdated | date :"short" }}
+    </button>
+  </p>
   <ng2-md-datatable>
 
     <!-- Table Header-->

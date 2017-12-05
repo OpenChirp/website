@@ -20,6 +20,7 @@ export class DeviceTransducersComponent {
   unit: string = "";
   actuable: boolean = false;
   publishPayload: string = "";
+  lastUpdated: Date;
 
   constructor(private deviceService: DeviceService, 
               private successDialogService: SuccessDialogService, 
@@ -35,7 +36,8 @@ export class DeviceTransducersComponent {
   getTransducers() {
     this.deviceService.getDeviceTransducers(this.device._id).subscribe(
       out => {
-         this.device.transducers = out;
+        this.lastUpdated = new Date();
+        this.device.transducers = out;
       });
     
   }  
