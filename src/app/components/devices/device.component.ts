@@ -60,8 +60,13 @@ export class DeviceComponent {
     if (this.tabNameToPosition.has(fragment)) {
       this.selectedIndex = this.tabNameToPosition.get(fragment).valueOf();
     } else {
+      // We cannot do a redirect immediately because this would
+      // mess up the back stack, such that you would never be able to "go back".
+      // The fix would be to have the sender already attach the #properties
+      // tag to device page reference.
       // TODO: This should probably be some official Angular way of redirecting
-      window.location.hash = "#properties";
+      //window.location.hash = "#properties";
+      //this.selectedIndex = this.tabNameToPosition.get('properties').valueOf();
     }
     })
     this.getDevice();
