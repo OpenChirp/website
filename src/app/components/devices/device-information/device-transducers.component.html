@@ -2,7 +2,7 @@
 
   <p>
     <button md-raised-button (click)="getTransducers()">
-        <md-icon> sync </md-icon> {{ lastUpdated | date :"short" }}
+        <md-icon> sync </md-icon> {{ lastUpdated | date :"M/d/yy h:mm:ss a" }}
     </button>
   </p>
   <ng2-md-datatable>
