@@ -23,6 +23,7 @@ export class DeviceComponent {
   acl :any = {};
   errorMessage: string = "";
   successMessage: string = "";
+  tabIndex: number = 0;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -34,7 +35,35 @@ export class DeviceComponent {
               public dialog: MdDialog) {
   }
 
+  private tabNameToPosition: Map<string, Number> = new Map([
+    ['properties', 0],
+    ['transducers', 1],
+    ['commands', 2],
+    ['services', 3],
+    ['visualization', 4],
+    ['security', 5]
+  ]);
+
+  private tabPositionToName: string[] = [
+    'properties',
+    'transducers',
+    'commands',
+    'services',
+    'visualization',
+    'security'
+  ];
+
+
   ngOnInit() {
+    this.route.fragment.subscribe((fragment: string) => {
+    // Automatically move to the tab indicated in #hashtag
+    if (this.tabNameToPosition.has(fragment)) {
+      this.selectedIndex = this.tabNameToPosition.get(fragment).valueOf();
+    } else {
+      // TODO: This should probably be some official Angular way of redirecting
+      window.location.hash = "#properties";
+    }
+    })
     this.getDevice();
   }
 
@@ -87,5 +116,15 @@ export class DeviceComponent {
       ); // End subscribe
     } // End if device
   } // End function
+
+  get selectedIndex() {
+    return this.tabIndex;
+  }
+
+  set selectedIndex(index : number) {
+    this.tabIndex = index;
+    // TODO: This should probably be some official Angular way of redirecting
+    window.location.hash = this.tabPositionToName[index];
+  }
 
 }
