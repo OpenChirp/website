@@ -20,6 +20,7 @@
       </p>
     <button md-raised-button (click)="updateDeviceMeta()">Update</button>  
     <button md-raised-button (click)="viewProperties()">Edit Custom Properties</button>
+    <button md-raised-button *ngIf="device.location_id" (click)="gotoLocation()">Go to Parent Location</button>
      <p></p>
     </div>
    <hr>
