@@ -7,6 +7,7 @@ export class Device {
     linked_services: Array<Object>;
     transducers : Array<Object>;
     owner: any;
+    location_id : string;
 
     constructor(name: string,
                 properties: string,

@@ -34,6 +34,12 @@ export class UserDevicesComponent {
     this.router.navigate(['/home/device/', id]);
   }
 
+  gotoLocation(id: string) {
+    if (id) {
+      this.router.navigate(['/home/devices/', id]);
+    }
+  }
+
   newDevice() {
     this.router.navigate(['/home/newdevice']);
   }
