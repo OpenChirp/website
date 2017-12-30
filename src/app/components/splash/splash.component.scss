@@ -197,59 +197,74 @@ a img{
     top: 6px;
 }
 
-.openchirp-how-section {
-    //padding: 80px 0;
-    max-width: 1044px;
-    min-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    background: url($image_url + '/how-background.png') bottom right no-repeat;
-}
 
-.openchirp-how-section>.openchirp-section-title {
-    margin-left: 12px;
-    padding-bottom: 24px;
-    text-align: left;
-}
 
 .openchirp-numbereditem {
     vertical-align: middle;
     margin-right: 20px;
 }
 
-.openchirp-how-section .openchirp-section-name {
-    position: relative;
-    top: -70px;
-    border-bottom: 2px solid #007fa5;
-    text-decoration: none;
-    text-align: center;
-    width:120px;
+
+
+
+.openchirp-spacer{
+    padding-top: 20px;
 }
 
 .openchirp-regular-section {
-    padding: 80px 0;
+    padding-top: 0;
+    padding-bottom: 30px;
     max-width: 1044px;
     margin-left: auto;
     margin-right: auto;
 }
 
+.openchirp-how-section {
+    min-width: 800px;
+    background: url($image_url + '/how-background.png') bottom right no-repeat;
+}
+.openchirp-how-section .openchirp-section-name {
+    position: relative;
+    /* top: -70px; */
+    
+    border-bottom: 2px solid #007fa5;
+    text-decoration: none;
+    text-align: center;
+    width:120px;
+}
+.openchirp-how-section>.openchirp-section-title {
+    margin-left: 12px;
+    text-align: left;
+}
+
 .openchirp-regular-section>.openchirp-section-title {
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
+    text-align: left;
 }
 
 .openchirp-regular-section .openchirp-section-name {
     position: relative;
-    top: -70px;
+    padding-bottom: 5px;
     border-bottom: 2px solid #007fa5;
     text-decoration: none;
     text-align: center;
     width: 120px;
 }
 
+.openchirp-last-section {
+    padding-bottom: 0;
+}
+
+
+
+
+
+
+
 .openchirp-card-tech.mdl-card {
     width: 250px;
+    min-height: 100px;
 }
 
 .openchirp-card-tech>.mdl-card__media {
@@ -317,7 +332,7 @@ a img{
 .openchirp-card-container .mdl-card__supporting-text {
     height: auto;
     color: black;
-    padding-bottom: 56px;
+    
 }
 
 .openchirp-card-container .mdl-card__actions {
@@ -330,6 +345,9 @@ a img{
     font-size: 16px;
 }
 
+.about-pad {
+    padding-top: 100px;
+}
 .openchirp-footer {
     background-color: #fafafa;
     text-align: center;
