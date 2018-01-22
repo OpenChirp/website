@@ -1,10 +1,15 @@
 <div class="device-transducers">
 
+  <p>
+    <button md-raised-button (click)="getTransducers()">
+        <md-icon> sync </md-icon> {{ lastUpdated | date :"M/d/yy h:mm:ss a" }}
+    </button>
+  </p>
   <ng2-md-datatable>
 
     <!-- Table Header-->
     <ng2-md-datatable-header>
-      <ng2-md-datatable-column><p>Name</p></ng2-md-datatable-column>
+      <ng2-md-datatable-column (click)="sortByNameToggle()"><p>Name {{nameSortDirSymbol}}</p></ng2-md-datatable-column>
       <ng2-md-datatable-column><p>Unit</p></ng2-md-datatable-column>
       <ng2-md-datatable-column><p>Actuable</p></ng2-md-datatable-column>
       <ng2-md-datatable-column><p>Value</p></ng2-md-datatable-column>
@@ -16,7 +21,7 @@
     <tbody>
 
       <!-- Item Row -->
-      <ng2-md-datatable-row *ngFor="let transducer of device.transducers">
+      <ng2-md-datatable-row *ngFor="let transducer of transducers">
         <td><p>{{ transducer.name }}</p></td>
         <td><p>{{ transducer.unit ? transducer.unit : "-"}}</p></td>
         <td><p>{{ transducer.is_actuable }}</p></td>

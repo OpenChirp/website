@@ -60,6 +60,10 @@ export class DevicePropertiesComponent {
       );
   }
 
-
+  gotoLocation() {
+    if (this.device.location_id) {
+      this.router.navigate(['/home/devices/', this.device.location_id]);
+    }
+  }
 
 }

@@ -19,7 +19,11 @@ export class DeviceTransducersComponent {
   name: string = "";
   unit: string = "";
   actuable: boolean = false;
+  transducers: Array<Object>;
   publishPayload: string = "";
+  lastUpdated: Date;
+  nameSortDir: number = 0; // 0 (no sort), 1 (ascending), or 2 (descending)
+  nameSortDirSymbol: string = "";
 
   constructor(private deviceService: DeviceService, 
               private successDialogService: SuccessDialogService, 
@@ -27,15 +31,60 @@ export class DeviceTransducersComponent {
               public dialog: MdDialog) {
 
   }
-   ngOnInit() {
-    this.getTransducers();
 
+  // Helps sort the given array of transducers by their name
+  // in ascending order.
+  private cmpTransducersByNameAsc(a,b) {
+    if (a.name < b.name)
+       return -1;
+    if (a.name > b.name)
+      return 1;
+    return 0;
+  }
+
+  // Helps sort the given array of transducers by their name
+  // in descending over.
+  private cmpTransducersByNameDes(a,b) {
+    if (b.name < a.name)
+       return -1;
+    if (b.name > a.name)
+      return 1;
+    return 0;
+  }
+
+  private sortByNameUpdate() {
+    if (this.nameSortDir == 0) {
+      this.nameSortDirSymbol = '';
+      this.transducers = this.device.transducers;
+    } else {
+      // We buffer the transducers separately so that we can sort
+      // without disturbing the received order.
+      this.nameSortDirSymbol = (this.nameSortDir==1)?'^':'v';
+      var cmp = (this.nameSortDir==1)?
+          this.cmpTransducersByNameAsc:
+          this.cmpTransducersByNameDes;
+      var tcopy = new Array<Object>();
+      Object.assign(tcopy, this.device.transducers);
+      tcopy.sort(cmp);
+      this.transducers = tcopy;
+    }
+  }
+
+  sortByNameToggle() {
+    this.nameSortDir =  (this.nameSortDir+1)%3;
+    this.sortByNameUpdate()
+  }
+
+  ngOnInit() {
+    this.getTransducers();
   }
  
   getTransducers() {
     this.deviceService.getDeviceTransducers(this.device._id).subscribe(
       out => {
-         this.device.transducers = out;
+        this.lastUpdated = new Date();
+        this.device.transducers = out;
+        this.sortByNameUpdate();
       });
     
   }  
