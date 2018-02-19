@@ -23,7 +23,7 @@ constructor(private deviceService: DeviceService,  private sanitizer: DomSanitiz
  ngOnInit() {
    let grafana_url = this.deviceService.getGrafanaUrl();
    let transducerNames = this.device.transducers.map(function(val:any) { return val.name ;});
-  let url = grafana_url +"dashboard/script/transducer.js?device="+this.device._id+"&transducers="+transducerNames.join()+"&theme=light&kiosk=true&refresh=15s&from=now-1h&to=now%2B10m";
+  let url = grafana_url +"dashboard/script/transducer.js?device="+this.device._id+"&transducers="+transducerNames.join()+"&theme=light&kiosk=true&refresh=15s&from=now-24h&to=now%2B10m";
   this.frameURL = this.sanitizer.bypassSecurityTrustResourceUrl(url);
 
   }
