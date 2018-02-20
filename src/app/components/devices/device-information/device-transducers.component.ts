@@ -71,14 +71,14 @@ export class DeviceTransducersComponent {
   }
 
   sortByNameToggle() {
-    this.nameSortDir =  (this.nameSortDir+1)%3;
+    this.nameSortDir = (this.nameSortDir+1)%3;
     this.sortByNameUpdate()
   }
 
   ngOnInit() {
     this.getTransducers();
   }
- 
+
   getTransducers() {
     this.deviceService.getDeviceTransducers(this.device._id).subscribe(
       out => {
@@ -86,9 +86,8 @@ export class DeviceTransducersComponent {
         this.device.transducers = out;
         this.sortByNameUpdate();
       });
-    
-  }  
-     
+  }
+
   newTransducer() {
     if (this.name != "" && this.unit != "") {
       var body = {
