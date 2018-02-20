@@ -103,6 +103,7 @@ export class DeviceTransducersComponent {
           this.unit = "";
           this.actuable = false;
           this.updateDevice.emit(true);
+          this.getTransducers();
         },
         error => {
           this.errorDialogService
@@ -127,6 +128,7 @@ export class DeviceTransducersComponent {
               this.successDialogService
                 .dialogPopup('Transducer Deleted: ' + name);
               this.updateDevice.emit(true);
+              this.getTransducers();
             },
             error => {
               this.errorDialogService
