@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { LocationService } from '../../services/location.service';
 import { UserService } from '../../services/user.service';
 import { GlobalDataService } from '../../services/global.data.service';
@@ -7,6 +7,7 @@ import { Location } from '../../models/location';
 import { Device } from '../../models/device';
 import { TreeNodeComponent } from '../locationtree/tree.component';
 import { Router } from '@angular/router';
+import { DOCUMENT } from '@angular/platform-browser';
 import { Observable } from 'rxjs/Observable';
 import { Configuration } from '../../config';
 
@@ -27,7 +28,13 @@ export class DashboardComponent implements OnInit {
   newLocationParent: Location = null;
   logout_url : string;
 
-  constructor(private globalDataService: GlobalDataService, private locationService: LocationService, private config: Configuration, private userService: UserService, private router: Router) {
+  constructor(
+    @Inject(DOCUMENT) private document: any,
+    private globalDataService: GlobalDataService,
+    private locationService: LocationService,
+    private config: Configuration,
+    private userService: UserService,
+    private router: Router) {
     this.rootLocation = null;
     this.logout_url = config.logout_url;
   }
@@ -56,5 +63,13 @@ export class DashboardComponent implements OnInit {
 
   newLocation(event) {
     this.newLocationParent = event;
+  }
+
+  goToCommunity() {
+    this.document.location.href = "http://community.openchirp.io";
+  }
+
+  goToDocs() {
+    this.document.location.href = "https://github.com/OpenChirp/docs/wiki";
   }
 }
