@@ -44,7 +44,7 @@
         <td>
           <md-select placeholder="Transducer" [(ngModel)]="transducer" name="transducer">
             <md-option *ngFor="let transducer of device.transducers" [value]="transducer">
-              {{ transducer.name }}
+              {{ transducer.is_actuable ? transducer.name : '-' }}
             </md-option>
           </md-select>
         </td>
