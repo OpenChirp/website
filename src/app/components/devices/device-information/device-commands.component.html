@@ -6,7 +6,7 @@
     <ng2-md-datatable-header>
       <ng2-md-datatable-column><p>Command</p></ng2-md-datatable-column>
       <ng2-md-datatable-column><p>Value</p></ng2-md-datatable-column>
-      <ng2-md-datatable-column><p></p></ng2-md-datatable-column>
+      <ng2-md-datatable-column><p>Transducer</p></ng2-md-datatable-column>
       <ng2-md-datatable-column><p>Actions</p></ng2-md-datatable-column>
     </ng2-md-datatable-header>
 
@@ -17,6 +17,7 @@
       <ng2-md-datatable-row *ngFor="let command of device.commands">
         <td><p>{{ command.name }}</p></td>
         <td><p>{{ command.value }}</p></td>
+        <td><p>{{ transducerNameById(command.transducer_id) }}</p></td>
         <td><button md-raised-button (click)="execute(command)">Run</button></td>
         <td>
            <md-icon [mdMenuTriggerFor]="menu">more_horiz</md-icon>

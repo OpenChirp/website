@@ -34,6 +34,16 @@ export class DeviceCommandsComponent {
     this.baseUrl = config.base_url;
   }
 
+  transducerNameById(transducerID: string): string {
+    for (let t of this.device.transducers) {
+      const trans:any = t; // break typescript
+      if (trans._id == transducerID) {
+        return trans.name;
+      }
+    }
+    return '';
+  }
+
   newCommand() {
     if (this.name && this.value && this.transducer) {
       var body = {
