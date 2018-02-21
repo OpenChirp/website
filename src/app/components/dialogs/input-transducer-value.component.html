@@ -1,0 +1,10 @@
+<div class="transducer-value">
+  <h2>Publish value to {{ transducerName }}</h2>
+  <md-input-container>
+    <input mdInput [placeholder]="valueOriginal" [(ngModel)]="valueNew">
+  </md-input-container>
+  <div class="buttons">
+    <button md-raised-button (click)="publish()">Publish</button>
+    <button md-raised-button (click)="cancel()">Cancel</button>
+  </div>  
+</div>

@@ -45,6 +45,7 @@ import { ConfigRequiredComponent } from './components/infraservices/config.requi
 import { NewInfraServiceComponent } from './components/infraservices/new.infraservice.component'; 
 import { SelectServiceComponent } from './components/infraservices/select-service.component';
 import { InputConfigComponent } from './components/dialogs/input-config.component';
+import { InputTransducerValueComponent } from './components/dialogs/input-transducer-value.component';
 import { GroupComponent } from './components/groups/group.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { NewGroupComponent } from './components/groups/newgroup.component';
@@ -104,6 +105,7 @@ import { AdminService } from './services/admin.service';
     NewInfraServiceComponent,
     SelectServiceComponent,
     InputConfigComponent,
+    InputTransducerValueComponent,
     GroupComponent,
     AdminComponent,
     NewGroupComponent,
@@ -150,6 +152,7 @@ import { AdminService } from './services/admin.service';
     PropertiesComponent,  
     ConfigRequiredComponent,
     InputConfigComponent,
+    InputTransducerValueComponent,
     NewGroupComponent,
     UpdateConfigComponent,
     PublicLinkComponent
