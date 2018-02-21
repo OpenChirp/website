@@ -40,7 +40,10 @@
         <td><p>{{ transducer.timestamp | date :"short"  }}</p></td>
         <td>
           <button md-icon-button color="warn" (click)="deleteTransducer(transducer._id, transducer.name)">
-            <md-icon >clear</md-icon>
+            <md-icon>clear</md-icon>
+          </button>
+          <button md-icon-button color="primary" *ngIf="transducer.is_actuable" (click)="publishTransducerValue(transducer._id, transducer.name, transducer.value)">
+              <md-icon>send</md-icon>
           </button>
         </td>
       </ng2-md-datatable-row>

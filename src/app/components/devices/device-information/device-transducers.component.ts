@@ -6,6 +6,7 @@ import { SuccessDialogService } from '../../../services/success-dialog.service';
 import { ErrorDialogService } from '../../../services/error-dialog.service';
 import { MdDialog } from '@angular/material';
 import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.component';
+import { InputTransducerValueComponent } from '../../dialogs/input-transducer-value.component';
 import { interval } from 'rxjs/observable/interval';
 import { Subscription } from 'rxjs';
 
@@ -135,6 +136,32 @@ export class DeviceTransducersComponent {
             result => {
               this.successDialogService
                 .dialogPopup('Transducer Deleted: ' + name);
+              this.updateDevice.emit(true);
+              this.getTransducers();
+            },
+            error => {
+              this.errorDialogService
+                .dialogPopup(error.message + ': ' + name);
+            }
+          );
+        }
+      }
+    );
+  }
+
+  publishTransducerValue(id: string, name: string, valueOriginal: string) {
+    let dialogRef = this.dialog.open(InputTransducerValueComponent);
+    dialogRef.componentInstance.transducerName = name;
+    dialogRef.componentInstance.valueOriginal = valueOriginal;
+    dialogRef.componentInstance.valueNew = "";
+    dialogRef.afterClosed().subscribe(
+      value =>  {
+        if (value) {
+          // Set POST
+          this.deviceService.publishToTransducer(this.device._id, id, value).subscribe(
+            result => {
+              this.successDialogService
+                .dialogPopup('Published ' + value + ' to ' + name);
               this.updateDevice.emit(true);
               this.getTransducers();
             },
