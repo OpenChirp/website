@@ -1,15 +1,12 @@
 <div class="device-info">
   <md-card *ngIf="device">
+
     <div class="card-header">
       <h2>Device Information for {{ device.name }}</h2>
-      <div class="save-template">
-        <button md-raised-button (click)="saveTemplate()">Save as Template</button>
-      </div>
-      <div class="delete">
-        <button md-raised-button (click)="deleteDevice()">Delete</button>
-      </div>
+      <button md-raised-button class="save-template-button hide-on-small-screens" (click)="saveTemplate()">Save as Template</button>
+      <button md-raised-button class="delete-button hide-on-small-screens" (click)="deleteDevice()">Delete</button>
     </div>
-    <hr>
+    <hr />
     <md-tab-group [(selectedIndex)]="selectedIndex">
 
       <!-- Properties Tab -->
@@ -56,5 +53,6 @@
           </md-tab>
         </div>
     </md-tab-group>
+
   </md-card>
 </div>

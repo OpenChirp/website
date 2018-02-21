@@ -4,19 +4,21 @@ $black-text: #303132;
 $blue-text: #8ab9d6;
 
 .device-info {
-  .delete {
-    font-family: "Avenir-Med", sans-serif;
-    color: red;
-    .button {
-      background-color: white;
+  // Only to hide OpenChirp text when in mobile
+  @media only screen and (max-width: 500px) {
+    .hide-on-small-screens {
+      display: none;
     }
   }
-  .save-template {
+  .delete-button {
+    font-family: "Avenir-Med", sans-serif;
+    color: red;
+    background-color: white;
+  }
+  .save-template-button {
     font-family: "Avenir-Med", sans-serif;
     color: $black-text;
-    .button {
-      background-color: white;
-    }
+    background-color: white;
   }
   p {
     font-family: "Avenir-Med", sans-serif;
