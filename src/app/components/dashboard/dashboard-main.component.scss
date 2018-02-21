@@ -5,6 +5,11 @@ $blue-text: #8ab9d6;
     width: 40%;
     min-width: 400px;
     margin: 10px;
+
+    .locations:hover {
+      cursor: pointer;
+      background-color: #efefef;
+    }
   }
   ng2-md-datatable-header {
     font-weight: bold;

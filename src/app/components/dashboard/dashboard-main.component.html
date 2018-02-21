@@ -29,33 +29,37 @@
     </md-card>
 
     <md-card>
-      <md-card-title>Favorites</md-card-title>
-     <!-- <md-card-content>
-        <p>
-          This is the content of card 2.
-        </p>
-        <img md-card-image src="http://placekitten.com/g/400/200">
-      </md-card-content>-->
-    </md-card>
+        <md-card-title>Locations</md-card-title>
+        <md-card-content>
+          <ng2-md-datatable *ngIf = "locations?.length > 0">
+            <ng2-md-datatable-header>
+              <ng2-md-datatable-column>Name</ng2-md-datatable-column>
+            </ng2-md-datatable-header>
+            <tbody>
+              <ng2-md-datatable-row class="locations" *ngFor="let location of locations" (click)="gotoDevices(location._id)">
+                <td><p>{{ location.name }}</p></td>
+              </ng2-md-datatable-row>
+            </tbody>
+          </ng2-md-datatable>
+        </md-card-content>
+      </md-card>
 
-   <!-- <md-card>
-     <md-card-title>Card 3</md-card-title>
+    <md-card *ngIf="myDevicesLocIframeSrc">
+      <md-card-title>My Devices</md-card-title>
       <md-card-content>
-        <p>
-          This is the content of card 3.
-        </p>
+          <iframe [src]="myDevicesLocIframeSrc" scrolling="no"
+          frameborder="no" align="center" height = "350px" width = "100%"></iframe>
       </md-card-content>
-      <md-card-actions>
-        <button md-raised-button color="warn">Help</button>
-      </md-card-actions>
     </md-card>
 
     <md-card>
-      <md-card-title>Card 4</md-card-title>
-      <md-card-content>
-        <p>Odd.</p>
-      </md-card-content>
-    </md-card>-->
+        <md-card-title>Public Devices</md-card-title>
+        <md-card-content>
+            <iframe src="http://openchirp.io:9000/map/public/all" scrolling="no"
+            frameborder="no" align="center" height = "350px" width = "100%"></iframe>
+        </md-card-content>
+    </md-card>
+
   </div>
 </div>
 
