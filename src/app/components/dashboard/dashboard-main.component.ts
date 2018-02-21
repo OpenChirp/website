@@ -55,10 +55,9 @@ export class DashboardMainComponent {
 
   getShortcuts() {
     this.userService.getMyShortcuts().subscribe(
-      out => {
-         this.shortcuts = out;
-      });    
-  }  
+      result => this.shortcuts = result
+    );
+  }
 
   getLocations() {
     this.userService.getMyLocations("").subscribe(
