@@ -8,7 +8,7 @@
       <div class="logo-text">{{title}} </div>
       <button md-button (click)="goToCommunity()">Community</button>
       <button md-button (click)="goToDocs()">Docs</button>
-      <button md-button *ngIf="isAdmin" routerLink="/home/admin" >Admin Portal</button>
+      <button md-button *ngIf="isAdmin" routerLink="/home/admin">Admin Portal</button>
       <button md-button [mdMenuTriggerFor]="menu">{{username}}</button>
       <md-menu #menu="mdMenu">
         <a md-menu-item routerLink="/home/mydevices">My Devices</a>

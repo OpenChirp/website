@@ -33,10 +33,10 @@ ngOnInit() {
 }
 
 getUser(){
-   this.userService.getUser().subscribe(
-      result => this.user = result,
-      error =>  this.errorDialogService.dialogPopup(error.message)
-    );
+  this.userService.getUser().subscribe(
+     result => this.user = result,
+     error =>  this.errorDialogService.dialogPopup(error.message)
+   );
 }
 
 updateUser(){

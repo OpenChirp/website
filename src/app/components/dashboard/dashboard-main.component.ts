@@ -11,7 +11,7 @@ import { SuccessDialogService } from '../../services/success-dialog.service';
 })
 
 export class DashboardMainComponent {
-	shortcuts: Array<Object> = [];
+  shortcuts: Array<Object> = [];
 
   tiles = [
     {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
