@@ -76,9 +76,9 @@ $icon-color: #3a7193;
         float: left;
       }
       .logo-text {
-        float : left;  
-        color: $icon-color;  
-        }
+        float : left;
+        color: $icon-color;
+      }
     }
     md-icon {
       margin-right: 10px;
@@ -89,6 +89,13 @@ $icon-color: #3a7193;
     md-icon:hover {
       color: #8ab9d6;
       transition-duration: 0.3s;
+    }
+
+    // Only to hide OpenChirp text when in mobile
+    @media only screen and (max-width: 500px) {
+      .hide-on-small-screens {
+        display: none;
+      }
     }
   }
 

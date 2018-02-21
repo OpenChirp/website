@@ -5,9 +5,9 @@
     
     <div class="toolbar-content">
       <div class="logo"></div>
-      <div class="logo-text">{{title}} </div>
-      <button md-button (click)="goToCommunity()">Community</button>
-      <button md-button (click)="goToDocs()">Docs</button>
+      <div class="logo-text hide-on-small-screens">{{title}} </div>
+      <button md-button class="hide-on-small-screens" (click)="goToCommunity()">Community</button>
+      <button md-button class="hide-on-small-screens" (click)="goToDocs()">Docs</button>
       <button md-button *ngIf="isAdmin" routerLink="/home/admin">Admin Portal</button>
       <button md-button [mdMenuTriggerFor]="menu">{{username}}</button>
       <md-menu #menu="mdMenu">
@@ -23,7 +23,7 @@
   </md-toolbar>
 
   <md-sidenav-container>
-    <md-sidenav #sidenav mode="side" opened="true">
+    <md-sidenav #sidenav mode="side" [(opened)]="sideNavOpened">
       <!-- sidenav content -->
       <!-- Sidenav Buttons -->
       <div class="sidenav-button">
@@ -38,12 +38,13 @@
             (newLocationParent)="newLocation($event)"></tree-node>
         </div>
       </div>
-
     </md-sidenav>
+
     <div class="page-content">
       <!-- Child Router -->
       <router-outlet></router-outlet>
     </div>
+
   </md-sidenav-container>
 
 </div>

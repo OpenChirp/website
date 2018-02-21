@@ -26,7 +26,8 @@ export class DashboardComponent implements OnInit {
   errorMessage: string;
   devices: Array<Device> = [];
   newLocationParent: Location = null;
-  logout_url : string;
+  logout_url: string;
+  sideNavOpened: boolean = true;
 
   constructor(
     @Inject(DOCUMENT) private document: any,
@@ -55,6 +56,11 @@ export class DashboardComponent implements OnInit {
       },
       error => this.router.navigate(['/'])
     );
+
+    // Hack to close sidebar when screen size is small
+    if (window.screen.width < 600) {
+      this.sideNavOpened = false;
+    }
   }
  
   deviceList(event) {
