@@ -1,9 +1,20 @@
 <div class="device-transducers">
 
   <p>
-    <button md-raised-button (click)="getTransducers()">
-        <md-icon> sync </md-icon> {{ lastUpdated | date :"M/d/yy h:mm:ss a" }}
-    </button>
+  <md-button-toggle-group>
+      <button md-raised-button disabled>
+          Update every {{transducerAutoRefreshPeriod/1000}}sec
+      </button>
+      <md-button-toggle value="play" (change)="transducerAutoRefreshStart()">
+        <md-icon>play_arrow</md-icon>
+      </md-button-toggle>
+      <md-button-toggle value="pause" checked="true" (change)="transducerAutoRefreshStop()">
+          <md-icon>pause</md-icon>
+      </md-button-toggle>
+      <button md-raised-button (click)="getTransducers()">
+          <md-icon> sync </md-icon> {{ lastUpdated | date :"M/d/yy h:mm:ss a" }}
+      </button>
+    </md-button-toggle-group>
   </p>
   <ng2-md-datatable>
 

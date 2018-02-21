@@ -6,6 +6,8 @@ import { SuccessDialogService } from '../../../services/success-dialog.service';
 import { ErrorDialogService } from '../../../services/error-dialog.service';
 import { MdDialog } from '@angular/material';
 import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.component';
+import { interval } from 'rxjs/observable/interval';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'device-transducers',
@@ -24,9 +26,11 @@ export class DeviceTransducersComponent {
   lastUpdated: Date;
   nameSortDir: number = 0; // 0 (no sort), 1 (ascending), or 2 (descending)
   nameSortDirSymbol: string = "";
+  transducerAutoRefreshPeriod: number = 2000; // 2000 ms
+  transducerAutoRefreshSub: Subscription;
 
-  constructor(private deviceService: DeviceService, 
-              private successDialogService: SuccessDialogService, 
+  constructor(private deviceService: DeviceService,
+              private successDialogService: SuccessDialogService,
               private errorDialogService: ErrorDialogService,
               public dialog: MdDialog) {
 
@@ -77,6 +81,10 @@ export class DeviceTransducersComponent {
 
   ngOnInit() {
     this.getTransducers();
+  }
+
+  ngOnDestroy() {
+    this.transducerAutoRefreshStop();
   }
 
   getTransducers() {
@@ -151,5 +159,19 @@ export class DeviceTransducersComponent {
           .dialogPopup(error.message + ': ' + t_name);
       }
     );
+  }
+
+  // Start the interval timer that automatically refreshes the transducer values
+  transducerAutoRefreshStart() {
+    this.transducerAutoRefreshSub =
+      interval(this.transducerAutoRefreshPeriod)
+        .subscribe(val => this.getTransducers());
+  }
+
+  // Stop the interval timer that automatically refreshes the transducer values
+  transducerAutoRefreshStop() {
+    if (this.transducerAutoRefreshSub != null && !this.transducerAutoRefreshSub.closed) {
+      this.transducerAutoRefreshSub.unsubscribe();
+    }
   }
 }
