@@ -1,8 +1,12 @@
 .device-visualization {
-  .tip{
-  	float: right;
-  	color: #3a7193;
-  	font-style: italic;
-  	font-family: "Avenir-Heavy", sans-serif;
-  }
+  	.resolution{
+		font-family: "Avenir-Med", sans-serif;
+		font-size: 12px;
+		margin-right: 20px;
+		float: right;
+		background-color: white;
+		.icon{
+			padding: 4px 12px;
+		}	
+	}
 }
