@@ -60,6 +60,6 @@ $blue-text: #8ab9d6;
   }
   iframe {
     width: 100%;
-    height: 670px;
+    height: -webkit-fill-available;
   }
 }
