@@ -1,5 +1,6 @@
 import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Configuration } from '../../config';
 import { UserService } from '../../services/user.service';
 import { GalleryComponent } from '../gallery/gallery.component';
@@ -16,12 +17,17 @@ export class SplashComponent implements OnInit {
   delta = 100;
   login_url: string;
   logged_in: boolean;
+  splash_map_src: SafeResourceUrl;
 
-  constructor(@Inject(DOCUMENT) private doc: any, private config: Configuration, private userService: UserService) {
+  constructor(@Inject(DOCUMENT) private doc: any,
+              private config: Configuration,
+              private userService: UserService,
+              private sanitizer: DomSanitizer) {
     this.login_url = config.google_auth;
   }
 
   ngOnInit() {
+    this.splash_map_src = this.sanitizer.bypassSecurityTrustResourceUrl(this.config.splash_map_url);
     this.userService.getUser().subscribe(
       result => this.logged_in = true,
       error => this.logged_in = false

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Configuration } from '../../config';
 import { Location } from '../../models/location';
 import { DeviceService } from '../../services/device.service';
 import { UserService } from '../../services/user.service';
@@ -17,8 +18,8 @@ export class DashboardMainComponent {
   shortcuts: Array<Object> = [];
   locations: Array<Location> = [];
   user: any = null;
-  myDevicesLocIframeSrc: SafeResourceUrl;
-  myDevicesLocSrcPrefix: string = "http://openchirp.io:9000/map/owner/";
+  myDevicesMapIframeSrc: SafeResourceUrl;
+  publicDevicesMapIframeSrc: SafeResourceUrl;
 
   tiles = [
     {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
@@ -27,7 +28,8 @@ export class DashboardMainComponent {
     {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
   ];
 
-  constructor(private router: Router,
+  constructor(private config: Configuration,
+              private router: Router,
               private deviceService: DeviceService,
               private userService: UserService,
               private successDialogService: SuccessDialogService,
@@ -37,6 +39,7 @@ export class DashboardMainComponent {
   }
   
   ngOnInit() {
+    this.publicDevicesMapIframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.config.mapper_url_public);
     this.getShortcuts();
     this.getLocations();
     this.getUser();
@@ -46,8 +49,8 @@ export class DashboardMainComponent {
     this.userService.getUser().subscribe(
        result => {
          this.user = result;
-         const iframeUrl: string = this.myDevicesLocSrcPrefix + this.user._id;
-         this.myDevicesLocIframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(iframeUrl);
+         const iframeUrl: string = this.config.mapper_url_owner + this.user._id;
+         this.myDevicesMapIframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(iframeUrl);
        },
        error =>  this.errorDialogService.dialogPopup(error.message)
      );

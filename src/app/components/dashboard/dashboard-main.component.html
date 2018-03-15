@@ -44,18 +44,18 @@
         </md-card-content>
       </md-card>
 
-    <md-card *ngIf="myDevicesLocIframeSrc">
+    <md-card *ngIf="myDevicesMapIframeSrc">
       <md-card-title>My Devices</md-card-title>
       <md-card-content>
-          <iframe [src]="myDevicesLocIframeSrc" scrolling="no"
+          <iframe [src]="myDevicesMapIframeSrc" scrolling="no"
           frameborder="no" align="center" height = "350px" width = "100%"></iframe>
       </md-card-content>
     </md-card>
 
-    <md-card>
+    <md-card *ngIf="publicDevicesMapIframeSrc">
         <md-card-title>Public Devices</md-card-title>
         <md-card-content>
-            <iframe src="http://openchirp.io:9000/map/public/all" scrolling="no"
+            <iframe [src]="publicDevicesMapIframeSrc" scrolling="no"
             frameborder="no" align="center" height = "350px" width = "100%"></iframe>
         </md-card-content>
     </md-card>
