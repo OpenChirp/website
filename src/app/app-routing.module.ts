@@ -7,7 +7,7 @@ import { DashboardMainComponent } from './components/dashboard/dashboard-main.co
 import { PageNotFoundComponent } from './components/404/pagenotfound.component';
 import { LocationComponent } from './components/locations/location.component';
 import { DeviceTemplatesComponent } from './components/device-templates/devicetemplates.component';
-import { DeviceComponent } from './components//devices/device.component';
+import { DeviceComponent } from './components/devices/device.component';
 import { DeviceListComponent } from './components/devices/devicelist.component';
 import { NewDeviceComponent } from './components/devices/newdevice.component';
 import { DeviceTemplateComponent } from './components/device-templates/devicetemplate.component';
@@ -92,11 +92,11 @@ const appRoutes: Routes = [
         component: InfraServiceComponent
       },
       {
-        path: 'services',     
+        path: 'services',
         component: ListInfraServicesComponent
       },
        {
-        path: 'newservice',      
+        path: 'newservice',
         component: NewInfraServiceComponent
       },
       {
