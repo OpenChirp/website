@@ -27,7 +27,7 @@
       <ng2-md-datatable-column><p>Timestamp</p></ng2-md-datatable-column>
       <ng2-md-datatable-column><p>Actions</p></ng2-md-datatable-column>
     </ng2-md-datatable-header>
- 
+
     <!-- Table Body -->
     <tbody>
 
@@ -37,7 +37,7 @@
         <td><p>{{ transducer.unit ? transducer.unit : "-"}}</p></td>
         <td><p>{{ transducer.is_actuable }}</p></td>
         <td><p>{{ transducer.value ? transducer.value : "-" }}</p></td>
-        <td><p>{{ transducer.timestamp | date :"short"  }}</p></td>
+        <td><p>{{ transducer.timestamp | date :"M/d/yy h:mm:ss a"  }}</p></td>
         <td>
           <button md-icon-button color="warn" (click)="deleteTransducer(transducer._id, transducer.name)">
             <md-icon>clear</md-icon>
