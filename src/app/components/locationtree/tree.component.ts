@@ -65,9 +65,7 @@ export class TreeNodeComponent {
         .subscribe(
           result => {
             this.childLocations.push(result);
-            if (i === children.length - 1) {
-              this.childLocations.sort(this.compareChildren);
-            }
+            this.childLocations.sort(this.compareChildren);
           },
           error => this.errorMesssage = error
         );
