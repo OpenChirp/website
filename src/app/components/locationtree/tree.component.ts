@@ -56,6 +56,10 @@ export class TreeNodeComponent {
         );
   }
 
+  /**
+   * Retrieves and populates child locations tree
+   * @todo Expand REST interface to take and return array of locations
+   */
   getChildren() {
     let children = this.currentLocation.children;
     this.childLocations = [];
@@ -65,14 +69,19 @@ export class TreeNodeComponent {
         .subscribe(
           result => {
             this.childLocations.push(result);
-            this.childLocations.sort(this.compareChildren);
+             if (this.childLocations.length === children.length) {
+              this.childLocations.sort(this.compareNames);
+            }
           },
           error => this.errorMesssage = error
         );
     }
   }
 
-  compareChildren(a, b) {
+  /**
+   * Simple string compare for sorting
+   */
+  compareNames(a, b) {
       let nameA = a.name.toUpperCase();
       let nameB = b.name.toUpperCase();
       if (nameA < nameB) {
