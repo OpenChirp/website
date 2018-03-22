@@ -1,0 +1,28 @@
+<div class="infra-service-devicelist">
+  <md-card *ngIf="service">
+    <ng2-md-datatable>
+      <!-- Table Header-->
+      <ng2-md-datatable-header>
+        <ng2-md-datatable-column>Device Name</ng2-md-datatable-column>
+        <ng2-md-datatable-column>Config</ng2-md-datatable-column>
+        <ng2-md-datatable-column>Last Status</ng2-md-datatable-column>
+        <ng2-md-datatable-column>Owner Name</ng2-md-datatable-column>
+        <ng2-md-datatable-column>Owner Email</ng2-md-datatable-column>
+        <ng2-md-datatable-column>Location</ng2-md-datatable-column>
+      </ng2-md-datatable-header>
+      <!-- Table Body -->
+      <tbody>
+      <!-- Item Row -->
+      <ng2-md-datatable-row *ngFor="let device of devices" class="devices">
+        <ng2-md-datatable-column (click)="gotoDevice(device.id)">{{ device.name }}</ng2-md-datatable-column>
+        <ng2-md-datatable-column><button md-raised-button (click)="viewDeviceConfig(device)">View Config</button></ng2-md-datatable-column>
+        <ng2-md-datatable-column>{{ device.status.message }}</ng2-md-datatable-column>
+        <ng2-md-datatable-column>{{ device.owner.name }}</ng2-md-datatable-column>
+        <ng2-md-datatable-column>{{ device.owner.email }}</ng2-md-datatable-column>
+        <ng2-md-datatable-column>{{ device.location.name }}</ng2-md-datatable-column>
+      </ng2-md-datatable-row>
+      </tbody>
+    </ng2-md-datatable>
+  </md-card>
+</div>
+

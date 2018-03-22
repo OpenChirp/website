@@ -1,0 +1,43 @@
+<div class="infra-service-properties">
+  <form *ngIf="service">
+    <p><md-input-container>
+      <input mdInput placeholder="Name" [(ngModel)]="service.name" name="service-name">
+    </md-input-container></p>
+    <p><md-input-container>
+      <textarea mdInput placeholder="Description" [(ngModel)]="service.description" name="service-description"></textarea>
+    </md-input-container></p>
+    <p>Device Permission: <md-radio-group [(ngModel)]="service.device_permission" name="service-device-permission">
+      <md-radio-button value="0">Read</md-radio-button>
+      <md-radio-button value="1">Execute</md-radio-button>
+      <md-radio-button value="2">Write</md-radio-button>
+    </md-radio-group></p>
+    <p> <button md-raised-button (click)="updateService()">Update</button>
+      <button md-raised-button (click)="viewProperties()">Edit Custom Properties</button></p>
+    <div><p><button md-raised-button (click)="viewConfigRequired()">Device Config Required
+    </button> </p></div>
+    <p>Owner : {{ service.owner.name || service.owner.email }}</p>
+    <!--  <p>Created at: {{ service.created_at | date :"short" }}</p>
+          <p>Last Updated: {{ service.updated_at | date :"short" }}</p>-->
+    <p></p>
+
+    <hr>
+    <h3>Status:</h3>
+    <p>Last Message : {{ service.status ? service.status.message : "-" }}</p>
+    <p>Timestamp : {{ service.status ? (service.status.timestamp | date : "short" ) : "-" }}</p>
+    <hr>
+    <h3>PubSub:</h3>
+    <p>Protocol : {{ service.pubsub.protocol }}</p>
+    <p>Endpoint : {{ service.pubsub.endpoint }}</p>
+
+    <div *ngIf ="acl.isOwner">
+      <div *ngIf="service.token">
+        <button md-raised-button (click)="recreateServiceToken()">Re-Generate Token</button>
+        <button md-raised-button (click)="deleteServiceToken()">Delete Token</button>
+      </div>
+      <div *ngIf="!service.token">
+        <button md-raised-button (click)="createServiceToken()">Generate Token</button>
+      </div>
+    </div>
+  </form>
+</div>
+
