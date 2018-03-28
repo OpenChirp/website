@@ -22,7 +22,7 @@ export class TreeNodeComponent {
 
   childLocations: Array<Location> = [];
   errorMesssage: string;
-  showChildren: boolean = false;
+  showChildren = false;
   subscription: Subscription;
   constructor(private locationService: LocationService,
               private router: Router,
@@ -45,27 +45,52 @@ export class TreeNodeComponent {
     this.subscription.unsubscribe();
   }
 
-  reloadChildren(){
+  reloadChildren() {
      this.locationService
         .getLocationById(this.currentLocation._id)
         .subscribe(
           result => {
                 this.currentLocation = result ;
-                this.getChildren() }),
+                this.getChildren(); },
           error => this.errorMesssage = error
+        );
   }
 
+  /**
+   * Retrieves and populates child locations tree
+   * @todo Expand REST interface to take and return array of locations
+   */
   getChildren() {
     let children = this.currentLocation.children;
     this.childLocations = [];
-    for (var i = 0; i < children.length; i++) {
+    for (let i = 0; i < children.length; i++) {
       this.locationService
         .getLocationById(children[i])
         .subscribe(
-          result => this.childLocations.push(result),
+          result => {
+            this.childLocations.push(result);
+             if (this.childLocations.length === children.length) {
+              this.childLocations.sort(this.compareNames);
+            }
+          },
           error => this.errorMesssage = error
         );
     }
+  }
+
+  /**
+   * Simple string compare for sorting
+   */
+  compareNames(a, b) {
+      let nameA = a.name.toUpperCase();
+      let nameB = b.name.toUpperCase();
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
   }
 
   clearChildren() {
@@ -76,8 +101,7 @@ export class TreeNodeComponent {
     if (this.showChildren) {
       this.clearChildren();
       this.showChildren = false;
-    }
-    else {
+    } else {
       this.getChildren();
       this.showChildren = true;
     }
@@ -98,17 +122,17 @@ export class TreeNodeComponent {
         this.router.navigate(['/home/devices/', location_id]);
       },
       error => this.errorMesssage = error
-    )
+    );
   }
 
   deleteable() {
-    return this.currentLocation.children.length == 0;
+    return this.currentLocation.children.length === 0;
   }
 
   deleteLocation(location: Location) {
     let dialogRef = this.dialog.open(ConfirmationDialogComponent);
-    dialogRef.componentInstance.confirmText = "Delete";
-    dialogRef.componentInstance.dialogText = "Delete Location " + location.name + "?";
+    dialogRef.componentInstance.confirmText = 'Delete';
+    dialogRef.componentInstance.dialogText = 'Delete Location ' + location.name + '?';
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.locationService
@@ -143,13 +167,11 @@ export class TreeNodeComponent {
   }
 
   getLocationName(name: string) {
-    if (name == "root") {
-      return "Location Tree";
-    }
-    else if (name.length > 11) {
-      return name.substr(0, 9) + "..";
-    }
-    else {
+    if (name === 'root') {
+      return 'Location Tree';
+    } else if (name.length > 11) {
+      return name.substr(0, 9) + '..';
+    } else {
       return name;
     }
   }
