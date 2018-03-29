@@ -38,7 +38,7 @@
     "zone.js": "^0.8.9"
   },
   "devDependencies": {
-    "@angular-devkit/core": "0.0.28",
+    "@angular-devkit/core": "^0.3.2",
     "@angular/cli": "^1.5.3",
     "@types/hammerjs": "^2.0.34",
     "@types/jasmine": "^2.5.38",
@@ -53,6 +53,6 @@
     "ts-node": "1.2.1",
     "tslint": "^4.3.0",
     "typescript": "^2.3.4",
-    "webpack": "^2.7.0"
+    "webpack": "^3.1.0"
   }
 }
