@@ -56,6 +56,8 @@ import { PublicLinkComponent } from './components/publiclink/public-link.compone
 import { DeviceAclComponent } from './components/devices/device-information/device-acl.component';
 import { StatsComponent } from './components/admin/stats/stats.component';
 import { UserProfileComponent } from './components/userprofile/userprofile.component';
+import { GoogleLoginComponent } from './components/login/googlelogin.component';
+import { LoginComponent } from './components/login/login.component';
 
 // Services
 import { LocationService } from './services/location.service';
@@ -68,6 +70,7 @@ import { GroupService } from './services/group.service';
 import { Configuration } from './config';
 import { GlobalDataService } from './services/global.data.service';
 import { AdminService } from './services/admin.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -115,7 +118,10 @@ import { AdminService } from './services/admin.service';
     PublicLinkComponent,
     DeviceAclComponent,
     StatsComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    LoginComponent,
+    GoogleLoginComponent
+
   ],
   imports: [
     BrowserModule,
@@ -141,7 +147,8 @@ import { AdminService } from './services/admin.service';
     GroupService,
     Configuration,
     GlobalDataService,
-    AdminService
+    AdminService,
+    AuthService
   ],
   entryComponents: [
     SuccessDialogComponent,

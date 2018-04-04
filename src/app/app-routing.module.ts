@@ -22,9 +22,11 @@ import { NewInfraServiceComponent } from './components/infraservices/new.infrase
 import { AdminComponent } from './components/admin/admin.component';
 import { GroupMembersComponent } from './components/groups/groupmembers.component';
 import { UserProfileComponent } from './components/userprofile/userprofile.component';
+import { LoginComponent } from './components/login/login.component';
 
 const appRoutes: Routes = [
   { path: '', component: SplashComponent },
+  { path: 'login', component: LoginComponent },
   {
     path: 'home',
     component: DashboardComponent,
@@ -100,7 +102,7 @@ const appRoutes: Routes = [
       {
         path: 'group/:id',
         component: GroupMembersComponent
-      }
+      }     
     ]
   },
   { path: '**', component: PageNotFoundComponent }

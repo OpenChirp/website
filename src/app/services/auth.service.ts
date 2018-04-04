@@ -4,22 +4,18 @@ import { Observable } from 'rxjs/Observable';
 import { Configuration } from '../config';
 
 @Injectable()
-export class AdminService {
+export class AuthService {
 
-  private apiUrl: string;
-  private adminUrl: string;
-
-  constructor(private http: Http, private config: Configuration, private requestOptions: RequestOptions) { 
-    this.apiUrl = config.api_url;
-    this.adminUrl = this.apiUrl + "admin/";
+  private authUrl: string;
  
+constructor(private http: Http, private config: Configuration, private requestOptions: RequestOptions) { 
+    this.authUrl = config.google_auth; 
   }
+ 
 
-
-  getAllStats(){
-  	return this.http.get(this.adminUrl +"stats", this.requestOptions)
-    .map(this.extractData)
-    .catch(this.handleError);
+  loginUser(body: any) {
+    return this.http.post(this.authUrl, body, this.requestOptions).map(this.extractData)
+                    .catch(this.handleError);
   }
 
    private extractData(res: Response) {
