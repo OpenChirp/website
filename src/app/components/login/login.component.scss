@@ -1,0 +1,8 @@
+.login-group {
+  text-align:center;
+}
+
+/* ::ng-deep required for dynamically generated DOM elements */
+:host ::ng-deep .abcRioButton {
+  margin: 0 auto;
+}

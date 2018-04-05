@@ -4,6 +4,8 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Configuration } from '../../config';
 import { UserService } from '../../services/user.service';
 import { GalleryComponent } from '../gallery/gallery.component';
+import {LoginComponent} from '../login/login.component';
+import { MdDialog } from '@angular/material';
 
 @Component({
   selector: 'app-splash',
@@ -22,7 +24,8 @@ export class SplashComponent implements OnInit {
   constructor(@Inject(DOCUMENT) private doc: any,
               private config: Configuration,
               private userService: UserService,
-              private sanitizer: DomSanitizer) {
+              private sanitizer: DomSanitizer,
+              public dialog: MdDialog) {
     this.login_url = config.google_auth;
   }
 
@@ -43,6 +46,10 @@ export class SplashComponent implements OnInit {
         return false;
       }
     );
+  }
+
+  loginPopup(service: any) {
+    let dialogRef = this.dialog.open(LoginComponent, {width: '450px'});
   }
 
   @HostListener('window:scroll', [])
