@@ -1,4 +1,19 @@
-<div class="new-group">
-  <h2>Login</h2>
-  	<google-signin></google-signin>
+<div class="login-group">
+  <img class="openchirp-logo-image" src="assets/images/logo_with_text.png">
+  <br>
+  <br>
+  <google-signin></google-signin>
+  <br>
+  <br>
+  <p><strong>Or</strong></p>
+  <md-input-container class="Email">
+    <input mdInput size="30" type="email" placeholder="Email" ng-model="user.email">
+  </md-input-container>
+  <br/>
+  <md-input-container class="Password">
+    <input mdInput size="30"  type="password" placeholder="password" ng-model="user.password">
+  </md-input-container>
+  <br/>
+  <br/>
+  <button md-raised-button (click)="login()">Login</button>
  </div>
