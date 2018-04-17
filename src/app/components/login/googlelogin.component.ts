@@ -15,7 +15,7 @@ export class GoogleLoginComponent implements AfterViewInit{
   constructor(private config: Configuration,
               private router: Router,
              private authService: AuthService,
-             private errorDialogService: ErrorDialogService ){
+             private errorDialogService: ErrorDialogService) {
     this.clientId = config.google_auth_client_id;
 
   }
@@ -43,7 +43,8 @@ export class GoogleLoginComponent implements AfterViewInit{
         let body = {"id_token" : token };
         this.authService.googleLogin(body).subscribe(
             res => {
-               this.router.navigate(['/home'])
+               // this.router.navigate(['/home']);
+              window.location.href='/home';
               },
             err => this.errorDialogService.dialogPopup(err.message)
             )
