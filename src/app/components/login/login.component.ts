@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { ErrorDialogService } from '../../services/error-dialog.service';
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
@@ -8,7 +10,9 @@ import { Component } from '@angular/core';
 
 export class LoginComponent {
 
-  constructor() {
+  constructor(private router: Router,
+             private authService: AuthService,
+             private errorDialogService: ErrorDialogService) {
 
   }
   ngOnInit() {
@@ -17,5 +21,6 @@ export class LoginComponent {
 
   }
 
-
+  
+ 
 }

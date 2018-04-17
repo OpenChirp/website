@@ -41,7 +41,7 @@ export class GoogleLoginComponent implements AfterViewInit{
         //let profile = googleUser.getBasicProfile();
         let token = googleUser.getAuthResponse().id_token
         let body = {"id_token" : token };
-        this.authService.loginUser(body).subscribe(
+        this.authService.googleLogin(body).subscribe(
             res => {
                this.router.navigate(['/home'])
               },

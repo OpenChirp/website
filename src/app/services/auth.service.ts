@@ -6,18 +6,30 @@ import { Configuration } from '../config';
 @Injectable()
 export class AuthService {
 
-  private authUrl: string;
- 
+  private googleLoginUrl: string;
+  private basicLoginUrl: string;
+  private logoutUrl: string;
+
 constructor(private http: Http, private config: Configuration, private requestOptions: RequestOptions) { 
-    this.authUrl = config.google_auth; 
+    this.googleLoginUrl = config.auth_url +"google/token"; 
+    this.basicLoginUrl = config.auth_url +"basic"; 
+    this.logoutUrl = config.auth_url+"logout"
+
   }
  
 
-  loginUser(body: any) {
-    return this.http.post(this.authUrl, body, this.requestOptions).map(this.extractData)
+  googleLogin(body: any) {
+    return this.http.post(this.googleLoginUrl, body, this.requestOptions).map(this.extractData)
                     .catch(this.handleError);
   }
-
+  basicLogin(body: any) {
+    return this.http.post(this.basicLoginUrl, body, this.requestOptions).map(this.extractData)
+                    .catch(this.handleError);
+  }
+   logout() {
+    return this.http.get(this.logoutUrl,this.requestOptions).map(this.extractData)
+                    .catch(this.handleError);
+  }
    private extractData(res: Response) {
     const body = res.json();
     return body || { };

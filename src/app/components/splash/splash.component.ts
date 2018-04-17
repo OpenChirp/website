@@ -17,7 +17,6 @@ export class SplashComponent implements OnInit {
   title = 'OpenChirp';
   isScrolled = false;
   delta = 100;
-  login_url: string;
   logged_in: boolean;
   splash_map_src: SafeResourceUrl;
 
@@ -26,7 +25,7 @@ export class SplashComponent implements OnInit {
               private userService: UserService,
               private sanitizer: DomSanitizer,
               public dialog: MdDialog) {
-    this.login_url = config.google_auth;
+   
   }
 
   ngOnInit() {

@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/platform-browser';
 import { Observable } from 'rxjs/Observable';
 import { Configuration } from '../../config';
-
+import { AuthService } from '../../services/auth.service';
+import { ErrorDialogService } from '../../services/error-dialog.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -26,7 +27,6 @@ export class DashboardComponent implements OnInit {
   errorMessage: string;
   devices: Array<Device> = [];
   newLocationParent: Location = null;
-  logout_url: string;
   sideNavOpened: boolean = true;
 
   constructor(
@@ -35,9 +35,11 @@ export class DashboardComponent implements OnInit {
     private locationService: LocationService,
     private config: Configuration,
     private userService: UserService,
-    private router: Router) {
+    private router: Router,
+    private authService: AuthService,
+    private errorDialogService: ErrorDialogService) {
     this.rootLocation = null;
-    this.logout_url = config.logout_url;
+   
   }
 
   ngOnInit() {
@@ -63,6 +65,22 @@ export class DashboardComponent implements OnInit {
     }
   }
  
+
+ logout(){
+    this.authService.logout().subscribe(
+            res => {
+               this.globalDataService.clearData();
+               this.router.navigate(['/'])
+              },
+
+            err =>  {
+               //Hack.. not sure what the write thing to do is
+               this.globalDataService.clearData();
+               this.router.navigate(['/'])
+             }
+            )
+   }
+
   deviceList(event) {
     this.devices = event;
   }

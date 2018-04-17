@@ -10,6 +10,10 @@ export class GlobalDataService {
  	this.isAdmin = isAdmin;
 
  }
+ clearData(){
+ 	this.userid = "";
+ 	this.isAdmin = false;
 
+ }
 
 }
