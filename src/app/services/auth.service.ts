@@ -7,11 +7,13 @@ import { Configuration } from '../config';
 export class AuthService {
 
   private googleLoginUrl: string;
+  private signupUrl: string;
   private basicLoginUrl: string;
   private logoutUrl: string;
 
 constructor(private http: Http, private config: Configuration, private requestOptions: RequestOptions) { 
     this.googleLoginUrl = config.auth_url +"google/token"; 
+    this.signupUrl = config.auth_url +"signup"; 
     this.basicLoginUrl = config.auth_url +"basic"; 
     this.logoutUrl = config.auth_url+"logout"
 
@@ -22,6 +24,11 @@ constructor(private http: Http, private config: Configuration, private requestOp
     return this.http.post(this.googleLoginUrl, body, this.requestOptions).map(this.extractData)
                     .catch(this.handleError);
   }
+  signup(body: any) {
+    return this.http.post(this.signupUrl, body, this.requestOptions).map(this.extractData)
+                    .catch(this.handleError);
+  }
+  
   basicLogin(body: any) {
     return this.http.post(this.basicLoginUrl, body, this.requestOptions).map(this.extractData)
                     .catch(this.handleError);
