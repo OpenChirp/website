@@ -7,20 +7,19 @@
   <br>
   <p><strong>Or</strong></p>
   <md-input-container class="Email">
-    <input mdInput size="30" type="email" placeholder="Email"  [(ngModel)]="email">
+    <input mdInput size="30" type="email" required placeholder="Email" [pattern]="emailPattern" [(ngModel)]="email">
   </md-input-container>
-    <md-input-container class="Password">
-    <input mdInput size="30"  type="string" placeholder="Name" [(ngModel)]="name">
+  <md-input-container class="Name" *ngIf="showSignup">
+    <input mdInput size="30" type="text" required placeholder="Name" [(ngModel)]="name">
   </md-input-container>
-  <br/>
   <md-input-container class="Password">
-    <input mdInput size="30"  type="password" placeholder="password" [(ngModel)]="password">
+    <input mdInput size="30" type="password" required placeholder="Password" [(ngModel)]="password">
   </md-input-container>
-  <md-input-container class="Confirm Password">
-    <input mdInput size="30"  type="password" placeholder="Confirm Password" [(ngModel)]="confirmPassword">
+  <md-input-container class="Confirm Password" *ngIf="showSignup">
+    <input mdInput size="30" type="password" required placeholder="Confirm Password" [(ngModel)]="confirmPassword">
   </md-input-container>
   <br/>
   <br/>
-   <button md-raised-button (click)="signup()">SignUp</button>
+  <button md-raised-button (click)="signup()">SignUp</button>
   <button md-raised-button (click)="login()">Login</button>
- </div>
+</div>
