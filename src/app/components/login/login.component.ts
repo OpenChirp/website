@@ -33,15 +33,15 @@ export class LoginComponent {
   login() {
     if(this.email != "" && this.password != "") {
       var body: any = {
-        email: this.email,
+        username: this.email,
         password : this.password
       };
    
         this.authService.basicLogin(body).subscribe(
-          createdUser => {
-            result => this.router.navigate(['/home'])           
-          },
-          error => {           
+            result =>   {
+                //this.router.navigate(['/home'])  
+                window.location.href='/home';                      
+           }, error => {           
               this.errorDialogService
                 .dialogPopup(error.message );
             }
@@ -66,9 +66,13 @@ export class LoginComponent {
         this.authService.signup(body).subscribe(
           createdUser => {
             this.successDialogService.dialogPopup("Signup Successful "+this.email).subscribe(
-              result => this.router.navigate(['/home'])
+              result => {
+                  
+                  this.login();
+                } // Call login to setup session and then redirect to home
             )},
-          error => {           
+          error => {  
+
               this.errorDialogService.dialogPopup(error.message );
             }
         )
