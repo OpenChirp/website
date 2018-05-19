@@ -1,12 +1,12 @@
 <div class="device-template">
-    <md-card *ngIf="template">
+    <mat-card *ngIf="template">
       <div class="card-header">
         <h2>Device Template {{ template.name }}</h2>
         <div class="new-template">
-          <button md-raised-button (click)="newDevice()">New Device</button>
+          <button mat-raised-button (click)="newDevice()">New Device</button>
         </div>
         <div class="delete-button">
-          <button md-raised-button (click)="deleteTemplate()">Delete</button>
+          <button mat-raised-button (click)="deleteTemplate()">Delete</button>
         </div>
       </div>
       <hr>
@@ -16,5 +16,5 @@
       <p>{{ template.owner.name || template.owner.email }}</p>
       <h3> Created </h3>
       <p> {{ template.created_at | date :"short" }}</p>
-    </md-card>
+    </mat-card>
 </div>

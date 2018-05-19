@@ -1,6 +1,8 @@
+
+import {switchMap} from 'rxjs/operators';
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import 'rxjs/add/operator/switchMap';
+
 
 import { Device } from '../../models/device';
 import { Location } from '../../models/location';
@@ -23,16 +25,16 @@ export class DeviceListComponent {
   }
 
   ngOnInit() {
-    this.route.params
-      .switchMap((params: Params) => this.locationService.getDeviceByLocationId(params['id']))
+    this.route.params.pipe(
+      switchMap((params: Params) => this.locationService.getDeviceByLocationId(params['id'])))
       .subscribe(
         result => {
           this.devices = result;
         },
         error => this.router.navigate(['/home'])
       );
-    this.route.params
-      .switchMap((params: Params) => this.locationService.getLocationById(params['id']))
+    this.route.params.pipe(
+      switchMap((params: Params) => this.locationService.getLocationById(params['id'])))
       .subscribe(
         result => this.location = result,
         error => this.errorMessage = error.message

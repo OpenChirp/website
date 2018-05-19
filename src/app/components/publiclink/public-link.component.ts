@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 import { DeviceService } from '../../services/device.service';
 import { ErrorDialogService } from '../../services/error-dialog.service';
 
@@ -10,14 +10,14 @@ import { ErrorDialogService } from '../../services/error-dialog.service';
 })
 
 export class PublicLinkComponent {
- 
+
   device: any;
   command: any;
   link: string;
   baseUrl: string;
 
-  constructor( private deviceService: DeviceService, 
-               public dialog: MdDialogRef<PublicLinkComponent>,
+  constructor( private deviceService: DeviceService,
+               public dialog: MatDialogRef<PublicLinkComponent>,
                private errorDialogService: ErrorDialogService) {
   }
 

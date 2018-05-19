@@ -8,7 +8,7 @@ $black-text: #303132;
       background-color: white;
     }
   }
-  md-card {
+  mat-card {
     box-shadow: none;
     .card-header {
       h2 {
@@ -37,7 +37,7 @@ $black-text: #303132;
   }
 
   form {
-    md-input-container {
+    mat-input-container {
       input {
         width: 350px;
         font-family: "Avenir-Med", sans-serif;

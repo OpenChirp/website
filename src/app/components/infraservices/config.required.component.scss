@@ -1,19 +1,19 @@
 .properties {
-  ng2-md-datatable-header {
+  ng2-mat-datatable-header {
     border-bottom: solid 1px #303030;
     font-weight: bold;
   }
-  ng2-md-datatable-row {
+  tr {
     border-bottom: solid 1px #303030;
     td {
       vertical-align: middle;
     }
-    md-icon {
+    mat-icon {
       cursor: pointer;
       color: #909090;
       transition-duration: 0.2s;
     }
-    md-icon:hover {
+    mat-icon:hover {
       color: #303030;
     }
   }    

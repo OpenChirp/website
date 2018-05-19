@@ -1,9 +1,9 @@
 .device-commands {
-  ng2-md-datatable-header {
+  ng2-mat-datatable-header {
     border-bottom: solid 1px #303030;
     font-weight: bold;
   }
-    md-icon {
+    mat-icon {
       float: center;
       line-height: 40px;
       cursor: pointer;
@@ -11,7 +11,7 @@
       color: #303132;
      
     }
-   md-icon:hover {
+   mat-icon:hover {
       color: #3a7193;
       transition-duration: 0.3s;
     }

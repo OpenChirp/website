@@ -1,9 +1,9 @@
 <div class="device-list" >
-  <md-card *ngIf="location">
+  <mat-card *ngIf="location">
     <div class="card-header">
       <h2>Devices of {{ location.name }}</h2>
       <div class="new-device">
-        <button md-raised-button (click)="newDevice()">New Device</button>
+        <button mat-raised-button (click)="newDevice()">New Device</button>
       </div>
     </div>
     <br>
@@ -19,6 +19,6 @@
     <div *ngIf="devices.length == 0">
       <p>Currently no devices to display.</p>
     </div>
-  </md-card>
+  </mat-card>
 
 </div>

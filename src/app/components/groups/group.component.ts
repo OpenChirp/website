@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { MdDialog, MdDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { SuccessDialogService } from '../../services/success-dialog.service';
 import { ErrorDialogService } from '../../services/error-dialog.service';
 import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.component';
@@ -17,12 +17,12 @@ import { GroupService } from '../../services/group.service';
 export class GroupComponent {
   groups: Array<any> = [];
 
-  constructor(private route: ActivatedRoute, 
-    private router: Router, 
+  constructor(private route: ActivatedRoute,
+    private router: Router,
     private groupService: GroupService,
     private successDialogService: SuccessDialogService,
     private errorDialogService: ErrorDialogService,
-    public dialog: MdDialog ) {
+    public dialog: MatDialog ) {
 
   }
 
@@ -44,16 +44,16 @@ export class GroupComponent {
  toGroup(group: any) {
     this.router.navigate(['/home/group',  group._id ]);
  }
- 
+
  createGroup(){
     let dialogRef = this.dialog.open(NewGroupComponent, { width: '600px' });
     dialogRef.afterClosed().subscribe(
       result => {
-        if(result) {          
+        if(result) {
           this.groupService.createGroup(result).subscribe(
             res => {
                 this.getAllGroups();
-                this.successDialogService.dialogPopup("Group Created " + result.name);               
+                this.successDialogService.dialogPopup("Group Created " + result.name);
             },
             err => this.errorDialogService.dialogPopup(err.message)
           );
@@ -61,7 +61,7 @@ export class GroupComponent {
       }
     );
   }
-  
+
 
   deleteGroup(group: any){
     let dialogRef = this.dialog.open(ConfirmationDialogComponent);

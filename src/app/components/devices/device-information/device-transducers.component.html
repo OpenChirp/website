@@ -1,77 +1,77 @@
 <div class="device-transducers">
 
   <p>
-  <md-button-toggle-group>
-      <button md-raised-button disabled>
+  <mat-button-toggle-group>
+      <button mat-raised-button disabled>
           Update every {{transducerAutoRefreshPeriod/1000}}sec
       </button>
-      <md-button-toggle value="play" (change)="transducerAutoRefreshStart()">
-        <md-icon>play_arrow</md-icon>
-      </md-button-toggle>
-      <md-button-toggle value="pause" checked="true" (change)="transducerAutoRefreshStop()">
-          <md-icon>pause</md-icon>
-      </md-button-toggle>
-      <button md-raised-button (click)="getTransducers()">
-          <md-icon> sync </md-icon> {{ lastUpdated | date :"M/d/yy h:mm:ss a" }}
+      <mat-button-toggle value="play" (change)="transducerAutoRefreshStart()">
+        <mat-icon>play_arrow</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value="pause" checked="true" (change)="transducerAutoRefreshStop()">
+          <mat-icon>pause</mat-icon>
+      </mat-button-toggle>
+      <button mat-raised-button (click)="getTransducers()">
+          <mat-icon> sync </mat-icon> {{ lastUpdated | date :"M/d/yy h:mm:ss a" }}
       </button>
-    </md-button-toggle-group>
+    </mat-button-toggle-group>
   </p>
-  <ng2-md-datatable>
+  <table>
 
     <!-- Table Header-->
-    <ng2-md-datatable-header>
-      <ng2-md-datatable-column (click)="sortByNameToggle()"><p>Name {{nameSortDirSymbol}}</p></ng2-md-datatable-column>
-      <ng2-md-datatable-column><p>Unit</p></ng2-md-datatable-column>
-      <ng2-md-datatable-column><p>Actuable</p></ng2-md-datatable-column>
-      <ng2-md-datatable-column><p>Value</p></ng2-md-datatable-column>
-      <ng2-md-datatable-column><p>Timestamp</p></ng2-md-datatable-column>
-      <ng2-md-datatable-column><p>Actions</p></ng2-md-datatable-column>
-    </ng2-md-datatable-header>
+    <tr>
+      <th (click)="sortByNameToggle()"><p>Name {{nameSortDirSymbol}}</p></th>
+      <th><p>Unit</p></th>
+      <th><p>Actuable</p></th>
+      <th><p>Value</p></th>
+      <th><p>Timestamp</p></th>
+      <th><p>Actions</p></th>
+    </tr>
 
     <!-- Table Body -->
     <tbody>
 
       <!-- Item Row -->
-      <ng2-md-datatable-row *ngFor="let transducer of transducers">
+      <tr *ngFor="let transducer of transducers">
         <td><p>{{ transducer.name }}</p></td>
         <td><p>{{ transducer.unit ? transducer.unit : "-"}}</p></td>
         <td><p>{{ transducer.is_actuable }}</p></td>
         <td><p>{{ transducer.value ? transducer.value : "-" }}</p></td>
         <td><p>{{ transducer.timestamp | date :"M/d/yy h:mm:ss a"  }}</p></td>
         <td>
-          <button md-icon-button color="warn" (click)="deleteTransducer(transducer._id, transducer.name)">
-            <md-icon>clear</md-icon>
+          <button mat-icon-button color="warn" (click)="deleteTransducer(transducer._id, transducer.name)">
+            <mat-icon>clear</mat-icon>
           </button>
-          <button md-icon-button color="primary" *ngIf="transducer.is_actuable" (click)="publishTransducerValue(transducer._id, transducer.name, transducer.value)">
-              <md-icon>send</md-icon>
+          <button mat-icon-button color="primary" *ngIf="transducer.is_actuable" (click)="publishTransducerValue(transducer._id, transducer.name, transducer.value)">
+              <mat-icon>send</mat-icon>
           </button>
         </td>
-      </ng2-md-datatable-row>
+      </tr>
 
       <!-- New Transducer Row -->
-      <ng2-md-datatable-row>
+      <tr>
         <td>
-          <md-input-container>
-            <input mdInput placeholder="Name" [(ngModel)]="name">
-          </md-input-container>
+          <mat-form-field>
+            <input matInput placeholder="Name" [(ngModel)]="name">
+          </mat-form-field>
         </td>
         <td>
-          <md-input-container>
-            <input mdInput placeholder="Unit" [(ngModel)]="unit">
-          </md-input-container>
+          <mat-form-field>
+            <input matInput placeholder="Unit" [(ngModel)]="unit">
+          </mat-form-field>
         </td>
         <td>
-          <md-slide-toggle [(ngModel)]="actuable">{{ actuable }}</md-slide-toggle>
+          <mat-slide-toggle [(ngModel)]="actuable">{{ actuable }}</mat-slide-toggle>
         </td>
         <td><p>-</p></td>
         <td><p>-</p></td>
         <td>
-          <button md-icon-button (click)="newTransducer()">
-            <md-icon>add</md-icon>
+          <button mat-icon-button (click)="newTransducer()">
+            <mat-icon>add</mat-icon>
           </button>
         </td>
-      </ng2-md-datatable-row>
+      </tr>
     </tbody>
-  </ng2-md-datatable>
+  </table>
 
 </div>

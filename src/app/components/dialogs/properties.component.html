@@ -1,43 +1,43 @@
 <div class="properties">
   <h2>Properties of {{ source }}</h2>
-  <ng2-md-datatable>
-    <ng2-md-datatable-header>
-      <ng2-md-datatable-column>Key</ng2-md-datatable-column>
-      <ng2-md-datatable-column>Value</ng2-md-datatable-column>
-      <ng2-md-datatable-column>Actions</ng2-md-datatable-column>
-    </ng2-md-datatable-header>
+  <table>
+    <tr>
+      <th>Key</th>
+      <th>Value</th>
+      <th>Actions</th>
+    </tr>
     <tbody>
-      <ng2-md-datatable-row *ngFor="let property of transformed; let i = index">
+      <tr *ngFor="let property of transformed; let i = index">
         <td><p>{{ property.key }}</p></td>
         <td>
           <p *ngIf="!property.edit">{{ property.value }}</p>
-          <md-input-container *ngIf="property.edit">
-            <input mdInput [(ngModel)]="property.value">
-          </md-input-container>
+          <mat-form-field *ngIf="property.edit">
+            <input matInput [(ngModel)]="property.value">
+          </mat-form-field>
         </td>
         <td>
-          <md-icon *ngIf="property.edit" (click)="edited(i)">check</md-icon>
-          <md-icon *ngIf="!property.edit" (click)="edit(i)">edit</md-icon>
-          <md-icon (click)="remove(i)">delete</md-icon>
+          <mat-icon *ngIf="property.edit" (click)="edited(i)">check</mat-icon>
+          <mat-icon *ngIf="!property.edit" (click)="edit(i)">edit</mat-icon>
+          <mat-icon (click)="remove(i)">delete</mat-icon>
         </td>
-      </ng2-md-datatable-row>
-      <ng2-md-datatable-row>
+      </tr>
+      <tr>
         <td>
-          <md-input-container>
-            <input mdInput placeholder="Key" [(ngModel)]="newKey">
-          </md-input-container>
+          <mat-form-field>
+            <input matInput placeholder="Key" [(ngModel)]="newKey">
+          </mat-form-field>
         </td>
         <td>
-          <md-input-container>
-            <input mdInput placeholder="Value" [(ngModel)]="newValue">
-          </md-input-container>
+          <mat-form-field>
+            <input matInput placeholder="Value" [(ngModel)]="newValue">
+          </mat-form-field>
         </td>
-        <td><md-icon (click)="add()">add</md-icon></td>
-      </ng2-md-datatable-row>
+        <td><mat-icon (click)="add()">add</mat-icon></td>
+      </tr>
     </tbody>
-    </ng2-md-datatable>
+    </table>
     <div class="buttons">
-      <button md-raised-button (click)="save()">Save</button>
-      <button md-raised-button (click)="cancel()">Cancel</button>
+      <button mat-raised-button (click)="save()">Save</button>
+      <button mat-raised-button (click)="cancel()">Cancel</button>
     </div>  
 </div>

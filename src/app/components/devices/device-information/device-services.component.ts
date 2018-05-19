@@ -5,7 +5,7 @@ import { DeviceService } from '../../../services/device.service';
 import { InfraService } from '../../../services/infraservice';
 import { SuccessDialogService } from '../../../services/success-dialog.service';
 import { ErrorDialogService } from '../../../services/error-dialog.service';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.component';
 
 import { SelectServiceComponent } from '../../infraservices/select-service.component';
@@ -26,22 +26,22 @@ export class DeviceServicesComponent {
 	configs:any = {};
 	statuses: any = {};
 	services: Array<any> = [];
-	
+
 	constructor(private route: ActivatedRoute,
-		private router: Router, 
+		private router: Router,
 		private deviceService: DeviceService,
 		private infraService: InfraService,
 		private successDialogService: SuccessDialogService,
-		private errorDialogService: ErrorDialogService,              
-		public dialog: MdDialog) {
+		private errorDialogService: ErrorDialogService,
+		public dialog: MatDialog) {
 
 	}
 	ngOnInit() {
 		this.getLinkedServices();
 	}
-	
+
 	getLinkedServices() {
-		this.linkedServices = this.device.linked_services;  
+		this.linkedServices = this.device.linked_services;
 		for (var i = 0; i < this.linkedServices.length; i++) {
 			var serviceId = this.linkedServices[i].service_id;
 			this.configs[serviceId] = this.linkedServices[i].config;
@@ -56,9 +56,9 @@ export class DeviceServicesComponent {
 					service.status = this.statuses[service._id];
 					this.services.push(service);
 				});
-		}     
-	} 
-	
+		}
+	}
+
 	toService(id: string) {
 		this.router.navigate(['/home/service/', id]);
 	}
@@ -90,7 +90,7 @@ export class DeviceServicesComponent {
 			dialogRef.afterClosed().subscribe(
 				result => {
 					if(result){
-						this.invokeLinkServiceApi(this.device._id, newLink, result);					
+						this.invokeLinkServiceApi(this.device._id, newLink, result);
 					}
 				});
 		}else{
@@ -105,7 +105,7 @@ export class DeviceServicesComponent {
 			dialogRef.afterClosed().subscribe(
 				result => {
 					if(result){
-						this.updateServiceLink(this.device._id,service, result);					
+						this.updateServiceLink(this.device._id,service, result);
 					}
 				});
 	}
@@ -113,7 +113,7 @@ export class DeviceServicesComponent {
 	updateServiceLink(device_id: string, service: any, config: any){
 		this.deviceService.updateServiceLink(this.device._id, service._id, config).subscribe(
 			result => {
-				this.successDialogService.dialogPopup("Updated config for: " + service.name);				
+				this.successDialogService.dialogPopup("Updated config for: " + service.name);
 			},
 			error => {
 				this.errorDialogService.dialogPopup(error.message + ': ' + service.name);
@@ -125,7 +125,7 @@ export class DeviceServicesComponent {
 		dialogRef.componentInstance.dialogText = "Remove link to service : " + name + "?";
 		dialogRef.componentInstance.confirmText = "Remove";
 		dialogRef.afterClosed().subscribe(
-			result => {			
+			result => {
 				this.deviceService.deleteServiceLink(this.device._id, service_id).subscribe(
 					result => {
 						this.successDialogService.dialogPopup('Link to service :' + name +" removed");
@@ -148,7 +148,7 @@ export class DeviceServicesComponent {
 		var dialogRef = this.dialog.open(SelectServiceComponent, { width: '800px', height: '700px' });
 		dialogRef.afterClosed().subscribe(
 			result => {
-				if(result) {					
+				if(result) {
 					this.linkService(result);
 				}
 			});

@@ -1,43 +1,43 @@
 <div class="device-services">
-<md-card>
+<mat-card>
     <div class = "card-header">
       <div class="link-service">
-        <button md-raised-button (click)="selectService()">Link Service</button>
+        <button mat-raised-button (click)="selectService()">Link Service</button>
       </div>
     </div>
   <br>
   <div *ngIf="services.length > 0">
-  <ng2-md-datatable>
+  <table>
     <!-- Table Header-->
-    <ng2-md-datatable-header>
-      <ng2-md-datatable-column><p>Name</p></ng2-md-datatable-column>
-      <ng2-md-datatable-column><p>Config</p></ng2-md-datatable-column>
-      <ng2-md-datatable-column><p>Last Status</p></ng2-md-datatable-column>
-      <ng2-md-datatable-column><p>Timestamp</p></ng2-md-datatable-column>
-      <ng2-md-datatable-column><p>Delete</p></ng2-md-datatable-column>
-    </ng2-md-datatable-header>
+    <tr>
+      <th><p>Name</p></th>
+      <th><p>Config</p></th>
+      <th><p>Last Status</p></th>
+      <th><p>Timestamp</p></th>
+      <th><p>Delete</p></th>
+    </tr>
 
     <!-- Table Body -->
     <tbody>
       <!-- Item Row -->
-      <ng2-md-datatable-row *ngFor="let service of services">
-        <ng2-md-datatable-column><p>{{ service.name }}</p></ng2-md-datatable-column>
-        <ng2-md-datatable-column><p><button md-raised-button (click)="viewConfig(service)">
+      <tr *ngFor="let service of services">
+        <th><p>{{ service.name }}</p></th>
+        <th><p><button mat-raised-button (click)="viewConfig(service)">
            View/Update Config
-          </button></p></ng2-md-datatable-column>
-          <ng2-md-datatable-column><p>{{ service.status ? service.status.message : "-" }}</p></ng2-md-datatable-column>
-          <ng2-md-datatable-column><p>{{ service.status ? (service.status.timestamp | date : "short" ) : "-" }}</p></ng2-md-datatable-column>
-          <ng2-md-datatable-column>
-          <button md-icon-button color="warn" (click)="removeServiceLink(service._id, service.name)">
-            <md-icon >clear</md-icon>
+          </button></p></th>
+          <th><p>{{ service.status ? service.status.message : "-" }}</p></th>
+          <th><p>{{ service.status ? (service.status.timestamp | date : "short" ) : "-" }}</p></th>
+          <th>
+          <button mat-icon-button color="warn" (click)="removeServiceLink(service._id, service.name)">
+            <mat-icon >clear</mat-icon>
           </button>
-        </ng2-md-datatable-column>
-      </ng2-md-datatable-row>
+        </th>
+      </tr>
     </tbody>
-  </ng2-md-datatable>
+  </table>
 </div>
  <div *ngIf="services.length == 0">
       <p>No linked services </p>
 </div>
-</md-card>
+</mat-card>
 </div>

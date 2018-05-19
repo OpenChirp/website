@@ -1,134 +1,134 @@
 <div class="device-acl" *ngIf="device">
 	<div class="card-container">
 
-		<md-card>
-			<md-card-title>Device Token</md-card-title>	
-			<md-card-content>
+		<mat-card>
+			<mat-card-title>Device Token</mat-card-title>	
+			<mat-card-content>
 				<div *ngIf="device.token">
-					<button md-raised-button (click)="recreateDeviceToken()">Re-Generate Token</button>  
-					<button md-raised-button (click)="deleteDeviceToken()">Delete Token</button>
+					<button mat-raised-button (click)="recreateDeviceToken()">Re-Generate Token</button>  
+					<button mat-raised-button (click)="deleteDeviceToken()">Delete Token</button>
 				</div>
 				<div *ngIf="!device.token">
-					<button md-raised-button (click)="createDeviceToken()">Generate Token</button>
+					<button mat-raised-button (click)="createDeviceToken()">Generate Token</button>
 				</div>
-			</md-card-content>
-		</md-card>	
+			</mat-card-content>
+		</mat-card>	
 
-		<md-card>
-			<md-card-title>Groups</md-card-title>	
-			<md-card-content>
-				<ng2-md-datatable>
+		<mat-card>
+			<mat-card-title>Groups</mat-card-title>	
+			<mat-card-content>
+				<table>
 					<!-- Table Header-->
-					<ng2-md-datatable-header>
-						<ng2-md-datatable-column><p>Group</p></ng2-md-datatable-column>
-						<ng2-md-datatable-column><p>Permission</p></ng2-md-datatable-column>
-						<ng2-md-datatable-column><p>Actions</p></ng2-md-datatable-column>
-					</ng2-md-datatable-header>
+					<tr>
+						<th><p>Group</p></th>
+						<th><p>Permission</p></th>
+						<th><p>Actions</p></th>
+					</tr>
 
 					<!-- Table Body -->
 					<tbody>
 
 						<!-- New Member Row -->
-						<ng2-md-datatable-row>
-							<ng2-md-datatable-column><p>
-								<md-select placeholder="Group" [(ngModel)]="newGroup" name="group">
-									<md-option *ngFor="let group of allGroups" [value]="group">
+						<tr>
+							<th><p>
+								<mat-select placeholder="Group" [(ngModel)]="newGroup" name="group">
+									<mat-option *ngFor="let group of allGroups" [value]="group">
 										{{ group.name }}
-									</md-option>
-								</md-select>
-							</p></ng2-md-datatable-column>
-							<ng2-md-datatable-column><p>
+									</mat-option>
+								</mat-select>
+							</p></th>
+							<th><p>
 
-								<md-radio-group [(ngModel)]="newPerm" >
-									<md-radio-button value="1">Execute</md-radio-button>
-									<md-radio-button value="2">Write</md-radio-button>
-								</md-radio-group>
+								<mat-radio-group [(ngModel)]="newPerm" >
+									<mat-radio-button value="1">Execute</mat-radio-button>
+									<mat-radio-button value="2">Write</mat-radio-button>
+								</mat-radio-group>
 								
-							</p> </ng2-md-datatable-column>
-							<ng2-md-datatable-column><p>
-								<button md-icon-button (click)="addGroupAcl()">
-									<md-icon>add</md-icon>
+							</p> </th>
+							<th><p>
+								<button mat-icon-button (click)="addGroupAcl()">
+									<mat-icon>add</mat-icon>
 								</button>
-							</p></ng2-md-datatable-column>
-						</ng2-md-datatable-row>
+							</p></th>
+						</tr>
 
 						<!-- Item Row -->
-						<ng2-md-datatable-row *ngFor="let deviceGroup of deviceGroups">
-							<ng2-md-datatable-column><p><a class="group-name" (click)="gotoGroup(deviceGroup.entity_id._id)">{{ deviceGroup.entity_id.name  }}</a></p></ng2-md-datatable-column>
-							<ng2-md-datatable-column><p>{{ deviceGroup.perm == 2 ? "Write" : "Execute" }}</p></ng2-md-datatable-column>
-							<ng2-md-datatable-column>
-								<button md-icon-button color="warn" (click)="removeGroupAcl(deviceGroup.entity_id)">
-									<md-icon >clear</md-icon>
+						<tr *ngFor="let deviceGroup of deviceGroups">
+							<th><p><a class="group-name" (click)="gotoGroup(deviceGroup.entity_id._id)">{{ deviceGroup.entity_id.name  }}</a></p></th>
+							<th><p>{{ deviceGroup.perm == 2 ? "Write" : "Execute" }}</p></th>
+							<th>
+								<button mat-icon-button color="warn" (click)="removeGroupAcl(deviceGroup.entity_id)">
+									<mat-icon >clear</mat-icon>
 								</button>
-							</ng2-md-datatable-column>
-						</ng2-md-datatable-row>
+							</th>
+						</tr>
 						
 						<div *ngIf="deviceGroups.length == 0">
 							<p>No groups granted access.</p>
 						</div>								
 					</tbody>
-				</ng2-md-datatable>
-			</md-card-content>
-		</md-card>	
+				</table>
+			</mat-card-content>
+		</mat-card>	
 
-		<md-card>
-			<md-card-title>Users</md-card-title>
-			<md-card-content>
-				<ng2-md-datatable>
+		<mat-card>
+			<mat-card-title>Users</mat-card-title>
+			<mat-card-content>
+				<table>
 
 					<!-- Table Header-->
-					<ng2-md-datatable-header>
-						<ng2-md-datatable-column><p>User</p></ng2-md-datatable-column>
-						<ng2-md-datatable-column><p>Permission</p></ng2-md-datatable-column>
-						<ng2-md-datatable-column><p>Actions</p></ng2-md-datatable-column>
-					</ng2-md-datatable-header>
+					<tr>
+						<th><p>User</p></th>
+						<th><p>Permission</p></th>
+						<th><p>Actions</p></th>
+					</tr>
 
 					<!-- Table Body -->
 					<tbody>
 						<form [formGroup]="memberForm" (ngSubmit)="addUserAcl(memberForm.value)">
 							<!-- New Member Row -->
-							<ng2-md-datatable-row>
+							<tr>
 
-								<ng2-md-datatable-column><p>
-									<md-input-container>
-										<input mdInput placeholder="Email" [mdAutocomplete]="auto" class="form-control"  formControlName ="user">
-									</md-input-container>
+								<th><p>
+									<mat-form-field>
+										<input matInput placeholder="Email" [matAutocomplete]="auto" class="form-control"  formControlName ="user">
+									</mat-form-field>
 
-									<md-autocomplete #auto="mdAutocomplete" [displayWith]="displayEmail">
-										<md-option *ngFor="let user of filteredUsers | async" [value]="user">
+									<mat-autocomplete #auto="matAutocomplete" [displayWith]="displayEmail">
+										<mat-option *ngFor="let user of filteredUsers | async" [value]="user">
 											{{ user.email }}
-										</md-option>
-									</md-autocomplete>
-								</p></ng2-md-datatable-column>
-								<ng2-md-datatable-column><p>
+										</mat-option>
+									</mat-autocomplete>
+								</p></th>
+								<th><p>
 
-									<md-radio-group class="form-control" formControlName="perm">
-										<md-radio-button value="1">Execute</md-radio-button>
-										<md-radio-button value="2">Write</md-radio-button>
-									</md-radio-group>
+									<mat-radio-group class="form-control" formControlName="perm">
+										<mat-radio-button value="1">Execute</mat-radio-button>
+										<mat-radio-button value="2">Write</mat-radio-button>
+									</mat-radio-group>
 
-								</p> </ng2-md-datatable-column>
-								<ng2-md-datatable-column><p>
-									<button md-icon-button type="submit">
-										<md-icon>add</md-icon>
+								</p> </th>
+								<th><p>
+									<button mat-icon-button type="submit">
+										<mat-icon>add</mat-icon>
 									</button>
-								</p></ng2-md-datatable-column>
+								</p></th>
 
-							</ng2-md-datatable-row>
+							</tr>
 						</form>
 
 
 
 						<!-- Item Row -->
-						<ng2-md-datatable-row *ngFor="let deviceUser of deviceUsers">
-							<ng2-md-datatable-column><p>{{ deviceUser.entity_id.name || deviceUser.entity_id.email }}</p></ng2-md-datatable-column>
-							<ng2-md-datatable-column><p>{{ deviceUser.perm == 2 ? "Write" : "Execute"}}</p></ng2-md-datatable-column>
-							<ng2-md-datatable-column>
-								<button md-icon-button color="warn" (click)="removeUserAcl(deviceUser.entity_id)">
-									<md-icon >clear</md-icon>
+						<tr *ngFor="let deviceUser of deviceUsers">
+							<th><p>{{ deviceUser.entity_id.name || deviceUser.entity_id.email }}</p></th>
+							<th><p>{{ deviceUser.perm == 2 ? "Write" : "Execute"}}</p></th>
+							<th>
+								<button mat-icon-button color="warn" (click)="removeUserAcl(deviceUser.entity_id)">
+									<mat-icon >clear</mat-icon>
 								</button>
-							</ng2-md-datatable-column>
-						</ng2-md-datatable-row>
+							</th>
+						</tr>
 						<!--</div>-->
 						<div *ngIf="deviceUsers.length == 0">
 							<p>No users granted access.</p>
@@ -137,8 +137,8 @@
 
 
 
-				</ng2-md-datatable>
-			</md-card-content>
-		</md-card>
+				</table>
+			</mat-card-content>
+		</mat-card>
 	</div>
 </div>

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
-import { MdDialogRef, MdDialog } from '@angular/material';
+import { MatDialogRef, MatDialog } from '@angular/material';
 import { ErrorDialogComponent } from '../components/dialogs/error-dialog.component';
 
 @Injectable()
 export class ErrorDialogService {
 
-  constructor(private dialog: MdDialog) { }
+  constructor(private dialog: MatDialog) { }
 
   /**
    * Opens a fail dialog
@@ -15,7 +15,7 @@ export class ErrorDialogService {
    * @returns {Observable<any>}
    */
   public dialogPopup(message: string): Observable<boolean> {
-    let dialogRef: MdDialogRef<any>;
+    let dialogRef: MatDialogRef<any>;
 
     dialogRef = this.dialog.open(ErrorDialogComponent);
     dialogRef.componentInstance.message = message;

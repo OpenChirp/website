@@ -11,11 +11,11 @@ $icon-color: #3a7193;
 .dashboard {
   height: 100%;
 
-  md-sidenav-container {
+  mat-sidenav-container {
     padding-top: $toolbar-height;
     height: 100%;
     background-color: #ffffff;
-    md-sidenav {
+    mat-sidenav {
       width: $side-nav-width;
       background-color: $side-nav-color;
       padding-top: $toolbar-height;
@@ -39,7 +39,7 @@ $icon-color: #3a7193;
             font-family: "Avenir-Med", sans-serif;
             color: $text-color;
           }
-          md-icon {
+          mat-icon {
             float: right;
             line-height: $button-height;
             margin-right: 15px;
@@ -54,7 +54,7 @@ $icon-color: #3a7193;
     }
   }
 
-  md-toolbar {
+  mat-toolbar {
     background-color: $dashboard-toolbar-color;
     color: $background-color;
     display: block;
@@ -80,13 +80,13 @@ $icon-color: #3a7193;
         color: $icon-color;
       }
     }
-    md-icon {
+    mat-icon {
       margin-right: 10px;
       cursor: pointer;
       transition-duration: 0.3s;
       color: $icon-color;
     }
-    md-icon:hover {
+    mat-icon:hover {
       color: #8ab9d6;
       transition-duration: 0.3s;
     }

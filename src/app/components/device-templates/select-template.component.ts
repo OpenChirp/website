@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 
 import { DeviceService } from '../../services/device.service';
 
@@ -14,8 +14,8 @@ export class SelectTemplateComponent {
   templates: Array<any> = [];
   searchTerm: string = "";
 
-  constructor(private router: Router, private deviceService: DeviceService, public dialogRef: MdDialogRef<SelectTemplateComponent>) {
-    
+  constructor(private router: Router, private deviceService: DeviceService, public dialogRef: MatDialogRef<SelectTemplateComponent>) {
+
   }
 
   ngOnInit() {
@@ -36,7 +36,7 @@ export class SelectTemplateComponent {
           var template_name: string = x.name;
           var name_match = template_name.toLowerCase().includes(this.searchTerm.toLowerCase());
           if (name_match) return true;
-          
+
           if(x.description){
             var template_description: string = x.description;
             var description_match = template_description.toLowerCase().includes(this.searchTerm.toLowerCase());

@@ -1,74 +1,74 @@
 <div class="stats">
- <md-card>
+ <mat-card>
    <div class="card-header">
      <h2> Number of entries : </h2>   
   </div>
   <br>
   <div *ngIf="stats">
-    <ng2-md-datatable>
+    <table>
       <!-- Table Header-->
-   <ng2-md-datatable-header>
-      <ng2-md-datatable-column><p>Document</p></ng2-md-datatable-column>
-      <ng2-md-datatable-column><p>Count</p></ng2-md-datatable-column>
-    </ng2-md-datatable-header>
+   <tr>
+      <th><p>Document</p></th>
+      <th><p>Count</p></th>
+    </tr>
 
     <!-- Table Body -->
     <tbody>
       <!-- Item Row -->
-        <ng2-md-datatable-row>
-            <ng2-md-datatable-column> Device </ng2-md-datatable-column>
-            <ng2-md-datatable-column>{{ stats.device}} </ng2-md-datatable-column>
-        </ng2-md-datatable-row>
+        <tr>
+            <th> Device </th>
+            <th>{{ stats.device}} </th>
+        </tr>
 
-        <ng2-md-datatable-row>
-            <ng2-md-datatable-column> Device Template</ng2-md-datatable-column>
-            <ng2-md-datatable-column>{{ stats.devicetemplate}} </ng2-md-datatable-column>
-        </ng2-md-datatable-row>
+        <tr>
+            <th> Device Template</th>
+            <th>{{ stats.devicetemplate}} </th>
+        </tr>
 
-         <ng2-md-datatable-row>
-            <ng2-md-datatable-column> Service </ng2-md-datatable-column>
-            <ng2-md-datatable-column>{{ stats.service }} </ng2-md-datatable-column>
-        </ng2-md-datatable-row>
+         <tr>
+            <th> Service </th>
+            <th>{{ stats.service }} </th>
+        </tr>
       
 
-        <ng2-md-datatable-row>
-            <ng2-md-datatable-column> Location </ng2-md-datatable-column>
-            <ng2-md-datatable-column>{{ stats.location}} </ng2-md-datatable-column>
-        </ng2-md-datatable-row>
+        <tr>
+            <th> Location </th>
+            <th>{{ stats.location}} </th>
+        </tr>
 
-          <ng2-md-datatable-row>
-            <ng2-md-datatable-column> Group </ng2-md-datatable-column>
-            <ng2-md-datatable-column>{{ stats.group }} </ng2-md-datatable-column>
-        </ng2-md-datatable-row>
+          <tr>
+            <th> Group </th>
+            <th>{{ stats.group }} </th>
+        </tr>
 
-        <ng2-md-datatable-row>
-            <ng2-md-datatable-column> User </ng2-md-datatable-column>
-            <ng2-md-datatable-column>{{ stats.user }} </ng2-md-datatable-column>
-        </ng2-md-datatable-row>
+        <tr>
+            <th> User </th>
+            <th>{{ stats.user }} </th>
+        </tr>
 
-        <ng2-md-datatable-row>
-            <ng2-md-datatable-column> Thing Credential : Device</ng2-md-datatable-column>
-            <ng2-md-datatable-column>{{ stats.thingcredential_device }} </ng2-md-datatable-column>
-        </ng2-md-datatable-row>
+        <tr>
+            <th> Thing Credential : Device</th>
+            <th>{{ stats.thingcredential_device }} </th>
+        </tr>
 
-          <ng2-md-datatable-row>
-            <ng2-md-datatable-column> Thing Credential : Service</ng2-md-datatable-column>
-            <ng2-md-datatable-column>{{ stats.thingcredential_service }} </ng2-md-datatable-column>
-        </ng2-md-datatable-row>
+          <tr>
+            <th> Thing Credential : Service</th>
+            <th>{{ stats.thingcredential_service }} </th>
+        </tr>
 
-          <ng2-md-datatable-row>
-            <ng2-md-datatable-column> Thing Credential : User</ng2-md-datatable-column>
-            <ng2-md-datatable-column>{{ stats.thingcredential_user }} </ng2-md-datatable-column>
-        </ng2-md-datatable-row>
+          <tr>
+            <th> Thing Credential : User</th>
+            <th>{{ stats.thingcredential_user }} </th>
+        </tr>
 
-        <ng2-md-datatable-row>
-            <ng2-md-datatable-column> Public Link </ng2-md-datatable-column>
-            <ng2-md-datatable-column>{{ stats.publiclink}} </ng2-md-datatable-column>
-        </ng2-md-datatable-row>
+        <tr>
+            <th> Public Link </th>
+            <th>{{ stats.publiclink}} </th>
+        </tr>
         
       </tbody>
-    </ng2-md-datatable>
+    </table>
   </div>
  
-</md-card>
+</mat-card>
 </div>

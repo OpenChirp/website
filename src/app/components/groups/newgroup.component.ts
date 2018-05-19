@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 
 import { ErrorDialogService } from '../../services/error-dialog.service';
 
@@ -12,8 +12,8 @@ import { ErrorDialogService } from '../../services/error-dialog.service';
 export class NewGroupComponent {
    // For Input
   name: string = "";
-  
-  constructor(public dialog: MdDialogRef<NewGroupComponent>, private errorDialogService: ErrorDialogService) {
+
+  constructor(public dialog: MatDialogRef<NewGroupComponent>, private errorDialogService: ErrorDialogService) {
 
   }
 

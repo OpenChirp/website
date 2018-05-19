@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { MdDialog, MdDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { UserService } from '../../services/user.service';
 import { SuccessDialogService } from '../../services/success-dialog.service';
 import { ErrorDialogService } from '../../services/error-dialog.service';
@@ -18,12 +18,12 @@ export class UserGroupsComponent {
   groups: Array<any> = [];
 
   constructor(private route: ActivatedRoute,
-    private router: Router, 
-    private groupService: GroupService, 
+    private router: Router,
+    private groupService: GroupService,
     private successDialogService: SuccessDialogService,
     private errorDialogService: ErrorDialogService,
     private userService: UserService,
-    public dialog: MdDialog) {
+    public dialog: MatDialog) {
 
   }
 
@@ -38,7 +38,7 @@ export class UserGroupsComponent {
       );
   }
   gotoGroup(id: string) {
-    this.router.navigate(['/home/group', id ]);    
+    this.router.navigate(['/home/group', id ]);
   }
 
 
@@ -46,11 +46,11 @@ export class UserGroupsComponent {
     let dialogRef = this.dialog.open(NewGroupComponent, { width: '600px' });
     dialogRef.afterClosed().subscribe(
       result => {
-        if(result) {          
+        if(result) {
           this.groupService.createGroup(result).subscribe(
             res => {
               this.loadUserGroups();
-              this.successDialogService.dialogPopup("Group Created " + result.name);               
+              this.successDialogService.dialogPopup("Group Created " + result.name);
             },
             err => this.errorDialogService.dialogPopup(err.message)
             );

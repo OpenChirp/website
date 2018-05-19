@@ -1,31 +1,31 @@
 <div class="user-services" >
-  <md-card>
+  <mat-card>
     <div class="card-header">
       <h2>My Services</h2>
     </div>
     <br>
     <div *ngIf="services.length > 0">
-      <ng2-md-datatable>
+      <table>
         <!-- Table Header-->
-        <ng2-md-datatable-header>
-          <ng2-md-datatable-column><p>Name</p></ng2-md-datatable-column>
-          <ng2-md-datatable-column><p>Description</p></ng2-md-datatable-column>
+        <tr>
+          <th><p>Name</p></th>
+          <th><p>Description</p></th>
           
-        </ng2-md-datatable-header>
+        </tr>
 
         <!-- Table Body -->
         <tbody>
-          <ng2-md-datatable-row *ngFor="let service of services" (click)="gotoService(service._id)">
+          <tr *ngFor="let service of services" (click)="gotoService(service._id)">
 
-           <ng2-md-datatable-column><p>{{ service.name }}</p></ng2-md-datatable-column>
-           <ng2-md-datatable-column><p>{{ service.description }}</p></ng2-md-datatable-column>
-         </ng2-md-datatable-row>
+           <th><p>{{ service.name }}</p></th>
+           <th><p>{{ service.description }}</p></th>
+         </tr>
        </tbody>
-     </ng2-md-datatable>
+     </table>
      </div>
      <div *ngIf="services.length == 0">
       <p>Currently no services to display.</p>
     </div>
-  </md-card>
+  </mat-card>
   
 </div>

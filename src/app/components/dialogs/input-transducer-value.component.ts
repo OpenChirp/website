@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 
 import { ErrorDialogService } from '../../services/error-dialog.service';
 
@@ -17,7 +17,7 @@ export class InputTransducerValueComponent {
 
 
   constructor(
-    public dialog: MdDialogRef<InputTransducerValueComponent>,
+    public dialog: MatDialogRef<InputTransducerValueComponent>,
     private errorDialogService: ErrorDialogService) {
   }
 

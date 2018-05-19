@@ -8,7 +8,7 @@ import { Device } from '../../models/device';
 import { TreeNodeComponent } from '../locationtree/tree.component';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/platform-browser';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Configuration } from '../../config';
 import { AuthService } from '../../services/auth.service';
 import { ErrorDialogService } from '../../services/error-dialog.service';

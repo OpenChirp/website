@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 
 import { ErrorDialogService } from '../../services/error-dialog.service';
 
@@ -16,19 +16,19 @@ export class ConfigRequiredComponent {
   // Created
   newConfig: Array<any> = [];
   transformed: Array<any> = [];
-  
+
   // For Input
   newKeyName: string = "";
   newKeyDescription: string = "";
   newKeyExample: string ="";
   newKeyRequired: boolean = false;
 
-  constructor(public dialog: MdDialogRef<ConfigRequiredComponent>, private errorDialogService: ErrorDialogService) {
+  constructor(public dialog: MatDialogRef<ConfigRequiredComponent>, private errorDialogService: ErrorDialogService) {
 
   }
 
   ngOnInit() {
-    
+
     for (let i = 0; i < this.config.length; i++) {
       this.transformed.push({ keyName: this.config[i].key_name, keyDescription: this.config[i].key_description, keyExample:this.config[i].key_example, keyRequired: this.config[i].key_required,  edit: false });
     }

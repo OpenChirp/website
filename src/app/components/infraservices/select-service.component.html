@@ -2,32 +2,32 @@
   
   <div class="search">
     <h2>Select a Service</h2>
-    <md-input-container>
-      <input mdInput placeholder="Search" [(ngModel)]="searchTerm" name="search">
-    </md-input-container>
-    <md-icon>search</md-icon>
+    <mat-form-field>
+      <input matInput placeholder="Search" [(ngModel)]="searchTerm" name="search">
+    </mat-form-field>
+    <mat-icon>search</mat-icon>
   </div>
   <div>
-    <ng2-md-datatable>
+    <table>
 
       <!-- Table Header-->
-      <ng2-md-datatable-header>
-        <ng2-md-datatable-column><p>Name</p></ng2-md-datatable-column>
-        <ng2-md-datatable-column><p>Description</p></ng2-md-datatable-column>
-        <ng2-md-datatable-column><p>Device Permission</p></ng2-md-datatable-column>
-      </ng2-md-datatable-header>
+      <tr>
+        <th><p>Name</p></th>
+        <th><p>Description</p></th>
+        <th><p>Device Permission</p></th>
+      </tr>
 
       <!-- Table Body -->
       <tbody>
 
         <!-- Item Row -->
-        <ng2-md-datatable-row *ngFor="let service of filtered()" (click)="select(service)">
+        <tr *ngFor="let service of filtered()" (click)="select(service)">
           <td><p>{{ service.name }}</p></td>
           <td><p>{{ service.description }}</p></td>
           <td><p>{{ getPermissionName(service.device_permission) }}</p></td>
-        </ng2-md-datatable-row>
+        </tr>
 
       </tbody>
-    </ng2-md-datatable>
+    </table>
   </div>
 </div>

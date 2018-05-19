@@ -1,58 +1,58 @@
 <div class="device-info">
-  <md-card *ngIf="device">
+  <mat-card *ngIf="device">
 
     <div class="card-header">
       <h2>Device Information for {{ device.name }}</h2>
-      <button md-raised-button class="save-template-button hide-on-small-screens" (click)="saveTemplate()">Save as Template</button>
-      <button md-raised-button class="delete-button hide-on-small-screens" (click)="deleteDevice()">Delete</button>
+      <button mat-raised-button class="save-template-button hide-on-small-screens" (click)="saveTemplate()">Save as Template</button>
+      <button mat-raised-button class="delete-button hide-on-small-screens" (click)="deleteDevice()">Delete</button>
     </div>
     <hr />
-    <md-tab-group [(selectedIndex)]="selectedIndex">
+    <mat-tab-group [(selectedIndex)]="selectedIndex">
 
       <!-- Properties Tab -->
-      <md-tab label="Properties">
+      <mat-tab label="Properties">
         <div class="tab-content">
           <device-properties [device]="device" [acl]="acl" (updateDevice)="getDevice($event)"></device-properties>
         </div>
-      </md-tab>
+      </mat-tab>
 
       <!-- Transducers Tab -->
-      <md-tab label="Transducers">
+      <mat-tab label="Transducers">
         <div class="tab-content">
           <device-transducers [device]="device" (updateDevice)="getDevice($event)"></device-transducers>
         </div>
-      </md-tab>
+      </mat-tab>
 
       <!-- Commands Tab -->
-      <md-tab label="Commands">
+      <mat-tab label="Commands">
         <div class="tab-content">
           <device-commands [device]="device" (updateDevice)="getDevice($event)"></device-commands>
         </div>
-      </md-tab>
+      </mat-tab>
 
       <!-- Services Tab -->
-      <md-tab label="Services">
+      <mat-tab label="Services">
         <div class="tab-content">
           <device-services [device]="device" (updateDevice)="getDevice($event)"></device-services>
         </div>
-      </md-tab>
+      </mat-tab>
 
       <!-- Visualization Tab -->
-      <md-tab label="Visualization">
+      <mat-tab label="Visualization">
         <div class="tab-content">
           <device-visualization [device]="device" (updateDevice)="getDevice($event)"></device-visualization>
         </div>
-      </md-tab>
+      </mat-tab>
 
        <div *ngIf ="acl.writeAccess">
            <!-- Security Tab -->
-          <md-tab label="Security">
+          <mat-tab label="Security">
             <div class="tab-content">
               <device-acl [device]="device" (updateDevice)="getDevice($event)"></device-acl>
             </div>
-          </md-tab>
+          </mat-tab>
         </div>
-    </md-tab-group>
+    </mat-tab-group>
 
-  </md-card>
+  </mat-card>
 </div>

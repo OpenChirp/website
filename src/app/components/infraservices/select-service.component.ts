@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 
 import { InfraService } from '../../services/infraservice';
 
@@ -14,8 +14,8 @@ export class SelectServiceComponent {
   services: Array<any> = [];
   searchTerm: string = "";
 
-  constructor(private router: Router, private infraService: InfraService, public dialogRef: MdDialogRef<SelectServiceComponent>) {
-    
+  constructor(private router: Router, private infraService: InfraService, public dialogRef: MatDialogRef<SelectServiceComponent>) {
+
   }
 
   ngOnInit() {
@@ -46,7 +46,7 @@ export class SelectServiceComponent {
           var template_name: string = x.name;
           var name_match = template_name.toLowerCase().includes(this.searchTerm.toLowerCase());
           if (name_match) return true;
-          
+
           if(x.description){
             var service_description: string = x.description;
             var description_match = service_description.toLowerCase().includes(this.searchTerm.toLowerCase());

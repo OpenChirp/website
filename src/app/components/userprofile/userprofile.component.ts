@@ -3,7 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { SuccessDialogService } from '../../services/success-dialog.service';
 import { ErrorDialogService } from '../../services/error-dialog.service';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.component';
 
 @Component({
@@ -16,14 +16,13 @@ export class UserProfileComponent {
   user: any = null;
   token : any= null;
   tokenTip : string = "Use the userid as username and this token as password to authenticate over basic auth for REST API and MQTT. Make sure to copy it now. You won’t be able to see it again!";
- 
+
   constructor(private route: ActivatedRoute,
               private router: Router,
               private userService: UserService,
               private successDialogService: SuccessDialogService,
               private errorDialogService: ErrorDialogService,
-              public dialog: MdDialog
-               ) {
+              public dialog: MatDialog) {
 
   }
 
@@ -86,17 +85,17 @@ getToken(){
             result => {
               this.getToken();
               this.successDialogService
-              .dialogPopup('Successfully deleted token');               
+              .dialogPopup('Successfully deleted token');
             },
             error => this.errorDialogService
             .dialogPopup(error.message)
             );// End delete token subscribe.
         } // End if
       } // End result
-      ); // End subscribe    
+      ); // End subscribe
   } // End function
 
 
 
- 
+
 }

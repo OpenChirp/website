@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 
 import { ErrorDialogService } from '../../services/error-dialog.service';
 
@@ -18,14 +18,14 @@ export class UpdateConfigComponent {
   newConfig: Array<any> = [];
 
 
-  constructor(public dialog: MdDialogRef<UpdateConfigComponent>, private errorDialogService: ErrorDialogService) {
+  constructor(public dialog: MatDialogRef<UpdateConfigComponent>, private errorDialogService: ErrorDialogService) {
 
   }
 
   save() {
     for(let i = 0; i < this.config.length; i++ ){
       this.newConfig.push({ key: this.config[i].key , value: this.config[i].value});
-    }  
+    }
     this.dialog.close(this.newConfig);
   }
 

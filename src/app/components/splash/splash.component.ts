@@ -5,7 +5,7 @@ import { Configuration } from '../../config';
 import { UserService } from '../../services/user.service';
 import { GalleryComponent } from '../gallery/gallery.component';
 import {LoginComponent} from '../login/login.component';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-splash',
@@ -24,8 +24,8 @@ export class SplashComponent implements OnInit {
               private config: Configuration,
               private userService: UserService,
               private sanitizer: DomSanitizer,
-              public dialog: MdDialog) {
-   
+              public dialog: MatDialog) {
+
   }
 
   ngOnInit() {

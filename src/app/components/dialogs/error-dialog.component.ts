@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-error-dialog',
   template: `
     <div class="error" align="center">
-      <md-icon>report_problem</md-icon>
+      <mat-icon>report_problem</mat-icon>
       <h3 md-dialog-title> Error </h3>
       <p>
         {{ message }}

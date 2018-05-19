@@ -20,7 +20,7 @@ $text-color: #303132;
     line-height: $button-height;
     padding-right: 15px;
     padding-left: 15px;
-    md-icon {
+    mat-icon {
       float: right;
       line-height: $button-height;
       cursor: pointer;
@@ -28,7 +28,7 @@ $text-color: #303132;
       color: $text-color;
       display: none;
     }
-    md-icon:hover {
+    mat-icon:hover {
       color: $icon-hover-color;
       transition-duration: 0.3s;
     }
@@ -54,7 +54,7 @@ $text-color: #303132;
     cursor: pointer;
     transition-duration: 0.3s;
   }
-  .button:hover md-icon {
+  .button:hover mat-icon {
     display: block;
   }
   .child {

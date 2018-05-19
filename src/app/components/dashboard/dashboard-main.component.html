@@ -2,63 +2,63 @@
 
   <div class="card-container">
 
-    <md-card>
-      <md-card-title>Shortcuts</md-card-title>
-      <md-card-content>
-        <ng2-md-datatable *ngIf = "shortcuts?.length > 0">
-          <ng2-md-datatable-header>
-            <ng2-md-datatable-column></ng2-md-datatable-column>
-            <ng2-md-datatable-column>Command</ng2-md-datatable-column>
-            <ng2-md-datatable-column></ng2-md-datatable-column>
-          </ng2-md-datatable-header>
+    <mat-card>
+      <mat-card-title>Shortcuts</mat-card-title>
+      <mat-card-content>
+        <table *ngIf = "shortcuts?.length > 0">
+          <tr>
+            <th></th>
+            <th>Command</th>
+            <th></th>
+          </tr>
           <tbody>
-            <ng2-md-datatable-row *ngFor="let shortcut of shortcuts">             
+            <tr *ngFor="let shortcut of shortcuts">
               <td>
-                <button md-raised-button (click)="execute(shortcut)">Run</button>  
+                <button mat-raised-button (click)="execute(shortcut)">Run</button>
               </td>
               <td><p>{{ shortcut.name }}</p></td>
               <td>
-                <button md-icon-button color="warn" (click)="deleteShortcut(shortcut)">
-                  <md-icon >clear</md-icon>
+                <button mat-icon-button color="warn" (click)="deleteShortcut(shortcut)">
+                  <mat-icon >clear</mat-icon>
                 </button>
               </td>
-            </ng2-md-datatable-row>
+            </tr>
           </tbody>
-        </ng2-md-datatable>
-      </md-card-content>
-    </md-card>
+        </table>
+      </mat-card-content>
+    </mat-card>
 
-    <md-card>
-        <md-card-title>Locations</md-card-title>
-        <md-card-content>
-          <ng2-md-datatable *ngIf = "locations?.length > 0">
-            <ng2-md-datatable-header>
-              <ng2-md-datatable-column>Name</ng2-md-datatable-column>
-            </ng2-md-datatable-header>
+    <mat-card>
+        <mat-card-title>Locations</mat-card-title>
+        <mat-card-content>
+          <table *ngIf = "locations?.length > 0">
+            <tr>
+              <th>Name</th>
+            </tr>
             <tbody>
-              <ng2-md-datatable-row class="locations" *ngFor="let location of locations" (click)="gotoDevices(location._id)">
+              <tr class="locations" *ngFor="let location of locations" (click)="gotoDevices(location._id)">
                 <td><p>{{ location.name }}</p></td>
-              </ng2-md-datatable-row>
+              </tr>
             </tbody>
-          </ng2-md-datatable>
-        </md-card-content>
-      </md-card>
+          </table>
+        </mat-card-content>
+      </mat-card>
 
-    <md-card *ngIf="myDevicesMapIframeSrc">
-      <md-card-title>My Devices</md-card-title>
-      <md-card-content>
+    <mat-card *ngIf="myDevicesMapIframeSrc">
+      <mat-card-title>My Devices</mat-card-title>
+      <mat-card-content>
           <iframe [src]="myDevicesMapIframeSrc" scrolling="no"
           frameborder="no" align="center" height = "350px" width = "100%"></iframe>
-      </md-card-content>
-    </md-card>
+      </mat-card-content>
+    </mat-card>
 
-    <md-card *ngIf="publicDevicesMapIframeSrc">
-        <md-card-title>Public Devices</md-card-title>
-        <md-card-content>
+    <mat-card *ngIf="publicDevicesMapIframeSrc">
+        <mat-card-title>Public Devices</mat-card-title>
+        <mat-card-content>
             <iframe [src]="publicDevicesMapIframeSrc" scrolling="no"
             frameborder="no" align="center" height = "350px" width = "100%"></iframe>
-        </md-card-content>
-    </md-card>
+        </mat-card-content>
+    </mat-card>
 
   </div>
 </div>

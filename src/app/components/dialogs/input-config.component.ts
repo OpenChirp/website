@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 
 import { ErrorDialogService } from '../../services/error-dialog.service';
 
@@ -18,13 +18,13 @@ export class InputConfigComponent {
   newConfig: Array<any> = [];
 
 
-  constructor(public dialog: MdDialogRef<InputConfigComponent>, private errorDialogService: ErrorDialogService) {
+  constructor(public dialog: MatDialogRef<InputConfigComponent>, private errorDialogService: ErrorDialogService) {
   }
 
   save() {
     for(let i = 0; i < this.configRequired.length; i++ ){
       this.newConfig.push({ key: this.configRequired[i].key_name , value: this.configRequired[i].value});
-    }  
+    }
     this.dialog.close(this.newConfig);
   }
 

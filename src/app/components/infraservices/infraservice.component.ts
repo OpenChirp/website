@@ -1,12 +1,14 @@
+
+import {switchMap} from 'rxjs/operators';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import 'rxjs/add/operator/switchMap';
+
 import { InfraService } from '../../services/infraservice';
 
 import { SuccessDialogService } from '../../services/success-dialog.service';
 import { ErrorDialogService } from '../../services/error-dialog.service';
 import { GlobalDataService } from '../../services/global.data.service';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.component';
 import { PropertiesComponent } from '../dialogs/properties.component';
 import { ConfigRequiredComponent } from './config.required.component';
@@ -23,10 +25,10 @@ export class InfraServiceComponent {
   tokenTip : string = "Use the service id as username and this token as password to authenticate over basic auth for REST API and MQTT. Make sure to copy it now. You won’t be able to see it again!";
 
   constructor(private route: ActivatedRoute, private infraService: InfraService, private router: Router,
-    private successDialogService: SuccessDialogService, 
+    private successDialogService: SuccessDialogService,
     private errorDialogService: ErrorDialogService,
     private globalDataService:GlobalDataService,
-    public dialog: MdDialog) {
+    public dialog: MatDialog) {
 
   }
 
@@ -35,8 +37,8 @@ export class InfraServiceComponent {
   }
 
   getService() {
-    this.route.params
-    .switchMap((params: Params) => this.infraService.getServiceByID(params['id']))
+    this.route.params.pipe(
+    switchMap((params: Params) => this.infraService.getServiceByID(params['id'])))
     .subscribe(
       result => {
         this.service = result;
@@ -47,7 +49,7 @@ export class InfraServiceComponent {
         }
         else{
           this.acl.isOwner = false;
-        } 
+        }
       },
       error => this.router.navigate(['/home/services'])
       );
@@ -74,7 +76,7 @@ export class InfraServiceComponent {
       result => {
         if (result) {
           this.infraService.deleteService(this.service._id).subscribe(
-            result => { 
+            result => {
               this.successDialogService.dialogPopup("Successfully deleted " + this.service.name);
               this.router.navigate(['/home/services']);
             },
@@ -86,7 +88,7 @@ export class InfraServiceComponent {
       }
       );
   }
-  
+
   viewProperties() {
     let dialogRef = this.dialog.open(PropertiesComponent, { width: '600px' });
     dialogRef.componentInstance.properties = this.service.properties || {};
@@ -137,7 +139,7 @@ export class InfraServiceComponent {
       );
   }
 
-  recreateServiceToken() {  
+  recreateServiceToken() {
     let dialogRef = this.dialog.open(ConfirmationDialogComponent);
     dialogRef.componentInstance.dialogText = "Regenerate token for " + this.service.name + "? ";
     dialogRef.componentInstance.dialogWarning = "This will over-write the previous token."
@@ -148,7 +150,7 @@ export class InfraServiceComponent {
           this.infraService.recreateToken(this.service._id).subscribe(
             result => {
               this.successDialogService
-              .dialogPopupNoAutoClose("Token : " + result, this.tokenTip); 
+              .dialogPopupNoAutoClose("Token : " + result, this.tokenTip);
             },
             error => this.errorDialogService
             .dialogPopup(error.message + ': ' + this.service.name)
@@ -157,7 +159,7 @@ export class InfraServiceComponent {
       } // End result
       ); // End subscribe
   } // End function
-  
+
   deleteServiceToken() {
     let dialogRef = this.dialog.open(ConfirmationDialogComponent);
     dialogRef.componentInstance.dialogText = "Delete token for service " + this.service.name + "? ";
@@ -170,14 +172,14 @@ export class InfraServiceComponent {
             result => {
               this.getService();
               this.successDialogService
-              .dialogPopup('Successfully deleted token for: ' + this.service.name);               
+              .dialogPopup('Successfully deleted token for: ' + this.service.name);
             },
             error => this.errorDialogService
             .dialogPopup(error.message + ': ' + this.service.name)
             );// End delete token subscribe.
         } // End if
       } // End result
-      ); // End subscribe    
+      ); // End subscribe
   } // End function
 
 }

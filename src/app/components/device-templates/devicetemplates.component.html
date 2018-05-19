@@ -1,28 +1,28 @@
 <div class="device-templates">
-  <md-card>
+  <mat-card>
     <div class="card-header">
       <h2>Devices Templates</h2>
     </div>
     <br>
 
-    <ng2-md-datatable>
+    <table>
       <!-- Table Header-->
-      <ng2-md-datatable-header>
-        <ng2-md-datatable-column><p>Name</p></ng2-md-datatable-column>
-        <ng2-md-datatable-column><p>Description</p></ng2-md-datatable-column>
-      </ng2-md-datatable-header>
+      <tr>
+        <th><p>Name</p></th>
+        <th><p>Description</p></th>
+      </tr>
 
       <!-- Table Body -->
       <tbody>
         <!-- Item Row -->
-        <ng2-md-datatable-row *ngFor="let template of templates" (click)="gotoTemplate(template._id)">
+        <tr *ngFor="let template of templates" (click)="gotoTemplate(template._id)">
           <td><p>{{ template.name }}</p></td>
           <td><p>{{ template.description }}</p></td>
-        </ng2-md-datatable-row>
+        </tr>
       </tbody>
-    </ng2-md-datatable>    
+    </table>    
     <div *ngIf="templates.length == 0">
       <p>Currently no templates to display.</p>
     </div>
-  </md-card>
+  </mat-card>
 </div>

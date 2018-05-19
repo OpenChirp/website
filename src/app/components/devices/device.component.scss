@@ -23,9 +23,9 @@ $blue-text: #8ab9d6;
   p {
     font-family: "Avenir-Med", sans-serif;
   }
-  md-card {
+  mat-card {
     background-color: white;
-    md-tab-group {
+    mat-tab-group {
       padding: 15px;
       font-family: "Avenir-Med", sans-serif;
       color: $black-text;
@@ -51,7 +51,7 @@ $blue-text: #8ab9d6;
     }
   }
   form {
-    md-input-container {
+    mat-input-container {
       input {
         width: 350px;
         font-family: "Avenir-Med", sans-serif;

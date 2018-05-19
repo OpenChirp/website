@@ -1,6 +1,8 @@
+
+import {switchMap} from 'rxjs/operators';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 
 import { Location } from '../../models/location';
 import { LocationService } from '../../services/location.service';
@@ -26,12 +28,12 @@ export class NewDeviceComponent {
   template: any = null;
   templateid = "";
 
-  constructor(private deviceService: DeviceService, 
+  constructor(private deviceService: DeviceService,
               private locationService: LocationService,
               private route: ActivatedRoute, private router: Router,
               private successDialogService: SuccessDialogService,
               private errorDialogService: ErrorDialogService,
-              public dialog: MdDialog) {
+              public dialog: MatDialog) {
 
   }
 
@@ -55,14 +57,14 @@ export class NewDeviceComponent {
 
     // From Location
     if (loc) {
-      this.route.params
-        .switchMap((params: Params) => this.locationService.getLocationById(params['location_id']))
+      this.route.params.pipe(
+        switchMap((params: Params) => this.locationService.getLocationById(params['location_id'])))
         .subscribe(result => this.location = result);
     }
     // From Device Template
     if (tem) {
-      this.route.params
-        .switchMap((params: Params) => this.deviceService.deviceTemplate(params['template_id']))
+      this.route.params.pipe(
+        switchMap((params: Params) => this.deviceService.deviceTemplate(params['template_id'])))
         .subscribe(result => {
           this.template = result;
           this.templateid = this.template._id;

@@ -4,7 +4,7 @@ import { ErrorDialogService } from '../../../services/error-dialog.service';
 import { SuccessDialogService } from '../../../services/success-dialog.service';
 import { DeviceService } from '../../../services/device.service';
 import { UserService } from '../../../services/user.service';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.component';
 import { PublicLinkComponent } from '../../publiclink/public-link.component';
 import { Configuration } from '../../../config';
@@ -23,11 +23,11 @@ export class DeviceCommandsComponent {
   transducer: any = null;
   baseUrl: string;
 
-  constructor(private deviceService: DeviceService, 
+  constructor(private deviceService: DeviceService,
               private userService: UserService,
-              private successDialogService: SuccessDialogService, 
+              private successDialogService: SuccessDialogService,
               private errorDialogService: ErrorDialogService,
-              public dialog: MdDialog,
+              public dialog: MatDialog,
               private config: Configuration
               ) {
 
@@ -94,19 +94,19 @@ export class DeviceCommandsComponent {
 
   publicLink(command: any) {
     this.deviceService.getPublicLink(this.device._id, command._id).subscribe(
-      result => {      
+      result => {
         let dialogRef = this.dialog.open(PublicLinkComponent, { width: '800px' });
         dialogRef.componentInstance.device = this.device;
         dialogRef.componentInstance.command = command;
         dialogRef.componentInstance.link = this.baseUrl+ result;
-        dialogRef.componentInstance.baseUrl = this.baseUrl; 
+        dialogRef.componentInstance.baseUrl = this.baseUrl;
       },
       error => {
         if(error.status == 404){
           let dialogRef = this.dialog.open(PublicLinkComponent, { width: '800px' });
           dialogRef.componentInstance.device = this.device;
           dialogRef.componentInstance.command = command;
-          dialogRef.componentInstance.baseUrl = this.baseUrl; 
+          dialogRef.componentInstance.baseUrl = this.baseUrl;
         }else{
           this.errorDialogService
           .dialogPopup(error.message);
@@ -127,7 +127,7 @@ export class DeviceCommandsComponent {
           result => {
             this.successDialogService
                 .dialogPopup('Shortcut created ' + this.name);
-              
+
           },
           error => {
              this.errorDialogService

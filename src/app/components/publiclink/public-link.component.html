@@ -1,6 +1,6 @@
 <div class="publiclink">
   <h2>Public link for command: {{ command.name }}</h2>
-  <md-card>
+  <mat-card>
       <div class ="link" *ngIf="link">
       {{ link }}       
       </div>
@@ -8,12 +8,12 @@
 
         No public link found.
           <div class="createLink">
-            <button md-raised-button (click)="createPublicLink()">Create Public Link</button>
+            <button mat-raised-button (click)="createPublicLink()">Create Public Link</button>
           </div>
       
       </div>
       <div class="buttons">
-        <button md-raised-button (click)="close()">Close</button>
+        <button mat-raised-button (click)="close()">Close</button>
       </div>  
-    </md-card>
+    </mat-card>
 </div>

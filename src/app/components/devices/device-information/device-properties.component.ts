@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { Device } from '../../../models/device';
 import { DeviceService } from '../../../services/device.service';
 import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.component';
@@ -18,13 +18,12 @@ export class DevicePropertiesComponent {
   @Input() device: Device;
   @Input() acl: any;
   @Output() updateDevice: EventEmitter<boolean> = new EventEmitter();
-  
-  constructor(private deviceService: DeviceService, 
-    private router: Router, 
-    private successDialogService: SuccessDialogService, 
+
+  constructor(private deviceService: DeviceService,
+    private router: Router,
+    private successDialogService: SuccessDialogService,
     private errorDialogService: ErrorDialogService,
-    public dialog: MdDialog
-   ) {
+    public dialog: MatDialog) {
   }
 
 

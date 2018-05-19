@@ -1,7 +1,9 @@
+
+import {switchMap} from 'rxjs/operators';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { MdDialog, MdDialogRef } from '@angular/material';
-import 'rxjs/add/operator/switchMap';
+import { MatDialog, MatDialogRef } from '@angular/material';
+
 
 import { Device } from '../../models/device';
 import { DeviceService } from '../../services/device.service';
@@ -32,7 +34,7 @@ export class DeviceComponent {
               private errorDialogService: ErrorDialogService,
               private userService: UserService,
               private globalDataService:GlobalDataService,
-              public dialog: MdDialog) {
+              public dialog: MatDialog) {
   }
 
   private tabNameToPosition: Map<string, Number> = new Map([
@@ -77,8 +79,8 @@ export class DeviceComponent {
   }
 
   getDevice() {
-    this.route.params
-      .switchMap((params: Params) => this.deviceService.getDeviceById(params['id']))
+    this.route.params.pipe(
+      switchMap((params: Params) => this.deviceService.getDeviceById(params['id'])))
       .subscribe(
         result => {
           this.device = result;

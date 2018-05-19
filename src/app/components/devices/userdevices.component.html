@@ -1,8 +1,8 @@
 <div class="user-devices" >
-  <md-card>
+  <mat-card>
     <div class="card-header">
       <h2>My Devices</h2>
-      <button md-raised-button (click)="newDevice()">New Device</button>
+      <button mat-raised-button (click)="newDevice()">New Device</button>
     </div>
     <br>
     <div class="table-header">
@@ -17,6 +17,6 @@
     <div *ngIf="devices.length == 0">
       <p>Currently no devices to display.</p>
     </div>
-  </md-card>
+  </mat-card>
   
 </div>

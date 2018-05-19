@@ -2,11 +2,28 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule, Routes, Router } from '@angular/router';
-import { MaterialModule, MdInputModule, MdCardModule } from '@angular/material';
-import { MdDataTableModule } from 'ng2-md-datatable';
-import { MdlModule } from '@angular-mdl/core'
+import {
+  MatInputModule,
+  MatCardModule,
+  MatIconModule,
+  MatMenuModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatTableModule,
+  MatTabsModule,
+  MatCheckboxModule,
+  MatSlideToggleModule,
+  MatSelectModule,
+  MatRadioModule,
+  MatButtonToggleModule,
+  MatAutocompleteModule,
+  MatDialogModule,
+  MatSnackBarModule,
+} from '@angular/material';
+import { MatDataTableModule } from 'ng2-md-datatable';
 
 import 'hammerjs';
 
@@ -42,7 +59,7 @@ import { ConfirmationDialogComponent } from './components/dialogs/confirmation-d
 import { PropertiesComponent } from './components/dialogs/properties.component';
 import { ListInfraServicesComponent } from './components/infraservices/list.infraservices.component';
 import { ConfigRequiredComponent } from './components/infraservices/config.required.component';
-import { NewInfraServiceComponent } from './components/infraservices/new.infraservice.component'; 
+import { NewInfraServiceComponent } from './components/infraservices/new.infraservice.component';
 import { SelectServiceComponent } from './components/infraservices/select-service.component';
 import { InputConfigComponent } from './components/dialogs/input-config.component';
 import { InputTransducerValueComponent } from './components/dialogs/input-transducer-value.component';
@@ -121,21 +138,34 @@ import { AuthService } from './services/auth.service';
     UserProfileComponent,
     LoginComponent,
     GoogleLoginComponent
-
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientJsonpModule,
+    HttpClientModule,
     HttpModule,
     JsonpModule,
-    MaterialModule,
-    MdInputModule,
-    MdCardModule,
+    MatInputModule,
+    MatCardModule,
+    MatIconModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatTableModule,
+    MatTabsModule,
+    MatCheckboxModule,
+    MatSlideToggleModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatButtonToggleModule,
+    MatAutocompleteModule,
+    MatDialogModule,
+    MatSnackBarModule,
     BrowserAnimationsModule,
-    MdDataTableModule,
-    AppRoutingModule,
-    MdlModule
+    MatDataTableModule,
+    AppRoutingModule
   ],
   providers: [
     LocationService,
@@ -156,7 +186,7 @@ import { AuthService } from './services/auth.service';
     ConfirmationDialogComponent,
     SelectTemplateComponent,
     SelectServiceComponent,
-    PropertiesComponent,  
+    PropertiesComponent,
     ConfigRequiredComponent,
     InputConfigComponent,
     InputTransducerValueComponent,

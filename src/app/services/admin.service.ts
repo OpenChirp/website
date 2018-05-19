@@ -1,6 +1,9 @@
+
+import {throwError as observableThrowError,  Observable } from 'rxjs';
+
+import {catchError, map} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
 import { Configuration } from '../config';
 
 @Injectable()
@@ -17,9 +20,9 @@ export class AdminService {
 
 
   getAllStats(){
-  	return this.http.get(this.adminUrl +"stats", this.requestOptions)
-    .map(this.extractData)
-    .catch(this.handleError);
+  	return this.http.get(this.adminUrl +"stats", this.requestOptions).pipe(
+    map(this.extractData),
+    catchError(this.handleError),);
   }
 
    private extractData(res: Response) {
@@ -40,9 +43,9 @@ export class AdminService {
     }
     console.error(errMsg);
     if (err.message) {
-      return Observable.throw(err);
+      return observableThrowError(err);
     } else {
-      return Observable.throw({
+      return observableThrowError({
         message: error.statusText
       });
     }

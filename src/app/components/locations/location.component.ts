@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { Location } from '../../models/location';
-import { MdInputModule, MdSnackBar } from '@angular/material';
+import { MatInputModule, MatSnackBar } from '@angular/material';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import 'rxjs/add/operator/switchMap';
+
 
 import { SuccessDialogService } from '../../services/success-dialog.service';
 import { ErrorDialogService } from '../../services/error-dialog.service';
@@ -25,7 +25,7 @@ export class LocationComponent {
 
   constructor(private locationService: LocationService, private route: ActivatedRoute,
               private router: Router,
-              public snackBar: MdSnackBar,
+              public snackBar: MatSnackBar,
               public successDialogService: SuccessDialogService,
               public errorDialogService: ErrorDialogService) {
   }

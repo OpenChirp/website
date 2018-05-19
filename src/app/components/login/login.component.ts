@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { MdInputModule, MdSnackBar, MdDialog } from '@angular/material';
+import { MatInputModule, MatSnackBar, MatDialog } from '@angular/material';
 
 import { SuccessDialogService } from '../../services/success-dialog.service';
 import { ErrorDialogService } from '../../services/error-dialog.service';
@@ -24,7 +24,7 @@ export class LoginComponent {
               private authService: AuthService,
               private errorDialogService: ErrorDialogService,
               private successDialogService: SuccessDialogService,
-              public snackBar: MdSnackBar) {
+              public snackBar: MatSnackBar) {
   }
 
   ngOnInit() {

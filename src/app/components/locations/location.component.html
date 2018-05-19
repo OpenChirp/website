@@ -1,25 +1,25 @@
 <div class="location">
-  <md-card>
+  <mat-card>
     <h2 *ngIf="parent">Create New Location for {{ parent.name }}</h2>
     <h2 *ngIf="location">Update Location {{ location.name }}</h2>
     <hr>
     <form>
-      <md-input-container>
-        <input mdInput 
+      <mat-form-field>
+        <input matInput 
                placeholder="Location Name" 
                [(ngModel)]="name" 
                [ngModelOptions]="{standalone: true}">
-      </md-input-container>
+      </mat-form-field>
       <br>
-      <md-select placeholder="Location Type" [(ngModel)]="type" name="location-type">
-        <md-option *ngFor="let locationType of locationTypes" [value]="locationType">
+      <mat-select placeholder="Location Type" [(ngModel)]="type" name="location-type">
+        <mat-option *ngFor="let locationType of locationTypes" [value]="locationType">
           {{ locationType }}
-        </md-option>
-      </md-select>
+        </mat-option>
+      </mat-select>
       <br><br>
-      <button md-raised-button type="submit" (click)="add()" *ngIf="parent">Add Location</button>
-      <button md-raised-button type="submit" (click)="update()" *ngIf="location">Update Location</button>
-      <button md-raised-button (click)="cancel()">Cancel</button>
+      <button mat-raised-button type="submit" (click)="add()" *ngIf="parent">Add Location</button>
+      <button mat-raised-button type="submit" (click)="update()" *ngIf="location">Update Location</button>
+      <button mat-raised-button (click)="cancel()">Cancel</button>
     </form>
-  </md-card>
+  </mat-card>
 </div>

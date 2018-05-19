@@ -4,11 +4,10 @@ import { DeviceService } from '../../../services/device.service';
 import { Device } from '../../../models/device';
 import { SuccessDialogService } from '../../../services/success-dialog.service';
 import { ErrorDialogService } from '../../../services/error-dialog.service';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.component';
 import { InputTransducerValueComponent } from '../../dialogs/input-transducer-value.component';
-import { interval } from 'rxjs/observable/interval';
-import { Subscription } from 'rxjs';
+import { interval ,  Subscription } from 'rxjs';
 
 @Component({
   selector: 'device-transducers',
@@ -33,7 +32,7 @@ export class DeviceTransducersComponent {
   constructor(private deviceService: DeviceService,
               private successDialogService: SuccessDialogService,
               private errorDialogService: ErrorDialogService,
-              public dialog: MdDialog) {
+              public dialog: MatDialog) {
 
   }
 

@@ -1,3 +1,5 @@
+
+import {map, startWith} from 'rxjs/operators';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -7,7 +9,7 @@ import { SuccessDialogService } from '../../../services/success-dialog.service';
 import { DeviceService } from '../../../services/device.service';
 import { UserService } from '../../../services/user.service';
 import { GroupService } from '../../../services/group.service';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.component';
 
 @Component({
@@ -19,10 +21,10 @@ import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.c
 export class DeviceAclComponent {
   @Input() device: Device;
   @Output() updateDevice: EventEmitter<boolean> = new EventEmitter();
-  
+
   tokenTip : string = "Use the device id as username and this token as password to authenticate over basic auth for REST API and MQTT. Make sure to copy it now. You won’t be able to see it again!";
- 
-  memberForm: FormGroup; 
+
+  memberForm: FormGroup;
   emailCtrl: FormControl;
   allUsers: Array<any> = [];
   allGroups: Array<any> = [];
@@ -33,13 +35,13 @@ export class DeviceAclComponent {
   newGroup:any= null;
   newPerm: string;
 
-  constructor(private deviceService: DeviceService, 
+  constructor(private deviceService: DeviceService,
               private userService: UserService,
               private groupService: GroupService,
-              private successDialogService: SuccessDialogService, 
+              private successDialogService: SuccessDialogService,
               private errorDialogService: ErrorDialogService,
-              public dialog: MdDialog,
-              private router: Router, 
+              public dialog: MatDialog,
+              private router: Router,
               ) {
   }
 
@@ -52,23 +54,23 @@ export class DeviceAclComponent {
         user: new FormControl('', [<any>Validators.required]),
         perm : new FormControl('')
     });
-    this.filteredUsers = this.memberForm.controls['user'].valueChanges
-         .startWith(null)
-         .map(user => user && typeof user === 'object' ? user.email : user)
-         .map(email => email ? this.filter(email) : this.allUsers.slice()); 
+    this.filteredUsers = this.memberForm.controls['user'].valueChanges.pipe(
+         startWith(null),
+         map(user => user && typeof user === 'object' ? user.email : user),
+         map(email => email ? this.filter(email) : this.allUsers.slice()),);
 
   }
 
   filter(email: string)   {
-     return this.allUsers.filter(user => new RegExp(`^${email}`, 'gi').test(user.email)); 
+     return this.allUsers.filter(user => new RegExp(`^${email}`, 'gi').test(user.email));
   }
-  
+
   displayEmail(user: any): string {
       return user ? user.email : user;
    }
-  
+
   gotoGroup(id: string) {
-    this.router.navigate(['/home/group', id ]);    
+    this.router.navigate(['/home/group', id ]);
   }
   getAllUsers(){
     this.userService.getAllUsers().subscribe(
@@ -79,7 +81,7 @@ export class DeviceAclComponent {
         this.errorDialogService
         .dialogPopup(error.message);
       });
-  } 
+  }
 
   getAllGroups(){
     this.groupService.getAllGroups("").subscribe(
@@ -102,7 +104,7 @@ export class DeviceAclComponent {
         this.errorDialogService
         .dialogPopup(error.message);
       });
-  } 
+  }
 
   getGroupsAcl(){
     this.deviceService.getGroupsAcl(this.device._id).subscribe(
@@ -129,7 +131,7 @@ export class DeviceAclComponent {
       );
   }
 
-  recreateDeviceToken() {  
+  recreateDeviceToken() {
     let dialogRef = this.dialog.open(ConfirmationDialogComponent);
     dialogRef.componentInstance.dialogText = "Regenerate token for " + this.device.name + "? ";
     dialogRef.componentInstance.dialogWarning = "This will over-write the previous token."
@@ -141,7 +143,7 @@ export class DeviceAclComponent {
             result => {
               this.updateDevice.emit(true);
               this.successDialogService
-              .dialogPopupNoAutoClose("Token : " + result, this.tokenTip); 
+              .dialogPopupNoAutoClose("Token : " + result, this.tokenTip);
             },
             error => this.errorDialogService
             .dialogPopup(error.message + ': ' + this.device.name)
@@ -150,7 +152,7 @@ export class DeviceAclComponent {
       } // End result
       ); // End subscribe
   } // End function
-  
+
   deleteDeviceToken() {
     let dialogRef = this.dialog.open(ConfirmationDialogComponent);
     dialogRef.componentInstance.dialogText = "Delete token for device " + this.device.name + "? ";
@@ -163,41 +165,41 @@ export class DeviceAclComponent {
             result => {
               this.updateDevice.emit(true);
               this.successDialogService
-              .dialogPopup('Successfully deleted token for: ' + this.device.name);               
+              .dialogPopup('Successfully deleted token for: ' + this.device.name);
             },
             error => this.errorDialogService
             .dialogPopup(error.message + ': ' + this.device.name)
             );// End delete token subscribe.
         } // End if
       } // End result
-      ); // End subscribe    
+      ); // End subscribe
   } // End function
 
   addUserAcl(value: any){
      var user = value.user;
      var body = { "perm": value.perm, "entity_type": "user" };
      this.deviceService.createAcl(this.device._id, user._id, body).subscribe(
-      res =>  {             
+      res =>  {
                this.memberForm.reset();
                this.getUsersAcl();
                this.successDialogService.dialogPopup("User added : " +user.email);
              },
       err => this.errorDialogService.dialogPopup(err.message)
-      );       
+      );
   }
-  
+
   addGroupAcl(){
      var group = this.newGroup;
      var body = { "perm": this.newPerm, "entity_type": "group" };
      this.deviceService.createAcl(this.device._id, group._id, body).subscribe(
-      res =>  {             
+      res =>  {
                this.newGroup = null;
                this.newPerm = "";
                this.getGroupsAcl();
                this.successDialogService.dialogPopup("Group added : " + group.name);
              },
       err => this.errorDialogService.dialogPopup(err.message)
-      );       
+      );
   }
 
   removeUserAcl(user: any){
@@ -208,8 +210,8 @@ export class DeviceAclComponent {
       result => {
         if (result) {
           this.deviceService.deleteAcl(this.device._id, user._id).subscribe(
-            result => {     
-              this.getUsersAcl();       
+            result => {
+              this.getUsersAcl();
               this.successDialogService
               .dialogPopup('Successfully removed: ' + user.email);
             },
@@ -230,8 +232,8 @@ export class DeviceAclComponent {
       result => {
         if (result) {
           this.deviceService.deleteAcl(this.device._id, group._id).subscribe(
-            result => {     
-              this.getGroupsAcl();       
+            result => {
+              this.getGroupsAcl();
               this.successDialogService
               .dialogPopup('Successfully removed: ' + group.name);
             },

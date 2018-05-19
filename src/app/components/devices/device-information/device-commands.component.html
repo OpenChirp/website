@@ -1,62 +1,62 @@
 <div class="device-commands" *ngIf="device">
 
-  <ng2-md-datatable>
+  <table>
 
     <!-- Table Header-->
-    <ng2-md-datatable-header>
-      <ng2-md-datatable-column><p>Command</p></ng2-md-datatable-column>
-      <ng2-md-datatable-column><p>Value</p></ng2-md-datatable-column>
-      <ng2-md-datatable-column><p>Transducer</p></ng2-md-datatable-column>
-      <ng2-md-datatable-column><p>Actions</p></ng2-md-datatable-column>
-    </ng2-md-datatable-header>
+    <tr>
+      <th><p>Command</p></th>
+      <th><p>Value</p></th>
+      <th><p>Transducer</p></th>
+      <th><p>Actions</p></th>
+    </tr>
 
     <!-- Table Body -->
     <tbody>
 
       <!-- Item Row -->
-      <ng2-md-datatable-row *ngFor="let command of device.commands">
+      <tr *ngFor="let command of device.commands">
         <td><p>{{ command.name }}</p></td>
         <td><p>{{ command.value }}</p></td>
         <td><p>{{ transducerNameById(command.transducer_id) }}</p></td>
-        <td><button md-raised-button (click)="execute(command)">Run</button></td>
+        <td><button mat-raised-button (click)="execute(command)">Run</button></td>
         <td>
-           <md-icon [mdMenuTriggerFor]="menu">more_horiz</md-icon>
-           <md-menu #menu="mdMenu">                 
-              <button md-menu-item (click)="createShortcut(command)">Add Shortcut</button>
-              <button md-menu-item (click)="publicLink(command)">Get Public Link</button>
-              <button md-menu-item (click)="deleteCommand(command._id, command.name)">Delete</button>
-        </md-menu>
-        
+           <mat-icon [matMenuTriggerFor]="menu">more_horiz</mat-icon>
+           <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="createShortcut(command)">Add Shortcut</button>
+              <button mat-menu-item (click)="publicLink(command)">Get Public Link</button>
+              <button mat-menu-item (click)="deleteCommand(command._id, command.name)">Delete</button>
+        </mat-menu>
+
         </td>
-      </ng2-md-datatable-row>
+      </tr>
 
       <!-- New Transducer Row -->
-      <ng2-md-datatable-row>
+      <tr>
         <td>
-          <md-input-container>
-            <input mdInput placeholder="Name" [(ngModel)]="name">
-          </md-input-container>
+          <mat-form-field>
+            <input matInput placeholder="Name" [(ngModel)]="name">
+          </mat-form-field>
         </td>
         <td>
-          <md-input-container>
-            <input mdInput placeholder="Value" [(ngModel)]="value">
-          </md-input-container>
+          <mat-form-field>
+            <input matInput placeholder="Value" [(ngModel)]="value">
+          </mat-form-field>
         </td>
         <td>
-          <md-select placeholder="Transducer" [(ngModel)]="transducer" name="transducer">
-            <md-option *ngFor="let transducer of device.transducers" [value]="transducer">
+          <mat-select placeholder="Transducer" [(ngModel)]="transducer" name="transducer">
+            <mat-option *ngFor="let transducer of device.transducers" [value]="transducer">
               {{ transducer.is_actuable ? transducer.name : '-' }}
-            </md-option>
-          </md-select>
+            </mat-option>
+          </mat-select>
         </td>
         <td>
-          <button md-icon-button (click)="newCommand()">
-            <md-icon>add</md-icon>
+          <button mat-icon-button (click)="newCommand()">
+            <mat-icon>add</mat-icon>
           </button>
         </td>
-      </ng2-md-datatable-row>
+      </tr>
 
     </tbody>
-  </ng2-md-datatable>
+  </table>
 
 </div>

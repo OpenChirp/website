@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { MdDialog, MdDialogRef, MdSnackBar } from '@angular/material';
+import { MatDialog, MatDialogRef, MatSnackBar } from '@angular/material';
 
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 import { LocationService } from '../../services/location.service';
 import { Location } from '../../models/location';
@@ -26,8 +26,8 @@ export class TreeNodeComponent {
   subscription: Subscription;
   constructor(private locationService: LocationService,
               private router: Router,
-              public dialog: MdDialog,
-              public snackBar: MdSnackBar,
+              public dialog: MatDialog,
+              public snackBar: MatSnackBar,
               private successDialogService: SuccessDialogService,
               private errorDialogService: ErrorDialogService) {
 

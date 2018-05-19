@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { DomSanitizer, SafeUrl} from '@angular/platform-browser';
-import { MdButtonToggleGroup } from '@angular/material';
+import { MatButtonToggleGroup } from '@angular/material';
 
 import { Device } from '../../../models/device';
 import { DeviceService } from '../../../services/device.service';
@@ -23,12 +23,12 @@ export class DeviceVisualizationComponent {
     'Hour'
   ];
   constructor(private deviceService: DeviceService,  private sanitizer: DomSanitizer) {}
-  
+
   ngOnInit() {
     this.currentRes = 'Hour';
-    this.resolutionToggled();    
+    this.resolutionToggled();
   }
-  
+
   resolutionToggled(){
     let grafana_url = this.deviceService.getGrafanaUrl();
     let transducerNames = this.device.transducers.map(function(val:any) { return val.name ;});
@@ -42,7 +42,7 @@ export class DeviceVisualizationComponent {
         url = url + "&refresh=5m&from=now-1M&to=now%2B1d";
         break;
       case 'Day':
-        url = url + "&refresh=1ms&from=now-1d&to=now%2B1h"; 
+        url = url + "&refresh=1ms&from=now-1d&to=now%2B1h";
         break;
       case 'Hour':
         url = url + "&refresh=15s&from=now-1h&to=now%2B5m";
@@ -59,5 +59,5 @@ export class DeviceVisualizationComponent {
     // //   this.frameURL = this.sanitizer.bypassSecurityTrustResourceUrl(url);
     console.log(url);
   }
-  
+
 }

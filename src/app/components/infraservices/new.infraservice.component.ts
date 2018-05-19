@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import 'rxjs/add/operator/switchMap';
-import { MdInputModule, MdSnackBar, MdDialog } from '@angular/material';
+
+import { MatInputModule, MatSnackBar, MatDialog } from '@angular/material';
 import { InfraService } from '../../services/infraservice';
 
 import { SuccessDialogService } from '../../services/success-dialog.service';
@@ -18,9 +18,9 @@ export class NewInfraServiceComponent {
   description: string = "";
 
   constructor(private route: ActivatedRoute, private infraService: InfraService, private router: Router,
-    private successDialogService: SuccessDialogService, 
+    private successDialogService: SuccessDialogService,
     private errorDialogService: ErrorDialogService,
-     public snackBar: MdSnackBar
+     public snackBar: MatSnackBar
    ) {
 
   }
@@ -30,18 +30,18 @@ export class NewInfraServiceComponent {
       var body: any = {
         name: this.name,
         description: this.description,
-       
+
       };
 
       this.infraService.createService(body).subscribe(
         createdService => {
-          
-         
+
+
           this.successDialogService.dialogPopup("Service Created "+this.name).subscribe(
             result => this.router.navigate(['/home/service/'+createdService._id])
           );
         },
-        error => {           
+        error => {
             this.errorDialogService
               .dialogPopup(error.message + ': ' + this.name);
           }
@@ -57,6 +57,6 @@ export class NewInfraServiceComponent {
     this.router.navigate(['/home']);
   }
 
- 
-  
+
+
 }

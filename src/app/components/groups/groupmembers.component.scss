@@ -1,16 +1,16 @@
 $black-text: #303132;
 
 .group-members {
-	ng2-md-datatable-header {
+	ng2-mat-datatable-header {
 		border-bottom: solid 1px #909090;
 		font-weight:bold;
 	}
-	ng2-md-datatable-row {
+	tr {
 		cursor: pointer;
 		border-top: solid 1px #e3e3e3;
 		border-bottom: solid 1px #e3e3e3;
 	}
-	ng2-md-datatable-row:hover {
+	tr:hover {
 		background-color: #e3e3e3;
 	}
 	

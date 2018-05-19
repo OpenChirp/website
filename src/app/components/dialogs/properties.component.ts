@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 
 import { ErrorDialogService } from '../../services/error-dialog.service';
 
@@ -17,12 +17,12 @@ export class PropertiesComponent {
   // Created
   newProperties: Object = {};
   transformed: Array<any> = [];
-  
+
   // For Input
   newKey: string = "";
   newValue: string = "";
 
-  constructor(public dialog: MdDialogRef<PropertiesComponent>, private errorDialogService: ErrorDialogService) {
+  constructor(public dialog: MatDialogRef<PropertiesComponent>, private errorDialogService: ErrorDialogService) {
 
   }
 

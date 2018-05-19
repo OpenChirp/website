@@ -1,5 +1,7 @@
+
+import {switchMap} from 'rxjs/operators';
 import { Component } from '@angular/core';
-import { MdInputModule, MdSnackBar, MdDialog } from '@angular/material';
+import { MatInputModule, MatSnackBar, MatDialog } from '@angular/material';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { DeviceService } from '../../services/device.service';
@@ -21,13 +23,13 @@ export class NewTemplateComponent {
               private router: Router,
               private successDialogService: SuccessDialogService,
               private errorDialogService: ErrorDialogService,
-              public snackBar: MdSnackBar, public dialog: MdDialog) {
+              public snackBar: MatSnackBar, public dialog: MatDialog) {
 
   }
 
   ngOnInit() {
-    this.route.params
-      .switchMap((params: Params) => this.deviceService.getDeviceById(params['id']))
+    this.route.params.pipe(
+      switchMap((params: Params) => this.deviceService.getDeviceById(params['id'])))
       .subscribe(
         result => this.device = result,
         error => this.router.navigate(['/home'])
@@ -44,7 +46,7 @@ export class NewTemplateComponent {
 
       this.deviceService.saveTemplate(body).subscribe(
         result => {
-          
+
           // this.snackBar.open("Save Template Success!", this.name, { duration: 2000 }).afterDismissed().subscribe(
           this.successDialogService.dialogPopup("Template Created "+this.name).subscribe(
             result => this.router.navigate(['/home/devicetemplates/'])

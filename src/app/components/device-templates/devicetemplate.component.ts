@@ -1,10 +1,12 @@
+
+import {switchMap} from 'rxjs/operators';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import 'rxjs/add/operator/switchMap';
+
 import { DeviceService } from '../../services/device.service';
 import { SuccessDialogService } from '../../services/success-dialog.service';
 import { ErrorDialogService } from '../../services/error-dialog.service';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.component';
 
 
@@ -16,12 +18,12 @@ import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.comp
 
 export class DeviceTemplateComponent {
   template: any = null;
-  constructor(private route: ActivatedRoute, 
-              private deviceService: DeviceService, 
+  constructor(private route: ActivatedRoute,
+              private deviceService: DeviceService,
               private router: Router,
-              private successDialogService: SuccessDialogService, 
+              private successDialogService: SuccessDialogService,
               private errorDialogService: ErrorDialogService,
-              public dialog: MdDialog) {
+              public dialog: MatDialog) {
 
   }
 
@@ -30,8 +32,8 @@ export class DeviceTemplateComponent {
   }
 
   getTemplate() {
-    this.route.params
-      .switchMap((params: Params) => this.deviceService.deviceTemplate(params['id']))
+    this.route.params.pipe(
+      switchMap((params: Params) => this.deviceService.deviceTemplate(params['id'])))
       .subscribe(
         result => {
           this.template = result;
@@ -39,7 +41,7 @@ export class DeviceTemplateComponent {
         error => this.router.navigate(['/home'])
       );
   }
-  
+
   newDevice() {
     this.router.navigate(['/home/newdevice', { template_id: this.template._id }]);
   }
@@ -52,7 +54,7 @@ export class DeviceTemplateComponent {
       result => {
         if (result) {
           this.deviceService.deleteTemplate(this.template._id).subscribe(
-            result => { 
+            result => {
               this.successDialogService.dialogPopup("Successfully deleted " + this.template.name);
               this.router.navigate(['/home/devicetemplates']);
             },

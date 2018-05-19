@@ -1,19 +1,19 @@
 <div class="new-group">
   <h2>Create Group</h2>
-  <ng2-md-datatable>    
+  <table>    
     <tbody>
-      <ng2-md-datatable-row> 
+      <tr> 
         <td> Name : </td>
         <td>
-          <md-input-container class="name">
-            <input required mdInput [(ngModel)]="name">   
-          </md-input-container>
+          <mat-form-field class="name">
+            <input required matInput [(ngModel)]="name">   
+          </mat-form-field>
         </td>
-      </ng2-md-datatable-row>
+      </tr>
     </tbody>
-    </ng2-md-datatable>
+    </table>
     <div class="buttons">
-      <button md-raised-button (click)="save()">Save</button>
-      <button md-raised-button (click)="cancel()">Cancel</button>
+      <button mat-raised-button (click)="save()">Save</button>
+      <button mat-raised-button (click)="cancel()">Cancel</button>
     </div>  
 </div>

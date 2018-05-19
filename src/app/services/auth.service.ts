@@ -1,6 +1,9 @@
+
+import {throwError as observableThrowError,  Observable } from 'rxjs';
+
+import {catchError, map} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
 import { Configuration } from '../config';
 
 @Injectable()
@@ -21,21 +24,21 @@ constructor(private http: Http, private config: Configuration, private requestOp
  
 
   googleLogin(body: any) {
-    return this.http.post(this.googleLoginUrl, body, this.requestOptions).map(this.extractData)
-                    .catch(this.handleError);
+    return this.http.post(this.googleLoginUrl, body, this.requestOptions).pipe(map(this.extractData),
+                    catchError(this.handleError),);
   }
   signup(body: any) {
-    return this.http.post(this.signupUrl, body, this.requestOptions).map(this.extractData)
-                    .catch(this.handleError);
+    return this.http.post(this.signupUrl, body, this.requestOptions).pipe(map(this.extractData),
+                    catchError(this.handleError),);
   }
   
   basicLogin(body: any) {
-    return this.http.post(this.basicLoginUrl, body, this.requestOptions).map(this.extractData)
-                    .catch(this.handleError);
+    return this.http.post(this.basicLoginUrl, body, this.requestOptions).pipe(map(this.extractData),
+                    catchError(this.handleError),);
   }
    logout() {
-    return this.http.get(this.logoutUrl,this.requestOptions).map(this.extractData)
-                    .catch(this.handleError);
+    return this.http.get(this.logoutUrl,this.requestOptions).pipe(map(this.extractData),
+                    catchError(this.handleError),);
   }
    private extractData(res: Response) {
     const body = res.json();
@@ -55,9 +58,9 @@ constructor(private http: Http, private config: Configuration, private requestOp
     }
     console.error(errMsg);
     if (err.message) {
-      return Observable.throw(err);
+      return observableThrowError(err);
     } else {
-      return Observable.throw({
+      return observableThrowError({
         message: error.statusText
       });
     }

@@ -6,17 +6,17 @@ $black-text: #303132;
     font-family: "Avenir-Med", sans-serif;
     color: $black-text;
   }
-  md-card {
-    ng2-md-datatable-header {
+  mat-card {
+    ng2-mat-datatable-header {
       border-bottom: solid 1px #909090;
       font-weight:bold;
     }
-    ng2-md-datatable-row {
+    tr {
       cursor: pointer;
       border-top: solid 1px #e3e3e3;
       border-bottom: solid 1px #e3e3e3;
     }
-    ng2-md-datatable-row:hover {
+    tr:hover {
       background-color: #e3e3e3;
     }
     background-color: white;

@@ -1,16 +1,16 @@
 .select-service {
   padding: 15px;
 
-  ng2-md-datatable-header {
+  ng2-mat-datatable-header {
     border-bottom: solid 1px #303030;
   }
 
-  ng2-md-datatable-row {
+  tr {
     border-bottom: solid 1px #303030;
     transition-duration: 0.3s;
     cursor: pointer;
   }
-  ng2-md-datatable-row:hover {
+  tr:hover {
     background-color: #e3e3e3;
   }
  
@@ -19,10 +19,10 @@
     h2 {
       float: left;
     }
-    md-input-container {
+    mat-input-container {
       float: right;
     }
-    md-icon {
+    mat-icon {
       float: right;
       color: #909090;
       line-height: 55px;

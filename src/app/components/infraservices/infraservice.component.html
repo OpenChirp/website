@@ -1,27 +1,27 @@
 <div class="infra-service">
-    <md-card *ngIf="service">    
+    <mat-card *ngIf="service">    
       <div class="card-header">
       	 <h2 > Service {{ service.name }}</h2>
          <div class="delete">
-         	<button md-raised-button (click)="deleteService()">Delete</button>
+         	<button mat-raised-button (click)="deleteService()">Delete</button>
       	 </div>
       </div>
        <hr> 
       <form>   		  	
-      	  <p><md-input-container>
-	        <input mdInput placeholder="Name" [(ngModel)]="service.name" name="service-name">
-	      </md-input-container></p>    
-	      <p><md-input-container>
-	        <textarea mdInput placeholder="Description" [(ngModel)]="service.description" name="service-description"></textarea>
-	      </md-input-container></p>
-	      	<p>Device Permission: <md-radio-group [(ngModel)]="service.device_permission" name="service-device-permission">
-	      	  		<md-radio-button value="0">Read</md-radio-button>
-					<md-radio-button value="1">Execute</md-radio-button>
-					<md-radio-button value="2">Write</md-radio-button>
-			</md-radio-group></p>
-	 		<p> <button md-raised-button (click)="updateService()">Update</button>
-			 <button md-raised-button (click)="viewProperties()">Edit Custom Properties</button></p>
-	  	 <div><p><button md-raised-button (click)="viewConfigRequired()">Device Config Required
+      	  <p><mat-form-field>
+	        <input matInput placeholder="Name" [(ngModel)]="service.name" name="service-name">
+	      </mat-form-field></p>    
+	      <p><mat-form-field>
+	        <textarea matInput placeholder="Description" [(ngModel)]="service.description" name="service-description"></textarea>
+	      </mat-form-field></p>
+	      	<p>Device Permission: <mat-radio-group [(ngModel)]="service.device_permission" name="service-device-permission">
+	      	  		<mat-radio-button value="0">Read</mat-radio-button>
+					<mat-radio-button value="1">Execute</mat-radio-button>
+					<mat-radio-button value="2">Write</mat-radio-button>
+			</mat-radio-group></p>
+	 		<p> <button mat-raised-button (click)="updateService()">Update</button>
+			 <button mat-raised-button (click)="viewProperties()">Edit Custom Properties</button></p>
+	  	 <div><p><button mat-raised-button (click)="viewConfigRequired()">Device Config Required
 		  </button> </p></div>
 	  	 <p>Owner : {{ service.owner.name || service.owner.email }}</p>
 	  	<!--  <p>Created at: {{ service.created_at | date :"short" }}</p>
@@ -39,15 +39,15 @@
 		
 		 <div *ngIf ="acl.isOwner">		 	   
 		     <div *ngIf="service.token">
-		        <button md-raised-button (click)="recreateServiceToken()">Re-Generate Token</button>  
-		        <button md-raised-button (click)="deleteServiceToken()">Delete Token</button>
+		        <button mat-raised-button (click)="recreateServiceToken()">Re-Generate Token</button>  
+		        <button mat-raised-button (click)="deleteServiceToken()">Delete Token</button>
 		     </div>
 		      <div *ngIf="!service.token">
-		        <button md-raised-button (click)="createServiceToken()">Generate Token</button>
+		        <button mat-raised-button (click)="createServiceToken()">Generate Token</button>
 		     </div>
 	     </div>		  
 	  </form>
-	</md-card>
+	</mat-card>
 
 </div>
 
