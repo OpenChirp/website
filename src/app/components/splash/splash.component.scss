@@ -2,258 +2,262 @@
 $image_url: '../../../assets/images';
 
 body {
-    margin: 0;
+  margin: 0;
 }
 
 
-mdl-layout-header.custom-header {
-    background: #8ab9d6;
+.custom-header {
+  background: #8ab9d6;
 }
 
 
 /* Disable ugly boxes around images in IE10 */
 a img{
-    border: 0px;
+  border: 0;
 }
 
 
 .openchirp-header {
-    z-index: 50;
-    margin: 0 !important;
-    background: #000;
+  z-index: 50;
+  margin: 0 !important;
+  background: #000;
 }
 
 .mdl-layout-header {
-    background: #f00;
+  background: #f00;
 }
 
 .openchirp-mobile-title {
-    display: none !important;
+  display: none !important;
 }
 
 .openchirp-logo-image {
-    height: 50px;
-    width: 196px;
+  height: 50px;
+  width: 196px;
 }
 
 .openchirp-header {
-    overflow: visible;
-    background-color: white;
+  overflow: visible;
+  background-color: white;
 }
 
 .openchirp-header .material-icons {
-    color: #767777 !important;
+  color: #767777 !important;
 }
 
 .openchirp-header .mdl-layout__drawer-button {
-    background: transparent;
-    //color: #767777;
-    color: #ff0000;
+  background: transparent;
+  //color: #767777;
+  color: #ff0000;
 }
 
 .openchirp-header .mdl-navigation__link {
-    //color: #757575;
-    color: #ff0000;
-    font-weight: 700;
-    font-size: 14px;
+  //color: #757575;
+  color: #ff0000;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.mdl-navigation__link {
+  flex-shrink:0;
+  padding:16px 40px;
 }
 
 .openchirp-navigation-container {
-    /* Simple hack to make the overflow happen to the left instead... */
-    direction: rtl;
-    -webkit-order: 1;
-    -ms-flex-order: 1;
-    order: 1;
-    width: 500px;
-    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
-    width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Simple hack to make the overflow happen to the left instead... */
+  direction: rtl;
+  -webkit-order: 1;
+  -ms-flex-order: 1;
+  order: 1;
+  width: 500px;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+  width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .openchirp-navigation {
-    /* ... and now make sure the content is actually LTR */
-    direction: ltr;
-    -webkit-justify-content: flex-end;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
-    width: 800px;
+  /* ... and now make sure the content is actually LTR */
+  direction: ltr;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  width: 800px;
 }
 
 .openchirp-navigation .mdl-navigation__link {
-    display: inline-block;
-    height: 60px;
-    line-height: 68px;
-    background-color: transparent !important;
-    border-bottom: 4px solid transparent;
+  display: inline-block;
+  height: 60px;
+  line-height: 68px;
+  background-color: transparent !important;
+  border-bottom: 4px solid transparent;
 }
 
 .openchirp-navigation .mdl-navigation__link:hover {
-    border-bottom: 4px solid #007fa5;
+  border-bottom: 4px solid #007fa5;
 }
 
 
 .openchirp-drawer {
-    border-right: none;
+  border-right: none;
 }
 
 .openchirp-drawer-separator {
-    height: 1px;
-    background-color: #dcdcdc;
-    margin: 8px 0;
+  height: 1px;
+  background-color: #dcdcdc;
+  margin: 8px 0;
 }
 
 .openchirp-drawer .mdl-navigation__link.mdl-navigation__link {
-    font-size: 14px;
-    color: #757575;
+  font-size: 14px;
+  color: #757575;
 }
 
 .openchirp-drawer span.mdl-navigation__link.mdl-navigation__link {
-    // color: #8bc34a;
-    color: #ff0000;
+  // color: #8bc34a;
+  color: #ff0000;
 }
 
 .openchirp-drawer .mdl-layout-title {
-    position: relative;
-    //background: #6ab344;
-    height: 160px;
+  position: relative;
+  //background: #6ab344;
+  height: 160px;
 }
 
 .openchirp-drawer .openchirp-logo-image {
-    position: absolute;
-    bottom: 16px;
+  position: absolute;
+  bottom: 16px;
 }
 
 
 
 .openchirp-intro-section {
-    position: relative;
-    height: 100vh;
-    width: 100vw;
-    background-color: #f3f3f3;
-    //background-color: #ff0000;
-    background: url($image_url+'/background.png') center 100% no-repeat;
-    background-size: cover;
+  position: relative;
+  height: 100vh;
+  background-color: #f3f3f3;
+  //background-color: #ff0000;
+  background: url($image_url+'/background.png') center 100% no-repeat;
+  background-size: cover;
 }
 
 
 .openchirp-layout-header {
-    background-color: #ff0000;
+  background-color: #ff0000;
 }
 
 .mdl-typography--display-1-color-contrast {
-    opacity: 1.0;
+  opacity: 1.0;
 }
 
 .mdl-typography--subhead-color-contrast {
-    opacity: 1.0;
+  opacity: 1.0;
 }
 
 
 .logo-font {
-    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
-    line-height: 1;
-    // color: #767777;
-    color: #444444;
-    font-weight: 500;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  line-height: 1;
+  // color: #767777;
+  color: #444444;
+  font-weight: 500;
 }
 
 .openchirp-slogan {
-    font-size: 42px;
-    padding-top: 160px;
+  font-size: 42px;
+  padding-top: 160px;
 }
 
 .openchirp-sub-slogan {
-    font-size: 42px;
-    padding-top: 24px;
+  font-size: 42px;
+  padding-top: 24px;
 }
 
 .openchirp-link {
-    text-decoration: none;
-    color: #8bc34a !important;
+  text-decoration: none;
+  color: #8bc34a !important;
 }
 
 .openchirp-link:hover {
-    color: #7cb342 !important;
+  color: #7cb342 !important;
 }
 
 .openchirp-link .material-icons {
-    position: relative;
-    top: -1px;
-    vertical-align: middle;
+  position: relative;
+  top: -1px;
+  vertical-align: middle;
 }
 
 .openchirp-alt-link {
-    text-decoration: none;
-    color: #ff0000 !important;
-    font-size: 16px;
+  text-decoration: none;
+  color: #ff0000 !important;
+  font-size: 16px;
 }
 
 .openchirp-alt-link:hover {
-    // color: #00bfa5 !important;
-    color: #ff0000 !important;
+  // color: #00bfa5 !important;
+  color: #ff0000 !important;
 }
 
 .openchirp-alt-link .material-icons {
-    position: relative;
-    top: 6px;
+  position: relative;
+  top: 6px;
 }
 
 
 
 .openchirp-numbereditem {
-    vertical-align: middle;
-    margin-right: 20px;
+  vertical-align: middle;
+  margin-right: 20px;
 }
 
 
 
 
 .openchirp-spacer{
-    padding-top: 20px;
+  padding-top: 20px;
 }
 
 .openchirp-regular-section {
-    padding-top: 0;
-    padding-bottom: 30px;
-    max-width: 1044px;
-    margin-left: auto;
-    margin-right: auto;
+  padding-top: 0;
+  padding-bottom: 30px;
+  max-width: 1044px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .openchirp-how-section {
-    min-width: 800px;
-    background: url($image_url + '/how-background.png') bottom right no-repeat;
+  min-width: 800px;
+  background: url($image_url + '/how-background.png') bottom right no-repeat;
 }
 .openchirp-how-section .openchirp-section-name {
-    position: relative;
-    /* top: -70px; */
-    
-    border-bottom: 2px solid #007fa5;
-    text-decoration: none;
-    text-align: center;
-    width:120px;
+  position: relative;
+  /* top: -70px; */
+
+  border-bottom: 2px solid #007fa5;
+  text-decoration: none;
+  text-align: center;
+  width:120px;
 }
 .openchirp-how-section>.openchirp-section-title {
-    margin-left: 12px;
-    text-align: left;
+  margin-left: 12px;
+  text-align: left;
 }
 
 .openchirp-regular-section>.openchirp-section-title {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
 }
 
 .openchirp-regular-section .openchirp-section-name {
-    position: relative;
-    padding-bottom: 5px;
-    border-bottom: 2px solid #007fa5;
-    text-decoration: none;
-    text-align: center;
-    width: 120px;
+  position: relative;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #007fa5;
+  text-decoration: none;
+  text-align: center;
+  width: 120px;
 }
 
 .openchirp-last-section {
-    padding-bottom: 0;
+  padding-bottom: 0;
 }
 
 
@@ -262,145 +266,142 @@ a img{
 
 
 
-.openchirp-card-tech.mdl-card {
-    width: 250px;
-    min-height: 100px;
+.openchirp-card-tech.mdc-card {
+  width: 250px;
+  min-height: 100px;
 }
 
-.openchirp-card-tech>.mdl-card__media {
-    margin-left: auto;
-    margin-right: auto;
-    height: 55px;
+.openchirp-card-tech>.mdc-card__media {
+  margin-left: auto;
+  margin-right: auto;
+  height: 55px;
 }
 
-.openchirp-card-tech>.mdl-card__supporting-text {
-    text-align: center;
+.openchirp-card-tech>.mdc-card__supporting-text {
+  text-align: center;
 }
 
-// .openchirp-card.mdl-card {
+// .openchirp-card.mdc-card {
 //   //width: 300px;
 //   //height: 300px;
 // }
 
-.openchirp-card>.mdl-card__media {
-    margin-left: auto;
-    margin-right: auto;
-    height: 80px;
+.openchirp-card>.mdc-card__media {
+  margin-left: auto;
+  margin-right: auto;
+  height: 80px;
 }
 
-.openchirp-card>.mdl-card__title {
-    margin-left: auto;
-    margin-right: auto;
+.openchirp-card>.mdc-card__title {
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.openchirp-card>.mdl-card__supporting-text {
-    text-align: center;
+.openchirp-card>.mdc-card__supporting-text {
+  text-align: center;
 }
 
 .openchirp-card-container {
-    justify-content: center;
+  justify-content: center;
 }
 
-.openchirp-card-container .mdl-card__media {
-    overflow: hidden;
-    background: transparent;
-    text-align: center;
+.openchirp-card-container .mdc-card__media {
+  overflow: hidden;
+  background: transparent;
+  text-align: center;
 }
 
-.openchirp-card-container .mdl-card__media img {
-    margin-left: auto;
-    margin-right: auto;
+.openchirp-card-container .mdc-card__media img {
+  margin-left: auto;
+  margin-right: auto;
 }
 
-// .openchirp-card-container .mdl-card__media img {
+// .openchirp-card-container .mdc-card__media img {
 //     width: 100%;
 // }
 
-.openchirp-card-container .mdl-card__title {
-    background: transparent;
-    height: auto;
+.openchirp-card-container .mdc-card__title {
+  background: transparent;
+  height: auto;
 }
 
-.openchirp-card-container .mdl-card__title-text {
-    color: black;
-    height: auto;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+.openchirp-card-container .mdc-card__title-text {
+  color: black;
+  height: auto;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.openchirp-card-container .mdl-card__supporting-text {
-    height: auto;
-    color: black;
-    
+.openchirp-card-container .mdc-card__supporting-text {
+  height: auto;
+  color: black;
+
 }
 
-.openchirp-card-container .mdl-card__actions {
-    position: absolute;
-    bottom: 0;
+.openchirp-card-container .mdc-card__actions {
+  position: absolute;
+  bottom: 0;
 }
 
-.openchirp-card-container .mdl-card__actions a {
-    border-top: none;
-    font-size: 16px;
+.openchirp-card-container .mdc-card__actions a {
+  border-top: none;
+  font-size: 16px;
 }
 
 .about-pad {
-    padding-top: 100px;
+  padding-top: 100px;
 }
 .openchirp-footer {
-    background-color: #fafafa;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+  background-color: #fafafa;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .openchirp-link-menu:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .openchirp-footer-cards {
-    background-color: transparent;
-    margin-left: auto;
-    margin-right: auto;
+  background-color: transparent;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .openchirp-footer-card {
-    background-color: #0000ff;
+  background-color: #0000ff;
 }
 
 .gallery-card img {
-     width: 100%;
+  width: 100%;
 }
 
 
 /**** Mobile layout ****/
 
 @media (max-width: 900px) {
-    .openchirp-navigation-container {
-        display: none;
-    }
-    .openchirp-title {
-        display: none !important;
-    }
-    .openchirp-mobile-title {
-        display: block !important;
-        position: absolute;
-        left: calc(50% - 70px);
-        top: 12px;
-        transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .openchirp-slogan {
-        font-size: 26px;
-        margin: 0 16px;
-        padding-top: 24px;
-    }
-    .openchirp-sub-slogan {
-        font-size: 26px;
-        margin: 0 16px;
-        padding-top: 8px;
-    }
-    // .openchirp-footer .mdl-mega-footer--bottom-section {
-        // display: none;
-    // }
+  .openchirp-navigation-container {
+    display: none;
+  }
+  .openchirp-title {
+    display: none !important;
+  }
+  .openchirp-mobile-title {
+    display: block !important;
+    position: absolute;
+    left: calc(50% - 70px);
+    top: 12px;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .openchirp-slogan {
+    font-size: 26px;
+    margin: 0 16px;
+    padding-top: 24px;
+  }
+  .openchirp-sub-slogan {
+    font-size: 26px;
+    margin: 0 16px;
+    padding-top: 8px;
+  }
 }

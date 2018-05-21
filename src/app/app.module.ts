@@ -23,7 +23,15 @@ import {
   MatDialogModule,
   MatSnackBarModule,
 } from '@angular/material';
-import { MatDataTableModule } from 'ng2-md-datatable';
+import {
+  MdcAppBarModule,
+  MdcMenuModule,
+  MdcDrawerModule,
+  MdcListModule,
+  MdcIconModule,
+  MdcGridListModule,
+  MdcCardModule,
+} from '@angular-mdc/web';
 
 import 'hammerjs';
 
@@ -164,7 +172,13 @@ import { AuthService } from './services/auth.service';
     MatDialogModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
-    MatDataTableModule,
+    MdcAppBarModule,
+    MdcMenuModule,
+    MdcDrawerModule,
+    MdcListModule,
+    MdcIconModule,
+    MdcGridListModule,
+    MdcCardModule,
     AppRoutingModule
   ],
   providers: [
