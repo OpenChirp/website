@@ -1,9 +1,5 @@
 .properties {
-  ng2-md-datatable-header {
-    border-bottom: solid 1px #303030;
-    font-weight: bold;
-  }
-  ng2-md-datatable-row {
+  tr {
    //border-top: solid 1px #303030;
     td {
       vertical-align: middle;
@@ -16,10 +12,10 @@
     md-icon:hover {
       color: #303030;
     }
-  }  
+  }
    .description{
     min-width : 100%
-   } 
+   }
   p {
     font-family: "Avenir-Med", sans-serif;
   }

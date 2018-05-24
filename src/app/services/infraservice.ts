@@ -33,9 +33,9 @@ export class InfraService {
     .catch(this.handleError);
   }
 
-  // @todo-rest rename 'things' to devices/groups
+  // changed from /things to /deviceinfo
   getServiceDevices(id: string) {
-    return this.http.get(this.serviceUrl + id + '/things', this.requestOptions)
+    return this.http.get(this.serviceUrl + id + '/deviceinfo', this.requestOptions)
       .map(this.extractData)
       .catch(this.handleError);
   }
