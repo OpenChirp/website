@@ -1,9 +1,9 @@
 export class Configuration {
-  base_url: string = "http://iot.andrew.cmu.edu";
-  api_url: string = this.base_url + ":10010/"+"api/";
-  auth_url: string = this.base_url + ":10010/"+"auth/";
+  base_url: string = "https://testing.openchirp.io";
+  api_url: string = this.base_url + "/api/";
+  auth_url: string = this.base_url + "/auth/";
   
-  google_auth_client_id:string="701190672217-a5u7oepjr23de6qjmjus7s0qgkjdddii.apps.googleusercontent.com";
+  google_auth_client_id:string="8799600805-r708mvl77fe1f5fu71r6sbo366m6e7r5.apps.googleusercontent.com";
 
   grafana_url: string = this.base_url + "grafana/";
 
