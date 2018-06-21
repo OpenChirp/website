@@ -3,8 +3,8 @@ $mdc-theme-primary: #8ab9d6; // change primary color example
 $mdc-theme-secondary: #388e3c; // change secondary color example
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import "mat_theme";
 @import "~@angular-mdc/theme/material";
-@import 'theme';
 @import 'app/constants';
 
 * {
@@ -26,6 +26,14 @@ html, body {
 body {
     margin: 0;
     padding: 0;
+}
+
+table {
+  width: 100%;
+}
+
+table.compact {
+  width: auto;
 }
 
 .wrapper {

@@ -6,6 +6,17 @@ import { MatInputModule, MatSnackBar, MatDialog } from '@angular/material';
 import { SuccessDialogService } from '../../services/success-dialog.service';
 import { ErrorDialogService } from '../../services/error-dialog.service';
 
+import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {ErrorStateMatcher} from '@angular/material/core';
+
+/** Error when invalid control is dirty, touched, or submitted. */
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
+
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
@@ -19,6 +30,13 @@ export class LoginComponent {
   confirmPassword: string = '';
   showSignup: boolean = false;
   emailPattern: any = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
+
+  matcher = new MyErrorStateMatcher();
 
   constructor(private router: Router,
               private authService: AuthService,

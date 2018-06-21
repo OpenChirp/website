@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule, Routes, Router } from '@angular/router';
+import {FlexLayoutModule} from '@angular/flex-layout';
 import {
   MatInputModule,
   MatCardModule,
@@ -19,6 +20,7 @@ import {
   MatSelectModule,
   MatRadioModule,
   MatButtonToggleModule,
+  MatButtonModule,
   MatAutocompleteModule,
   MatDialogModule,
   MatSnackBarModule,
@@ -31,6 +33,7 @@ import {
   MdcIconModule,
   MdcGridListModule,
   MdcCardModule,
+  MdcTypographyModule,
 } from '@angular-mdc/web';
 
 import 'hammerjs';
@@ -155,6 +158,9 @@ import { AuthService } from './services/auth.service';
     HttpClientModule,
     HttpModule,
     JsonpModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    FlexLayoutModule,
     MatInputModule,
     MatCardModule,
     MatIconModule,
@@ -167,11 +173,11 @@ import { AuthService } from './services/auth.service';
     MatSlideToggleModule,
     MatSelectModule,
     MatRadioModule,
+    MatButtonModule,
     MatButtonToggleModule,
     MatAutocompleteModule,
     MatDialogModule,
     MatSnackBarModule,
-    BrowserAnimationsModule,
     MdcAppBarModule,
     MdcMenuModule,
     MdcDrawerModule,
@@ -179,7 +185,7 @@ import { AuthService } from './services/auth.service';
     MdcIconModule,
     MdcGridListModule,
     MdcCardModule,
-    AppRoutingModule
+    MdcTypographyModule,
   ],
   providers: [
     LocationService,

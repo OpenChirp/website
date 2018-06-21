@@ -11,382 +11,379 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <!--start of mat layout-->
+<div class="layout-container">
+  <div class="full-layout">
+
+    <!--drawer-->
+    <mdc-drawer class="openchirp-drawer" #sidenav drawer="temporary">
+      <mdc-drawer-content>
+        <nav class="mdc-list">
+          <a class="drawer-navigation-link mdc-list-item" href="#about">About</a>
+          <a class="drawer-navigation-link mdc-list-item" href="#how">How it Works</a>
+          <a class="drawer-navigation-link mdc-list-item" href="#technology">Technology</a>
+          <a class="drawer-navigation-link mdc-list-item" href="#gallery">Gallery</a>
+          <a class="drawer-navigation-link mdc-list-item" href="http://community.openchirp.io/">Community</a>
+          <a class="drawer-navigation-link mdc-list-item" href="https://github.com/OpenChirp/docs/wiki">Get Started</a>
+        </nav>
+      </mdc-drawer-content>
+    </mdc-drawer>
+    <!--drawer end-->
 
 
-<!--drawer-->
-<mdc-drawer class="openchirp-drawer" #sidenav drawer="temporary">
-  <mdc-drawer-content>
-    <nav class="mdc-list">
-      <a class="mat-navigation__link mdc-list-item" href="#about">About</a>
-      <a class="mat-navigation__link mdc-list-item" href="#how">How it Works</a>
-      <a class="mat-navigation__link mdc-list-item" href="#technology">Technology</a>
-      <a class="mat-navigation__link mdc-list-item" href="#gallery">Gallery</a>
-      <a class="mat-navigation__link mdc-list-item" href="http://community.openchirp.io/">Community</a>
-      <a class="mat-navigation__link mdc-list-item" href="https://github.com/OpenChirp/docs/wiki">Get Started</a>
-    </nav>
-  </mdc-drawer-content>
-</mdc-drawer>
-<!--drawer end-->
+    <mdc-app-bar #topbar [fixed]="true" [short]="false" [fixedAdjustElement]="maincontent">
+      <mdc-app-bar-row>
+        <mdc-app-bar-section align="start">
+          <mdc-icon mdcAppBarNavIcon (click)="sidenav.open()">menu</mdc-icon>
+          <mdc-app-bar-title><img class="openchirp-logo-image" src="assets/images/logo_with_text.png">
+          </mdc-app-bar-title>
+        </mdc-app-bar-section>
+        <mdc-app-bar-section align="end">
+          <!-- Navigation. We hide it in small screens. -->
+          <nav class="openchirp-navigation">
+            <a class="navigation_link" href="http://community.openchirp.io/">Community</a>
+            <a class="navigation_link" href="https://github.com/OpenChirp/docs/wiki">Docs</a>
+            <a class="navigation_link navigation_button" (click)="loginPopup()" *ngIf="!logged_in">Login</a>
+            <a class="navigation_link navigation_button" routerLink="/home" routerLinkActive="active" *ngIf="logged_in">Home</a>
+          </nav>
+        </mdc-app-bar-section>
+      </mdc-app-bar-row>
+    </mdc-app-bar>
+    <!--end of layout header-->
+    <div class="maincontent" #maincontent>
+      <!--Content Goes Here-->
 
+      <!-- Main Background Image and Text -->
+      <div class="openchirp-intro-section">
+        <div class="logo-font openchirp-slogan">Community-Driven Low-Power</div>
+        <div class="logo-font openchirp-sub-slogan">Wireless Connectivity for IoT</div>
+      </div>
 
-<!--layout header header-->
-<mdc-app-bar #topbar [short]="true" [fixedAdjustElement]="maincontent">
-  <!--mdl-layout-header-transparent-->
-  <mdc-app-bar-row>
-    <mdc-app-bar-section align="start">
-      <mdc-icon mdcAppBarNavIcon (click)="sidenav.open()">menu</mdc-icon>
-      <img class="openchirp-logo-image" src="assets/images/logo_with_text.png">
-    </mdc-app-bar-section>
-
-    <!-- Navigation. We hide it in small screens. -->
-    <nav class="openchirp-navigation mdl-navigation">
-      <a class="mat-navigation__link" href="http://community.openchirp.io/">Community</a>
-      <a class="mat-navigation__link" href="https://github.com/OpenChirp/docs/wiki">Docs</a>
-      <a class="mdl-button mdl-js-button" (click)="loginPopup()" *ngIf="!logged_in">Login</a>
-      <a class="mdl-button mdl-js-button" routerLink="/home" routerLinkActive="active" *ngIf="logged_in">Home</a>
-    </nav>
-  </mdc-app-bar-row>
-</mdc-app-bar>
-<!--end of layout header-->
-<div #maincontent>
-  <!--Content Goes Here-->
-
-  <!-- Main Background Image and Text -->
-  <div class="openchirp-intro-section mdl-typography--text-center">
-    <div class="logo-font openchirp-slogan">Community-Driven Low-Power</div>
-    <div class="logo-font openchirp-sub-slogan">Wireless Connectivity for IoT</div>
-  </div>
-
-  <!-- ABOUT Section -->
-  <div class="openchirp-regular-section">
-    <div class="openchirp-spacer"></div>
-    <a name="about"></a>
-    <div class="openchirp-section-name mdl-typography--font-light">
-      ABOUT
-    </div>
-
-    <div class="openchirp-spacer"></div>
-
-    <div class="openchirp-section-title mdl-typography--display-1-color-contrast ">What is OpenChirp?
-      <p></p>
-      <p></p>
-      <p class="mdl-typography--subhead-color-contrast mdl-typography--font-light">
-        OpenChirp is a management framework for Low-Power Wide-Area Networks (LP-WAN) that provides data context,
-        storage, visualization, and access control over the web.
-        OpenChirp is currently powering a LoRaWAN Network at Carnegie Mellon University that also spans large portions
-        of the City of Pittsburgh.
-        You can expand the OpenChirp network by using our software to connect your own LP-WAN base stations.
-      </p>
-    </div>
-
-    <div class="openchirp-card-container mdc-grid-list">
-
-      <div class="openchirp-card mdc-card">
-        <div class="mdc-card__media">
-          <img src="assets/images/about-iot.png" width="71px" height="72px">
+      <!-- ABOUT Section -->
+      <div class="openchirp-regular-section">
+        <div class="openchirp-spacer"></div>
+        <a name="about"></a>
+        <div class="openchirp-section-name font-light">
+          ABOUT
         </div>
-        <div class="mdc-card__title">
-          <h2 class="mdc-card__title-text">Your IoT Project</h2>
-        </div>
-        <div class="mdc-card__supporting-text">
-          <span class="mdl-typography--subhead mdl-typography--font-light">Contract-free, Secure, Battery Operated, Wireless  Networking for your IoT project</span>
+        <h1 class="openchirp-section-title" mdcHeadline4>What is OpenChirp?</h1>
+        <p class="font-light sub-head">
+          OpenChirp is a management framework for Low-Power Wide-Area Networks (LP-WAN) that provides data context,
+          storage, visualization, and access control over the web.
+          OpenChirp is currently powering a LoRaWAN Network at Carnegie Mellon University that also spans large portions
+          of the City of Pittsburgh.
+          You can expand the OpenChirp network by using our software to connect your own LP-WAN base stations.
+        </p>
+
+
+        <div class="openchirp-card-container mdc-grid-list">
+          <div class="openchirp-card mdc-card">
+            <div class="mdc-card__media">
+              <img src="assets/images/about-iot.png" width="71px" height="72px">
+            </div>
+            <div class="mdc-card__title">
+              <h2 class="mdc-card__title-text">Your IoT Project</h2>
+            </div>
+            <div class="mdc-card__supporting-text">
+              <span class="mdl-typography--subhead mdl-typography--font-light">Contract-free, Secure, Battery Operated, Wireless  Networking for your IoT project</span>
+            </div>
+          </div>
+
+          <div class="openchirp-card mdc-card">
+            <div class="mdc-card__media">
+              <img src="assets/images/about-community.png" width="54px" height="57px">
+            </div>
+            <div class="mdc-card__title">
+              <h2 class="mdc-card__title-text">Community-driven</h2>
+            </div>
+            <div class="mdc-card__supporting-text">
+              <span class="mdl-typography--subhead mdl-typography--font-light">Help to create an open community-driven network</span>
+            </div>
+          </div>
+
+          <div class="openchirp-card mdc-card">
+            <div class="mdc-card__media">
+              <img src="assets/images/about-empowering.png" width="43px" height="46px">
+            </div>
+            <div class="mdc-card__title">
+              <h2 class="mdc-card__title-text">Empowering All</h2>
+            </div>
+            <div class="mdc-card__supporting-text">
+              <span class="mdl-typography--subhead mdl-typography--font-light">Empower researchers, hobbyists, and citizen scientists</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="openchirp-card mdc-card">
-        <div class="mdc-card__media">
-          <img src="assets/images/about-community.png" width="54px" height="57px">
+      <!--Gateways Location Map-->
+      <div class="openchirp-regular-section">
+        <a name="about"></a>
+        <div class="openchirp-section-name font-light map-location-name">
+          MAP
         </div>
-        <div class="mdc-card__title">
-          <h2 class="mdc-card__title-text">Community-driven</h2>
-        </div>
-        <div class="mdc-card__supporting-text">
-          <span class="mdl-typography--subhead mdl-typography--font-light">Help to create an open community-driven network</span>
-        </div>
+        <div class="openchirp-spacer"></div>
+        <iframe [src]="splash_map_src" name="frame1" scrolling="no"
+                frameborder="no" align="center" height="350px" width="100%"></iframe>
       </div>
 
-      <div class="openchirp-card mdc-card">
-        <div class="mdc-card__media">
-          <img src="assets/images/about-empowering.png" width="43px" height="46px">
+      <!-- HOW Section -->
+      <div class="openchirp-regular-section openchirp-how-section">
+        <a name="how"></a>
+        <div class="openchirp-section-name font-light">
+          HOW
         </div>
-        <div class="mdc-card__title">
-          <h2 class="mdc-card__title-text">Empowering All</h2>
-        </div>
-        <div class="mdc-card__supporting-text">
-          <span class="mdl-typography--subhead mdl-typography--font-light">Empower researchers, hobbyists, and citizen scientists</span>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!--Gateways Location Map-->
-  <div class="openchirp-regular-section">
-    <a name="about"></a>
-    <div class="openchirp-section-name mdl-typography--font-light map-location-name">
-      MAP
-    </div>
-    <div class="openchirp-spacer"></div>
-    <iframe [src]="splash_map_src" name="frame1" scrolling="no"
-            frameborder="no" align="center" height="350px" width="100%"></iframe>
-  </div>
+        <div class="openchirp-spacer"></div>
 
-  <!-- HOW Section -->
-  <div class="openchirp-regular-section openchirp-how-section">
-    <a name="how"></a>
-    <div class="openchirp-section-name mdl-typography--font-light">
-      HOW
-    </div>
-
-    <div class="openchirp-spacer"></div>
-
-    <div class="openchirp-section-title mdl-typography--display-1-color-contrast">How it Works</div>
-    <ul class="demo-list-icon mdl-list">
-      <li class="mdl-list__item">
-            <span class="mdl-list__item-primary-content ">
+        <div class="openchirp-section-title">How it Works</div>
+        <ul class="demo-list-icon mdc-list">
+          <li class="mdc-list-item">
+            <span class="mdc-list-item-primary-content ">
                   <img src="assets/images/1.png" width="41px" height="41px" class="openchirp-numbereditem">Get a LoRaWAN compatible device
                 </span>
-      </li>
-      <li class="mdl-list__item">
-            <span class="mdl-list__item-primary-content">
+          </li>
+          <li class="mdc-list-item">
+            <span class="mdc-list-item-primary-content">
                   <img src="assets/images/2.png" width="41px" height="41px" class="openchirp-numbereditem">Log into OpenChirp with your<br/> Google account
                 </span>
-      </li>
-      <li class="mdl-list__item">
-            <span class="mdl-list__item-primary-content">
+          </li>
+          <li class="mdc-list-item">
+            <span class="mdc-list-item-primary-content">
                   <img src="assets/images/3.png" width="41px" height="41px" class="openchirp-numbereditem">Register your device
                 </span>
-      </li>
-      <li class="mdl-list__item">
-            <span class="mdl-list__item-primary-content">
+          </li>
+          <li class="mdc-list-item">
+            <span class="mdc-list-item-primary-content">
                   <img src="assets/images/4.png" width="41px" height="41px" class="openchirp-numbereditem">Start collecting data
                 </span>
-      </li>
-    </ul>
-  </div>
-
-  <!-- Tecnology Section -->
-  <div class="openchirp-regular-section">
-    <a name="technology"></a>
-    <div class="openchirp-section-name mdl-typography--font-light">
-      TECHNOLOGY
-    </div>
-
-    <div class="openchirp-spacer"></div>
-
-    <div class="openchirp-card-container mdc-grid-list">
-
-      <div class="openchirp-card-tech mdc-card">
-        <div class="mdc-card__media">
-          <img src="assets/images/cloud-icon.png" width="52px" height="52px">
-        </div>
-        <div class="mdc-card__supporting-text">
-          <span class="mdl-typography--subhead mdl-typography--font-light">MQTT for scalable real-time<br>publish subscribe</span>
-        </div>
+          </li>
+        </ul>
       </div>
 
-      <div class="openchirp-card-tech mdc-card">
-        <div class="mdc-card__media">
-          <img src="assets/images/rest-icon.png" width="52px" height="52px">
+      <!-- Tecnology Section -->
+      <div class="openchirp-regular-section">
+        <a name="technology"></a>
+        <div class="openchirp-section-name font-light">
+          TECHNOLOGY
         </div>
-        <div class="mdc-card__supporting-text">
-          <span class="mdl-typography--subhead mdl-typography--font-light">REST interface for<br>configuration and<br>management</span>
-        </div>
-      </div>
+
+        <div class="openchirp-spacer"></div>
+
+        <div class="openchirp-card-container mdc-grid-list">
+
+          <div class="openchirp-card-tech">
+            <div class="mdc-card__media">
+              <img src="assets/images/cloud-icon.png" width="52px" height="52px">
+            </div>
+            <div class="mdc-card__supporting-text">
+              <span class=" sub-head font-light">MQTT for scalable real-time<br>publish subscribe</span>
+            </div>
+          </div>
+
+          <div class="openchirp-card-tech">
+            <div class="mdc-card__media">
+              <img src="assets/images/rest-icon.png" width="52px" height="52px">
+            </div>
+            <div class="mdc-card__supporting-text">
+              <span class=" sub-head font-light">REST interface for<br>configuration and<br>management</span>
+            </div>
+          </div>
 
 
-      <div class="openchirp-card-tech mdc-card">
-        <div class="mdc-card__media">
-          <img src="assets/images/db-icon.png" width="52px" height="52px">
-        </div>
-        <div class="mdc-card__supporting-text">
-          <span class="mdl-typography--subhead mdl-typography--font-light">Time series data storage<br>and visualization</span>
-        </div>
-      </div>
+          <div class="openchirp-card-tech">
+            <div class="mdc-card__media">
+              <img src="assets/images/db-icon.png" width="52px" height="52px">
+            </div>
+            <div class="mdc-card__supporting-text">
+              <span class=" sub-head font-light">Time series data storage<br>and visualization</span>
+            </div>
+          </div>
 
 
-      <div class="openchirp-card-tech mdc-card">
-        <div class="mdc-card__media">
-          <img src="assets/images/intelligent-icon.png" width="52px" height="52px">
-        </div>
-        <div class="mdc-card__supporting-text">
+          <div class="openchirp-card-tech">
+            <div class="mdc-card__media">
+              <img src="assets/images/intelligent-icon.png" width="52px" height="52px">
+            </div>
+            <div class="mdc-card__supporting-text">
             <span
-              class="mdl-typography--subhead mdl-typography--font-light">Intelligent LP-WAN<br>nework management</span>
+              class=" sub-head font-light">Intelligent LP-WAN<br>nework management</span>
+            </div>
+          </div>
+
+
+          <div class="openchirp-card-tech">
+            <div class="mdc-card__media">
+              <img src="assets/images/open-icon.png" width="52px" height="52px">
+            </div>
+            <div class="mdc-card__supporting-text">
+              <span class=" sub-head font-light">Connect your own gateway<br>to expand the network</span>
+            </div>
+          </div>
+
+          <div class="openchirp-card-tech">
+            <div class="mdc-card__media">
+              <img src="assets/images/protobuf-icon.png" width="52px" height="52px">
+            </div>
+            <div class="mdc-card__supporting-text">
+              <span class=" sub-head font-light">ProtoBuf serialization from<br>end-device to cloud</span>
+            </div>
+          </div>
+
+          <div class="openchirp-card-tech">
+            <div class="mdc-card__media">
+              <img src="assets/images/battery-icon.png" width="52px" height="52px">
+            </div>
+            <div class="mdc-card__supporting-text">
+              <span class=" sub-head font-light">Energy-efficient client<br>firmware for your end-device</span>
+            </div>
+          </div>
+
+          <div class="openchirp-card-tech">
+            <div class="mdc-card__media">
+              <img src="assets/images/lock-icon.png" width="52px" height="52px">
+            </div>
+            <div class="mdc-card__supporting-text">
+              <span class=" sub-head font-light">Device, user and API tokens<br>with access control</span>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <!-- Gallery Section -->
+      <div class="openchirp-regular-section gallery-section">
+        <a name="gallery"></a>
+        <div class="openchirp-section-name font-light">
+          GALLERY
+        </div>
+
+        <div class="openchirp-spacer"></div>
+
+        <div class="openchirp-card-container mdc-grid-list">
+          <div class="openchirp-card-photo">
+            <div class="mdc-card__media gallery-card">
+              <img src="assets/images/gallery/9.jpg" border="0">
+            </div>
+          </div>
+          <div class="openchirp-card-photo">
+            <div class="mdc-card__media gallery-card">
+              <img src="assets/images/gallery/11.jpg" border="0">
+            </div>
+          </div>
+          <div class="openchirp-card-photo">
+            <div class="mdc-card__media gallery-card">
+              <img src="assets/images/gallery/4.jpg" border="0">
+            </div>
+          </div>
+          <div class="openchirp-card-photo">
+            <div class="mdc-card__media gallery-card">
+              <img src="assets/images/gallery/5.jpg" border="0">
+            </div>
+          </div>
+          <div class="openchirp-card-photo">
+            <div class="mdc-card__media gallery-card">
+              <img src="assets/images/gallery/6.jpg" border="0">
+            </div>
+          </div>
+          <div class="openchirp-card-photo">
+            <div class="mdc-card__media gallery-card">
+              <img src="assets/images/gallery/8.jpg" border="0">
+            </div>
+          </div>
         </div>
       </div>
 
 
-      <div class="openchirp-card-tech mdc-card">
-        <div class="mdc-card__media">
-          <img src="assets/images/open-icon.png" width="52px" height="52px">
-        </div>
-        <div class="mdc-card__supporting-text">
-          <span class="mdl-typography--subhead mdl-typography--font-light">Connect your own gateway<br>to expand the network</span>
-        </div>
-      </div>
+      <!--Get Involved-->
+      <div class="openchirp-regular-section get-involved openchirp-last-section">
+        <a name="get_involved"></a>
+        <div class="openchirp-section-name font-light">GET INVOLVED</div>
 
-      <div class="openchirp-card-tech mdc-card">
-        <div class="mdc-card__media">
-          <img src="assets/images/protobuf-icon.png" width="52px" height="52px">
-        </div>
-        <div class="mdc-card__supporting-text">
-          <span class="mdl-typography--subhead mdl-typography--font-light">ProtoBuf serialization from<br>end-device to cloud</span>
-        </div>
-      </div>
+        <ul class="demo-list-icon mdc-list">
+          <li class="mdc-list-item">
 
-      <div class="openchirp-card-tech mdc-card">
-        <div class="mdc-card__media">
-          <img src="assets/images/battery-icon.png" width="52px" height="52px">
-        </div>
-        <div class="mdc-card__supporting-text">
-          <span class="mdl-typography--subhead mdl-typography--font-light">Energy-efficient client<br>firmware for your end-device</span>
-        </div>
-      </div>
-
-      <div class="openchirp-card-tech mdc-card">
-        <div class="mdc-card__media">
-          <img src="assets/images/lock-icon.png" width="52px" height="52px">
-        </div>
-        <div class="mdc-card__supporting-text">
-          <span class="mdl-typography--subhead mdl-typography--font-light">Device, user and API tokens<br>with access control</span>
-        </div>
-      </div>
-
-
-    </div>
-  </div>
-
-  <!-- Gallery Section -->
-  <div class="openchirp-regular-section gallery-section">
-    <a name="gallery"></a>
-    <div class="openchirp-section-name mdl-typography--font-light">
-      GALLERY
-    </div>
-
-    <div class="openchirp-spacer"></div>
-
-    <div class="openchirp-card-container mdc-grid-list">
-      <div class="openchirp-card-photo mdc-card">
-        <div class="mdc-card__media gallery-card">
-          <img src="assets/images/gallery/9.jpg" border="0">
-        </div>
-      </div>
-      <div class="openchirp-card-photo mdc-card">
-        <div class="mdc-card__media gallery-card">
-          <img src="assets/images/gallery/11.jpg" border="0">
-        </div>
-      </div>
-      <div class="openchirp-card-photo mdc-card">
-        <div class="mdc-card__media gallery-card">
-          <img src="assets/images/gallery/4.jpg" border="0">
-        </div>
-      </div>
-      <div class="openchirp-card-photo mdc-card">
-        <div class="mdc-card__media gallery-card">
-          <img src="assets/images/gallery/5.jpg" border="0">
-        </div>
-      </div>
-      <div class="openchirp-card-photo mdc-card">
-        <div class="mdc-card__media gallery-card">
-          <img src="assets/images/gallery/6.jpg" border="0">
-        </div>
-      </div>
-      <div class="openchirp-card-photo mdc-card">
-        <div class="mdc-card__media gallery-card">
-          <img src="assets/images/gallery/8.jpg" border="0">
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <!--Get Involved-->
-  <div class="openchirp-regular-section get-involved openchirp-last-section">
-    <a name="get_involved"></a>
-    <div class="openchirp-section-name mdl-typography--font-light">GET INVOLVED</div>
-
-    <ul class="demo-list-icon mdl-list">
-      <li class="mdl-list__item">
-
-            <span class="mdl-list__item-primary-content">
+            <span class="mdc-list-item-primary-content">
                   <img src="assets/images/1.png" width="41px" height="41px" class="openchirp-numbereditem">
                   <span class="openchirp-numbereditem" font-size="16px">Contact us at <a
                     href="mailto:info@openchirp.io">info@openchirp.io</a></span>
             </span>
-      </li>
+          </li>
 
-      <li class="mdl-list__item">
-            <span class="mdl-list__item-primary-content">
+          <li class="mdc-list-item">
+            <span class="mdc-list-item-primary-content">
                   <img src="assets/images/2.png" width="41px" height="41px" class="openchirp-numbereditem">
                   <span class="openchirp-numbereditem" font-size="16px">Visit our <a
                     href="https://github.com/OpenChirp">GitHub page</a></span>
             </span>
-      </li>
+          </li>
 
-      <li class="mdl-list__item">
-            <span class="mdl-list__item-primary-content">
+          <li class="mdc-list-item">
+            <span class="mdc-list-item-primary-content">
                   <img src="assets/images/3.png" width="41px" height="41px" class="openchirp-numbereditem">
                   <span class="openchirp-numbereditem" font-size="16px">Ask questions on our <a
                     href="http://community.openchirp.io">Community Forum</a></span>
             </span>
-      </li>
+          </li>
 
-      <li class="mdl-list__item">
-            <span class="mdl-list__item-primary-content">
+          <li class="mdc-list-item">
+            <span class="mdc-list-item-primary-content">
                   <img src="assets/images/4.png" width="41px" height="41px" class="openchirp-numbereditem">
                   <span class="openchirp-numbereditem" font-size="16px">Read our <a
                     href="https://github.com/OpenChirp/docs/wiki">Documentation</a></span>
             </span>
-      </li>
+          </li>
 
-    </ul>
-  </div>
-
-
-  <!--Footer-->
-  <footer class="openchirp-footer mdl-mega-footer">
-    <div class="mdl-mega-footer--middle-section">
-
-      <div class="openchirp-card-container mdc-grid-list openchirp-footer-cards">
-
-        <div class="mdl-layout-spacer"></div>
-
-        <a href="http://www.bosch.us/content/language1/html/rtc.htm"><img src="assets/images/bosch-logo.svg"
-                                                                          height="55px"></a>
-
-        <div class="mdl-layout-spacer"></div>
-
-        <a href="https://www.cylab.cmu.edu/"><img src="assets/images/cylab-logo.png" height="70px"></a>
-
-        <div class="mdl-layout-spacer"></div>
-
-        <a href="http://www.cmu.edu/"><img src="assets/images/cmu-logo.svg" height="55px"></a>
-
-        <div class="mdl-layout-spacer"></div>
-
-        <a href="https://www.ece.cmu.edu/"><img src="assets/images/ece-logo.svg" height="55px"></a>
-
-        <div class="mdl-layout-spacer"></div>
-
-        <a href="http://wise.ece.cmu.edu/"><img src="assets/images/wiselab-logo.svg" height="55px"></a>
-
-        <div class="mdl-layout-spacer"></div>
-
+        </ul>
       </div>
 
-       <div class="mdl-mega-footer--bottom-section">
-          <p class="mdl-typography--font-light">OpenChirp © Copyright 2017-2018 Carnegie Mellon University | <a target="_blank" href="https://www.cmu.edu/legal/">Legal</a></p>
+
+      <!--Footer-->
+      <footer class="openchirp-footer mdl-mega-footer">
+        <div class="mdl-mega-footer--middle-section">
+
+          <div class="openchirp-card-container mdc-grid-list openchirp-footer-cards">
+
+            <div class="mdl-layout-spacer"></div>
+
+            <a href="http://www.bosch.us/content/language1/html/rtc.htm"><img src="assets/images/bosch-logo.svg"
+                                                                              height="55px"></a>
+
+            <div class="mdl-layout-spacer"></div>
+
+            <a href="https://www.cylab.cmu.edu/"><img src="assets/images/cylab-logo.png" height="70px"></a>
+
+            <div class="mdl-layout-spacer"></div>
+
+            <a href="http://www.cmu.edu/"><img src="assets/images/cmu-logo.svg" height="55px"></a>
+
+            <div class="mdl-layout-spacer"></div>
+
+            <a href="https://www.ece.cmu.edu/"><img src="assets/images/ece-logo.svg" height="55px"></a>
+
+            <div class="mdl-layout-spacer"></div>
+
+            <a href="http://wise.ece.cmu.edu/"><img src="assets/images/wiselab-logo.svg" height="55px"></a>
+
+            <div class="mdl-layout-spacer"></div>
+
+          </div>
+
+          <div class="mdl-mega-footer--bottom-section">
+            <p class="font-light">OpenChirp © Copyright 2017-2018 Carnegie Mellon University | <a
+              target="_blank" href="https://www.cmu.edu/legal/">Legal</a></p>
+          </div>
+
         </div>
 
+
+      </footer>
+      <!--Footer Ends Here-->
+
+
     </div>
+    <!--Content Ends Here-->
 
-
-  </footer>
-  <!--Footer Ends Here-->
-
-
+  </div>
 </div>
-<!--Content Ends Here-->
-
-
-<!--end of mld layout-->
+<!--end of layout-->
 

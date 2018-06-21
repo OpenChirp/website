@@ -4,21 +4,34 @@
   <br>
   <google-signin></google-signin>
   <br>
-  <br>
   <p><strong>Or</strong></p>
-  <mat-form-field class="Email">
-    <input matInput size="30" type="email" required placeholder="Email" [pattern]="emailPattern" [(ngModel)]="email">
-  </mat-form-field>
-  <mat-form-field class="Name" *ngIf="showSignup">
-    <input matInput size="30" type="text" required placeholder="Name" [(ngModel)]="name">
-  </mat-form-field>
-  <mat-form-field class="Password">
-    <input matInput size="30" type="password" required placeholder="Password" [(ngModel)]="password">
-  </mat-form-field>
-  <mat-form-field class="Confirm Password" *ngIf="showSignup">
-    <input matInput size="30" type="password" required placeholder="Confirm Password" [(ngModel)]="confirmPassword">
-  </mat-form-field>
-  <br/>
-  <br/>
-  <button mat-raised-button (click)="login()">Login</button>
+  <form class="login-form">
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" required name="email" [formControl]="emailFormControl" [errorStateMatcher]="matcher"  [(ngModel)]="email">
+      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <br/>
+    <mat-form-field appearance="fill" *ngIf="showSignup">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" required name="name" placeholder="Name" [(ngModel)]="name">
+    </mat-form-field>
+    <br/>
+    <mat-form-field appearance="fill" class="Password">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" required name="password"  placeholder="Password" [(ngModel)]="password">
+    </mat-form-field>
+    <br/>
+    <mat-form-field appearance="fill" class="Confirm Password" *ngIf="showSignup">
+      <mat-label>Confirm Password</mat-label>
+      <input matInput type="password" required name="confirm"  placeholder="Confirm Password" [(ngModel)]="confirmPassword">
+    </mat-form-field>
+    <br/>
+    <button mat-raised-button (click)="login()">Login</button>
+  </form>
 </div>

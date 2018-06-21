@@ -6,11 +6,13 @@ import { UserService } from '../../services/user.service';
 import { GalleryComponent } from '../gallery/gallery.component';
 import {LoginComponent} from '../login/login.component';
 import { MatDialog } from '@angular/material';
+import {ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-splash',
   templateUrl: './splash.component.html',
   styleUrls: ['./splash.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 
 export class SplashComponent implements OnInit {

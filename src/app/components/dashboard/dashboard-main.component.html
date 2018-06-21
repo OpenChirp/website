@@ -6,11 +6,13 @@
       <mat-card-title>Shortcuts</mat-card-title>
       <mat-card-content>
         <table *ngIf = "shortcuts?.length > 0">
+          <thead>
           <tr>
             <th></th>
             <th>Command</th>
             <th></th>
           </tr>
+          </thead>
           <tbody>
             <tr *ngFor="let shortcut of shortcuts">
               <td>
