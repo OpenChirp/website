@@ -22,7 +22,7 @@
       <!-- Item Row -->
       <ng2-md-datatable-row *ngFor="let service of services">
         <ng2-md-datatable-column><p>{{ service.name }}</p></ng2-md-datatable-column>
-        <ng2-md-datatable-column><p><button md-raised-button (click)="viewConfig(service)">
+        <ng2-md-datatable-column><p *ngIf="service.config"><button md-raised-button (click)="viewConfig(service)">
            View/Update Config
           </button></p></ng2-md-datatable-column>
           <ng2-md-datatable-column><p>{{ service.status ? service.status.message : "-" }}</p></ng2-md-datatable-column>
