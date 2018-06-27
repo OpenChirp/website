@@ -26,21 +26,8 @@ $black-text: #303132;
       margin: 0;
     }
   }
-p {
-  font-family: "Avenir-Med", sans-serif;
-  color: $black-text;
-}
-
-form {
-  md-input-container {
-    input {
-      width: 350px;
-      font-family: "Avenir-Med", sans-serif;
-    }
-    textarea {
-      width: 350px;
-      font-family: "Avenir-Med", sans-serif;
-    }
+  p {
+    font-family: "Avenir-Med", sans-serif;
+    color: $black-text;
   }
-}
 }

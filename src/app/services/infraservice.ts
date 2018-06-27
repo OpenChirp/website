@@ -9,9 +9,9 @@ export class InfraService {
   private apiUrl: string;
   private serviceUrl: string;
 
-  constructor(private http: Http, private config: Configuration, private requestOptions: RequestOptions) { 
+  constructor(private http: Http, private config: Configuration, private requestOptions: RequestOptions) {
     this.apiUrl = config.api_url;
-    this.serviceUrl = this.apiUrl + "service/";
+    this.serviceUrl = this.apiUrl + 'service/';
     this.requestOptions.withCredentials = true;
   }
 
@@ -26,11 +26,18 @@ export class InfraService {
     .map(this.extractData)
     .catch(this.handleError);
   }
-  
+
   getServiceByID(id: string) {
     return this.http.get(this.serviceUrl + id, this.requestOptions)
     .map(this.extractData)
     .catch(this.handleError);
+  }
+
+  // changed from /things to /deviceinfo
+  getServiceDevices(id: string) {
+    return this.http.get(this.serviceUrl + id + '/deviceinfo', this.requestOptions)
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
   // Update service
@@ -47,23 +54,23 @@ export class InfraService {
   }
     // Create service token
   createToken(service_id: string) {
-    return this.http.post(this.serviceUrl+ service_id + "/token" , this.requestOptions)
+    return this.http.post(this.serviceUrl+ service_id + '/token' , this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
   // Re-Create service token
   recreateToken(service_id: string) {
-    return this.http.put(this.serviceUrl+ service_id + "/token" , this.requestOptions)
+    return this.http.put(this.serviceUrl+ service_id + '/token' , this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
     // Delete Service Token
   deleteToken(service_id: string) {
-    return this.http.delete(this.serviceUrl+ service_id + "/token" , this.requestOptions)
+    return this.http.delete(this.serviceUrl+ service_id + '/token' , this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
-  
+
   private extractData(res: Response) {
     const body = res.json();
     return body || { };

@@ -1,0 +1,38 @@
+$black-text: #303132;
+
+.infra-service-properties {
+  md-card {
+    box-shadow: none;
+    .card-header {
+      h2 {
+        margin: 0;
+        float: left;
+        font-family: "Avenir-Heavy", sans-serif;
+        color: $black-text;
+      }
+      button {
+        float: right;
+      }
+      margin-bottom: 60px;
+    }
+    hr {
+      margin: 0;
+    }
+    p {
+      font-family: "Avenir-Med", sans-serif;
+      color: $black-text;
+    }
+    form {
+      md-input-container {
+        input {
+          width: 350px;
+          font-family: "Avenir-Med", sans-serif;
+        }
+        textarea {
+          width: 350px;
+          font-family: "Avenir-Med", sans-serif;
+        }
+      }
+    }
+  }
+}
