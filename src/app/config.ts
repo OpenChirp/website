@@ -1,7 +1,7 @@
 export class Configuration {
-  base_url: string = "https://testing.openchirp.io";
-  api_url: string = this.base_url + "/api/";
-  auth_url: string = this.base_url + "/auth/";
+  base_url: string = "https://openchirp.io/";
+  api_url: string = this.base_url + "apiv1/";
+  auth_url: string = this.base_url + "authv1/";
   
   google_auth_client_id:string="8799600805-r708mvl77fe1f5fu71r6sbo366m6e7r5.apps.googleusercontent.com";
 
