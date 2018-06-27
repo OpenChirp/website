@@ -31,6 +31,8 @@ import { UserDevicesComponent } from './components/devices/userdevices.component
 import { UserLocationsComponent } from './components/locations/userlocations.component';
 import { UserServicesComponent } from './components/userservices/userservices.component';
 import { InfraServiceComponent } from './components/infraservices/infraservice.component';
+import { InfraServicePropertiesComponent } from './components/infraservices/infraservice-information/infraservice-properties.component';
+import { InfraServiceDeviceListComponent } from './components/infraservices/infraservice-information/infraservice-devicelist.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { DevicePropertiesComponent } from './components/devices/device-information/device-properties.component';
 import { DeviceTransducersComponent } from './components/devices/device-information/device-transducers.component';
@@ -52,6 +54,7 @@ import { NewGroupComponent } from './components/groups/newgroup.component';
 import { GroupMembersComponent } from './components/groups/groupmembers.component';
 import { UserGroupsComponent } from './components/groups/usergroups.component';
 import { UpdateConfigComponent } from './components/dialogs/update-config.component';
+import { ViewConfigComponent } from './components/dialogs/view-config.component';
 import { PublicLinkComponent } from './components/publiclink/public-link.component';
 import { DeviceAclComponent } from './components/devices/device-information/device-acl.component';
 import { StatsComponent } from './components/admin/stats/stats.component';
@@ -93,6 +96,8 @@ import { AuthService } from './services/auth.service';
     UserLocationsComponent,
     UserServicesComponent,
     InfraServiceComponent,
+    InfraServicePropertiesComponent,
+    InfraServiceDeviceListComponent,
     ErrorDialogComponent,
     DevicePropertiesComponent,
     DeviceTransducersComponent,
@@ -115,6 +120,7 @@ import { AuthService } from './services/auth.service';
     GroupMembersComponent,
     UserGroupsComponent,
     UpdateConfigComponent,
+    ViewConfigComponent,
     PublicLinkComponent,
     DeviceAclComponent,
     StatsComponent,
@@ -162,6 +168,7 @@ import { AuthService } from './services/auth.service';
     InputTransducerValueComponent,
     NewGroupComponent,
     UpdateConfigComponent,
+    ViewConfigComponent,
     PublicLinkComponent
   ],
   bootstrap: [AppComponent]
