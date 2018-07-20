@@ -7,6 +7,7 @@ import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.c
 import { ErrorDialogService } from '../../../services/error-dialog.service';
 import { SuccessDialogService } from '../../../services/success-dialog.service';
 import { PropertiesComponent } from '../../dialogs/properties.component';
+import { SelectLocationComponent } from '../../locations/select-location.component';
 
 @Component({
   selector: 'device-properties',
@@ -18,15 +19,14 @@ export class DevicePropertiesComponent {
   @Input() device: Device;
   @Input() acl: any;
   @Output() updateDevice: EventEmitter<boolean> = new EventEmitter();
-  
-  constructor(private deviceService: DeviceService, 
-    private router: Router, 
-    private successDialogService: SuccessDialogService, 
+
+  constructor(private deviceService: DeviceService,
+    private router: Router,
+    private successDialogService: SuccessDialogService,
     private errorDialogService: ErrorDialogService,
     public dialog: MdDialog
    ) {
   }
-
 
   updateDeviceMeta() {
     this.deviceService.updateDeviceById(this.device._id, this.device).subscribe(
@@ -66,4 +66,22 @@ export class DevicePropertiesComponent {
     }
   }
 
+  pickLocation() {
+    let dialogRef = this.dialog.open(SelectLocationComponent, { width: '800px', height: '700px' });
+    dialogRef.afterClosed().subscribe(
+      result => {
+        if(result) {
+          this.deviceService.updateDeviceById(this.device._id, { location_id: result }).subscribe(
+            result => {
+              this.successDialogService
+                .dialogPopup("Updated: " + this.device.name);
+            },
+            error => {
+              this.errorDialogService
+                .dialogPopup(error.message + ': ' + this.device.name);
+            }
+          );
+        }
+     });
+  }
 }

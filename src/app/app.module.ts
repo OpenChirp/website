@@ -62,6 +62,7 @@ import { UserProfileComponent } from './components/userprofile/userprofile.compo
 import { AdminDeviceListComponent } from './components/admin/devices/admin-devicelist.component';
 import { GoogleLoginComponent } from './components/login/googlelogin.component';
 import { LoginComponent } from './components/login/login.component';
+import { SelectLocationComponent } from './components/locations/select-location.component';
 
 // Services
 import { LocationService } from './services/location.service';
@@ -129,6 +130,7 @@ import { AuthService } from './services/auth.service';
     LoginComponent,
     GoogleLoginComponent,
     AdminDeviceListComponent
+    SelectLocationComponent
   ],
   imports: [
     BrowserModule,
@@ -170,7 +172,8 @@ import { AuthService } from './services/auth.service';
     NewGroupComponent,
     UpdateConfigComponent,
     ViewConfigComponent,
-    PublicLinkComponent
+    PublicLinkComponent,
+    SelectLocationComponent
   ],
   bootstrap: [AppComponent]
 })
