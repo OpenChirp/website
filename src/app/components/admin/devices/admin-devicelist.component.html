@@ -1,0 +1,31 @@
+<div class="admin-device-list" >
+  <md-card>
+    <div class="card-header">
+      <h2>List of Devices</h2>
+      <div class="search">
+        <md-input-container>
+          <input mdInput placeholder="Search" [(ngModel)]="searchTerm" name="search">
+        </md-input-container>
+        <md-icon>search</md-icon>
+      </div>
+    </div>
+    <table>
+      <!-- Table Header-->
+      <thead>
+        <th>Device Name</th>
+        <th>Owner</th>
+        <th>Location</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let device of filtered()" class="devices" (click)="gotoDevice(device._id)">
+          <td>{{ device.name }}</td>
+          <td><span *ngIf="device.owner">{{ device.owner.name }} &lt;{{ device.owner.email }}&gt;</span></td>
+          <td><span *ngIf="device.location_id">{{ device.location_id.name }}</span></td>
+        </tr>
+        <tr *ngIf="filtered().length == 0">
+          <td colspan="3">No devices found.</td>
+        </tr>
+      </tbody>
+    </table>
+  </md-card>
+</div>

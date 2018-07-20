@@ -59,6 +59,7 @@ import { PublicLinkComponent } from './components/publiclink/public-link.compone
 import { DeviceAclComponent } from './components/devices/device-information/device-acl.component';
 import { StatsComponent } from './components/admin/stats/stats.component';
 import { UserProfileComponent } from './components/userprofile/userprofile.component';
+import { AdminDeviceListComponent } from './components/admin/devices/admin-devicelist.component';
 import { GoogleLoginComponent } from './components/login/googlelogin.component';
 import { LoginComponent } from './components/login/login.component';
 import { SelectLocationComponent } from './components/locations/select-location.component';
@@ -128,6 +129,7 @@ import { AuthService } from './services/auth.service';
     UserProfileComponent,
     LoginComponent,
     GoogleLoginComponent,
+    AdminDeviceListComponent
     SelectLocationComponent
   ],
   imports: [
