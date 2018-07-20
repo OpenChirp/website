@@ -25,16 +25,23 @@ export class LocationService {
     this.locationUrl = this.apiUrl + "location/";
     this.requestOptions.withCredentials = true;
   }
-  
+
   notifyParent (parentId: string) {
     this._notifierSource.next(parentId);
   }
 
   // Gets the root location
-  getRootLocation (): Observable<Location> {
+  getRootLocation(): Observable<Location> {
     return this.http.get(this.locationUrl, this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
+  }
+
+  // Gets all location
+  getAllLocations(): Observable<Location[]> {
+    return this.http.get(this.locationUrl + 'all', this.requestOptions)
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
   // Gets location specified by id

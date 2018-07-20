@@ -4,8 +4,8 @@
       <md-input-container>
         <input mdInput placeholder="Name" [(ngModel)]="device.name" name="device-name">
       </md-input-container>
-    
-    
+
+
     <!--<div>
       <md-select placeholder="Device Type" [(ngModel)]="device.type" name="device-type">
         <md-option *ngFor="let deviceType of deviceTypes" [value]="deviceType">
@@ -14,13 +14,14 @@
       </md-select>
     </div>
     <br>-->
-    
+
       <p>Enabled :
       <md-slide-toggle [(ngModel)]="device.enabled" name="device-enabled">True</md-slide-toggle>
       </p>
-    <button md-raised-button (click)="updateDeviceMeta()">Update</button>  
+    <button md-raised-button (click)="updateDeviceMeta()">Update</button>
     <button md-raised-button (click)="viewProperties()">Edit Custom Properties</button>
     <button md-raised-button *ngIf="device.location_id" (click)="gotoLocation()">Go to Parent Location</button>
+    <button md-raised-button (click)="pickLocation()">Change Location</button>
      <p></p>
     </div>
    <hr>
@@ -29,6 +30,6 @@
     <p>Owner : {{ device.owner.name || device.owner.email }}</p>
     <p>Created at: {{ device.created_at | date :"short" }}</p>
     <p></p>
-  
+
   </form>
 </div>
