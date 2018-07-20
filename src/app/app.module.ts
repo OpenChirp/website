@@ -129,7 +129,7 @@ import { AuthService } from './services/auth.service';
     UserProfileComponent,
     LoginComponent,
     GoogleLoginComponent,
-    AdminDeviceListComponent
+    AdminDeviceListComponent,
     SelectLocationComponent
   ],
   imports: [
