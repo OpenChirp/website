@@ -44,7 +44,7 @@ import { ConfirmationDialogComponent } from './components/dialogs/confirmation-d
 import { PropertiesComponent } from './components/dialogs/properties.component';
 import { ListInfraServicesComponent } from './components/infraservices/list.infraservices.component';
 import { ConfigRequiredComponent } from './components/infraservices/config.required.component';
-import { NewInfraServiceComponent } from './components/infraservices/new.infraservice.component'; 
+import { NewInfraServiceComponent } from './components/infraservices/new.infraservice.component';
 import { SelectServiceComponent } from './components/infraservices/select-service.component';
 import { InputConfigComponent } from './components/dialogs/input-config.component';
 import { InputTransducerValueComponent } from './components/dialogs/input-transducer-value.component';
@@ -61,6 +61,7 @@ import { StatsComponent } from './components/admin/stats/stats.component';
 import { UserProfileComponent } from './components/userprofile/userprofile.component';
 import { GoogleLoginComponent } from './components/login/googlelogin.component';
 import { LoginComponent } from './components/login/login.component';
+import { SelectLocationComponent } from './components/locations/select-location.component';
 
 // Services
 import { LocationService } from './services/location.service';
@@ -126,8 +127,8 @@ import { AuthService } from './services/auth.service';
     StatsComponent,
     UserProfileComponent,
     LoginComponent,
-    GoogleLoginComponent
-
+    GoogleLoginComponent,
+    SelectLocationComponent
   ],
   imports: [
     BrowserModule,
@@ -162,14 +163,15 @@ import { AuthService } from './services/auth.service';
     ConfirmationDialogComponent,
     SelectTemplateComponent,
     SelectServiceComponent,
-    PropertiesComponent,  
+    PropertiesComponent,
     ConfigRequiredComponent,
     InputConfigComponent,
     InputTransducerValueComponent,
     NewGroupComponent,
     UpdateConfigComponent,
     ViewConfigComponent,
-    PublicLinkComponent
+    PublicLinkComponent,
+    SelectLocationComponent
   ],
   bootstrap: [AppComponent]
 })
