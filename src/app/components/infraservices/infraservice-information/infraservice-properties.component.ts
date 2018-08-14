@@ -64,7 +64,7 @@ export class InfraServicePropertiesComponent {
   }
 
   viewConfigRequired() {
-    let dialogRef = this.dialog.open(ConfigRequiredComponent, { width: '900px' });
+    let dialogRef = this.dialog.open(ConfigRequiredComponent, {width: '900px'});
     dialogRef.componentInstance.config = this.service.config_required || {};
     dialogRef.componentInstance.source = this.service.name;
     dialogRef.afterClosed().subscribe(
@@ -75,10 +75,12 @@ export class InfraServicePropertiesComponent {
           this.infraService.updateService(this.service._id, newService).subscribe(
             res => this.successDialogService.dialogPopup('Updated Service: ' + this.service.name),
             err => this.errorDialogService.dialogPopup(err.message)
-            );
+          );
+        } else {
+          this.updateInfraservice.emit(true);
         }
       }
-      );
+    );
   }
 
   createServiceToken() {
