@@ -13,4 +13,5 @@ export class Configuration {
   mapper_url_device: string = this.mapper_url + "map/device/"; // Unused
 
   splash_map_url: string = "https://res.openchirp.io/leaflet/index.html";
+  signup_enable: boolean = true; // controls if signup is allowed on web-front
 }

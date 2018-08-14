@@ -19,9 +19,9 @@ $black-text: #303132;
    text-decoration: underline;
   }
 
-   ng2-mat-datatable-header {
-    border-bottom: solid 1px #909090;
-    font-weight:bold;
+   th {
+     border-bottom: solid 1px #909090;
+     font-weight:bold;
   }
   tr {
     cursor: pointer;
@@ -49,7 +49,7 @@ mat-card {
     }
     button {
       float: right;
-    }    
+    }
     margin-bottom: 20px;
 
   }

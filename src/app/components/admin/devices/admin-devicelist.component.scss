@@ -1,0 +1,83 @@
+$row-height: 50px;
+$device-color: #3a7193;
+$black-text: #303132;
+$blue-text: #8ab9d6;
+
+.admin-device-list {
+  background-color: #ffffff;
+  .new-device {
+    font-family: "Avenir-Med", sans-serif;
+    color: $black-text;
+    .button {
+      background-color: white;
+    }
+  }
+  p {
+    font-family: "Avenir-Med", sans-serif;
+    color: $black-text;
+  }
+  mat-card {
+    background-color: #ffffff;
+    box-shadow: none;
+    .card-header {
+      h2 {
+        margin: 0;
+        float: left;
+        font-family: "Avenir-Heavy", sans-serif;
+        color: $black-text;
+      }
+      button {
+        float: right;
+      }
+      margin-bottom: 20px;
+    }
+    hr {
+      margin: 0;
+    }
+    .table-header {
+      height: $row-height;
+      line-height: $row-height;
+      div {
+        width: 50%;
+        float: left;
+        color: #909090;
+      }
+      p {
+        margin: 0;
+        font-family: "Avenir-Med", sans-serif;
+        font-variant: all-small-caps;
+        color: $black-text;
+      }
+    }
+    .devices {
+      height: $row-height;
+      line-height: $row-height;
+      cursor: pointer;
+      border-bottom: solid 1px #606060;
+      div {
+        color: #606060;
+        width: 50%;
+        float: left;
+      }
+      p {
+        margin: 0;
+        font-family: "Avenir-Med", sans-serif;
+        color: $device-color;
+      }
+    }
+    .devices:hover {
+      background-color: #efefef;
+    }
+    .search {
+      overflow: hidden;
+      mat-form-field {
+        float: right;
+      }
+      mat-icon {
+        float: right;
+        color: #909090;
+        line-height: 55px;
+      }
+    }
+  }
+}

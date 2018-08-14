@@ -22,7 +22,7 @@
       <!-- Item Row -->
       <tr *ngFor="let service of services">
         <th><p>{{ service.name }}</p></th>
-        <th><p><button mat-raised-button (click)="viewConfig(service)">
+        <th><p *ngIf="service.config"><button mat-raised-button (click)="viewConfig(service)">
            View/Update Config
           </button></p></th>
           <th><p>{{ service.status ? service.status.message : "-" }}</p></th>
@@ -41,3 +41,4 @@
 </div>
 </mat-card>
 </div>
+

@@ -1,5 +1,5 @@
 .new-group {
-  ng2-mat-datatable-header {
+  th {
     border-bottom: solid 1px #303030;
     font-weight: bold;
   }
@@ -16,10 +16,10 @@
     mat-icon:hover {
       color: #303030;
     }
-  }  
+  }
    .name{
     min-width : 100%
-   } 
+   }
   p {
     font-family: "Avenir-Med", sans-serif;
   }

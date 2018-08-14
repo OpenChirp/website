@@ -4,8 +4,7 @@
       <mat-form-field>
         <input matInput placeholder="Name" [(ngModel)]="device.name" name="device-name">
       </mat-form-field>
-    
-    
+
     <!--<div>
       <mat-select placeholder="Device Type" [(ngModel)]="device.type" name="device-type">
         <mat-option *ngFor="let deviceType of deviceTypes" [value]="deviceType">
@@ -14,21 +13,23 @@
       </mat-select>
     </div>
     <br>-->
-    
+
       <p>Enabled :
       <mat-slide-toggle [(ngModel)]="device.enabled" name="device-enabled">True</mat-slide-toggle>
       </p>
-    <button mat-raised-button (click)="updateDeviceMeta()">Update</button>  
+    <button mat-raised-button (click)="updateDeviceMeta()">Update</button>
     <button mat-raised-button (click)="viewProperties()">Edit Custom Properties</button>
     <button mat-raised-button *ngIf="device.location_id" (click)="gotoLocation()">Go to Parent Location</button>
+    <button mat-raised-button (click)="pickLocation()">Change Location</button>
      <p></p>
     </div>
    <hr>
+    <p>Device ID: {{ device._id }}</p>
     <p>Protocol : {{ device.pubsub.protocol }}</p>
     <p>Endpoint : {{ device.pubsub.endpoint }}</p>
     <p>Owner : {{ device.owner.name || device.owner.email }}</p>
     <p>Created at: {{ device.created_at | date :"short" }}</p>
     <p></p>
-  
+
   </form>
 </div>

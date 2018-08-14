@@ -1,4 +1,3 @@
-
 import {throwError as observableThrowError,  Observable } from 'rxjs';
 
 import {catchError, map} from 'rxjs/operators';
@@ -12,9 +11,9 @@ export class InfraService {
   private apiUrl: string;
   private serviceUrl: string;
 
-  constructor(private http: Http, private config: Configuration, private requestOptions: RequestOptions) { 
+  constructor(private http: Http, private config: Configuration, private requestOptions: RequestOptions) {
     this.apiUrl = config.api_url;
-    this.serviceUrl = this.apiUrl + "service/";
+    this.serviceUrl = this.apiUrl + 'service/';
     this.requestOptions.withCredentials = true;
   }
 
@@ -29,11 +28,18 @@ export class InfraService {
     map(this.extractData),
     catchError(this.handleError),);
   }
-  
+
   getServiceByID(id: string) {
     return this.http.get(this.serviceUrl + id, this.requestOptions).pipe(
     map(this.extractData),
     catchError(this.handleError),);
+  }
+
+  // changed from /things to /deviceinfo
+  getServiceDevices(id: string) {
+    return this.http.get(this.serviceUrl + id + '/deviceinfo', this.requestOptions)
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
   // Update service
@@ -66,7 +72,7 @@ export class InfraService {
                     map(this.extractData),
                     catchError(this.handleError),);
   }
-  
+
   private extractData(res: Response) {
     const body = res.json();
     return body || { };

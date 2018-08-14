@@ -34,7 +34,6 @@ export class DeviceServicesComponent {
 		private successDialogService: SuccessDialogService,
 		private errorDialogService: ErrorDialogService,
 		public dialog: MatDialog) {
-
 	}
 	ngOnInit() {
 		this.getLinkedServices();
@@ -120,29 +119,30 @@ export class DeviceServicesComponent {
 			});
 	}
 
-	removeServiceLink(service_id: string, name: string) {
-		let dialogRef = this.dialog.open(ConfirmationDialogComponent);
-		dialogRef.componentInstance.dialogText = "Remove link to service : " + name + "?";
-		dialogRef.componentInstance.confirmText = "Remove";
-		dialogRef.afterClosed().subscribe(
-			result => {
-				this.deviceService.deleteServiceLink(this.device._id, service_id).subscribe(
-					result => {
-						this.successDialogService.dialogPopup('Link to service :' + name +" removed");
-						this.updateDevice.emit(true);
-						for(let i =0; i < this.services.length ; i ++){
-							if(this.services[i]._id == service_id){
-								this.services.splice(i, 1);
-							}
-						}
-					},
-					error => {
-						this.errorDialogService.dialogPopup(error.message + ': ' + name);
-					});
-
-			}
-			);
-	}
+  removeServiceLink(service_id: string, name: string) {
+    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    dialogRef.componentInstance.dialogText = 'Remove link to service : ' + name + '?';
+    dialogRef.componentInstance.confirmText = 'Remove';
+    dialogRef.afterClosed().subscribe(
+      result => {
+        if (result) {
+          this.deviceService.deleteServiceLink(this.device._id, service_id).subscribe(
+            result => {
+              this.successDialogService.dialogPopup('Link to service :' + name + ' removed');
+              this.updateDevice.emit(true);
+              for (let i = 0; i < this.services.length; i++) {
+                if (this.services[i]._id == service_id) {
+                  this.services.splice(i, 1);
+                }
+              }
+            },
+            error => {
+              this.errorDialogService.dialogPopup(error.message + ': ' + name);
+            });
+        }
+      }
+    );
+  }
 
 	selectService() {
 		var dialogRef = this.dialog.open(SelectServiceComponent, { width: '800px', height: '700px' });

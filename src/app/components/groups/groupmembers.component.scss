@@ -1,8 +1,8 @@
 $black-text: #303132;
 
 .group-members {
-	ng2-mat-datatable-header {
-		border-bottom: solid 1px #909090;
+	th {
+    border-bottom: solid 1px #909090;
 		font-weight:bold;
 	}
 	tr {
@@ -13,7 +13,7 @@ $black-text: #303132;
 	tr:hover {
 		background-color: #e3e3e3;
 	}
-	
+
 	.tab-header {
       h2 {
         margin: 0;

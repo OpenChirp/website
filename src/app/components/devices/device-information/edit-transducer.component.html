@@ -1,0 +1,24 @@
+<div class="edit-transducer">
+
+  <div>
+    <h2>Edit: {{ this.originalName }}</h2>
+
+    <mat-form-field>
+      <input matInput placeholder="Name" [(ngModel)]="name">
+    </mat-form-field>
+    <br/>
+    <mat-form-field>
+      <input matInput placeholder="Unit" [(ngModel)]="unit">
+    </mat-form-field>
+    <br/>
+      <mat-slide-toggle [(ngModel)]="actuable">Actuable: {{ actuable }}</mat-slide-toggle>
+    <br/>
+    <br/>
+    <div class="buttons">
+      <button mat-raised-button color="primary" (click)="submitEdit()">Update</button>
+      <button mat-raised-button (click)="denyDialog()">Cancel</button>
+    </div>
+
+
+  </div>
+</div>

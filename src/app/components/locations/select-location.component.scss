@@ -1,17 +1,18 @@
-.select-template {
+.select-location {
   padding: 15px;
 
-  th {
+  thead {
     border-bottom: solid 1px #303030;
   }
 
-  tr {
+  th {
     border-bottom: solid 1px #303030;
     transition-duration: 0.3s;
     cursor: pointer;
   }
   tr:hover {
     background-color: #e3e3e3;
+    cursor:pointer;
   }
 
   .search {

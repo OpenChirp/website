@@ -1,14 +1,11 @@
-
 import {throwError as observableThrowError,  Observable } from 'rxjs';
 
 import {catchError, map} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptions } from '@angular/http';
 
-
-
 import { Device } from '../models/device';
-import { Configuration } from '../config'; 
+import { Configuration } from '../config';
 
 @Injectable()
 
@@ -23,7 +20,7 @@ export class DeviceService {
     this.grafanaUrl = config.grafana_url;
     this.requestOptions.withCredentials = true;
   }
-  
+
   getGrafanaUrl (){
     return this.grafanaUrl;
   }
@@ -33,7 +30,7 @@ export class DeviceService {
                     map(this.extractData),
                     catchError(this.handleError),);
   }
-  
+
   getDeviceTransducers(device_id: string) {
     return this.http.get(this.deviceUrl + device_id+"/transducer", this.requestOptions).pipe(
                     map(this.extractData),
@@ -75,10 +72,10 @@ export class DeviceService {
                     catchError(this.handleError),);
   }
  // Get Public Link
-  getPublicLink(device_id: string, command_id: string) {    
+  getPublicLink(device_id: string, command_id: string) {
     return this.http.get(this.deviceUrl + device_id + "/command/"+ command_id +"/publiclink",  this.requestOptions).pipe(
                     map(this.extractData),
-                    catchError(this.handleError),);
+                    catchError(this.handleError));
   }
 
   // Add New Transducer
@@ -92,6 +89,13 @@ export class DeviceService {
     return this.http.post(this.deviceUrl + device_id + "/transducer/"+ transducer_id, body, this.requestOptions).pipe(
                     map(this.extractData),
                     catchError(this.handleError),);
+  }
+
+  // Delete Transducer
+  editTransducer(device_id: string, transducer_id: string, body: any) {
+    return this.http.put(this.deviceUrl + device_id + "/transducer/" + transducer_id, body, this.requestOptions)
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
   // Delete Transducer
@@ -179,16 +183,29 @@ export class DeviceService {
                     catchError(this.handleError),);
   }
   // Get All User's ACL
-  getUsersAcl(device_id: string) {    
+<<<<<<< HEAD
+  getUsersAcl(device_id: string) {
     return this.http.get(this.deviceUrl + device_id + "/acl/users",  this.requestOptions).pipe(
                     map(this.extractData),
                     catchError(this.handleError),);
   }
   // Get All User's ACL
-  getGroupsAcl(device_id: string) {    
+  getGroupsAcl(device_id: string) {
     return this.http.get(this.deviceUrl + device_id + "/acl/groups",  this.requestOptions).pipe(
                     map(this.extractData),
                     catchError(this.handleError),);
+=======
+  getUsersAcl(device_id: string) {
+    return this.http.get(this.deviceUrl + device_id + "/acl/users",  this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+  // Get All User's ACL
+  getGroupsAcl(device_id: string) {
+    return this.http.get(this.deviceUrl + device_id + "/acl/groups",  this.requestOptions)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+>>>>>>> 44b34a3975a3ec267468b405218f39e0f13d1c4e
   }
    // Create ACL
   createAcl(device_id: string, entity_id: string, body: any) {

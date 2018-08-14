@@ -7,7 +7,7 @@ $black-text: #303132;
     color: $black-text;
   }
   mat-card {
-    ng2-mat-datatable-header {
+    th {
       border-bottom: solid 1px #909090;
       font-weight:bold;
     }
@@ -20,7 +20,7 @@ $black-text: #303132;
       background-color: #e3e3e3;
     }
     background-color: white;
-    
+
     .card-header {
       h2 {
         margin: 0;
@@ -32,6 +32,6 @@ $black-text: #303132;
         float: right;
       }
       margin-bottom: 20px;
-    }    
+    }
   }
 }

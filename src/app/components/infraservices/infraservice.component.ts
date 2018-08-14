@@ -1,4 +1,3 @@
-
 import {switchMap} from 'rxjs/operators';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -20,19 +19,42 @@ import { ConfigRequiredComponent } from './config.required.component';
 })
 
 export class InfraServiceComponent {
-  service:any  = null;
-  acl :any = {};
-  tokenTip : string = "Use the service id as username and this token as password to authenticate over basic auth for REST API and MQTT. Make sure to copy it now. You won’t be able to see it again!";
+  service: any = null;
+  acl: any = {};
+  tabIndex: number = 0;
+
+  private tabNameToPosition: Map<string, Number> = new Map([
+    ['properties', 0],
+    ['devicelist', 1],
+  ]);
+
+  private tabPositionToName: string[] = [
+    'properties',
+    'devicelist',
+  ];
 
   constructor(private route: ActivatedRoute, private infraService: InfraService, private router: Router,
     private successDialogService: SuccessDialogService,
     private errorDialogService: ErrorDialogService,
     private globalDataService:GlobalDataService,
     public dialog: MatDialog) {
-
   }
 
   ngOnInit() {
+    this.route.fragment.subscribe((fragment: string) => {
+      // Automatically move to the tab indicated in #hashtag
+      if (this.tabNameToPosition.has(fragment)) {
+        this.selectedIndex = this.tabNameToPosition.get(fragment).valueOf();
+      } else {
+        // We cannot do a redirect immediately because this would
+        // mess up the back stack, such that you would never be able to "go back".
+        // The fix would be to have the sender already attach the #properties
+        // tag to device page reference.
+        // TODO: This should probably be some official Angular way of redirecting
+        //window.location.hash = "#properties";
+        //this.selectedIndex = this.tabNameToPosition.get('properties').valueOf();
+      }
+    });
     this.getService();
   }
 
@@ -44,142 +66,38 @@ export class InfraServiceComponent {
         this.service = result;
         let ownerId = this.service.owner._id;
         let loggedInUserId = this.globalDataService.userid;
-        if(String(ownerId) === String(loggedInUserId)){
-          this.acl.isOwner = true;
-        }
-        else{
-          this.acl.isOwner = false;
-        }
+        this.acl.isOwner = (String(ownerId) === String(loggedInUserId));
       },
       error => this.router.navigate(['/home/services'])
       );
   }
 
-  updateService() {
-    this.infraService.updateService(this.service._id, this.service).subscribe(
-      result => {
-        this.successDialogService
-        .dialogPopup("Updated: " + this.service.name);
-      },
-      error => {
-        this.errorDialogService
-        .dialogPopup(error.message + ': ' + this.service.name);
-      }
-      );
-  }
-
   deleteService() {
     let dialogRef = this.dialog.open(ConfirmationDialogComponent);
-    dialogRef.componentInstance.dialogText = "Delete Service " + this.service.name + "?";
-    dialogRef.componentInstance.confirmText = "Delete";
+    dialogRef.componentInstance.dialogText = 'Delete Service ' + this.service.name + '?';
+    dialogRef.componentInstance.confirmText = 'Delete';
     dialogRef.afterClosed().subscribe(
       result => {
         if (result) {
           this.infraService.deleteService(this.service._id).subscribe(
-            result => {
-              this.successDialogService.dialogPopup("Successfully deleted " + this.service.name);
+            data => {
+              this.successDialogService.dialogPopup('Successfully deleted ' + this.service.name);
               this.router.navigate(['/home/services']);
             },
             error => {
               this.errorDialogService.dialogPopup(error.message);
             }
-            );
+          );
         }
       }
-      );
+    );
   }
-
-  viewProperties() {
-    let dialogRef = this.dialog.open(PropertiesComponent, { width: '600px' });
-    dialogRef.componentInstance.properties = this.service.properties || {};
-    dialogRef.componentInstance.source = this.service.name;
-    dialogRef.afterClosed().subscribe(
-      result => {
-        if(result) {
-          var newService = this.service;
-          newService.properties = result;
-          this.infraService.updateService(this.service._id, newService).subscribe(
-            res => this.successDialogService.dialogPopup("Updated Service: " + this.service.name),
-            err => this.errorDialogService.dialogPopup(err.message)
-            );
-        }
-      }
-      );
+  get selectedIndex() {
+    return this.tabIndex;
   }
-
-  viewConfigRequired() {
-    let dialogRef = this.dialog.open(ConfigRequiredComponent, { width: '900px' });
-    dialogRef.componentInstance.config = this.service.config_required || {};
-    dialogRef.componentInstance.source = this.service.name;
-    dialogRef.afterClosed().subscribe(
-      result => {
-        if(result) {
-          var newService = this.service;
-          newService.config_required = result;
-          this.infraService.updateService(this.service._id, newService).subscribe(
-            res => this.successDialogService.dialogPopup("Updated Service: " + this.service.name),
-            err => this.errorDialogService.dialogPopup(err.message)
-            );
-        }
-      }
-      );
+  set selectedIndex(index: number) {
+    this.tabIndex = index;
+    // TODO: This should probably be some official Angular way of redirecting
+    window.location.hash = this.tabPositionToName[index];
   }
-
-  createServiceToken() {
-    this.infraService.createToken(this.service._id).subscribe(
-      result => {
-        this.getService();
-        this.successDialogService
-        .dialogPopupNoAutoClose("Token : " + result, this.tokenTip);
-      },
-      error => {
-        this.errorDialogService
-        .dialogPopup(error.message + ': ' + this.service.name);
-      }
-      );
-  }
-
-  recreateServiceToken() {
-    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
-    dialogRef.componentInstance.dialogText = "Regenerate token for " + this.service.name + "? ";
-    dialogRef.componentInstance.dialogWarning = "This will over-write the previous token."
-    dialogRef.componentInstance.confirmText = "Generate";
-    dialogRef.afterClosed().subscribe(
-      result => {
-        if (result) {
-          this.infraService.recreateToken(this.service._id).subscribe(
-            result => {
-              this.successDialogService
-              .dialogPopupNoAutoClose("Token : " + result, this.tokenTip);
-            },
-            error => this.errorDialogService
-            .dialogPopup(error.message + ': ' + this.service.name)
-            );
-        } // End if
-      } // End result
-      ); // End subscribe
-  } // End function
-
-  deleteServiceToken() {
-    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
-    dialogRef.componentInstance.dialogText = "Delete token for service " + this.service.name + "? ";
-    dialogRef.componentInstance.dialogWarning = "The token will no longer work for authentication over REST and MQTT."
-    dialogRef.componentInstance.confirmText = "Delete";
-    dialogRef.afterClosed().subscribe(
-      result => {
-        if (result) {
-          this.infraService.deleteToken(this.service._id).subscribe(
-            result => {
-              this.getService();
-              this.successDialogService
-              .dialogPopup('Successfully deleted token for: ' + this.service.name);
-            },
-            error => this.errorDialogService
-            .dialogPopup(error.message + ': ' + this.service.name)
-            );// End delete token subscribe.
-        } // End if
-      } // End result
-      ); // End subscribe
-  } // End function
-
 }

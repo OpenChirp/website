@@ -2,8 +2,8 @@ $black-text: #303132;
 
 .stats {
 	background-color: white;
-	ng2-mat-datatable-header {
-		border-bottom: solid 1px #909090;
+	th {
+    border-bottom: solid 1px #909090;
 		font-weight:bold;
 	}
 	tr {
@@ -17,7 +17,7 @@ $black-text: #303132;
 			float: left;
 			font-family: "Avenir-Heavy", sans-serif;
 			color: $black-text;
-		}	
+		}
 		button {
 			float: right;
 		}

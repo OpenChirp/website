@@ -5,6 +5,7 @@ import { MatInputModule, MatSnackBar, MatDialog } from '@angular/material';
 
 import { SuccessDialogService } from '../../services/success-dialog.service';
 import { ErrorDialogService } from '../../services/error-dialog.service';
+import { Configuration } from '../../config';
 
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
@@ -29,6 +30,7 @@ export class LoginComponent {
   password: string = '';
   confirmPassword: string = '';
   showSignup: boolean = false;
+  showSignupButton: boolean = false;
   emailPattern: any = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   emailFormControl = new FormControl('', [
@@ -38,7 +40,8 @@ export class LoginComponent {
 
   matcher = new MyErrorStateMatcher();
 
-  constructor(private router: Router,
+  constructor(private config: Configuration,
+              private router: Router,
               private authService: AuthService,
               private errorDialogService: ErrorDialogService,
               private successDialogService: SuccessDialogService,
@@ -46,6 +49,7 @@ export class LoginComponent {
   }
 
   ngOnInit() {
+    this.showSignupButton = this.config.signup_enable;
   }
 
   login() {

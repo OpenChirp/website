@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <div class="error" align="center">
       <mat-icon>report_problem</mat-icon>
-      <h3 md-dialog-title> Error </h3>
+      <h3 mat-dialog-title> Error </h3>
       <p>
         {{ message }}
       </p>

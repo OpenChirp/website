@@ -1,0 +1,30 @@
+<div class="infra-service-devicelist">
+  <mat-card *ngIf="service">
+    <table>
+      <!-- Table Header-->
+      <thead>
+      <tr>
+        <th>Device Name</th>
+        <th>Config</th>
+        <th>Last Status</th>
+        <th>Owner Name</th>
+        <th>Owner Email</th>
+        <th>Location</th>
+      </tr>
+      </thead>
+      <!-- Table Body -->
+      <tbody>
+      <!-- Item Row -->
+      <tr *ngFor="let device of devices" class="devices">
+        <td (click)="gotoDevice(device.id)">{{ device.name }}</td>
+        <td><button *ngIf="device.config.length > 0" mat-raised-button (click)="viewDeviceConfig(device)">View Config</button></td>
+        <td>{{ device.status.message }}</td>
+        <td>{{ device.owner.name }}</td>
+        <td>{{ device.owner.email }}</td>
+        <td>{{ device.location.name }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </mat-card>
+</div>
+

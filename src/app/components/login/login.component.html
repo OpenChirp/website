@@ -5,6 +5,7 @@
   <google-signin></google-signin>
   <br>
   <p><strong>Or</strong></p>
+<<<<<<< HEAD
   <form class="login-form">
     <mat-form-field appearance="fill">
       <mat-label>Email</mat-label>
@@ -32,6 +33,7 @@
       <input matInput type="password" required name="confirm"  placeholder="Confirm Password" [(ngModel)]="confirmPassword">
     </mat-form-field>
     <br/>
+    <button mat-raised-button (click)="signup()" *ngIf="showSignupButton">SignUp</button>
     <button mat-raised-button (click)="login()">Login</button>
   </form>
 </div>

@@ -7,6 +7,7 @@ import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.c
 import { ErrorDialogService } from '../../../services/error-dialog.service';
 import { SuccessDialogService } from '../../../services/success-dialog.service';
 import { PropertiesComponent } from '../../dialogs/properties.component';
+import { SelectLocationComponent } from '../../locations/select-location.component';
 
 @Component({
   selector: 'device-properties',
@@ -25,7 +26,6 @@ export class DevicePropertiesComponent {
     private errorDialogService: ErrorDialogService,
     public dialog: MatDialog) {
   }
-
 
   updateDeviceMeta() {
     this.deviceService.updateDeviceById(this.device._id, this.device).subscribe(
@@ -65,4 +65,22 @@ export class DevicePropertiesComponent {
     }
   }
 
+  pickLocation() {
+    let dialogRef = this.dialog.open(SelectLocationComponent, { width: '800px', height: '700px' });
+    dialogRef.afterClosed().subscribe(
+      result => {
+        if(result) {
+          this.deviceService.updateDeviceById(this.device._id, { location_id: result }).subscribe(
+            result => {
+              this.successDialogService
+                .dialogPopup("Updated: " + this.device.name);
+            },
+            error => {
+              this.errorDialogService
+                .dialogPopup(error.message + ': ' + this.device.name);
+            }
+          );
+        }
+     });
+  }
 }

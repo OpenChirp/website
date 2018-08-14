@@ -1,10 +1,6 @@
 .properties {
-  th {
-    border-bottom: solid 1px #303030;
-    font-weight: bold;
-  }
   tr {
-    border-bottom: solid 1px #303030;
+   //border-top: solid 1px #303030;
     td {
       vertical-align: middle;
     }
@@ -16,6 +12,12 @@
     mat-icon:hover {
       color: #303030;
     }
+  }
+   .description{
+    min-width : 100%
+   }
+  p {
+    font-family: "Avenir-Med", sans-serif;
   }
   h2 {
     margin-top: 0;

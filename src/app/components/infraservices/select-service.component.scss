@@ -1,7 +1,7 @@
 .select-service {
   padding: 15px;
 
-  ng2-mat-datatable-header {
+  th {
     border-bottom: solid 1px #303030;
   }
 
@@ -13,13 +13,13 @@
   tr:hover {
     background-color: #e3e3e3;
   }
- 
+
   .search {
     overflow: hidden;
     h2 {
       float: left;
     }
-    mat-input-container {
+    mat-form-field {
       float: right;
     }
     mat-icon {

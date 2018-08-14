@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <div class="success" align="center">
       <mat-icon>check_circle</mat-icon>
-      <h3 md-dialog-title> Success </h3>
+      <h3 mat-dialog-title> Success </h3>
       <p>
         {{ message }}
         <br>

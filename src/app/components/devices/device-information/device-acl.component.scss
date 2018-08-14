@@ -1,9 +1,9 @@
 .device-acl {
-  ng2-mat-datatable-header {
+  th {
     border-bottom: solid 1px #303030;
     font-weight: bold;
   }
-    tr {   
+    tr {
       border-top: solid 1px #e3e3e3;
       border-bottom: solid 1px #e3e3e3;
   }
@@ -27,5 +27,5 @@
     flex-wrap: wrap;
     justify-content: center;
   }
-  
+
 }

@@ -12,17 +12,23 @@ export class AdminService {
   private apiUrl: string;
   private adminUrl: string;
 
-  constructor(private http: Http, private config: Configuration, private requestOptions: RequestOptions) { 
+  constructor(private http: Http, private config: Configuration, private requestOptions: RequestOptions) {
     this.apiUrl = config.api_url;
     this.adminUrl = this.apiUrl + "admin/";
- 
+
   }
 
 
-  getAllStats(){
-  	return this.http.get(this.adminUrl +"stats", this.requestOptions).pipe(
-    map(this.extractData),
-    catchError(this.handleError),);
+  getAllStats() {
+    return this.http.get(this.adminUrl + 'stats', this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
+
+  getAllDevices() {
+    return this.http.get(this.apiUrl + 'device', this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
    private extractData(res: Response) {
