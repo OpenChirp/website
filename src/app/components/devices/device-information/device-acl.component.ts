@@ -57,7 +57,7 @@ export class DeviceAclComponent {
     this.filteredUsers = this.memberForm.controls['user'].valueChanges.pipe(
          startWith(null),
          map(user => user && typeof user === 'object' ? user.email : user),
-         map(email => email ? this.filter(email) : this.allUsers.slice()),);
+         map(email => email ? this.filter(email) : this.allUsers.slice()));
 
   }
 

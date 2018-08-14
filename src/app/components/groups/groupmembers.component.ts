@@ -1,4 +1,3 @@
-
 import {switchMap, startWith, map} from 'rxjs/operators';
 import { Component } from '@angular/core';
 import { FormControl, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -12,8 +11,6 @@ import { UserService } from '../../services/user.service';
 import { GroupService } from '../../services/group.service';
 
 import { User } from '../../models/user';
-
-
 
 
 @Component({
@@ -50,7 +47,7 @@ export class GroupMembersComponent {
     this.filteredUsers = this.memberForm.controls['user'].valueChanges.pipe(
          startWith(null),
          map(user => user && typeof user === 'object' ? user.email : user),
-         map(email => email ? this.filter(email) : this.users.slice()),);
+         map(email => email ? this.filter(email) : this.users.slice()));
   }
 
  filter(email: string)   {

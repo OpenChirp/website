@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import 'rxjs/add/operator/switchMap';
 
 import { Device } from '../../../models/device';
 import {AdminService} from '../../../services/admin.service';

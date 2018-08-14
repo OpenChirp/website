@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import 'rxjs/add/operator/switchMap';
+import { switchMap, startWith, map } from 'rxjs/operators';
 import { InfraService } from '../../../services/infraservice';
 
 import { GlobalDataService } from '../../../services/global.data.service';
@@ -30,8 +30,8 @@ export class InfraServiceDeviceListComponent {
   }
 
   getDeviceList() {
-    this.route.params
-    .switchMap((params: Params) => this.infraService.getServiceDevices(params['id']))
+    this.route.params.pipe(
+    switchMap((params: Params) => this.infraService.getServiceDevices(params['id'])))
     .subscribe(
       result => {
         this.devices = result;
