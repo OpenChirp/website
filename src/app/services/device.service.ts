@@ -5,7 +5,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 import { Device } from '../models/device';
-import { Configuration } from '../config'; 
+import { Configuration } from '../config';
 
 @Injectable()
 
@@ -20,7 +20,7 @@ export class DeviceService {
     this.grafanaUrl = config.grafana_url;
     this.requestOptions.withCredentials = true;
   }
-  
+
   getGrafanaUrl (){
     return this.grafanaUrl;
   }
@@ -30,7 +30,7 @@ export class DeviceService {
                     .map(this.extractData)
                     .catch(this.handleError);
   }
-  
+
   getDeviceTransducers(device_id: string) {
     return this.http.get(this.deviceUrl + device_id+"/transducer", this.requestOptions)
                     .map(this.extractData)
@@ -72,7 +72,7 @@ export class DeviceService {
                     .catch(this.handleError);
   }
  // Get Public Link
-  getPublicLink(device_id: string, command_id: string) {    
+  getPublicLink(device_id: string, command_id: string) {
     return this.http.get(this.deviceUrl + device_id + "/command/"+ command_id +"/publiclink",  this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
@@ -89,6 +89,13 @@ export class DeviceService {
     return this.http.post(this.deviceUrl + device_id + "/transducer/"+ transducer_id, body, this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
+  }
+
+  // Delete Transducer
+  editTransducer(device_id: string, transducer_id: string, body: any) {
+    return this.http.put(this.deviceUrl + device_id + "/transducer/" + transducer_id, body, this.requestOptions)
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
   // Delete Transducer
@@ -176,13 +183,13 @@ export class DeviceService {
                     .catch(this.handleError);
   }
   // Get All User's ACL
-  getUsersAcl(device_id: string) {    
+  getUsersAcl(device_id: string) {
     return this.http.get(this.deviceUrl + device_id + "/acl/users",  this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
   // Get All User's ACL
-  getGroupsAcl(device_id: string) {    
+  getGroupsAcl(device_id: string) {
     return this.http.get(this.deviceUrl + device_id + "/acl/groups",  this.requestOptions)
                     .map(this.extractData)
                     .catch(this.handleError);
