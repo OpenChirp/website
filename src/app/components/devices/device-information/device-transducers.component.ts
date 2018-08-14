@@ -9,6 +9,7 @@ import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.c
 import { InputTransducerValueComponent } from '../../dialogs/input-transducer-value.component';
 import { interval } from 'rxjs/observable/interval';
 import { Subscription } from 'rxjs';
+import { EditTransducerComponent } from './edit-transducer.component';
 
 @Component({
   selector: 'device-transducers',
@@ -123,6 +124,28 @@ export class DeviceTransducersComponent {
       this.errorDialogService
         .dialogPopup('Name/Unit cannot be empty!');
     }
+  }
+
+  editTransducer(transducer: any) {
+    let dialogRef = this.dialog.open(EditTransducerComponent, { data: { transducer: transducer }});
+    dialogRef.afterClosed().subscribe(
+      result =>  {
+        if (result) {
+          this.deviceService.editTransducer(this.device._id, transducer._id, result).subscribe(
+            result => {
+              this.successDialogService
+                .dialogPopup('Transducer Updated: ' + name);
+              this.updateDevice.emit(true);
+              this.getTransducers();
+            },
+            error => {
+              this.errorDialogService
+                .dialogPopup(error.message + ': ' + name);
+            }
+          );
+        }
+      }
+    );
   }
 
   deleteTransducer(id: string, name: string) {

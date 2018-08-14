@@ -63,6 +63,7 @@ import { AdminDeviceListComponent } from './components/admin/devices/admin-devic
 import { GoogleLoginComponent } from './components/login/googlelogin.component';
 import { LoginComponent } from './components/login/login.component';
 import { SelectLocationComponent } from './components/locations/select-location.component';
+import { EditTransducerComponent } from './components/devices/device-information/edit-transducer.component';
 
 // Services
 import { LocationService } from './services/location.service';
@@ -130,7 +131,8 @@ import { AuthService } from './services/auth.service';
     LoginComponent,
     GoogleLoginComponent,
     AdminDeviceListComponent,
-    SelectLocationComponent
+    SelectLocationComponent,
+    EditTransducerComponent
   ],
   imports: [
     BrowserModule,
@@ -173,7 +175,8 @@ import { AuthService } from './services/auth.service';
     UpdateConfigComponent,
     ViewConfigComponent,
     PublicLinkComponent,
-    SelectLocationComponent
+    SelectLocationComponent,
+    EditTransducerComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -39,6 +39,9 @@
         <td><p>{{ transducer.value ? transducer.value : "-" }}</p></td>
         <td><p>{{ transducer.timestamp | date :"M/d/yy h:mm:ss a"  }}</p></td>
         <td>
+          <button md-icon-button color="primary" (click)="editTransducer(transducer)">
+            <md-icon>edit</md-icon>
+          </button>
           <button md-icon-button color="warn" (click)="deleteTransducer(transducer._id, transducer.name)">
             <md-icon>clear</md-icon>
           </button>
