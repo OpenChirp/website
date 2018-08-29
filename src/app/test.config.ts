@@ -1,9 +1,9 @@
 export class Configuration {
-  base_url: string = "https://testing.openchirp.io";
-  api_url: string = this.base_url + "/api/";
-  auth_url: string = this.base_url + "/auth/";
+  base_url: string = "https://testing.openchirp.io/";
+  api_url: string = this.base_url + "api/";
+  auth_url: string = this.base_url + "auth/";
 
-  google_auth_client_id:string="8799600805-r708mvl77fe1f5fu71r6sbo366m6e7r5.apps.googleusercontent.com";
+  google_auth_client_id:string="80076401627-4t634gttm4tgn5kck9g2jv7o1asou9ad.apps.googleusercontent.com";
 
   grafana_url: string = this.base_url + "grafana/";
 

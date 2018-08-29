@@ -14,8 +14,9 @@ import { DeviceService } from '../../../services/device.service';
 export class DeviceVisualizationComponent {
   @Input() device: Device;
   @Output() updateDevice: EventEmitter<boolean> = new EventEmitter();
-  frameURL: SafeUrl = []
-  currentRes: 'Hour'
+  deviceTransducers: Array<any>;
+  frameURL: SafeUrl = [];
+  currentRes: 'Hour';
   resOptions = [
     'Year',
     'Month',
@@ -23,17 +24,25 @@ export class DeviceVisualizationComponent {
     'Hour'
   ];
   constructor(private deviceService: DeviceService,  private sanitizer: DomSanitizer) {}
-  
-  ngOnInit() {
-    this.currentRes = 'Hour';
-    this.resolutionToggled();    
-  }
-  
-  resolutionToggled(){
-    let grafana_url = this.deviceService.getGrafanaUrl();
-    let transducerNames = this.device.transducers.map(function(val:any) { return val.name ;});
-    let url = grafana_url +"dashboard/script/transducer_v2.js?device="+this.device._id+"&transducers="+transducerNames.join()+"&theme=light&kiosk=true"
 
+  ngOnInit() {
+    this.deviceTransducers = this.device.transducers.slice(); //  Shallow copy workaround for odd rendering issue
+    this.deviceTransducers.forEach((td) => {
+      td['checked'] = true;
+    });
+    this.currentRes = 'Hour';
+    this.optionToggled();
+  }
+
+  optionToggled() {
+    let grafana_url = this.deviceService.getGrafanaUrl();
+    let enabledTransducers = [];
+    for (let td of this.deviceTransducers) {
+      if (td['checked']) {
+        enabledTransducers.push(td['name']);
+      }
+    }
+    let url = grafana_url +"dashboard/script/transducer_v2.js?device="+this.device._id+"&transducers="+enabledTransducers.join()+"&theme=light&kiosk=true"
     switch(String(this.currentRes)) {
       case ("Year"):
         url = url + "&refresh=15m&from=now-1y&to=now%2B1M";
@@ -42,7 +51,7 @@ export class DeviceVisualizationComponent {
         url = url + "&refresh=5m&from=now-1M&to=now%2B1d";
         break;
       case 'Day':
-        url = url + "&refresh=1ms&from=now-1d&to=now%2B1h"; 
+        url = url + "&refresh=1ms&from=now-1d&to=now%2B1h";
         break;
       case 'Hour':
         url = url + "&refresh=15s&from=now-1h&to=now%2B5m";
@@ -59,5 +68,4 @@ export class DeviceVisualizationComponent {
     // //   this.frameURL = this.sanitizer.bypassSecurityTrustResourceUrl(url);
     console.log(url);
   }
-  
 }
