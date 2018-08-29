@@ -15,6 +15,7 @@ export class DeviceVisualizationComponent {
   @Input() device: Device;
   @Output() updateDevice: EventEmitter<boolean> = new EventEmitter();
   deviceTransducers: Array<any>;
+  showCheckboxes: boolean = false;
   frameURL: SafeUrl = [];
   currentRes: 'Hour';
   resOptions = [
@@ -31,6 +32,17 @@ export class DeviceVisualizationComponent {
       td['checked'] = true;
     });
     this.currentRes = 'Hour';
+    this.optionToggled();
+  }
+
+  checkAll(action) {
+    let val = true;
+    if (action == 'hide') {
+      val = false;
+    }
+    this.deviceTransducers.forEach( (td) => {
+      td['checked'] = val;
+    });
     this.optionToggled();
   }
 

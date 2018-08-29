@@ -1,9 +1,20 @@
 <div class="device-visualization">
-  <div class="transducerList">
-    <div *ngFor="let td of deviceTransducers">
-      <md-checkbox [(ngModel)]="td['checked']" (change)="optionToggled()">
-        {{ td.name }}
-      </md-checkbox>
+  <mat-slide-toggle [(ngModel)]="showCheckboxes">Select Transducers</mat-slide-toggle>
+  <div *ngIf="showCheckboxes">
+    <div class="transducerList">
+      <button md-raised-button (click)="checkAll('show')">
+        Show All
+      </button>
+      <button md-raised-button (click)="checkAll('hide')">
+        Hide All
+      </button>
+    </div>
+    <div class="transducerList">
+      <div *ngFor="let td of deviceTransducers">
+        <md-checkbox [(ngModel)]="td['checked']" (change)="optionToggled()">
+          {{ td.name }}
+        </md-checkbox>
+      </div>
     </div>
   </div>
   <div class="resolution">
