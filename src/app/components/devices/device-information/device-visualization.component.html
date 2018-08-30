@@ -1,13 +1,31 @@
 <div class="device-visualization">
+  <mat-slide-toggle [(ngModel)]="showCheckboxes">Select Transducers</mat-slide-toggle>
+  <div *ngIf="showCheckboxes">
+    <div class="transducerList">
+      <button mat-raised-button (click)="checkAll('show')">
+        Show All
+      </button>
+      <button mat-raised-button (click)="checkAll('hide')">
+        Hide All
+      </button>
+    </div>
+    <div class="transducerList">
+      <div *ngFor="let td of deviceTransducers">
+        <mat-checkbox [(ngModel)]="td['checked']" (change)="optionToggled()">
+          {{ td.name }}
+        </mat-checkbox>
+      </div>
+    </div>
+  </div>
   <div class="resolution">
-      <mat-button-toggle-group name="resolution" [(ngModel)]='currentRes' >
-          <div class="icon">
-              <i class="material-icons">timeline</i>
-          </div>
-          <mat-button-toggle *ngFor="let res of resOptions" [value]="res" (change)='resolutionToggled()'>
-                Last {{res}}
-          </mat-button-toggle>
-        </mat-button-toggle-group>
-  </div>  
-  <iframe [src] ="frameURL" width="100%" height="100%" frameborder="0"></iframe>
-</div>
+    <mat-button-toggle-group name="resolution" [(ngModel)]='currentRes'>
+      <div class="icon">
+        <i class="material-icons">timeline</i>
+      </div>
+      <mat-button-toggle *ngFor="let res of resOptions" [value]="res" (change)='optionToggled()'>
+        Last {{res}}
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <iframe [src]="frameURL" width="100%" height="100%" frameborder="0"></iframe>
+

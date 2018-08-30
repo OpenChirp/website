@@ -14,8 +14,10 @@ import { DeviceService } from '../../../services/device.service';
 export class DeviceVisualizationComponent {
   @Input() device: Device;
   @Output() updateDevice: EventEmitter<boolean> = new EventEmitter();
-  frameURL: SafeUrl = []
-  currentRes: 'Hour'
+  deviceTransducers: Array<any>;
+  showCheckboxes: boolean = false;
+  frameURL: SafeUrl = [];
+  currentRes: 'Hour';
   resOptions = [
     'Year',
     'Month',
@@ -25,15 +27,34 @@ export class DeviceVisualizationComponent {
   constructor(private deviceService: DeviceService,  private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
+    this.deviceTransducers = this.device.transducers.slice(); //  Shallow copy workaround for odd rendering issue
+    this.deviceTransducers.forEach((td) => {
+      td['checked'] = true;
+    });
     this.currentRes = 'Hour';
-    this.resolutionToggled();
+    this.optionToggled();
   }
 
-  resolutionToggled(){
-    let grafana_url = this.deviceService.getGrafanaUrl();
-    let transducerNames = this.device.transducers.map(function(val:any) { return val.name ;});
-    let url = grafana_url +"dashboard/script/transducer_v2.js?device="+this.device._id+"&transducers="+transducerNames.join()+"&theme=light&kiosk=true"
+  checkAll(action:string) {
+    let val = true;
+    if (action == 'hide') {
+      val = false;
+    }
+    this.deviceTransducers.forEach( (td) => {
+      td['checked'] = val;
+    });
+    this.optionToggled();
+  }
 
+  optionToggled() {
+    let grafana_url = this.deviceService.getGrafanaUrl();
+    let enabledTransducers = [];
+    for (let td of this.deviceTransducers) {
+      if (td['checked']) {
+        enabledTransducers.push(td['name']);
+      }
+    }
+    let url = grafana_url +"dashboard/script/transducer_v2.js?device="+this.device._id+"&transducers="+enabledTransducers.join()+"&theme=light&kiosk=true"
     switch(String(this.currentRes)) {
       case ("Year"):
         url = url + "&refresh=15m&from=now-1y&to=now%2B1M";
@@ -59,5 +80,4 @@ export class DeviceVisualizationComponent {
     // //   this.frameURL = this.sanitizer.bypassSecurityTrustResourceUrl(url);
     console.log(url);
   }
-
 }

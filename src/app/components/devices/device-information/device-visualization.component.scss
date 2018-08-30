@@ -7,6 +7,16 @@
 		background-color: white;
 		.icon{
 			padding: 4px 12px;
-		}	
+		}
 	}
+  .transducerList {
+    column-count: 2;
+    @media (min-width: 1100px) {
+      column-count: 3;
+    }
+    @media (min-width: 1366px) {
+      column-count: 4;
+    }
+  }
 }
+
