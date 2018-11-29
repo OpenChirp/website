@@ -18,9 +18,16 @@ body {
   display: flex;
 }
 div.maincontent {
+  @media (max-width: 599px) {
+    margin-top: 56px;
+  }
   margin-top: 64px;
   overflow-x: hidden;
   width:100%;
+}
+
+.mdc-top-app-bar--fixed-adjust {
+  padding-top:0 !important;
 }
 
 .custom-header {
@@ -45,6 +52,9 @@ a img{
 }
 
 .openchirp-logo-image {
+  @media (max-width:620px) {
+    display:none;
+  }
   height: 50px;
   width: 196px;
 }
@@ -96,7 +106,7 @@ a img{
 
 
 /* Override MDC default */
-mdc-app-bar {
+mdc-top-app-bar {
   z-index: 4;
 }
 @media (min-width: 600px) {
@@ -125,7 +135,6 @@ img {
   -webkit-justify-content: flex-end;
   -ms-flex-pack: end;
   justify-content: flex-end;
-  width: 800px;
 }
 
 .openchirp-navigation .mdl-navigation__link {
@@ -189,6 +198,8 @@ img {
 
 .font-light {
   font-weight: 300 !important;
+  font-size:14px;
+  color: #9e9e9e;
 }
 
 .sub-head {
@@ -282,6 +293,7 @@ img {
   width:120px;
 }
 .openchirp-how-section>.openchirp-section-title {
+  font-size:34px;
   margin-left: 12px;
   text-align: left;
 }
@@ -308,28 +320,29 @@ img {
 
 
 
-
-
-
-.openchirp-card-tech.mdc-card {
-  width: 250px;
-  min-height: 100px;
+.openchirp-card-tech {
+  padding:15px;
 }
+
 
 .openchirp-card-tech>.mdc-card__media {
   margin-left: auto;
   margin-right: auto;
   height: 55px;
+  margin-bottom: 15px;
 }
 
 .openchirp-card-tech>.mdc-card__supporting-text {
   text-align: center;
 }
 
-// .openchirp-card.mdc-card {
-//   //width: 300px;
-//   //height: 300px;
-// }
+.openchirp-card.mdc-card {
+  border:none;
+  box-shadow:none;
+  width: 300px;
+  padding:15px;
+  margin:auto;
+}
 
 .openchirp-card>.mdc-card__media {
   margin-left: auto;
@@ -402,6 +415,7 @@ img {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+  padding-top:15px;
 }
 
 .openchirp-link-menu:hover {
@@ -412,6 +426,10 @@ img {
   background-color: transparent;
   margin-left: auto;
   margin-right: auto;
+  padding: 8px;
+  img {
+    max-width:100%;
+  }
 }
 
 .openchirp-footer-card {
@@ -424,6 +442,7 @@ img {
 
 
 /**** Mobile layout ****/
+
 
 @media (max-width: 900px) {
   .openchirp-navigation-container {
@@ -449,4 +468,8 @@ img {
     margin: 0 16px;
     padding-top: 8px;
   }
+}
+
+.demo-list-icon .mdc-list-item {
+  padding:16px;
 }

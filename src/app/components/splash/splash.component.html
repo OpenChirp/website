@@ -15,7 +15,7 @@
   <div class="full-layout">
 
     <!--drawer-->
-    <mdc-drawer class="openchirp-drawer" #sidenav drawer="temporary">
+    <mdc-drawer drawer="modal" class="openchirp-drawer" #sidenav closed>
       <mdc-drawer-content>
         <nav class="mdc-list">
           <a class="drawer-navigation-link mdc-list-item" href="#about">About</a>
@@ -30,14 +30,14 @@
     <!--drawer end-->
 
 
-    <mdc-app-bar #topbar [fixed]="true" [short]="false" [fixedAdjustElement]="maincontent">
-      <mdc-app-bar-row>
-        <mdc-app-bar-section align="start">
-          <mdc-icon mdcAppBarNavIcon (click)="sidenav.open()">menu</mdc-icon>
-          <mdc-app-bar-title><img class="openchirp-logo-image" src="assets/images/logo_with_text.png">
-          </mdc-app-bar-title>
-        </mdc-app-bar-section>
-        <mdc-app-bar-section align="end">
+    <mdc-top-app-bar #topbar [fixed]="true" [short]="false" [fixedAdjustElement]="maincontent">
+      <mdc-top-app-bar-row>
+        <mdc-top-app-bar-section align="start">
+          <mdc-icon mdcTopAppBarNavIcon (click)="sidenav.open = !sidenav.open">menu</mdc-icon>
+          <mdc-top-app-bar-title><img class="openchirp-logo-image" src="assets/images/logo_with_text.png">
+        </mdc-top-app-bar-title>
+        </mdc-top-app-bar-section>
+        <mdc-top-app-bar-section align="end">
           <!-- Navigation. We hide it in small screens. -->
           <nav class="openchirp-navigation">
             <a class="navigation_link" href="http://community.openchirp.io/">Community</a>
@@ -45,9 +45,9 @@
             <a class="navigation_link navigation_button" (click)="loginPopup()" *ngIf="!logged_in">Login</a>
             <a class="navigation_link navigation_button" routerLink="/home" routerLinkActive="active" *ngIf="logged_in">Home</a>
           </nav>
-        </mdc-app-bar-section>
-      </mdc-app-bar-row>
-    </mdc-app-bar>
+        </mdc-top-app-bar-section>
+      </mdc-top-app-bar-row>
+    </mdc-top-app-bar>
     <!--end of layout header-->
     <div class="maincontent" #maincontent>
       <!--Content Goes Here-->
@@ -74,8 +74,8 @@
         </p>
 
 
-        <div class="openchirp-card-container mdc-grid-list">
-          <div class="openchirp-card mdc-card">
+        <div class="openchirp-card-container" fxLayout='row' fxLayout.lt-sm="column">
+          <div class="openchirp-card mdc-card" fxFlex="33">
             <div class="mdc-card__media">
               <img src="assets/images/about-iot.png" width="71px" height="72px">
             </div>
@@ -87,7 +87,7 @@
             </div>
           </div>
 
-          <div class="openchirp-card mdc-card">
+          <div class="openchirp-card mdc-card" fxFlex="33">
             <div class="mdc-card__media">
               <img src="assets/images/about-community.png" width="54px" height="57px">
             </div>
@@ -99,7 +99,7 @@
             </div>
           </div>
 
-          <div class="openchirp-card mdc-card">
+          <div class="openchirp-card mdc-card" fxFlex="33">
             <div class="mdc-card__media">
               <img src="assets/images/about-empowering.png" width="43px" height="46px">
             </div>
@@ -142,7 +142,7 @@
           </li>
           <li class="mdc-list-item">
             <span class="mdc-list-item-primary-content">
-                  <img src="assets/images/2.png" width="41px" height="41px" class="openchirp-numbereditem">Log into OpenChirp with your<br/> Google account
+                  <img src="assets/images/2.png" width="41px" height="41px" class="openchirp-numbereditem">Log into OpenChirp with your Google account
                 </span>
           </li>
           <li class="mdc-list-item">
@@ -167,9 +167,9 @@
 
         <div class="openchirp-spacer"></div>
 
-        <div class="openchirp-card-container mdc-grid-list">
+        <div class="openchirp-card-container" fxLayout='row wrap'>
 
-          <div class="openchirp-card-tech">
+          <div class="openchirp-card-tech" fxFlex="25" fxFlex.lt-sm="50">
             <div class="mdc-card__media">
               <img src="assets/images/cloud-icon.png" width="52px" height="52px">
             </div>
@@ -178,7 +178,7 @@
             </div>
           </div>
 
-          <div class="openchirp-card-tech">
+          <div class="openchirp-card-tech" fxFlex="25" fxFlex.lt-sm="50">
             <div class="mdc-card__media">
               <img src="assets/images/rest-icon.png" width="52px" height="52px">
             </div>
@@ -188,7 +188,7 @@
           </div>
 
 
-          <div class="openchirp-card-tech">
+          <div class="openchirp-card-tech" fxFlex="25" fxFlex.lt-sm="50">
             <div class="mdc-card__media">
               <img src="assets/images/db-icon.png" width="52px" height="52px">
             </div>
@@ -198,7 +198,7 @@
           </div>
 
 
-          <div class="openchirp-card-tech">
+          <div class="openchirp-card-tech" fxFlex="25" fxFlex.lt-sm="50">
             <div class="mdc-card__media">
               <img src="assets/images/intelligent-icon.png" width="52px" height="52px">
             </div>
@@ -209,7 +209,7 @@
           </div>
 
 
-          <div class="openchirp-card-tech">
+          <div class="openchirp-card-tech" fxFlex="25" fxFlex.lt-sm="50">
             <div class="mdc-card__media">
               <img src="assets/images/open-icon.png" width="52px" height="52px">
             </div>
@@ -218,7 +218,7 @@
             </div>
           </div>
 
-          <div class="openchirp-card-tech">
+          <div class="openchirp-card-tech" fxFlex="25" fxFlex.lt-sm="50">
             <div class="mdc-card__media">
               <img src="assets/images/protobuf-icon.png" width="52px" height="52px">
             </div>
@@ -227,7 +227,7 @@
             </div>
           </div>
 
-          <div class="openchirp-card-tech">
+          <div class="openchirp-card-tech" fxFlex="25" fxFlex.lt-sm="50">
             <div class="mdc-card__media">
               <img src="assets/images/battery-icon.png" width="52px" height="52px">
             </div>
@@ -236,7 +236,7 @@
             </div>
           </div>
 
-          <div class="openchirp-card-tech">
+          <div class="openchirp-card-tech" fxFlex="25" fxFlex.lt-sm="50">
             <div class="mdc-card__media">
               <img src="assets/images/lock-icon.png" width="52px" height="52px">
             </div>
@@ -255,39 +255,27 @@
         <div class="openchirp-section-name font-light">
           GALLERY
         </div>
-
         <div class="openchirp-spacer"></div>
 
-        <div class="openchirp-card-container mdc-grid-list">
-          <div class="openchirp-card-photo">
-            <div class="mdc-card__media gallery-card">
-              <img src="assets/images/gallery/9.jpg" border="0">
-            </div>
+
+        <div class="openchirp-img-container" fxLayout='row wrap'>
+          <div class="gallery-card" fxFlex="33" fxFlex.lt-sm="50">
+              <img src="assets/images/gallery/9.jpg" />
           </div>
-          <div class="openchirp-card-photo">
-            <div class="mdc-card__media gallery-card">
-              <img src="assets/images/gallery/11.jpg" border="0">
-            </div>
+          <div class="gallery-card" fxFlex="33" fxFlex.lt-sm="50">
+              <img mdcImageListImage src="assets/images/gallery/11.jpg" />
           </div>
-          <div class="openchirp-card-photo">
-            <div class="mdc-card__media gallery-card">
-              <img src="assets/images/gallery/4.jpg" border="0">
-            </div>
+          <div class="gallery-card" fxFlex="33" fxFlex.lt-sm="50">
+              <img mdcImageListImage src="assets/images/gallery/4.jpg" />
           </div>
-          <div class="openchirp-card-photo">
-            <div class="mdc-card__media gallery-card">
-              <img src="assets/images/gallery/5.jpg" border="0">
-            </div>
+          <div class="gallery-card" fxFlex="33" fxFlex.lt-sm="50">
+              <img mdcImageListImage src="assets/images/gallery/5.jpg" />
           </div>
-          <div class="openchirp-card-photo">
-            <div class="mdc-card__media gallery-card">
-              <img src="assets/images/gallery/6.jpg" border="0">
-            </div>
+          <div class="gallery-card" fxFlex="33" fxFlex.lt-sm="50">
+              <img mdcImageListImage src="assets/images/gallery/6.jpg" />
           </div>
-          <div class="openchirp-card-photo">
-            <div class="mdc-card__media gallery-card">
-              <img src="assets/images/gallery/8.jpg" border="0">
-            </div>
+          <div class="gallery-card" fxFlex="33" fxFlex.lt-sm="50">
+              <img mdcImageListImage src="assets/images/gallery/8.jpg" />
           </div>
         </div>
       </div>
@@ -337,42 +325,32 @@
 
 
       <!--Footer-->
-      <footer class="openchirp-footer mdl-mega-footer">
-        <div class="mdl-mega-footer--middle-section">
-
-          <div class="openchirp-card-container mdc-grid-list openchirp-footer-cards">
-
-            <div class="mdl-layout-spacer"></div>
-
+      <footer class="openchirp-footer">
+        <div fxLayout='row wrap'>
+          <div class="openchirp-footer-cards"  fxFlex="20" fxFlex.lt-md="50" fxFlex.lt-sm="100">
             <a href="http://www.bosch.us/content/language1/html/rtc.htm"><img src="assets/images/bosch-logo.svg"
                                                                               height="55px"></a>
-
-            <div class="mdl-layout-spacer"></div>
-
+          </div>
+          <div class="openchirp-footer-cards"  fxFlex="20" fxFlex.lt-md="50" fxFlex.lt-sm="100">
             <a href="https://www.cylab.cmu.edu/"><img src="assets/images/cylab-logo.png" height="70px"></a>
-
-            <div class="mdl-layout-spacer"></div>
-
+          </div>
+          <div class="openchirp-footer-cards"  fxFlex="20" fxFlex.lt-md="50" fxFlex.lt-sm="100">
             <a href="http://www.cmu.edu/"><img src="assets/images/cmu-logo.svg" height="55px"></a>
-
-            <div class="mdl-layout-spacer"></div>
-
-            <a href="https://www.ece.cmu.edu/"><img src="assets/images/ece-logo.svg" height="55px"></a>
-
-            <div class="mdl-layout-spacer"></div>
-
-            <a href="http://wise.ece.cmu.edu/"><img src="assets/images/wiselab-logo.svg" height="55px"></a>
-
-            <div class="mdl-layout-spacer"></div>
-
           </div>
-
-          <div class="mdl-mega-footer--bottom-section">
-            <p class="font-light">OpenChirp © Copyright 2017-2018 Carnegie Mellon University | <a
-              target="_blank" href="https://www.cmu.edu/legal/">Legal</a></p>
+          <div class="openchirp-footer-cards"  fxFlex="20" fxFlex.lt-md="50" fxFlex.lt-sm="100">
+             <a href="https://www.ece.cmu.edu/"><img src="assets/images/ece-logo.svg" height="55px"></a>
           </div>
-
+          <div class="openchirp-footer-cards"  fxFlex="20" fxFlex.lt-md="50" fxFlex.lt-sm="100">
+               <a href="http://wise.ece.cmu.edu/"><img src="assets/images/wiselab-logo.svg" height="55px"></a>
+           </div>
         </div>
+
+        <div>
+          <p class="font-light">OpenChirp © Copyright 2017-2018 Carnegie Mellon University | <a
+            target="_blank" href="https://www.cmu.edu/legal/">Legal</a></p>
+        </div>
+
+
 
 
       </footer>

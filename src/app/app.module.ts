@@ -26,7 +26,7 @@ import {
   MatSnackBarModule,
 } from '@angular/material';
 import {
-  MdcAppBarModule,
+  MdcTopAppBarModule,
   MdcMenuModule,
   MdcDrawerModule,
   MdcListModule,
@@ -190,7 +190,7 @@ import { AuthService } from './services/auth.service';
     MatAutocompleteModule,
     MatDialogModule,
     MatSnackBarModule,
-    MdcAppBarModule,
+    MdcTopAppBarModule,
     MdcMenuModule,
     MdcDrawerModule,
     MdcListModule,
