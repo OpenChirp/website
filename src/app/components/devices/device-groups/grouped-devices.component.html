@@ -1,0 +1,44 @@
+<br/>
+<br/>
+<hr/>
+<br/>
+<div class="devicegroup-devices">
+  <mat-card-title>
+    Grouped Devices
+  </mat-card-title>
+    <div class = "card-header">
+      <div class="add-device">
+        <button mat-raised-button (click)="selectDevice()">Add Device</button>
+      </div>
+    </div>
+  <br>
+  <div *ngIf="devices.length > 0">
+  <table>
+    <!-- Table Header-->
+    <tr>
+      <th><p>Name</p></th>
+      <th><p>Owner</p></th>
+      <th><p>Location</p></th>
+      <th><p>Delete</p></th>
+    </tr>
+
+    <!-- Table Body -->
+    <tbody>
+      <!-- Item Row -->
+      <tr *ngFor="let device of devices">
+        <td><p>{{ device.name }}</p></td>
+        <td><p>{{ device.owner.name }}</p></td>
+        <td><p>{{ device.location_id.name }}</p></td>
+        <td><button mat-icon-button color="warn" (click)="removeDevice(device._id, device.name)">
+          <mat-icon >clear</mat-icon>
+        </button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+ <div *ngIf="devices.length == 0">
+      <p>No grouped devices</p>
+</div>
+
+</div>
+

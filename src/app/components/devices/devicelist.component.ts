@@ -17,8 +17,8 @@ import { LocationService } from '../../services/location.service';
 
 export class DeviceListComponent {
   devices: Array<Device> = [];
-  devicegroups: Array<Device> = [];
-  errorMessage = "";
+  deviceGroups: Array<Device> = [];
+  errorMessage = '';
   location: Location = null;
 
   constructor(private route: ActivatedRoute, private router: Router, private locationService: LocationService) {
@@ -38,7 +38,7 @@ export class DeviceListComponent {
       switchMap((params: Params) => this.locationService.getDeviceGroupByLocationId(params['id'])))
       .subscribe(
         result => {
-          this.devicegroups = result;
+          this.deviceGroups = result;
         },
         error => this.router.navigate(['/home'])
       );
@@ -61,7 +61,7 @@ export class DeviceListComponent {
   }
   newDeviceGroup() {
     if (this.location != null) {
-      this.router.navigate(['/home/newdevice', { location_id: this.location._id }]);
+      this.router.navigate(['/home/newdevicegroup', { location_id: this.location._id }]);
     }
   }
 }

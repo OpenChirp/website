@@ -10,6 +10,7 @@ import { DeviceTemplatesComponent } from './components/device-templates/devicete
 import { DeviceComponent } from './components/devices/device.component';
 import { DeviceListComponent } from './components/devices/devicelist.component';
 import { NewDeviceComponent } from './components/devices/newdevice.component';
+import { NewDeviceGroupComponent } from './components/devices/newdevicegroup.component';
 import { DeviceTemplateComponent } from './components/device-templates/devicetemplate.component';
 import { NewTemplateComponent } from './components/device-templates/newtemplate.component';
 import { UserDevicesComponent } from './components/devices/userdevices.component';
@@ -54,6 +55,10 @@ const appRoutes: Routes = [
       {
         path: 'newdevice',
         component: NewDeviceComponent
+      },
+      {
+        path: 'newdevicegroup',
+        component: NewDeviceGroupComponent
       },
       {
         path: 'devicetemplates',

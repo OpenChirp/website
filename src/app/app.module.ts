@@ -49,6 +49,7 @@ import { DeviceListComponent } from './components/devices/devicelist.component';
 import { LocationComponent } from './components/locations/location.component';
 import { DeviceComponent } from './components/devices/device.component';
 import { NewDeviceComponent } from './components/devices/newdevice.component';
+import { NewDeviceGroupComponent } from './components/devices/newdevicegroup.component';
 import { DashboardMainComponent } from './components/dashboard/dashboard-main.component';
 import { DeviceTemplatesComponent } from './components/device-templates/devicetemplates.component';
 import { DeviceTemplateComponent } from './components/device-templates/devicetemplate.component';
@@ -67,6 +68,8 @@ import { DeviceTransducersComponent } from './components/devices/device-informat
 import { DeviceCommandsComponent } from './components/devices/device-information/device-commands.component';
 import { DeviceServicesComponent } from './components/devices/device-information/device-services.component';
 import { DeviceVisualizationComponent } from './components/devices/device-information/device-visualization.component';
+import { SelectDeviceComponent } from './components/devices/select-device.component';
+import { GroupedDevicesComponent } from './components/devices/device-groups/grouped-devices.component';
 import { SelectTemplateComponent } from './components/device-templates/select-template.component';
 import { ConfirmationDialogComponent } from './components/dialogs/confirmation-dialog.component';
 import { PropertiesComponent } from './components/dialogs/properties.component';
@@ -96,6 +99,7 @@ import { EditTransducerComponent } from './components/devices/device-information
 // Services
 import { LocationService } from './services/location.service';
 import { DeviceService } from './services/device.service';
+import { DeviceGroupService } from './services/device-group.service';
 import { SuccessDialogService } from './services/success-dialog.service';
 import { UserService } from './services/user.service';
 import { ErrorDialogService } from './services/error-dialog.service';
@@ -117,6 +121,7 @@ import { AuthService } from './services/auth.service';
     DeviceListComponent,
     DeviceComponent,
     NewDeviceComponent,
+    NewDeviceGroupComponent,
     LocationComponent,
     DeviceTemplatesComponent,
     DeviceTemplateComponent,
@@ -135,6 +140,8 @@ import { AuthService } from './services/auth.service';
     DeviceCommandsComponent,
     DeviceServicesComponent,
     DeviceVisualizationComponent,
+    SelectDeviceComponent,
+    GroupedDevicesComponent,
     SelectTemplateComponent,
     ConfirmationDialogComponent,
     PropertiesComponent,
@@ -202,6 +209,7 @@ import { AuthService } from './services/auth.service';
   providers: [
     LocationService,
     DeviceService,
+    DeviceGroupService,
     SuccessDialogService,
     ErrorDialogService,
     UserService,
@@ -218,6 +226,7 @@ import { AuthService } from './services/auth.service';
     ConfirmationDialogComponent,
     SelectTemplateComponent,
     SelectServiceComponent,
+    SelectDeviceComponent,
     PropertiesComponent,
     ConfigRequiredComponent,
     InputConfigComponent,

@@ -16,6 +16,7 @@ import { UserService } from '../../services/user.service';
 
 export class UserDevicesComponent {
   devices: Array<Device> = [];
+  devicegroups: Array<Device> = [];
   errorMessage = "";
   location: Location = null;
 
@@ -26,6 +27,10 @@ export class UserDevicesComponent {
   ngOnInit() {
     this.userService.getMyDevices("").subscribe(
       result => this.devices = result,
+      error => this.router.navigate(['/home'])
+    );
+    this.userService.getMyDeviceGroups("").subscribe(
+      result => this.devicegroups = result,
       error => this.router.navigate(['/home'])
     );
   }
@@ -43,5 +48,7 @@ export class UserDevicesComponent {
   newDevice() {
     this.router.navigate(['/home/newdevice']);
   }
-
+  newDeviceGroup() {
+    this.router.navigate(['/home/newdevicegroup']);
+  }
 }

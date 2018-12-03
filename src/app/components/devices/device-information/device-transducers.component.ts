@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { DeviceService } from '../../../services/device.service';
+import { DeviceGroupService } from '../../../services/device-group.service';
 import { Device } from '../../../models/device';
 import { SuccessDialogService } from '../../../services/success-dialog.service';
 import { ErrorDialogService } from '../../../services/error-dialog.service';
@@ -23,14 +24,17 @@ export class DeviceTransducersComponent {
   unit: string = "";
   actuable: boolean = false;
   transducers: Array<Object>;
+  groupedtransducers: Array<Object>;
   publishPayload: string = "";
   lastUpdated: Date;
   nameSortDir: number = 0; // 0 (no sort), 1 (ascending), or 2 (descending)
   nameSortDirSymbol: string = "";
   transducerAutoRefreshPeriod: number = 2000; // 2000 ms
   transducerAutoRefreshSub: Subscription;
+  isDeviceGroup: boolean = false;
 
   constructor(private deviceService: DeviceService,
+              private deviceGroupService: DeviceGroupService,
               private successDialogService: SuccessDialogService,
               private errorDialogService: ErrorDialogService,
               public dialog: MatDialog) {
@@ -82,6 +86,9 @@ export class DeviceTransducersComponent {
 
   ngOnInit() {
     this.getTransducers();
+    if (this.isDeviceGroup) {
+      this.getGroupTransducers();
+    }
   }
 
   ngOnDestroy() {
@@ -90,6 +97,15 @@ export class DeviceTransducersComponent {
 
   getTransducers() {
     this.deviceService.getDeviceTransducers(this.device._id).subscribe(
+      out => {
+        this.lastUpdated = new Date();
+        this.device.transducers = out;
+        this.sortByNameUpdate();
+      });
+  }
+
+  getGroupTransducers() {
+    this.deviceGroupService.getDeviceGroupTransducers(this.device._id).subscribe(
       out => {
         this.lastUpdated = new Date();
         this.device.transducers = out;

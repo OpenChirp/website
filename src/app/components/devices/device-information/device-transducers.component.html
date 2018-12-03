@@ -1,5 +1,5 @@
 <div class="device-transducers">
-
+  <mat-card-title *ngIf="this.device.isDeviceGroup">DeviceGroup Transducers</mat-card-title>
   <p>
   <mat-button-toggle-group>
       <button mat-raised-button disabled>
@@ -77,4 +77,50 @@
     </tbody>
   </table>
 
+  <div *ngIf="this.device.isDeviceGroup">
+    <br/>
+    <br/>
+    <hr/>
+    <br/>
+    <br/>
+    <mat-card-title>Grouped Devices Transducers</mat-card-title>
+  </div>
+  <table>
+
+    <!-- Table Header-->
+    <tr>
+      <th><p>Device Name</p></th>
+      <th (click)="sortByNameToggle()"><p>Name {{nameSortDirSymbol}}</p></th>
+      <th><p>Unit</p></th>
+      <th><p>Actuable</p></th>
+      <th><p>Value</p></th>
+      <th><p>Timestamp</p></th>
+      <th><p>Actions</p></th>
+    </tr>
+
+    <!-- Table Body -->
+    <tbody>
+
+    <!-- Item Row -->
+    <tr *ngFor="let transducer of groupedtransducers">
+      <td><p>{{ transducer.devicename }}</p></td>
+      <td><p>{{ transducer.name }}</p></td>
+      <td><p>{{ transducer.unit ? transducer.unit : "-"}}</p></td>
+      <td><p>{{ transducer.is_actuable }}</p></td>
+      <td><p>{{ transducer.value ? transducer.value : "-" }}</p></td>
+      <td><p>{{ transducer.timestamp | date :"M/d/yy h:mm:ss a"  }}</p></td>
+      <td>
+        <button mat-icon-button color="primary" (click)="editTransducer(transducer)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteTransducer(transducer._id, transducer.name)">
+          <mat-icon>clear</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" *ngIf="transducer.is_actuable" (click)="publishTransducerValue(transducer._id, transducer.name, transducer.value)">
+          <mat-icon>send</mat-icon>
+        </button>
+      </td>
+    </tr>
+ </tbody>
+  </table>
 </div>

@@ -74,6 +74,12 @@ export class UserService {
                     catchError(this.handleError));
   }
 
+  getMyDeviceGroups(search: string) {
+    return this.http.get(this.userUrl + "mydevicegroups?name=" + search, this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
+
   getMyLocations(search: string) {
     return this.http.get(this.userUrl + "mylocations?name=" + search, this.requestOptions).pipe(
                     map(this.extractData),

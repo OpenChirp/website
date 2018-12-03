@@ -34,12 +34,12 @@
       <!-- <div><p>Device Type</p></div>-->
     </div>
     <hr>
-    <div *ngFor="let devicegroup of devicegroups" class="devices" (click)="gotoDevice(devicegroup._id)">
+    <div *ngFor="let devicegroup of deviceGroups" class="devices" (click)="gotoDevice(devicegroup._id)">
       <div><p>{{ devicegroup.name }}</p></div>
       <!-- <div><p>{{ device.type || "NONE" }}</p></div>-->
     </div>
-    <div *ngIf="devicegroups.length == 0">
-      <p>Currently no device groups to display.</p>
+    <div *ngIf="deviceGroups.length == 0">
+      <p>Currently no devicegroups to display.</p>
     </div>
   </mat-card>
 </div>

@@ -2,7 +2,10 @@
 	<div class="card-container">
 
 		<mat-card>
-			<mat-card-title>Device Token</mat-card-title>	
+			<mat-card-title *ngIf="device.isDeviceGroup; then devgroup_token else dev_token"></mat-card-title>
+      <ng-template #devgroup_token>DeviceGroup Token</ng-template>
+      <ng-template #dev_token>Device Token</ng-template>
+
 			<mat-card-content>
 				<div *ngIf="device.token">
 					<button mat-raised-button (click)="recreateDeviceToken()">Re-Generate Token</button>  
@@ -15,12 +18,12 @@
 		</mat-card>	
 
 		<mat-card>
-			<mat-card-title>Groups</mat-card-title>	
+			<mat-card-title>User Groups</mat-card-title>
 			<mat-card-content>
 				<table>
 					<!-- Table Header-->
 					<tr>
-						<th><p>Group</p></th>
+						<th><p>User Group</p></th>
 						<th><p>Permission</p></th>
 						<th><p>Actions</p></th>
 					</tr>
