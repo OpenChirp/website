@@ -20,10 +20,10 @@
       <tbody>
         <!-- Item Row -->
         <tr *ngFor="let service of services"  (click)="gotoService(service._id)">
-          <th><p>{{ service.name }}</p></th>
-          <th><p>{{ service.description }}</p></th>          
-          <th><p>{{ service.status ? service.status.message : "-" }}</p></th>
-          <th><p>{{ service.status ? (service.status.timestamp | date : "short" ) : "-"}}</p></th>
+          <td><p>{{ service.name }}</p></td>
+          <td><p>{{ service.description }}</p></td>
+          <td><p>{{ service.status ? service.status.message : "-" }}</p></td>
+          <td><p>{{ service.status ? (service.status.timestamp | date : "short" ) : "-"}}</p></td>
         </tr>
       </tbody>
     </table>

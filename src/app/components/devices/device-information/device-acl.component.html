@@ -54,13 +54,13 @@
 
 						<!-- Item Row -->
 						<tr *ngFor="let deviceGroup of deviceGroups">
-							<th><p><a class="group-name" (click)="gotoGroup(deviceGroup.entity_id._id)">{{ deviceGroup.entity_id.name  }}</a></p></th>
-							<th><p>{{ deviceGroup.perm == 2 ? "Write" : "Execute" }}</p></th>
-							<th>
+							<td><p><a class="group-name" (click)="gotoGroup(deviceGroup.entity_id._id)">{{ deviceGroup.entity_id.name  }}</a></p></td>
+							<td><p>{{ deviceGroup.perm == 2 ? "Write" : "Execute" }}</p></td>
+							<td>
 								<button mat-icon-button color="warn" (click)="removeGroupAcl(deviceGroup.entity_id)">
 									<mat-icon >clear</mat-icon>
 								</button>
-							</th>
+							</td>
 						</tr>
 						
 						<div *ngIf="deviceGroups.length == 0">
@@ -121,13 +121,13 @@
 
 						<!-- Item Row -->
 						<tr *ngFor="let deviceUser of deviceUsers">
-							<th><p>{{ deviceUser.entity_id.name || deviceUser.entity_id.email }}</p></th>
-							<th><p>{{ deviceUser.perm == 2 ? "Write" : "Execute"}}</p></th>
-							<th>
+							<td><p>{{ deviceUser.entity_id.name || deviceUser.entity_id.email }}</p></td>
+							<td><p>{{ deviceUser.perm == 2 ? "Write" : "Execute"}}</p></td>
+							<td>
 								<button mat-icon-button color="warn" (click)="removeUserAcl(deviceUser.entity_id)">
 									<mat-icon >clear</mat-icon>
 								</button>
-							</th>
+							</td>
 						</tr>
 						<!--</div>-->
 						<div *ngIf="deviceUsers.length == 0">

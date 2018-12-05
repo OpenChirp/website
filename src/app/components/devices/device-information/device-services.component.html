@@ -21,17 +21,17 @@
     <tbody>
       <!-- Item Row -->
       <tr *ngFor="let service of services">
-        <th><p>{{ service.name }}</p></th>
-        <th><p *ngIf="service.config"><button mat-raised-button (click)="viewConfig(service)">
+        <td><p>{{ service.name }}</p></td>
+        <td><p *ngIf="service.config"><button mat-raised-button (click)="viewConfig(service)">
            View/Update Config
-          </button></p></th>
-          <th><p>{{ service.status ? service.status.message : "-" }}</p></th>
-          <th><p>{{ service.status ? (service.status.timestamp | date : "short" ) : "-" }}</p></th>
-          <th>
+          </button></p></td>
+          <td><p>{{ service.status ? service.status.message : "-" }}</p></td>
+          <td><p>{{ service.status ? (service.status.timestamp | date : "short" ) : "-" }}</p></td>
+          <td>
           <button mat-icon-button color="warn" (click)="removeServiceLink(service._id, service.name)">
             <mat-icon >clear</mat-icon>
           </button>
-        </th>
+        </td>
       </tr>
     </tbody>
   </table>

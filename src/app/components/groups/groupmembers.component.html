@@ -45,13 +45,13 @@
        </form>
       <!-- Item Row -->
       <tr *ngFor="let member of members">
-        <th><p>{{ member.name || member.email }}</p></th>
-         <th><p>{{ member.write_access }}</p></th>
-         <th>
+        <td><p>{{ member.name || member.email }}</p></td>
+         <td><p>{{ member.write_access }}</p></td>
+         <td>
           <button mat-icon-button color="warn" (click)="removeUser(member)">
             <mat-icon >clear</mat-icon>
           </button>
-        </th>
+        </td>
       </tr>
     </tbody>
   </table>
