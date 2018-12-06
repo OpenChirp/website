@@ -9,8 +9,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$candy-app-primary: mat-palette($mat-light-blue);
-$candy-app-accent:  mat-palette($mat-green, A200, A100, A400);
+$candy-app-primary: mat-palette($mat-blue-gray);
+$candy-app-accent:  mat-palette($mat-blue-gray, 800, 700, 900);
 
 // The warn palette is optional (defaults to red).
 $candy-app-warn:    mat-palette($mat-red);
@@ -22,3 +22,13 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($candy-app-theme);
+
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color:#34495e;
+}
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color:rgba(30,100,150,.6);
+}
+.mat-button.mat-primary, .mat-icon-button.mat-primary, .mat-stroked-button.mat-primary {
+  color: #34495e;
+}

@@ -6,7 +6,7 @@ $toolbar-height: 64px;
 $button-height: 40px;
 $hover-color: #ffffff;
 $text-color: #303132;
-$icon-color: #3a7193;
+$icon-color: #34495e;
 
 .dashboard {
   height: 100%;
@@ -89,7 +89,7 @@ $icon-color: #3a7193;
       vertical-align: middle;
     }
     mat-icon:hover {
-      color: #8ab9d6;
+      color: #34495e;
       transition-duration: 0.3s;
     }
 
