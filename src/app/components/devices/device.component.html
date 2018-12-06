@@ -2,7 +2,7 @@
   <mat-card *ngIf="device">
 
     <div class="card-header">
-      <h2 *ngIf="device.isDeviceGroup; then devgroup_title else dev_title"></h2>
+      <h2><span *ngIf="device.isDeviceGroup; then devgroup_title else dev_title"></span></h2>
       <ng-template #devgroup_title>DeviceGroup Information for {{ device.name }}</ng-template>
       <ng-template #dev_title>Device Information for {{ device.name }}</ng-template>
       <button mat-raised-button class="save-template-button hide-on-small-screens" (click)="saveTemplate()">Save as Template</button>

@@ -1,4 +1,3 @@
-
 import {switchMap} from 'rxjs/operators';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';

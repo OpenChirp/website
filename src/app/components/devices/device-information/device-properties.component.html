@@ -28,7 +28,7 @@
     </div>
    <hr>
 
-    <p *ngIf="device.isDeviceGroup; then devgroup_id else dev_id"></p>
+    <p><span *ngIf="device.isDeviceGroup; then devgroup_id else dev_id"></span></p>
     <ng-template #devgroup_id>DeviceGroup ID: {{ device._id }}</ng-template>
     <ng-template #dev_id>Device ID: {{ device._id }}</ng-template>
 
