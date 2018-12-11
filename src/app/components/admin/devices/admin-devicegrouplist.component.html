@@ -1,7 +1,7 @@
-<div class="admin-device-list" >
+<div class="admin-devicegroup-list" >
   <mat-card>
     <div class="card-header">
-      <h2>List of Devices</h2>
+      <h2>List of DeviceGroups</h2>
       <div class="search">
         <mat-form-field>
           <input matInput placeholder="Search" [(ngModel)]="searchTerm" name="search">
@@ -12,7 +12,7 @@
     <table matSort (matSortChange)="sortData($event)">
       <!-- Table Header-->
       <thead>
-        <th mat-sort-header="name">Device Name</th>
+        <th mat-sort-header="name">DeviceGroup Name</th>
         <th mat-sort-header="owner">Owner</th>
         <th mat-sort-header="location">Location</th>
       </thead>
@@ -23,7 +23,7 @@
           <td>{{ device.location_id?.name }}</td>
         </tr>
         <tr *ngIf="filtered().length == 0">
-          <td colspan="3">No devices found.</td>
+          <td colspan="3">No device groups found.</td>
         </tr>
       </tbody>
     </table>

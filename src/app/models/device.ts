@@ -6,6 +6,7 @@ export class Device {
     _id: string;
     linked_services: Array<Object>;
     transducers: Array<Object>;
+    commands: Array<Object>;
     owner: any;
     location_id: any;
     isDeviceGroup: boolean;

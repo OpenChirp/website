@@ -5,7 +5,7 @@ import { DeviceGroupService } from '../../../services/device-group.service';
 import { Device } from '../../../models/device';
 import { SuccessDialogService } from '../../../services/success-dialog.service';
 import { ErrorDialogService } from '../../../services/error-dialog.service';
-import { MatDialog } from '@angular/material';
+import {MatDialog, Sort} from '@angular/material';
 import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.component';
 import { InputTransducerValueComponent } from '../../dialogs/input-transducer-value.component';
 import { interval ,  Subscription } from 'rxjs';
@@ -23,15 +23,15 @@ export class DeviceTransducersComponent {
   name: string = "";
   unit: string = "";
   actuable: boolean = false;
-  transducers: Array<Object>;
-  groupedtransducers: Array<Object>;
+  //transducers: Array<Object>;
+  groupTransducers: Array<Object>;
   publishPayload: string = "";
   lastUpdated: Date;
-  nameSortDir: number = 0; // 0 (no sort), 1 (ascending), or 2 (descending)
-  nameSortDirSymbol: string = "";
   transducerAutoRefreshPeriod: number = 2000; // 2000 ms
   transducerAutoRefreshSub: Subscription;
   isDeviceGroup: boolean = false;
+  sortedTransducers: Array<Object> = [];
+  sortedGroupTransducers: Array<Object> = [];
 
   constructor(private deviceService: DeviceService,
               private deviceGroupService: DeviceGroupService,
@@ -43,50 +43,9 @@ export class DeviceTransducersComponent {
 
   // Helps sort the given array of transducers by their name
   // in ascending order.
-  private cmpTransducersByNameAsc(a,b) {
-    if (a.name < b.name)
-       return -1;
-    if (a.name > b.name)
-      return 1;
-    return 0;
-  }
-
-  // Helps sort the given array of transducers by their name
-  // in descending over.
-  private cmpTransducersByNameDes(a,b) {
-    if (b.name < a.name)
-       return -1;
-    if (b.name > a.name)
-      return 1;
-    return 0;
-  }
-
-  private sortByNameUpdate() {
-    if (this.nameSortDir == 0) {
-      this.nameSortDirSymbol = '';
-      this.transducers = this.device.transducers;
-    } else {
-      // We buffer the transducers separately so that we can sort
-      // without disturbing the received order.
-      this.nameSortDirSymbol = (this.nameSortDir==1)?'^':'v';
-      var cmp = (this.nameSortDir==1)?
-          this.cmpTransducersByNameAsc:
-          this.cmpTransducersByNameDes;
-      var tcopy = new Array<Object>();
-      Object.assign(tcopy, this.device.transducers);
-      tcopy.sort(cmp);
-      this.transducers = tcopy;
-    }
-  }
-
-  sortByNameToggle() {
-    this.nameSortDir = (this.nameSortDir+1)%3;
-    this.sortByNameUpdate()
-  }
-
   ngOnInit() {
     this.getTransducers();
-    if (this.isDeviceGroup) {
+    if (this.device.isDeviceGroup) {
       this.getGroupTransducers();
     }
   }
@@ -100,7 +59,7 @@ export class DeviceTransducersComponent {
       out => {
         this.lastUpdated = new Date();
         this.device.transducers = out;
-        this.sortByNameUpdate();
+        this.sortedTransducers = this.device.transducers.slice()
       });
   }
 
@@ -108,8 +67,8 @@ export class DeviceTransducersComponent {
     this.deviceGroupService.getDeviceGroupTransducers(this.device._id).subscribe(
       out => {
         this.lastUpdated = new Date();
-        this.device.transducers = out;
-        this.sortByNameUpdate();
+        this.groupTransducers = out;
+        this.sortedGroupTransducers = this.groupTransducers.slice();
       });
   }
 
@@ -239,4 +198,33 @@ export class DeviceTransducersComponent {
       this.transducerAutoRefreshSub.unsubscribe();
     }
   }
+
+  sortTransducers(sort: Sort) {
+    const data = this.device.transducers.slice();
+    if (!sort.active || sort.direction === '') {
+      this.sortedTransducers = data;
+      return;
+    }
+    this.sortedTransducers = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      return this.compare(a[sort.active], b[sort.active], isAsc);
+    });
+  }
+
+  sortGroupTransducers(sort: Sort) {
+    const data = this.groupTransducers.slice();
+    if (!sort.active || sort.direction === '') {
+      this.sortedGroupTransducers = data;
+      return;
+    }
+    this.sortedGroupTransducers = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      return this.compare(a[sort.active], b[sort.active], isAsc);
+    });
+  }
+   compare(a: number | string, b: number | string, isAsc: boolean) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  }
 }
+
+

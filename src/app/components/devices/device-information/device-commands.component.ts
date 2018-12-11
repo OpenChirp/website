@@ -4,7 +4,7 @@ import { ErrorDialogService } from '../../../services/error-dialog.service';
 import { SuccessDialogService } from '../../../services/success-dialog.service';
 import { DeviceService } from '../../../services/device.service';
 import { UserService } from '../../../services/user.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog, Sort } from '@angular/material';
 import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.component';
 import { PublicLinkComponent } from '../../publiclink/public-link.component';
 import { Configuration } from '../../../config';
@@ -22,6 +22,7 @@ export class DeviceCommandsComponent {
   value: string = "";
   transducer: any = null;
   baseUrl: string;
+  sortedData: Array<any> = [];
 
   constructor(private deviceService: DeviceService,
               private userService: UserService,
@@ -32,6 +33,10 @@ export class DeviceCommandsComponent {
               ) {
 
     this.baseUrl = config.base_url;
+  }
+
+  ngOnInit() {
+    this.sortedData = this.device.commands.slice();
   }
 
   transducerNameById(transducerID: string): string {
@@ -151,5 +156,20 @@ export class DeviceCommandsComponent {
           .dialogPopup(error.message + ': ' + command.name);
       }
     );
+  }
+
+  sortData(sort: Sort) {
+    const data = this.device.commands.slice();
+    if (!sort.active || sort.direction === '') {
+      this.sortedData = data;
+      return;
+    }
+    this.sortedData = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      return this.compare(a[sort.active], b[sort.active], isAsc);
+    });
+  }
+  compare(a: number | string, b: number | string, isAsc: boolean) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
 }

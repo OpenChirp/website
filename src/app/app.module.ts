@@ -24,6 +24,7 @@ import {
   MatAutocompleteModule,
   MatDialogModule,
   MatSnackBarModule,
+  MatSortModule,
 } from '@angular/material';
 import {
   MdcTopAppBarModule,
@@ -91,6 +92,7 @@ import { DeviceAclComponent } from './components/devices/device-information/devi
 import { StatsComponent } from './components/admin/stats/stats.component';
 import { UserProfileComponent } from './components/userprofile/userprofile.component';
 import { AdminDeviceListComponent } from './components/admin/devices/admin-devicelist.component';
+import { AdminDeviceGroupListComponent } from './components/admin/devices/admin-devicegrouplist.component';
 import { GoogleLoginComponent } from './components/login/googlelogin.component';
 import { LoginComponent } from './components/login/login.component';
 import { SelectLocationComponent } from './components/locations/select-location.component';
@@ -166,6 +168,7 @@ import { AuthService } from './services/auth.service';
     LoginComponent,
     GoogleLoginComponent,
     AdminDeviceListComponent,
+    AdminDeviceGroupListComponent,
     SelectLocationComponent,
     EditTransducerComponent
   ],
@@ -197,6 +200,7 @@ import { AuthService } from './services/auth.service';
     MatAutocompleteModule,
     MatDialogModule,
     MatSnackBarModule,
+    MatSortModule,
     MdcTopAppBarModule,
     MdcMenuModule,
     MdcDrawerModule,

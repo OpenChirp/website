@@ -6,39 +6,38 @@
   <mat-card-title>
     Grouped Devices
   </mat-card-title>
-    <div class = "card-header">
-      <div class="add-device">
-        <button mat-raised-button (click)="selectDevice()">Add Device</button>
-      </div>
+  <div class="card-header">
+    <div class="add-device">
+      <button mat-raised-button (click)="selectDevice()">Add Device</button>
     </div>
+  </div>
   <br>
-  <div *ngIf="devices.length > 0">
-  <table>
-    <!-- Table Header-->
-    <tr>
-      <th><p>Name</p></th>
-      <th><p>Owner</p></th>
-      <th><p>Location</p></th>
-      <th><p>Delete</p></th>
-    </tr>
 
-    <!-- Table Body -->
+  <table matSort (matSortChange)="sortData($event)">
+    <thead>
+      <tr>
+        <th mat-sort-header="name">Name</th>
+        <th mat-sort-header="owner">Owner</th>
+        <th mat-sort-header="location">Location</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
     <tbody>
-      <!-- Item Row -->
-      <tr *ngFor="let device of devices">
-        <td><p>{{ device.name }}</p></td>
-        <td><p>{{ device.owner.name }}</p></td>
-        <td><p>{{ device.location_id.name }}</p></td>
-        <td><button mat-icon-button color="warn" (click)="removeDevice(device._id, device.name)">
-          <mat-icon >clear</mat-icon>
-        </button></td>
+      <tr *ngFor="let device of sortedData">
+        <td>{{ device.name }}</td>
+        <td>{{ device.owner?.name }}</td>
+        <td>{{ device.location_id?.name }}</td>
+        <td>
+          <button mat-icon-button color="warn" (click)="removeDevice(device._id, device.name)">
+            <mat-icon>clear</mat-icon>
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>
-</div>
- <div *ngIf="devices.length == 0">
-      <p>No grouped devices</p>
-</div>
+  <div *ngIf="devices.length == 0">
+    <p>No grouped devices.</p>
+  </div>
 
 </div>
 

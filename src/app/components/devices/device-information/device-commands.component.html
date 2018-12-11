@@ -1,23 +1,23 @@
 <div class="device-commands" *ngIf="device">
 
-  <table>
-
+  <table matSort (matSortChange)="sortData($event)">
+    <thead>
     <!-- Table Header-->
     <tr>
-      <th><p>Command</p></th>
-      <th><p>Value</p></th>
-      <th><p>Transducer</p></th>
-      <th><p>Actions</p></th>
+      <th mat-sort-header="name">Command</th>
+      <th mat-sort-header="value">Value</th>
+      <th>Transducer</th>
+      <th>Actions</th>
     </tr>
-
+    </thead>
     <!-- Table Body -->
     <tbody>
 
       <!-- Item Row -->
-      <tr *ngFor="let command of device.commands">
-        <td><p>{{ command.name }}</p></td>
-        <td><p>{{ command.value }}</p></td>
-        <td><p>{{ transducerNameById(command.transducer_id) }}</p></td>
+      <tr *ngFor="let command of sortedData">
+        <td>{{ command.name }}</td>
+        <td>{{ command.value }}</td>
+        <td>{{ transducerNameById(command.transducer_id) }}</td>
         <td><button mat-raised-button (click)="execute(command)">Run</button></td>
         <td>
            <mat-icon [matMenuTriggerFor]="menu">more_horiz</mat-icon>
