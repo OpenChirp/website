@@ -80,8 +80,6 @@
   <div *ngIf="this.device.isDeviceGroup">
     <br/>
     <br/>
-    <hr/>
-    <br/>
     <br/>
     <mat-card-title>Grouped Devices Transducers</mat-card-title>
     <table matSort (matSortChange)="sortGroupTransducers($event)">
@@ -92,7 +90,6 @@
           <th mat-sort-header="deviceName">Device Name</th>
           <th mat-sort-header="name">Transducer Name</th>
           <th mat-sort-header="unit">Unit</th>
-          <th>Actuable</th>
           <th mat-sort-header="value">Value</th>
           <th mat-sort-header="timestamp">Timestamp</th>
           <th>Actions</th>
@@ -106,7 +103,6 @@
         <td>{{ transducer.devicename }}</td>
         <td>{{ transducer.name }}</td>
         <td>{{ transducer.unit ? transducer.unit : "-"}}</td>
-        <td>{{ transducer.is_actuable }}</td>
         <td>{{ transducer.value ? transducer.value : "-" }}</td>
         <td>{{ transducer.timestamp | date :"M/d/yy h:mm:ss a"  }}</td>
         <td>
