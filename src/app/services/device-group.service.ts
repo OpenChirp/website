@@ -86,4 +86,36 @@ export class DeviceGroupService {
       });
     }
   }
+
+  getBroadcastTransducers(device_id: string) {
+    return this.http.get(this.deviceGroupUrl + device_id+"/broadcastTransducer", this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
+
+  addBroadcastTransducer(device_id: string, body: any) {
+    return this.http.post(this.deviceGroupUrl + device_id + "/broadcastTransducer", body, this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
+  // Publish To Transducer
+  publishToBroadcastTransducer(device_id: string, transducer_id:string, body: any) {
+    return this.http.post(this.deviceGroupUrl + device_id + "/broadcastTransducer/"+ transducer_id, body, this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
+
+  // Edit  Transducer
+  editBroadcastTransducer(device_id: string, transducer_id: string, body: any) {
+    return this.http.put(this.deviceGroupUrl + device_id + "/broadcastTransducer/" + transducer_id, body, this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
+
+  // Delete Transducer
+  deleteBroadcastTransducer(device_id: string, transducer_id: string) {
+    return this.http.delete(this.deviceGroupUrl + device_id + "/broadcastTransducer/" + transducer_id, this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
 }

@@ -81,6 +81,64 @@
     <br/>
     <br/>
     <br/>
+    <mat-card-title>Broadcast Transducers</mat-card-title>
+    <table matSort (matSortChange)="sortBroadcastTransducers($event)">
+      <!-- Table Header-->
+      <thead>
+      <tr>
+        <th mat-sort-header="name"><p>Name</th>
+        <th mat-sort-header="unit"><p>Unit</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <!-- Table Body -->
+      <tbody>
+
+      <!-- Item Row -->
+      <tr *ngFor="let btransducer of sortedBroadcastTransducers">
+        <td>{{ btransducer.name }}</td>
+        <td>{{ btransducer.unit ? btransducer.unit : "-"}}</td>
+        <td>
+          <button mat-icon-button color="primary" (click)="editBroadcastTransducer(btransducer)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteBroadcastTransducer(btransducer._id, btransducer.name)">
+            <mat-icon>clear</mat-icon>
+          </button>
+          <button mat-icon-button color="primary" (click)="publishBroadcastTransducerValue(btransducer._id, btransducer.name, btransducer.value)">
+            <mat-icon>send</mat-icon>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+      <!-- New Transducer Row -->
+      <tfoot>
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Name" [(ngModel)]="bname">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Unit" [(ngModel)]="bunit">
+          </mat-form-field>
+        </td>
+        <td>-</td>
+        <td>-</td>
+        <td>
+          <button mat-icon-button (click)="newBroadcastTransducer()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+
+
+    <br/>
+    <br/>
+    <br/>
     <mat-card-title>Grouped Devices Transducers</mat-card-title>
     <table matSort (matSortChange)="sortGroupTransducers($event)">
 

@@ -13,6 +13,8 @@ export class Device {
     __t: string;
     combined_pubsub: boolean;
     devices: Array<string>;
+    broadcast_transducers: Array<Object>;
+    broadcast_commands: Array<Object>;
 
     constructor(name: string,
                 properties: string,
@@ -22,7 +24,9 @@ export class Device {
                 transducers: Array<Object>,
                 isDeviceGroup: boolean = false,
                 combined_pubsub: boolean = false,
-                devices: Array<string> = []) {
+                devices: Array<string> = [],
+                broadcast_transducers: Array<string> = [],
+                broadcast_commands: Array<string> = []) {
         this.name = name;
         this.properties = properties;
         this.type = type;
@@ -32,5 +36,7 @@ export class Device {
         this.isDeviceGroup = isDeviceGroup;
         this.combined_pubsub = combined_pubsub;
         this.devices = devices;
+        this.broadcast_transducers = broadcast_transducers;
+        this.broadcast_commands = broadcast_commands;
     }
 }

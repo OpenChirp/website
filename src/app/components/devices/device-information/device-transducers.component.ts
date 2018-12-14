@@ -22,6 +22,8 @@ export class DeviceTransducersComponent {
   @Output() updateDevice: EventEmitter<boolean> = new EventEmitter();
   name: string = "";
   unit: string = "";
+  bname: string = "";
+  bunit: string = "";
   actuable: boolean = false;
   //transducers: Array<Object>;
   groupTransducers: Array<Object>;
@@ -31,6 +33,7 @@ export class DeviceTransducersComponent {
   transducerAutoRefreshSub: Subscription;
   isDeviceGroup: boolean = false;
   sortedTransducers: Array<Object> = [];
+  sortedBroadcastTransducers: Array<Object> = [];
   sortedGroupTransducers: Array<Object> = [];
 
   constructor(private deviceService: DeviceService,
@@ -47,6 +50,7 @@ export class DeviceTransducersComponent {
     this.getTransducers();
     if (this.device.isDeviceGroup) {
       this.getGroupTransducers();
+      this.getBroadcastTransducers();
     }
   }
 
@@ -60,6 +64,15 @@ export class DeviceTransducersComponent {
         this.lastUpdated = new Date();
         this.device.transducers = out;
         this.sortedTransducers = this.device.transducers.slice()
+      });
+  }
+
+  getBroadcastTransducers() {
+    this.deviceGroupService.getBroadcastTransducers(this.device._id).subscribe(
+      out => {
+        this.lastUpdated = new Date();
+        this.device.broadcast_transducers = out;
+        this.sortedBroadcastTransducers = this.device.broadcast_transducers.slice()
       });
   }
 
@@ -211,6 +224,18 @@ export class DeviceTransducersComponent {
     });
   }
 
+  sortBroadcastTransducers(sort: Sort) {
+    const data = this.device.broadcast_transducers.slice();
+    if (!sort.active || sort.direction === '') {
+      this.sortedBroadcastTransducers = data;
+      return;
+    }
+    this.sortedBroadcastTransducers = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      return this.compare(a[sort.active], b[sort.active], isAsc);
+    });
+  }
+
   sortGroupTransducers(sort: Sort) {
     const data = this.groupTransducers.slice();
     if (!sort.active || sort.direction === '') {
@@ -224,6 +249,104 @@ export class DeviceTransducersComponent {
   }
    compare(a: number | string, b: number | string, isAsc: boolean) {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  }
+
+  newBroadcastTransducer() {
+    if (this.bname != "" && this.bunit != "") {
+      var body = {
+        name: this.bname,
+        unit: this.bunit,
+        is_actuable: true
+      };
+      this.deviceGroupService.addBroadcastTransducer(this.device._id, body).subscribe(
+        result => {
+          this.successDialogService
+            .dialogPopup('New Broadcast Transducer Added: ' + this.bname);
+          this.bname = "";
+          this.bunit = "";
+          this.updateDevice.emit(true);
+          this.getBroadcastTransducers();
+        },
+        error => {
+          this.errorDialogService
+            .dialogPopup(error.message + ': ' + this.bname);
+        }
+      );
+    } else {
+      this.errorDialogService
+        .dialogPopup('Name/Unit cannot be empty!');
+    }
+  }
+
+  editBroadcastTransducer(transducer: any) {
+    let dialogRef = this.dialog.open(EditTransducerComponent, { data: { transducer: transducer }});
+    dialogRef.afterClosed().subscribe(
+      result =>  {
+        if (result) {
+          this.deviceGroupService.editBroadcastTransducer(this.device._id, transducer._id, result).subscribe(
+            result => {
+              this.successDialogService
+                .dialogPopup('Broadcast Transducer Updated: ' + name);
+              this.updateDevice.emit(true);
+              this.getBroadcastTransducers();
+            },
+            error => {
+              this.errorDialogService
+                .dialogPopup(error.message + ': ' + name);
+            }
+          );
+        }
+      }
+    );
+  }
+
+  deleteBroadcastTransducer(id: string, name: string) {
+    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    dialogRef.componentInstance.confirmText = "Delete";
+    dialogRef.componentInstance.dialogText = "Delete Broadcast Transducer " + name + "?";
+    dialogRef.afterClosed().subscribe(
+      result =>  {
+        if (result) {
+          this.deviceGroupService.deleteBroadcastTransducer(this.device._id, id).subscribe(
+            result => {
+              this.successDialogService
+                .dialogPopup('Broadcast Transducer Deleted: ' + name);
+              this.updateDevice.emit(true);
+              this.getBroadcastTransducers();
+            },
+            error => {
+              this.errorDialogService
+                .dialogPopup(error.message + ': ' + name);
+            }
+          );
+        }
+      }
+    );
+  }
+
+  publishBroadcastTransducerValue(id: string, name: string, valueOriginal: string) {
+    let dialogRef = this.dialog.open(InputTransducerValueComponent);
+    dialogRef.componentInstance.transducerName = name;
+    dialogRef.componentInstance.valueOriginal = valueOriginal;
+    dialogRef.componentInstance.valueNew = "";
+    dialogRef.afterClosed().subscribe(
+      value =>  {
+        if (value) {
+          // Set POST
+          this.deviceGroupService.publishToBroadcastTransducer(this.device._id, id, value).subscribe(
+            result => {
+              this.successDialogService
+                .dialogPopup('Broadcast ' + value + ' to ' + name);
+              this.updateDevice.emit(true);
+            },
+            error => {
+              this.errorDialogService
+                .dialogPopup(error.message + ': ' + name);
+            }
+          );
+        }
+      }
+    );
   }
 }
 
