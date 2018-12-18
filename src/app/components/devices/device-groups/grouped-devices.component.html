@@ -24,7 +24,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let device of sortedData">
-        <td>{{ device.name }}</td>
+        <td (click)="gotoDevice(device.id)" class="clickable">{{ device.name }}</td>
         <td>{{ device.owner?.name }}</td>
         <td>{{ device.location_id?.name }}</td>
         <td>

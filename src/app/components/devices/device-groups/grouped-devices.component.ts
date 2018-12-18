@@ -48,6 +48,10 @@ export class GroupedDevicesComponent {
     );
   }
 
+  gotoDevice(id: string) {
+    this.router.navigate(['/home/device/', id]);
+  }
+
   addDeviceToGroup(device: any){
     this.deviceGroupService.addDeviceToGroup(this.deviceGroup._id, device._id).subscribe(
       result => {

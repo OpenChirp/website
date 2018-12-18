@@ -6,6 +6,7 @@ import { Device } from '../../../models/device';
 import { SuccessDialogService } from '../../../services/success-dialog.service';
 import { ErrorDialogService } from '../../../services/error-dialog.service';
 import {MatDialog, Sort} from '@angular/material';
+import {Router} from '@angular/router';
 import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.component';
 import { InputTransducerValueComponent } from '../../dialogs/input-transducer-value.component';
 import { interval ,  Subscription } from 'rxjs';
@@ -36,7 +37,8 @@ export class DeviceTransducersComponent {
   sortedBroadcastTransducers: Array<Object> = [];
   sortedGroupTransducers: Array<Object> = [];
 
-  constructor(private deviceService: DeviceService,
+  constructor(private router: Router,
+              private deviceService: DeviceService,
               private deviceGroupService: DeviceGroupService,
               private successDialogService: SuccessDialogService,
               private errorDialogService: ErrorDialogService,
@@ -56,6 +58,10 @@ export class DeviceTransducersComponent {
 
   ngOnDestroy() {
     this.transducerAutoRefreshStop();
+  }
+
+  gotoDevice(id: string) {
+    this.router.navigate(['/home/device/', id]);
   }
 
   getTransducers() {

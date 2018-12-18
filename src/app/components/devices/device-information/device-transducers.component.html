@@ -158,7 +158,7 @@
 
       <!-- Item Row -->
       <tr *ngFor="let transducer of sortedGroupTransducers">
-        <td>{{ transducer.devicename }}</td>
+        <td (click)="gotoDevice(transducer.deviceid)" class="clickable">{{ transducer.devicename }}</td>
         <td>{{ transducer.name }}</td>
         <td>{{ transducer.unit ? transducer.unit : "-"}}</td>
         <td>{{ transducer.value ? transducer.value : "-" }}</td>
