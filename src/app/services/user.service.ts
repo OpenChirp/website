@@ -98,10 +98,22 @@ export class UserService {
                     catchError(this.handleError));
   }
 
+  createBroadcastCommandShort(body: any) {
+    return this.http.post(this.userUrl + "broadcast_shortcut", body, this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
+
   deleteShortcut(id: string) {
     return this.http.delete(this.userUrl + "shortcut/"+id,  this.requestOptions).pipe(
                     map(this.extractData),
                     catchError(this.handleError));
+  }
+
+  deleteBroadcastShortcut(id: string) {
+    return this.http.delete(this.userUrl + "broadcast_shortcut/"+id,  this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   leaveGroup(groupId: string) {

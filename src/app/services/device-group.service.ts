@@ -118,4 +118,41 @@ export class DeviceGroupService {
       map(this.extractData),
       catchError(this.handleError));
   }
+
+  // Execute Command
+  executeBroadcastCommand(device_id: string, command_id: string) {
+    return this.http.post(this.deviceGroupUrl + device_id + "/broadcastCommand/" + command_id, {}, this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
+
+  // Add Command
+  addBroadcastCommand(device_id: string, body: any) {
+    return this.http.post(this.deviceGroupUrl + device_id + "/broadcastCommand", body, this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
+
+  // Delete Command
+  deleteBroadcastCommand(device_id: string, command_id: string) {
+    return this.http.delete(this.deviceGroupUrl + device_id + "/broadcastCommand/" + command_id, this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
+
+  // Create Public Link
+  createPublicBroadcastLink(device_id: string, command_id: string) {
+    var body = {};
+    return this.http.post(this.deviceGroupUrl + device_id + "/broadcastCommand/"+ command_id +"/publiclink", body, this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
+
+  // Get Public Link
+  getPublicBroadcastLink(device_id: string, command_id: string) {
+    return this.http.get(this.deviceGroupUrl + device_id + "/broadcastCommand/"+ command_id +"/publiclink",  this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
+
 }

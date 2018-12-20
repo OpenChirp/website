@@ -285,7 +285,7 @@ export class DeviceTransducersComponent {
   }
 
   editBroadcastTransducer(transducer: any) {
-    let dialogRef = this.dialog.open(EditTransducerComponent, { data: { transducer: transducer }});
+    let dialogRef = this.dialog.open(EditTransducerComponent, { data: { transducer: transducer, is_broadcast: true }});
     dialogRef.afterClosed().subscribe(
       result =>  {
         if (result) {
