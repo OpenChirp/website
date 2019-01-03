@@ -22,9 +22,9 @@
     <tr>
       <th mat-sort-header="name"><p>Name</th>
       <th mat-sort-header="unit"><p>Unit</th>
-      <th>Actuable</th>
       <th mat-sort-header="value"><p>Value</th>
       <th mat-sort-header="timestamp"><p>Timestamp</th>
+      <th>Actuable</th>
       <th>Actions</th>
     </tr>
     </thead>
@@ -35,9 +35,9 @@
     <tr *ngFor="let transducer of sortedTransducers">
       <td>{{ transducer.name }}</td>
       <td>{{ transducer.unit ? transducer.unit : "-"}}</td>
-      <td>{{ transducer.is_actuable }}</td>
       <td>{{ transducer.value ? transducer.value : "-" }}</td>
       <td>{{ transducer.timestamp | date :"M/d/yy h:mm:ss a"  }}</td>
+      <td>{{ transducer.is_actuable }}</td>
       <td>
         <button mat-icon-button color="primary" (click)="editTransducer(transducer)">
           <mat-icon>edit</mat-icon>
@@ -64,11 +64,11 @@
           <input matInput placeholder="Unit" [(ngModel)]="unit">
         </mat-form-field>
       </td>
+      <td>-</td>
+      <td>-</td>
       <td>
         <mat-slide-toggle [(ngModel)]="actuable">{{ actuable }}</mat-slide-toggle>
       </td>
-      <td>-</td>
-      <td>-</td>
       <td>
         <button mat-icon-button (click)="newTransducer()">
           <mat-icon>add</mat-icon>
