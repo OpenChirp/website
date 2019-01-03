@@ -206,6 +206,7 @@ export class DeviceTransducersComponent {
 
   // Start the interval timer that automatically refreshes the transducer values
   transducerAutoRefreshStart() {
+    this.transducerAutoRefreshStop();
     this.transducerAutoRefreshSub =
       interval(this.transducerAutoRefreshPeriod)
         .subscribe(val => this.getTransducers());
