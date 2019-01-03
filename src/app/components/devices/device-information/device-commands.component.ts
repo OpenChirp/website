@@ -43,7 +43,9 @@ export class DeviceCommandsComponent {
 
   ngOnInit() {
     this.sortedData = this.device.commands.slice();
-    this.sortedBroadcastData = this.device.broadcast_commands.slice();
+    if (this.device.isDeviceGroup) {
+      this.sortedBroadcastData = this.device.broadcast_commands.slice();
+    }
   }
 
   transducerNameById(transducerID: string): string {
