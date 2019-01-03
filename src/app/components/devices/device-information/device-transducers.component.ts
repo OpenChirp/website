@@ -69,7 +69,17 @@ export class DeviceTransducersComponent {
       out => {
         this.lastUpdated = new Date();
         this.device.transducers = out;
-        this.sortedTransducers = this.device.transducers.slice()
+        if (this.sortedTransducers.length !== 0) {
+          const tds = {};
+          out.forEach((td) => {
+            tds[td._id] = td.value;
+          });
+          this.sortedTransducers.forEach( (td) => {
+            td['value'] = tds[td['_id']];
+          });
+        } else {
+          this.sortedTransducers = this.device.transducers.slice();
+        }
       });
   }
 
