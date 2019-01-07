@@ -54,8 +54,10 @@ export class DeviceVisualizationComponent {
         enabledTransducers.push(td['name']);
       }
     }
-    let url = grafana_url +"dashboard/script/transducer_v2.js?device="+this.device._id+"&transducers="+enabledTransducers.join()+"&theme=light&kiosk=true"
-    switch(String(this.currentRes)) {
+    enabledTransducers.sort();
+    let url = grafana_url + 'dashboard/script/transducer_v2.js?device=' + this.device._id + '&transducers=' +
+      enabledTransducers.join() + '&theme=light&kiosk=true';
+    switch (String(this.currentRes)) {
       case ("Year"):
         url = url + "&refresh=15m&from=now-1y&to=now%2B1M";
         break;
