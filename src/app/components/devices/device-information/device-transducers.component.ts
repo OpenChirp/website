@@ -70,12 +70,15 @@ export class DeviceTransducersComponent {
         this.lastUpdated = new Date();
         this.device.transducers = out;
         if (this.sortedTransducers.length !== 0) {
-          const tds = {};
+          const vals = {};
+          const times = {};
           out.forEach((td) => {
-            tds[td._id] = td.value;
+            vals[td._id] = td.value;
+            times[td._id] = td.timestamp;
           });
           this.sortedTransducers.forEach( (td) => {
-            td['value'] = tds[td['_id']];
+            td['value'] = vals[td['_id']];
+            td['timestamp'] = times[td['_id']];
           });
         } else {
           this.sortedTransducers = this.device.transducers.slice();
