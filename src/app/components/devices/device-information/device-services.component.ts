@@ -5,7 +5,7 @@ import { DeviceService } from '../../../services/device.service';
 import { InfraService } from '../../../services/infraservice';
 import { SuccessDialogService } from '../../../services/success-dialog.service';
 import { ErrorDialogService } from '../../../services/error-dialog.service';
-import { MatDialog } from '@angular/material';
+import {MatDialog, Sort} from '@angular/material';
 import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.component';
 
 import { SelectServiceComponent } from '../../infraservices/select-service.component';
@@ -26,6 +26,7 @@ export class DeviceServicesComponent {
 	configs:any = {};
 	statuses: any = {};
 	services: Array<any> = [];
+	sortedData: Array<any> = [] ;
 
 	constructor(private route: ActivatedRoute,
 		private router: Router,
@@ -54,7 +55,10 @@ export class DeviceServicesComponent {
 					service.config = this.configs[service._id];
 					service.status = this.statuses[service._id];
 					this.services.push(service);
-				});
+					if (this.services.length == this.linkedServices.length) {
+            this.sortedData = this.services.slice();
+          }
+ 				});
 		}
 	}
 
@@ -154,5 +158,24 @@ export class DeviceServicesComponent {
 			});
 	}
 
-
+  sortData(sort: Sort) {
+    const data = this.services.slice();
+    if (!sort.active || sort.direction === '') {
+      this.sortedData = data;
+      return;
+    }
+    this.sortedData = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'name': return this.compare(a.name, b.name, isAsc);
+        case 'status': return this.compare((a.status ? a.status.message : "-"), (b.status ? b.status.message : "-"), isAsc);
+        case 'timestamp': return this.compare((a.status ? a.status.timestamp : "-"),
+          (b.status ? b.status.timestamp : "-"), isAsc);
+        default: return 0;
+      }
+    });
+  }
+  compare(a: number | string , b: number | string , isAsc: boolean) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  }
 }

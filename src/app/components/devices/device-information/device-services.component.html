@@ -7,26 +7,27 @@
     </div>
   <br>
   <div *ngIf="services.length > 0">
-  <table>
+  <table matSort (matSortChange)="sortData($event)">
     <!-- Table Header-->
-    <tr>
-      <th><p>Name</p></th>
-      <th><p>Config</p></th>
-      <th><p>Last Status</p></th>
-      <th><p>Timestamp</p></th>
-      <th><p>Delete</p></th>
-    </tr>
-
+    <thead>
+      <tr>
+        <th mat-sort-header="name">Name</th>
+        <th>Config</th>
+        <th mat-sort-header="status">Last Status</th>
+        <th mat-sort-header="timestamp">Timestamp</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
     <!-- Table Body -->
     <tbody>
       <!-- Item Row -->
-      <tr *ngFor="let service of services">
-        <td><p>{{ service.name }}</p></td>
+      <tr *ngFor="let service of sortedData">
+        <td>{{ service.name }}</td>
         <td><p *ngIf="service.config"><button mat-raised-button (click)="viewConfig(service)">
            View/Update Config
           </button></p></td>
-          <td><p>{{ service.status ? service.status.message : "-" }}</p></td>
-          <td><p>{{ service.status ? (service.status.timestamp | date : "short" ) : "-" }}</p></td>
+          <td>{{ service.status ? service.status.message : "-" }}</td>
+          <td>{{ service.status ? (service.status.timestamp | date : "short" ) : "-" }}</td>
           <td>
           <button mat-icon-button color="warn" (click)="removeServiceLink(service._id, service.name)">
             <mat-icon >clear</mat-icon>

@@ -1,23 +1,23 @@
 <div class="device-commands" *ngIf="device">
 
-  <table>
-
+  <table matSort (matSortChange)="sortData($event)">
+    <thead>
     <!-- Table Header-->
     <tr>
-      <th><p>Command</p></th>
-      <th><p>Value</p></th>
-      <th><p>Transducer</p></th>
-      <th><p>Actions</p></th>
+      <th mat-sort-header="name">Command</th>
+      <th mat-sort-header="value">Value</th>
+      <th>Transducer</th>
+      <th>Actions</th>
     </tr>
-
+    </thead>
     <!-- Table Body -->
     <tbody>
 
       <!-- Item Row -->
-      <tr *ngFor="let command of device.commands">
-        <td><p>{{ command.name }}</p></td>
-        <td><p>{{ command.value }}</p></td>
-        <td><p>{{ transducerNameById(command.transducer_id) }}</p></td>
+      <tr *ngFor="let command of sortedData">
+        <td>{{ command.name }}</td>
+        <td>{{ command.value }}</td>
+        <td>{{ transducerNameById(command.transducer_id) }}</td>
         <td><button mat-raised-button (click)="execute(command)">Run</button></td>
         <td>
            <mat-icon [matMenuTriggerFor]="menu">more_horiz</mat-icon>
@@ -58,5 +58,70 @@
 
     </tbody>
   </table>
+
+  <div *ngIf="this.device.isDeviceGroup">
+    <br/>
+    <br/>
+    <br/>
+    <mat-card-title>Broadcast Commands</mat-card-title>
+    <table matSort (matSortChange)="sortBroadcastCommands($event)">
+      <!-- Table Header-->
+      <thead>
+      <tr>
+        <th mat-sort-header="name">Command</th>
+        <th mat-sort-header="value">Value</th>
+        <th>Broadcast Transducer</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <!-- Table Body -->
+      <tbody>
+
+      <!-- Item Row -->
+      <tr *ngFor="let command of sortedBroadcastData">
+        <td>{{ command.name }}</td>
+        <td>{{ command.value }}</td>
+        <td>{{ broadcastTransducerNameById(command.transducer_id) }}</td>
+        <td><button mat-raised-button (click)="executeBroadcast(command)">Run</button></td>
+        <td>
+          <mat-icon [matMenuTriggerFor]="menu">more_horiz</mat-icon>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="createShortcut(command)">Add Shortcut</button>
+            <button mat-menu-item (click)="publicBroadcastLink(command)">Get Public Broadcast Link</button>
+            <button mat-menu-item (click)="deleteBroadcastCommand(command._id, command.name)">Delete</button>
+          </mat-menu>
+        </td>
+      </tr>
+      </tbody>
+      <!-- New Command Row -->
+      <tfoot>
+      <!-- New Transducer Row -->
+      <tr>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Name" [(ngModel)]="bname">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <input matInput placeholder="Value" [(ngModel)]="bvalue">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-select placeholder="Transducer" [(ngModel)]="broadcastTransducer" name="broadcastTransducer">
+            <mat-option *ngFor="let transducer of device.broadcast_transducers" [value]="transducer">
+              {{ transducer.name }}
+            </mat-option>
+          </mat-select>
+        </td>
+        <td>
+          <button mat-icon-button (click)="newBroadcastCommand()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
 
 </div>

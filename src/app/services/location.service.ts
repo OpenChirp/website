@@ -81,6 +81,12 @@ export class LocationService {
                     catchError(this.handleError));
   }
 
+  getDeviceGroupByLocationId(id: string): Observable<Array<Device>> {
+    return this.http.get(this.locationUrl + id + '/devicegroups', this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
+
   private extractData(res: Response) {
     let body = res.json();
     return body || { };

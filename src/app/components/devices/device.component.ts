@@ -1,4 +1,3 @@
-
 import {switchMap} from 'rxjs/operators';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
@@ -84,6 +83,9 @@ export class DeviceComponent {
       .subscribe(
         result => {
           this.device = result;
+          if (this.device.__t === 'DeviceGroup') {
+            this.device.isDeviceGroup = true;
+          }
           let ownerId = this.device.owner._id;
           let loggedInUserId = this.globalDataService.userid;
           let isAdmin = this.globalDataService.isAdmin;

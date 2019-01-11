@@ -18,5 +18,23 @@
       <p>Currently no devices to display.</p>
     </div>
   </mat-card>
-  
+  <mat-card>
+    <div class="card-header">
+      <h2>My DeviceGroups</h2>
+      <button mat-raised-button (click)="newDeviceGroup()">New DeviceGroup</button>
+    </div>
+    <br>
+    <div class="table-header">
+      <div><p>DeviceGroup Name</p></div>
+      <div><p>DeviceGroup Location</p></div>
+    </div>
+    <hr>
+    <div *ngFor="let devicegroup of devicegroups" class="devices" (click)="gotoDevice(devicegroup._id)">
+      <div><p>{{ devicegroup.name }}</p></div>
+      <div><a (click)="gotoLocation(devicegroup.location_id)">{{ devicegroup.location_id || "none" }}</a></div>
+    </div>
+    <div *ngIf="devicegroups.length == 0">
+      <p>Currently no devicesgroup to display.</p>
+    </div>
+  </mat-card>
 </div>

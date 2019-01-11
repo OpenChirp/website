@@ -25,6 +25,12 @@ export class DeviceService {
     return this.grafanaUrl;
   }
 
+  getAllDevices() {
+    return this.http.get(this.apiUrl + 'device', this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
+
   getDeviceById(device_id: string): Observable<Device> {
     return this.http.get(this.deviceUrl + device_id, this.requestOptions).pipe(
                     map(this.extractData),
@@ -36,7 +42,7 @@ export class DeviceService {
                     map(this.extractData),
                     catchError(this.handleError));
   }
-  // Update Device
+    // Update Device
   updateDeviceById(device_id: string, body: any) {
     return this.http.put(this.deviceUrl + device_id, body, this.requestOptions).pipe(
                     map(this.extractData),

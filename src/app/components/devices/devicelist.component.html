@@ -21,4 +21,25 @@
     </div>
   </mat-card>
 
+  <mat-card *ngIf="location">
+    <div class="card-header">
+      <h2>DeviceGroups of {{ location.name }}</h2>
+      <div class="new-device">
+        <button mat-raised-button (click)="newDeviceGroup()">New DeviceGroup</button>
+      </div>
+    </div>
+    <br>
+    <div class="table-header">
+      <div><p>DeviceGroup Name</p></div>
+      <!-- <div><p>Device Type</p></div>-->
+    </div>
+    <hr>
+    <div *ngFor="let devicegroup of deviceGroups" class="devices" (click)="gotoDevice(devicegroup._id)">
+      <div><p>{{ devicegroup.name }}</p></div>
+      <!-- <div><p>{{ device.type || "NONE" }}</p></div>-->
+    </div>
+    <div *ngIf="deviceGroups.length == 0">
+      <p>Currently no devicegroups to display.</p>
+    </div>
+  </mat-card>
 </div>

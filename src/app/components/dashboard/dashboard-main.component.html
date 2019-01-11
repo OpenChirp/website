@@ -34,9 +34,11 @@
         <mat-card-title>Locations</mat-card-title>
         <mat-card-content>
           <table *ngIf = "locations?.length > 0">
-            <tr>
-              <th>Name</th>
-            </tr>
+            <thead>
+              <tr>
+                <th>Name</th>
+              </tr>
+            </thead>
             <tbody>
               <tr class="locations" *ngFor="let location of locations" (click)="gotoDevices(location._id)">
                 <td><p>{{ location.name }}</p></td>

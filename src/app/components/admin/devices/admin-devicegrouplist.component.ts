@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
-import { Device } from '../../../models/device';
 import {AdminService} from '../../../services/admin.service';
 import {ErrorDialogService} from '../../../services/error-dialog.service';
 import {Sort} from '@angular/material';
 
+
 @Component({
-  selector: 'admin-devicelist',
-  templateUrl: './admin-devicelist.component.html',
-  styleUrls: ['./admin-devicelist.component.scss']
+  selector: 'admin-devicegrouplist',
+  templateUrl: './admin-devicegrouplist.component.html',
+  styleUrls: ['./admin-devicegrouplist.component.scss']
 })
 
-export class AdminDeviceListComponent {
-  devices: Array<any> = [];
+export class AdminDeviceGroupListComponent {
+  devicegroups: Array<any> = [];
   searchTerm: string = '';
   errorMessage = '';
   sortedData: Array<any> = [];
@@ -27,14 +27,14 @@ export class AdminDeviceListComponent {
   }
 
   ngOnInit() {
-    this.getAllDevices();
+    this.getAllDeviceGroups();
   }
 
-  getAllDevices() {
-    this.adminService.getAllDevices().subscribe(
+  getAllDeviceGroups() {
+    this.adminService.getAllDeviceGroups().subscribe(
       result => {
-        this.devices = result;
-        this.sortedData = this.devices.slice();
+        this.devicegroups = result;
+        this.sortedData = this.devicegroups.slice();
         },
       error => {
         this.errorDialogService
@@ -88,7 +88,7 @@ export class AdminDeviceListComponent {
     this.sortedData = data.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
-        case 'name': return this.compare(a.name, b.name, isAsc);
+        case 'name': return this.compare(a.name.toUpperCase(), b.name.toUpperCase(), isAsc);
         case 'owner': return this.compareNameProp(a.owner, b.owner, isAsc);
         case 'location': return this.compareNameProp(a.location_id, b.location_id, isAsc);
         default: return 0;

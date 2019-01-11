@@ -31,6 +31,12 @@ export class AdminService {
       catchError(this.handleError));
   }
 
+  getAllDeviceGroups() {
+    return this.http.get(this.apiUrl + 'devicegroup', this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
+  }
+
    private extractData(res: Response) {
     const body = res.json();
     return body || { };

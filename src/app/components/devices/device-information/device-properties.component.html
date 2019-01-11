@@ -15,7 +15,10 @@
     <br>-->
 
       <p>Enabled :
-      <mat-slide-toggle [(ngModel)]="device.enabled" name="device-enabled">True</mat-slide-toggle>
+      <mat-slide-toggle [(ngModel)]="device.enabled" name="device-enabled">{{device.enabled}}</mat-slide-toggle>
+      </p>
+      <p *ngIf="device.isDeviceGroup">Combined Pubsub :
+        <mat-slide-toggle [(ngModel)]="device.combined_pubsub" name="device-combined-pubsub">{{device.combined_pubsub}}</mat-slide-toggle>
       </p>
     <button mat-raised-button (click)="updateDeviceMeta()">Update</button>
     <button mat-raised-button (click)="viewProperties()">Edit Custom Properties</button>
@@ -24,7 +27,11 @@
      <p></p>
     </div>
    <hr>
-    <p>Device ID: {{ device._id }}</p>
+
+    <p><span *ngIf="device.isDeviceGroup; then devgroup_id else dev_id"></span></p>
+    <ng-template #devgroup_id>DeviceGroup ID: {{ device._id }}</ng-template>
+    <ng-template #dev_id>Device ID: {{ device._id }}</ng-template>
+
     <p>Protocol : {{ device.pubsub.protocol }}</p>
     <p>Endpoint : {{ device.pubsub.endpoint }}</p>
     <p>Owner : {{ device.owner.name || device.owner.email }}</p>
@@ -33,3 +40,4 @@
 
   </form>
 </div>
+<grouped-devices [deviceGroup]="device" (updateDevice)="updateDevice" *ngIf="device.isDeviceGroup"></grouped-devices>

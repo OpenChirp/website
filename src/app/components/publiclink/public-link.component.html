@@ -8,7 +8,8 @@
 
         No public link found.
           <div class="createLink">
-            <button mat-raised-button (click)="createPublicLink()">Create Public Link</button>
+            <button mat-raised-button (click)="createPublicLink()" *ngIf="!this.isBroadcast">Create Public Link</button>
+            <button mat-raised-button (click)="createPublicBroadcastLink()" *ngIf="this.isBroadcast">Create Public Broadcast Link</button>
           </div>
       
       </div>
