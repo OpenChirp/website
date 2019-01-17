@@ -8,7 +8,7 @@
   <form class="login-form">
     <mat-form-field appearance="fill">
       <mat-label>Email</mat-label>
-      <input matInput type="email" required name="email" [formControl]="emailFormControl" [errorStateMatcher]="matcher"  [(ngModel)]="email">
+      <input matInput type="email" required name="email" [formControl]="emailFormControl" [errorStateMatcher]="matcher">
       <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
         Please enter a valid email address
       </mat-error>

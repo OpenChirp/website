@@ -25,7 +25,6 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 
 export class LoginComponent {
-  email: string = '';
   name: string = '';
   password: string = '';
   confirmPassword: string = '';
@@ -53,9 +52,9 @@ export class LoginComponent {
   }
 
   login() {
-    if (this.email != '' && this.password != '') {
+    if (this.emailFormControl.value != '' && this.password != '') {
       var body: any = {
-        username: this.email,
+        username: this.emailFormControl.value,
         password: this.password
       };
       this.authService.basicLogin(body).subscribe(
@@ -77,22 +76,21 @@ export class LoginComponent {
     if (!this.showSignup) {
       this.showSignup = true;
     } else {
-      if (this.email != '' && this.password != '') {
+      if (this.emailFormControl.value != '' && this.password != '') {
         var body: any = {
           name: this.name,
-          email: this.email,
+          email: this.emailFormControl.value,
           password: this.password
         };
-        // TODO : use proper angular FormControl to leverage angular 4 validation and whatnot
         let regexp = new RegExp(this.emailPattern);
-        if (!regexp.test(this.email)) {
+        if (!regexp.test(this.emailFormControl.value)) {
           this.errorDialogService.dialogPopup('Invalid Email');
           return;
         }
         if (this.password === this.confirmPassword) {
           this.authService.signup(body).subscribe(
             createdUser => {
-              this.successDialogService.dialogPopup('Signup Successful ' + this.email).subscribe(
+              this.successDialogService.dialogPopup('Signup Successful ' + this.emailFormControl.value).subscribe(
                 result => {
                   this.login();
                 } // Call login to setup session and then redirect to home
