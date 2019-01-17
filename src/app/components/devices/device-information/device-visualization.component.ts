@@ -28,6 +28,7 @@ export class DeviceVisualizationComponent {
 
   ngOnInit() {
     this.deviceTransducers = this.device.transducers.slice(); //  Shallow copy workaround for odd rendering issue
+    this.deviceTransducers.sort(this.compareNames);
     this.deviceTransducers.forEach((td) => {
       td['checked'] = true;
     });
@@ -80,6 +81,18 @@ export class DeviceVisualizationComponent {
     // let transducerNames = this.device.transducers.map(function(val:any) { return val.name ;});
     // let url = grafana_url +"dashboard/script/transducer_v2.js?device="+this.device._id+"&transducers="+transducerNames.join()+"&theme=light&kiosk=true&refresh=15s&from=now-1h&to=now%2B10m";
     // //   this.frameURL = this.sanitizer.bypassSecurityTrustResourceUrl(url);
-    console.log(url);
+    //console.log(url);
+  }
+
+  compareNames(a, b) {
+    let nameA = a.name.toUpperCase();
+    let nameB = b.name.toUpperCase();
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    return 0;
   }
 }
