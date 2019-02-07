@@ -1,4 +1,4 @@
-all: PROD=--prod
+all: PROD=--prod --aot
 all: dist
 
 update:
