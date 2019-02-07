@@ -2,7 +2,6 @@ FROM node:alpine AS build
 COPY . /app
 WORKDIR /app
 RUN npm install
-RUN npm run ng version
 RUN npm run ng build --prod
 
 FROM httpd:alpine
