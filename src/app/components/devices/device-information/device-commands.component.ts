@@ -38,7 +38,7 @@ export class DeviceCommandsComponent {
               private config: Configuration
               ) {
 
-    this.baseUrl = config.base_url;
+    this.baseUrl = config.api_base_url;
   }
 
   ngOnInit() {
