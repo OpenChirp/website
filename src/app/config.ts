@@ -1,5 +1,5 @@
 export class Configuration {
-  api_base_url: string = "https://openchirp.io/";
+  api_base_url: string = "/"; // trick for any hostname
   api_url: string = this.api_base_url + "apiv1/";
   auth_url: string = this.api_base_url + "authv1/";
 
