@@ -32,7 +32,6 @@ import {
   MdcDrawerModule,
   MdcListModule,
   MdcIconModule,
-  MdcGridListModule,
   MdcCardModule,
   MdcTypographyModule,
 } from '@angular-mdc/web';
@@ -206,7 +205,6 @@ import { AuthService } from './services/auth.service';
     MdcDrawerModule,
     MdcListModule,
     MdcIconModule,
-    MdcGridListModule,
     MdcCardModule,
     MdcTypographyModule,
   ],
