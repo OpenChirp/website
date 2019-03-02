@@ -1,63 +1,62 @@
 <div class="group-members">
- 
- <div class="tab-header">
-      
-  <h2> Edit group {{ group.name }} </h2>
-   
+  <div class="tab-header">
+    <h2> Edit group {{ group.name }} </h2>
   </div>
-  <div *ngIf="members.length > 0">
-  <table>
-    <!-- Table Header-->
-   <tr>
-      <th><p>Members</p></th>
-      <th><p>Write Access</p></th>
-       <th><p>Actions</p></th>
-    </tr>
-
-    <!-- Table Body -->
-    <tbody>
-    <form [formGroup]="memberForm" (ngSubmit)="addUser(memberForm.value)">
-     <!-- New Member Row -->
-     
-     <tr>
-        <th><p>
-          <mat-form-field>
-            <input matInput placeholder="Email" [matAutocomplete]="auto" class="form-control"  formControlName ="user">
-          </mat-form-field>
-
-          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayEmail">
-             <mat-option *ngFor="let user of filteredUsers | async" [value]="user">
-                {{ user.email }}
-             </mat-option>
-          </mat-autocomplete>
-         </p></th>
-         <th><p>
-           <mat-checkbox class="form-control" formControlName="write_access">Write Access</mat-checkbox>
-            
-        </p> </th>
-         <th><p>
-          <button mat-icon-button type="submit">
-            <mat-icon>add</mat-icon>
-          </button>
-        </p></th>
+  <form [formGroup]="memberForm">
+    <table>
+      <!-- Table Header-->
+      <tr>
+        <th><p>Members</p></th>
+        <th><p>Write Access</p></th>
+        <th><p>Actions</p></th>
       </tr>
-     
-       </form>
+      <!-- Table Body -->
+      <tbody>
       <!-- Item Row -->
       <tr *ngFor="let member of members">
         <td><p>{{ member.name || member.email }}</p></td>
-         <td><p>{{ member.write_access }}</p></td>
-         <td>
+        <td><p>{{ member.write_access }}</p></td>
+        <td>
           <button mat-icon-button color="warn" (click)="removeUser(member)">
-            <mat-icon >clear</mat-icon>
+            <mat-icon>clear</mat-icon>
           </button>
         </td>
       </tr>
-    </tbody>
-  </table>
-  </div>
- <div *ngIf="members.length == 0">
-      <p>No members found </p>
-  </div>
+      <tr *ngIf="members.length == 0">
+        <td colspan="3"><p>No members found </p></td>
+      </tr>
+      <!-- New Member Row -->
+      <tr>
+        <td>
+          <p>
+            <mat-form-field>
+              <input matInput placeholder="Email" [matAutocomplete]="auto" class="form-control"
+                     formControlName="user">
+            </mat-form-field>
 
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayEmail">
+              <mat-option *ngFor="let user of filteredUsers | async" [value]="user">
+                {{ user.email }}
+              </mat-option>
+            </mat-autocomplete>
+          </p>
+        </td>
+        <td>
+          <p>
+            <mat-checkbox class="form-control" formControlName="write_access">Write Access</mat-checkbox>
+          </p>
+        </td>
+        <td>
+          <p>
+            <button mat-icon-button (click)="addUser(memberForm.value)">
+              <mat-icon>add</mat-icon>
+            </button>
+          </p>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </form>
 </div>
+
+

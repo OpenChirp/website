@@ -1,147 +1,156 @@
 <div class="device-acl" *ngIf="device">
-	<div class="card-container">
+  <div class="card-container">
 
-		<mat-card>
+    <mat-card>
       <mat-card-title><span *ngIf="device.isDeviceGroup; then devgroup_token else dev_token"></span></mat-card-title>
       <ng-template #devgroup_token>DeviceGroup Token</ng-template>
       <ng-template #dev_token>Device Token</ng-template>
 
-			<mat-card-content>
-				<div *ngIf="device.token">
-					<button mat-raised-button (click)="recreateDeviceToken()">Re-Generate Token</button>  
-					<button mat-raised-button (click)="deleteDeviceToken()">Delete Token</button>
-				</div>
-				<div *ngIf="!device.token">
-					<button mat-raised-button (click)="createDeviceToken()">Generate Token</button>
-				</div>
-			</mat-card-content>
-		</mat-card>	
+      <mat-card-content>
+        <div *ngIf="device.token">
+          <button mat-raised-button (click)="recreateDeviceToken()">Re-Generate Token</button>
+          <button mat-raised-button (click)="deleteDeviceToken()">Delete Token</button>
+        </div>
+        <div *ngIf="!device.token">
+          <button mat-raised-button (click)="createDeviceToken()">Generate Token</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
 
-		<mat-card>
-			<mat-card-title>User Groups</mat-card-title>
-			<mat-card-content>
-				<table>
-					<!-- Table Header-->
-					<tr>
-						<th><p>User Group</p></th>
-						<th><p>Permission</p></th>
-						<th><p>Actions</p></th>
-					</tr>
+    <mat-card>
+      <mat-card-title>User Groups</mat-card-title>
+      <mat-card-content>
+        <table>
+          <!-- Table Header-->
+          <tr>
+            <th><p>User Group</p></th>
+            <th><p>Permission</p></th>
+            <th><p>Actions</p></th>
+          </tr>
 
-					<!-- Table Body -->
-					<tbody>
+          <!-- Table Body -->
+          <tbody>
 
-						<!-- New Member Row -->
-						<tr>
-							<th><p>
-								<mat-select placeholder="Group" [(ngModel)]="newGroup" name="group">
-									<mat-option *ngFor="let group of allGroups" [value]="group">
-										{{ group.name }}
-									</mat-option>
-								</mat-select>
-							</p></th>
-							<th><p>
+          <!-- Item Row -->
+          <tr *ngFor="let deviceGroup of deviceGroups">
+            <td><p><a class="group-name" (click)="gotoGroup(deviceGroup.entity_id._id)">{{ deviceGroup.entity_id.name
+              }}</a></p></td>
+            <td><p>{{ deviceGroup.perm == 2 ? "Write" : "Execute" }}</p></td>
+            <td>
+              <button mat-icon-button color="warn" (click)="removeGroupAcl(deviceGroup.entity_id)">
+                <mat-icon>clear</mat-icon>
+              </button>
+            </td>
+          </tr>
 
-								<mat-radio-group [(ngModel)]="newPerm" >
-									<mat-radio-button value="1">Execute</mat-radio-button>
-									<mat-radio-button value="2">Write</mat-radio-button>
-								</mat-radio-group>
-								
-							</p> </th>
-							<th><p>
-								<button mat-icon-button (click)="addGroupAcl()">
-									<mat-icon>add</mat-icon>
-								</button>
-							</p></th>
-						</tr>
+          <div *ngIf="deviceGroups.length == 0">
+            <p>No groups granted access.</p>
+          </div>
 
-						<!-- Item Row -->
-						<tr *ngFor="let deviceGroup of deviceGroups">
-							<td><p><a class="group-name" (click)="gotoGroup(deviceGroup.entity_id._id)">{{ deviceGroup.entity_id.name  }}</a></p></td>
-							<td><p>{{ deviceGroup.perm == 2 ? "Write" : "Execute" }}</p></td>
-							<td>
-								<button mat-icon-button color="warn" (click)="removeGroupAcl(deviceGroup.entity_id)">
-									<mat-icon >clear</mat-icon>
-								</button>
-							</td>
-						</tr>
-						
-						<div *ngIf="deviceGroups.length == 0">
-							<p>No groups granted access.</p>
-						</div>								
-					</tbody>
-				</table>
-			</mat-card-content>
-		</mat-card>	
+          <!-- New Member Row -->
+          <tr>
+            <th>
+              <p>
+                <mat-select placeholder="Group" [(ngModel)]="newGroup" name="group">
+                  <mat-option *ngFor="let group of allGroups" [value]="group">
+                    {{ group.name }}
+                  </mat-option>
+                </mat-select>
+              </p>
+            </th>
+            <th>
+              <p>
 
-		<mat-card>
-			<mat-card-title>Users</mat-card-title>
-			<mat-card-content>
-				<table>
+                <mat-radio-group [(ngModel)]="newPerm">
+                  <mat-radio-button value="1">Execute</mat-radio-button>&nbsp;
+                  <mat-radio-button value="2">Write</mat-radio-button>
+                </mat-radio-group>
 
-					<!-- Table Header-->
-					<tr>
-						<th><p>User</p></th>
-						<th><p>Permission</p></th>
-						<th><p>Actions</p></th>
-					</tr>
+              </p>
+            </th>
+            <th>
+              <p>
+                <button mat-icon-button (click)="addGroupAcl()">
+                  <mat-icon>add</mat-icon>
+                </button>
+              </p>
+            </th>
+          </tr>
+          </tbody>
+        </table>
+      </mat-card-content>
+    </mat-card>
 
-					<!-- Table Body -->
-					<tbody>
-						<form [formGroup]="memberForm" (ngSubmit)="addUserAcl(memberForm.value)">
-							<!-- New Member Row -->
-							<tr>
+    <mat-card>
+      <mat-card-title>Users</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="memberForm">
+          <table>
 
-								<th><p>
-									<mat-form-field>
-										<input matInput placeholder="Email" [matAutocomplete]="auto" class="form-control"  formControlName ="user">
-									</mat-form-field>
+            <!-- Table Header-->
+            <tr>
+              <th><p>User</p></th>
+              <th><p>Permission</p></th>
+              <th><p>Actions</p></th>
+            </tr>
 
-									<mat-autocomplete #auto="matAutocomplete" [displayWith]="displayEmail">
-										<mat-option *ngFor="let user of filteredUsers | async" [value]="user">
-											{{ user.email }}
-										</mat-option>
-									</mat-autocomplete>
-								</p></th>
-								<th><p>
+            <!-- Table Body -->
+            <tbody>
 
-									<mat-radio-group class="form-control" formControlName="perm">
-										<mat-radio-button value="1">Execute</mat-radio-button>
-										<mat-radio-button value="2">Write</mat-radio-button>
-									</mat-radio-group>
-
-								</p> </th>
-								<th><p>
-									<button mat-icon-button type="submit">
-										<mat-icon>add</mat-icon>
-									</button>
-								</p></th>
-
-							</tr>
-						</form>
+            <!-- Item Row -->
+            <tr *ngFor="let deviceUser of deviceUsers">
+              <td><p>{{ deviceUser.entity_id.name || deviceUser.entity_id.email }}</p></td>
+              <td><p>{{ deviceUser.perm == 2 ? "Write" : "Execute"}}</p></td>
+              <td>
+                <button mat-icon-button color="warn" (click)="removeUserAcl(deviceUser.entity_id)">
+                  <mat-icon>clear</mat-icon>
+                </button>
+              </td>
+            </tr>
 
 
+            <div *ngIf="deviceUsers.length == 0">
+              <p>No users granted access.</p>
+            </div>
 
-						<!-- Item Row -->
-						<tr *ngFor="let deviceUser of deviceUsers">
-							<td><p>{{ deviceUser.entity_id.name || deviceUser.entity_id.email }}</p></td>
-							<td><p>{{ deviceUser.perm == 2 ? "Write" : "Execute"}}</p></td>
-							<td>
-								<button mat-icon-button color="warn" (click)="removeUserAcl(deviceUser.entity_id)">
-									<mat-icon >clear</mat-icon>
-								</button>
-							</td>
-						</tr>
-						<!--</div>-->
-						<div *ngIf="deviceUsers.length == 0">
-							<p>No users granted access.</p>
-						</div>								
-					</tbody>
+            <!-- New Member Row -->
+            <tr>
+              <th>
+                <p>
+                  <mat-form-field>
+                    <input matInput placeholder="Email" [matAutocomplete]="auto" class="form-control"
+                           formControlName="user">
+                  </mat-form-field>
 
+                  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayEmail">
+                    <mat-option *ngFor="let user of filteredUsers | async" [value]="user">
+                      {{ user.email }}
+                    </mat-option>
+                  </mat-autocomplete>
+                </p>
+              </th>
+              <th>
+                <p>
 
+                  <mat-radio-group class="form-control" formControlName="perm">
+                    <mat-radio-button value="1">Execute</mat-radio-button>&nbsp;
+                    <mat-radio-button value="2">Write</mat-radio-button>
+                  </mat-radio-group>
 
-				</table>
-			</mat-card-content>
-		</mat-card>
-	</div>
+                </p>
+              </th>
+              <th>
+                <p>
+                  <button mat-icon-button (click)="addUserAcl(memberForm.value)">
+                    <mat-icon>add</mat-icon>
+                  </button>
+                </p>
+              </th>
+            </tr>
+            </tbody>
+          </table>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

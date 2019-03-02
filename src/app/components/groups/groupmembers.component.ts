@@ -95,8 +95,12 @@ export class GroupMembersComponent {
   }
 
   addUser(value: any){
-     var user = value.user;
-     var write_access = value.write_access;
+    if (!value.user) {
+      this.errorDialogService.dialogPopup("No User selected");
+      return;
+    }
+    let user = value.user;
+    let write_access = value.write_access;
     this.groupService.addUserToGroup(this.group._id, user._id, write_access).subscribe(
       res =>  {
                this.loadGroup();
@@ -106,7 +110,6 @@ export class GroupMembersComponent {
       err => this.errorDialogService.dialogPopup(err.message)
       );
   }
-
 
   removeUser(user: User){
     let dialogRef = this.dialog.open(ConfirmationDialogComponent);
