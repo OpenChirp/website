@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { Device } from '../../../models/device';
 import { ErrorDialogService } from '../../../services/error-dialog.service';
 import { SuccessDialogService } from '../../../services/success-dialog.service';
@@ -16,7 +16,7 @@ import { Configuration } from '../../../config';
   styleUrls: ['./device-commands.component.scss']
 })
 
-export class DeviceCommandsComponent {
+export class DeviceCommandsComponent implements OnChanges {
   @Input() device: Device;
   @Output() updateDevice: EventEmitter<boolean> = new EventEmitter();
   name: string = "";
@@ -41,7 +41,7 @@ export class DeviceCommandsComponent {
     this.baseUrl = config.api_base_url;
   }
 
-  ngOnInit() {
+  ngOnChanges() {
     this.sortedData = this.device.commands.slice();
     if (this.device.isDeviceGroup) {
       this.sortedBroadcastData = this.device.broadcast_commands.slice();
