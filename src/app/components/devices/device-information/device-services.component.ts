@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { Router , ActivatedRoute} from '@angular/router';
 import { Device } from '../../../models/device';
 import { DeviceService } from '../../../services/device.service';
@@ -19,7 +19,7 @@ import { UpdateConfigComponent } from '../../dialogs/update-config.component';
 	styleUrls: ['./device-services.component.scss']
 })
 
-export class DeviceServicesComponent {
+export class DeviceServicesComponent implements OnChanges {
 	@Input() device: Device;
 	@Output() updateDevice: EventEmitter<boolean> = new EventEmitter();
 	linkedServices : Array<any> = [];
@@ -36,14 +36,15 @@ export class DeviceServicesComponent {
 		private errorDialogService: ErrorDialogService,
 		public dialog: MatDialog) {
 	}
-	ngOnInit() {
+	ngOnChanges() {
 		this.getLinkedServices();
 	}
 
 	getLinkedServices() {
+	  this.services = [];
 		this.linkedServices = this.device.linked_services;
-		for (var i = 0; i < this.linkedServices.length; i++) {
-			var serviceId = this.linkedServices[i].service_id;
+		for (let i = 0; i < this.linkedServices.length; i++) {
+			let serviceId = this.linkedServices[i].service_id;
 			this.configs[serviceId] = this.linkedServices[i].config;
 			this.statuses[serviceId] = this.linkedServices[i].status;
 			this.infraService.getServiceByID(serviceId).subscribe(
@@ -71,12 +72,6 @@ export class DeviceServicesComponent {
 			result => {
 				this.successDialogService.dialogPopup("Linked service: " + service.name);
 				this.updateDevice.emit(true);
-				var newService = Object();
-				newService._id = service._id;
-				newService.name = service.name;
-				newService.description = service.description;
-				newService.config = config;
-				this.services.push(newService);
 			},
 			error => {
 				this.errorDialogService.dialogPopup(error.message + ': ' + service.name);
@@ -117,6 +112,7 @@ export class DeviceServicesComponent {
 		this.deviceService.updateServiceLink(this.device._id, service._id, config).subscribe(
 			result => {
 				this.successDialogService.dialogPopup("Updated config for: " + service.name);
+				this.updateDevice.emit(true);
 			},
 			error => {
 				this.errorDialogService.dialogPopup(error.message + ': ' + service.name);
@@ -134,11 +130,6 @@ export class DeviceServicesComponent {
             result => {
               this.successDialogService.dialogPopup('Link to service :' + name + ' removed');
               this.updateDevice.emit(true);
-              for (let i = 0; i < this.services.length; i++) {
-                if (this.services[i]._id == service_id) {
-                  this.services.splice(i, 1);
-                }
-              }
             },
             error => {
               this.errorDialogService.dialogPopup(error.message + ': ' + name);
