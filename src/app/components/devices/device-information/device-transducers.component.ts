@@ -108,7 +108,7 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
 
   newTransducer() {
     if (this.name != "" && this.unit != "") {
-      var body = {
+      const body = {
         name: this.name,
         unit: this.unit,
         is_actuable: this.actuable
@@ -271,7 +271,7 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
 
   newBroadcastTransducer() {
     if (this.bname != "" && this.bunit != "") {
-      var body = {
+      const body = {
         name: this.bname,
         unit: this.bunit,
         is_actuable: true

@@ -33,13 +33,13 @@ export class SelectTemplateComponent {
     if (this.searchTerm != "") {
       return this.templates.filter((x) => {
         if (typeof(x.name) == "string" && typeof(x.description == "string") && typeof(x.owner == "string")) {
-          var template_name: string = x.name;
-          var name_match = template_name.toLowerCase().includes(this.searchTerm.toLowerCase());
+          const template_name: string = x.name;
+          const name_match = template_name.toLowerCase().includes(this.searchTerm.toLowerCase());
           if (name_match) return true;
 
           if(x.description){
-            var template_description: string = x.description;
-            var description_match = template_description.toLowerCase().includes(this.searchTerm.toLowerCase());
+            const template_description: string = x.description;
+            const description_match = template_description.toLowerCase().includes(this.searchTerm.toLowerCase());
             if (description_match) return true;
           }
           if (x.owner.name) {

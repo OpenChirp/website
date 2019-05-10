@@ -18,7 +18,7 @@ export class NewGroupComponent {
   }
 
   save() {
-    var group = { "name": this.name};
+    const group = {'name': this.name};
     this.dialog.close(group);
   }
 

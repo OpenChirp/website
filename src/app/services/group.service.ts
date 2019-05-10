@@ -51,14 +51,14 @@ export class GroupService {
   }
 
   addUserToGroup(groupId: string, userId: string, write_access: boolean){
-    var body = { "user_id" : userId, "write_access": write_access };
+    const body = {'user_id': userId, 'write_access': write_access};
     return this.http.post(this.groupUrl + groupId +"/member", body, this.requestOptions).pipe(
     map(this.extractData),
     catchError(this.handleError));
   }
 
   removeUserFromGroup(groupId: string, userId: string){
-    var body = { "user_id" : userId };
+    const body = {'user_id': userId};
     return this.http.put(this.groupUrl + groupId +"/member", body, this.requestOptions).pipe(
     map(this.extractData),
     catchError(this.handleError));

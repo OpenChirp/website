@@ -176,9 +176,9 @@ export class DeviceAclComponent {
   } // End function
 
   addUserAcl(value: any){
-     var user = value.user;
-     var body = { "perm": value.perm, "entity_type": "user" };
-     this.deviceService.createAcl(this.device._id, user._id, body).subscribe(
+    const user = value.user;
+    const body = {'perm': value.perm, 'entity_type': 'user'};
+    this.deviceService.createAcl(this.device._id, user._id, body).subscribe(
       res =>  {
                this.memberForm.reset();
                this.getUsersAcl();
@@ -189,9 +189,9 @@ export class DeviceAclComponent {
   }
 
   addGroupAcl(){
-     var group = this.newGroup;
-     var body = { "perm": this.newPerm, "entity_type": "group" };
-     this.deviceService.createAcl(this.device._id, group._id, body).subscribe(
+    const group = this.newGroup;
+    const body = {'perm': this.newPerm, 'entity_type': 'group'};
+    this.deviceService.createAcl(this.device._id, group._id, body).subscribe(
       res =>  {
                this.newGroup = null;
                this.newPerm = "";

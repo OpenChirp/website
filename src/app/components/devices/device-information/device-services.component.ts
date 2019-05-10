@@ -49,8 +49,8 @@ export class DeviceServicesComponent implements OnChanges {
 			this.statuses[serviceId] = this.linkedServices[i].status;
 			this.infraService.getServiceByID(serviceId).subscribe(
 				result => {
-					var service = Object();
-					service._id = result._id;
+          const service = Object();
+          service._id = result._id;
 					service.name = result.name;
 					service.description = result.description;
 					service.config = this.configs[service._id];
@@ -140,8 +140,8 @@ export class DeviceServicesComponent implements OnChanges {
   }
 
 	selectService() {
-		var dialogRef = this.dialog.open(SelectServiceComponent, { width: '800px', height: '700px' });
-		dialogRef.afterClosed().subscribe(
+    const dialogRef = this.dialog.open(SelectServiceComponent, {width: '800px', height: '700px'});
+    dialogRef.afterClosed().subscribe(
 			result => {
 				if(result) {
 					this.linkService(result);

@@ -47,8 +47,8 @@ export class NewDeviceGroupComponent {
       error => this.templates = []
     );
 
-    var loc = false;
-    var tem = false;
+    let loc = false;
+    let tem = false;
     this.route.params.subscribe((params: Params) => {
       if (params['location_id']) {
         loc = true;
@@ -78,8 +78,8 @@ export class NewDeviceGroupComponent {
 
   add() {
     if (this.name != "") {
-      var valid = true;
-      var body : any = {};
+      let valid = true;
+      const body: any = {};
       body["name"] = this.name;
       body["enabled"] = this.enabled;
       body["combined_pubsub"] = this.combined_pubsub;
@@ -125,7 +125,7 @@ export class NewDeviceGroupComponent {
   }
 
   selectTemplate() {
-    var dialogRef = this.dialog.open(SelectTemplateComponent, { width: '700px', height: '700px' });
+    const dialogRef = this.dialog.open(SelectTemplateComponent, {width: '700px', height: '700px'});
     dialogRef.afterClosed().subscribe(
       result => {
         if(result) {

@@ -142,7 +142,7 @@ export class DeviceGroupService {
 
   // Create Public Link
   createPublicBroadcastLink(device_id: string, command_id: string) {
-    var body = {};
+    const body = {};
     return this.http.post(this.deviceGroupUrl + device_id + "/broadcastcommand/"+ command_id +"/publiclink", body, this.requestOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));

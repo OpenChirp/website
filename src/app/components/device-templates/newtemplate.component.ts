@@ -38,7 +38,7 @@ export class NewTemplateComponent {
 
   add() {
     if(this.name != "" && this.description != "") {
-      var body: any = {
+      const body: any = {
         name: this.name,
         description: this.description,
         device_id: this.device._id

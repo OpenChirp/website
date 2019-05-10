@@ -48,7 +48,7 @@ export class DevicePropertiesComponent {
     dialogRef.afterClosed().subscribe(
       result => {
         if(result) {
-          var newDevice = this.device;
+          const newDevice = this.device;
           newDevice.properties = result;
           this.deviceService.updateDeviceById(this.device._id, newDevice).subscribe(
             res => this.successDialogService.dialogPopup("Updated Device: " + this.device.name),

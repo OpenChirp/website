@@ -53,7 +53,7 @@ export class LoginComponent {
 
   login() {
     if (this.emailFormControl.value != '' && this.password != '') {
-      var body: any = {
+      const body: any = {
         username: this.emailFormControl.value,
         password: this.password
       };
@@ -77,7 +77,7 @@ export class LoginComponent {
       this.showSignup = true;
     } else {
       if (this.emailFormControl.value != '' && this.password != '') {
-        var body: any = {
+        const body: any = {
           name: this.name,
           email: this.emailFormControl.value,
           password: this.password

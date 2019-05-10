@@ -72,7 +72,7 @@ export class DeviceService {
 
   // Create Public Link
   createPublicLink(device_id: string, command_id: string) {
-    var body = {};
+    const body = {};
     return this.http.post(this.deviceUrl + device_id + "/command/"+ command_id +"/publiclink", body, this.requestOptions).pipe(
                     map(this.extractData),
                     catchError(this.handleError));

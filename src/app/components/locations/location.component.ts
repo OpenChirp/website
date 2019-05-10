@@ -75,10 +75,10 @@ export class LocationComponent {
 
   add() {
     if (this.name != "" && this.type != "") {
-      var body = {
-        "name": this.name,
-        "type": this.type,
-        "children": []
+      const body = {
+        'name': this.name,
+        'type': this.type,
+        'children': []
       };
       this.locationService
         .addLocationByParentId(this.parent._id, body)
@@ -107,9 +107,9 @@ export class LocationComponent {
 
   update() {
     if (this.name != "" && this.type != "") {
-      var body = {
-        "name": this.name,
-        "type": this.type
+      const body = {
+        'name': this.name,
+        'type': this.type
       };
       this.locationService
         .updateLocationById(this.location._id, body)

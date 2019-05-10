@@ -70,7 +70,7 @@ export class DeviceCommandsComponent implements OnChanges {
 
   newCommand() {
     if (this.name && this.value && this.transducer) {
-      var body = {
+      const body = {
         name: this.name,
         transducer_id: this.transducer._id,
         value: this.value
@@ -97,7 +97,7 @@ export class DeviceCommandsComponent implements OnChanges {
 
   newBroadcastCommand() {
     if (this.bname && this.bvalue && this.broadcastTransducer) {
-      var body = {
+      const body = {
         name: this.bname,
         transducer_id: this.broadcastTransducer._id,
         value: this.bvalue
@@ -212,12 +212,12 @@ export class DeviceCommandsComponent implements OnChanges {
 
  createShortcut(command : any){
    // if (this.name != "") {
-      var body = {
-        "name": command.name,
-        "device_id": this.device._id,
-        "command_id":command._id
-      };
-      this.userService
+   const body = {
+     'name': command.name,
+     'device_id': this.device._id,
+     'command_id': command._id
+   };
+   this.userService
         .createCommandShort(body)
         .subscribe(
           result => {
