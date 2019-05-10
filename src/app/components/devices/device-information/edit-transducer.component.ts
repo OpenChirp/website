@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {DeviceService} from '../../../services/device.service';
@@ -9,7 +9,7 @@ import {DeviceService} from '../../../services/device.service';
   styleUrls: ['edit-transducer.component.scss']
 })
 
-export class EditTransducerComponent {
+export class EditTransducerComponent implements OnInit {
   originalName = '';
   name = '';
   unit = '';

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import { UserService } from '../../services/user.service';
 
@@ -8,7 +8,7 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./userservices.component.scss']
 })
 
-export class UserServicesComponent {
+export class UserServicesComponent implements OnInit {
   services: Array<any> = [];
 
   constructor(private route: ActivatedRoute, private router: Router, private userService: UserService) {

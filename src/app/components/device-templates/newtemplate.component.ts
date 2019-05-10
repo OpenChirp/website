@@ -1,6 +1,6 @@
 
 import {switchMap} from 'rxjs/operators';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
@@ -14,7 +14,7 @@ import { SuccessDialogService } from '../../services/success-dialog.service';
   templateUrl: './newtemplate.component.html',
   styleUrls: ['./newtemplate.component.scss']
 })
-export class NewTemplateComponent {
+export class NewTemplateComponent implements OnInit {
   name = '';
   description = '';
   device: Device = null;

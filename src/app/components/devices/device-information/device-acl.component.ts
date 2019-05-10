@@ -1,6 +1,6 @@
 
 import {map, startWith} from 'rxjs/operators';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Device } from '../../../models/device';
@@ -18,7 +18,7 @@ import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.c
   styleUrls: ['./device-acl.component.scss']
 })
 
-export class DeviceAclComponent {
+export class DeviceAclComponent implements OnInit {
   @Input() device: Device;
   @Output() updateDevice: EventEmitter<boolean> = new EventEmitter();
 

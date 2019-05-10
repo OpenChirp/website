@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import { AdminService } from '../../../services/admin.service';
 import { ErrorDialogService } from '../../../services/error-dialog.service';
@@ -9,7 +9,7 @@ import { ErrorDialogService } from '../../../services/error-dialog.service';
   styleUrls: ['./stats.component.scss']
 })
 
-export class StatsComponent {
+export class StatsComponent implements OnInit {
   stats: Array<any> = [];
 
   constructor(private route: ActivatedRoute,

@@ -1,6 +1,6 @@
 
 import {switchMap} from 'rxjs/operators';
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { MatDialog } from '@angular/material';
 
@@ -18,7 +18,7 @@ import { SelectTemplateComponent } from '../device-templates/select-template.com
   styleUrls: ['./newdevicegroup.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class NewDeviceGroupComponent {
+export class NewDeviceGroupComponent implements OnInit {
   location: Location = null;
   name = '';
   enabled = true;

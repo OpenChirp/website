@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import { MatDialog} from '@angular/material';
 import { UserService } from '../../services/user.service';
@@ -14,7 +14,7 @@ import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.comp
   styleUrls: ['./usergroups.component.scss']
 })
 
-export class UserGroupsComponent {
+export class UserGroupsComponent implements OnInit {
   groups: Array<any> = [];
 
   constructor(private route: ActivatedRoute,

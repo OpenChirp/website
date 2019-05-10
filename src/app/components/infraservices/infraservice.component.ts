@@ -1,5 +1,5 @@
 import {switchMap} from 'rxjs/operators';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { InfraService } from '../../services/infraservice';
@@ -16,7 +16,7 @@ import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.comp
   styleUrls: ['./infraservice.component.scss']
 })
 
-export class InfraServiceComponent {
+export class InfraServiceComponent implements OnInit {
   service: any = null;
   acl: any = {};
   tabIndex = 0;

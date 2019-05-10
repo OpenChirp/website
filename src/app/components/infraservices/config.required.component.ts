@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 
 import { ErrorDialogService } from '../../services/error-dialog.service';
@@ -9,7 +9,7 @@ import { ErrorDialogService } from '../../services/error-dialog.service';
   styleUrls: ['./config.required.component.scss']
 })
 
-export class ConfigRequiredComponent {
+export class ConfigRequiredComponent implements OnInit {
   // Injected
   config: Array<any> = [];
   source: string;

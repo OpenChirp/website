@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material';
 
@@ -10,7 +10,7 @@ import { InfraService } from '../../services/infraservice';
   styleUrls: ['select-service.component.scss']
 })
 
-export class SelectServiceComponent {
+export class SelectServiceComponent implements OnInit {
   services: Array<any> = [];
   searchTerm = '';
 

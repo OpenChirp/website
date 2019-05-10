@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Configuration } from '../../config';
 import { Location } from '../../models/location';
 import { DeviceService } from '../../services/device.service';
@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard-main.component.scss']
 })
 
-export class DashboardMainComponent {
+export class DashboardMainComponent implements OnInit {
   shortcuts: Array<Object> = [];
   locations: Array<Location> = [];
   user: any = null;

@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Location } from '../../models/location';
 import { MatSnackBar } from '@angular/material';
 import { Router, ActivatedRoute, Params } from '@angular/router';
@@ -14,7 +14,7 @@ import { LocationService } from '../../services/location.service';
   styleUrls: ['./location.component.scss']
 })
 
-export class LocationComponent {
+export class LocationComponent implements OnInit {
   parent: Location = null;
   location: Location = null;
   name = '';

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { SuccessDialogService } from '../../services/success-dialog.service';
@@ -12,7 +12,7 @@ import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.comp
   styleUrls: ['./userprofile.component.scss']
 })
 
-export class UserProfileComponent {
+export class UserProfileComponent implements OnInit {
   user: any = null;
   token: any = null;
   tokenTip = 'Use the userid as username and this token as password to authenticate over basic auth for REST API and MQTT. Make sure to copy it now. You won’t be able to see it again!';

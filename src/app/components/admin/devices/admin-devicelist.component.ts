@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 
 import {AdminService} from '../../../services/admin.service';
@@ -11,7 +11,7 @@ import {Sort} from '@angular/material';
   styleUrls: ['./admin-devicelist.component.scss']
 })
 
-export class AdminDeviceListComponent {
+export class AdminDeviceListComponent implements OnInit {
   devices: Array<any> = [];
   searchTerm = '';
   errorMessage = '';

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 
 import { ErrorDialogService } from '../../services/error-dialog.service';
@@ -9,7 +9,7 @@ import { ErrorDialogService } from '../../services/error-dialog.service';
   styleUrls: ['./properties.component.scss']
 })
 
-export class PropertiesComponent {
+export class PropertiesComponent implements OnInit {
   // Injected
   properties: Object = {};
   source = '';

@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'admin',
@@ -6,7 +6,7 @@ import { Component} from '@angular/core';
   styleUrls: ['./admin.component.scss']
 })
 
-export class AdminComponent {
+export class AdminComponent implements OnInit {
  constructor() {
 
   }

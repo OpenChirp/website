@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import { MatDialog} from '@angular/material';
 import { SuccessDialogService } from '../../services/success-dialog.service';
@@ -13,7 +13,7 @@ import { GroupService } from '../../services/group.service';
   styleUrls: ['./group.component.scss']
 })
 
-export class GroupComponent {
+export class GroupComponent implements OnInit {
   groups: Array<any> = [];
 
   constructor(private route: ActivatedRoute,

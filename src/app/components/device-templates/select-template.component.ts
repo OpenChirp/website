@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material';
 
@@ -10,7 +10,7 @@ import { DeviceService } from '../../services/device.service';
   styleUrls: ['select-template.component.scss']
 })
 
-export class SelectTemplateComponent {
+export class SelectTemplateComponent implements OnInit {
   templates: Array<any> = [];
   searchTerm = '';
 

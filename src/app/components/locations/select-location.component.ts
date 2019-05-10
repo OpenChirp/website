@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {MatDialog, MatDialogRef} from '@angular/material';
 import {ConfirmationDialogComponent} from '../dialogs/confirmation-dialog.component';
@@ -11,7 +11,7 @@ import {LocationService} from '../../services/location.service';
   styleUrls: ['select-location.component.scss']
 })
 
-export class SelectLocationComponent {
+export class SelectLocationComponent implements OnInit {
   locations: Array<any> = [];
   searchTerm = '';
 

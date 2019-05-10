@@ -1,5 +1,5 @@
 import {switchMap, startWith, map} from 'rxjs/operators';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { MatDialog} from '@angular/material';
@@ -18,7 +18,7 @@ import { User } from '../../models/user';
   styleUrls: ['./groupmembers.component.scss']
 })
 
-export class GroupMembersComponent {
+export class GroupMembersComponent implements OnInit {
   memberForm: FormGroup;
   emailCtrl: FormControl;
   group: any = {};

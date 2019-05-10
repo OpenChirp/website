@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 
 
@@ -11,7 +11,7 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./userlocations.component.scss']
 })
 
-export class UserLocationsComponent {
+export class UserLocationsComponent implements OnInit {
   locations: Array<Location> = [];
 
   constructor(private route: ActivatedRoute, private router: Router, private userService: UserService) {

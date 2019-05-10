@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { switchMap} from 'rxjs/operators';
 import { InfraService } from '../../../services/infraservice';
@@ -14,7 +14,7 @@ import {ViewConfigComponent} from '../../dialogs/view-config.component';
   styleUrls: ['./infraservice-devicelist.component.scss']
 })
 
-export class InfraServiceDeviceListComponent {
+export class InfraServiceDeviceListComponent implements OnInit {
   devices: Array<Device> = [];
   @Input() service: any = null;
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DeviceService } from '../../services/device.service';
 import { Router } from '@angular/router';
 
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['devicetemplates.component.scss']
 })
 
-export class DeviceTemplatesComponent {
+export class DeviceTemplatesComponent implements OnInit {
 
   templates: Array<Object> = [];
 

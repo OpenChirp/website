@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { InfraService } from '../../services/infraservice';
 import { Router } from '@angular/router';
 
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['list.infraservices.component.scss']
 })
 
-export class ListInfraServicesComponent {
+export class ListInfraServicesComponent implements OnInit {
 
   services: Array<Object> = [];
 

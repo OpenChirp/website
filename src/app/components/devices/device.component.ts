@@ -1,5 +1,5 @@
 import {switchMap} from 'rxjs/operators';
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { MatDialog} from '@angular/material';
 
@@ -19,7 +19,7 @@ import { ErrorDialogService } from '../../services/error-dialog.service';
   encapsulation: ViewEncapsulation.None
 })
 
-export class DeviceComponent {
+export class DeviceComponent implements OnInit {
 
   get selectedIndex() {
     return this.tabIndex;

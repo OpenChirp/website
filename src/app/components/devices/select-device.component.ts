@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material';
 import { DeviceService } from '../../services/device.service'
@@ -10,7 +10,7 @@ import {ErrorDialogService} from '../../services/error-dialog.service';
   styleUrls: ['select-device.component.scss']
 })
 
-export class SelectDeviceComponent {
+export class SelectDeviceComponent implements OnInit {
   devices: Array<any> = [];
   searchTerm = '';
 

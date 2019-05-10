@@ -1,6 +1,6 @@
 
 import {switchMap} from 'rxjs/operators';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { DeviceService } from '../../services/device.service';
@@ -16,7 +16,7 @@ import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.comp
   styleUrls: ['./devicetemplate.component.scss']
 })
 
-export class DeviceTemplateComponent {
+export class DeviceTemplateComponent implements OnInit {
   template: any = null;
   constructor(private route: ActivatedRoute,
               private deviceService: DeviceService,

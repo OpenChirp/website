@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { MatSnackBar} from '@angular/material';
@@ -24,7 +24,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./login.component.scss']
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   name = '';
   password = '';
   confirmPassword = '';
@@ -47,7 +47,7 @@ export class LoginComponent {
               public snackBar: MatSnackBar) {
   }
 
-  ngOnInit() {
+  ngOnInit()  {
     this.showSignupButton = this.config.signup_enable;
   }
 

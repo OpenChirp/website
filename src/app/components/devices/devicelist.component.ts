@@ -1,6 +1,6 @@
 
 import {switchMap} from 'rxjs/operators';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 
@@ -15,7 +15,7 @@ import { LocationService } from '../../services/location.service';
   styleUrls: ['./devicelist.component.scss']
 })
 
-export class DeviceListComponent {
+export class DeviceListComponent implements OnInit {
   devices: Array<Device> = [];
   deviceGroups: Array<Device> = [];
   errorMessage = '';

@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog, MatSnackBar } from '@angular/material';
 
@@ -16,7 +16,7 @@ import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.comp
   styleUrls: ['./tree.component.scss']
 })
 
-export class TreeNodeComponent {
+export class TreeNodeComponent implements OnInit, OnDestroy {
   @Input() currentLocation: Location;
   @Output() onDelete = new EventEmitter<boolean>();
 

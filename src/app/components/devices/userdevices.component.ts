@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 
 
@@ -13,7 +13,7 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./userdevices.component.scss']
 })
 
-export class UserDevicesComponent {
+export class UserDevicesComponent implements OnInit {
   devices: Array<Device> = [];
   devicegroups: Array<Device> = [];
   errorMessage = '';
