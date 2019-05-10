@@ -2,10 +2,10 @@ all: PROD=--prod --aot
 all: dist
 
 update:
-	npm update
+  npm update
 
 dist: update $(wildcard ./src/**)
-	ng build $(PROD)
+  ng build $(PROD)
 
 clean:
-	$(RM) -r dist
+  $(RM) -r dist

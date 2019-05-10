@@ -14,8 +14,8 @@ import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.comp
 
 export class UserProfileComponent {
   user: any = null;
-  token : any= null;
-  tokenTip : string = "Use the userid as username and this token as password to authenticate over basic auth for REST API and MQTT. Make sure to copy it now. You won’t be able to see it again!";
+  token: any = null;
+  tokenTip = 'Use the userid as username and this token as password to authenticate over basic auth for REST API and MQTT. Make sure to copy it now. You won’t be able to see it again!';
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -31,30 +31,30 @@ ngOnInit() {
      this.getToken();
 }
 
-getUser(){
+getUser() {
   this.userService.getUser().subscribe(
      result => this.user = result,
      error =>  this.errorDialogService.dialogPopup(error.message)
    );
 }
 
-updateUser(){
+updateUser() {
   this.userService.updateUser(this.user).subscribe(
       result => {
         this.getUser();
-        this.successDialogService.dialogPopup("Done");
+        this.successDialogService.dialogPopup('Done');
       },
       error =>  this.errorDialogService.dialogPopup(error.message)
     );
  }
 
-getToken(){
+getToken() {
    this.userService.getToken().subscribe(
       result => this.token = result,
       error =>  {
-        if(error.status != 404){
+        if (error.status != 404) {
             this.errorDialogService.dialogPopup(error.message);
-        }else{
+        } else {
           this.token = null;
         }
       });
@@ -65,7 +65,7 @@ getToken(){
       result => {
         this.getToken();
         this.successDialogService
-        .dialogPopupNoAutoClose("Token : " + result, this.tokenTip);
+        .dialogPopupNoAutoClose('Token : ' + result, this.tokenTip);
       },
       error => {
         this.errorDialogService
@@ -74,10 +74,10 @@ getToken(){
       );
   }
  deleteUserToken() {
-    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
-    dialogRef.componentInstance.dialogText = "Delete user token " + "? ";
-    dialogRef.componentInstance.dialogWarning = "The token will no longer work for authentication over REST and MQTT.";
-    dialogRef.componentInstance.confirmText = "Delete";
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    dialogRef.componentInstance.dialogText = 'Delete user token ' + '? ';
+    dialogRef.componentInstance.dialogWarning = 'The token will no longer work for authentication over REST and MQTT.';
+    dialogRef.componentInstance.confirmText = 'Delete';
     dialogRef.afterClosed().subscribe(
       result => {
         if (result) {
@@ -89,7 +89,7 @@ getToken(){
             },
             error => this.errorDialogService
             .dialogPopup(error.message)
-            );// End delete token subscribe.
+            ); // End delete token subscribe.
         } // End if
       } // End result
       ); // End subscribe

@@ -49,7 +49,7 @@ export class SplashComponent implements OnInit {
   }
 
   loginPopup(service: any) {
-    let dialogRef = this.dialog.open(LoginComponent, {width: '450px'});
+    const dialogRef = this.dialog.open(LoginComponent, {width: '450px'});
   }
 
   @HostListener('window:scroll', [])

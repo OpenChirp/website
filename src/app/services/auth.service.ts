@@ -15,10 +15,10 @@ export class AuthService {
   private logoutUrl: string;
 
 constructor(private http: Http, private config: Configuration, private requestOptions: RequestOptions) {
-    this.googleLoginUrl = config.auth_url +"google/token";
-    this.signupUrl = config.auth_url +"signup";
-    this.basicLoginUrl = config.auth_url +"basic";
-    this.logoutUrl = config.auth_url+"logout"
+    this.googleLoginUrl = config.auth_url + 'google/token';
+    this.signupUrl = config.auth_url + 'signup';
+    this.basicLoginUrl = config.auth_url + 'basic';
+    this.logoutUrl = config.auth_url + 'logout'
 
   }
 
@@ -37,7 +37,7 @@ constructor(private http: Http, private config: Configuration, private requestOp
                     catchError(this.handleError));
   }
    logout() {
-    return this.http.get(this.logoutUrl,this.requestOptions).pipe(map(this.extractData),
+    return this.http.get(this.logoutUrl, this.requestOptions).pipe(map(this.extractData),
                     catchError(this.handleError));
   }
    private extractData(res: Response) {

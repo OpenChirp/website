@@ -19,7 +19,7 @@ import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.comp
 export class InfraServiceComponent {
   service: any = null;
   acl: any = {};
-  tabIndex: number = 0;
+  tabIndex = 0;
 
   private tabNameToPosition: Map<string, Number> = new Map([
     ['properties', 0],
@@ -34,7 +34,7 @@ export class InfraServiceComponent {
   constructor(private route: ActivatedRoute, private infraService: InfraService, private router: Router,
     private successDialogService: SuccessDialogService,
     private errorDialogService: ErrorDialogService,
-    private globalDataService:GlobalDataService,
+    private globalDataService: GlobalDataService,
     public dialog: MatDialog) {
   }
 
@@ -49,8 +49,8 @@ export class InfraServiceComponent {
         // The fix would be to have the sender already attach the #properties
         // tag to device page reference.
         // TODO: This should probably be some official Angular way of redirecting
-        //window.location.hash = "#properties";
-        //this.selectedIndex = this.tabNameToPosition.get('properties').valueOf();
+        // window.location.hash = "#properties";
+        // this.selectedIndex = this.tabNameToPosition.get('properties').valueOf();
       }
     });
     this.getService();
@@ -62,8 +62,8 @@ export class InfraServiceComponent {
     .subscribe(
       result => {
         this.service = result;
-        let ownerId = this.service.owner._id;
-        let loggedInUserId = this.globalDataService.userid;
+        const ownerId = this.service.owner._id;
+        const loggedInUserId = this.globalDataService.userid;
         this.acl.isOwner = (String(ownerId) === String(loggedInUserId));
       },
       error => this.router.navigate(['/home/services'])
@@ -71,7 +71,7 @@ export class InfraServiceComponent {
   }
 
   deleteService() {
-    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
     dialogRef.componentInstance.dialogText = 'Delete Service ' + this.service.name + '?';
     dialogRef.componentInstance.confirmText = 'Delete';
     dialogRef.afterClosed().subscribe(

@@ -61,7 +61,7 @@ export class TreeNodeComponent {
    * @todo Expand REST interface to take and return array of locations
    */
   getChildren() {
-    let children = this.currentLocation.children;
+    const children = this.currentLocation.children;
     this.childLocations = [];
     for (let i = 0; i < children.length; i++) {
       this.locationService
@@ -82,8 +82,8 @@ export class TreeNodeComponent {
    * Simple string compare for sorting
    */
   compareNames(a, b) {
-      let nameA = a.name.toUpperCase();
-      let nameB = b.name.toUpperCase();
+      const nameA = a.name.toUpperCase();
+      const nameB = b.name.toUpperCase();
       if (nameA < nameB) {
         return -1;
       }
@@ -130,7 +130,7 @@ export class TreeNodeComponent {
   }
 
   deleteLocation(location: Location) {
-    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
     dialogRef.componentInstance.confirmText = 'Delete';
     dialogRef.componentInstance.dialogText = 'Delete Location ' + location.name + '?';
     dialogRef.afterClosed().subscribe(result => {

@@ -14,7 +14,7 @@ export class UserService {
 
   constructor(private http: Http, private config: Configuration, private requestOptions: RequestOptions) {
     this.apiUrl = config.api_url;
-    this.userUrl = this.apiUrl + "user/";
+    this.userUrl = this.apiUrl + 'user/';
     this.requestOptions.withCredentials = true;
   }
 
@@ -36,32 +36,32 @@ export class UserService {
 
  // Get user token
   getToken() {
-    return this.http.get(this.userUrl + "token" , this.requestOptions).pipe(
+    return this.http.get(this.userUrl + 'token' , this.requestOptions).pipe(
                     map(this.extractData),
                     catchError(this.handleError));
   }
 
  // Create user token
   createToken() {
-    return this.http.post(this.userUrl + "token" , this.requestOptions).pipe(
+    return this.http.post(this.userUrl + 'token' , this.requestOptions).pipe(
                     map(this.extractData),
                     catchError(this.handleError));
   }
 
     // Delete user Token
   deleteToken() {
-    return this.http.delete(this.userUrl + "token" , this.requestOptions).pipe(
+    return this.http.delete(this.userUrl + 'token' , this.requestOptions).pipe(
                     map(this.extractData),
                     catchError(this.handleError));
   }
   getAllUsers() {
-    return this.http.get(this.userUrl+"all", this.requestOptions).pipe(
+    return this.http.get(this.userUrl + 'all', this.requestOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }
 
   getMyServices(search: string) {
-    return this.http.get(this.userUrl + "myservices?name=" + search, this.requestOptions).pipe(
+    return this.http.get(this.userUrl + 'myservices?name=' + search, this.requestOptions).pipe(
                     map(this.extractData),
                     catchError(this.handleError));
   }
@@ -69,55 +69,55 @@ export class UserService {
 
 
   getMyDevices(search: string) {
-    return this.http.get(this.userUrl + "mydevices?name=" + search, this.requestOptions).pipe(
+    return this.http.get(this.userUrl + 'mydevices?name=' + search, this.requestOptions).pipe(
                     map(this.extractData),
                     catchError(this.handleError));
   }
 
   getMyDeviceGroups(search: string) {
-    return this.http.get(this.userUrl + "mydevicegroups?name=" + search, this.requestOptions).pipe(
+    return this.http.get(this.userUrl + 'mydevicegroups?name=' + search, this.requestOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }
 
   getMyLocations(search: string) {
-    return this.http.get(this.userUrl + "mylocations?name=" + search, this.requestOptions).pipe(
+    return this.http.get(this.userUrl + 'mylocations?name=' + search, this.requestOptions).pipe(
                     map(this.extractData),
                     catchError(this.handleError));
   }
 
   getMyShortcuts() {
-    return this.http.get(this.userUrl + "shortcuts" , this.requestOptions).pipe(
+    return this.http.get(this.userUrl + 'shortcuts' , this.requestOptions).pipe(
                     map(this.extractData),
                     catchError(this.handleError));
   }
 
   createCommandShort(body: any) {
-    return this.http.post(this.userUrl + "shortcut", body, this.requestOptions).pipe(
+    return this.http.post(this.userUrl + 'shortcut', body, this.requestOptions).pipe(
                     map(this.extractData),
                     catchError(this.handleError));
   }
 
   createBroadcastCommandShort(body: any) {
-    return this.http.post(this.userUrl + "broadcast_shortcut", body, this.requestOptions).pipe(
+    return this.http.post(this.userUrl + 'broadcast_shortcut', body, this.requestOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }
 
   deleteShortcut(id: string) {
-    return this.http.delete(this.userUrl + "shortcut/"+id,  this.requestOptions).pipe(
+    return this.http.delete(this.userUrl + 'shortcut/' + id,  this.requestOptions).pipe(
                     map(this.extractData),
                     catchError(this.handleError));
   }
 
   deleteBroadcastShortcut(id: string) {
-    return this.http.delete(this.userUrl + "broadcast_shortcut/"+id,  this.requestOptions).pipe(
+    return this.http.delete(this.userUrl + 'broadcast_shortcut/' + id,  this.requestOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }
 
   leaveGroup(groupId: string) {
-    return this.http.delete(this.userUrl + "group/"+groupId,  this.requestOptions).pipe(
+    return this.http.delete(this.userUrl + 'group/' + groupId,  this.requestOptions).pipe(
                     map(this.extractData),
                     catchError(this.handleError));
   }

@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 
 export class ListInfraServicesComponent {
-  
+
   services: Array<Object> = [];
 
   constructor(private infraService: InfraService, private router: Router) {

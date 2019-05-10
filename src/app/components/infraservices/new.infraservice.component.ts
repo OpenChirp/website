@@ -14,8 +14,8 @@ import { ErrorDialogService } from '../../services/error-dialog.service';
 })
 
 export class NewInfraServiceComponent {
-  name: string = "";
-  description: string = "";
+  name = '';
+  description = '';
 
   constructor(private route: ActivatedRoute, private infraService: InfraService, private router: Router,
     private successDialogService: SuccessDialogService,
@@ -26,7 +26,7 @@ export class NewInfraServiceComponent {
   }
 
   add() {
-    if(this.name != "" && this.description != "") {
+    if (this.name != '' && this.description != '') {
       const body: any = {
         name: this.name,
         description: this.description,
@@ -37,8 +37,8 @@ export class NewInfraServiceComponent {
         createdService => {
 
 
-          this.successDialogService.dialogPopup("Service Created "+this.name).subscribe(
-            result => this.router.navigate(['/home/service/'+createdService._id])
+          this.successDialogService.dialogPopup('Service Created ' + this.name).subscribe(
+            result => this.router.navigate(['/home/service/' + createdService._id])
           );
         },
         error => {
@@ -47,9 +47,8 @@ export class NewInfraServiceComponent {
           }
       );
 
-    }
-    else {
-      this.snackBar.open("Name and description are empty!", "ERROR", { duration: 2000 });
+    } else {
+      this.snackBar.open('Name and description are empty!', 'ERROR', { duration: 2000 });
     }
   }
 

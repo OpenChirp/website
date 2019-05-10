@@ -25,11 +25,11 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 
 export class LoginComponent {
-  name: string = '';
-  password: string = '';
-  confirmPassword: string = '';
-  showSignup: boolean = false;
-  showSignupButton: boolean = false;
+  name = '';
+  password = '';
+  confirmPassword = '';
+  showSignup = false;
+  showSignupButton = false;
   emailPattern: any = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   emailFormControl = new FormControl('', [
@@ -59,15 +59,14 @@ export class LoginComponent {
       };
       this.authService.basicLogin(body).subscribe(
         result => {
-          //this.router.navigate(['/home'])
+          // this.router.navigate(['/home'])
           window.location.href = '/home';
         }, error => {
           this.errorDialogService
             .dialogPopup(error.message);
         }
       );
-    }
-    else {
+    } else {
       this.snackBar.open('Email or password are empty!', 'ERROR', {duration: 2000});
     }
   }
@@ -82,7 +81,7 @@ export class LoginComponent {
           email: this.emailFormControl.value,
           password: this.password
         };
-        let regexp = new RegExp(this.emailPattern);
+        const regexp = new RegExp(this.emailPattern);
         if (!regexp.test(this.emailFormControl.value)) {
           this.errorDialogService.dialogPopup('Invalid Email');
           return;

@@ -16,7 +16,7 @@ export class UserServicesComponent {
   }
 
   ngOnInit() {
-    this.userService.getMyServices("").subscribe(
+    this.userService.getMyServices('').subscribe(
       result => this.services = result,
       error => this.router.navigate(['/home'])
     );

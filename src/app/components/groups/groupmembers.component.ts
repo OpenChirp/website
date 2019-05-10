@@ -57,7 +57,7 @@ export class GroupMembersComponent {
       return user ? user.email : user;
    }
 
-  loadGroup(){
+  loadGroup() {
     this.route.params.pipe(
     switchMap((params: Params) => this.groupService.getGroupById(params['id'])))
     .subscribe(
@@ -70,7 +70,7 @@ export class GroupMembersComponent {
       );
   }
 
-  getMembersOfGroup(){
+  getMembersOfGroup() {
     this.groupService.getMembersOfGroup(this.group._id).subscribe(
       result => {
         this.members = result;
@@ -81,11 +81,11 @@ export class GroupMembersComponent {
       });
   }
 
-  getAllNonMembers(){
+  getAllNonMembers() {
      this.groupService.getUsersNotInGroup(this.group._id).subscribe(
       result => {
         this.users = result;
-        //this.userEmails = this.users.map(function(val:any) { return val.email ;});
+        // this.userEmails = this.users.map(function(val:any) { return val.email ;});
       },
       error => {
         this.errorDialogService
@@ -93,27 +93,27 @@ export class GroupMembersComponent {
       });
   }
 
-  addUser(value: any){
+  addUser(value: any) {
     if (!value.user) {
-      this.errorDialogService.dialogPopup("No User selected");
+      this.errorDialogService.dialogPopup('No User selected');
       return;
     }
-    let user = value.user;
-    let write_access = value.write_access;
+    const user = value.user;
+    const write_access = value.write_access;
     this.groupService.addUserToGroup(this.group._id, user._id, write_access).subscribe(
       res =>  {
                this.loadGroup();
                this.memberForm.reset();
-               this.successDialogService.dialogPopup("User added : " +user.email )
+               this.successDialogService.dialogPopup('User added : ' + user.email )
              },
       err => this.errorDialogService.dialogPopup(err.message)
       );
   }
 
-  removeUser(user: User){
-    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
-    dialogRef.componentInstance.dialogText = "Delete Member " + user.email + "?";
-    dialogRef.componentInstance.confirmText = "Delete";
+  removeUser(user: User) {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    dialogRef.componentInstance.dialogText = 'Delete Member ' + user.email + '?';
+    dialogRef.componentInstance.confirmText = 'Delete';
     dialogRef.afterClosed().subscribe(
       result => {
         if (result) {

@@ -15,8 +15,8 @@ import { SuccessDialogService } from '../../services/success-dialog.service';
   styleUrls: ['./newtemplate.component.scss']
 })
 export class NewTemplateComponent {
-  name: string = "";
-  description: string = "";
+  name = '';
+  description = '';
   device: Device = null;
 
   constructor(private deviceService: DeviceService, private route: ActivatedRoute,
@@ -37,7 +37,7 @@ export class NewTemplateComponent {
   }
 
   add() {
-    if(this.name != "" && this.description != "") {
+    if (this.name != '' && this.description != '') {
       const body: any = {
         name: this.name,
         description: this.description,
@@ -48,7 +48,7 @@ export class NewTemplateComponent {
         result => {
 
           // this.snackBar.open("Save Template Success!", this.name, { duration: 2000 }).afterDismissed().subscribe(
-          this.successDialogService.dialogPopup("Template Created "+this.name).subscribe(
+          this.successDialogService.dialogPopup('Template Created ' + this.name).subscribe(
             result => this.router.navigate(['/home/devicetemplates/'])
           );
         },
@@ -59,9 +59,8 @@ export class NewTemplateComponent {
           }
       );
 
-    }
-    else {
-      this.snackBar.open("Name and description are empty!", "ERROR", { duration: 2000 });
+    } else {
+      this.snackBar.open('Name and description are empty!', 'ERROR', { duration: 2000 });
     }
   }
 

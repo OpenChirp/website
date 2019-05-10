@@ -31,7 +31,7 @@ export class UserGroupsComponent {
     this.loadUserGroups();
   }
 
-  loadUserGroups(){
+  loadUserGroups() {
     this.userService.getUser().subscribe(
       result => this.groups = result.groups,
       error => this.router.navigate(['/home'])
@@ -42,15 +42,15 @@ export class UserGroupsComponent {
   }
 
 
-  createGroup(){
-    let dialogRef = this.dialog.open(NewGroupComponent, { width: '600px' });
+  createGroup() {
+    const dialogRef = this.dialog.open(NewGroupComponent, { width: '600px' });
     dialogRef.afterClosed().subscribe(
       result => {
-        if(result) {
+        if (result) {
           this.groupService.createGroup(result).subscribe(
             res => {
               this.loadUserGroups();
-              this.successDialogService.dialogPopup("Group Created " + result.name);
+              this.successDialogService.dialogPopup('Group Created ' + result.name);
             },
             err => this.errorDialogService.dialogPopup(err.message)
             );
@@ -60,10 +60,10 @@ export class UserGroupsComponent {
   }
 
 
-  leaveGroup(group: any){
-    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
-    dialogRef.componentInstance.dialogText = "Leave Group " + group.name + "?";
-    dialogRef.componentInstance.confirmText = "Leave";
+  leaveGroup(group: any) {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    dialogRef.componentInstance.dialogText = 'Leave Group ' + group.name + '?';
+    dialogRef.componentInstance.confirmText = 'Leave';
     dialogRef.afterClosed().subscribe(
       result => {
         if (result) {

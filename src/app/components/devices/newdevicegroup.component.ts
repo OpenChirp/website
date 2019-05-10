@@ -20,15 +20,15 @@ import { SelectTemplateComponent } from '../device-templates/select-template.com
 })
 export class NewDeviceGroupComponent {
   location: Location = null;
-  name: string = "";
-  enabled: boolean = true;
-  combined_pubsub: boolean = false;
-  //deviceTypes: Array<string> = ["LORA", "TWIST", "FIREFLY", "BOSCH_XDK"];
-  selectedType: string = "";
-  useTemplate: boolean = false;
+  name = '';
+  enabled = true;
+  combined_pubsub = false;
+  // deviceTypes: Array<string> = ["LORA", "TWIST", "FIREFLY", "BOSCH_XDK"];
+  selectedType = '';
+  useTemplate = false;
   templates: Array<Object> = [];
   template: any = null;
-  templateid = "";
+  templateid = '';
 
   constructor(private deviceService: DeviceService,
               private deviceGroupService: DeviceGroupService,
@@ -77,23 +77,22 @@ export class NewDeviceGroupComponent {
   }
 
   add() {
-    if (this.name != "") {
+    if (this.name != '') {
       let valid = true;
       const body: any = {};
-      body["name"] = this.name;
-      body["enabled"] = this.enabled;
-      body["combined_pubsub"] = this.combined_pubsub;
+      body['name'] = this.name;
+      body['enabled'] = this.enabled;
+      body['combined_pubsub'] = this.combined_pubsub;
       if (this.location) {
-        body["location_id"] = this.location._id;
+        body['location_id'] = this.location._id;
       }
       /*if (this.deviceTypes) {
         body["type"] = this.selectedType;
       }*/
       if (this.useTemplate) {
-        if (this.templateid != "") {
-          body["template_id"] = this.templateid;
-        }
-        else {
+        if (this.templateid != '') {
+          body['template_id'] = this.templateid;
+        } else {
           valid = false;
           this.errorDialogService.dialogPopup('Select a Template!');
         }
@@ -128,7 +127,7 @@ export class NewDeviceGroupComponent {
     const dialogRef = this.dialog.open(SelectTemplateComponent, {width: '700px', height: '700px'});
     dialogRef.afterClosed().subscribe(
       result => {
-        if(result) {
+        if (result) {
           this.template = result;
           this.templateid = this.template._id;
         }

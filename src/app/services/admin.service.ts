@@ -14,7 +14,7 @@ export class AdminService {
 
   constructor(private http: Http, private config: Configuration, private requestOptions: RequestOptions) {
     this.apiUrl = config.api_url;
-    this.adminUrl = this.apiUrl + "admin/";
+    this.adminUrl = this.apiUrl + 'admin/';
 
   }
 

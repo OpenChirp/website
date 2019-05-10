@@ -8,9 +8,9 @@ import { MatDialogRef } from '@angular/material';
 })
 
 export class ConfirmationDialogComponent {
-  dialogText: string = "";
-  dialogWarning: string = "";
-  confirmText: string = "";
+  dialogText = '';
+  dialogWarning = '';
+  confirmText = '';
 
   constructor(public dialog: MatDialogRef<ConfirmationDialogComponent>) {
 

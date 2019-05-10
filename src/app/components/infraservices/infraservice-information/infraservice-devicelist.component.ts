@@ -42,8 +42,8 @@ export class InfraServiceDeviceListComponent {
     this.router.navigate(['/home/device/', id]);
   }
 
-  viewDeviceConfig(device: any){
-    let dialogRef = this.dialog.open(ViewConfigComponent, { width: '900px' });
+  viewDeviceConfig(device: any) {
+    const dialogRef = this.dialog.open(ViewConfigComponent, { width: '900px' });
     dialogRef.componentInstance.config = device.config;
     dialogRef.componentInstance.source = device.name;
   }

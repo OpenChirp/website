@@ -24,7 +24,7 @@ export class LocationService {
 
   constructor (private http: Http, private config: Configuration, private requestOptions: RequestOptions) {
     this.apiUrl = config.api_url;
-    this.locationUrl = this.apiUrl + "location/";
+    this.locationUrl = this.apiUrl + 'location/';
     this.requestOptions.withCredentials = true;
   }
 
@@ -76,7 +76,7 @@ export class LocationService {
 
   // Get device by location id
   getDeviceByLocationId(id: string): Observable<Array<Device>> {
-    return this.http.get(this.locationUrl + id + "/devices", this.requestOptions).pipe(
+    return this.http.get(this.locationUrl + id + '/devices', this.requestOptions).pipe(
                     map(this.extractData),
                     catchError(this.handleError));
   }
@@ -88,7 +88,7 @@ export class LocationService {
   }
 
   private extractData(res: Response) {
-    let body = res.json();
+    const body = res.json();
     return body || { };
   }
 
@@ -106,8 +106,7 @@ export class LocationService {
     console.error(errMsg);
     if (err.message) {
       return observableThrowError(err);
-    }
-    else {
+    } else {
       return observableThrowError({
         message: error.statusText
       });

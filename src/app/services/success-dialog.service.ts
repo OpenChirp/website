@@ -25,7 +25,7 @@ export class SuccessDialogService {
     return dialogRef.afterClosed();
   }
 
-   public dialogPopupNoAutoClose(message: string, tip : string): Observable<boolean> {
+   public dialogPopupNoAutoClose(message: string, tip: string): Observable<boolean> {
     let dialogRef: MatDialogRef<any>;
 
     dialogRef = this.dialog.open(SuccessDialogComponent);

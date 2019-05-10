@@ -37,7 +37,7 @@ export class DashboardMainComponent {
               private sanitizer: DomSanitizer) {
 
   }
-  
+
   ngOnInit() {
     this.publicDevicesMapIframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.config.mapper_url_public);
     this.getShortcuts();
@@ -45,7 +45,7 @@ export class DashboardMainComponent {
     this.getUser();
   }
 
-  getUser(){
+  getUser() {
     this.userService.getUser().subscribe(
        result => {
          this.user = result;
@@ -63,7 +63,7 @@ export class DashboardMainComponent {
   }
 
   getLocations() {
-    this.userService.getMyLocations("").subscribe(
+    this.userService.getMyLocations('').subscribe(
       result => this.locations = result
     );
   }
@@ -80,8 +80,8 @@ export class DashboardMainComponent {
           .dialogPopup(error.message + ': ' + shortcut.name);
       }
       );
-        
-  }  
+
+  }
   execute(shortcut: any) {
     this.deviceService.executeCommand(shortcut.device_id, shortcut.command_id).subscribe(
       result => {

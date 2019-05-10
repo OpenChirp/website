@@ -21,18 +21,18 @@ import { EditTransducerComponent } from './edit-transducer.component';
 export class DeviceTransducersComponent implements OnChanges, OnDestroy {
   @Input() device: Device;
   @Output() updateDevice: EventEmitter<boolean> = new EventEmitter();
-  name: string = "";
-  unit: string = "";
-  bname: string = "";
-  bunit: string = "";
-  actuable: boolean = false;
-  //transducers: Array<Object>;
+  name = '';
+  unit = '';
+  bname = '';
+  bunit = '';
+  actuable = false;
+  // transducers: Array<Object>;
   groupTransducers: Array<Object>;
-  publishPayload: string = "";
+  publishPayload = '';
   lastUpdated: Date;
-  transducerAutoRefreshPeriod: number = 2000; // 2000 ms
+  transducerAutoRefreshPeriod = 2000; // 2000 ms
   transducerAutoRefreshSub: Subscription;
-  isDeviceGroup: boolean = false;
+  isDeviceGroup = false;
   sortedTransducers: Array<Object> = [];
   sortedBroadcastTransducers: Array<Object> = [];
   sortedGroupTransducers: Array<Object> = [];
@@ -107,7 +107,7 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
   }
 
   newTransducer() {
-    if (this.name != "" && this.unit != "") {
+    if (this.name != '' && this.unit != '') {
       const body = {
         name: this.name,
         unit: this.unit,
@@ -117,8 +117,8 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
         result => {
           this.successDialogService
             .dialogPopup('New Transducer Added: ' + this.name);
-          this.name = "";
-          this.unit = "";
+          this.name = '';
+          this.unit = '';
           this.actuable = false;
           this.updateDevice.emit(true);
         },
@@ -134,7 +134,7 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
   }
 
   editTransducer(transducer: any) {
-    let dialogRef = this.dialog.open(EditTransducerComponent, { data: { transducer: transducer }});
+    const dialogRef = this.dialog.open(EditTransducerComponent, { data: { transducer: transducer }});
     dialogRef.afterClosed().subscribe(
       result =>  {
         if (result) {
@@ -155,9 +155,9 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
   }
 
   deleteTransducer(id: string, name: string) {
-    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
-    dialogRef.componentInstance.confirmText = "Delete";
-    dialogRef.componentInstance.dialogText = "Delete Transducer " + name + "?";
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    dialogRef.componentInstance.confirmText = 'Delete';
+    dialogRef.componentInstance.dialogText = 'Delete Transducer ' + name + '?';
     dialogRef.afterClosed().subscribe(
       result =>  {
         if (result) {
@@ -178,10 +178,10 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
   }
 
   publishTransducerValue(id: string, name: string, valueOriginal: string) {
-    let dialogRef = this.dialog.open(InputTransducerValueComponent);
+    const dialogRef = this.dialog.open(InputTransducerValueComponent);
     dialogRef.componentInstance.transducerName = name;
     dialogRef.componentInstance.valueOriginal = valueOriginal;
-    dialogRef.componentInstance.valueNew = "";
+    dialogRef.componentInstance.valueNew = '';
     dialogRef.afterClosed().subscribe(
       value =>  {
         if (value) {
@@ -270,7 +270,7 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
   }
 
   newBroadcastTransducer() {
-    if (this.bname != "" && this.bunit != "") {
+    if (this.bname != '' && this.bunit != '') {
       const body = {
         name: this.bname,
         unit: this.bunit,
@@ -280,8 +280,8 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
         result => {
           this.successDialogService
             .dialogPopup('New Broadcast Transducer Added: ' + this.bname);
-          this.bname = "";
-          this.bunit = "";
+          this.bname = '';
+          this.bunit = '';
           this.updateDevice.emit(true);
         },
         error => {
@@ -296,7 +296,7 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
   }
 
   editBroadcastTransducer(transducer: any) {
-    let dialogRef = this.dialog.open(EditTransducerComponent, { data: { transducer: transducer, is_broadcast: true }});
+    const dialogRef = this.dialog.open(EditTransducerComponent, { data: { transducer: transducer, is_broadcast: true }});
     dialogRef.afterClosed().subscribe(
       result =>  {
         if (result) {
@@ -317,9 +317,9 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
   }
 
   deleteBroadcastTransducer(id: string, name: string) {
-    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
-    dialogRef.componentInstance.confirmText = "Delete";
-    dialogRef.componentInstance.dialogText = "Delete Broadcast Transducer " + name + "?";
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    dialogRef.componentInstance.confirmText = 'Delete';
+    dialogRef.componentInstance.dialogText = 'Delete Broadcast Transducer ' + name + '?';
     dialogRef.afterClosed().subscribe(
       result =>  {
         if (result) {
@@ -340,10 +340,10 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
   }
 
   publishBroadcastTransducerValue(id: string, name: string, valueOriginal: string) {
-    let dialogRef = this.dialog.open(InputTransducerValueComponent);
+    const dialogRef = this.dialog.open(InputTransducerValueComponent);
     dialogRef.componentInstance.transducerName = name;
     dialogRef.componentInstance.valueOriginal = valueOriginal;
-    dialogRef.componentInstance.valueNew = "";
+    dialogRef.componentInstance.valueNew = '';
     dialogRef.afterClosed().subscribe(
       value =>  {
         if (value) {

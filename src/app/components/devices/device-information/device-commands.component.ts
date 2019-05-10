@@ -19,10 +19,10 @@ import { Configuration } from '../../../config';
 export class DeviceCommandsComponent implements OnChanges {
   @Input() device: Device;
   @Output() updateDevice: EventEmitter<boolean> = new EventEmitter();
-  name: string = "";
-  value: string = "";
-  bname: string = "";
-  bvalue: string = "";
+  name = '';
+  value = '';
+  bname = '';
+  bvalue = '';
   transducer: any = null;
   broadcastTransducer: any = null;
   baseUrl: string;
@@ -49,8 +49,8 @@ export class DeviceCommandsComponent implements OnChanges {
   }
 
   transducerNameById(transducerID: string): string {
-    for (let t of this.device.transducers) {
-      const trans:any = t; // break typescript
+    for (const t of this.device.transducers) {
+      const trans: any = t; // break typescript
       if (trans._id == transducerID) {
         return trans.name;
       }
@@ -59,8 +59,8 @@ export class DeviceCommandsComponent implements OnChanges {
   }
 
   broadcastTransducerNameById(transducerID: string): string {
-    for (let t of this.device.broadcast_transducers) {
-      const trans:any = t; // break typescript
+    for (const t of this.device.broadcast_transducers) {
+      const trans: any = t; // break typescript
       if (trans._id == transducerID) {
         return trans.name;
       }
@@ -79,9 +79,9 @@ export class DeviceCommandsComponent implements OnChanges {
         result => {
           this.successDialogService
             .dialogPopup('Command Added: ' + this.name);
-          this.name = "";
+          this.name = '';
           this.transducer = null;
-          this.value = "";
+          this.value = '';
           this.updateDevice.emit(true);
         },
         error => {
@@ -106,9 +106,9 @@ export class DeviceCommandsComponent implements OnChanges {
         result => {
           this.successDialogService
             .dialogPopup('Broadcast Command Added: ' + this.bname);
-          this.bname = "";
+          this.bname = '';
           this.broadcastTransducer = null;
-          this.bvalue = "";
+          this.bvalue = '';
           this.updateDevice.emit(true);
         },
         error => {
@@ -123,9 +123,9 @@ export class DeviceCommandsComponent implements OnChanges {
   }
 
   deleteCommand(id: string, name: string) {
-    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
-    dialogRef.componentInstance.dialogText = "Delete Command " + name + "?";
-    dialogRef.componentInstance.confirmText = "Delete";
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    dialogRef.componentInstance.dialogText = 'Delete Command ' + name + '?';
+    dialogRef.componentInstance.confirmText = 'Delete';
     dialogRef.afterClosed().subscribe(
       result => {
         if (result) {
@@ -144,9 +144,9 @@ export class DeviceCommandsComponent implements OnChanges {
   }
 
   deleteBroadcastCommand(id: string, name: string) {
-    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
-    dialogRef.componentInstance.dialogText = "Delete Broadcast Command " + name + "?";
-    dialogRef.componentInstance.confirmText = "Delete";
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    dialogRef.componentInstance.dialogText = 'Delete Broadcast Command ' + name + '?';
+    dialogRef.componentInstance.confirmText = 'Delete';
     dialogRef.afterClosed().subscribe(
       result => {
         if (result) {
@@ -167,19 +167,19 @@ export class DeviceCommandsComponent implements OnChanges {
   publicLink(command: any) {
     this.deviceService.getPublicLink(this.device._id, command._id).subscribe(
       result => {
-        let dialogRef = this.dialog.open(PublicLinkComponent, { width: '800px' });
+        const dialogRef = this.dialog.open(PublicLinkComponent, { width: '800px' });
         dialogRef.componentInstance.device = this.device;
         dialogRef.componentInstance.command = command;
-        dialogRef.componentInstance.link = this.baseUrl+ result;
+        dialogRef.componentInstance.link = this.baseUrl + result;
         dialogRef.componentInstance.baseUrl = this.baseUrl;
       },
       error => {
-        if(error.status == 404){
-          let dialogRef = this.dialog.open(PublicLinkComponent, { width: '800px' });
+        if (error.status == 404) {
+          const dialogRef = this.dialog.open(PublicLinkComponent, { width: '800px' });
           dialogRef.componentInstance.device = this.device;
           dialogRef.componentInstance.command = command;
           dialogRef.componentInstance.baseUrl = this.baseUrl;
-        }else{
+        } else {
           this.errorDialogService
           .dialogPopup(error.message);
         }
@@ -189,7 +189,7 @@ export class DeviceCommandsComponent implements OnChanges {
   publicBroadcastLink(command: any) {
     this.deviceGroupService.getPublicBroadcastLink(this.device._id, command._id).subscribe(
       result => {
-        let dialogRef = this.dialog.open(PublicLinkComponent, { width: '800px' });
+        const dialogRef = this.dialog.open(PublicLinkComponent, { width: '800px' });
         dialogRef.componentInstance.device = this.device;
         dialogRef.componentInstance.command = command;
         dialogRef.componentInstance.link = this.baseUrl + result;
@@ -197,20 +197,20 @@ export class DeviceCommandsComponent implements OnChanges {
         dialogRef.componentInstance.isBroadcast = true;
       },
       error => {
-        if(error.status == 404){
-          let dialogRef = this.dialog.open(PublicLinkComponent, { width: '800px' });
+        if (error.status == 404) {
+          const dialogRef = this.dialog.open(PublicLinkComponent, { width: '800px' });
           dialogRef.componentInstance.device = this.device;
           dialogRef.componentInstance.command = command;
           dialogRef.componentInstance.baseUrl = this.baseUrl;
           dialogRef.componentInstance.isBroadcast = true;
-        }else{
+        } else {
           this.errorDialogService
             .dialogPopup(error.message);
         }
       });
   }
 
- createShortcut(command : any){
+ createShortcut(command: any) {
    // if (this.name != "") {
    const body = {
      'name': command.name,

@@ -10,10 +10,10 @@ import {DeviceService} from '../../../services/device.service';
 })
 
 export class EditTransducerComponent {
-  originalName: string = "";
-  name: string = "";
-  unit: string = "";
-  actuable: boolean = false;
+  originalName = '';
+  name = '';
+  unit = '';
+  actuable = false;
 
   constructor(private router: Router, public dialog: MatDialog, @Inject(MAT_DIALOG_DATA) public data: any,
               private deviceService: DeviceService, public dialogRef: MatDialogRef<EditTransducerComponent>) {
@@ -32,7 +32,7 @@ export class EditTransducerComponent {
   }
 
   submitEdit() {
-    let body = Object();
+    const body = Object();
     body.name = this.name;
     body.unit = this.unit;
     body.is_actuable = this.actuable;

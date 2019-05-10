@@ -17,7 +17,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuccessDialogComponent implements OnInit {
   public message: string;
-  public tip :string;
+  public tip: string;
   constructor() { }
 
   ngOnInit() {

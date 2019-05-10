@@ -47,15 +47,15 @@ export class DeviceTemplateComponent {
   }
 
   deleteTemplate() {
-    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
-    dialogRef.componentInstance.dialogText = "Delete Template " + this.template.name + "?";
-    dialogRef.componentInstance.confirmText = "Delete";
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    dialogRef.componentInstance.dialogText = 'Delete Template ' + this.template.name + '?';
+    dialogRef.componentInstance.confirmText = 'Delete';
     dialogRef.afterClosed().subscribe(
       result => {
         if (result) {
           this.deviceService.deleteTemplate(this.template._id).subscribe(
             result => {
-              this.successDialogService.dialogPopup("Successfully deleted " + this.template.name);
+              this.successDialogService.dialogPopup('Successfully deleted ' + this.template.name);
               this.router.navigate(['/home/devicetemplates']);
             },
             error => {

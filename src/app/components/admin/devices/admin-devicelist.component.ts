@@ -13,7 +13,7 @@ import {Sort} from '@angular/material';
 
 export class AdminDeviceListComponent {
   devices: Array<any> = [];
-  searchTerm: string = '';
+  searchTerm = '';
   errorMessage = '';
   sortedData: Array<any> = [];
 
@@ -49,8 +49,8 @@ export class AdminDeviceListComponent {
       return this.sortedData.filter((x) => {
         if (typeof(x.name) === 'string') {
         // if (typeof(x.name) == "string" && typeof(x.description == "string") && typeof(x.owner == "string")) {
-          let device_name: string = x.name;
-          let name_match = device_name.toLowerCase().includes(this.searchTerm.toLowerCase());
+          const device_name: string = x.name;
+          const name_match = device_name.toLowerCase().includes(this.searchTerm.toLowerCase());
           if (name_match) { return true; }
           let owner_match = false;
 
@@ -62,14 +62,13 @@ export class AdminDeviceListComponent {
           } */
           if (x.owner) {
             if (x.owner.name) {
-              let device_owner: string = x.owner.name;
+              const device_owner: string = x.owner.name;
+              owner_match = device_owner.toLowerCase().includes(this.searchTerm.toLowerCase());
+            } else {
+              const device_owner: string = x.owner.email;
               owner_match = device_owner.toLowerCase().includes(this.searchTerm.toLowerCase());
             }
-            else {
-              let device_owner: string = x.owner.email;
-              owner_match = device_owner.toLowerCase().includes(this.searchTerm.toLowerCase());
-            }
-            if (owner_match) return true;
+            if (owner_match) { return true; }
           }
         }
         return false;

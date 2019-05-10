@@ -22,8 +22,8 @@ export class Device {
                 enabled: boolean,
                 linked_services: Array<Object>,
                 transducers: Array<Object>,
-                isDeviceGroup: boolean = false,
-                combined_pubsub: boolean = false,
+                isDeviceGroup = false,
+                combined_pubsub = false,
                 devices: Array<string> = [],
                 broadcast_transducers: Array<string> = [],
                 broadcast_commands: Array<string> = []) {

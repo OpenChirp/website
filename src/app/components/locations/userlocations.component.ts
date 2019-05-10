@@ -19,7 +19,7 @@ export class UserLocationsComponent {
   }
 
   ngOnInit() {
-    this.userService.getMyLocations("").subscribe(
+    this.userService.getMyLocations('').subscribe(
       result => this.locations = result,
       error => this.router.navigate(['/home'])
     );

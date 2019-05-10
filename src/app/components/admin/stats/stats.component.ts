@@ -12,8 +12,8 @@ import { ErrorDialogService } from '../../../services/error-dialog.service';
 export class StatsComponent {
   stats: Array<any> = [];
 
-  constructor(private route: ActivatedRoute, 
-    private router: Router, 
+  constructor(private route: ActivatedRoute,
+    private router: Router,
     private adminService: AdminService,
     private errorDialogService: ErrorDialogService
     ) {
@@ -24,7 +24,7 @@ export class StatsComponent {
     this.getAllStats();
   }
 
-  getAllStats(){
+  getAllStats() {
     this.adminService.getAllStats().subscribe(
       result => {
         this.stats = result;
@@ -35,7 +35,7 @@ export class StatsComponent {
       });
   }
 
- 
+
 
 
 }

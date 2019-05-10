@@ -11,7 +11,7 @@ import { ErrorDialogService } from '../../services/error-dialog.service';
 
 export class NewGroupComponent {
    // For Input
-  name: string = "";
+  name = '';
 
   constructor(public dialog: MatDialogRef<NewGroupComponent>, private errorDialogService: ErrorDialogService) {
 

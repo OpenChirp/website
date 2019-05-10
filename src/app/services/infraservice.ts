@@ -56,19 +56,19 @@ export class InfraService {
   }
     // Create service token
   createToken(service_id: string) {
-    return this.http.post(this.serviceUrl+ service_id + "/token" , this.requestOptions).pipe(
+    return this.http.post(this.serviceUrl + service_id + '/token' , this.requestOptions).pipe(
                     map(this.extractData),
                     catchError(this.handleError));
   }
   // Re-Create service token
   recreateToken(service_id: string) {
-    return this.http.put(this.serviceUrl+ service_id + "/token" , this.requestOptions).pipe(
+    return this.http.put(this.serviceUrl + service_id + '/token' , this.requestOptions).pipe(
                     map(this.extractData),
                     catchError(this.handleError));
   }
     // Delete Service Token
   deleteToken(service_id: string) {
-    return this.http.delete(this.serviceUrl+ service_id + "/token" , this.requestOptions).pipe(
+    return this.http.delete(this.serviceUrl + service_id + '/token' , this.requestOptions).pipe(
                     map(this.extractData),
                     catchError(this.handleError));
   }

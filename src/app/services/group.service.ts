@@ -14,19 +14,19 @@ export class GroupService {
 
   constructor(private http: Http, private config: Configuration, private requestOptions: RequestOptions) {
     this.apiUrl = config.api_url;
-    this.groupUrl = this.apiUrl + "group/";
+    this.groupUrl = this.apiUrl + 'group/';
     this.requestOptions.withCredentials = true;
   }
 
 
-  getAllGroups(search:string){
-  	return this.http.get(this.groupUrl+"?name" + search, this.requestOptions).pipe(
+  getAllGroups(search: string) {
+    return this.http.get(this.groupUrl + '?name' + search, this.requestOptions).pipe(
     map(this.extractData),
     catchError(this.handleError));
   }
 
-  getGroupById(groupId:string){
-    return this.http.get(this.groupUrl+ groupId, this.requestOptions).pipe(
+  getGroupById(groupId: string) {
+    return this.http.get(this.groupUrl + groupId, this.requestOptions).pipe(
     map(this.extractData),
     catchError(this.handleError));
   }
@@ -38,28 +38,28 @@ export class GroupService {
     catchError(this.handleError));
   }
 
-  getMembersOfGroup( groupdId: string){
-    return this.http.get(this.groupUrl + groupdId + "/members", this.requestOptions).pipe(
+  getMembersOfGroup( groupdId: string) {
+    return this.http.get(this.groupUrl + groupdId + '/members', this.requestOptions).pipe(
     map(this.extractData),
     catchError(this.handleError));
   }
 
-  getUsersNotInGroup( groupdId: string){
-    return this.http.get(this.groupUrl + groupdId + "/notmembers", this.requestOptions).pipe(
+  getUsersNotInGroup( groupdId: string) {
+    return this.http.get(this.groupUrl + groupdId + '/notmembers', this.requestOptions).pipe(
     map(this.extractData),
     catchError(this.handleError));
   }
 
-  addUserToGroup(groupId: string, userId: string, write_access: boolean){
+  addUserToGroup(groupId: string, userId: string, write_access: boolean) {
     const body = {'user_id': userId, 'write_access': write_access};
-    return this.http.post(this.groupUrl + groupId +"/member", body, this.requestOptions).pipe(
+    return this.http.post(this.groupUrl + groupId + '/member', body, this.requestOptions).pipe(
     map(this.extractData),
     catchError(this.handleError));
   }
 
-  removeUserFromGroup(groupId: string, userId: string){
+  removeUserFromGroup(groupId: string, userId: string) {
     const body = {'user_id': userId};
-    return this.http.put(this.groupUrl + groupId +"/member", body, this.requestOptions).pipe(
+    return this.http.put(this.groupUrl + groupId + '/member', body, this.requestOptions).pipe(
     map(this.extractData),
     catchError(this.handleError));
   }

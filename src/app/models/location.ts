@@ -1,6 +1,6 @@
 export class Location {
     name: string;
-    children : Array<string>;
+    children: Array<string>;
     _id: string;
     type: string;
 

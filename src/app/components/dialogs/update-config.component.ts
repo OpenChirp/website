@@ -23,7 +23,7 @@ export class UpdateConfigComponent {
   }
 
   save() {
-    for(let i = 0; i < this.config.length; i++ ){
+    for (let i = 0; i < this.config.length; i++ ) {
       this.newConfig.push({ key: this.config[i].key , value: this.config[i].value});
     }
     this.dialog.close(this.newConfig);

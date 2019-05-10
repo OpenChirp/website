@@ -11,9 +11,9 @@ import { ErrorDialogService } from '../../services/error-dialog.service';
 
 export class InputTransducerValueComponent {
   // Injected
-  transducerName: string = "";
-  valueOriginal: string = "";
-  valueNew: string = "";
+  transducerName = '';
+  valueOriginal = '';
+  valueNew = '';
 
 
   constructor(

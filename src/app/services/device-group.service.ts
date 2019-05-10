@@ -15,8 +15,8 @@ export class DeviceGroupService {
 
   constructor (private http: Http, config: Configuration, private requestOptions: RequestOptions) {
     this.apiUrl = config.api_url;
-    this.deviceUrl = this.apiUrl + "device/";
-    this.deviceGroupUrl = this.apiUrl + "devicegroup/";
+    this.deviceUrl = this.apiUrl + 'device/';
+    this.deviceGroupUrl = this.apiUrl + 'devicegroup/';
     this.requestOptions.withCredentials = true;
   }
 
@@ -27,7 +27,7 @@ export class DeviceGroupService {
   }
 
   // Add Device
-  addDeviceGroup(body : any) {
+  addDeviceGroup(body: any) {
     return this.http.post(this.deviceGroupUrl, body, this.requestOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
@@ -54,13 +54,13 @@ export class DeviceGroupService {
   }
 
   getDeviceGroupTransducers(device_id: string) {
-    return this.http.get(this.deviceGroupUrl + device_id+"/transducer", this.requestOptions).pipe(
+    return this.http.get(this.deviceGroupUrl + device_id + '/transducer', this.requestOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }
 
   private extractData(res: Response) {
-    let body = res.json();
+    const body = res.json();
     return body || { };
   }
 
@@ -78,8 +78,7 @@ export class DeviceGroupService {
     console.error(errMsg);
     if (err.message) {
       return observableThrowError(err);
-    }
-    else {
+    } else {
       return observableThrowError({
         message: error.statusText
       });
@@ -87,54 +86,54 @@ export class DeviceGroupService {
   }
 
   getBroadcastTransducers(device_id: string) {
-    return this.http.get(this.deviceGroupUrl + device_id+"/broadcasttransducer", this.requestOptions).pipe(
+    return this.http.get(this.deviceGroupUrl + device_id + '/broadcasttransducer', this.requestOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }
 
   addBroadcastTransducer(device_id: string, body: any) {
-    return this.http.post(this.deviceGroupUrl + device_id + "/broadcasttransducer", body, this.requestOptions).pipe(
+    return this.http.post(this.deviceGroupUrl + device_id + '/broadcasttransducer', body, this.requestOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }
   // Publish To Transducer
-  publishToBroadcastTransducer(device_id: string, transducer_id:string, body: any) {
-    return this.http.post(this.deviceGroupUrl + device_id + "/broadcasttransducer/"+ transducer_id, body, this.requestOptions).pipe(
+  publishToBroadcastTransducer(device_id: string, transducer_id: string, body: any) {
+    return this.http.post(this.deviceGroupUrl + device_id + '/broadcasttransducer/' + transducer_id, body, this.requestOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }
 
   // Edit  Transducer
   editBroadcastTransducer(device_id: string, transducer_id: string, body: any) {
-    return this.http.put(this.deviceGroupUrl + device_id + "/broadcasttransducer/" + transducer_id, body, this.requestOptions).pipe(
+    return this.http.put(this.deviceGroupUrl + device_id + '/broadcasttransducer/' + transducer_id, body, this.requestOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }
 
   // Delete Transducer
   deleteBroadcastTransducer(device_id: string, transducer_id: string) {
-    return this.http.delete(this.deviceGroupUrl + device_id + "/broadcasttransducer/" + transducer_id, this.requestOptions).pipe(
+    return this.http.delete(this.deviceGroupUrl + device_id + '/broadcasttransducer/' + transducer_id, this.requestOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }
 
   // Execute Command
   executeBroadcastCommand(device_id: string, command_id: string) {
-    return this.http.post(this.deviceGroupUrl + device_id + "/broadcastcommand/" + command_id, {}, this.requestOptions).pipe(
+    return this.http.post(this.deviceGroupUrl + device_id + '/broadcastcommand/' + command_id, {}, this.requestOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }
 
   // Add Command
   addBroadcastCommand(device_id: string, body: any) {
-    return this.http.post(this.deviceGroupUrl + device_id + "/broadcastcommand", body, this.requestOptions).pipe(
+    return this.http.post(this.deviceGroupUrl + device_id + '/broadcastcommand', body, this.requestOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }
 
   // Delete Command
   deleteBroadcastCommand(device_id: string, command_id: string) {
-    return this.http.delete(this.deviceGroupUrl + device_id + "/broadcastcommand/" + command_id, this.requestOptions).pipe(
+    return this.http.delete(this.deviceGroupUrl + device_id + '/broadcastcommand/' + command_id, this.requestOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }
@@ -142,14 +141,14 @@ export class DeviceGroupService {
   // Create Public Link
   createPublicBroadcastLink(device_id: string, command_id: string) {
     const body = {};
-    return this.http.post(this.deviceGroupUrl + device_id + "/broadcastcommand/"+ command_id +"/publiclink", body, this.requestOptions).pipe(
+    return this.http.post(this.deviceGroupUrl + device_id + '/broadcastcommand/' + command_id + '/publiclink', body, this.requestOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }
 
   // Get Public Link
   getPublicBroadcastLink(device_id: string, command_id: string) {
-    return this.http.get(this.deviceGroupUrl + device_id + "/broadcastcommand/"+ command_id +"/publiclink",  this.requestOptions).pipe(
+    return this.http.get(this.deviceGroupUrl + device_id + '/broadcastcommand/' + command_id + '/publiclink',  this.requestOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }

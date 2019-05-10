@@ -45,13 +45,13 @@ export class InfraServicePropertiesComponent {
   }
 
   viewProperties() {
-    let dialogRef = this.dialog.open(PropertiesComponent, { width: '600px' });
+    const dialogRef = this.dialog.open(PropertiesComponent, { width: '600px' });
     dialogRef.componentInstance.properties = this.service.properties || {};
     dialogRef.componentInstance.source = this.service.name;
     dialogRef.afterClosed().subscribe(
       result => {
         if (result) {
-          let newService = this.service;
+          const newService = this.service;
           newService.properties = result;
           this.infraService.updateService(this.service._id, newService).subscribe(
             res => this.successDialogService.dialogPopup('Updated Service: ' + this.service.name),
@@ -63,13 +63,13 @@ export class InfraServicePropertiesComponent {
   }
 
   viewConfigRequired() {
-    let dialogRef = this.dialog.open(ConfigRequiredComponent, {width: '900px'});
+    const dialogRef = this.dialog.open(ConfigRequiredComponent, {width: '900px'});
     dialogRef.componentInstance.config = this.service.config_required || {};
     dialogRef.componentInstance.source = this.service.name;
     dialogRef.afterClosed().subscribe(
       result => {
         if (result) {
-          let newService = this.service;
+          const newService = this.service;
           newService.config_required = result;
           this.infraService.updateService(this.service._id, newService).subscribe(
             res => this.successDialogService.dialogPopup('Updated Service: ' + this.service.name),
@@ -97,7 +97,7 @@ export class InfraServicePropertiesComponent {
   }
 
   recreateServiceToken() {
-    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
     dialogRef.componentInstance.dialogText = 'Regenerate token for ' + this.service.name + '?';
     dialogRef.componentInstance.dialogWarning = 'This will over-write the previous token.';
     dialogRef.componentInstance.confirmText = 'Generate';
@@ -118,7 +118,7 @@ export class InfraServicePropertiesComponent {
   } // End function
 
   deleteServiceToken() {
-    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
     dialogRef.componentInstance.dialogText = 'Delete token for service ' + this.service.name + '? ';
     dialogRef.componentInstance.dialogWarning = 'The token will no longer work for authentication over REST and MQTT.';
     dialogRef.componentInstance.confirmText = 'Delete';

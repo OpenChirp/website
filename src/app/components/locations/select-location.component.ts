@@ -13,7 +13,7 @@ import {LocationService} from '../../services/location.service';
 
 export class SelectLocationComponent {
   locations: Array<any> = [];
-  searchTerm: string = '';
+  searchTerm = '';
 
   constructor(private router: Router, public dialog: MatDialog,
               private locationService: LocationService, public dialogRef: MatDialogRef<SelectLocationComponent>) {
@@ -28,7 +28,7 @@ export class SelectLocationComponent {
   }
 
   confirmSelect(location: any) {
-    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
     dialogRef.componentInstance.dialogText = 'Change Location to ' + location.name + '?';
     dialogRef.componentInstance.confirmText = 'Confirm';
     dialogRef.afterClosed().subscribe(
@@ -44,22 +44,22 @@ export class SelectLocationComponent {
     if (this.searchTerm != '') {
       return this.locations.filter((x) => {
         if (typeof(x.name) == 'string') {
-          let location_name: string = x.name;
-          let name_match = location_name.toLowerCase().includes(this.searchTerm.toLowerCase());
+          const location_name: string = x.name;
+          const name_match = location_name.toLowerCase().includes(this.searchTerm.toLowerCase());
           if (name_match) { return true; }
         }
         if (typeof(x.type) == 'string' && x.type) {
-          let type_name: string = x.type;
-          let type_match = type_name.toLowerCase().includes(this.searchTerm.toLowerCase());
-          if (type_match) return true;
+          const type_name: string = x.type;
+          const type_match = type_name.toLowerCase().includes(this.searchTerm.toLowerCase());
+          if (type_match) { return true; }
         }
         if (x.owner && x.owner.name) {
-          let service_owner: string = x.owner.name;
-          let owner_match = service_owner.toLowerCase().includes(this.searchTerm.toLowerCase());
-          if (owner_match) return true;
+          const service_owner: string = x.owner.name;
+          const owner_match = service_owner.toLowerCase().includes(this.searchTerm.toLowerCase());
+          if (owner_match) { return true; }
         }
-        let loc_id: string = x.id;
-        let id_match = loc_id.toLowerCase().includes(this.searchTerm.toLowerCase());
+        const loc_id: string = x.id;
+        const id_match = loc_id.toLowerCase().includes(this.searchTerm.toLowerCase());
         return id_match;
       });
     } else {

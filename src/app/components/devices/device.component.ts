@@ -20,21 +20,21 @@ import { ErrorDialogService } from '../../services/error-dialog.service';
 })
 
 export class DeviceComponent {
-  device: Device = null;
-  acl :any = {};
-  errorMessage: string = "";
-  successMessage: string = "";
-  tabIndex: number = 0;
 
-  constructor(private route: ActivatedRoute,
-              private router: Router,
-              private deviceService: DeviceService,
-              private successDialogService: SuccessDialogService,
-              private errorDialogService: ErrorDialogService,
-              private userService: UserService,
-              private globalDataService:GlobalDataService,
-              public dialog: MatDialog) {
+  get selectedIndex() {
+    return this.tabIndex;
   }
+
+  set selectedIndex(index: number) {
+    this.tabIndex = index;
+    // TODO: This should probably be some official Angular way of redirecting
+    window.location.hash = this.tabPositionToName[index];
+  }
+  device: Device = null;
+  acl: any = {};
+  errorMessage = '';
+  successMessage = '';
+  tabIndex = 0;
 
   private tabNameToPosition: Map<string, Number> = new Map([
     ['properties', 0],
@@ -54,6 +54,16 @@ export class DeviceComponent {
     'security'
   ];
 
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private deviceService: DeviceService,
+              private successDialogService: SuccessDialogService,
+              private errorDialogService: ErrorDialogService,
+              private userService: UserService,
+              private globalDataService: GlobalDataService,
+              public dialog: MatDialog) {
+  }
+
 
   ngOnInit() {
     this.route.fragment.subscribe((fragment: string) => {
@@ -66,8 +76,8 @@ export class DeviceComponent {
       // The fix would be to have the sender already attach the #properties
       // tag to device page reference.
       // TODO: This should probably be some official Angular way of redirecting
-      //window.location.hash = "#properties";
-      //this.selectedIndex = this.tabNameToPosition.get('properties').valueOf();
+      // window.location.hash = "#properties";
+      // this.selectedIndex = this.tabNameToPosition.get('properties').valueOf();
     }
     });
     this.getDevice();
@@ -86,11 +96,11 @@ export class DeviceComponent {
           if (this.device.__t === 'DeviceGroup') {
             this.device.isDeviceGroup = true;
           }
-          let ownerId = this.device.owner._id;
-          let loggedInUserId = this.globalDataService.userid;
-          let isAdmin = this.globalDataService.isAdmin;
+          const ownerId = this.device.owner._id;
+          const loggedInUserId = this.globalDataService.userid;
+          const isAdmin = this.globalDataService.isAdmin;
           this.acl.isOwner = String(ownerId) === String(loggedInUserId);
-          if(this.acl.isOwner || isAdmin){
+          if (this.acl.isOwner || isAdmin) {
             this.acl.writeAccess = true;
           }
         },
@@ -100,9 +110,9 @@ export class DeviceComponent {
 
   deleteDevice() {
     if (this.device) {
-      let dialogRef = this.dialog.open(ConfirmationDialogComponent);
-      dialogRef.componentInstance.dialogText = "Delete Device " + this.device.name + "?";
-      dialogRef.componentInstance.confirmText = "Delete";
+      const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+      dialogRef.componentInstance.dialogText = 'Delete Device ' + this.device.name + '?';
+      dialogRef.componentInstance.confirmText = 'Delete';
       dialogRef.afterClosed().subscribe(
         result => {
           if (result) {
@@ -120,15 +130,5 @@ export class DeviceComponent {
       ); // End subscribe
     } // End if device
   } // End function
-
-  get selectedIndex() {
-    return this.tabIndex;
-  }
-
-  set selectedIndex(index : number) {
-    this.tabIndex = index;
-    // TODO: This should probably be some official Angular way of redirecting
-    window.location.hash = this.tabPositionToName[index];
-  }
 
 }

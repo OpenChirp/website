@@ -29,8 +29,8 @@ export class GroupComponent {
     this.getAllGroups();
   }
 
-  getAllGroups(){
-    this.groupService.getAllGroups("").subscribe(
+  getAllGroups() {
+    this.groupService.getAllGroups('').subscribe(
       result => {
         this.groups = result;
       },
@@ -44,15 +44,15 @@ export class GroupComponent {
     this.router.navigate(['/home/group',  group._id ]);
  }
 
- createGroup(){
-    let dialogRef = this.dialog.open(NewGroupComponent, { width: '600px' });
+ createGroup() {
+    const dialogRef = this.dialog.open(NewGroupComponent, { width: '600px' });
     dialogRef.afterClosed().subscribe(
       result => {
-        if(result) {
+        if (result) {
           this.groupService.createGroup(result).subscribe(
             res => {
                 this.getAllGroups();
-                this.successDialogService.dialogPopup("Group Created " + result.name);
+                this.successDialogService.dialogPopup('Group Created ' + result.name);
             },
             err => this.errorDialogService.dialogPopup(err.message)
           );
@@ -62,10 +62,10 @@ export class GroupComponent {
   }
 
 
-  deleteGroup(group: any){
-    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
-    dialogRef.componentInstance.dialogText = "Delete Group " + group.name + "?";
-    dialogRef.componentInstance.confirmText = "Delete";
+  deleteGroup(group: any) {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    dialogRef.componentInstance.dialogText = 'Delete Group ' + group.name + '?';
+    dialogRef.componentInstance.confirmText = 'Delete';
     dialogRef.afterClosed().subscribe(
       result => {
         if (result) {

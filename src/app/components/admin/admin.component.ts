@@ -11,7 +11,7 @@ export class AdminComponent {
 
   }
  ngOnInit() {
-  
+
   }
 
 }

@@ -24,8 +24,8 @@ export class GroupedDevicesComponent implements OnInit {
   devices: Array<any> = [];
   sortedData: Array<any> = [];
   prevSort: Sort = {
-    active: "name",
-    direction: "asc"
+    active: 'name',
+    direction: 'asc'
   };
 
 
@@ -55,7 +55,7 @@ export class GroupedDevicesComponent implements OnInit {
           disableClear: true
         });
         // This is an ugly hack to get it sort programatically, until material fixes this behavior
-        let activeSortHeader = this.matSort.sortables.get(this.prevSort.active);
+        const activeSortHeader = this.matSort.sortables.get(this.prevSort.active);
         if (activeSortHeader) {
           activeSortHeader['_setAnimationTransitionState']({
             fromState: this.prevSort.direction,
@@ -76,10 +76,10 @@ export class GroupedDevicesComponent implements OnInit {
     this.router.navigate(['/home/device/', id]);
   }
 
-  addDeviceToGroup(device: any){
+  addDeviceToGroup(device: any) {
     this.deviceGroupService.addDeviceToGroup(this.deviceGroup._id, device._id).subscribe(
       result => {
-        this.successDialogService.dialogPopup("Added device: " + device.name);
+        this.successDialogService.dialogPopup('Added device: ' + device.name);
         this.getGroupedDevices();
       },
       error => {
@@ -89,7 +89,7 @@ export class GroupedDevicesComponent implements OnInit {
   }
 
   removeDevice(device_id: string, name: string) {
-    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
     dialogRef.componentInstance.dialogText = 'Remove device from group : ' + name + '?';
     dialogRef.componentInstance.confirmText = 'Remove';
     dialogRef.afterClosed().subscribe(
@@ -109,10 +109,10 @@ export class GroupedDevicesComponent implements OnInit {
   }
 
   selectDevice() {
-    let dialogRef = this.dialog.open(SelectDeviceComponent, { width: '900px', height: '700px' });
+    const dialogRef = this.dialog.open(SelectDeviceComponent, { width: '900px', height: '700px' });
     dialogRef.afterClosed().subscribe(
       result => {
-        if(result) {
+        if (result) {
           this.addDeviceToGroup(result);
         }
       })

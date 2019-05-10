@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 
 export class DeviceTemplatesComponent {
-  
+
   templates: Array<Object> = [];
 
   constructor(private deviceService: DeviceService, private router: Router) {

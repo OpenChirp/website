@@ -22,7 +22,7 @@ export class InputConfigComponent {
   }
 
   save() {
-    for(let i = 0; i < this.configRequired.length; i++ ){
+    for (let i = 0; i < this.configRequired.length; i++ ) {
       this.newConfig.push({ key: this.configRequired[i].key_name , value: this.configRequired[i].value});
     }
     this.dialog.close(this.newConfig);
