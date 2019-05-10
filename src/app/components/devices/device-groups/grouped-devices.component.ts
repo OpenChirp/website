@@ -55,7 +55,7 @@ export class GroupedDevicesComponent implements OnInit {
           disableClear: true
         });
         // This is an ugly hack to get it sort programatically, until material fixes this behavior
-        let activeSortHeader = this.matSort.sortables.get(this.prevSort.active)
+        let activeSortHeader = this.matSort.sortables.get(this.prevSort.active);
         if (activeSortHeader) {
           activeSortHeader['_setAnimationTransitionState']({
             fromState: this.prevSort.direction,

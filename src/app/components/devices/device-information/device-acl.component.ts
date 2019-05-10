@@ -134,7 +134,7 @@ export class DeviceAclComponent {
   recreateDeviceToken() {
     let dialogRef = this.dialog.open(ConfirmationDialogComponent);
     dialogRef.componentInstance.dialogText = "Regenerate token for " + this.device.name + "? ";
-    dialogRef.componentInstance.dialogWarning = "This will over-write the previous token."
+    dialogRef.componentInstance.dialogWarning = "This will over-write the previous token.";
     dialogRef.componentInstance.confirmText = "Generate";
     dialogRef.afterClosed().subscribe(
       result => {
@@ -156,7 +156,7 @@ export class DeviceAclComponent {
   deleteDeviceToken() {
     let dialogRef = this.dialog.open(ConfirmationDialogComponent);
     dialogRef.componentInstance.dialogText = "Delete token for device " + this.device.name + "? ";
-    dialogRef.componentInstance.dialogWarning = "The token will no longer work for authentication over REST and MQTT."
+    dialogRef.componentInstance.dialogWarning = "The token will no longer work for authentication over REST and MQTT.";
     dialogRef.componentInstance.confirmText = "Delete";
     dialogRef.afterClosed().subscribe(
       result => {

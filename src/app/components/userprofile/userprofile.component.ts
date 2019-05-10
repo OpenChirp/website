@@ -76,7 +76,7 @@ getToken(){
  deleteUserToken() {
     let dialogRef = this.dialog.open(ConfirmationDialogComponent);
     dialogRef.componentInstance.dialogText = "Delete user token " + "? ";
-    dialogRef.componentInstance.dialogWarning = "The token will no longer work for authentication over REST and MQTT."
+    dialogRef.componentInstance.dialogWarning = "The token will no longer work for authentication over REST and MQTT.";
     dialogRef.componentInstance.confirmText = "Delete";
     dialogRef.afterClosed().subscribe(
       result => {

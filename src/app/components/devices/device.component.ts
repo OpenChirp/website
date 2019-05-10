@@ -69,7 +69,7 @@ export class DeviceComponent {
       //window.location.hash = "#properties";
       //this.selectedIndex = this.tabNameToPosition.get('properties').valueOf();
     }
-    })
+    });
     this.getDevice();
   }
 
