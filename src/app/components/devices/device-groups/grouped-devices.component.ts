@@ -1,16 +1,14 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, ViewChild } from '@angular/core';
 import { Router , ActivatedRoute} from '@angular/router';
 import { Device } from '../../../models/device';
 import { DeviceService } from '../../../services/device.service';
 import { DeviceGroupService } from '../../../services/device-group.service';
 import { SuccessDialogService } from '../../../services/success-dialog.service';
 import { ErrorDialogService } from '../../../services/error-dialog.service';
-import { MatDialog, Sort } from '@angular/material';
+import { MatDialog, Sort, MatSort } from '@angular/material';
 import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.component';
 
 import { SelectDeviceComponent } from '../../devices/select-device.component';
-
-import {MatSortModule} from '@angular/material/sort';
 
 
 @Component({
@@ -19,11 +17,17 @@ import {MatSortModule} from '@angular/material/sort';
   styleUrls: ['./grouped-devices.component.scss']
 })
 
-export class GroupedDevicesComponent {
+export class GroupedDevicesComponent implements OnInit {
   @Input() deviceGroup: Device;
   @Output() updateDevice: EventEmitter<boolean> = new EventEmitter();
+  @ViewChild(MatSort) matSort: MatSort;
   devices: Array<any> = [];
   sortedData: Array<any> = [];
+  prevSort: Sort = {
+    active: "name",
+    direction: "asc"
+  };
+
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -39,10 +43,30 @@ export class GroupedDevicesComponent {
   }
 
   getGroupedDevices() {
+    this.prevSort.direction = this.matSort.direction;
+    this.prevSort.active = this.matSort.active;
     this.deviceGroupService.getGroupedDevices(this.deviceGroup._id).subscribe(
       result => {
         this.devices = result;
         this.sortedData = this.devices.slice();
+        this.matSort.sort({
+          id: this.prevSort.active,
+          start: this.prevSort.direction as any,
+          disableClear: true
+        });
+        // This is an ugly hack to get it sort programatically, until material fixes this behavior
+        let activeSortHeader = this.matSort.sortables.get(this.prevSort.active)
+        if (activeSortHeader) {
+          activeSortHeader['_setAnimationTransitionState']({
+            fromState: this.prevSort.direction,
+            toState: 'active',
+          });
+          this.matSort.sort({
+            id: this.prevSort.active,
+            start: this.prevSort.direction as any,
+            disableClear: true
+          });
+        }
       },
       error => this.router.navigate(['/home'])
     );
