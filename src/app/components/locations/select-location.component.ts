@@ -60,8 +60,7 @@ export class SelectLocationComponent {
         }
         let loc_id: string = x.id;
         let id_match = loc_id.toLowerCase().includes(this.searchTerm.toLowerCase());
-        if (id_match) return true;
-        return false;
+        return id_match;
       });
     } else {
       return this.locations;

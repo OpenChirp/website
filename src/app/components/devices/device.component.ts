@@ -89,12 +89,7 @@ export class DeviceComponent {
           let ownerId = this.device.owner._id;
           let loggedInUserId = this.globalDataService.userid;
           let isAdmin = this.globalDataService.isAdmin;
-          if(String(ownerId) === String(loggedInUserId)){
-            this.acl.isOwner = true;
-          }
-          else{
-            this.acl.isOwner = false;
-          }
+          this.acl.isOwner = String(ownerId) === String(loggedInUserId);
           if(this.acl.isOwner || isAdmin){
             this.acl.writeAccess = true;
           }
