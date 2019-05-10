@@ -1,8 +1,9 @@
-import { Component, AfterViewInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Configuration } from '../../config';
-import { AuthService } from '../../services/auth.service';
-import { ErrorDialogService } from '../../services/error-dialog.service';
+import {AfterViewInit, Component} from '@angular/core';
+import {Router} from '@angular/router';
+import {Configuration} from '../../config';
+import {AuthService} from '../../services/auth.service';
+import {ErrorDialogService} from '../../services/error-dialog.service';
+
 declare const gapi: any;
 
 @Component({
@@ -12,10 +13,11 @@ declare const gapi: any;
 export class GoogleLoginComponent implements AfterViewInit {
   public auth2: any;
   public clientId: string;
+
   constructor(private config: Configuration,
               private router: Router,
-             private authService: AuthService,
-             private errorDialogService: ErrorDialogService) {
+              private authService: AuthService,
+              private errorDialogService: ErrorDialogService) {
     this.clientId = config.google_auth_client_id;
 
   }
@@ -35,23 +37,25 @@ export class GoogleLoginComponent implements AfterViewInit {
       this.attachSignin(document.getElementById('googleBtn'));
     });
   }
+
   public attachSignin(element) {
     this.auth2.attachClickHandler(element, {},
       (googleUser) => {
         // let profile = googleUser.getBasicProfile();
         const token = googleUser.getAuthResponse().id_token;
-        const body = {'id_token' : token };
+        const body = {'id_token': token};
         this.authService.googleLogin(body).subscribe(
-            res => {
-               // this.router.navigate(['/home']);
-              window.location.href = '/home';
-              },
-            err => this.errorDialogService.dialogPopup(err.message)
-            )
+          res => {
+            // this.router.navigate(['/home']);
+            window.location.href = '/home';
+          },
+          err => this.errorDialogService.dialogPopup(err.message)
+        )
       }, (error) => {
         alert(JSON.stringify(error, undefined, 2));
       });
   }
+
   public renderButton() {
     gapi.signin2.render('googleBtn', {
       'scope': 'email',

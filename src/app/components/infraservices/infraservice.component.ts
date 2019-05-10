@@ -1,14 +1,14 @@
 import {switchMap} from 'rxjs/operators';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 
-import { InfraService } from '../../services/infraservice';
+import {InfraService} from '../../services/infraservice';
 
-import { SuccessDialogService } from '../../services/success-dialog.service';
-import { ErrorDialogService } from '../../services/error-dialog.service';
-import { GlobalDataService } from '../../services/global.data.service';
-import { MatDialog } from '@angular/material';
-import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.component';
+import {SuccessDialogService} from '../../services/success-dialog.service';
+import {ErrorDialogService} from '../../services/error-dialog.service';
+import {GlobalDataService} from '../../services/global.data.service';
+import {MatDialog} from '@angular/material';
+import {ConfirmationDialogComponent} from '../dialogs/confirmation-dialog.component';
 
 @Component({
   selector: 'infra-service',
@@ -32,10 +32,10 @@ export class InfraServiceComponent implements OnInit {
   ];
 
   constructor(private route: ActivatedRoute, private infraService: InfraService, private router: Router,
-    private successDialogService: SuccessDialogService,
-    private errorDialogService: ErrorDialogService,
-    private globalDataService: GlobalDataService,
-    public dialog: MatDialog) {
+              private successDialogService: SuccessDialogService,
+              private errorDialogService: ErrorDialogService,
+              private globalDataService: GlobalDataService,
+              public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -58,15 +58,15 @@ export class InfraServiceComponent implements OnInit {
 
   getService() {
     this.route.params.pipe(
-    switchMap((params: Params) => this.infraService.getServiceByID(params['id'])))
-    .subscribe(
-      result => {
-        this.service = result;
-        const ownerId = this.service.owner._id;
-        const loggedInUserId = this.globalDataService.userid;
-        this.acl.isOwner = (String(ownerId) === String(loggedInUserId));
-      },
-      error => this.router.navigate(['/home/services'])
+      switchMap((params: Params) => this.infraService.getServiceByID(params['id'])))
+      .subscribe(
+        result => {
+          this.service = result;
+          const ownerId = this.service.owner._id;
+          const loggedInUserId = this.globalDataService.userid;
+          this.acl.isOwner = (String(ownerId) === String(loggedInUserId));
+        },
+        error => this.router.navigate(['/home/services'])
       );
   }
 
@@ -90,9 +90,11 @@ export class InfraServiceComponent implements OnInit {
       }
     );
   }
+
   get selectedIndex() {
     return this.tabIndex;
   }
+
   set selectedIndex(index: number) {
     this.tabIndex = index;
     // TODO: This should probably be some official Angular way of redirecting

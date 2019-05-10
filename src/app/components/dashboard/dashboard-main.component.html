@@ -5,7 +5,7 @@
     <mat-card>
       <mat-card-title>Shortcuts</mat-card-title>
       <mat-card-content>
-        <table *ngIf = "shortcuts?.length > 0">
+        <table *ngIf="shortcuts?.length > 0">
           <thead>
           <tr>
             <th></th>
@@ -14,54 +14,54 @@
           </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let shortcut of shortcuts">
-              <td>
-                <button mat-raised-button (click)="execute(shortcut)">Run</button>
-              </td>
-              <td><p>{{ shortcut.name }}</p></td>
-              <td>
-                <button mat-icon-button color="warn" (click)="deleteShortcut(shortcut)">
-                  <mat-icon >clear</mat-icon>
-                </button>
-              </td>
-            </tr>
+          <tr *ngFor="let shortcut of shortcuts">
+            <td>
+              <button mat-raised-button (click)="execute(shortcut)">Run</button>
+            </td>
+            <td><p>{{ shortcut.name }}</p></td>
+            <td>
+              <button mat-icon-button color="warn" (click)="deleteShortcut(shortcut)">
+                <mat-icon>clear</mat-icon>
+              </button>
+            </td>
+          </tr>
           </tbody>
         </table>
       </mat-card-content>
     </mat-card>
 
     <mat-card>
-        <mat-card-title>Locations</mat-card-title>
-        <mat-card-content>
-          <table *ngIf = "locations?.length > 0">
-            <thead>
-              <tr>
-                <th>Name</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="locations" *ngFor="let location of locations" (click)="gotoDevices(location._id)">
-                <td><p>{{ location.name }}</p></td>
-              </tr>
-            </tbody>
-          </table>
-        </mat-card-content>
-      </mat-card>
+      <mat-card-title>Locations</mat-card-title>
+      <mat-card-content>
+        <table *ngIf="locations?.length > 0">
+          <thead>
+          <tr>
+            <th>Name</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr class="locations" *ngFor="let location of locations" (click)="gotoDevices(location._id)">
+            <td><p>{{ location.name }}</p></td>
+          </tr>
+          </tbody>
+        </table>
+      </mat-card-content>
+    </mat-card>
 
     <mat-card *ngIf="myDevicesMapIframeSrc">
       <mat-card-title>My Devices</mat-card-title>
       <mat-card-content>
-          <iframe [src]="myDevicesMapIframeSrc" scrolling="no"
-          frameborder="no" align="center" height = "350px" width = "100%"></iframe>
+        <iframe [src]="myDevicesMapIframeSrc" scrolling="no"
+                frameborder="no" align="center" height="350px" width="100%"></iframe>
       </mat-card-content>
     </mat-card>
 
     <mat-card *ngIf="publicDevicesMapIframeSrc">
-        <mat-card-title>Public Devices</mat-card-title>
-        <mat-card-content>
-            <iframe [src]="publicDevicesMapIframeSrc" scrolling="no"
-            frameborder="no" align="center" height = "350px" width = "100%"></iframe>
-        </mat-card-content>
+      <mat-card-title>Public Devices</mat-card-title>
+      <mat-card-content>
+        <iframe [src]="publicDevicesMapIframeSrc" scrolling="no"
+                frameborder="no" align="center" height="350px" width="100%"></iframe>
+      </mat-card-content>
     </mat-card>
 
   </div>

@@ -10,18 +10,22 @@
     transition-duration: 0.3s;
     cursor: pointer;
   }
+
   tr:hover {
     background-color: #e3e3e3;
   }
 
   .search {
     overflow: hidden;
+
     h2 {
       float: left;
     }
+
     mat-form-field {
       float: right;
     }
+
     mat-icon {
       float: right;
       color: #909090;

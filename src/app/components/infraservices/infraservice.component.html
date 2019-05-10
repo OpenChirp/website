@@ -1,27 +1,28 @@
 <div class="infra-service">
-    <mat-card *ngIf="service">
-      <div class="card-header">
-         <h2 > Service {{ service.name }}</h2>
-         <div class="delete">
-           <button mat-raised-button (click)="deleteService()">Delete</button>
-         </div>
+  <mat-card *ngIf="service">
+    <div class="card-header">
+      <h2> Service {{ service.name }}</h2>
+      <div class="delete">
+        <button mat-raised-button (click)="deleteService()">Delete</button>
       </div>
-       <hr>
-      <mat-tab-group [(selectedIndex)]="selectedIndex">
-        <!-- Properties Tab -->
-        <mat-tab label="Properties">
-          <div class="tab-content">
-            <infra-service-properties [service]="service" [acl]="acl" (updateInfraservice)="getService($event)"></infra-service-properties>
-          </div>
-        </mat-tab>
+    </div>
+    <hr>
+    <mat-tab-group [(selectedIndex)]="selectedIndex">
+      <!-- Properties Tab -->
+      <mat-tab label="Properties">
+        <div class="tab-content">
+          <infra-service-properties [service]="service" [acl]="acl"
+                                    (updateInfraservice)="getService($event)"></infra-service-properties>
+        </div>
+      </mat-tab>
 
-        <!-- Devices Tab -->
-        <mat-tab label="Device List">
-          <div class="tab-content">
-            <infra-service-devicelist [service]="service"></infra-service-devicelist>
-          </div>
-        </mat-tab>
-      </mat-tab-group>
+      <!-- Devices Tab -->
+      <mat-tab label="Device List">
+        <div class="tab-content">
+          <infra-service-devicelist [service]="service"></infra-service-devicelist>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
   </mat-card>
 
 </div>

@@ -2,23 +2,29 @@ $black-text: #303132;
 
 .user-services {
   background-color: #ffffff;
+
   p {
     font-family: "Avenir-Med", sans-serif;
     color: $black-text;
   }
+
   mat-card {
     box-shadow: none;
+
     th {
       border-bottom: solid 1px #909090;
-      font-weight:bold;
+      font-weight: bold;
     }
+
     tr {
       border-top: solid 1px #e3e3e3;
       border-bottom: solid 1px #e3e3e3;
     }
+
     tr:hover {
       background-color: #e3e3e3;
     }
+
     .card-header {
       h2 {
         margin: 0;
@@ -29,6 +35,7 @@ $black-text: #303132;
 
       margin-bottom: 20px;
     }
+
     hr {
       margin: 0;
     }

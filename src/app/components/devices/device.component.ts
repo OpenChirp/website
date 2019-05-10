@@ -1,16 +1,16 @@
 import {switchMap} from 'rxjs/operators';
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { MatDialog} from '@angular/material';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {MatDialog} from '@angular/material';
 
 
-import { Device } from '../../models/device';
-import { DeviceService } from '../../services/device.service';
-import { GlobalDataService } from '../../services/global.data.service';
-import { SuccessDialogService } from '../../services/success-dialog.service';
-import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.component';
-import { UserService } from '../../services/user.service';
-import { ErrorDialogService } from '../../services/error-dialog.service';
+import {Device} from '../../models/device';
+import {DeviceService} from '../../services/device.service';
+import {GlobalDataService} from '../../services/global.data.service';
+import {SuccessDialogService} from '../../services/success-dialog.service';
+import {ConfirmationDialogComponent} from '../dialogs/confirmation-dialog.component';
+import {UserService} from '../../services/user.service';
+import {ErrorDialogService} from '../../services/error-dialog.service';
 
 @Component({
   selector: 'device-info',
@@ -30,6 +30,7 @@ export class DeviceComponent implements OnInit {
     // TODO: This should probably be some official Angular way of redirecting
     window.location.hash = this.tabPositionToName[index];
   }
+
   device: Device = null;
   acl: any = {};
   errorMessage = '';
@@ -67,18 +68,18 @@ export class DeviceComponent implements OnInit {
 
   ngOnInit() {
     this.route.fragment.subscribe((fragment: string) => {
-    // Automatically move to the tab indicated in #hashtag
-    if (this.tabNameToPosition.has(fragment)) {
-      this.selectedIndex = this.tabNameToPosition.get(fragment).valueOf();
-    } else {
-      // We cannot do a redirect immediately because this would
-      // mess up the back stack, such that you would never be able to "go back".
-      // The fix would be to have the sender already attach the #properties
-      // tag to device page reference.
-      // TODO: This should probably be some official Angular way of redirecting
-      // window.location.hash = "#properties";
-      // this.selectedIndex = this.tabNameToPosition.get('properties').valueOf();
-    }
+      // Automatically move to the tab indicated in #hashtag
+      if (this.tabNameToPosition.has(fragment)) {
+        this.selectedIndex = this.tabNameToPosition.get(fragment).valueOf();
+      } else {
+        // We cannot do a redirect immediately because this would
+        // mess up the back stack, such that you would never be able to "go back".
+        // The fix would be to have the sender already attach the #properties
+        // tag to device page reference.
+        // TODO: This should probably be some official Angular way of redirecting
+        // window.location.hash = "#properties";
+        // this.selectedIndex = this.tabNameToPosition.get('properties').valueOf();
+      }
     });
     this.getDevice();
   }
@@ -123,7 +124,7 @@ export class DeviceComponent implements OnInit {
                 this.router.navigate(['/home/mydevices']);
               },
               error => this.errorDialogService
-                        .dialogPopup(error.message + ': ' + this.device.name)
+                .dialogPopup(error.message + ': ' + this.device.name)
             ); // End Delete Device Subscribe
           } // End if
         } // End result

@@ -3,24 +3,30 @@
     border-bottom: solid 1px #303030;
     font-weight: bold;
   }
+
   tr {
     border-bottom: solid 1px #303030;
+
     td {
       vertical-align: middle;
     }
+
     mat-icon {
       cursor: pointer;
       color: #909090;
       transition-duration: 0.2s;
     }
+
     mat-icon:hover {
       color: #303030;
     }
   }
+
   h2 {
     margin-top: 0;
     margin-bottom: 30px;
   }
+
   .buttons {
     margin-top: 20px;
   }

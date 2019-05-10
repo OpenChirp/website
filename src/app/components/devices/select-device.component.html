@@ -1,4 +1,4 @@
-<div class="select-device" >
+<div class="select-device">
   <mat-card>
     <div class="card-header">
       <h2>Select a Device</h2>
@@ -12,21 +12,21 @@
     <table>
       <!-- Table Header-->
       <thead>
-        <tr>
-          <th>Device Name</th>
-          <th>Owner</th>
-          <th>Location</th>
-        </tr>
+      <tr>
+        <th>Device Name</th>
+        <th>Owner</th>
+        <th>Location</th>
+      </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let device of filtered()" class="devices" (click)="select(device)">
-          <td>{{ device.name }}</td>
-          <td><span *ngIf="device.owner">{{ device.owner.name }} &lt;{{ device.owner.email }}&gt;</span></td>
-          <td><span *ngIf="device.location_id">{{ device.location_id.name }}</span></td>
-        </tr>
-        <tr *ngIf="filtered().length == 0">
-          <td colspan="3">No devices found.</td>
-        </tr>
+      <tr *ngFor="let device of filtered()" class="devices" (click)="select(device)">
+        <td>{{ device.name }}</td>
+        <td><span *ngIf="device.owner">{{ device.owner.name }} &lt;{{ device.owner.email }}&gt;</span></td>
+        <td><span *ngIf="device.location_id">{{ device.location_id.name }}</span></td>
+      </tr>
+      <tr *ngIf="filtered().length == 0">
+        <td colspan="3">No devices found.</td>
+      </tr>
       </tbody>
     </table>
   </mat-card>

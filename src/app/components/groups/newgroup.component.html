@@ -1,19 +1,19 @@
 <div class="new-group">
   <h2>Create Group</h2>
-  <table>    
+  <table>
     <tbody>
-      <tr> 
-        <td> Name : </td>
-        <td>
-          <mat-form-field class="name">
-            <input required matInput [(ngModel)]="name">   
-          </mat-form-field>
-        </td>
-      </tr>
+    <tr>
+      <td> Name :</td>
+      <td>
+        <mat-form-field class="name">
+          <input required matInput [(ngModel)]="name">
+        </mat-form-field>
+      </td>
+    </tr>
     </tbody>
-    </table>
-    <div class="buttons">
-      <button mat-raised-button (click)="save()">Save</button>
-      <button mat-raised-button (click)="cancel()">Cancel</button>
-    </div>  
+  </table>
+  <div class="buttons">
+    <button mat-raised-button (click)="save()">Save</button>
+    <button mat-raised-button (click)="cancel()">Cancel</button>
+  </div>
 </div>

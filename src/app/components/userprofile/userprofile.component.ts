@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute} from '@angular/router';
-import { UserService } from '../../services/user.service';
-import { SuccessDialogService } from '../../services/success-dialog.service';
-import { ErrorDialogService } from '../../services/error-dialog.service';
-import { MatDialog } from '@angular/material';
-import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.component';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UserService} from '../../services/user.service';
+import {SuccessDialogService} from '../../services/success-dialog.service';
+import {ErrorDialogService} from '../../services/error-dialog.service';
+import {MatDialog} from '@angular/material';
+import {ConfirmationDialogComponent} from '../dialogs/confirmation-dialog.component';
 
 @Component({
   selector: 'user-profile',
@@ -26,54 +26,55 @@ export class UserProfileComponent implements OnInit {
 
   }
 
-ngOnInit() {
-     this.getUser();
-     this.getToken();
-}
+  ngOnInit() {
+    this.getUser();
+    this.getToken();
+  }
 
-getUser() {
-  this.userService.getUser().subscribe(
-     result => this.user = result,
-     error =>  this.errorDialogService.dialogPopup(error.message)
-   );
-}
+  getUser() {
+    this.userService.getUser().subscribe(
+      result => this.user = result,
+      error => this.errorDialogService.dialogPopup(error.message)
+    );
+  }
 
-updateUser() {
-  this.userService.updateUser(this.user).subscribe(
+  updateUser() {
+    this.userService.updateUser(this.user).subscribe(
       result => {
         this.getUser();
         this.successDialogService.dialogPopup('Done');
       },
-      error =>  this.errorDialogService.dialogPopup(error.message)
+      error => this.errorDialogService.dialogPopup(error.message)
     );
- }
+  }
 
-getToken() {
-   this.userService.getToken().subscribe(
+  getToken() {
+    this.userService.getToken().subscribe(
       result => this.token = result,
-      error =>  {
+      error => {
         if (error.status != 404) {
-            this.errorDialogService.dialogPopup(error.message);
+          this.errorDialogService.dialogPopup(error.message);
         } else {
           this.token = null;
         }
       });
- }
+  }
 
- createUserToken() {
+  createUserToken() {
     this.userService.createToken().subscribe(
       result => {
         this.getToken();
         this.successDialogService
-        .dialogPopupNoAutoClose('Token : ' + result, this.tokenTip);
+          .dialogPopupNoAutoClose('Token : ' + result, this.tokenTip);
       },
       error => {
         this.errorDialogService
-        .dialogPopup(error.message );
+          .dialogPopup(error.message);
       }
-      );
+    );
   }
- deleteUserToken() {
+
+  deleteUserToken() {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent);
     dialogRef.componentInstance.dialogText = 'Delete user token ' + '? ';
     dialogRef.componentInstance.dialogWarning = 'The token will no longer work for authentication over REST and MQTT.';
@@ -85,17 +86,15 @@ getToken() {
             result => {
               this.getToken();
               this.successDialogService
-              .dialogPopup('Successfully deleted token');
+                .dialogPopup('Successfully deleted token');
             },
             error => this.errorDialogService
-            .dialogPopup(error.message)
-            ); // End delete token subscribe.
+              .dialogPopup(error.message)
+          ); // End delete token subscribe.
         } // End if
       } // End result
-      ); // End subscribe
+    ); // End subscribe
   } // End function
-
-
 
 
 }

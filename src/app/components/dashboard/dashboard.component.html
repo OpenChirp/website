@@ -18,7 +18,7 @@
         <a mat-menu-item routerLink="/home/mylocations">My Locations</a>
         <a mat-menu-item routerLink="/home/myservices">My Services</a>
         <a mat-menu-item routerLink="/home/myprofile">My Profile</a>
-        <a button mat-menu-item  (click)="logout()">Logout</a>
+        <a button mat-menu-item (click)="logout()">Logout</a>
       </mat-menu>
 
     </div>
@@ -29,9 +29,15 @@
       <!-- sidenav content -->
       <!-- Sidenav Buttons -->
       <div class="sidenav-button">
-        <a routerLink="/home"><p>Dashboard</p><mat-icon>home</mat-icon></a>
-        <a routerLink="/home/devicetemplates"><p>Device Templates</p><mat-icon>description</mat-icon></a>
-        <a routerLink="/home/services"><p>Services</p><mat-icon>settings</mat-icon></a>
+        <a routerLink="/home"><p>Dashboard</p>
+          <mat-icon>home</mat-icon>
+        </a>
+        <a routerLink="/home/devicetemplates"><p>Device Templates</p>
+          <mat-icon>description</mat-icon>
+        </a>
+        <a routerLink="/home/services"><p>Services</p>
+          <mat-icon>settings</mat-icon>
+        </a>
         <!-- Location Tree -->
         <div *ngIf="rootLocation">
           <tree-node

@@ -4,12 +4,15 @@ $black-text: #303132;
   .delete {
     font-family: "Avenir-Med", sans-serif;
     color: red;
+
     .button {
       background-color: white;
     }
   }
+
   mat-card {
     box-shadow: none;
+
     .card-header {
       h2 {
         margin: 0;
@@ -17,20 +20,25 @@ $black-text: #303132;
         font-family: "Avenir-Heavy", sans-serif;
         color: $black-text;
       }
+
       button {
         float: right;
       }
+
       margin-bottom: 60px;
     }
+
     hr {
       margin: 0;
     }
   }
+
   h4 {
     font-family: "Avenir-Med", sans-serif;
     color: $black-text;
     font-variant: all-small-caps;
   }
+
   p {
     font-family: "Avenir-Med", sans-serif;
     color: $black-text;

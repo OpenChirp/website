@@ -1,10 +1,10 @@
 import {throwError as observableThrowError} from 'rxjs';
 
 import {catchError, map} from 'rxjs/operators';
-import { Injectable } from '@angular/core';
-import { Http, Response, RequestOptions } from '@angular/http';
+import {Injectable} from '@angular/core';
+import {Http, RequestOptions, Response} from '@angular/http';
 
-import { Configuration } from '../config';
+import {Configuration} from '../config';
 
 @Injectable()
 
@@ -13,7 +13,7 @@ export class DeviceGroupService {
   private deviceUrl: string;
   private deviceGroupUrl: string;
 
-  constructor (private http: Http, config: Configuration, private requestOptions: RequestOptions) {
+  constructor(private http: Http, config: Configuration, private requestOptions: RequestOptions) {
     this.apiUrl = config.api_url;
     this.deviceUrl = this.apiUrl + 'device/';
     this.deviceGroupUrl = this.apiUrl + 'devicegroup/';
@@ -42,15 +42,15 @@ export class DeviceGroupService {
   // Add Device
   addDeviceToGroup(devicegroup_id: string, device_id: string) {
     return this.http.post(this.deviceGroupUrl + devicegroup_id + '/devices/' + device_id, null, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   // Delete Device
   deleteDeviceFromGroup(devicegroup_id: string, device_id: string) {
     return this.http.delete(this.deviceGroupUrl + devicegroup_id + '/devices/' + device_id, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   getDeviceGroupTransducers(device_id: string) {
@@ -61,10 +61,10 @@ export class DeviceGroupService {
 
   private extractData(res: Response) {
     const body = res.json();
-    return body || { };
+    return body || {};
   }
 
-  private handleError (error: Response | any) {
+  private handleError(error: Response | any) {
     let errMsg: string;
     let err: any;
     if (error instanceof Response) {
@@ -96,6 +96,7 @@ export class DeviceGroupService {
       map(this.extractData),
       catchError(this.handleError));
   }
+
   // Publish To Transducer
   publishToBroadcastTransducer(device_id: string, transducer_id: string, body: any) {
     return this.http.post(this.deviceGroupUrl + device_id + '/broadcasttransducer/' + transducer_id, body, this.requestOptions).pipe(
@@ -148,7 +149,7 @@ export class DeviceGroupService {
 
   // Get Public Link
   getPublicBroadcastLink(device_id: string, command_id: string) {
-    return this.http.get(this.deviceGroupUrl + device_id + '/broadcastcommand/' + command_id + '/publiclink',  this.requestOptions).pipe(
+    return this.http.get(this.deviceGroupUrl + device_id + '/broadcastcommand/' + command_id + '/publiclink', this.requestOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }

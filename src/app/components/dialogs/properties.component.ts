@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import {Component, OnInit} from '@angular/core';
+import {MatDialogRef} from '@angular/material';
 
-import { ErrorDialogService } from '../../services/error-dialog.service';
+import {ErrorDialogService} from '../../services/error-dialog.service';
 
 @Component({
   selector: 'properties',
@@ -29,7 +29,7 @@ export class PropertiesComponent implements OnInit {
   ngOnInit() {
     const keys = Object.keys(this.properties);
     for (let i = 0; i < keys.length; i++) {
-      this.transformed.push({ key: keys[i], value: this.properties[keys[i]], edit: false });
+      this.transformed.push({key: keys[i], value: this.properties[keys[i]], edit: false});
     }
     this.newProperties = this.properties;
   }
@@ -38,7 +38,7 @@ export class PropertiesComponent implements OnInit {
     if (this.newProperties.hasOwnProperty(this.newKey)) {
       this.errorDialogService.dialogPopup('Key Already Exists!');
     } else {
-      this.transformed.push({ key: this.newKey, value: this.newValue, edit: false });
+      this.transformed.push({key: this.newKey, value: this.newValue, edit: false});
       this.newProperties[this.newKey] = this.newValue;
       this.newKey = '';
       this.newValue = '';

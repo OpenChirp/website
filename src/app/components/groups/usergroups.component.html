@@ -1,4 +1,4 @@
-<div class="user-groups" >
+<div class="user-groups">
   <mat-card>
     <div class="card-header">
       <h2>My Groups</h2>
@@ -18,17 +18,21 @@
 
         <!-- Table Body -->
         <tbody>
-          <tr *ngFor="let group of groups">
-            <td><p><a class="group-name" (click)="gotoGroup(group.group_id)">{{ group.name }}</a></p></td>
-            <td><p>{{ group.write_access }}</p></td>
-            <td><p><button mat-raised-button (click)="leaveGroup(group)"> Leave Group 
-            </button></p></td>
-          </tr>
+        <tr *ngFor="let group of groups">
+          <td><p><a class="group-name" (click)="gotoGroup(group.group_id)">{{ group.name }}</a></p></td>
+          <td><p>{{ group.write_access }}</p></td>
+          <td>
+            <p>
+              <button mat-raised-button (click)="leaveGroup(group)"> Leave Group
+              </button>
+            </p>
+          </td>
+        </tr>
         </tbody>
       </table>
     </div>
     <div *ngIf="groups.length == 0">
       <p>No group memberships found.</p>
-    </div>    
+    </div>
   </mat-card>
 </div>

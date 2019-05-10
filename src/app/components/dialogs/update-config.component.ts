@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import {Component} from '@angular/core';
+import {MatDialogRef} from '@angular/material';
 
-import { ErrorDialogService } from '../../services/error-dialog.service';
+import {ErrorDialogService} from '../../services/error-dialog.service';
 
 @Component({
   selector: 'update-config',
@@ -23,8 +23,8 @@ export class UpdateConfigComponent {
   }
 
   save() {
-    for (let i = 0; i < this.config.length; i++ ) {
-      this.newConfig.push({ key: this.config[i].key , value: this.config[i].value});
+    for (let i = 0; i < this.config.length; i++) {
+      this.newConfig.push({key: this.config[i].key, value: this.config[i].value});
     }
     this.dialog.close(this.newConfig);
   }

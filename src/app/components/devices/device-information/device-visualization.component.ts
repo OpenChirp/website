@@ -1,8 +1,8 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { DomSanitizer, SafeUrl} from '@angular/platform-browser';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 
-import { Device } from '../../../models/device';
-import { DeviceService } from '../../../services/device.service';
+import {Device} from '../../../models/device';
+import {DeviceService} from '../../../services/device.service';
 
 @Component({
   selector: 'device-visualization',
@@ -23,7 +23,9 @@ export class DeviceVisualizationComponent implements OnInit {
     'Day',
     'Hour'
   ];
-  constructor(private deviceService: DeviceService,  private sanitizer: DomSanitizer) {}
+
+  constructor(private deviceService: DeviceService, private sanitizer: DomSanitizer) {
+  }
 
   ngOnInit() {
     this.deviceTransducers = this.device.transducers.slice(); //  Shallow copy workaround for odd rendering issue
@@ -40,7 +42,7 @@ export class DeviceVisualizationComponent implements OnInit {
     if (action == 'hide') {
       val = false;
     }
-    this.deviceTransducers.forEach( (td) => {
+    this.deviceTransducers.forEach((td) => {
       td['checked'] = val;
     });
     this.optionToggled();

@@ -4,54 +4,60 @@ $black-text: #303132;
 
 .user-groups {
   background-color: #ffffff;
+
   p {
     font-family: "Avenir-Med", sans-serif;
     color: $black-text;
   }
-  .group-name{
-   cursor: pointer;
-   display: block;
-   width: 100%;
-   height:100%
- }
 
- .group-name:hover{
-   text-decoration: underline;
+  .group-name {
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    height: 100%
   }
 
-   th {
-     border-bottom: solid 1px #909090;
-     font-weight:bold;
+  .group-name:hover {
+    text-decoration: underline;
   }
+
+  th {
+    border-bottom: solid 1px #909090;
+    font-weight: bold;
+  }
+
   tr {
     cursor: pointer;
     border-top: solid 1px #e3e3e3;
     border-bottom: solid 1px #e3e3e3;
   }
 
-mat-card {
-  .card-header {
-    h2 {
-      margin: 0;
-      float: left;
-      font-family: "Avenir-Heavy", sans-serif;
-      color: $black-text;
-    }
-
-    .new-group {
-      font-family: "Avenir-Med", sans-serif;
-      color: $black-text;
-      .button {
-        margin-left: 5px;
-        margin-right: 5px;
-        background-color: white;
+  mat-card {
+    .card-header {
+      h2 {
+        margin: 0;
+        float: left;
+        font-family: "Avenir-Heavy", sans-serif;
+        color: $black-text;
       }
-    }
-    button {
-      float: right;
-    }
-    margin-bottom: 20px;
 
+      .new-group {
+        font-family: "Avenir-Med", sans-serif;
+        color: $black-text;
+
+        .button {
+          margin-left: 5px;
+          margin-right: 5px;
+          background-color: white;
+        }
+      }
+
+      button {
+        float: right;
+      }
+
+      margin-bottom: 20px;
+
+    }
   }
-}
 }

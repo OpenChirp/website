@@ -2,13 +2,13 @@
   <h2>Service config for {{ source }}</h2>
   <table>
     <tbody>
-      <tr *ngFor="let cf of config">
-        <td> {{cf.key}} : </td>
-        <td> {{cf.value}} </td>
-      </tr>
+    <tr *ngFor="let cf of config">
+      <td> {{cf.key}} :</td>
+      <td> {{cf.value}} </td>
+    </tr>
     </tbody>
-    </table>
-    <div class="buttons">
-      <button mat-raised-button (click)="cancel()">Close</button>
-    </div>
+  </table>
+  <div class="buttons">
+    <button mat-raised-button (click)="cancel()">Close</button>
+  </div>
 </div>

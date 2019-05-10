@@ -1,10 +1,9 @@
-
-import {throwError as observableThrowError,  Observable } from 'rxjs';
+import {Observable, throwError as observableThrowError} from 'rxjs';
 
 import {catchError, map} from 'rxjs/operators';
-import { Injectable } from '@angular/core';
-import { Http, Response, RequestOptions } from '@angular/http';
-import { Configuration } from '../config';
+import {Injectable} from '@angular/core';
+import {Http, RequestOptions, Response} from '@angular/http';
+import {Configuration} from '../config';
 
 @Injectable()
 export class UserService {
@@ -29,31 +28,32 @@ export class UserService {
   }
 
   updateUser(body: any) {
-    return this.http.put(this.userUrl , body, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+    return this.http.put(this.userUrl, body, this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
- // Get user token
+  // Get user token
   getToken() {
-    return this.http.get(this.userUrl + 'token' , this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+    return this.http.get(this.userUrl + 'token', this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
- // Create user token
+  // Create user token
   createToken() {
-    return this.http.post(this.userUrl + 'token' , this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+    return this.http.post(this.userUrl + 'token', this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
-    // Delete user Token
+  // Delete user Token
   deleteToken() {
-    return this.http.delete(this.userUrl + 'token' , this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+    return this.http.delete(this.userUrl + 'token', this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
+
   getAllUsers() {
     return this.http.get(this.userUrl + 'all', this.requestOptions).pipe(
       map(this.extractData),
@@ -62,16 +62,15 @@ export class UserService {
 
   getMyServices(search: string) {
     return this.http.get(this.userUrl + 'myservices?name=' + search, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
-
 
 
   getMyDevices(search: string) {
     return this.http.get(this.userUrl + 'mydevices?name=' + search, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   getMyDeviceGroups(search: string) {
@@ -82,20 +81,20 @@ export class UserService {
 
   getMyLocations(search: string) {
     return this.http.get(this.userUrl + 'mylocations?name=' + search, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   getMyShortcuts() {
-    return this.http.get(this.userUrl + 'shortcuts' , this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+    return this.http.get(this.userUrl + 'shortcuts', this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   createCommandShort(body: any) {
     return this.http.post(this.userUrl + 'shortcut', body, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   createBroadcastCommandShort(body: any) {
@@ -105,26 +104,26 @@ export class UserService {
   }
 
   deleteShortcut(id: string) {
-    return this.http.delete(this.userUrl + 'shortcut/' + id,  this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+    return this.http.delete(this.userUrl + 'shortcut/' + id, this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   deleteBroadcastShortcut(id: string) {
-    return this.http.delete(this.userUrl + 'broadcast_shortcut/' + id,  this.requestOptions).pipe(
+    return this.http.delete(this.userUrl + 'broadcast_shortcut/' + id, this.requestOptions).pipe(
       map(this.extractData),
       catchError(this.handleError));
   }
 
   leaveGroup(groupId: string) {
-    return this.http.delete(this.userUrl + 'group/' + groupId,  this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+    return this.http.delete(this.userUrl + 'group/' + groupId, this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   private extractData(res: Response) {
     const body = res.json();
-    return body || { };
+    return body || {};
   }
 
   private handleError(error: Response | any) {

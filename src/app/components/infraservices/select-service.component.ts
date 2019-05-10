@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { MatDialogRef } from '@angular/material';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {MatDialogRef} from '@angular/material';
 
-import { InfraService } from '../../services/infraservice';
+import {InfraService} from '../../services/infraservice';
 
 @Component({
   selector: 'select-service',
@@ -44,15 +44,19 @@ export class SelectServiceComponent implements OnInit {
       return this.services.filter((x) => {
         let owner_match;
         let service_owner = '';
-        if (typeof(x.name) == 'string' && typeof(x.description == 'string') && typeof(x.owner == 'string')) {
+        if (typeof (x.name) == 'string' && typeof (x.description == 'string') && typeof (x.owner == 'string')) {
           const template_name: string = x.name;
           const name_match = template_name.toLowerCase().includes(this.searchTerm.toLowerCase());
-          if (name_match) { return true; }
+          if (name_match) {
+            return true;
+          }
 
           if (x.description) {
             const service_description: string = x.description;
             const description_match = service_description.toLowerCase().includes(this.searchTerm.toLowerCase());
-            if (description_match) { return true; }
+            if (description_match) {
+              return true;
+            }
           }
           if (x.owner.name) {
             service_owner = x.owner.name;
@@ -61,7 +65,9 @@ export class SelectServiceComponent implements OnInit {
             service_owner = x.owner.email;
             owner_match = service_owner.toLowerCase().includes(this.searchTerm.toLowerCase());
           }
-          if (owner_match) { return true; }
+          if (owner_match) {
+            return true;
+          }
         }
         return false;
       });

@@ -1,11 +1,11 @@
-import {throwError as observableThrowError,  Observable } from 'rxjs';
+import {Observable, throwError as observableThrowError} from 'rxjs';
 
 import {catchError, map} from 'rxjs/operators';
-import { Injectable } from '@angular/core';
-import { Http, Response, RequestOptions } from '@angular/http';
+import {Injectable} from '@angular/core';
+import {Http, RequestOptions, Response} from '@angular/http';
 
-import { Device } from '../models/device';
-import { Configuration } from '../config';
+import {Device} from '../models/device';
+import {Configuration} from '../config';
 
 @Injectable()
 
@@ -14,14 +14,14 @@ export class DeviceService {
   private deviceUrl: string;
   private grafanaUrl: string;
 
-  constructor (private http: Http, config: Configuration, private requestOptions: RequestOptions) {
+  constructor(private http: Http, config: Configuration, private requestOptions: RequestOptions) {
     this.apiUrl = config.api_url;
     this.deviceUrl = this.apiUrl + 'device/';
     this.grafanaUrl = config.grafana_url;
     this.requestOptions.withCredentials = true;
   }
 
-  getGrafanaUrl () {
+  getGrafanaUrl() {
     return this.grafanaUrl;
   }
 
@@ -33,68 +33,71 @@ export class DeviceService {
 
   getDeviceById(device_id: string): Observable<Device> {
     return this.http.get(this.deviceUrl + device_id, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   getDeviceTransducers(device_id: string) {
     return this.http.get(this.deviceUrl + device_id + '/transducer', this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
-    // Update Device
+
+  // Update Device
   updateDeviceById(device_id: string, body: any) {
     return this.http.put(this.deviceUrl + device_id, body, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   // Execute Command
   executeCommand(device_id: string, command_id: string) {
     return this.http.post(this.deviceUrl + device_id + '/command/' + command_id, {}, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   // Add Command
   addCommand(device_id: string, body: any) {
     return this.http.post(this.deviceUrl + device_id + '/command', body, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   // Delete Command
   deleteCommand(device_id: string, command_id: string) {
     return this.http.delete(this.deviceUrl + device_id + '/command/' + command_id, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   // Create Public Link
   createPublicLink(device_id: string, command_id: string) {
     const body = {};
     return this.http.post(this.deviceUrl + device_id + '/command/' + command_id + '/publiclink', body, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
- // Get Public Link
+
+  // Get Public Link
   getPublicLink(device_id: string, command_id: string) {
-    return this.http.get(this.deviceUrl + device_id + '/command/' + command_id + '/publiclink',  this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+    return this.http.get(this.deviceUrl + device_id + '/command/' + command_id + '/publiclink', this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   // Add New Transducer
   addTransducer(device_id: string, body: any) {
     return this.http.post(this.deviceUrl + device_id + '/transducer', body, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
+
   // Publish To Transducer
   publishToTransducer(device_id: string, transducer_id: string, body: any) {
     return this.http.post(this.deviceUrl + device_id + '/transducer/' + transducer_id, body, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   // Delete Transducer
@@ -107,126 +110,135 @@ export class DeviceService {
   // Delete Transducer
   deleteTransducer(device_id: string, transducer_id: string) {
     return this.http.delete(this.deviceUrl + device_id + '/transducer/' + transducer_id, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   // Device Templates
   deviceTemplates() {
     return this.http.get(this.apiUrl + 'devicetemplate', this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   // Device Template by ID
   deviceTemplate(id: string) {
     return this.http.get(this.apiUrl + 'devicetemplate/' + id, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   // Delete Device Template by ID
   deleteTemplate(id: string) {
     return this.http.delete(this.apiUrl + 'devicetemplate/' + id, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
- // Link Service
+  // Link Service
   linkService(device_id: string, service_id: string, body: any) {
-    return this.http.post(this.deviceUrl + device_id + '/service/' + service_id , body, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+    return this.http.post(this.deviceUrl + device_id + '/service/' + service_id, body, this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
- // Update Service Link
+
+  // Update Service Link
   updateServiceLink(device_id: string, service_id: string, body: any) {
-    return this.http.put(this.deviceUrl + device_id + '/service/' + service_id , body, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+    return this.http.put(this.deviceUrl + device_id + '/service/' + service_id, body, this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
+
   // Delete Service Link
   deleteServiceLink(device_id: string, service_id: string) {
-    return this.http.delete(this.deviceUrl + device_id + '/service/' + service_id , this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+    return this.http.delete(this.deviceUrl + device_id + '/service/' + service_id, this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
+
   // Create device token
   createToken(device_id: string) {
-    return this.http.post(this.deviceUrl + device_id + '/token' , this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+    return this.http.post(this.deviceUrl + device_id + '/token', this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
+
   // Re-Create device token
   recreateToken(device_id: string) {
-    return this.http.put(this.deviceUrl + device_id + '/token' , this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+    return this.http.put(this.deviceUrl + device_id + '/token', this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
-    // Delete Device Token
+
+  // Delete Device Token
   deleteToken(device_id: string) {
-    return this.http.delete(this.deviceUrl + device_id + '/token' , this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+    return this.http.delete(this.deviceUrl + device_id + '/token', this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
+
   // Add Device
   addDevice(body: any) {
     return this.http.post(this.deviceUrl, body, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   // Delete Device
   deleteDevice(id: string) {
     return this.http.delete(this.deviceUrl + id, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   // Save Device as Template
   saveTemplate(body: any) {
     return this.http.post(this.apiUrl + 'devicetemplate', body, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
+
   // Get All User's ACL
   getUsersAcl(device_id: string) {
-    return this.http.get(this.deviceUrl + device_id + '/acl/users',  this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+    return this.http.get(this.deviceUrl + device_id + '/acl/users', this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
+
   // Get All User's ACL
   getGroupsAcl(device_id: string) {
-    return this.http.get(this.deviceUrl + device_id + '/acl/groups',  this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+    return this.http.get(this.deviceUrl + device_id + '/acl/groups', this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
-   // Create ACL
+
+  // Create ACL
   createAcl(device_id: string, entity_id: string, body: any) {
     return this.http.post(this.deviceUrl + device_id + '/acl/' + entity_id, body, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   // Update ACL
   updateAcl(device_id: string, entity_id: string, body: any) {
     return this.http.put(this.deviceUrl + device_id + '/acl/' + entity_id, body, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   // Delete ACL
   deleteAcl(device_id: string, entity_id: string) {
     return this.http.delete(this.deviceUrl + device_id + '/acl/' + entity_id, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   private extractData(res: Response) {
     const body = res.json();
-    return body || { };
+    return body || {};
   }
 
-  private handleError (error: Response | any) {
+  private handleError(error: Response | any) {
     let errMsg: string;
     let err: any;
     if (error instanceof Response) {

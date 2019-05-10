@@ -1,16 +1,15 @@
-
 import {switchMap} from 'rxjs/operators';
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {MatDialog} from '@angular/material';
 
-import { Location } from '../../models/location';
-import { LocationService } from '../../services/location.service';
-import { DeviceGroupService } from '../../services/device-group.service';
-import { DeviceService } from '../../services/device.service';
-import { SuccessDialogService } from '../../services/success-dialog.service';
-import { ErrorDialogService } from '../../services/error-dialog.service';
-import { SelectTemplateComponent } from '../device-templates/select-template.component';
+import {Location} from '../../models/location';
+import {LocationService} from '../../services/location.service';
+import {DeviceGroupService} from '../../services/device-group.service';
+import {DeviceService} from '../../services/device.service';
+import {SuccessDialogService} from '../../services/success-dialog.service';
+import {ErrorDialogService} from '../../services/error-dialog.service';
+import {SelectTemplateComponent} from '../device-templates/select-template.component';
 
 @Component({
   selector: 'new-devicegroup',
@@ -103,9 +102,9 @@ export class NewDeviceGroupComponent implements OnInit {
             this.successDialogService
               .dialogPopup('Add DeviceGroup Success: ' + this.name)
               .subscribe(
-              res => this.router.navigate(['/home/device/', result._id]),
-              err => this.router.navigate(['/home'])
-            );
+                res => this.router.navigate(['/home/device/', result._id]),
+                err => this.router.navigate(['/home'])
+              );
           },
           error => {
             this.errorDialogService

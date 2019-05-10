@@ -1,5 +1,5 @@
 <div class="select-service">
-  
+
   <div class="search">
     <h2>Select a Service</h2>
     <mat-form-field>
@@ -20,12 +20,12 @@
       <!-- Table Body -->
       <tbody>
 
-        <!-- Item Row -->
-        <tr *ngFor="let service of filtered()" (click)="select(service)">
-          <td><p>{{ service.name }}</p></td>
-          <td><p>{{ service.description }}</p></td>
-          <td><p>{{ getPermissionName(service.device_permission) }}</p></td>
-        </tr>
+      <!-- Item Row -->
+      <tr *ngFor="let service of filtered()" (click)="select(service)">
+        <td><p>{{ service.name }}</p></td>
+        <td><p>{{ service.description }}</p></td>
+        <td><p>{{ getPermissionName(service.device_permission) }}</p></td>
+      </tr>
 
       </tbody>
     </table>

@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
-import { DeviceService } from '../../services/device.service';
-import { DeviceGroupService } from '../../services/device-group.service';
-import { ErrorDialogService } from '../../services/error-dialog.service';
+import {Component} from '@angular/core';
+import {MatDialogRef} from '@angular/material';
+import {DeviceService} from '../../services/device.service';
+import {DeviceGroupService} from '../../services/device-group.service';
+import {ErrorDialogService} from '../../services/error-dialog.service';
 
 @Component({
   selector: 'public-link',
@@ -18,20 +18,20 @@ export class PublicLinkComponent {
   baseUrl: string;
   isBroadcast: boolean;
 
-  constructor( private deviceService: DeviceService,
-               private deviceGroupService: DeviceGroupService,
-               public dialog: MatDialogRef<PublicLinkComponent>,
-               private errorDialogService: ErrorDialogService) {
+  constructor(private deviceService: DeviceService,
+              private deviceGroupService: DeviceGroupService,
+              public dialog: MatDialogRef<PublicLinkComponent>,
+              private errorDialogService: ErrorDialogService) {
   }
 
   createPublicLink() {
     this.deviceService.createPublicLink(this.device._id, this.command._id).subscribe(
-        result => {
-           this.link = this.baseUrl + result;
-          },
-        error => {
-             this.errorDialogService
-                .dialogPopup(error.message);
+      result => {
+        this.link = this.baseUrl + result;
+      },
+      error => {
+        this.errorDialogService
+          .dialogPopup(error.message);
       });
   }
 

@@ -1,12 +1,12 @@
-import { Component, OnInit} from '@angular/core';
-import { Configuration } from '../../config';
-import { Location } from '../../models/location';
-import { DeviceService } from '../../services/device.service';
-import { UserService } from '../../services/user.service';
-import { ErrorDialogService } from '../../services/error-dialog.service';
-import { SuccessDialogService } from '../../services/success-dialog.service';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Configuration} from '../../config';
+import {Location} from '../../models/location';
+import {DeviceService} from '../../services/device.service';
+import {UserService} from '../../services/user.service';
+import {ErrorDialogService} from '../../services/error-dialog.service';
+import {SuccessDialogService} from '../../services/success-dialog.service';
+import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'dashboard-main',
@@ -47,14 +47,14 @@ export class DashboardMainComponent implements OnInit {
 
   getUser() {
     this.userService.getUser().subscribe(
-       result => {
-         this.user = result;
-         const iframeUrl: string = this.config.mapper_url_owner + this.user._id;
-         this.myDevicesMapIframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(iframeUrl);
-       },
-       error =>  this.errorDialogService.dialogPopup(error.message)
-     );
- }
+      result => {
+        this.user = result;
+        const iframeUrl: string = this.config.mapper_url_owner + this.user._id;
+        this.myDevicesMapIframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(iframeUrl);
+      },
+      error => this.errorDialogService.dialogPopup(error.message)
+    );
+  }
 
   getShortcuts() {
     this.userService.getMyShortcuts().subscribe(
@@ -68,7 +68,7 @@ export class DashboardMainComponent implements OnInit {
     );
   }
 
- deleteShortcut(shortcut: any) {
+  deleteShortcut(shortcut: any) {
     this.userService.deleteShortcut(shortcut._id).subscribe(
       result => {
         this.successDialogService
@@ -79,9 +79,10 @@ export class DashboardMainComponent implements OnInit {
         this.errorDialogService
           .dialogPopup(error.message + ': ' + shortcut.name);
       }
-      );
+    );
 
   }
+
   execute(shortcut: any) {
     this.deviceService.executeCommand(shortcut.device_id, shortcut.command_id).subscribe(
       result => {

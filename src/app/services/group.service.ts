@@ -1,10 +1,9 @@
-
 import {throwError as observableThrowError} from 'rxjs';
 
 import {catchError, map} from 'rxjs/operators';
-import { Injectable } from '@angular/core';
-import { Http, Response, RequestOptions } from '@angular/http';
-import { Configuration } from '../config';
+import {Injectable} from '@angular/core';
+import {Http, RequestOptions, Response} from '@angular/http';
+import {Configuration} from '../config';
 
 @Injectable()
 export class GroupService {
@@ -21,59 +20,59 @@ export class GroupService {
 
   getAllGroups(search: string) {
     return this.http.get(this.groupUrl + '?name' + search, this.requestOptions).pipe(
-    map(this.extractData),
-    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   getGroupById(groupId: string) {
     return this.http.get(this.groupUrl + groupId, this.requestOptions).pipe(
-    map(this.extractData),
-    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
 
-  createGroup( body: any) {
+  createGroup(body: any) {
     return this.http.post(this.groupUrl, body, this.requestOptions).pipe(
-    map(this.extractData),
-    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
-  getMembersOfGroup( groupdId: string) {
+  getMembersOfGroup(groupdId: string) {
     return this.http.get(this.groupUrl + groupdId + '/members', this.requestOptions).pipe(
-    map(this.extractData),
-    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
-  getUsersNotInGroup( groupdId: string) {
+  getUsersNotInGroup(groupdId: string) {
     return this.http.get(this.groupUrl + groupdId + '/notmembers', this.requestOptions).pipe(
-    map(this.extractData),
-    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   addUserToGroup(groupId: string, userId: string, write_access: boolean) {
     const body = {'user_id': userId, 'write_access': write_access};
     return this.http.post(this.groupUrl + groupId + '/member', body, this.requestOptions).pipe(
-    map(this.extractData),
-    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   removeUserFromGroup(groupId: string, userId: string) {
     const body = {'user_id': userId};
     return this.http.put(this.groupUrl + groupId + '/member', body, this.requestOptions).pipe(
-    map(this.extractData),
-    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   // Delete group
   deleteGroup(id: string) {
     return this.http.delete(this.groupUrl + id, this.requestOptions).pipe(
-    map(this.extractData),
-    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   private extractData(res: Response) {
     const body = res.json();
-    return body || { };
+    return body || {};
   }
 
   private handleError(error: Response | any) {

@@ -1,10 +1,9 @@
-
 import {throwError as observableThrowError} from 'rxjs';
 
 import {catchError, map} from 'rxjs/operators';
-import { Injectable } from '@angular/core';
-import { Http, Response, RequestOptions } from '@angular/http';
-import { Configuration } from '../config';
+import {Injectable} from '@angular/core';
+import {Http, RequestOptions, Response} from '@angular/http';
+import {Configuration} from '../config';
 
 @Injectable()
 export class AdminService {
@@ -37,9 +36,9 @@ export class AdminService {
       catchError(this.handleError));
   }
 
-   private extractData(res: Response) {
+  private extractData(res: Response) {
     const body = res.json();
-    return body || { };
+    return body || {};
   }
 
   private handleError(error: Response | any) {

@@ -1,4 +1,4 @@
-<div class="user-profile" >
+<div class="user-profile">
   <mat-card>
     <div class="card-header">
       <h2>My Profile</h2>
@@ -10,27 +10,29 @@
         <mat-form-field>
           <input matInput placeholder="Name" [(ngModel)]="user.name" name="user-name">
         </mat-form-field>
-        <p> <mat-form-field class="userid">
-          <input matInput placeholder="User Id" [(ngModel)]="user.userid" name="user-userid">
-          <mat-hint>Updates to userid won't reflect in token. To use the new userid for auth, generate a new token.</mat-hint>
+        <p>
+          <mat-form-field class="userid">
+            <input matInput placeholder="User Id" [(ngModel)]="user.userid" name="user-userid">
+            <mat-hint>Updates to userid won't reflect in token. To use the new userid for auth, generate a new token.
+            </mat-hint>
           </mat-form-field>
-          </p>
-          <br>
-          <p></p>
-           <p>Email : {{ user.email}}</p>
-          <button mat-raised-button (click)="updateUser()">Update</button>  
-       </div>
+        </p>
+        <br>
+        <p></p>
+        <p>Email : {{ user.email}}</p>
+        <button mat-raised-button (click)="updateUser()">Update</button>
+      </div>
       <br>
-     </form>
-     <hr>
-      <h3>User Token :</h3>
-      <div *ngIf="token">
-          <button mat-raised-button (click)="deleteUserToken()">Delete Token</button>
-      </div>
-      <div *ngIf="!token">
-          <button mat-raised-button (click)="createUserToken()">Generate Token</button>
-      </div>
-    
+    </form>
+    <hr>
+    <h3>User Token :</h3>
+    <div *ngIf="token">
+      <button mat-raised-button (click)="deleteUserToken()">Delete Token</button>
+    </div>
+    <div *ngIf="!token">
+      <button mat-raised-button (click)="createUserToken()">Generate Token</button>
+    </div>
+
   </mat-card>
-  
+
 </div>

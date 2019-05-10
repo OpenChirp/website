@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 
-import { Device } from '../../models/device';
-import { Location } from '../../models/location';
-import { UserService } from '../../services/user.service';
+import {Device} from '../../models/device';
+import {Location} from '../../models/location';
+import {UserService} from '../../services/user.service';
 
 
 @Component({
@@ -47,6 +47,7 @@ export class UserDevicesComponent implements OnInit {
   newDevice() {
     this.router.navigate(['/home/newdevice']);
   }
+
   newDeviceGroup() {
     this.router.navigate(['/home/newdevicegroup']);
   }

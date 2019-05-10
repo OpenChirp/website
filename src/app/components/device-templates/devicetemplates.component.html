@@ -14,13 +14,13 @@
 
       <!-- Table Body -->
       <tbody>
-        <!-- Item Row -->
-        <tr *ngFor="let template of templates" (click)="gotoTemplate(template._id)">
-          <td><p>{{ template.name }}</p></td>
-          <td><p>{{ template.description }}</p></td>
-        </tr>
+      <!-- Item Row -->
+      <tr *ngFor="let template of templates" (click)="gotoTemplate(template._id)">
+        <td><p>{{ template.name }}</p></td>
+        <td><p>{{ template.description }}</p></td>
+      </tr>
       </tbody>
-    </table>    
+    </table>
     <div *ngIf="templates.length == 0">
       <p>Currently no templates to display.</p>
     </div>

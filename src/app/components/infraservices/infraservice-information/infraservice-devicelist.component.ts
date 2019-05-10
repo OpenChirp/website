@@ -1,10 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { switchMap} from 'rxjs/operators';
-import { InfraService } from '../../../services/infraservice';
+import {Component, Input, OnInit} from '@angular/core';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {switchMap} from 'rxjs/operators';
+import {InfraService} from '../../../services/infraservice';
 
-import { GlobalDataService } from '../../../services/global.data.service';
-import { MatDialog } from '@angular/material';
+import {GlobalDataService} from '../../../services/global.data.service';
+import {MatDialog} from '@angular/material';
 import {Device} from '../../../models/device';
 import {ViewConfigComponent} from '../../dialogs/view-config.component';
 
@@ -19,7 +19,7 @@ export class InfraServiceDeviceListComponent implements OnInit {
   @Input() service: any = null;
 
   constructor(private route: ActivatedRoute, private infraService: InfraService, private router: Router, public dialog: MatDialog,
-    private globalDataService: GlobalDataService) {
+              private globalDataService: GlobalDataService) {
 
   }
 
@@ -29,12 +29,12 @@ export class InfraServiceDeviceListComponent implements OnInit {
 
   getDeviceList() {
     this.route.params.pipe(
-    switchMap((params: Params) => this.infraService.getServiceDevices(params['id'])))
-    .subscribe(
-      result => {
-        this.devices = result;
-      },
-      error => this.router.navigate(['/home/services'])
+      switchMap((params: Params) => this.infraService.getServiceDevices(params['id'])))
+      .subscribe(
+        result => {
+          this.devices = result;
+        },
+        error => this.router.navigate(['/home/services'])
       );
   }
 
@@ -43,7 +43,7 @@ export class InfraServiceDeviceListComponent implements OnInit {
   }
 
   viewDeviceConfig(device: any) {
-    const dialogRef = this.dialog.open(ViewConfigComponent, { width: '900px' });
+    const dialogRef = this.dialog.open(ViewConfigComponent, {width: '900px'});
     dialogRef.componentInstance.config = device.config;
     dialogRef.componentInstance.source = device.name;
   }

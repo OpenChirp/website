@@ -4,41 +4,50 @@ $black-text: #303132;
   p {
     font-family: "Avenir-Med", sans-serif;
     color: $black-text;
-    }
+  }
+
   mat-card {
-  background-color: white;
+    background-color: white;
+
     th {
       border-bottom: solid 1px #909090;
-      font-weight:bold;
+      font-weight: bold;
     }
+
     tbody tr {
       cursor: pointer;
       border-top: solid 1px #e3e3e3;
       border-bottom: solid 1px #e3e3e3;
     }
+
     tbody tr:hover {
       background-color: #e3e3e3;
     }
-  .card-header {
-    h2 {
-      margin: 0;
-      float: left;
-      font-family: "Avenir-Heavy", sans-serif;
-      color: $black-text;
-    }
-    .link-service {
-      font-family: "Avenir-Med", sans-serif;
-      color: $black-text;
-      .button {
-        margin-left: 5px;
-        margin-right: 5px;
-        background-color: white;
+
+    .card-header {
+      h2 {
+        margin: 0;
+        float: left;
+        font-family: "Avenir-Heavy", sans-serif;
+        color: $black-text;
       }
+
+      .link-service {
+        font-family: "Avenir-Med", sans-serif;
+        color: $black-text;
+
+        .button {
+          margin-left: 5px;
+          margin-right: 5px;
+          background-color: white;
+        }
+      }
+
+      button {
+        float: right;
+      }
+
+      margin-bottom: 20px;
     }
-    button {
-      float: right;
-    }
-    margin-bottom: 20px;
-  }
   }
 }

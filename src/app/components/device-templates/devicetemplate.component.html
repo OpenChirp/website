@@ -1,20 +1,20 @@
 <div class="device-template">
-    <mat-card *ngIf="template">
-      <div class="card-header">
-        <h2>Device Template {{ template.name }}</h2>
-        <div class="new-template">
-          <button mat-raised-button (click)="newDevice()">New Device</button>
-        </div>
-        <div class="delete-button">
-          <button mat-raised-button (click)="deleteTemplate()">Delete</button>
-        </div>
+  <mat-card *ngIf="template">
+    <div class="card-header">
+      <h2>Device Template {{ template.name }}</h2>
+      <div class="new-template">
+        <button mat-raised-button (click)="newDevice()">New Device</button>
       </div>
-      <hr>
-      <h3>Description</h3>
-      <p>{{ template.description }}</p>
-       <h3>Owner</h3>
-      <p>{{ template.owner.name || template.owner.email }}</p>
-      <h3> Created </h3>
-      <p> {{ template.created_at | date :"short" }}</p>
-    </mat-card>
+      <div class="delete-button">
+        <button mat-raised-button (click)="deleteTemplate()">Delete</button>
+      </div>
+    </div>
+    <hr>
+    <h3>Description</h3>
+    <p>{{ template.description }}</p>
+    <h3>Owner</h3>
+    <p>{{ template.owner.name || template.owner.email }}</p>
+    <h3> Created </h3>
+    <p> {{ template.created_at | date :"short" }}</p>
+  </mat-card>
 </div>

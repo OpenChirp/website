@@ -1,20 +1,22 @@
 <div class="publiclink">
   <h2>Public link for command: {{ command.name }}</h2>
   <mat-card>
-      <div class ="link" *ngIf="link">
-      {{ link }}       
-      </div>
-      <div *ngIf="!link">
+    <div class="link" *ngIf="link">
+      {{ link }}
+    </div>
+    <div *ngIf="!link">
 
-        No public link found.
-          <div class="createLink">
-            <button mat-raised-button (click)="createPublicLink()" *ngIf="!this.isBroadcast">Create Public Link</button>
-            <button mat-raised-button (click)="createPublicBroadcastLink()" *ngIf="this.isBroadcast">Create Public Broadcast Link</button>
-          </div>
-      
+      No public link found.
+      <div class="createLink">
+        <button mat-raised-button (click)="createPublicLink()" *ngIf="!this.isBroadcast">Create Public Link</button>
+        <button mat-raised-button (click)="createPublicBroadcastLink()" *ngIf="this.isBroadcast">Create Public Broadcast
+          Link
+        </button>
       </div>
-      <div class="buttons">
-        <button mat-raised-button (click)="close()">Close</button>
-      </div>  
-    </mat-card>
+
+    </div>
+    <div class="buttons">
+      <button mat-raised-button (click)="close()">Close</button>
+    </div>
+  </mat-card>
 </div>

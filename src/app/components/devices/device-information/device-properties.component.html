@@ -5,28 +5,29 @@
         <input matInput placeholder="Name" [(ngModel)]="device.name" name="device-name">
       </mat-form-field>
 
-    <!--<div>
-      <mat-select placeholder="Device Type" [(ngModel)]="device.type" name="device-type">
-        <mat-option *ngFor="let deviceType of deviceTypes" [value]="deviceType">
-          {{ deviceType }}
-        </mat-option>
-      </mat-select>
-    </div>
-    <br>-->
+      <!--<div>
+        <mat-select placeholder="Device Type" [(ngModel)]="device.type" name="device-type">
+          <mat-option *ngFor="let deviceType of deviceTypes" [value]="deviceType">
+            {{ deviceType }}
+          </mat-option>
+        </mat-select>
+      </div>
+      <br>-->
 
       <p>Enabled :
-      <mat-slide-toggle [(ngModel)]="device.enabled" name="device-enabled">{{device.enabled}}</mat-slide-toggle>
+        <mat-slide-toggle [(ngModel)]="device.enabled" name="device-enabled">{{device.enabled}}</mat-slide-toggle>
       </p>
       <p *ngIf="device.isDeviceGroup">Combined Pubsub :
-        <mat-slide-toggle [(ngModel)]="device.combined_pubsub" name="device-combined-pubsub">{{device.combined_pubsub}}</mat-slide-toggle>
+        <mat-slide-toggle [(ngModel)]="device.combined_pubsub"
+                          name="device-combined-pubsub">{{device.combined_pubsub}}</mat-slide-toggle>
       </p>
-    <button mat-raised-button (click)="updateDeviceMeta()">Update</button>
-    <button mat-raised-button (click)="viewProperties()">Edit Custom Properties</button>
-    <button mat-raised-button *ngIf="device.location_id" (click)="gotoLocation()">Go to Parent Location</button>
-    <button mat-raised-button (click)="pickLocation()">Change Location</button>
-     <p></p>
+      <button mat-raised-button (click)="updateDeviceMeta()">Update</button>
+      <button mat-raised-button (click)="viewProperties()">Edit Custom Properties</button>
+      <button mat-raised-button *ngIf="device.location_id" (click)="gotoLocation()">Go to Parent Location</button>
+      <button mat-raised-button (click)="pickLocation()">Change Location</button>
+      <p></p>
     </div>
-   <hr>
+    <hr>
 
     <p><span *ngIf="device.isDeviceGroup; then devgroup_id else dev_id"></span></p>
     <ng-template #devgroup_id>DeviceGroup ID: {{ device._id }}</ng-template>
@@ -40,4 +41,5 @@
 
   </form>
 </div>
-<grouped-devices [deviceGroup]="device" (updateDevice)="updateDeviceMeta($event)" *ngIf="device.isDeviceGroup"></grouped-devices>
+<grouped-devices [deviceGroup]="device" (updateDevice)="updateDeviceMeta($event)"
+                 *ngIf="device.isDeviceGroup"></grouped-devices>

@@ -15,9 +15,9 @@
       <div>
         <mat-form-field>
           <input matInput
-                placeholder="DeviceGroup Name"
-                [(ngModel)]="name"
-                [ngModelOptions]="{standalone: true}">
+                 placeholder="DeviceGroup Name"
+                 [(ngModel)]="name"
+                 [ngModelOptions]="{standalone: true}">
         </mat-form-field>
         <!--<br>
         <br>
@@ -29,12 +29,13 @@
         <br><br>-->
         <div>
           <p>Enabled
-          <mat-slide-toggle [(ngModel)]="enabled" name="device-enabled">{{ enabled }}</mat-slide-toggle>
+            <mat-slide-toggle [(ngModel)]="enabled" name="device-enabled">{{ enabled }}</mat-slide-toggle>
           </p>
         </div>
         <div>
           <p>Combined Pubsub
-            <mat-slide-toggle [(ngModel)]="combined_pubsub" name="combined-pubsub">{{ combined_pubsub }}</mat-slide-toggle>
+            <mat-slide-toggle [(ngModel)]="combined_pubsub"
+                              name="combined-pubsub">{{ combined_pubsub }}</mat-slide-toggle>
           </p>
         </div>
       </div>

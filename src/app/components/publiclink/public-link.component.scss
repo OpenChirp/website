@@ -1,25 +1,30 @@
 .publiclink {
-  
+
   p {
     font-family: "Avenir-Med", sans-serif;
   }
+
   h2 {
     margin-top: 0;
     margin-bottom: 30px;
   }
-  .link{
-     background-color: #e3e3e3;
+
+  .link {
+    background-color: #e3e3e3;
   }
+
   .createLink {
-   
-    float:right;
+
+    float: right;
     color: #303132;
+
     .button {
-        margin-left: 5px;
-        margin-right: 5px;
-        background-color: white;
-      }
+      margin-left: 5px;
+      margin-right: 5px;
+      background-color: white;
+    }
   }
+
   .buttons {
     margin-top: 20px;
   }

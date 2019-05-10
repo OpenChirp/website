@@ -5,10 +5,12 @@
       <h2><span *ngIf="device.isDeviceGroup; then devgroup_title else dev_title"></span></h2>
       <ng-template #devgroup_title>DeviceGroup Information for {{ device.name }}</ng-template>
       <ng-template #dev_title>Device Information for {{ device.name }}</ng-template>
-      <button mat-raised-button class="save-template-button hide-on-small-screens" (click)="saveTemplate()">Save as Template</button>
+      <button mat-raised-button class="save-template-button hide-on-small-screens" (click)="saveTemplate()">Save as
+        Template
+      </button>
       <button mat-raised-button class="delete-button hide-on-small-screens" (click)="deleteDevice()">Delete</button>
     </div>
-    <hr />
+    <hr/>
     <mat-tab-group [(selectedIndex)]="selectedIndex">
 
       <!-- Properties Tab -->
@@ -53,14 +55,14 @@
         </div>
       </mat-tab>
 
-       <div *ngIf ="acl.writeAccess">
-           <!-- Security Tab -->
-          <mat-tab label="Security">
-            <div class="tab-content">
-              <device-acl [device]="device" (updateDevice)="getDevice($event)"></device-acl>
-            </div>
-          </mat-tab>
-        </div>
+      <div *ngIf="acl.writeAccess">
+        <!-- Security Tab -->
+        <mat-tab label="Security">
+          <div class="tab-content">
+            <device-acl [device]="device" (updateDevice)="getDevice($event)"></device-acl>
+          </div>
+        </mat-tab>
+      </div>
     </mat-tab-group>
 
   </mat-card>

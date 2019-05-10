@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute} from '@angular/router';
-import { AdminService } from '../../../services/admin.service';
-import { ErrorDialogService } from '../../../services/error-dialog.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AdminService} from '../../../services/admin.service';
+import {ErrorDialogService} from '../../../services/error-dialog.service';
 
 @Component({
   selector: 'stats',
@@ -13,10 +13,10 @@ export class StatsComponent implements OnInit {
   stats: Array<any> = [];
 
   constructor(private route: ActivatedRoute,
-    private router: Router,
-    private adminService: AdminService,
-    private errorDialogService: ErrorDialogService
-    ) {
+              private router: Router,
+              private adminService: AdminService,
+              private errorDialogService: ErrorDialogService
+  ) {
 
   }
 
@@ -31,11 +31,9 @@ export class StatsComponent implements OnInit {
       },
       error => {
         this.errorDialogService
-        .dialogPopup(error.message );
+          .dialogPopup(error.message);
       });
   }
-
-
 
 
 }

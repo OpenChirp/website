@@ -1,14 +1,14 @@
-import { Component, Input, Output, EventEmitter, OnInit, ViewChild } from '@angular/core';
-import { Router , ActivatedRoute} from '@angular/router';
-import { Device } from '../../../models/device';
-import { DeviceService } from '../../../services/device.service';
-import { DeviceGroupService } from '../../../services/device-group.service';
-import { SuccessDialogService } from '../../../services/success-dialog.service';
-import { ErrorDialogService } from '../../../services/error-dialog.service';
-import { MatDialog, Sort, MatSort } from '@angular/material';
-import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.component';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Device} from '../../../models/device';
+import {DeviceService} from '../../../services/device.service';
+import {DeviceGroupService} from '../../../services/device-group.service';
+import {SuccessDialogService} from '../../../services/success-dialog.service';
+import {ErrorDialogService} from '../../../services/error-dialog.service';
+import {MatDialog, MatSort, Sort} from '@angular/material';
+import {ConfirmationDialogComponent} from '../../dialogs/confirmation-dialog.component';
 
-import { SelectDeviceComponent } from '../select-device.component';
+import {SelectDeviceComponent} from '../select-device.component';
 
 
 @Component({
@@ -30,12 +30,12 @@ export class GroupedDevicesComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute,
-    private router: Router,
-    private deviceService: DeviceService,
-    private deviceGroupService: DeviceGroupService,
-    private successDialogService: SuccessDialogService,
-    private errorDialogService: ErrorDialogService,
-    public dialog: MatDialog) {
+              private router: Router,
+              private deviceService: DeviceService,
+              private deviceGroupService: DeviceGroupService,
+              private successDialogService: SuccessDialogService,
+              private errorDialogService: ErrorDialogService,
+              public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -109,7 +109,7 @@ export class GroupedDevicesComponent implements OnInit {
   }
 
   selectDevice() {
-    const dialogRef = this.dialog.open(SelectDeviceComponent, { width: '900px', height: '700px' });
+    const dialogRef = this.dialog.open(SelectDeviceComponent, {width: '900px', height: '700px'});
     dialogRef.afterClosed().subscribe(
       result => {
         if (result) {
@@ -127,26 +127,32 @@ export class GroupedDevicesComponent implements OnInit {
     this.sortedData = data.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
-        case 'name': return this.compare(a.name, b.name, isAsc);
-        case 'owner': return this.compareNameProp(a.owner, b.owner, isAsc);
-        case 'location': return this.compareNameProp(a.location_id, b.location_id, isAsc);
-        default: return 0;
+        case 'name':
+          return this.compare(a.name, b.name, isAsc);
+        case 'owner':
+          return this.compareNameProp(a.owner, b.owner, isAsc);
+        case 'location':
+          return this.compareNameProp(a.location_id, b.location_id, isAsc);
+        default:
+          return 0;
       }
     });
   }
-  compare(a: number | string , b: number | string , isAsc: boolean) {
+
+  compare(a: number | string, b: number | string, isAsc: boolean) {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
+
   compareNameProp(a: any, b: any, isAsc: boolean) {
     let result;
     if (a == null) {
-      result = -1 ;
+      result = -1;
     } else if (b == null) {
       result = 1;
     } else {
-      result = (a.name.toUpperCase()  < b.name.toUpperCase()  ? -1 : 1);
+      result = (a.name.toUpperCase() < b.name.toUpperCase() ? -1 : 1);
     }
-    return result *   (isAsc ? 1 : -1);
+    return result * (isAsc ? 1 : -1);
   }
 }
 

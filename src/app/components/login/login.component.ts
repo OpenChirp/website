@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { MatSnackBar} from '@angular/material';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {AuthService} from '../../services/auth.service';
+import {MatSnackBar} from '@angular/material';
 
-import { SuccessDialogService } from '../../services/success-dialog.service';
-import { ErrorDialogService } from '../../services/error-dialog.service';
-import { Configuration } from '../../config';
+import {SuccessDialogService} from '../../services/success-dialog.service';
+import {ErrorDialogService} from '../../services/error-dialog.service';
+import {Configuration} from '../../config';
 
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
               public snackBar: MatSnackBar) {
   }
 
-  ngOnInit()  {
+  ngOnInit() {
     this.showSignupButton = this.config.signup_enable;
   }
 

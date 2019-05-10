@@ -15,10 +15,12 @@ $icon-color: #34495e;
     padding-top: $toolbar-height;
     height: 100%;
     background-color: #ffffff;
+
     mat-sidenav {
       width: $side-nav-width;
       background-color: $side-nav-color;
       padding-top: $toolbar-height;
+
       .sidenav-button {
         a {
           display: block;
@@ -29,6 +31,7 @@ $icon-color: #34495e;
           border-bottom: solid 1px $hover-color;
           transition-duration: 0.3s;
           padding: 0;
+
           p {
             float: left;
             line-height: $button-height;
@@ -37,6 +40,7 @@ $icon-color: #34495e;
             font-family: "Avenir-Med", sans-serif;
             color: $text-color;
           }
+
           mat-icon {
             float: right;
             line-height: $button-height;
@@ -44,6 +48,7 @@ $icon-color: #34495e;
             color: $text-color;
           }
         }
+
         a:hover {
           background-color: $hover-color;
           transition-duration: 0.3s;
@@ -57,28 +62,33 @@ $icon-color: #34495e;
     color: $background-color;
     display: block;
     position: fixed;
-    top:0;
+    top: 0;
     left: 0;
     z-index: 999;
+
     .toolbar-content {
       text-align: right;
       width: 95%;
       display: inline-block;
 
       line-height: 60px;
+
       button {
         color: $icon-color;
       }
+
       .logo {
         content: url("../../../assets/images/logo-square.png");
         width: 60px;
         float: left;
       }
+
       .logo-text {
-        float : left;
+        float: left;
         color: $icon-color;
       }
     }
+
     mat-icon {
       margin-right: 10px;
       cursor: pointer;
@@ -86,6 +96,7 @@ $icon-color: #34495e;
       color: $icon-color;
       vertical-align: middle;
     }
+
     mat-icon:hover {
       color: #34495e;
       transition-duration: 0.3s;

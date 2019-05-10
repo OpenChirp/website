@@ -1,13 +1,12 @@
-
 import {switchMap} from 'rxjs/operators';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 
-import { DeviceService } from '../../services/device.service';
-import { SuccessDialogService } from '../../services/success-dialog.service';
-import { ErrorDialogService } from '../../services/error-dialog.service';
-import { MatDialog } from '@angular/material';
-import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.component';
+import {DeviceService} from '../../services/device.service';
+import {SuccessDialogService} from '../../services/success-dialog.service';
+import {ErrorDialogService} from '../../services/error-dialog.service';
+import {MatDialog} from '@angular/material';
+import {ConfirmationDialogComponent} from '../dialogs/confirmation-dialog.component';
 
 
 @Component({
@@ -18,6 +17,7 @@ import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.comp
 
 export class DeviceTemplateComponent implements OnInit {
   template: any = null;
+
   constructor(private route: ActivatedRoute,
               private deviceService: DeviceService,
               private router: Router,
@@ -43,7 +43,7 @@ export class DeviceTemplateComponent implements OnInit {
   }
 
   newDevice() {
-    this.router.navigate(['/home/newdevice', { template_id: this.template._id }]);
+    this.router.navigate(['/home/newdevice', {template_id: this.template._id}]);
   }
 
   deleteTemplate() {

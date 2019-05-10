@@ -1,13 +1,12 @@
-
 import {switchMap} from 'rxjs/operators';
-import { Component, OnInit } from '@angular/core';
-import { MatSnackBar, MatDialog } from '@angular/material';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {MatDialog, MatSnackBar} from '@angular/material';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 
-import { DeviceService } from '../../services/device.service';
-import { Device } from '../../models/device';
-import { ErrorDialogService } from '../../services/error-dialog.service';
-import { SuccessDialogService } from '../../services/success-dialog.service';
+import {DeviceService} from '../../services/device.service';
+import {Device} from '../../models/device';
+import {ErrorDialogService} from '../../services/error-dialog.service';
+import {SuccessDialogService} from '../../services/success-dialog.service';
 
 @Component({
   selector: 'new-template',
@@ -53,14 +52,14 @@ export class NewTemplateComponent implements OnInit {
           );
         },
         error => {
-            // this.snackBar.open(error.message, this.name, errorConfig);
-            this.errorDialogService
-              .dialogPopup(error.message + ': ' + this.name);
-          }
+          // this.snackBar.open(error.message, this.name, errorConfig);
+          this.errorDialogService
+            .dialogPopup(error.message + ': ' + this.name);
+        }
       );
 
     } else {
-      this.snackBar.open('Name and description are empty!', 'ERROR', { duration: 2000 });
+      this.snackBar.open('Name and description are empty!', 'ERROR', {duration: 2000});
     }
   }
 

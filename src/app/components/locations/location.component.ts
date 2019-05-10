@@ -1,12 +1,12 @@
-import { Component, OnInit} from '@angular/core';
-import { Location } from '../../models/location';
-import { MatSnackBar } from '@angular/material';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Location} from '../../models/location';
+import {MatSnackBar} from '@angular/material';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 
 
-import { SuccessDialogService } from '../../services/success-dialog.service';
-import { ErrorDialogService } from '../../services/error-dialog.service';
-import { LocationService } from '../../services/location.service';
+import {SuccessDialogService} from '../../services/success-dialog.service';
+import {ErrorDialogService} from '../../services/error-dialog.service';
+import {LocationService} from '../../services/location.service';
 
 @Component({
   selector: 'location',

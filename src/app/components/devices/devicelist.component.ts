@@ -1,12 +1,11 @@
-
 import {switchMap} from 'rxjs/operators';
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 
 
-import { Device } from '../../models/device';
-import { Location } from '../../models/location';
-import { LocationService } from '../../services/location.service';
+import {Device} from '../../models/device';
+import {Location} from '../../models/location';
+import {LocationService} from '../../services/location.service';
 
 
 @Component({
@@ -56,12 +55,13 @@ export class DeviceListComponent implements OnInit {
 
   newDevice() {
     if (this.location != null) {
-      this.router.navigate(['/home/newdevice', { location_id: this.location._id }]);
+      this.router.navigate(['/home/newdevice', {location_id: this.location._id}]);
     }
   }
+
   newDeviceGroup() {
     if (this.location != null) {
-      this.router.navigate(['/home/newdevicegroup', { location_id: this.location._id }]);
+      this.router.navigate(['/home/newdevicegroup', {location_id: this.location._id}]);
     }
   }
 }

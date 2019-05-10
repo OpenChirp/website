@@ -11,13 +11,16 @@ $blue-text: #8ab9d6;
       background-color: #efefef;
     }
   }
+
   th {
     font-weight: bold;
     border-bottom: solid 1px #303030;
   }
+
   tr {
     border-bottom: solid 1px #e3e3e3;
   }
+
   .card-container {
     display: flex;
     flex-direction: row;

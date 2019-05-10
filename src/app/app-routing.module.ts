@@ -1,33 +1,33 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
-import { SplashComponent } from './components/splash/splash.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { DashboardMainComponent } from './components/dashboard/dashboard-main.component';
-import { PageNotFoundComponent } from './components/404/pagenotfound.component';
-import { LocationComponent } from './components/locations/location.component';
-import { DeviceTemplatesComponent } from './components/device-templates/devicetemplates.component';
-import { DeviceComponent } from './components/devices/device.component';
-import { DeviceListComponent } from './components/devices/devicelist.component';
-import { NewDeviceComponent } from './components/devices/newdevice.component';
-import { NewDeviceGroupComponent } from './components/devices/newdevicegroup.component';
-import { DeviceTemplateComponent } from './components/device-templates/devicetemplate.component';
-import { NewTemplateComponent } from './components/device-templates/newtemplate.component';
-import { UserDevicesComponent } from './components/devices/userdevices.component';
-import { UserLocationsComponent } from './components/locations/userlocations.component';
-import { UserServicesComponent } from './components/userservices/userservices.component';
-import { UserGroupsComponent } from './components/groups/usergroups.component';
-import { InfraServiceComponent } from './components/infraservices/infraservice.component';
-import { ListInfraServicesComponent} from './components/infraservices/list.infraservices.component';
-import { NewInfraServiceComponent } from './components/infraservices/new.infraservice.component';
-import { AdminComponent } from './components/admin/admin.component';
-import { GroupMembersComponent } from './components/groups/groupmembers.component';
-import { UserProfileComponent } from './components/userprofile/userprofile.component';
-import { LoginComponent } from './components/login/login.component';
+import {SplashComponent} from './components/splash/splash.component';
+import {DashboardComponent} from './components/dashboard/dashboard.component';
+import {DashboardMainComponent} from './components/dashboard/dashboard-main.component';
+import {PageNotFoundComponent} from './components/404/pagenotfound.component';
+import {LocationComponent} from './components/locations/location.component';
+import {DeviceTemplatesComponent} from './components/device-templates/devicetemplates.component';
+import {DeviceComponent} from './components/devices/device.component';
+import {DeviceListComponent} from './components/devices/devicelist.component';
+import {NewDeviceComponent} from './components/devices/newdevice.component';
+import {NewDeviceGroupComponent} from './components/devices/newdevicegroup.component';
+import {DeviceTemplateComponent} from './components/device-templates/devicetemplate.component';
+import {NewTemplateComponent} from './components/device-templates/newtemplate.component';
+import {UserDevicesComponent} from './components/devices/userdevices.component';
+import {UserLocationsComponent} from './components/locations/userlocations.component';
+import {UserServicesComponent} from './components/userservices/userservices.component';
+import {UserGroupsComponent} from './components/groups/usergroups.component';
+import {InfraServiceComponent} from './components/infraservices/infraservice.component';
+import {ListInfraServicesComponent} from './components/infraservices/list.infraservices.component';
+import {NewInfraServiceComponent} from './components/infraservices/new.infraservice.component';
+import {AdminComponent} from './components/admin/admin.component';
+import {GroupMembersComponent} from './components/groups/groupmembers.component';
+import {UserProfileComponent} from './components/userprofile/userprofile.component';
+import {LoginComponent} from './components/login/login.component';
 
 const appRoutes: Routes = [
-  { path: '', component: SplashComponent },
-  { path: 'login', component: LoginComponent },
+  {path: '', component: SplashComponent},
+  {path: 'login', component: LoginComponent},
   {
     path: 'home',
     component: DashboardComponent,
@@ -88,7 +88,7 @@ const appRoutes: Routes = [
         path: 'mygroups',
         component: UserGroupsComponent
       },
-       {
+      {
         path: 'myprofile',
         component: UserProfileComponent
       },
@@ -100,7 +100,7 @@ const appRoutes: Routes = [
         path: 'services',
         component: ListInfraServicesComponent
       },
-       {
+      {
         path: 'newservice',
         component: NewInfraServiceComponent
       },
@@ -110,12 +110,12 @@ const appRoutes: Routes = [
       }
     ]
   },
-  { path: '**', component: PageNotFoundComponent }
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(appRoutes, { useHash: false })
+    RouterModule.forRoot(appRoutes, {useHash: false})
   ],
   exports: [
     RouterModule

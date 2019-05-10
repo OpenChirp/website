@@ -5,50 +5,52 @@
       <th>Key Name</th>
       <th>Key Description</th>
       <th>Key Example</th>
-       <th>Required</th>
+      <th>Required</th>
       <th>Actions</th>
     </tr>
     <tbody>
-      <tr *ngFor="let config of transformed; let i = index">
-        <td><p>{{ config.keyName }}</p></td>
-        <td>
-          <p>{{ config.keyDescription }}</p>
-        </td>
-         <td>
-          <p>{{ config.keyExample }}</p>
-        </td>
-         <td>
-          <p>{{ config.keyRequired }}</p>
-        </td>
-        <td>        
-          <mat-icon (click)="remove(i)">delete</mat-icon>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <mat-form-field>
-            <input matInput placeholder="Key Name" [(ngModel)]="newKeyName">
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field>
-            <textarea matInput placeholder="Key Description" [(ngModel)]="newKeyDescription"></textarea>
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field>
-            <input matInput placeholder="Key Example" [(ngModel)]="newKeyExample">
-          </mat-form-field>
-        </td>
-        <td>
-            <mat-checkbox [(ngModel)]="newKeyRequired"></mat-checkbox>
-        </td>
-        <td><mat-icon (click)="add()">add</mat-icon></td>
-      </tr>
+    <tr *ngFor="let config of transformed; let i = index">
+      <td><p>{{ config.keyName }}</p></td>
+      <td>
+        <p>{{ config.keyDescription }}</p>
+      </td>
+      <td>
+        <p>{{ config.keyExample }}</p>
+      </td>
+      <td>
+        <p>{{ config.keyRequired }}</p>
+      </td>
+      <td>
+        <mat-icon (click)="remove(i)">delete</mat-icon>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field>
+          <input matInput placeholder="Key Name" [(ngModel)]="newKeyName">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <textarea matInput placeholder="Key Description" [(ngModel)]="newKeyDescription"></textarea>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <input matInput placeholder="Key Example" [(ngModel)]="newKeyExample">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-checkbox [(ngModel)]="newKeyRequired"></mat-checkbox>
+      </td>
+      <td>
+        <mat-icon (click)="add()">add</mat-icon>
+      </td>
+    </tr>
     </tbody>
-    </table>
-    <div class="buttons">
-      <button mat-raised-button (click)="save()">Save</button>
-      <button mat-raised-button (click)="cancel()">Cancel</button>
-    </div>  
+  </table>
+  <div class="buttons">
+    <button mat-raised-button (click)="save()">Save</button>
+    <button mat-raised-button (click)="cancel()">Cancel</button>
+  </div>
 </div>

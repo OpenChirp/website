@@ -1,16 +1,16 @@
-import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-import { Router , ActivatedRoute} from '@angular/router';
-import { Device } from '../../../models/device';
-import { DeviceService } from '../../../services/device.service';
-import { InfraService } from '../../../services/infraservice';
-import { SuccessDialogService } from '../../../services/success-dialog.service';
-import { ErrorDialogService } from '../../../services/error-dialog.service';
+import {Component, EventEmitter, Input, OnChanges, Output} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Device} from '../../../models/device';
+import {DeviceService} from '../../../services/device.service';
+import {InfraService} from '../../../services/infraservice';
+import {SuccessDialogService} from '../../../services/success-dialog.service';
+import {ErrorDialogService} from '../../../services/error-dialog.service';
 import {MatDialog, Sort} from '@angular/material';
-import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.component';
+import {ConfirmationDialogComponent} from '../../dialogs/confirmation-dialog.component';
 
-import { SelectServiceComponent } from '../../infraservices/select-service.component';
-import { InputConfigComponent } from '../../dialogs/input-config.component';
-import { UpdateConfigComponent } from '../../dialogs/update-config.component';
+import {SelectServiceComponent} from '../../infraservices/select-service.component';
+import {InputConfigComponent} from '../../dialogs/input-config.component';
+import {UpdateConfigComponent} from '../../dialogs/update-config.component';
 
 @Component({
   selector: 'device-services',
@@ -25,16 +25,17 @@ export class DeviceServicesComponent implements OnChanges {
   configs: any = {};
   statuses: any = {};
   services: Array<any> = [];
-  sortedData: Array<any> = [] ;
+  sortedData: Array<any> = [];
 
   constructor(private route: ActivatedRoute,
-    private router: Router,
-    private deviceService: DeviceService,
-    private infraService: InfraService,
-    private successDialogService: SuccessDialogService,
-    private errorDialogService: ErrorDialogService,
-    public dialog: MatDialog) {
+              private router: Router,
+              private deviceService: DeviceService,
+              private infraService: InfraService,
+              private successDialogService: SuccessDialogService,
+              private errorDialogService: ErrorDialogService,
+              public dialog: MatDialog) {
   }
+
   ngOnChanges() {
     this.getLinkedServices();
   }
@@ -58,7 +59,7 @@ export class DeviceServicesComponent implements OnChanges {
           if (this.services.length == this.linkedServices.length) {
             this.sortedData = this.services.slice();
           }
-         });
+        });
     }
   }
 
@@ -75,13 +76,13 @@ export class DeviceServicesComponent implements OnChanges {
       error => {
         this.errorDialogService.dialogPopup(error.message + ': ' + service.name);
       }
-      );
+    );
   }
 
   linkService(newLink: any) {
     const configRequired = newLink.config_required;
     if (configRequired && configRequired.length > 0) {
-      const dialogRef = this.dialog.open(InputConfigComponent, { width: '900px' });
+      const dialogRef = this.dialog.open(InputConfigComponent, {width: '900px'});
       dialogRef.componentInstance.configRequired = configRequired;
       dialogRef.componentInstance.source = newLink.name;
       dialogRef.afterClosed().subscribe(
@@ -91,20 +92,20 @@ export class DeviceServicesComponent implements OnChanges {
           }
         });
     } else {
-      this.invokeLinkServiceApi(this.device._id, newLink, [] );
+      this.invokeLinkServiceApi(this.device._id, newLink, []);
     }
   }
 
   viewConfig(service: any) {
-    const dialogRef = this.dialog.open(UpdateConfigComponent, { width: '900px' });
+    const dialogRef = this.dialog.open(UpdateConfigComponent, {width: '900px'});
     dialogRef.componentInstance.config = service.config;
-      dialogRef.componentInstance.source = service.name;
-      dialogRef.afterClosed().subscribe(
-        result => {
-          if (result) {
-            this.updateServiceLink(this.device._id, service, result);
-          }
-        });
+    dialogRef.componentInstance.source = service.name;
+    dialogRef.afterClosed().subscribe(
+      result => {
+        if (result) {
+          this.updateServiceLink(this.device._id, service, result);
+        }
+      });
   }
 
   updateServiceLink(device_id: string, service: any, config: any) {
@@ -157,15 +158,20 @@ export class DeviceServicesComponent implements OnChanges {
     this.sortedData = data.sort((a, b) => {
       const isAsc = sort.direction === 'asc';
       switch (sort.active) {
-        case 'name': return this.compare(a.name, b.name, isAsc);
-        case 'status': return this.compare((a.status ? a.status.message : '-'), (b.status ? b.status.message : '-'), isAsc);
-        case 'timestamp': return this.compare((a.status ? a.status.timestamp : '-'),
-          (b.status ? b.status.timestamp : '-'), isAsc);
-        default: return 0;
+        case 'name':
+          return this.compare(a.name, b.name, isAsc);
+        case 'status':
+          return this.compare((a.status ? a.status.message : '-'), (b.status ? b.status.message : '-'), isAsc);
+        case 'timestamp':
+          return this.compare((a.status ? a.status.timestamp : '-'),
+            (b.status ? b.status.timestamp : '-'), isAsc);
+        default:
+          return 0;
       }
     });
   }
-  compare(a: number | string , b: number | string , isAsc: boolean) {
+
+  compare(a: number | string, b: number | string, isAsc: boolean) {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
 }

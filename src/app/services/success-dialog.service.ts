@@ -1,12 +1,13 @@
-import { Observable } from 'rxjs';
-import { MatDialogRef, MatDialog } from '@angular/material';
-import { Injectable } from '@angular/core';
-import { SuccessDialogComponent } from '../components/dialogs/success-dialog.component';
+import {Observable} from 'rxjs';
+import {MatDialog, MatDialogRef} from '@angular/material';
+import {Injectable} from '@angular/core';
+import {SuccessDialogComponent} from '../components/dialogs/success-dialog.component';
 
 @Injectable()
 export class SuccessDialogService {
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog) {
+  }
 
   /**
    * Opens a success dialog
@@ -25,7 +26,7 @@ export class SuccessDialogService {
     return dialogRef.afterClosed();
   }
 
-   public dialogPopupNoAutoClose(message: string, tip: string): Observable<boolean> {
+  public dialogPopupNoAutoClose(message: string, tip: string): Observable<boolean> {
     let dialogRef: MatDialogRef<any>;
 
     dialogRef = this.dialog.open(SuccessDialogComponent);

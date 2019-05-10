@@ -1,10 +1,9 @@
-
 import {throwError as observableThrowError} from 'rxjs';
 
 import {catchError, map} from 'rxjs/operators';
-import { Injectable } from '@angular/core';
-import { Http, Response, RequestOptions } from '@angular/http';
-import { Configuration } from '../config';
+import {Injectable} from '@angular/core';
+import {Http, RequestOptions, Response} from '@angular/http';
+import {Configuration} from '../config';
 
 @Injectable()
 export class AuthService {
@@ -14,7 +13,7 @@ export class AuthService {
   private basicLoginUrl: string;
   private logoutUrl: string;
 
-constructor(private http: Http, private config: Configuration, private requestOptions: RequestOptions) {
+  constructor(private http: Http, private config: Configuration, private requestOptions: RequestOptions) {
     this.googleLoginUrl = config.auth_url + 'google/token';
     this.signupUrl = config.auth_url + 'signup';
     this.basicLoginUrl = config.auth_url + 'basic';
@@ -25,24 +24,27 @@ constructor(private http: Http, private config: Configuration, private requestOp
 
   googleLogin(body: any) {
     return this.http.post(this.googleLoginUrl, body, this.requestOptions).pipe(map(this.extractData),
-                    catchError(this.handleError));
+      catchError(this.handleError));
   }
+
   signup(body: any) {
     return this.http.post(this.signupUrl, body, this.requestOptions).pipe(map(this.extractData),
-                    catchError(this.handleError));
+      catchError(this.handleError));
   }
 
   basicLogin(body: any) {
     return this.http.post(this.basicLoginUrl, body, this.requestOptions).pipe(map(this.extractData),
-                    catchError(this.handleError));
+      catchError(this.handleError));
   }
-   logout() {
+
+  logout() {
     return this.http.get(this.logoutUrl, this.requestOptions).pipe(map(this.extractData),
-                    catchError(this.handleError));
+      catchError(this.handleError));
   }
-   private extractData(res: Response) {
+
+  private extractData(res: Response) {
     const body = res.json();
-    return body || { };
+    return body || {};
   }
 
   private handleError(error: Response | any) {

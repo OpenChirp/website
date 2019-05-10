@@ -1,16 +1,16 @@
-import { Component, Input, Output, EventEmitter, OnChanges, OnDestroy } from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnDestroy, Output} from '@angular/core';
 
-import { DeviceService } from '../../../services/device.service';
-import { DeviceGroupService } from '../../../services/device-group.service';
-import { Device } from '../../../models/device';
-import { SuccessDialogService } from '../../../services/success-dialog.service';
-import { ErrorDialogService } from '../../../services/error-dialog.service';
+import {DeviceService} from '../../../services/device.service';
+import {DeviceGroupService} from '../../../services/device-group.service';
+import {Device} from '../../../models/device';
+import {SuccessDialogService} from '../../../services/success-dialog.service';
+import {ErrorDialogService} from '../../../services/error-dialog.service';
 import {MatDialog, Sort} from '@angular/material';
 import {Router} from '@angular/router';
-import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.component';
-import { InputTransducerValueComponent } from '../../dialogs/input-transducer-value.component';
-import { interval ,  Subscription } from 'rxjs';
-import { EditTransducerComponent } from './edit-transducer.component';
+import {ConfirmationDialogComponent} from '../../dialogs/confirmation-dialog.component';
+import {InputTransducerValueComponent} from '../../dialogs/input-transducer-value.component';
+import {interval, Subscription} from 'rxjs';
+import {EditTransducerComponent} from './edit-transducer.component';
 
 @Component({
   selector: 'device-transducers',
@@ -48,7 +48,7 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
 
   // Helps sort the given array of transducers by their name
   // in ascending order.
-  ngOnChanges () {
+  ngOnChanges() {
     this.sortedTransducers = [];
     this.sortedBroadcastTransducers = [];
     this.getTransducers();
@@ -78,7 +78,7 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
             vals[td._id] = td.value;
             times[td._id] = td.timestamp;
           });
-          this.sortedTransducers.forEach( (td) => {
+          this.sortedTransducers.forEach((td) => {
             td['value'] = vals[td['_id']];
             td['timestamp'] = times[td['_id']];
           });
@@ -134,9 +134,9 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
   }
 
   editTransducer(transducer: any) {
-    const dialogRef = this.dialog.open(EditTransducerComponent, { data: { transducer: transducer }});
+    const dialogRef = this.dialog.open(EditTransducerComponent, {data: {transducer: transducer}});
     dialogRef.afterClosed().subscribe(
-      result =>  {
+      result => {
         if (result) {
           this.deviceService.editTransducer(this.device._id, transducer._id, result).subscribe(
             result => {
@@ -159,7 +159,7 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
     dialogRef.componentInstance.confirmText = 'Delete';
     dialogRef.componentInstance.dialogText = 'Delete Transducer ' + name + '?';
     dialogRef.afterClosed().subscribe(
-      result =>  {
+      result => {
         if (result) {
           this.deviceService.deleteTransducer(this.device._id, id).subscribe(
             result => {
@@ -183,7 +183,7 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
     dialogRef.componentInstance.valueOriginal = valueOriginal;
     dialogRef.componentInstance.valueNew = '';
     dialogRef.afterClosed().subscribe(
-      value =>  {
+      value => {
         if (value) {
           // Set POST
           this.deviceService.publishToTransducer(this.device._id, id, value).subscribe(
@@ -265,7 +265,8 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
       return this.compare(a[sort.active], b[sort.active], isAsc);
     });
   }
-   compare(a: number | string, b: number | string, isAsc: boolean) {
+
+  compare(a: number | string, b: number | string, isAsc: boolean) {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
 
@@ -296,9 +297,9 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
   }
 
   editBroadcastTransducer(transducer: any) {
-    const dialogRef = this.dialog.open(EditTransducerComponent, { data: { transducer: transducer, is_broadcast: true }});
+    const dialogRef = this.dialog.open(EditTransducerComponent, {data: {transducer: transducer, is_broadcast: true}});
     dialogRef.afterClosed().subscribe(
-      result =>  {
+      result => {
         if (result) {
           this.deviceGroupService.editBroadcastTransducer(this.device._id, transducer._id, result).subscribe(
             result => {
@@ -321,7 +322,7 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
     dialogRef.componentInstance.confirmText = 'Delete';
     dialogRef.componentInstance.dialogText = 'Delete Broadcast Transducer ' + name + '?';
     dialogRef.afterClosed().subscribe(
-      result =>  {
+      result => {
         if (result) {
           this.deviceGroupService.deleteBroadcastTransducer(this.device._id, id).subscribe(
             result => {
@@ -345,7 +346,7 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
     dialogRef.componentInstance.valueOriginal = valueOriginal;
     dialogRef.componentInstance.valueNew = '';
     dialogRef.afterClosed().subscribe(
-      value =>  {
+      value => {
         if (value) {
           // Set POST
           this.deviceGroupService.publishToBroadcastTransducer(this.device._id, id, value).subscribe(

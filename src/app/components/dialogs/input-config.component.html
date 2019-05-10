@@ -1,20 +1,20 @@
 <div class="properties">
   <h2>Service config for {{ source }}</h2>
-  <table>    
+  <table>
     <tbody>
-      <tr *ngFor="let config of configRequired"> 
-        <td> {{config.key_name}} : </td>
-        <td>
-          <mat-form-field class="description">
-            <textarea placeholder="{{ config.key_example }}" matInput [(ngModel)]="config.value"></textarea>
-            <mat-hint>{{ config.key_description}}</mat-hint>
-          </mat-form-field>
-        </td>
-      </tr>
+    <tr *ngFor="let config of configRequired">
+      <td> {{config.key_name}} :</td>
+      <td>
+        <mat-form-field class="description">
+          <textarea placeholder="{{ config.key_example }}" matInput [(ngModel)]="config.value"></textarea>
+          <mat-hint>{{ config.key_description}}</mat-hint>
+        </mat-form-field>
+      </td>
+    </tr>
     </tbody>
-    </table>
-    <div class="buttons">
-      <button mat-raised-button (click)="save()">Save</button>
-      <button mat-raised-button (click)="cancel()">Cancel</button>
-    </div>  
+  </table>
+  <div class="buttons">
+    <button mat-raised-button (click)="save()">Save</button>
+    <button mat-raised-button (click)="cancel()">Cancel</button>
+  </div>
 </div>

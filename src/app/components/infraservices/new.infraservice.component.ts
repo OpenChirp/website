@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import {Component} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
-import { MatSnackBar} from '@angular/material';
-import { InfraService } from '../../services/infraservice';
+import {MatSnackBar} from '@angular/material';
+import {InfraService} from '../../services/infraservice';
 
-import { SuccessDialogService } from '../../services/success-dialog.service';
-import { ErrorDialogService } from '../../services/error-dialog.service';
+import {SuccessDialogService} from '../../services/success-dialog.service';
+import {ErrorDialogService} from '../../services/error-dialog.service';
 
 @Component({
   selector: 'new-infra-service',
@@ -18,10 +18,10 @@ export class NewInfraServiceComponent {
   description = '';
 
   constructor(private route: ActivatedRoute, private infraService: InfraService, private router: Router,
-    private successDialogService: SuccessDialogService,
-    private errorDialogService: ErrorDialogService,
-     public snackBar: MatSnackBar
-   ) {
+              private successDialogService: SuccessDialogService,
+              private errorDialogService: ErrorDialogService,
+              public snackBar: MatSnackBar
+  ) {
 
   }
 
@@ -42,20 +42,19 @@ export class NewInfraServiceComponent {
           );
         },
         error => {
-            this.errorDialogService
-              .dialogPopup(error.message + ': ' + this.name);
-          }
+          this.errorDialogService
+            .dialogPopup(error.message + ': ' + this.name);
+        }
       );
 
     } else {
-      this.snackBar.open('Name and description are empty!', 'ERROR', { duration: 2000 });
+      this.snackBar.open('Name and description are empty!', 'ERROR', {duration: 2000});
     }
   }
 
   cancel() {
     this.router.navigate(['/home']);
   }
-
 
 
 }

@@ -1,14 +1,14 @@
-import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-import { Device } from '../../../models/device';
-import { ErrorDialogService } from '../../../services/error-dialog.service';
-import { SuccessDialogService } from '../../../services/success-dialog.service';
-import { DeviceService } from '../../../services/device.service';
-import { DeviceGroupService } from '../../../services/device-group.service';
-import { UserService } from '../../../services/user.service';
-import { MatDialog, Sort } from '@angular/material';
-import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.component';
-import { PublicLinkComponent } from '../../publiclink/public-link.component';
-import { Configuration } from '../../../config';
+import {Component, EventEmitter, Input, OnChanges, Output} from '@angular/core';
+import {Device} from '../../../models/device';
+import {ErrorDialogService} from '../../../services/error-dialog.service';
+import {SuccessDialogService} from '../../../services/success-dialog.service';
+import {DeviceService} from '../../../services/device.service';
+import {DeviceGroupService} from '../../../services/device-group.service';
+import {UserService} from '../../../services/user.service';
+import {MatDialog, Sort} from '@angular/material';
+import {ConfirmationDialogComponent} from '../../dialogs/confirmation-dialog.component';
+import {PublicLinkComponent} from '../../publiclink/public-link.component';
+import {Configuration} from '../../../config';
 
 @Component({
   selector: 'device-commands',
@@ -36,7 +36,7 @@ export class DeviceCommandsComponent implements OnChanges {
               private errorDialogService: ErrorDialogService,
               public dialog: MatDialog,
               private config: Configuration
-              ) {
+  ) {
 
     this.baseUrl = config.api_base_url;
   }
@@ -167,7 +167,7 @@ export class DeviceCommandsComponent implements OnChanges {
   publicLink(command: any) {
     this.deviceService.getPublicLink(this.device._id, command._id).subscribe(
       result => {
-        const dialogRef = this.dialog.open(PublicLinkComponent, { width: '800px' });
+        const dialogRef = this.dialog.open(PublicLinkComponent, {width: '800px'});
         dialogRef.componentInstance.device = this.device;
         dialogRef.componentInstance.command = command;
         dialogRef.componentInstance.link = this.baseUrl + result;
@@ -175,13 +175,13 @@ export class DeviceCommandsComponent implements OnChanges {
       },
       error => {
         if (error.status == 404) {
-          const dialogRef = this.dialog.open(PublicLinkComponent, { width: '800px' });
+          const dialogRef = this.dialog.open(PublicLinkComponent, {width: '800px'});
           dialogRef.componentInstance.device = this.device;
           dialogRef.componentInstance.command = command;
           dialogRef.componentInstance.baseUrl = this.baseUrl;
         } else {
           this.errorDialogService
-          .dialogPopup(error.message);
+            .dialogPopup(error.message);
         }
       });
   }
@@ -189,7 +189,7 @@ export class DeviceCommandsComponent implements OnChanges {
   publicBroadcastLink(command: any) {
     this.deviceGroupService.getPublicBroadcastLink(this.device._id, command._id).subscribe(
       result => {
-        const dialogRef = this.dialog.open(PublicLinkComponent, { width: '800px' });
+        const dialogRef = this.dialog.open(PublicLinkComponent, {width: '800px'});
         dialogRef.componentInstance.device = this.device;
         dialogRef.componentInstance.command = command;
         dialogRef.componentInstance.link = this.baseUrl + result;
@@ -198,7 +198,7 @@ export class DeviceCommandsComponent implements OnChanges {
       },
       error => {
         if (error.status == 404) {
-          const dialogRef = this.dialog.open(PublicLinkComponent, { width: '800px' });
+          const dialogRef = this.dialog.open(PublicLinkComponent, {width: '800px'});
           dialogRef.componentInstance.device = this.device;
           dialogRef.componentInstance.command = command;
           dialogRef.componentInstance.baseUrl = this.baseUrl;
@@ -210,32 +210,32 @@ export class DeviceCommandsComponent implements OnChanges {
       });
   }
 
- createShortcut(command: any) {
-   // if (this.name != "") {
-   const body = {
-     'name': command.name,
-     'device_id': this.device._id,
-     'command_id': command._id
-   };
-   this.userService
-        .createCommandShort(body)
-        .subscribe(
-          result => {
-            this.successDialogService
-                .dialogPopup('Shortcut created ' + this.name);
+  createShortcut(command: any) {
+    // if (this.name != "") {
+    const body = {
+      'name': command.name,
+      'device_id': this.device._id,
+      'command_id': command._id
+    };
+    this.userService
+      .createCommandShort(body)
+      .subscribe(
+        result => {
+          this.successDialogService
+            .dialogPopup('Shortcut created ' + this.name);
 
-          },
-          error => {
-             this.errorDialogService
-              .dialogPopup(error.message );
-          }
-         );
-   /* }else {
-      let errorMessage = 'Name  cannot be empty.';
-      this.errorDialogService
-        .dialogPopup(ErrorDialogComponent, errorMessage);
-    }*/
- }
+        },
+        error => {
+          this.errorDialogService
+            .dialogPopup(error.message);
+        }
+      );
+    /* }else {
+       let errorMessage = 'Name  cannot be empty.';
+       this.errorDialogService
+         .dialogPopup(ErrorDialogComponent, errorMessage);
+     }*/
+  }
 
   execute(command: any) {
     this.deviceService.executeCommand(this.device._id, command._id).subscribe(
@@ -274,6 +274,7 @@ export class DeviceCommandsComponent implements OnChanges {
       return this.compare(a[sort.active], b[sort.active], isAsc);
     });
   }
+
   compare(a: number | string, b: number | string, isAsc: boolean) {
     return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
   }
