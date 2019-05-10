@@ -74,12 +74,7 @@ export class GroupedDevicesComponent {
           this.deviceGroupService.deleteDeviceFromGroup(this.deviceGroup._id, device_id).subscribe(
             result => {
               this.successDialogService.dialogPopup('Removed from group :' + name);
-              this.updateDevice.emit(true);
-              for (let i = 0; i < this.devices.length; i++) {
-                if (this.devices[i]._id == device_id) {
-                  this.devices.splice(i, 1);
-                }
-              }
+              this.getGroupedDevices();
             },
             error => {
               this.errorDialogService.dialogPopup(error.message + ': ' + name);

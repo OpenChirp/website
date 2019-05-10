@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, OnDestroy } from '@angular/core';
 
 import { DeviceService } from '../../../services/device.service';
 import { DeviceGroupService } from '../../../services/device-group.service';
@@ -18,7 +18,7 @@ import { EditTransducerComponent } from './edit-transducer.component';
   styleUrls: ['./device-transducers.component.scss']
 })
 
-export class DeviceTransducersComponent {
+export class DeviceTransducersComponent implements OnChanges, OnDestroy {
   @Input() device: Device;
   @Output() updateDevice: EventEmitter<boolean> = new EventEmitter();
   name: string = "";
@@ -48,7 +48,9 @@ export class DeviceTransducersComponent {
 
   // Helps sort the given array of transducers by their name
   // in ascending order.
-  ngOnInit() {
+  ngOnChanges () {
+    this.sortedTransducers = [];
+    this.sortedBroadcastTransducers = [];
     this.getTransducers();
     if (this.device.isDeviceGroup) {
       this.getGroupTransducers();
@@ -119,7 +121,6 @@ export class DeviceTransducersComponent {
           this.unit = "";
           this.actuable = false;
           this.updateDevice.emit(true);
-          this.getTransducers();
         },
         error => {
           this.errorDialogService
@@ -142,7 +143,6 @@ export class DeviceTransducersComponent {
               this.successDialogService
                 .dialogPopup('Transducer Updated: ' + name);
               this.updateDevice.emit(true);
-              this.getTransducers();
             },
             error => {
               this.errorDialogService
@@ -166,7 +166,6 @@ export class DeviceTransducersComponent {
               this.successDialogService
                 .dialogPopup('Transducer Deleted: ' + name);
               this.updateDevice.emit(true);
-              this.getTransducers();
             },
             error => {
               this.errorDialogService
@@ -192,7 +191,6 @@ export class DeviceTransducersComponent {
               this.successDialogService
                 .dialogPopup('Published ' + value + ' to ' + name);
               this.updateDevice.emit(true);
-              this.getTransducers();
             },
             error => {
               this.errorDialogService
@@ -285,7 +283,6 @@ export class DeviceTransducersComponent {
           this.bname = "";
           this.bunit = "";
           this.updateDevice.emit(true);
-          this.getBroadcastTransducers();
         },
         error => {
           this.errorDialogService
@@ -308,7 +305,6 @@ export class DeviceTransducersComponent {
               this.successDialogService
                 .dialogPopup('Broadcast Transducer Updated: ' + name);
               this.updateDevice.emit(true);
-              this.getBroadcastTransducers();
             },
             error => {
               this.errorDialogService
@@ -332,7 +328,6 @@ export class DeviceTransducersComponent {
               this.successDialogService
                 .dialogPopup('Broadcast Transducer Deleted: ' + name);
               this.updateDevice.emit(true);
-              this.getBroadcastTransducers();
             },
             error => {
               this.errorDialogService
