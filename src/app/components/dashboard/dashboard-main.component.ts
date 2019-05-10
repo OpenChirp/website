@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { Configuration } from '../../config';
 import { Location } from '../../models/location';
 import { DeviceService } from '../../services/device.service';

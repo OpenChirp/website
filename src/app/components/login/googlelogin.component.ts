@@ -1,4 +1,4 @@
-import { Component, ElementRef, AfterViewInit } from "@angular/core";
+import { Component, AfterViewInit } from "@angular/core";
 import { Router } from '@angular/router';
 import { Configuration } from '../../config';
 import { AuthService } from '../../services/auth.service';

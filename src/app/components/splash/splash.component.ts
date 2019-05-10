@@ -3,7 +3,6 @@ import { DOCUMENT } from '@angular/platform-browser';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Configuration } from '../../config';
 import { UserService } from '../../services/user.service';
-import { GalleryComponent } from '../gallery/gallery.component';
 import {LoginComponent} from '../login/login.component';
 import { MatDialog } from '@angular/material';
 import {ViewEncapsulation} from '@angular/core';

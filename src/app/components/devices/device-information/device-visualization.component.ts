@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { DomSanitizer, SafeUrl} from '@angular/platform-browser';
-import { MatButtonToggleGroup } from '@angular/material';
 
 import { Device } from '../../../models/device';
 import { DeviceService } from '../../../services/device.service';

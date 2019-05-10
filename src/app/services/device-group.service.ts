@@ -1,10 +1,9 @@
-import {throwError as observableThrowError,  Observable } from 'rxjs';
+import {throwError as observableThrowError} from 'rxjs';
 
 import {catchError, map} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptions } from '@angular/http';
 
-import { Device } from '../models/device';
 import { Configuration } from '../config';
 
 @Injectable()

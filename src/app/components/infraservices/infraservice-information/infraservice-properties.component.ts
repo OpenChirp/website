@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { InfraService } from '../../../services/infraservice';
 
 import { SuccessDialogService } from '../../../services/success-dialog.service';

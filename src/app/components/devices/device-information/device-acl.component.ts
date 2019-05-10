@@ -2,7 +2,7 @@
 import {map, startWith} from 'rxjs/operators';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormControl, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Device } from '../../../models/device';
 import { ErrorDialogService } from '../../../services/error-dialog.service';
 import { SuccessDialogService } from '../../../services/success-dialog.service';

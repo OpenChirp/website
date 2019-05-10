@@ -1,9 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatDialog, Sort } from '@angular/material';
+import { MatDialog} from '@angular/material';
 import { Device } from '../../../models/device';
 import { DeviceService } from '../../../services/device.service';
-import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.component';
 import { ErrorDialogService } from '../../../services/error-dialog.service';
 import { SuccessDialogService } from '../../../services/success-dialog.service';
 import { PropertiesComponent } from '../../dialogs/properties.component';

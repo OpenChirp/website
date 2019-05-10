@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { MatInputModule, MatSnackBar, MatDialog } from '@angular/material';
+import { MatSnackBar} from '@angular/material';
 
 import { SuccessDialogService } from '../../services/success-dialog.service';
 import { ErrorDialogService } from '../../services/error-dialog.service';

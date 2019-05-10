@@ -1,12 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { switchMap, startWith, map } from 'rxjs/operators';
+import { switchMap} from 'rxjs/operators';
 import { InfraService } from '../../../services/infraservice';
 
 import { GlobalDataService } from '../../../services/global.data.service';
 import { MatDialog } from '@angular/material';
-import { PropertiesComponent } from '../../dialogs/properties.component';
-import { ConfigRequiredComponent } from '../config.required.component';
 import {Device} from '../../../models/device';
 import {ViewConfigComponent} from '../../dialogs/view-config.component';
 

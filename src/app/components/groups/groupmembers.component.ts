@@ -1,12 +1,11 @@
 import {switchMap, startWith, map} from 'rxjs/operators';
 import { Component } from '@angular/core';
-import { FormControl, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { MatDialog, MatDialogRef } from '@angular/material';
+import { MatDialog} from '@angular/material';
 import { SuccessDialogService } from '../../services/success-dialog.service';
 import { ErrorDialogService } from '../../services/error-dialog.service';
 import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.component';
-import { NewGroupComponent } from './newgroup.component';
 import { UserService } from '../../services/user.service';
 import { GroupService } from '../../services/group.service';
 

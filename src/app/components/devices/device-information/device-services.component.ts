@@ -9,7 +9,6 @@ import {MatDialog, Sort} from '@angular/material';
 import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.component';
 
 import { SelectServiceComponent } from '../../infraservices/select-service.component';
-import { PropertiesComponent } from '../../dialogs/properties.component';
 import { InputConfigComponent } from '../../dialogs/input-config.component';
 import { UpdateConfigComponent } from '../../dialogs/update-config.component';
 

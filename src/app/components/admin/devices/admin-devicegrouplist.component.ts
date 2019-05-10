@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute} from '@angular/router';
 
 import {AdminService} from '../../../services/admin.service';
 import {ErrorDialogService} from '../../../services/error-dialog.service';

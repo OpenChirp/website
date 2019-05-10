@@ -9,8 +9,6 @@ import { ErrorDialogService } from '../../services/error-dialog.service';
 import { GlobalDataService } from '../../services/global.data.service';
 import { MatDialog } from '@angular/material';
 import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.component';
-import { PropertiesComponent } from '../dialogs/properties.component';
-import { ConfigRequiredComponent } from './config.required.component';
 
 @Component({
   selector: 'infra-service',

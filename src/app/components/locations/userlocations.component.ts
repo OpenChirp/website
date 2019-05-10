@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute} from '@angular/router';
 
 
-import { Device } from '../../models/device';
 import { Location } from '../../models/location';
-import { LocationService } from '../../services/location.service';
 import { UserService } from '../../services/user.service';
 
 @Component({

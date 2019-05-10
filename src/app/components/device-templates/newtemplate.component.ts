@@ -1,7 +1,7 @@
 
 import {switchMap} from 'rxjs/operators';
 import { Component } from '@angular/core';
-import { MatInputModule, MatSnackBar, MatDialog } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { DeviceService } from '../../services/device.service';

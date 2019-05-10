@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component} from '@angular/core';
 import { Location } from '../../models/location';
-import { MatInputModule, MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 

@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { HttpModule, JsonpModule } from '@angular/http';
-import { RouterModule, Routes, Router } from '@angular/router';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {
   MatInputModule,

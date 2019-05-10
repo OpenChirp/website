@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { MatDialog, MatDialogRef } from '@angular/material';
+import { Router, ActivatedRoute} from '@angular/router';
+import { MatDialog} from '@angular/material';
 import { UserService } from '../../services/user.service';
 import { SuccessDialogService } from '../../services/success-dialog.service';
 import { ErrorDialogService } from '../../services/error-dialog.service';

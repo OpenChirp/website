@@ -2,7 +2,6 @@ import {Component, Inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {DeviceService} from '../../../services/device.service';
-import {Device} from '../../../models/device';
 
 @Component({
   selector: 'edit-transducer',
