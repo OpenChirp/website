@@ -1,15 +1,14 @@
-
 import {switchMap} from 'rxjs/operators';
-import { Component, ViewEncapsulation } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {MatDialog} from '@angular/material';
 
-import { Location } from '../../models/location';
-import { LocationService } from '../../services/location.service';
-import { DeviceService } from '../../services/device.service';
-import { SuccessDialogService } from '../../services/success-dialog.service';
-import { ErrorDialogService } from '../../services/error-dialog.service';
-import { SelectTemplateComponent } from '../device-templates/select-template.component';
+import {Location} from '../../models/location';
+import {LocationService} from '../../services/location.service';
+import {DeviceService} from '../../services/device.service';
+import {SuccessDialogService} from '../../services/success-dialog.service';
+import {ErrorDialogService} from '../../services/error-dialog.service';
+import {SelectTemplateComponent} from '../device-templates/select-template.component';
 
 @Component({
   selector: 'new-device',
@@ -17,16 +16,16 @@ import { SelectTemplateComponent } from '../device-templates/select-template.com
   styleUrls: ['./newdevice.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class NewDeviceComponent {
+export class NewDeviceComponent implements OnInit {
   location: Location = null;
-  name: string = "";
-  enabled: boolean = true;
-  //deviceTypes: Array<string> = ["LORA", "TWIST", "FIREFLY", "BOSCH_XDK"];
-  selectedType: string = "";
-  useTemplate: boolean = false;
+  name = '';
+  enabled = true;
+  // deviceTypes: Array<string> = ["LORA", "TWIST", "FIREFLY", "BOSCH_XDK"];
+  selectedType = '';
+  useTemplate = false;
   templates: Array<Object> = [];
   template: any = null;
-  templateid = "";
+  templateid = '';
 
   constructor(private deviceService: DeviceService,
               private locationService: LocationService,
@@ -44,8 +43,8 @@ export class NewDeviceComponent {
       error => this.templates = []
     );
 
-    var loc = false;
-    var tem = false;
+    let loc = false;
+    let tem = false;
     this.route.params.subscribe((params: Params) => {
       if (params['location_id']) {
         loc = true;
@@ -74,22 +73,21 @@ export class NewDeviceComponent {
   }
 
   add() {
-    if (this.name != "") {
-      var valid = true;
-      var body : any = {};
-      body["name"] = this.name;
-      body["enabled"] = this.enabled;
+    if (this.name != '') {
+      let valid = true;
+      const body: any = {};
+      body['name'] = this.name;
+      body['enabled'] = this.enabled;
       if (this.location) {
-        body["location_id"] = this.location._id;
+        body['location_id'] = this.location._id;
       }
       /*if (this.deviceTypes) {
         body["type"] = this.selectedType;
       }*/
       if (this.useTemplate) {
-        if (this.templateid != "") {
-          body["template_id"] = this.templateid;
-        }
-        else {
+        if (this.templateid != '') {
+          body['template_id'] = this.templateid;
+        } else {
           valid = false;
           this.errorDialogService.dialogPopup('Select a Template!');
         }
@@ -100,9 +98,9 @@ export class NewDeviceComponent {
             this.successDialogService
               .dialogPopup('Add Device Success: ' + this.name)
               .subscribe(
-              res => this.router.navigate(['/home/device/', result._id]),
-              err => this.router.navigate(['/home'])
-            );
+                res => this.router.navigate(['/home/device/', result._id]),
+                err => this.router.navigate(['/home'])
+              );
           },
           error => {
             this.errorDialogService
@@ -121,10 +119,10 @@ export class NewDeviceComponent {
   }
 
   selectTemplate() {
-    var dialogRef = this.dialog.open(SelectTemplateComponent, { width: '700px', height: '700px' });
+    const dialogRef = this.dialog.open(SelectTemplateComponent, {width: '700px', height: '700px'});
     dialogRef.afterClosed().subscribe(
       result => {
-        if(result) {
+        if (result) {
           this.template = result;
           this.templateid = this.template._id;
         }

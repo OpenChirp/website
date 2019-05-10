@@ -1,16 +1,14 @@
 import {switchMap} from 'rxjs/operators';
-import { Component } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 
-import { InfraService } from '../../services/infraservice';
+import {InfraService} from '../../services/infraservice';
 
-import { SuccessDialogService } from '../../services/success-dialog.service';
-import { ErrorDialogService } from '../../services/error-dialog.service';
-import { GlobalDataService } from '../../services/global.data.service';
-import { MatDialog } from '@angular/material';
-import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.component';
-import { PropertiesComponent } from '../dialogs/properties.component';
-import { ConfigRequiredComponent } from './config.required.component';
+import {SuccessDialogService} from '../../services/success-dialog.service';
+import {ErrorDialogService} from '../../services/error-dialog.service';
+import {GlobalDataService} from '../../services/global.data.service';
+import {MatDialog} from '@angular/material';
+import {ConfirmationDialogComponent} from '../dialogs/confirmation-dialog.component';
 
 @Component({
   selector: 'infra-service',
@@ -18,10 +16,10 @@ import { ConfigRequiredComponent } from './config.required.component';
   styleUrls: ['./infraservice.component.scss']
 })
 
-export class InfraServiceComponent {
+export class InfraServiceComponent implements OnInit {
   service: any = null;
   acl: any = {};
-  tabIndex: number = 0;
+  tabIndex = 0;
 
   private tabNameToPosition: Map<string, Number> = new Map([
     ['properties', 0],
@@ -34,10 +32,10 @@ export class InfraServiceComponent {
   ];
 
   constructor(private route: ActivatedRoute, private infraService: InfraService, private router: Router,
-    private successDialogService: SuccessDialogService,
-    private errorDialogService: ErrorDialogService,
-    private globalDataService:GlobalDataService,
-    public dialog: MatDialog) {
+              private successDialogService: SuccessDialogService,
+              private errorDialogService: ErrorDialogService,
+              private globalDataService: GlobalDataService,
+              public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -51,8 +49,8 @@ export class InfraServiceComponent {
         // The fix would be to have the sender already attach the #properties
         // tag to device page reference.
         // TODO: This should probably be some official Angular way of redirecting
-        //window.location.hash = "#properties";
-        //this.selectedIndex = this.tabNameToPosition.get('properties').valueOf();
+        // window.location.hash = "#properties";
+        // this.selectedIndex = this.tabNameToPosition.get('properties').valueOf();
       }
     });
     this.getService();
@@ -60,20 +58,20 @@ export class InfraServiceComponent {
 
   getService() {
     this.route.params.pipe(
-    switchMap((params: Params) => this.infraService.getServiceByID(params['id'])))
-    .subscribe(
-      result => {
-        this.service = result;
-        let ownerId = this.service.owner._id;
-        let loggedInUserId = this.globalDataService.userid;
-        this.acl.isOwner = (String(ownerId) === String(loggedInUserId));
-      },
-      error => this.router.navigate(['/home/services'])
+      switchMap((params: Params) => this.infraService.getServiceByID(params['id'])))
+      .subscribe(
+        result => {
+          this.service = result;
+          const ownerId = this.service.owner._id;
+          const loggedInUserId = this.globalDataService.userid;
+          this.acl.isOwner = (String(ownerId) === String(loggedInUserId));
+        },
+        error => this.router.navigate(['/home/services'])
       );
   }
 
   deleteService() {
-    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
     dialogRef.componentInstance.dialogText = 'Delete Service ' + this.service.name + '?';
     dialogRef.componentInstance.confirmText = 'Delete';
     dialogRef.afterClosed().subscribe(
@@ -92,9 +90,11 @@ export class InfraServiceComponent {
       }
     );
   }
+
   get selectedIndex() {
     return this.tabIndex;
   }
+
   set selectedIndex(index: number) {
     this.tabIndex = index;
     // TODO: This should probably be some official Angular way of redirecting

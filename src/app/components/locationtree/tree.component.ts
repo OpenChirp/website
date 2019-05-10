@@ -1,14 +1,14 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
-import { MatDialog, MatDialogRef, MatSnackBar } from '@angular/material';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Router} from '@angular/router';
+import {MatDialog, MatSnackBar} from '@angular/material';
 
-import { Subscription } from 'rxjs';
+import {Subscription} from 'rxjs';
 
-import { LocationService } from '../../services/location.service';
-import { Location } from '../../models/location';
-import { SuccessDialogService } from '../../services/success-dialog.service';
-import { ErrorDialogService } from '../../services/error-dialog.service';
-import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.component';
+import {LocationService} from '../../services/location.service';
+import {Location} from '../../models/location';
+import {SuccessDialogService} from '../../services/success-dialog.service';
+import {ErrorDialogService} from '../../services/error-dialog.service';
+import {ConfirmationDialogComponent} from '../dialogs/confirmation-dialog.component';
 
 @Component({
   selector: 'tree-node',
@@ -16,7 +16,7 @@ import { ConfirmationDialogComponent } from '../dialogs/confirmation-dialog.comp
   styleUrls: ['./tree.component.scss']
 })
 
-export class TreeNodeComponent {
+export class TreeNodeComponent implements OnInit, OnDestroy {
   @Input() currentLocation: Location;
   @Output() onDelete = new EventEmitter<boolean>();
 
@@ -24,6 +24,7 @@ export class TreeNodeComponent {
   errorMesssage: string;
   showChildren = false;
   subscription: Subscription;
+
   constructor(private locationService: LocationService,
               private router: Router,
               public dialog: MatDialog,
@@ -32,28 +33,31 @@ export class TreeNodeComponent {
               private errorDialogService: ErrorDialogService) {
 
   }
+
   ngOnInit() {
     this.subscription = this.locationService.notifier$
-       .subscribe(result => {
-         if (this.currentLocation._id === result) {
-             this.onCreateChild();
-         }
-       });
+      .subscribe(result => {
+        if (this.currentLocation._id === result) {
+          this.onCreateChild();
+        }
+      });
   }
+
   ngOnDestroy() {
     // prevent memory leak when component is destroyed
     this.subscription.unsubscribe();
   }
 
   reloadChildren() {
-     this.locationService
-        .getLocationById(this.currentLocation._id)
-        .subscribe(
-          result => {
-                this.currentLocation = result ;
-                this.getChildren(); },
-          error => this.errorMesssage = error
-        );
+    this.locationService
+      .getLocationById(this.currentLocation._id)
+      .subscribe(
+        result => {
+          this.currentLocation = result;
+          this.getChildren();
+        },
+        error => this.errorMesssage = error
+      );
   }
 
   /**
@@ -61,7 +65,7 @@ export class TreeNodeComponent {
    * @todo Expand REST interface to take and return array of locations
    */
   getChildren() {
-    let children = this.currentLocation.children;
+    const children = this.currentLocation.children;
     this.childLocations = [];
     for (let i = 0; i < children.length; i++) {
       this.locationService
@@ -69,7 +73,7 @@ export class TreeNodeComponent {
         .subscribe(
           result => {
             this.childLocations.push(result);
-             if (this.childLocations.length === children.length) {
+            if (this.childLocations.length === children.length) {
               this.childLocations.sort(this.compareNames);
             }
           },
@@ -82,15 +86,15 @@ export class TreeNodeComponent {
    * Simple string compare for sorting
    */
   compareNames(a, b) {
-      let nameA = a.name.toUpperCase();
-      let nameB = b.name.toUpperCase();
-      if (nameA < nameB) {
-        return -1;
-      }
-      if (nameA > nameB) {
-        return 1;
-      }
-      return 0;
+    const nameA = a.name.toUpperCase();
+    const nameB = b.name.toUpperCase();
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    return 0;
   }
 
   clearChildren() {
@@ -109,16 +113,16 @@ export class TreeNodeComponent {
   }
 
   addLocation(location: Location) {
-    this.router.navigate(['/home/location', { parent_id: location._id }]);
+    this.router.navigate(['/home/location', {parent_id: location._id}]);
   }
 
   updateLocation(location: Location) {
-    this.router.navigate(['/home/location', { location_id: location._id }]);
+    this.router.navigate(['/home/location', {location_id: location._id}]);
   }
 
   toDevices(location_id: string) {
     this.locationService.getDeviceByLocationId(location_id).subscribe(
-      result =>  {
+      result => {
         this.router.navigate(['/home/devices/', location_id]);
       },
       error => this.errorMesssage = error
@@ -130,7 +134,7 @@ export class TreeNodeComponent {
   }
 
   deleteLocation(location: Location) {
-    let dialogRef = this.dialog.open(ConfirmationDialogComponent);
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
     dialogRef.componentInstance.confirmText = 'Delete';
     dialogRef.componentInstance.dialogText = 'Delete Location ' + location.name + '?';
     dialogRef.afterClosed().subscribe(result => {
@@ -161,9 +165,9 @@ export class TreeNodeComponent {
   }
 
   onCreateChild() {
-      this.clearChildren();
-      this.reloadChildren();
-      this.showChildren = true;
+    this.clearChildren();
+    this.reloadChildren();
+    this.showChildren = true;
   }
 
   getLocationName(name: string) {

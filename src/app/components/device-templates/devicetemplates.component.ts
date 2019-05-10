@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { DeviceService } from '../../services/device.service';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {DeviceService} from '../../services/device.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'device-templates',
@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['devicetemplates.component.scss']
 })
 
-export class DeviceTemplatesComponent {
-  
+export class DeviceTemplatesComponent implements OnInit {
+
   templates: Array<Object> = [];
 
   constructor(private deviceService: DeviceService, private router: Router) {

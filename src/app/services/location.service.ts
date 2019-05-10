@@ -1,15 +1,13 @@
-
-import {throwError as observableThrowError,  Observable ,  Subject } from 'rxjs';
+import {Observable, Subject, throwError as observableThrowError} from 'rxjs';
 
 import {catchError, map} from 'rxjs/operators';
-import { Injectable} from '@angular/core';
-import { Http, Response, RequestOptions } from '@angular/http';
+import {Injectable} from '@angular/core';
+import {Http, RequestOptions, Response} from '@angular/http';
 
 
-
-import { Location } from '../models/location';
-import { Device } from '../models/device';
-import { Configuration } from '../config';
+import {Location} from '../models/location';
+import {Device} from '../models/device';
+import {Configuration} from '../config';
 
 @Injectable()
 export class LocationService {
@@ -22,21 +20,21 @@ export class LocationService {
   // Observable stream
   notifier$ = this._notifierSource.asObservable();
 
-  constructor (private http: Http, private config: Configuration, private requestOptions: RequestOptions) {
+  constructor(private http: Http, private config: Configuration, private requestOptions: RequestOptions) {
     this.apiUrl = config.api_url;
-    this.locationUrl = this.apiUrl + "location/";
+    this.locationUrl = this.apiUrl + 'location/';
     this.requestOptions.withCredentials = true;
   }
 
-  notifyParent (parentId: string) {
+  notifyParent(parentId: string) {
     this._notifierSource.next(parentId);
   }
 
   // Gets the root location
-  getRootLocation (): Observable<Location> {
+  getRootLocation(): Observable<Location> {
     return this.http.get(this.locationUrl, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   // Gets all location
@@ -49,36 +47,36 @@ export class LocationService {
   // Gets location specified by id
   getLocationById(id: string): Observable<Location> {
     return this.http.get(this.locationUrl + id, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   // Delete location
   deleteLocationById(id: string) {
     return this.http.delete(this.locationUrl + id, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   // Add location
   addLocationByParentId(id: string, body: any) {
     return this.http.post(this.locationUrl + id, body, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   // Update Location
   updateLocationById(id: string, body: any) {
     return this.http.put(this.locationUrl + id, body, this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   // Get device by location id
   getDeviceByLocationId(id: string): Observable<Array<Device>> {
-    return this.http.get(this.locationUrl + id + "/devices", this.requestOptions).pipe(
-                    map(this.extractData),
-                    catchError(this.handleError));
+    return this.http.get(this.locationUrl + id + '/devices', this.requestOptions).pipe(
+      map(this.extractData),
+      catchError(this.handleError));
   }
 
   getDeviceGroupByLocationId(id: string): Observable<Array<Device>> {
@@ -88,11 +86,11 @@ export class LocationService {
   }
 
   private extractData(res: Response) {
-    let body = res.json();
-    return body || { };
+    const body = res.json();
+    return body || {};
   }
 
-  private handleError (error: Response | any) {
+  private handleError(error: Response | any) {
     let errMsg: string;
     let err: any;
     if (error instanceof Response) {
@@ -106,8 +104,7 @@ export class LocationService {
     console.error(errMsg);
     if (err.message) {
       return observableThrowError(err);
-    }
-    else {
+    } else {
       return observableThrowError({
         message: error.statusText
       });

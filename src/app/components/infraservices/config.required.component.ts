@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import {Component, OnInit} from '@angular/core';
+import {MatDialogRef} from '@angular/material';
 
-import { ErrorDialogService } from '../../services/error-dialog.service';
+import {ErrorDialogService} from '../../services/error-dialog.service';
 
 @Component({
   selector: 'config-required',
@@ -9,7 +9,7 @@ import { ErrorDialogService } from '../../services/error-dialog.service';
   styleUrls: ['./config.required.component.scss']
 })
 
-export class ConfigRequiredComponent {
+export class ConfigRequiredComponent implements OnInit {
   // Injected
   config: Array<any> = [];
   source: string;
@@ -18,10 +18,10 @@ export class ConfigRequiredComponent {
   transformed: Array<any> = [];
 
   // For Input
-  newKeyName: string = "";
-  newKeyDescription: string = "";
-  newKeyExample: string ="";
-  newKeyRequired: boolean = false;
+  newKeyName = '';
+  newKeyDescription = '';
+  newKeyExample = '';
+  newKeyRequired = false;
 
   constructor(public dialog: MatDialogRef<ConfigRequiredComponent>, private errorDialogService: ErrorDialogService) {
 
@@ -30,21 +30,37 @@ export class ConfigRequiredComponent {
   ngOnInit() {
 
     for (let i = 0; i < this.config.length; i++) {
-      this.transformed.push({ keyName: this.config[i].key_name, keyDescription: this.config[i].key_description, keyExample:this.config[i].key_example, keyRequired: this.config[i].key_required,  edit: false });
+      this.transformed.push({
+        keyName: this.config[i].key_name,
+        keyDescription: this.config[i].key_description,
+        keyExample: this.config[i].key_example,
+        keyRequired: this.config[i].key_required,
+        edit: false
+      });
     }
     this.newConfig = this.config;
   }
 
   add() {
     if (this.newConfig.hasOwnProperty(this.newKeyName)) {
-      this.errorDialogService.dialogPopup("Key Already Exists!");
-    }
-    else {
-      this.transformed.push({ keyName: this.newKeyName, keyDescription: this.newKeyDescription, keyExample: this.newKeyExample, keyRequired: this.newKeyRequired,  edit: false });
-      this.newConfig.push({ key_name: this.newKeyName, key_description: this.newKeyDescription, key_example: this.newKeyExample, key_required: this.newKeyRequired });
-      this.newKeyName = "";
-      this.newKeyDescription = "";
-      this.newKeyExample = "";
+      this.errorDialogService.dialogPopup('Key Already Exists!');
+    } else {
+      this.transformed.push({
+        keyName: this.newKeyName,
+        keyDescription: this.newKeyDescription,
+        keyExample: this.newKeyExample,
+        keyRequired: this.newKeyRequired,
+        edit: false
+      });
+      this.newConfig.push({
+        key_name: this.newKeyName,
+        key_description: this.newKeyDescription,
+        key_example: this.newKeyExample,
+        key_required: this.newKeyRequired
+      });
+      this.newKeyName = '';
+      this.newKeyDescription = '';
+      this.newKeyExample = '';
       this.newKeyRequired = false;
     }
   }

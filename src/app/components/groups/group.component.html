@@ -1,41 +1,41 @@
 <div class="group">
- <mat-card>
-   <div class="card-header">
-     
-     <div class="new-group">
-      <button mat-raised-button (click)="createGroup()">New Group</button>
-    </div>
-  </div>
-  <br>
-  <div *ngIf="groups.length > 0">
-    <table>
-      <!-- Table Header-->
-   <tr>
-      <th><p>Group Name</p></th>
-      <th><p>Members</p></th>
-      <th><p>Actions</p></th>
-    </tr>
+  <mat-card>
+    <div class="card-header">
 
-    <!-- Table Body -->
-    <tbody>
-      <!-- Item Row -->
-      <tr *ngFor="let group of groups">
-        <td><p>{{ group.name }}</p></td>
-        <td>
-          <button mat-raised-button (click)="toGroup(group)">
-            Members
-          </button>
+      <div class="new-group">
+        <button mat-raised-button (click)="createGroup()">New Group</button>
+      </div>
+    </div>
+    <br>
+    <div *ngIf="groups.length > 0">
+      <table>
+        <!-- Table Header-->
+        <tr>
+          <th><p>Group Name</p></th>
+          <th><p>Members</p></th>
+          <th><p>Actions</p></th>
+        </tr>
+
+        <!-- Table Body -->
+        <tbody>
+        <!-- Item Row -->
+        <tr *ngFor="let group of groups">
+          <td><p>{{ group.name }}</p></td>
+          <td>
+            <button mat-raised-button (click)="toGroup(group)">
+              Members
+            </button>
           <td>
             <button mat-icon-button color="warn" (click)="deleteGroup(group)">
-              <mat-icon >clear</mat-icon>
+              <mat-icon>clear</mat-icon>
             </button>
           </td>
         </tr>
-      </tbody>
-    </table>
-  </div>
-  <div *ngIf="groups.length == 0">
-    <p>No groups found </p>
-  </div>
-</mat-card>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="groups.length == 0">
+      <p>No groups found </p>
+    </div>
+  </mat-card>
 </div>

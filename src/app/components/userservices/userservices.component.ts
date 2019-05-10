@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { UserService } from '../../services/user.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'user-services',
@@ -8,7 +8,7 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./userservices.component.scss']
 })
 
-export class UserServicesComponent {
+export class UserServicesComponent implements OnInit {
   services: Array<any> = [];
 
   constructor(private route: ActivatedRoute, private router: Router, private userService: UserService) {
@@ -16,7 +16,7 @@ export class UserServicesComponent {
   }
 
   ngOnInit() {
-    this.userService.getMyServices("").subscribe(
+    this.userService.getMyServices('').subscribe(
       result => this.services = result,
       error => this.router.navigate(['/home'])
     );

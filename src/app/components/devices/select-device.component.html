@@ -1,4 +1,4 @@
-<div class="select-device" >
+<div class="select-device">
   <mat-card>
     <div class="card-header">
       <h2>Select a Device</h2>
@@ -12,9 +12,11 @@
     <table>
       <!-- Table Header-->
       <thead>
-      <th>Device Name</th>
-      <th>Owner</th>
-      <th>Location</th>
+      <tr>
+        <th>Device Name</th>
+        <th>Owner</th>
+        <th>Location</th>
+      </tr>
       </thead>
       <tbody>
       <tr *ngFor="let device of filtered()" class="devices" (click)="select(device)">

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-success-dialog',
@@ -17,8 +17,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuccessDialogComponent implements OnInit {
   public message: string;
-  public tip :string;
-  constructor() { }
+  public tip: string;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

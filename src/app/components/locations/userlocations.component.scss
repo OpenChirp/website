@@ -4,13 +4,16 @@ $black-text: #303132;
 
 .user-locations {
   background-color: #ffffff;
+
   p {
     font-family: "Avenir-Med", sans-serif;
     color: $black-text;
   }
+
   mat-card {
     background-color: #ffffff;
     box-shadow: none;
+
     .card-header {
       h2 {
         margin: 0;
@@ -18,22 +21,28 @@ $black-text: #303132;
         font-family: "Avenir-Heavy", sans-serif;
         color: $black-text;
       }
+
       button {
         float: right;
       }
+
       margin-bottom: 20px;
     }
+
     hr {
       margin: 0;
     }
+
     .table-header {
       height: $row-height;
       line-height: $row-height;
+
       div {
         width: 50%;
         float: left;
         color: #909090;
       }
+
       p {
         margin: 0;
         font-family: "Avenir-Med", sans-serif;
@@ -41,22 +50,26 @@ $black-text: #303132;
         color: $black-text;
       }
     }
+
     .locations {
       height: $row-height;
       line-height: $row-height;
       cursor: pointer;
       border-bottom: solid 1px #606060;
+
       div {
         color: #606060;
         width: 50%;
         float: left;
       }
+
       p {
         margin: 0;
         font-family: "Avenir-Med", sans-serif;
         color: $device-color;
       }
     }
+
     .locations:hover {
       background-color: #efefef;
     }

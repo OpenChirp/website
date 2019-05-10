@@ -1,12 +1,9 @@
-import { Component, HostListener, Inject, OnInit } from '@angular/core';
-import { DOCUMENT } from '@angular/platform-browser';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { Configuration } from '../../config';
-import { UserService } from '../../services/user.service';
-import { GalleryComponent } from '../gallery/gallery.component';
+import {Component, HostListener, Inject, OnInit, ViewEncapsulation} from '@angular/core';
+import {DOCUMENT, DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import {Configuration} from '../../config';
+import {UserService} from '../../services/user.service';
 import {LoginComponent} from '../login/login.component';
-import { MatDialog } from '@angular/material';
-import {ViewEncapsulation} from '@angular/core';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-splash',
@@ -50,7 +47,7 @@ export class SplashComponent implements OnInit {
   }
 
   loginPopup(service: any) {
-    let dialogRef = this.dialog.open(LoginComponent, {width: '450px'});
+    const dialogRef = this.dialog.open(LoginComponent, {width: '450px'});
   }
 
   @HostListener('window:scroll', [])

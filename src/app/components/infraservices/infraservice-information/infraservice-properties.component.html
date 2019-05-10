@@ -1,20 +1,33 @@
 <div class="infra-service-properties">
   <form *ngIf="service">
-    <p><mat-form-field>
-      <input matInput placeholder="Name" [(ngModel)]="service.name" name="service-name">
-    </mat-form-field></p>
-    <p><mat-form-field>
-      <textarea matInput placeholder="Description" [(ngModel)]="service.description" name="service-description"></textarea>
-    </mat-form-field></p>
-    <p>Device Permission: <mat-radio-group [(ngModel)]="service.device_permission" name="service-device-permission">
-      <mat-radio-button value="0">Read</mat-radio-button>
-      <mat-radio-button value="1">Execute</mat-radio-button>
-      <mat-radio-button value="2">Write</mat-radio-button>
-    </mat-radio-group></p>
-    <p> <button mat-raised-button (click)="updateService()">Update</button>
-      <button mat-raised-button (click)="viewProperties()">Edit Custom Properties</button></p>
-    <div><p><button mat-raised-button (click)="viewConfigRequired()">Device Config Required
-    </button> </p></div>
+    <p>
+      <mat-form-field>
+        <input matInput placeholder="Name" [(ngModel)]="service.name" name="service-name">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field>
+        <textarea matInput placeholder="Description" [(ngModel)]="service.description"
+                  name="service-description"></textarea>
+      </mat-form-field>
+    </p>
+    <p>Device Permission:
+      <mat-radio-group [(ngModel)]="service.device_permission" name="service-device-permission">
+        <mat-radio-button value="0">Read</mat-radio-button>
+        <mat-radio-button value="1">Execute</mat-radio-button>
+        <mat-radio-button value="2">Write</mat-radio-button>
+      </mat-radio-group>
+    </p>
+    <p>
+      <button mat-raised-button (click)="updateService()">Update</button>
+      <button mat-raised-button (click)="viewProperties()">Edit Custom Properties</button>
+    </p>
+    <div>
+      <p>
+        <button mat-raised-button (click)="viewConfigRequired()">Device Config Required
+        </button>
+      </p>
+    </div>
     <p>Owner : {{ service.owner.name || service.owner.email }}</p>
     <!--  <p>Created at: {{ service.created_at | date :"short" }}</p>
           <p>Last Updated: {{ service.updated_at | date :"short" }}</p>-->
@@ -23,13 +36,13 @@
     <hr>
     <h3>Status:</h3>
     <p>Last Message : {{ service.status ? service.status.message : "-" }}</p>
-    <p>Timestamp : {{ service.status ? (service.status.timestamp | date : "short" ) : "-" }}</p>
+    <p>Timestamp : {{ service.status ? (service.status.timestamp | date : "short") : "-" }}</p>
     <hr>
     <h3>PubSub:</h3>
     <p>Protocol : {{ service.pubsub.protocol }}</p>
     <p>Endpoint : {{ service.pubsub.endpoint }}</p>
 
-    <div *ngIf ="acl.isOwner">
+    <div *ngIf="acl.isOwner">
       <div *ngIf="service.token">
         <button mat-raised-button (click)="recreateServiceToken()">Re-Generate Token</button>
         <button mat-raised-button (click)="deleteServiceToken()">Delete Token</button>

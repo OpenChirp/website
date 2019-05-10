@@ -1,12 +1,12 @@
-import { Component, Input } from '@angular/core';
-import { Location } from '../../models/location';
-import { MatInputModule, MatSnackBar } from '@angular/material';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Location} from '../../models/location';
+import {MatSnackBar} from '@angular/material';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 
 
-import { SuccessDialogService } from '../../services/success-dialog.service';
-import { ErrorDialogService } from '../../services/error-dialog.service';
-import { LocationService } from '../../services/location.service';
+import {SuccessDialogService} from '../../services/success-dialog.service';
+import {ErrorDialogService} from '../../services/error-dialog.service';
+import {LocationService} from '../../services/location.service';
 
 @Component({
   selector: 'location',
@@ -14,13 +14,13 @@ import { LocationService } from '../../services/location.service';
   styleUrls: ['./location.component.scss']
 })
 
-export class LocationComponent {
+export class LocationComponent implements OnInit {
   parent: Location = null;
   location: Location = null;
-  name: string = "";
-  type: string = "";
-  errorMessage: string = "";
-  locationTypes: Array<string> = ["INDOOR", "BUILDING", "OUTDOOR"];
+  name = '';
+  type = '';
+  errorMessage = '';
+  locationTypes: Array<string> = ['INDOOR', 'BUILDING', 'OUTDOOR'];
   private sub: any;
 
   constructor(private locationService: LocationService, private route: ActivatedRoute,
@@ -31,8 +31,8 @@ export class LocationComponent {
   }
 
   ngOnInit() {
-    this.name = "";
-    this.type = "";
+    this.name = '';
+    this.type = '';
     this.parent = null;
     this.location = null;
 
@@ -52,33 +52,31 @@ export class LocationComponent {
             this.router.navigate(['/home']);
           }
         );
-      }
-      else if (params['parent_id']) {
+      } else if (params['parent_id']) {
         this.locationService.getLocationById(params['parent_id']).subscribe(
           result => {
             this.parent = result;
             this.location = null;
-            this.name = "";
-            this.type = "";
+            this.name = '';
+            this.type = '';
           },
           error => {
             this.errorDialogService.dialogPopup(error.message);
             this.router.navigate(['/home']);
           }
         );
-      }
-      else {
+      } else {
         this.router.navigate(['/home']);
       }
     });
   }
 
   add() {
-    if (this.name != "" && this.type != "") {
-      var body = {
-        "name": this.name,
-        "type": this.type,
-        "children": []
+    if (this.name != '' && this.type != '') {
+      const body = {
+        'name': this.name,
+        'type': this.type,
+        'children': []
       };
       this.locationService
         .addLocationByParentId(this.parent._id, body)
@@ -88,8 +86,8 @@ export class LocationComponent {
               .dialogPopup('Added location: ' + this.name);
             this.locationService.notifyParent(this.parent._id);
             this.parent = null;
-            this.name = "";
-            this.type = "";
+            this.name = '';
+            this.type = '';
             this.router.navigate(['/home/devices/', result.id]);
           },
           error => {
@@ -97,8 +95,7 @@ export class LocationComponent {
               .dialogPopup(error.message + ': ' + this.name);
           }
         );
-    }
-    else {
+    } else {
       this.errorMessage = 'Name and type cannot be empty.';
       this.errorDialogService
         .dialogPopup(this.errorMessage);
@@ -106,10 +103,10 @@ export class LocationComponent {
   }
 
   update() {
-    if (this.name != "" && this.type != "") {
-      var body = {
-        "name": this.name,
-        "type": this.type
+    if (this.name != '' && this.type != '') {
+      const body = {
+        'name': this.name,
+        'type': this.type
       };
       this.locationService
         .updateLocationById(this.location._id, body)
@@ -119,8 +116,8 @@ export class LocationComponent {
               .dialogPopup('Updated location: ' + this.name);
             this.locationService.notifyParent(this.location._id);
             this.location = null;
-            this.name = "";
-            this.type = "";
+            this.name = '';
+            this.type = '';
             this.router.navigate(['/home/devices/', result.id]);
           },
           error => {
@@ -128,8 +125,7 @@ export class LocationComponent {
               .dialogPopup(error.message + ': ' + this.name);
           }
         );
-    }
-    else {
+    } else {
       this.errorMessage = 'Name and type cannot be empty.';
       this.errorDialogService
         .dialogPopup(this.errorMessage);

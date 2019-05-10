@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { MatDialogRef } from '@angular/material';
-import { DeviceService } from '../../services/device.service'
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {MatDialogRef} from '@angular/material';
+import {DeviceService} from '../../services/device.service'
 import {ErrorDialogService} from '../../services/error-dialog.service';
 
 @Component({
@@ -10,9 +10,9 @@ import {ErrorDialogService} from '../../services/error-dialog.service';
   styleUrls: ['select-device.component.scss']
 })
 
-export class SelectDeviceComponent {
+export class SelectDeviceComponent implements OnInit {
   devices: Array<any> = [];
-  searchTerm: string = '';
+  searchTerm = '';
 
   constructor(private router: Router,
               private deviceService: DeviceService,
@@ -35,6 +35,7 @@ export class SelectDeviceComponent {
           .dialogPopup(error.message);
       });
   }
+
   select(device: any) {
     this.dialogRef.close(device);
   }
@@ -42,11 +43,13 @@ export class SelectDeviceComponent {
   filtered() {
     if (this.searchTerm !== '') {
       return this.devices.filter((x) => {
-        if (typeof(x.name) === 'string') {
+        if (typeof (x.name) === 'string') {
           // if (typeof(x.name) == "string" && typeof(x.description == "string") && typeof(x.owner == "string")) {
-          let device_name: string = x.name;
-          let name_match = device_name.toLowerCase().includes(this.searchTerm.toLowerCase());
-          if (name_match) { return true; }
+          const device_name: string = x.name;
+          const name_match = device_name.toLowerCase().includes(this.searchTerm.toLowerCase());
+          if (name_match) {
+            return true;
+          }
           let owner_match = false;
 
           /* @todo other fields as returned in future
@@ -57,14 +60,15 @@ export class SelectDeviceComponent {
           } */
           if (x.owner) {
             if (x.owner.name) {
-              let device_owner: string = x.owner.name;
+              const device_owner: string = x.owner.name;
+              owner_match = device_owner.toLowerCase().includes(this.searchTerm.toLowerCase());
+            } else {
+              const device_owner: string = x.owner.email;
               owner_match = device_owner.toLowerCase().includes(this.searchTerm.toLowerCase());
             }
-            else {
-              let device_owner: string = x.owner.email;
-              owner_match = device_owner.toLowerCase().includes(this.searchTerm.toLowerCase());
+            if (owner_match) {
+              return true;
             }
-            if (owner_match) return true;
           }
         }
         return false;

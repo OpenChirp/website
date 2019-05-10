@@ -1,8 +1,7 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 import {DeviceService} from '../../../services/device.service';
-import {Device} from '../../../models/device';
 
 @Component({
   selector: 'edit-transducer',
@@ -10,11 +9,11 @@ import {Device} from '../../../models/device';
   styleUrls: ['edit-transducer.component.scss']
 })
 
-export class EditTransducerComponent {
-  originalName: string = "";
-  name: string = "";
-  unit: string = "";
-  actuable: boolean = false;
+export class EditTransducerComponent implements OnInit {
+  originalName = '';
+  name = '';
+  unit = '';
+  actuable = false;
 
   constructor(private router: Router, public dialog: MatDialog, @Inject(MAT_DIALOG_DATA) public data: any,
               private deviceService: DeviceService, public dialogRef: MatDialogRef<EditTransducerComponent>) {
@@ -33,7 +32,7 @@ export class EditTransducerComponent {
   }
 
   submitEdit() {
-    let body = Object();
+    const body = Object();
     body.name = this.name;
     body.unit = this.unit;
     body.is_actuable = this.actuable;

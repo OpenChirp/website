@@ -1,14 +1,16 @@
 .device-visualization {
-  	.resolution{
-		font-family: "Avenir-Med", sans-serif;
-		font-size: 12px;
-		margin-right: 20px;
-		float: right;
-		background-color: white;
-		.icon{
-			padding: 4px 12px;
-		}
-	}
+  .resolution {
+    font-family: "Avenir-Med", sans-serif;
+    font-size: 12px;
+    margin-right: 20px;
+    float: right;
+    background-color: white;
+
+    .icon {
+      padding: 4px 12px;
+    }
+  }
+
   .transducerList {
     column-count: 2;
     @media (min-width: 1100px) {

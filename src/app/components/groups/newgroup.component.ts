@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import {Component} from '@angular/core';
+import {MatDialogRef} from '@angular/material';
 
-import { ErrorDialogService } from '../../services/error-dialog.service';
+import {ErrorDialogService} from '../../services/error-dialog.service';
 
 @Component({
   selector: 'new-group',
@@ -10,15 +10,15 @@ import { ErrorDialogService } from '../../services/error-dialog.service';
 })
 
 export class NewGroupComponent {
-   // For Input
-  name: string = "";
+  // For Input
+  name = '';
 
   constructor(public dialog: MatDialogRef<NewGroupComponent>, private errorDialogService: ErrorDialogService) {
 
   }
 
   save() {
-    var group = { "name": this.name};
+    const group = {'name': this.name};
     this.dialog.close(group);
   }
 

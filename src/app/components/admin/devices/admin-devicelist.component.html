@@ -1,4 +1,4 @@
-<div class="admin-device-list" >
+<div class="admin-device-list">
   <mat-card>
     <div class="card-header">
       <h2>List of Devices</h2>
@@ -12,19 +12,21 @@
     <table matSort (matSortChange)="sortData($event)">
       <!-- Table Header-->
       <thead>
+      <tr>
         <th mat-sort-header="name">Device Name</th>
         <th mat-sort-header="owner">Owner</th>
         <th mat-sort-header="location">Location</th>
+      </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let device of filtered()" class="devices" (click)="gotoDevice(device._id)">
-          <td>{{ device.name }}</td>
-          <td>{{ device.owner?.name }} &lt;{{ device.owner?.email }}&gt;</td>
-          <td>{{ device.location_id?.name }}</td>
-        </tr>
-        <tr *ngIf="filtered().length == 0">
-          <td colspan="3">No devices found.</td>
-        </tr>
+      <tr *ngFor="let device of filtered()" class="devices" (click)="gotoDevice(device._id)">
+        <td>{{ device.name }}</td>
+        <td>{{ device.owner?.name }} &lt;{{ device.owner?.email }}&gt;</td>
+        <td>{{ device.location_id?.name }}</td>
+      </tr>
+      <tr *ngIf="filtered().length == 0">
+        <td colspan="3">No devices found.</td>
+      </tr>
       </tbody>
     </table>
   </mat-card>

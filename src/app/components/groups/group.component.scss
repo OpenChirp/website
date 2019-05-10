@@ -1,38 +1,46 @@
 $black-text: #303132;
 
 .group {
-	background-color: white;
-    th {
-      border-bottom: solid 1px #909090;
-      font-weight:bold;
+  background-color: white;
+
+  th {
+    border-bottom: solid 1px #909090;
+    font-weight: bold;
+  }
+
+  tr {
+    cursor: pointer;
+    border-top: solid 1px #e3e3e3;
+    border-bottom: solid 1px #e3e3e3;
+  }
+
+  tr:hover {
+    background-color: #e3e3e3;
+  }
+
+  .card-header {
+    h2 {
+      margin: 0;
+      float: left;
+      font-family: "Avenir-Heavy", sans-serif;
+      color: $black-text;
     }
-    tr {
-      cursor: pointer;
-      border-top: solid 1px #e3e3e3;
-      border-bottom: solid 1px #e3e3e3;
+
+    .new-group {
+      font-family: "Avenir-Med", sans-serif;
+      color: $black-text;
+
+      .button {
+        margin-left: 5px;
+        margin-right: 5px;
+        background-color: white;
+      }
     }
-    tr:hover {
-      background-color: #e3e3e3;
+
+    button {
+      float: right;
     }
-	.card-header {
-		h2 {
-			margin: 0;
-			float: left;
-			font-family: "Avenir-Heavy", sans-serif;
-			color: $black-text;
-		}
-		.new-group {
-			font-family: "Avenir-Med", sans-serif;
-			color: $black-text;
-			.button {
-				margin-left: 5px;
-				margin-right: 5px;
-				background-color: white;
-			}
-		}
-		button {
-			float: right;
-		}
-		margin-bottom: 20px;
-	}
+
+    margin-bottom: 20px;
+  }
 }

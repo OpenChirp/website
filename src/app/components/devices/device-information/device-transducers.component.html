@@ -3,7 +3,7 @@
   <p>
     <mat-button-toggle-group>
       <button mat-raised-button disabled>
-        Update every {{transducerAutoRefreshPeriod/1000}}sec
+        Update every {{transducerAutoRefreshPeriod / 1000}}sec
       </button>
       <mat-button-toggle value="play" (change)="transducerAutoRefreshStart()">
         <mat-icon>play_arrow</mat-icon>
@@ -12,7 +12,8 @@
         <mat-icon>pause</mat-icon>
       </mat-button-toggle>
       <button mat-raised-button (click)="getTransducers()">
-        <mat-icon> sync </mat-icon> {{ lastUpdated | date :"M/d/yy h:mm:ss a" }}
+        <mat-icon> sync</mat-icon>
+        {{ lastUpdated | date :"M/d/yy h:mm:ss a" }}
       </button>
     </mat-button-toggle-group>
   </p>
@@ -45,7 +46,8 @@
         <button mat-icon-button color="warn" (click)="deleteTransducer(transducer._id, transducer.name)">
           <mat-icon>clear</mat-icon>
         </button>
-        <button mat-icon-button color="primary" *ngIf="transducer.is_actuable" (click)="publishTransducerValue(transducer._id, transducer.name, transducer.value)">
+        <button mat-icon-button color="primary" *ngIf="transducer.is_actuable"
+                (click)="publishTransducerValue(transducer._id, transducer.name, transducer.value)">
           <mat-icon>send</mat-icon>
         </button>
       </td>
@@ -105,7 +107,8 @@
           <button mat-icon-button color="warn" (click)="deleteBroadcastTransducer(btransducer._id, btransducer.name)">
             <mat-icon>clear</mat-icon>
           </button>
-          <button mat-icon-button color="primary" (click)="publishBroadcastTransducerValue(btransducer._id, btransducer.name, btransducer.value)">
+          <button mat-icon-button color="primary"
+                  (click)="publishBroadcastTransducerValue(btransducer._id, btransducer.name, btransducer.value)">
             <mat-icon>send</mat-icon>
           </button>
         </td>
@@ -144,14 +147,14 @@
 
       <!-- Table Header-->
       <thead>
-        <tr>
-          <th mat-sort-header="deviceName">Device Name</th>
-          <th mat-sort-header="name">Transducer Name</th>
-          <th mat-sort-header="unit">Unit</th>
-          <th mat-sort-header="value">Value</th>
-          <th mat-sort-header="timestamp">Timestamp</th>
-          <th>Actions</th>
-        </tr>
+      <tr>
+        <th mat-sort-header="deviceName">Device Name</th>
+        <th mat-sort-header="name">Transducer Name</th>
+        <th mat-sort-header="unit">Unit</th>
+        <th mat-sort-header="value">Value</th>
+        <th mat-sort-header="timestamp">Timestamp</th>
+        <th>Actions</th>
+      </tr>
       </thead>
       <!-- Table Body -->
       <tbody>
@@ -164,7 +167,8 @@
         <td>{{ transducer.value ? transducer.value : "-" }}</td>
         <td>{{ transducer.timestamp | date :"M/d/yy h:mm:ss a"  }}</td>
         <td>
-          <button mat-icon-button color="primary" *ngIf="transducer.is_actuable" (click)="publishTransducerValue(transducer._id, transducer.name, transducer.value)">
+          <button mat-icon-button color="primary" *ngIf="transducer.is_actuable"
+                  (click)="publishTransducerValue(transducer._id, transducer.name, transducer.value)">
             <mat-icon>send</mat-icon>
           </button>
         </td>

@@ -1,12 +1,10 @@
-import { Component, Input } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { switchMap, startWith, map } from 'rxjs/operators';
-import { InfraService } from '../../../services/infraservice';
+import {Component, Input, OnInit} from '@angular/core';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {switchMap} from 'rxjs/operators';
+import {InfraService} from '../../../services/infraservice';
 
-import { GlobalDataService } from '../../../services/global.data.service';
-import { MatDialog } from '@angular/material';
-import { PropertiesComponent } from '../../dialogs/properties.component';
-import { ConfigRequiredComponent } from '../config.required.component';
+import {GlobalDataService} from '../../../services/global.data.service';
+import {MatDialog} from '@angular/material';
 import {Device} from '../../../models/device';
 import {ViewConfigComponent} from '../../dialogs/view-config.component';
 
@@ -16,12 +14,12 @@ import {ViewConfigComponent} from '../../dialogs/view-config.component';
   styleUrls: ['./infraservice-devicelist.component.scss']
 })
 
-export class InfraServiceDeviceListComponent {
+export class InfraServiceDeviceListComponent implements OnInit {
   devices: Array<Device> = [];
   @Input() service: any = null;
 
   constructor(private route: ActivatedRoute, private infraService: InfraService, private router: Router, public dialog: MatDialog,
-    private globalDataService: GlobalDataService) {
+              private globalDataService: GlobalDataService) {
 
   }
 
@@ -31,12 +29,12 @@ export class InfraServiceDeviceListComponent {
 
   getDeviceList() {
     this.route.params.pipe(
-    switchMap((params: Params) => this.infraService.getServiceDevices(params['id'])))
-    .subscribe(
-      result => {
-        this.devices = result;
-      },
-      error => this.router.navigate(['/home/services'])
+      switchMap((params: Params) => this.infraService.getServiceDevices(params['id'])))
+      .subscribe(
+        result => {
+          this.devices = result;
+        },
+        error => this.router.navigate(['/home/services'])
       );
   }
 
@@ -44,8 +42,8 @@ export class InfraServiceDeviceListComponent {
     this.router.navigate(['/home/device/', id]);
   }
 
-  viewDeviceConfig(device: any){
-    let dialogRef = this.dialog.open(ViewConfigComponent, { width: '900px' });
+  viewDeviceConfig(device: any) {
+    const dialogRef = this.dialog.open(ViewConfigComponent, {width: '900px'});
     dialogRef.componentInstance.config = device.config;
     dialogRef.componentInstance.source = device.name;
   }

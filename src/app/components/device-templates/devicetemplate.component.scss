@@ -5,13 +5,16 @@ $black-text: #303132;
     margin-left: 5px;
     margin-right: 5px;
   }
+
   .new-template {
     font-family: "Avenir-Med", sans-serif;
     color: $black-text;
+
     .button {
       background-color: white;
     }
   }
+
   mat-card {
     .card-header {
       h2 {
@@ -20,20 +23,25 @@ $black-text: #303132;
         font-family: "Avenir-Heavy", sans-serif;
         color: $black-text;
       }
+
       button {
         float: right;
       }
+
       margin-bottom: 60px;
     }
+
     hr {
       margin: 0;
     }
   }
+
   h4 {
     font-family: "Avenir-Med", sans-serif;
     color: $black-text;
     font-variant: all-small-caps;
   }
+
   p {
     font-family: "Avenir-Med", sans-serif;
     color: $black-text;

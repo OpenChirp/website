@@ -1,19 +1,25 @@
 <div class="infra-service">
-    <mat-card>    
-      <div class="card-header">
-      	 <h2 >  Create new service</h2>         
-      </div>
-       <hr> 
-      <form>   
-      	  <p><mat-form-field>
-	        <input matInput placeholder="Name" [(ngModel)]="name" name="service-name">
-	      </mat-form-field></p>    
-	      <p><mat-form-field>
-	        <input matInput placeholder="Description" [(ngModel)]="description" name="service-description">
-	      </mat-form-field></p>
-	  	 <p><button mat-raised-button (click)="add()">Save </button></p>	     
-	  </form>
-	</mat-card>
+  <mat-card>
+    <div class="card-header">
+      <h2> Create new service</h2>
+    </div>
+    <hr>
+    <form>
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Name" [(ngModel)]="name" name="service-name">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input matInput placeholder="Description" [(ngModel)]="description" name="service-description">
+        </mat-form-field>
+      </p>
+      <p>
+        <button mat-raised-button (click)="add()">Save</button>
+      </p>
+    </form>
+  </mat-card>
 
 </div>
 

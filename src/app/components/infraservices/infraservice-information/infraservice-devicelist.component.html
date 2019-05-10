@@ -17,7 +17,10 @@
       <!-- Item Row -->
       <tr *ngFor="let device of devices" class="devices">
         <td (click)="gotoDevice(device.id)">{{ device.name }}</td>
-        <td><button *ngIf="device.config.length > 0" mat-raised-button (click)="viewDeviceConfig(device)">View Config</button></td>
+        <td>
+          <button *ngIf="device.config.length > 0" mat-raised-button (click)="viewDeviceConfig(device)">View Config
+          </button>
+        </td>
         <td>{{ device.status.message }}</td>
         <td>{{ device.owner.name }}</td>
         <td>{{ device.owner.email }}</td>

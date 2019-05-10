@@ -1,11 +1,10 @@
-import { Component } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 
-import { Device } from '../../models/device';
-import { Location } from '../../models/location';
-import { LocationService } from '../../services/location.service';
-import { UserService } from '../../services/user.service';
+import {Device} from '../../models/device';
+import {Location} from '../../models/location';
+import {UserService} from '../../services/user.service';
 
 
 @Component({
@@ -14,10 +13,10 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./userdevices.component.scss']
 })
 
-export class UserDevicesComponent {
+export class UserDevicesComponent implements OnInit {
   devices: Array<Device> = [];
   devicegroups: Array<Device> = [];
-  errorMessage = "";
+  errorMessage = '';
   location: Location = null;
 
   constructor(private route: ActivatedRoute, private router: Router, private userService: UserService) {
@@ -25,11 +24,11 @@ export class UserDevicesComponent {
   }
 
   ngOnInit() {
-    this.userService.getMyDevices("").subscribe(
+    this.userService.getMyDevices('').subscribe(
       result => this.devices = result,
       error => this.router.navigate(['/home'])
     );
-    this.userService.getMyDeviceGroups("").subscribe(
+    this.userService.getMyDeviceGroups('').subscribe(
       result => this.devicegroups = result,
       error => this.router.navigate(['/home'])
     );
@@ -48,6 +47,7 @@ export class UserDevicesComponent {
   newDevice() {
     this.router.navigate(['/home/newdevice']);
   }
+
   newDeviceGroup() {
     this.router.navigate(['/home/newdevicegroup']);
   }

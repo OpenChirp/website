@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import {Component} from '@angular/core';
+import {MatDialogRef} from '@angular/material';
 
-import { ErrorDialogService } from '../../services/error-dialog.service';
+import {ErrorDialogService} from '../../services/error-dialog.service';
 
 @Component({
   selector: 'input-transducer-value',
@@ -11,9 +11,9 @@ import { ErrorDialogService } from '../../services/error-dialog.service';
 
 export class InputTransducerValueComponent {
   // Injected
-  transducerName: string = "";
-  valueOriginal: string = "";
-  valueNew: string = "";
+  transducerName = '';
+  valueOriginal = '';
+  valueNew = '';
 
 
   constructor(

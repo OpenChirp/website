@@ -1,7 +1,7 @@
 <div class="tree-node" *ngIf="currentLocation">
   <div class="button" tabindex="1" (click)="toggleChildren(currentLocation)">
     <p class="name">
-   <!-- <p class="name" (click)="toggleChildren(currentLocation)" mdTooltip="{{currentLocation.name}}" mdTooltipPosition="above">-->
+      <!-- <p class="name" (click)="toggleChildren(currentLocation)" mdTooltip="{{currentLocation.name}}" mdTooltipPosition="above">-->
       {{ getLocationName(currentLocation.name) }}
     </p>
     <mat-icon (click)="$event.stopPropagation()" [matMenuTriggerFor]="menu">more_horiz</mat-icon>

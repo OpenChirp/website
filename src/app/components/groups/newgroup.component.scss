@@ -3,30 +3,37 @@
     border-bottom: solid 1px #303030;
     font-weight: bold;
   }
+
   tr {
-   //border-top: solid 1px #303030;
+    //border-top: solid 1px #303030;
     td {
       vertical-align: middle;
     }
+
     mat-icon {
       cursor: pointer;
       color: #909090;
       transition-duration: 0.2s;
     }
+
     mat-icon:hover {
       color: #303030;
     }
   }
-   .name{
-    min-width : 100%
-   }
+
+  .name {
+    min-width: 100%
+  }
+
   p {
     font-family: "Avenir-Med", sans-serif;
   }
+
   h2 {
     margin-top: 0;
     margin-bottom: 30px;
   }
+
   .buttons {
     margin-top: 20px;
   }

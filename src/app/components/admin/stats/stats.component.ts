@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
-import { AdminService } from '../../../services/admin.service';
-import { ErrorDialogService } from '../../../services/error-dialog.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AdminService} from '../../../services/admin.service';
+import {ErrorDialogService} from '../../../services/error-dialog.service';
 
 @Component({
   selector: 'stats',
@@ -9,14 +9,14 @@ import { ErrorDialogService } from '../../../services/error-dialog.service';
   styleUrls: ['./stats.component.scss']
 })
 
-export class StatsComponent {
+export class StatsComponent implements OnInit {
   stats: Array<any> = [];
 
-  constructor(private route: ActivatedRoute, 
-    private router: Router, 
-    private adminService: AdminService,
-    private errorDialogService: ErrorDialogService
-    ) {
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private adminService: AdminService,
+              private errorDialogService: ErrorDialogService
+  ) {
 
   }
 
@@ -24,18 +24,16 @@ export class StatsComponent {
     this.getAllStats();
   }
 
-  getAllStats(){
+  getAllStats() {
     this.adminService.getAllStats().subscribe(
       result => {
         this.stats = result;
       },
       error => {
         this.errorDialogService
-        .dialogPopup(error.message );
+          .dialogPopup(error.message);
       });
   }
-
- 
 
 
 }

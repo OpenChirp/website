@@ -1,17 +1,20 @@
-
 $black-text: #303132;
 
 .user-profile {
   background-color: #ffffff;
+
   p {
     font-family: "Avenir-Med", sans-serif;
     color: $black-text;
   }
+
   mat-card {
     background-color: #ffffff;
-    .userid{
-        min-width : 300px
-   } 
+
+    .userid {
+      min-width: 300px
+    }
+
     .card-header {
       h2 {
         margin: 0;
@@ -19,14 +22,17 @@ $black-text: #303132;
         font-family: "Avenir-Heavy", sans-serif;
         color: $black-text;
       }
+
       button {
         float: right;
       }
+
       margin-bottom: 20px;
     }
+
     hr {
       margin: 0;
     }
-    
+
   }
 }

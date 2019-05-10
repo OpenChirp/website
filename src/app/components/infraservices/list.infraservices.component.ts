@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { InfraService } from '../../services/infraservice';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {InfraService} from '../../services/infraservice';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'services',
@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['list.infraservices.component.scss']
 })
 
-export class ListInfraServicesComponent {
-  
+export class ListInfraServicesComponent implements OnInit {
+
   services: Array<Object> = [];
 
   constructor(private infraService: InfraService, private router: Router) {

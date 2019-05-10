@@ -43,9 +43,9 @@
             </td>
           </tr>
 
-          <div *ngIf="deviceGroups.length == 0">
-            <p>No groups granted access.</p>
-          </div>
+          <tr *ngIf="deviceGroups.length == 0">
+            <td colspan="3">No groups granted access.</td>
+          </tr>
 
           <!-- New Member Row -->
           <tr>
@@ -109,9 +109,9 @@
             </tr>
 
 
-            <div *ngIf="deviceUsers.length == 0">
-              <p>No users granted access.</p>
-            </div>
+            <tr *ngIf="deviceUsers.length == 0">
+              <td colspan="3">No users granted access.</td>
+            </tr>
 
             <!-- New Member Row -->
             <tr>

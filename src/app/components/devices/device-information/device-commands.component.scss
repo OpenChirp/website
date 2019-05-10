@@ -3,16 +3,17 @@
     border-bottom: solid 1px #303030;
     font-weight: bold;
   }
+
   mat-icon {
-      float: center;
-      line-height: 40px;
-      cursor: pointer;
-      transition-duration: 0.3s;
-      color: #303132;
+    line-height: 40px;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    color: #303132;
 
   }
+
   mat-icon:hover {
-      color: #3a7193;
-      transition-duration: 0.3s;
+    color: #3a7193;
+    transition-duration: 0.3s;
   }
 }

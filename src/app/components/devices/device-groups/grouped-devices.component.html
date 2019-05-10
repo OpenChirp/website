@@ -15,24 +15,24 @@
 
   <table matSort (matSortChange)="sortData($event)">
     <thead>
-      <tr>
-        <th mat-sort-header="name">Name</th>
-        <th mat-sort-header="owner">Owner</th>
-        <th mat-sort-header="location">Location</th>
-        <th>Delete</th>
-      </tr>
+    <tr>
+      <th mat-sort-header="name">Name</th>
+      <th mat-sort-header="owner">Owner</th>
+      <th mat-sort-header="location">Location</th>
+      <th>Delete</th>
+    </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let device of sortedData">
-        <td (click)="gotoDevice(device.id)" class="clickable">{{ device.name }}</td>
-        <td>{{ device.owner?.name }}</td>
-        <td>{{ device.location_id?.name }}</td>
-        <td>
-          <button mat-icon-button color="warn" (click)="removeDevice(device._id, device.name)">
-            <mat-icon>clear</mat-icon>
-          </button>
-        </td>
-      </tr>
+    <tr *ngFor="let device of sortedData">
+      <td (click)="gotoDevice(device.id)" class="clickable">{{ device.name }}</td>
+      <td>{{ device.owner?.name }}</td>
+      <td>{{ device.location_id?.name }}</td>
+      <td>
+        <button mat-icon-button color="warn" (click)="removeDevice(device._id, device.name)">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </td>
+    </tr>
     </tbody>
   </table>
   <div *ngIf="devices.length == 0">

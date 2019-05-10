@@ -13,48 +13,50 @@
     <!-- Table Body -->
     <tbody>
 
-      <!-- Item Row -->
-      <tr *ngFor="let command of sortedData">
-        <td>{{ command.name }}</td>
-        <td>{{ command.value }}</td>
-        <td>{{ transducerNameById(command.transducer_id) }}</td>
-        <td><button mat-raised-button (click)="execute(command)">Run</button></td>
-        <td>
-           <mat-icon [matMenuTriggerFor]="menu">more_horiz</mat-icon>
-           <mat-menu #menu="matMenu">
-              <button mat-menu-item (click)="createShortcut(command)">Add Shortcut</button>
-              <button mat-menu-item (click)="publicLink(command)">Get Public Link</button>
-              <button mat-menu-item (click)="deleteCommand(command._id, command.name)">Delete</button>
+    <!-- Item Row -->
+    <tr *ngFor="let command of sortedData">
+      <td>{{ command.name }}</td>
+      <td>{{ command.value }}</td>
+      <td>{{ transducerNameById(command.transducer_id) }}</td>
+      <td>
+        <button mat-raised-button (click)="execute(command)">Run</button>
+      </td>
+      <td>
+        <mat-icon [matMenuTriggerFor]="menu">more_horiz</mat-icon>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="createShortcut(command)">Add Shortcut</button>
+          <button mat-menu-item (click)="publicLink(command)">Get Public Link</button>
+          <button mat-menu-item (click)="deleteCommand(command._id, command.name)">Delete</button>
         </mat-menu>
 
-        </td>
-      </tr>
+      </td>
+    </tr>
 
-      <!-- New Transducer Row -->
-      <tr>
-        <td>
-          <mat-form-field>
-            <input matInput placeholder="Name" [(ngModel)]="name">
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field>
-            <input matInput placeholder="Value" [(ngModel)]="value">
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-select placeholder="Transducer" [(ngModel)]="transducer" name="transducer">
-            <mat-option *ngFor="let transducer of device.transducers" [value]="transducer">
-              {{ transducer.is_actuable ? transducer.name : '-' }}
-            </mat-option>
-          </mat-select>
-        </td>
-        <td>
-          <button mat-icon-button (click)="newCommand()">
-            <mat-icon>add</mat-icon>
-          </button>
-        </td>
-      </tr>
+    <!-- New Transducer Row -->
+    <tr>
+      <td>
+        <mat-form-field>
+          <input matInput placeholder="Name" [(ngModel)]="name">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <input matInput placeholder="Value" [(ngModel)]="value">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-select placeholder="Transducer" [(ngModel)]="transducer" name="transducer">
+          <mat-option *ngFor="let transducer of device.transducers" [value]="transducer">
+            {{ transducer.is_actuable ? transducer.name : '-' }}
+          </mat-option>
+        </mat-select>
+      </td>
+      <td>
+        <button mat-icon-button (click)="newCommand()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </td>
+    </tr>
 
     </tbody>
   </table>
@@ -82,7 +84,9 @@
         <td>{{ command.name }}</td>
         <td>{{ command.value }}</td>
         <td>{{ broadcastTransducerNameById(command.transducer_id) }}</td>
-        <td><button mat-raised-button (click)="executeBroadcast(command)">Run</button></td>
+        <td>
+          <button mat-raised-button (click)="executeBroadcast(command)">Run</button>
+        </td>
         <td>
           <mat-icon [matMenuTriggerFor]="menu">more_horiz</mat-icon>
           <mat-menu #menu="matMenu">

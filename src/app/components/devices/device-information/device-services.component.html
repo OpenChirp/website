@@ -1,45 +1,49 @@
 <div class="device-services">
-<mat-card>
-    <div class = "card-header">
+  <mat-card>
+    <div class="card-header">
       <div class="link-service">
         <button mat-raised-button (click)="selectService()">Link Service</button>
       </div>
     </div>
-  <br>
-  <div *ngIf="services.length > 0">
-  <table matSort (matSortChange)="sortData($event)">
-    <!-- Table Header-->
-    <thead>
-      <tr>
-        <th mat-sort-header="name">Name</th>
-        <th>Config</th>
-        <th mat-sort-header="status">Last Status</th>
-        <th mat-sort-header="timestamp">Timestamp</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <!-- Table Body -->
-    <tbody>
-      <!-- Item Row -->
-      <tr *ngFor="let service of sortedData">
-        <td>{{ service.name }}</td>
-        <td><p *ngIf="service.config"><button mat-raised-button (click)="viewConfig(service)">
-           View/Update Config
-          </button></p></td>
-          <td>{{ service.status ? service.status.message : "-" }}</td>
-          <td>{{ service.status ? (service.status.timestamp | date : "short" ) : "-" }}</td>
+    <br>
+    <div *ngIf="services.length > 0">
+      <table matSort (matSortChange)="sortData($event)">
+        <!-- Table Header-->
+        <thead>
+        <tr>
+          <th mat-sort-header="name">Name</th>
+          <th>Config</th>
+          <th mat-sort-header="status">Last Status</th>
+          <th mat-sort-header="timestamp">Timestamp</th>
+          <th>Delete</th>
+        </tr>
+        </thead>
+        <!-- Table Body -->
+        <tbody>
+        <!-- Item Row -->
+        <tr *ngFor="let service of sortedData">
+          <td>{{ service.name }}</td>
           <td>
-          <button mat-icon-button color="warn" (click)="removeServiceLink(service._id, service.name)">
-            <mat-icon >clear</mat-icon>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
- <div *ngIf="services.length == 0">
+            <p *ngIf="service.config">
+              <button mat-raised-button (click)="viewConfig(service)">
+                View/Update Config
+              </button>
+            </p>
+          </td>
+          <td>{{ service.status ? service.status.message : "-" }}</td>
+          <td>{{ service.status ? (service.status.timestamp | date : "short") : "-" }}</td>
+          <td>
+            <button mat-icon-button color="warn" (click)="removeServiceLink(service._id, service.name)">
+              <mat-icon>clear</mat-icon>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="services.length == 0">
       <p>No linked services </p>
-</div>
-</mat-card>
+    </div>
+  </mat-card>
 </div>
 

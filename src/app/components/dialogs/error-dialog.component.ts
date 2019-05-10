@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-error-dialog',
@@ -16,7 +16,8 @@ import { Component, OnInit } from '@angular/core';
 export class ErrorDialogComponent implements OnInit {
   public message: string;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

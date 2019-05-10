@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import {Component} from '@angular/core';
+import {MatDialogRef} from '@angular/material';
 
-import { ErrorDialogService } from '../../services/error-dialog.service';
+import {ErrorDialogService} from '../../services/error-dialog.service';
 
 @Component({
   selector: 'input-config',
@@ -22,8 +22,8 @@ export class InputConfigComponent {
   }
 
   save() {
-    for(let i = 0; i < this.configRequired.length; i++ ){
-      this.newConfig.push({ key: this.configRequired[i].key_name , value: this.configRequired[i].value});
+    for (let i = 0; i < this.configRequired.length; i++) {
+      this.newConfig.push({key: this.configRequired[i].key_name, value: this.configRequired[i].value});
     }
     this.dialog.close(this.newConfig);
   }

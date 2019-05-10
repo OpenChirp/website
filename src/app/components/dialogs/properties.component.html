@@ -7,37 +7,39 @@
       <th>Actions</th>
     </tr>
     <tbody>
-      <tr *ngFor="let property of transformed; let i = index">
-        <td><p>{{ property.key }}</p></td>
-        <td>
-          <p *ngIf="!property.edit">{{ property.value }}</p>
-          <mat-form-field *ngIf="property.edit">
-            <input matInput [(ngModel)]="property.value">
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-icon *ngIf="property.edit" (click)="edited(i)">check</mat-icon>
-          <mat-icon *ngIf="!property.edit" (click)="edit(i)">edit</mat-icon>
-          <mat-icon (click)="remove(i)">delete</mat-icon>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <mat-form-field>
-            <input matInput placeholder="Key" [(ngModel)]="newKey">
-          </mat-form-field>
-        </td>
-        <td>
-          <mat-form-field>
-            <input matInput placeholder="Value" [(ngModel)]="newValue">
-          </mat-form-field>
-        </td>
-        <td><mat-icon (click)="add()">add</mat-icon></td>
-      </tr>
+    <tr *ngFor="let property of transformed; let i = index">
+      <td><p>{{ property.key }}</p></td>
+      <td>
+        <p *ngIf="!property.edit">{{ property.value }}</p>
+        <mat-form-field *ngIf="property.edit">
+          <input matInput [(ngModel)]="property.value">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-icon *ngIf="property.edit" (click)="edited(i)">check</mat-icon>
+        <mat-icon *ngIf="!property.edit" (click)="edit(i)">edit</mat-icon>
+        <mat-icon (click)="remove(i)">delete</mat-icon>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <mat-form-field>
+          <input matInput placeholder="Key" [(ngModel)]="newKey">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field>
+          <input matInput placeholder="Value" [(ngModel)]="newValue">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-icon (click)="add()">add</mat-icon>
+      </td>
+    </tr>
     </tbody>
-    </table>
-    <div class="buttons">
-      <button mat-raised-button (click)="save()">Save</button>
-      <button mat-raised-button (click)="cancel()">Cancel</button>
-    </div>  
+  </table>
+  <div class="buttons">
+    <button mat-raised-button (click)="save()">Save</button>
+    <button mat-raised-button (click)="cancel()">Cancel</button>
+  </div>
 </div>

@@ -1,11 +1,9 @@
-import { Component } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 
-import { Device } from '../../models/device';
-import { Location } from '../../models/location';
-import { LocationService } from '../../services/location.service';
-import { UserService } from '../../services/user.service';
+import {Location} from '../../models/location';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'user-locations',
@@ -13,7 +11,7 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./userlocations.component.scss']
 })
 
-export class UserLocationsComponent {
+export class UserLocationsComponent implements OnInit {
   locations: Array<Location> = [];
 
   constructor(private route: ActivatedRoute, private router: Router, private userService: UserService) {
@@ -21,7 +19,7 @@ export class UserLocationsComponent {
   }
 
   ngOnInit() {
-    this.userService.getMyLocations("").subscribe(
+    this.userService.getMyLocations('').subscribe(
       result => this.locations = result,
       error => this.router.navigate(['/home'])
     );

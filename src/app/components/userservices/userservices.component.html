@@ -1,4 +1,4 @@
-<div class="user-services" >
+<div class="user-services">
   <mat-card>
     <div class="card-header">
       <h2>My Services</h2>
@@ -10,22 +10,22 @@
         <tr>
           <th><p>Name</p></th>
           <th><p>Description</p></th>
-          
+
         </tr>
 
         <!-- Table Body -->
         <tbody>
-          <tr *ngFor="let service of services" (click)="gotoService(service._id)">
+        <tr *ngFor="let service of services" (click)="gotoService(service._id)">
 
-           <td><p>{{ service.name }}</p></td>
-           <td><p>{{ service.description }}</p></td>
-         </tr>
-       </tbody>
-     </table>
-     </div>
-     <div *ngIf="services.length == 0">
+          <td><p>{{ service.name }}</p></td>
+          <td><p>{{ service.description }}</p></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="services.length == 0">
       <p>Currently no services to display.</p>
     </div>
   </mat-card>
-  
+
 </div>

@@ -1,22 +1,21 @@
-
 import {switchMap} from 'rxjs/operators';
-import { Component } from '@angular/core';
-import { MatInputModule, MatSnackBar, MatDialog } from '@angular/material';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {MatDialog, MatSnackBar} from '@angular/material';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 
-import { DeviceService } from '../../services/device.service';
-import { Device } from '../../models/device';
-import { ErrorDialogService } from '../../services/error-dialog.service';
-import { SuccessDialogService } from '../../services/success-dialog.service';
+import {DeviceService} from '../../services/device.service';
+import {Device} from '../../models/device';
+import {ErrorDialogService} from '../../services/error-dialog.service';
+import {SuccessDialogService} from '../../services/success-dialog.service';
 
 @Component({
   selector: 'new-template',
   templateUrl: './newtemplate.component.html',
   styleUrls: ['./newtemplate.component.scss']
 })
-export class NewTemplateComponent {
-  name: string = "";
-  description: string = "";
+export class NewTemplateComponent implements OnInit {
+  name = '';
+  description = '';
   device: Device = null;
 
   constructor(private deviceService: DeviceService, private route: ActivatedRoute,
@@ -37,8 +36,8 @@ export class NewTemplateComponent {
   }
 
   add() {
-    if(this.name != "" && this.description != "") {
-      var body: any = {
+    if (this.name != '' && this.description != '') {
+      const body: any = {
         name: this.name,
         description: this.description,
         device_id: this.device._id
@@ -48,20 +47,19 @@ export class NewTemplateComponent {
         result => {
 
           // this.snackBar.open("Save Template Success!", this.name, { duration: 2000 }).afterDismissed().subscribe(
-          this.successDialogService.dialogPopup("Template Created "+this.name).subscribe(
+          this.successDialogService.dialogPopup('Template Created ' + this.name).subscribe(
             result => this.router.navigate(['/home/devicetemplates/'])
           );
         },
         error => {
-            // this.snackBar.open(error.message, this.name, errorConfig);
-            this.errorDialogService
-              .dialogPopup(error.message + ': ' + this.name);
-          }
+          // this.snackBar.open(error.message, this.name, errorConfig);
+          this.errorDialogService
+            .dialogPopup(error.message + ': ' + this.name);
+        }
       );
 
-    }
-    else {
-      this.snackBar.open("Name and description are empty!", "ERROR", { duration: 2000 });
+    } else {
+      this.snackBar.open('Name and description are empty!', 'ERROR', {duration: 2000});
     }
   }
 

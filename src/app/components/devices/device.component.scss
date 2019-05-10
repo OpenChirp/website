@@ -1,4 +1,5 @@
 @import '../../constants';
+
 $row-height: 50px;
 $black-text: #303132;
 $blue-text: #8ab9d6;
@@ -10,30 +11,37 @@ $blue-text: #8ab9d6;
       display: none;
     }
   }
+
   .delete-button {
     font-family: "Avenir-Med", sans-serif;
     color: red;
     background-color: white;
   }
+
   .save-template-button {
     font-family: "Avenir-Med", sans-serif;
     color: $black-text;
     background-color: white;
   }
+
   p {
     font-family: "Avenir-Med", sans-serif;
   }
+
   mat-card {
     background-color: white;
+
     mat-tab-group {
       padding: 15px;
       font-family: "Avenir-Med", sans-serif;
       color: $black-text;
     }
+
     .tab-content {
       padding: 15px;
       font-family: "Avenir-Med", sans-serif;
     }
+
     .card-header {
       h2 {
         margin: 0;
@@ -41,15 +49,18 @@ $blue-text: #8ab9d6;
         font-family: "Avenir-Heavy", sans-serif;
         color: $black-text;
       }
+
       button {
         float: right;
         margin-right: 10px;
         margin-left: 10px;
         font-family: "Avenir-Med", sans-serif;
       }
+
       margin-bottom: 60px;
     }
   }
+
   form {
     mat-form-field {
       input {
@@ -58,6 +69,7 @@ $blue-text: #8ab9d6;
       }
     }
   }
+
   iframe {
     width: 100%;
     height: 900px;

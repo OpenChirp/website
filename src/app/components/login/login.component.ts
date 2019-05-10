@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { MatInputModule, MatSnackBar, MatDialog } from '@angular/material';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {AuthService} from '../../services/auth.service';
+import {MatSnackBar} from '@angular/material';
 
-import { SuccessDialogService } from '../../services/success-dialog.service';
-import { ErrorDialogService } from '../../services/error-dialog.service';
-import { Configuration } from '../../config';
+import {SuccessDialogService} from '../../services/success-dialog.service';
+import {ErrorDialogService} from '../../services/error-dialog.service';
+import {Configuration} from '../../config';
 
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
@@ -24,12 +24,12 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./login.component.scss']
 })
 
-export class LoginComponent {
-  name: string = '';
-  password: string = '';
-  confirmPassword: string = '';
-  showSignup: boolean = false;
-  showSignupButton: boolean = false;
+export class LoginComponent implements OnInit {
+  name = '';
+  password = '';
+  confirmPassword = '';
+  showSignup = false;
+  showSignupButton = false;
   emailPattern: any = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   emailFormControl = new FormControl('', [
@@ -53,21 +53,20 @@ export class LoginComponent {
 
   login() {
     if (this.emailFormControl.value != '' && this.password != '') {
-      var body: any = {
+      const body: any = {
         username: this.emailFormControl.value,
         password: this.password
       };
       this.authService.basicLogin(body).subscribe(
         result => {
-          //this.router.navigate(['/home'])
+          // this.router.navigate(['/home'])
           window.location.href = '/home';
         }, error => {
           this.errorDialogService
             .dialogPopup(error.message);
         }
       );
-    }
-    else {
+    } else {
       this.snackBar.open('Email or password are empty!', 'ERROR', {duration: 2000});
     }
   }
@@ -77,12 +76,12 @@ export class LoginComponent {
       this.showSignup = true;
     } else {
       if (this.emailFormControl.value != '' && this.password != '') {
-        var body: any = {
+        const body: any = {
           name: this.name,
           email: this.emailFormControl.value,
           password: this.password
         };
-        let regexp = new RegExp(this.emailPattern);
+        const regexp = new RegExp(this.emailPattern);
         if (!regexp.test(this.emailFormControl.value)) {
           this.errorDialogService.dialogPopup('Invalid Email');
           return;

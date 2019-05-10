@@ -1,5 +1,5 @@
 <div class="select-template">
-  
+
   <div class="search">
     <h2>Select a Template</h2>
     <mat-form-field>
@@ -20,12 +20,12 @@
       <!-- Table Body -->
       <tbody>
 
-        <!-- Item Row -->
-        <tr *ngFor="let template of filtered()" (click)="select(template)">
-          <td><p>{{ template.name }}</p></td>
-          <td><p>{{ template.description }}</p></td>
-          <td><p>{{ template.owner.name || template.owner.email }}</p></td>
-        </tr>
+      <!-- Item Row -->
+      <tr *ngFor="let template of filtered()" (click)="select(template)">
+        <td><p>{{ template.name }}</p></td>
+        <td><p>{{ template.description }}</p></td>
+        <td><p>{{ template.owner.name || template.owner.email }}</p></td>
+      </tr>
 
       </tbody>
     </table>

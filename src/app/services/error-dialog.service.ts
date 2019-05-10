@@ -1,12 +1,13 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { MatDialogRef, MatDialog } from '@angular/material';
-import { ErrorDialogComponent } from '../components/dialogs/error-dialog.component';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {MatDialog, MatDialogRef} from '@angular/material';
+import {ErrorDialogComponent} from '../components/dialogs/error-dialog.component';
 
 @Injectable()
 export class ErrorDialogService {
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog) {
+  }
 
   /**
    * Opens a fail dialog

@@ -1,74 +1,74 @@
 <div class="stats">
- <mat-card>
-   <div class="card-header">
-     <h2> Number of entries : </h2>   
-  </div>
-  <br>
-  <div *ngIf="stats">
-    <table>
-      <!-- Table Header-->
-   <tr>
-      <th><p>Document</p></th>
-      <th><p>Count</p></th>
-    </tr>
-
-    <!-- Table Body -->
-    <tbody>
-      <!-- Item Row -->
+  <mat-card>
+    <div class="card-header">
+      <h2> Number of entries : </h2>
+    </div>
+    <br>
+    <div *ngIf="stats">
+      <table>
+        <!-- Table Header-->
         <tr>
-            <th> Device </th>
-            <th>{{ stats.device}} </th>
+          <th><p>Document</p></th>
+          <th><p>Count</p></th>
         </tr>
 
+        <!-- Table Body -->
+        <tbody>
+        <!-- Item Row -->
         <tr>
-            <th> Device Template</th>
-            <th>{{ stats.devicetemplate}} </th>
-        </tr>
-
-         <tr>
-            <th> Service </th>
-            <th>{{ stats.service }} </th>
-        </tr>
-      
-
-        <tr>
-            <th> Location </th>
-            <th>{{ stats.location}} </th>
-        </tr>
-
-          <tr>
-            <th> Group </th>
-            <th>{{ stats.group }} </th>
+          <th> Device</th>
+          <th>{{ stats.device}} </th>
         </tr>
 
         <tr>
-            <th> User </th>
-            <th>{{ stats.user }} </th>
+          <th> Device Template</th>
+          <th>{{ stats.devicetemplate}} </th>
         </tr>
 
         <tr>
-            <th> Thing Credential : Device</th>
-            <th>{{ stats.thingcredential_device }} </th>
+          <th> Service</th>
+          <th>{{ stats.service }} </th>
         </tr>
 
-          <tr>
-            <th> Thing Credential : Service</th>
-            <th>{{ stats.thingcredential_service }} </th>
-        </tr>
 
-          <tr>
-            <th> Thing Credential : User</th>
-            <th>{{ stats.thingcredential_user }} </th>
+        <tr>
+          <th> Location</th>
+          <th>{{ stats.location}} </th>
         </tr>
 
         <tr>
-            <th> Public Link </th>
-            <th>{{ stats.publiclink}} </th>
+          <th> Group</th>
+          <th>{{ stats.group }} </th>
         </tr>
-        
-      </tbody>
-    </table>
-  </div>
- 
-</mat-card>
+
+        <tr>
+          <th> User</th>
+          <th>{{ stats.user }} </th>
+        </tr>
+
+        <tr>
+          <th> Thing Credential : Device</th>
+          <th>{{ stats.thingcredential_device }} </th>
+        </tr>
+
+        <tr>
+          <th> Thing Credential : Service</th>
+          <th>{{ stats.thingcredential_service }} </th>
+        </tr>
+
+        <tr>
+          <th> Thing Credential : User</th>
+          <th>{{ stats.thingcredential_user }} </th>
+        </tr>
+
+        <tr>
+          <th> Public Link</th>
+          <th>{{ stats.publiclink}} </th>
+        </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+  </mat-card>
 </div>
