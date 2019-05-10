@@ -36,8 +36,7 @@
         <div *ngIf="rootLocation">
           <tree-node
             [currentLocation]="rootLocation"
-            (change)="deviceList($event)"
-            (newLocationParent)="newLocation($event)"></tree-node>
+            (change)="deviceList($event)"></tree-node>
         </div>
       </div>
     </mat-sidenav>

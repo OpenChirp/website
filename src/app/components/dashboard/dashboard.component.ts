@@ -26,7 +26,6 @@ export class DashboardComponent implements OnInit {
   rootLocation: Location = null;
   errorMessage: string;
   devices: Array<Device> = [];
-  newLocationParent: Location = null;
   sideNavOpened: boolean = true;
 
   constructor(
@@ -83,10 +82,6 @@ export class DashboardComponent implements OnInit {
 
   deviceList(event) {
     this.devices = event;
-  }
-
-  newLocation(event) {
-    this.newLocationParent = event;
   }
 
   goToCommunity() {

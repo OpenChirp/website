@@ -12,9 +12,11 @@
     <table matSort (matSortChange)="sortData($event)">
       <!-- Table Header-->
       <thead>
-        <th mat-sort-header="name">Device Name</th>
-        <th mat-sort-header="owner">Owner</th>
-        <th mat-sort-header="location">Location</th>
+        <tr>
+          <th mat-sort-header="name">Device Name</th>
+          <th mat-sort-header="owner">Owner</th>
+          <th mat-sort-header="location">Location</th>
+        </tr>
       </thead>
       <tbody>
         <tr *ngFor="let device of filtered()" class="devices" (click)="gotoDevice(device._id)">
