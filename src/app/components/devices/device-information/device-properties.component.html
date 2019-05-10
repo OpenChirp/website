@@ -40,4 +40,4 @@
 
   </form>
 </div>
-<grouped-devices [deviceGroup]="device" (updateDevice)="updateDevice" *ngIf="device.isDeviceGroup"></grouped-devices>
+<grouped-devices [deviceGroup]="device" (updateDevice)="updateDeviceMeta($event)" *ngIf="device.isDeviceGroup"></grouped-devices>

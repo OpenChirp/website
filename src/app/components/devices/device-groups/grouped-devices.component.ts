@@ -8,7 +8,7 @@ import { ErrorDialogService } from '../../../services/error-dialog.service';
 import { MatDialog, Sort, MatSort } from '@angular/material';
 import { ConfirmationDialogComponent } from '../../dialogs/confirmation-dialog.component';
 
-import { SelectDeviceComponent } from '../../devices/select-device.component';
+import { SelectDeviceComponent } from '../select-device.component';
 
 
 @Component({
