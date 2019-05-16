@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, Output} from '@angular/core';
+import {Component, EventEmitter, Inject, Input, OnChanges, Output} from '@angular/core';
 import {Device} from '../../../models/device';
 import {ErrorDialogService} from '../../../services/error-dialog.service';
 import {SuccessDialogService} from '../../../services/success-dialog.service';
@@ -9,6 +9,7 @@ import {MatDialog, Sort} from '@angular/material';
 import {ConfirmationDialogComponent} from '../../dialogs/confirmation-dialog.component';
 import {PublicLinkComponent} from '../../publiclink/public-link.component';
 import {Configuration} from '../../../config';
+import {DOCUMENT} from '@angular/common';
 
 @Component({
   selector: 'device-commands',
@@ -35,10 +36,11 @@ export class DeviceCommandsComponent implements OnChanges {
               private successDialogService: SuccessDialogService,
               private errorDialogService: ErrorDialogService,
               public dialog: MatDialog,
-              private config: Configuration
+              private config: Configuration,
+              @Inject(DOCUMENT) document: any
   ) {
 
-    this.baseUrl = config.api_base_url;
+    this.baseUrl = document.location.origin;
   }
 
   ngOnChanges() {
