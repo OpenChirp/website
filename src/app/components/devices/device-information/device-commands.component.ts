@@ -40,7 +40,7 @@ export class DeviceCommandsComponent implements OnChanges {
               @Inject(DOCUMENT) document: any
   ) {
 
-    this.baseUrl = document.location.origin;
+    this.baseUrl = document.location.origin + '/';
   }
 
   ngOnChanges() {
