@@ -190,9 +190,8 @@ img {
 .openchirp-intro-section {
   position: relative;
   height: 100vh;
-  background-color: #f3f3f3;
   //background-color: #ff0000;
-  background: url($image_url+ '/background.png') center 100% no-repeat;
+  background: #f3f3f3 url(#{$image_url}/background.png) no-repeat center 100%;
   background-size: cover;
   text-align: center;
 }
