@@ -88,7 +88,7 @@ export class DeviceComponent implements OnInit {
     this.router.navigate(['/home/newtemplate/', this.device._id]);
   }
 
-  getDevice() {
+  getDevice(val: any) {
     this.route.params.pipe(
       switchMap((params: Params) => this.deviceService.getDeviceById(params['id'])))
       .subscribe(

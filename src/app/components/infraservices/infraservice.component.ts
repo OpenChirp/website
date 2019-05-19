@@ -56,7 +56,7 @@ export class InfraServiceComponent implements OnInit {
     this.getService();
   }
 
-  getService() {
+  getService(val: any) {
     this.route.params.pipe(
       switchMap((params: Params) => this.infraService.getServiceByID(params['id'])))
       .subscribe(

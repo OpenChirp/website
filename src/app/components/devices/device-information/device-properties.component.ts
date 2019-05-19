@@ -26,7 +26,7 @@ export class DevicePropertiesComponent {
               public dialog: MatDialog) {
   }
 
-  updateDeviceMeta() {
+  updateDeviceMeta(val: any) {
     this.deviceService.updateDeviceById(this.device._id, this.device).subscribe(
       result => {
         this.successDialogService

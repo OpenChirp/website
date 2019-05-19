@@ -21,7 +21,7 @@
         <mat-slide-toggle [(ngModel)]="device.combined_pubsub"
                           name="device-combined-pubsub">{{device.combined_pubsub}}</mat-slide-toggle>
       </p>
-      <button mat-raised-button (click)="updateDeviceMeta()">Update</button>
+      <button mat-raised-button (click)="updateDeviceMeta($event)">Update</button>
       <button mat-raised-button (click)="viewProperties()">Edit Custom Properties</button>
       <button mat-raised-button *ngIf="device.location_id" (click)="gotoLocation()">Go to Parent Location</button>
       <button mat-raised-button (click)="pickLocation()">Change Location</button>
