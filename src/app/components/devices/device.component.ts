@@ -81,7 +81,7 @@ export class DeviceComponent implements OnInit {
         // this.selectedIndex = this.tabNameToPosition.get('properties').valueOf();
       }
     });
-    this.getDevice();
+    this.getDevice(true);
   }
 
   saveTemplate() {
@@ -115,8 +115,8 @@ export class DeviceComponent implements OnInit {
       dialogRef.componentInstance.dialogText = 'Delete Device ' + this.device.name + '?';
       dialogRef.componentInstance.confirmText = 'Delete';
       dialogRef.afterClosed().subscribe(
-        result => {
-          if (result) {
+        closedResult => {
+          if (closedResult) {
             this.deviceService.deleteDevice(this.device._id).subscribe(
               result => {
                 this.successDialogService

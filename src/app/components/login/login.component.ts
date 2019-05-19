@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    if (this.emailFormControl.value != '' && this.password != '') {
+    if (this.emailFormControl.value !== '' && this.password !== '') {
       const body: any = {
         username: this.emailFormControl.value,
         password: this.password
@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
     if (!this.showSignup) {
       this.showSignup = true;
     } else {
-      if (this.emailFormControl.value != '' && this.password != '') {
+      if (this.emailFormControl.value !== '' && this.password !== '') {
         const body: any = {
           name: this.name,
           email: this.emailFormControl.value,

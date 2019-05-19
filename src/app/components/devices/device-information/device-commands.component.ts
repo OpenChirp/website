@@ -53,7 +53,7 @@ export class DeviceCommandsComponent implements OnChanges {
   transducerNameById(transducerID: string): string {
     for (const t of this.device.transducers) {
       const trans: any = t; // break typescript
-      if (trans._id == transducerID) {
+      if (trans._id === transducerID) {
         return trans.name;
       }
     }
@@ -63,7 +63,7 @@ export class DeviceCommandsComponent implements OnChanges {
   broadcastTransducerNameById(transducerID: string): string {
     for (const t of this.device.broadcast_transducers) {
       const trans: any = t; // break typescript
-      if (trans._id == transducerID) {
+      if (trans._id === transducerID) {
         return trans.name;
       }
     }
@@ -129,8 +129,8 @@ export class DeviceCommandsComponent implements OnChanges {
     dialogRef.componentInstance.dialogText = 'Delete Command ' + name + '?';
     dialogRef.componentInstance.confirmText = 'Delete';
     dialogRef.afterClosed().subscribe(
-      result => {
-        if (result) {
+      closedResult => {
+        if (closedResult) {
           this.deviceService.deleteCommand(this.device._id, id).subscribe(
             result => {
               this.successDialogService
@@ -150,8 +150,8 @@ export class DeviceCommandsComponent implements OnChanges {
     dialogRef.componentInstance.dialogText = 'Delete Broadcast Command ' + name + '?';
     dialogRef.componentInstance.confirmText = 'Delete';
     dialogRef.afterClosed().subscribe(
-      result => {
-        if (result) {
+      closedResult => {
+        if (closedResult) {
           this.deviceGroupService.deleteBroadcastCommand(this.device._id, id).subscribe(
             result => {
               this.successDialogService
@@ -176,7 +176,7 @@ export class DeviceCommandsComponent implements OnChanges {
         dialogRef.componentInstance.baseUrl = this.baseUrl;
       },
       error => {
-        if (error.status == 404) {
+        if (error.status === 404) {
           const dialogRef = this.dialog.open(PublicLinkComponent, {width: '800px'});
           dialogRef.componentInstance.device = this.device;
           dialogRef.componentInstance.command = command;
@@ -199,7 +199,7 @@ export class DeviceCommandsComponent implements OnChanges {
         dialogRef.componentInstance.isBroadcast = true;
       },
       error => {
-        if (error.status == 404) {
+        if (error.status === 404) {
           const dialogRef = this.dialog.open(PublicLinkComponent, {width: '800px'});
           dialogRef.componentInstance.device = this.device;
           dialogRef.componentInstance.command = command;

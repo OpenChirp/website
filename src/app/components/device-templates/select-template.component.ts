@@ -30,11 +30,11 @@ export class SelectTemplateComponent implements OnInit {
   }
 
   filtered() {
-    if (this.searchTerm != '') {
+    if (this.searchTerm !== '') {
       return this.templates.filter((x) => {
         let owner_match;
         let template_owner = '';
-        if (typeof (x.name) == 'string' && typeof (x.description == 'string') && typeof (x.owner == 'string')) {
+        if (typeof (x.name) === 'string' && typeof (x.description === 'string') && typeof (x.owner === 'string')) {
           const template_name: string = x.name;
           const name_match = template_name.toLowerCase().includes(this.searchTerm.toLowerCase());
           if (name_match) {

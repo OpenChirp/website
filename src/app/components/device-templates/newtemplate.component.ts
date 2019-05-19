@@ -36,7 +36,7 @@ export class NewTemplateComponent implements OnInit {
   }
 
   add() {
-    if (this.name != '' && this.description != '') {
+    if (this.name !== '' && this.description !== '') {
       const body: any = {
         name: this.name,
         description: this.description,
@@ -44,7 +44,7 @@ export class NewTemplateComponent implements OnInit {
       };
 
       this.deviceService.saveTemplate(body).subscribe(
-        result => {
+        saveResult => {
 
           // this.snackBar.open("Save Template Success!", this.name, { duration: 2000 }).afterDismissed().subscribe(
           this.successDialogService.dialogPopup('Template Created ' + this.name).subscribe(

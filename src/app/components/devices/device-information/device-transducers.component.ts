@@ -107,7 +107,7 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
   }
 
   newTransducer() {
-    if (this.name != '' && this.unit != '') {
+    if (this.name !== '' && this.unit !== '') {
       const body = {
         name: this.name,
         unit: this.unit,
@@ -136,9 +136,9 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
   editTransducer(transducer: any) {
     const dialogRef = this.dialog.open(EditTransducerComponent, {data: {transducer: transducer}});
     dialogRef.afterClosed().subscribe(
-      result => {
-        if (result) {
-          this.deviceService.editTransducer(this.device._id, transducer._id, result).subscribe(
+      closedResult => {
+        if (closedResult) {
+          this.deviceService.editTransducer(this.device._id, transducer._id, closedResult).subscribe(
             result => {
               this.successDialogService
                 .dialogPopup('Transducer Updated: ' + name);
@@ -159,8 +159,8 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
     dialogRef.componentInstance.confirmText = 'Delete';
     dialogRef.componentInstance.dialogText = 'Delete Transducer ' + name + '?';
     dialogRef.afterClosed().subscribe(
-      result => {
-        if (result) {
+      closedResult => {
+        if (closedResult) {
           this.deviceService.deleteTransducer(this.device._id, id).subscribe(
             result => {
               this.successDialogService
@@ -271,7 +271,7 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
   }
 
   newBroadcastTransducer() {
-    if (this.bname != '' && this.bunit != '') {
+    if (this.bname !== '' && this.bunit !== '') {
       const body = {
         name: this.bname,
         unit: this.bunit,
@@ -299,9 +299,9 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
   editBroadcastTransducer(transducer: any) {
     const dialogRef = this.dialog.open(EditTransducerComponent, {data: {transducer: transducer, is_broadcast: true}});
     dialogRef.afterClosed().subscribe(
-      result => {
-        if (result) {
-          this.deviceGroupService.editBroadcastTransducer(this.device._id, transducer._id, result).subscribe(
+      closedResult => {
+        if (closedResult) {
+          this.deviceGroupService.editBroadcastTransducer(this.device._id, transducer._id, closedResult).subscribe(
             result => {
               this.successDialogService
                 .dialogPopup('Broadcast Transducer Updated: ' + name);
@@ -322,8 +322,8 @@ export class DeviceTransducersComponent implements OnChanges, OnDestroy {
     dialogRef.componentInstance.confirmText = 'Delete';
     dialogRef.componentInstance.dialogText = 'Delete Broadcast Transducer ' + name + '?';
     dialogRef.afterClosed().subscribe(
-      result => {
-        if (result) {
+      closedResult => {
+        if (closedResult) {
           this.deviceGroupService.deleteBroadcastTransducer(this.device._id, id).subscribe(
             result => {
               this.successDialogService

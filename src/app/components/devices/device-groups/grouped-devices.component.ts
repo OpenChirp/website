@@ -93,8 +93,8 @@ export class GroupedDevicesComponent implements OnInit {
     dialogRef.componentInstance.dialogText = 'Remove device from group : ' + name + '?';
     dialogRef.componentInstance.confirmText = 'Remove';
     dialogRef.afterClosed().subscribe(
-      result => {
-        if (result) {
+      closedResult => {
+        if (closedResult) {
           this.deviceGroupService.deleteDeviceFromGroup(this.deviceGroup._id, device_id).subscribe(
             result => {
               this.successDialogService.dialogPopup('Removed from group :' + name);

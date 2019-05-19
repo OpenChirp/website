@@ -51,8 +51,8 @@ export class DeviceTemplateComponent implements OnInit {
     dialogRef.componentInstance.dialogText = 'Delete Template ' + this.template.name + '?';
     dialogRef.componentInstance.confirmText = 'Delete';
     dialogRef.afterClosed().subscribe(
-      result => {
-        if (result) {
+      closedResult => {
+        if (closedResult) {
           this.deviceService.deleteTemplate(this.template._id).subscribe(
             result => {
               this.successDialogService.dialogPopup('Successfully deleted ' + this.template.name);

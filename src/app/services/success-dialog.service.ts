@@ -11,7 +11,6 @@ export class SuccessDialogService {
 
   /**
    * Opens a success dialog
-   * @param d       dialog component
    * @param message corresponding message
    * @returns {Observable<any>}
    */

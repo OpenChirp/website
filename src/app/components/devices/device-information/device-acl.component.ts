@@ -21,7 +21,8 @@ export class DeviceAclComponent implements OnInit {
   @Input() device: Device;
   @Output() updateDevice: EventEmitter<boolean> = new EventEmitter();
 
-  tokenTip = 'Use the device id as username and this token as password to authenticate over basic auth for REST API and MQTT. Make sure to copy it now. You won’t be able to see it again!';
+  tokenTip = `Use the device id as username and this token as password to authenticate over basic auth
+  for REST API and MQTT. Make sure to copy it now. You won’t be able to see it again!`;
 
   memberForm: FormGroup;
   emailCtrl: FormControl;
@@ -144,8 +145,8 @@ export class DeviceAclComponent implements OnInit {
     dialogRef.componentInstance.dialogWarning = 'This will over-write the previous token.';
     dialogRef.componentInstance.confirmText = 'Generate';
     dialogRef.afterClosed().subscribe(
-      result => {
-        if (result) {
+      closedResult => {
+        if (closedResult) {
           this.deviceService.recreateToken(this.device._id).subscribe(
             result => {
               this.updateDevice.emit(true);
@@ -166,8 +167,8 @@ export class DeviceAclComponent implements OnInit {
     dialogRef.componentInstance.dialogWarning = 'The token will no longer work for authentication over REST and MQTT.';
     dialogRef.componentInstance.confirmText = 'Delete';
     dialogRef.afterClosed().subscribe(
-      result => {
-        if (result) {
+      closedResult => {
+        if (closedResult) {
           this.deviceService.deleteToken(this.device._id).subscribe(
             result => {
               this.updateDevice.emit(true);
@@ -214,8 +215,8 @@ export class DeviceAclComponent implements OnInit {
     dialogRef.componentInstance.dialogText = 'Remove user ' + user.email + '?';
     dialogRef.componentInstance.confirmText = 'Remove ';
     dialogRef.afterClosed().subscribe(
-      result => {
-        if (result) {
+      closedResult => {
+        if (closedResult) {
           this.deviceService.deleteAcl(this.device._id, user._id).subscribe(
             result => {
               this.getUsersAcl();
@@ -236,8 +237,8 @@ export class DeviceAclComponent implements OnInit {
     dialogRef.componentInstance.dialogText = 'Remove group ' + group.name + '?';
     dialogRef.componentInstance.confirmText = 'Remove ';
     dialogRef.afterClosed().subscribe(
-      result => {
-        if (result) {
+      closedResult => {
+        if (closedResult) {
           this.deviceService.deleteAcl(this.device._id, group._id).subscribe(
             result => {
               this.getGroupsAcl();

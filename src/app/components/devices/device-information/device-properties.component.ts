@@ -67,9 +67,9 @@ export class DevicePropertiesComponent {
   pickLocation() {
     const dialogRef = this.dialog.open(SelectLocationComponent, {width: '800px', height: '700px'});
     dialogRef.afterClosed().subscribe(
-      result => {
-        if (result) {
-          this.deviceService.updateDeviceById(this.device._id, {location_id: result}).subscribe(
+      closedResult => {
+        if (closedResult) {
+          this.deviceService.updateDeviceById(this.device._id, {location_id: closedResult}).subscribe(
             result => {
               this.successDialogService
                 .dialogPopup('Updated: ' + this.device.name);

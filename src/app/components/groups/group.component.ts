@@ -67,8 +67,8 @@ export class GroupComponent implements OnInit {
     dialogRef.componentInstance.dialogText = 'Delete Group ' + group.name + '?';
     dialogRef.componentInstance.confirmText = 'Delete';
     dialogRef.afterClosed().subscribe(
-      result => {
-        if (result) {
+      closedResult => {
+        if (closedResult) {
           this.groupService.deleteGroup(group._id).subscribe(
             result => {
               this.getAllGroups();

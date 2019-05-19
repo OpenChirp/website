@@ -11,7 +11,6 @@ export class ErrorDialogService {
 
   /**
    * Opens a fail dialog
-   * @param d       dialog component
    * @param message corresponding message
    * @returns {Observable<any>}
    */
