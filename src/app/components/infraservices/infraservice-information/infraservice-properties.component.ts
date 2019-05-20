@@ -20,7 +20,8 @@ export class InfraServicePropertiesComponent {
   @Input() service: any = null;
   @Input() acl: any = {};
   @Output() updateInfraservice: EventEmitter<boolean> = new EventEmitter();
-  tokenTip: 'Use the service id as username and this token as password to authenticate over basic auth for REST API and MQTT. Make sure to copy it now. You won’t be able to see it again!';
+  tokenTip = `Use the service id as username and this token as password to authenticate over
+   basic auth for REST API and MQTT. Make sure to copy it now. You won’t be able to see it again!`;
 
   constructor(private route: ActivatedRoute, private infraService: InfraService, private router: Router,
               private successDialogService: SuccessDialogService,

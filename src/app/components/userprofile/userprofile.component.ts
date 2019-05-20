@@ -15,7 +15,8 @@ import {ConfirmationDialogComponent} from '../dialogs/confirmation-dialog.compon
 export class UserProfileComponent implements OnInit {
   user: any = null;
   token: any = null;
-  tokenTip = 'Use the userid as username and this token as password to authenticate over basic auth for REST API and MQTT. Make sure to copy it now. You won’t be able to see it again!';
+  tokenTip = `Use the userid as username and this token as password to authenticate over basic auth
+  for REST API and MQTT. Make sure to copy it now. You won’t be able to see it again!`;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -52,7 +53,7 @@ export class UserProfileComponent implements OnInit {
     this.userService.getToken().subscribe(
       result => this.token = result,
       error => {
-        if (error.status != 404) {
+        if (error.status !== 404) {
           this.errorDialogService.dialogPopup(error.message);
         } else {
           this.token = null;
@@ -80,8 +81,8 @@ export class UserProfileComponent implements OnInit {
     dialogRef.componentInstance.dialogWarning = 'The token will no longer work for authentication over REST and MQTT.';
     dialogRef.componentInstance.confirmText = 'Delete';
     dialogRef.afterClosed().subscribe(
-      result => {
-        if (result) {
+      closedResult => {
+        if (closedResult) {
           this.userService.deleteToken().subscribe(
             result => {
               this.getToken();

@@ -39,7 +39,7 @@ export class DeviceVisualizationComponent implements OnInit {
 
   checkAll(action: string) {
     let val = true;
-    if (action == 'hide') {
+    if (action === 'hide') {
       val = false;
     }
     this.deviceTransducers.forEach((td) => {
@@ -80,7 +80,8 @@ export class DeviceVisualizationComponent implements OnInit {
 
     // let grafana_url = this.deviceService.getGrafanaUrl();
     // let transducerNames = this.device.transducers.map(function(val:any) { return val.name ;});
-    // let url = grafana_url +"dashboard/script/transducer_v2.js?device="+this.device._id+"&transducers="+transducerNames.join()+"&theme=light&kiosk=true&refresh=15s&from=now-1h&to=now%2B10m";
+    // let url = grafana_url +"dashboard/script/transducer_v2.js?device="+this.device._id+"&transducers="+
+    // transducerNames.join()+"&theme=light&kiosk=true&refresh=15s&from=now-1h&to=now%2B10m";
     // //   this.frameURL = this.sanitizer.bypassSecurityTrustResourceUrl(url);
     // console.log(url);
   }

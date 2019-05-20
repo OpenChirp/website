@@ -72,7 +72,7 @@ export class LocationComponent implements OnInit {
   }
 
   add() {
-    if (this.name != '' && this.type != '') {
+    if (this.name !== '' && this.type !== '') {
       const body = {
         'name': this.name,
         'type': this.type,
@@ -103,7 +103,7 @@ export class LocationComponent implements OnInit {
   }
 
   update() {
-    if (this.name != '' && this.type != '') {
+    if (this.name !== '' && this.type !== '') {
       const body = {
         'name': this.name,
         'type': this.type

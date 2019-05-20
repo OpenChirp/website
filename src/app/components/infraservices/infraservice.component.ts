@@ -53,10 +53,10 @@ export class InfraServiceComponent implements OnInit {
         // this.selectedIndex = this.tabNameToPosition.get('properties').valueOf();
       }
     });
-    this.getService();
+    this.getService(true);
   }
 
-  getService() {
+  getService(val: any) {
     this.route.params.pipe(
       switchMap((params: Params) => this.infraService.getServiceByID(params['id'])))
       .subscribe(

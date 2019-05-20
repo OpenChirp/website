@@ -30,21 +30,21 @@ export class SelectServiceComponent implements OnInit {
   }
 
   getPermissionName(perm: number) {
-    if (perm == 0) {
+    if (perm === 0) {
       return 'Read';
-    } else if (perm == 1) {
+    } else if (perm === 1) {
       return 'Execute';
-    } else if (perm == 2) {
+    } else if (perm === 2) {
       return 'Write';
     }
   }
 
   filtered() {
-    if (this.searchTerm != '') {
+    if (this.searchTerm !== '') {
       return this.services.filter((x) => {
         let owner_match;
         let service_owner = '';
-        if (typeof (x.name) == 'string' && typeof (x.description == 'string') && typeof (x.owner == 'string')) {
+        if (typeof (x.name) === 'string' && typeof (x.description === 'string') && typeof (x.owner === 'string')) {
           const template_name: string = x.name;
           const name_match = template_name.toLowerCase().includes(this.searchTerm.toLowerCase());
           if (name_match) {

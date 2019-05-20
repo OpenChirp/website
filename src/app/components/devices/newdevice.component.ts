@@ -73,7 +73,7 @@ export class NewDeviceComponent implements OnInit {
   }
 
   add() {
-    if (this.name != '') {
+    if (this.name !== '') {
       let valid = true;
       const body: any = {};
       body['name'] = this.name;
@@ -85,7 +85,7 @@ export class NewDeviceComponent implements OnInit {
         body["type"] = this.selectedType;
       }*/
       if (this.useTemplate) {
-        if (this.templateid != '') {
+        if (this.templateid !== '') {
           body['template_id'] = this.templateid;
         } else {
           valid = false;

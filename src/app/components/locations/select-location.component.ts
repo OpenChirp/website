@@ -42,16 +42,16 @@ export class SelectLocationComponent implements OnInit {
   }
 
   filtered() {
-    if (this.searchTerm != '') {
+    if (this.searchTerm !== '') {
       return this.locations.filter((x) => {
-        if (typeof (x.name) == 'string') {
+        if (typeof (x.name) === 'string') {
           const location_name: string = x.name;
           const name_match = location_name.toLowerCase().includes(this.searchTerm.toLowerCase());
           if (name_match) {
             return true;
           }
         }
-        if (typeof (x.type) == 'string' && x.type) {
+        if (typeof (x.type) === 'string' && x.type) {
           const type_name: string = x.type;
           const type_match = type_name.toLowerCase().includes(this.searchTerm.toLowerCase());
           if (type_match) {
@@ -66,8 +66,7 @@ export class SelectLocationComponent implements OnInit {
           }
         }
         const loc_id: string = x.id;
-        const id_match = loc_id.toLowerCase().includes(this.searchTerm.toLowerCase());
-        return id_match;
+        return loc_id.toLowerCase().includes(this.searchTerm.toLowerCase());
       });
     } else {
       return this.locations;

@@ -66,8 +66,8 @@ export class UserGroupsComponent implements OnInit {
     dialogRef.componentInstance.dialogText = 'Leave Group ' + group.name + '?';
     dialogRef.componentInstance.confirmText = 'Leave';
     dialogRef.afterClosed().subscribe(
-      result => {
-        if (result) {
+      closedResult => {
+        if (closedResult) {
           this.userService.leaveGroup(group.group_id).subscribe(
             result => {
               this.loadUserGroups();

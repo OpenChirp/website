@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
   confirmPassword = '';
   showSignup = false;
   showSignupButton = false;
-  emailPattern: any = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -52,7 +51,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    if (this.emailFormControl.value != '' && this.password != '') {
+    if (this.emailFormControl.value !== '' && this.password !== '') {
       const body: any = {
         username: this.emailFormControl.value,
         password: this.password
@@ -75,14 +74,13 @@ export class LoginComponent implements OnInit {
     if (!this.showSignup) {
       this.showSignup = true;
     } else {
-      if (this.emailFormControl.value != '' && this.password != '') {
+      if (this.emailFormControl.value !== '' && this.password !== '') {
         const body: any = {
           name: this.name,
           email: this.emailFormControl.value,
           password: this.password
         };
-        const regexp = new RegExp(this.emailPattern);
-        if (!regexp.test(this.emailFormControl.value)) {
+        if (this.emailFormControl.invalid) {
           this.errorDialogService.dialogPopup('Invalid Email');
           return;
         }

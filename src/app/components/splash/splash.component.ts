@@ -46,7 +46,7 @@ export class SplashComponent implements OnInit {
     );
   }
 
-  loginPopup(service: any) {
+  loginPopup() {
     const dialogRef = this.dialog.open(LoginComponent, {width: '450px'});
   }
 

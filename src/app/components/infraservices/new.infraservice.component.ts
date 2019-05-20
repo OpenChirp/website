@@ -26,7 +26,7 @@ export class NewInfraServiceComponent {
   }
 
   add() {
-    if (this.name != '' && this.description != '') {
+    if (this.name !== '' && this.description !== '') {
       const body: any = {
         name: this.name,
         description: this.description,

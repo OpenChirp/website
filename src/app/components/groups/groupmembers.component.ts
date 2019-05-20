@@ -115,8 +115,8 @@ export class GroupMembersComponent implements OnInit {
     dialogRef.componentInstance.dialogText = 'Delete Member ' + user.email + '?';
     dialogRef.componentInstance.confirmText = 'Delete';
     dialogRef.afterClosed().subscribe(
-      result => {
-        if (result) {
+      closedResult => {
+        if (closedResult) {
           this.groupService.removeUserFromGroup(this.group._id, user._id).subscribe(
             result => {
               this.loadGroup();

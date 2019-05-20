@@ -56,7 +56,7 @@ export class DeviceServicesComponent implements OnChanges {
           service.config = this.configs[service._id];
           service.status = this.statuses[service._id];
           this.services.push(service);
-          if (this.services.length == this.linkedServices.length) {
+          if (this.services.length === this.linkedServices.length) {
             this.sortedData = this.services.slice();
           }
         });
@@ -124,8 +124,8 @@ export class DeviceServicesComponent implements OnChanges {
     dialogRef.componentInstance.dialogText = 'Remove link to service : ' + name + '?';
     dialogRef.componentInstance.confirmText = 'Remove';
     dialogRef.afterClosed().subscribe(
-      result => {
-        if (result) {
+      closedResult => {
+        if (closedResult) {
           this.deviceService.deleteServiceLink(this.device._id, service_id).subscribe(
             result => {
               this.successDialogService.dialogPopup('Link to service :' + name + ' removed');
