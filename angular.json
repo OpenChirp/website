@@ -66,6 +66,7 @@
           "options": {
             "main": "src/test.ts",
             "karmaConfig": "./karma.conf.js",
+            "tsConfig": "src/tsconfig.json",
             "scripts": [],
             "styles": [
               "src/styles.scss"
@@ -79,7 +80,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [],
+            "tsConfig": "src/tsconfig.json",
             "exclude": []
           }
         }
@@ -100,7 +101,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [],
+            "tsConfig": "e2e/tsconfig.json",
             "exclude": []
           }
         }
